@@ -21,6 +21,7 @@ class Login_user extends CI_Controller {
 		  //check if the user is already login
 		if($this->session->userdata('logged_in'))
 		{
+
 			$this->menu();
 		}
 		else{
@@ -133,6 +134,7 @@ class Login_user extends CI_Controller {
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "";
+			$data['username'] = $this->session->has_userdata('username');;
 			$this->load->view('account/account_page' , $data);
 		}else{
 			$this->login();

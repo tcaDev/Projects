@@ -22,7 +22,6 @@ Class User extends CI_Model
  }
 
 
-
   function question(){
    $this -> db -> select('SecretQuestion,SecretQuestionId');
    $this -> db -> from('SecretQuestion');

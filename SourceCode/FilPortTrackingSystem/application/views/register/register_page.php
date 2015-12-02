@@ -84,7 +84,7 @@
 					<span>Create New Account</span>
 
 				</div>
-
+						
 			
   						<p><?php echo validation_errors(); ?></p>
 
@@ -162,17 +162,17 @@
 
 								<div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="password" name="password"  placeholder="Password" class="form-control" value="<?php echo set_value('password'); ?>"required>
+					                 <input type="password" name="password"  placeholder="Password" id="pass" class="form-control" value="<?php echo set_value('password'); ?>"required>
 
 					            </div>
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="password" name="passconf" placeholder="Confirm Password" class="form-control" value="<?php echo set_value('passconf'); ?>"required>
-
+					                 <input type="password" name="passconf" placeholder="Confirm Password" id="conpass" class="form-control" value="<?php echo set_value('passconf'); ?>"required>
+					                  <span id='message'></span>
 					            </div>
 
-
+					           
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
@@ -193,7 +193,7 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="text" name="answer"class="form-control"  placeholder="Answer" value="<?php echo set_value('answer'); ?>"required>
+					                 <input type="password" name="answer"class="form-control"  placeholder="Answer" value="<?php echo set_value('answer'); ?>"required>
 
 					            </div>
 
@@ -243,3 +243,24 @@
 
 
 
+<script>
+	/*
+* Password Matching
+*/
+    $('#conpass').on('keyup', function () {
+        if ($(this).val() == $('#pass').val()) {
+            $('#message').html('Password Match').css('color', 'green');
+
+        } else $('#message').html('Password not Match').css('color', 'red');
+    });
+
+     $('#pass').on('keyup', function () {
+        if ($(this).val() == $('#conpass').val()) {
+            $('#message').html('Password Match').css('color', 'green');
+
+        } else $('#message').html('Password not Match').css('color', 'red');
+    });
+/*
+* End Password Matching
+*/
+</script>

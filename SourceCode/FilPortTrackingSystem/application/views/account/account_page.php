@@ -153,7 +153,7 @@
 
 						       		<div class="form-group">
 						        		<label>Username : </label>
-						        		<input class="form-control input-sm" type="text" name="uname"/>
+						        		<input class="form-control input-sm" type="text" name="uname" value="<?php echo $username; ?>"/>
 						        	</div>
 
 						        	<hr>
