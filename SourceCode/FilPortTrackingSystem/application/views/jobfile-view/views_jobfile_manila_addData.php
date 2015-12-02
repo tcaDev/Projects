@@ -31,24 +31,34 @@
 
 
 						   <label for="shipper">Shipper:</label>
-
-						  <input type="text" class="form-control input-sm" id="shipper">
-
+					  		<select name="shipper" id="shipper" class="form-control">
+				            	<?php  foreach($drop as $row){  ?> 
+				                <option value="<?php echo $row->ConsigneeId ?>">
+				                <?php echo $row->ShipperName ?>
+				                </option> 
+				             	<?php }?>
+			               	</select>
 
 
 						   <label for="consignee">Consignee:</label>
 
-						  <input type="text" class="form-control input-sm" id="consignee">
+						  		<select name="shipper" class="form-control">
+					            	<?php  foreach($drop as $row){  ?> 
+					                <option value="<?php echo $row->ConsigneeId ?>">
+					                <?php echo $row->ShipperName ?>
+					                </option> 
+					             <?php }?>
+					               </select>
 
 
 
-						   <label for="cnts">No. of CTNS:</label>
+						   <label for="cnts">Number of Cartons:</label>
 
 						  <input type="text" class="form-control input-sm" id="cnts">
 
 
 
-						   <label for="cntr">CNTR Size:</label>
+						   <label for="cntr">Conainer Size:</label>
 
 						  <input type="text" class="form-control input-sm" id="cntr">
 
@@ -60,17 +70,17 @@
 
 
 
-						   <label for="hbl">HBL No.:</label>
+						   <label for="hbl">House Bill of Landding No.:</label>
 
 						  <input type="text" class="form-control input-sm" id="hbl">
 
 
 
-						   <label for="mbl">MBL No1.:</label>
+						   <label for="mbl">Master Bill of Landing No1.:</label>
 
 						  <input type="text" class="form-control input-sm" id="mbl">
 
-						    <label for="mbl">MBL No2.:</label>
+						    <label for="mbl">Master Bill of Landing No2.:</label>
 
 						  <input type="text" class="form-control input-sm text-uppercase" placeholder="optional" id="mbl2">
 
@@ -82,41 +92,37 @@
 
 
 
-						  <label for="etd">ETD:</label>
+						  <label for="etd">Estimated Time of Departure:</label>
 						  
 						  <input type="date" class="form-control input-sm" id="etd" size="100" >
 						  <input type="time" class="form-control input-sm" id="etd_time" size="100" >
 
 
-						  <label for="eta">ETA:</label>
+						  <label for="eta">Estimated Time of Arrival:</label>
 
 						  <input type="date" class="form-control input-sm" id="eta">
 						  <input type="time" class="form-control input-sm" id="eta_time" size="100" >
+						</div>
 
+						<div class="col-lg-4" >
 						  <label for="AVT">AVT:</label>
 
 						  <input type="date" class="form-control input-sm" id="avt">
 						  <input type="time" class="form-control input-sm" id="avt_time" size="100" >
 
 
-						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">ATA:</label>
+						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">Actual Time of Arrival:</label>
 
 						  <input type="date" class="form-control input-sm" id="ata">
 						  <input type="time" class="form-control input-sm" id="ata_time" size="100" >
 
-		  			</div>
-
-
-
-		  			<div class="col-lg-4" >
-
-		  				<label for="bank">LC No. Bank:</label>
+		  				<label for="bank">Letter of Credit No. from Bank:</label>
 
 						  <input type="text" class="form-control input-sm " id="bank">
 
 
 
-						   <label for="dem">Start of DEM:</label>
+						   <label for="dem">Start of Demorage:</label>
 
 						  <input type="text" class="form-control input-sm" id="dem">
 
@@ -134,9 +140,15 @@
 
 
 
-						   <label for="vsl">VSL / VOY No.:</label>
+						   <label for="vsl">Vessel / Voyage No.:</label>
 
-						  <input type="text" class="form-control input-sm" id="vsl">
+						  		<select name="shipper" id="vsl"class="form-control">
+					            	<?php  foreach($drop as $row){  ?> 
+					                <option value="<?php echo $row->ConsigneeId ?>">
+					                <?php echo $row->ShipperName ?>
+					                </option> 
+					             <?php }?>
+					               </select>
 
 
 
@@ -146,47 +158,51 @@
 
 
 
-						   <label for="dtRcvd">DT RCVD Arrival Notice FRM Client / SLINE:</label>
+						   <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
 
 						  <input type="text" class="form-control input-sm" id="dtRcvd">
 
 
 
-						   <label for="dtPckup">DT Pick-up / RCVD O-BL:</label>
+						   <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
 
 						  <input type="text" class="form-control input-sm" id="dtPckup">
 
 
 
-						   <label for="dtPckRcv">DT Pick-up / RCVD Other Docs :</label>
+						   <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
 
 						  <input type="text" class="form-control input-sm" id="dtPckRcv">
 
-
-
-						  <label for="broker">Broker:</label>
-
-						  <input type="text" class="form-control input-sm" id="broker">
-
-
-
-						  <label for="dtReq">DT Req. Budget to GL:</label>
-
-						  <input type="date" class="form-control input-sm" id="dtReq">
-
 		  			</div>
-
-
 
 					<div class="col-lg-4" >
 
-		  				<label for="rfp">RFP Due Date:</label>
+						  <label for="broker">Broker:</label>
+
+						  
+				  			<select name="shipper" id="vsl"class="form-control">
+			            	<?php  foreach($drop as $row){  ?> 
+			                <option value="<?php echo $row->ConsigneeId ?>">
+			                <?php echo $row->ShipperName ?>
+			                </option> 
+			             	<?php }?>
+			               </select>
+
+
+
+						  <label for="dtReq">Date Required Budget to GL:</label>
+
+						  <input type="date" class="form-control input-sm" id="dtReq">
+
+
+		  				<label for="rfp">Reference Due Date:</label>
 
 						  <input type="date" class="form-control input-sm " id="rfp">
 
 
 
-						   <label for="dtSent">DT Sent Pre-Assess:</label>
+						   <label for="dtSent">Date Sent Pre-Assess:</label>
 
 						  <input type="date" class="form-control input-sm" id="dtSent">
 
@@ -204,13 +220,13 @@
 
 
 
-						   <label for="dtPaid">DT Paid D&T:</label>
+						   <label for="dtPaid">Date Paid(Date& Time):</label>
 
 						  <input type="date" class="form-control input-sm" id="dtPaid">
 
 
 
-						   <label for="dtClrd">DT Cleared BOC:</label>
+						   <label for="dtClrd">Date Cleared BOC:</label>
 
 						  <input type="date" class="form-control input-sm" id="dtClrd">
 
@@ -258,9 +274,9 @@
 
 			        <th>Target Delivery Date</th>
 
-			        <th>Actual P-Out DT of CNTR at Port</th>
+			        <th>Actual P-Out date of container at Port</th>
 
-			        <th>Actual DT RCVD CNTR to WHSE</th>
+			        <th>Actual date recieved container to WHSE</th>
 
 			        <th>Status Report</th>
 
