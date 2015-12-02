@@ -190,10 +190,15 @@
 					</div>
 					</a>
 				</div>
+				<br>
+				<br>
+				<hr class="line">
 			</div>	
 			</div>
+
+
 	<!-- Footer -->
-		<div class="col-lg-12 col-md-12 col-sm-12 footer">
+		<div class="col-lg-12 col-md-12 col-sm-12 footer hidden">
 			<?php $this->load->view('footer/date-time'); ?>
 		</div>
 	<!-- End Footer -->

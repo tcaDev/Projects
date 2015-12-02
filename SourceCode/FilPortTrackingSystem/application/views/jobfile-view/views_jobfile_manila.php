@@ -303,7 +303,7 @@
 *
 *Table
 */
-$('#scroller table').each(function(){
+/*$('#scroller table').each(function(){
     var table = $(this),
         fixedCol = table.clone(true),
         fixedWidth = table.find('th').eq(0).width(),
@@ -327,7 +327,7 @@ $('#scroller table').each(function(){
     fixedCol.find('th,td').css('width',fixedWidth+'px');
     
     $('#scroller').append(fixedCol);
-});
+});*/
 /*
 *
 *end Table

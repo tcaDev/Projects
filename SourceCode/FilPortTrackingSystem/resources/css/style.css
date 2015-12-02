@@ -91,11 +91,7 @@ body{
 /*LOGIN PAGE*/
 
 .log-form{
-
-    
-
-   padding: 30px 50px;
-
+   padding: 30px 0px;
 }
 
 
@@ -384,21 +380,15 @@ position: absolute;
 
 .account-cont{
 
-    left: 35%;
-
-    width: 525px;
-
-    height: 750px;
-
     padding: 20px;
-
     box-shadow: 0px 2px 5px #000;
-
-    top: -35px;
-
     border-radius: 1em;
-
-    background-color:rgba(255,255,255,0.8);
+    background-color: rgba(255,255,255,0.8);
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
 
  
 
@@ -408,9 +398,7 @@ position: absolute;
 
 .account-user{
 
-    width: 35%;
-
-    height: auto;
+    width: 100%;
 
     background-color: #fff;
 
@@ -422,11 +410,9 @@ position: absolute;
 
 .upload-pic{
 
-        position: absolute;
-
-    top: 28%;
-
-    left: 40%;
+         position: absolute;
+    top: 70%;
+    left: 45%;
 
 }
 
