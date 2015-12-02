@@ -25,7 +25,7 @@
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
 		 	<div class="input-group col-md-6 pull-right" style="width: 27%;">
-	            <input type="text" class="form-control consignee_tab" id="search" placeholder="Search" />
+	            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
 	            <span class="input-group-btn">
 	                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
 	                    <span class=" glyphicon glyphicon-search"></span>
@@ -84,7 +84,7 @@
 							        <td>'.$stat .'</td>
 							        <td   class="hidden">'. $row->DateAdded .'</td>
 							        <td   class="hidden">'. $mystat .'</td>
-							        <td><button type="button" class="btn update_consignee" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <td><button type="button" class="btn get_consignee_datas" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							  			<button class="btn delete_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					      		}
@@ -98,9 +98,7 @@
 			      <table class="table table-striped">
 					    <thead>
 					      <tr>
-					        <th>First Name</th>
-					        <th>Middle Name</th>
-					        <th>Last Name</th>
+					        <th>Full Name</th>
 					        <th>Address</th>
 					        <th>Contact no.</th>
 					        <th>Status</th>
@@ -131,14 +129,15 @@
 					     echo'
 					      <tr>
 					      	<td class="hidden">'.$row->BrokerId.'</td>
-					        <td>'.$row->FirstName.'</td>
-					        <td>'.$row->MiddleName.'</td>
-					        <td>'.$row->LastName.'</td>
+					      	<td >'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.' </td>
+					        <td class="hidden">'.$row->FirstName.'</td>
+					        <td class="hidden">'.$row->MiddleName.'</td>
+					        <td class="hidden">'.$row->LastName.'</td>
 					        <td>'.$row->Address.'</td>
 					        <td>'.$row->ContactNo.'</td>
 					        <td>'.$stat .'</td>
 
-					         <td><button type="button" class="btn update_broker" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      
 					      </tr>';}
@@ -161,7 +160,7 @@
 					    echo  '<tr>
 							        <td class="hidden">'.$row->ShipperVesselId.'</td>
 							        <td>'.$row->Vesselname.'</td>
-							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn get_vessel_datas" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        <button class="btn delete_vessel"><span class="glyphicon glyphicon-trash"></span></button></td>
 					    	  </tr>';}
 					      ?>
@@ -185,9 +184,9 @@
 					  	    <td class="hidden">'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
 					        <td class="hidden">'.$row->DateAdded.'</td> 
-					        <td><button type="button" class="btn update_shipper contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
+					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
 					       					   <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					        <td><button type="button" class="btn edit_shipper" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td><button type="button" class="btn get_shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      </tr>';}
 					     ?>
@@ -240,7 +239,7 @@
 					        </div>
 					        <div class="">
 					            <div class="form-group col-lg-12">       	
-					                <input type="text" name="OfficeNumber" class="form-control" placeholder="Office Number" required />
+					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
 					            </div>
 					        </div>
 					        <div class="">
@@ -281,7 +280,7 @@
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>OfficeNumber</label>
-					                <input type="text" name="consig_ofnum" class="consignee_of form-control" required />
+					                <input type="text" name="consig_ofnum" minlength="7" maxlength="15"  class="consignee_of form-control" required />
 					            </div>
 					        </div>
 					        <div class="col-lg-12">
@@ -322,11 +321,6 @@
 				          <h4 class="modal-title">Vessel Information</h4>
 				        </div>
 				        <div class="modal-body">
-				          
-				          
-				          
-				          
-				       
 				          	  <input type="hidden" name="ves_id"      class="vessel_id" />
 							<div class="row">
 					            <div class="form-group col-lg-12">
@@ -335,15 +329,12 @@
 					            </div>
 					        </div>
 					  
-
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
 					            	<button type="button" class="update_vessel pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
 			
-
-
 				        </div>
 
 				        <div class="modal-footer">
@@ -377,7 +368,7 @@
 					        </div>
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="button" class=" add_shipper pull-right btn btn-default">Submit</button>
+					            	<button type="button" class=" update_shipper pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
 			   	 		
@@ -427,7 +418,7 @@
 					         <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.</label>
-					               <input type="text"   name="broker_contact" value="" class="broker_contact form-control"/>
+					               <input type="text"   name="broker_contact" minlength="7" maxlength="15" value="" class="broker_contact form-control"/>
 					            </div>
 					        </div>
 
@@ -442,12 +433,12 @@
 					        </div>
 					         <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="button" class="update_brokers pull-right btn btn-default">Submit</button>
+					            	<button type="button" class="update_broker pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
 						</div>
 						 <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button " class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 					</div>
 				</div>
@@ -455,6 +446,8 @@
 
 				  	  	<!-- Modal FOr shippercontacts-->
 				  <div class="modal fade" id="modal_shippercontacts" role="dialog">
+
+
 				  </div>
 
 				    	  	<!-- Modal FOr add_shippercontacts-->
@@ -494,14 +487,14 @@
 					         <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.1</label>
-					               <input type="text" value="" class="no_contact form-control"/>
+					               <input type="text" value="" minlength="7" maxlength="15" class="no_contact form-control"/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.2</label>
-					               <input type="text" value="" class="no1_contact form-control"/>
+					               <input type="text" value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
 					            </div>
 					        </div>
 
@@ -537,16 +530,11 @@
 		         	cid = <?php echo $cid;?>;
 
 		          }
-
-		         var id 		  = $(this).closest('tr').children('td:eq(0)').text();
+	/*	         var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var Consignee    = $(this).closest('tr').children('td:eq(1)').text();
 			     var Address      = $(this).closest('tr').children('td:eq(2)').text();
-			     var dtupdated    = $(this).closest('tr').children('td:eq(5)').text();
-			
+			     var dtupdated    = $(this).closest('tr').children('td:eq(5)').text();*/
 
-
-			     /*  	 $('#basic_info').html('<label>Client Name:' + Consignee +'</br></label><label>Address:'+ Address +'</br></label><label>Date Updated:'+dtupdated +'</label>');
-*/
 		           });
 		</script>
 

@@ -7,19 +7,17 @@ Class User extends CI_Model
  function login($username, $password)
 
  {
-   $this -> db -> select('UserName,Password,EmailAddress');
-   $this -> db -> from('User');
-   $this -> db -> where('UserName', $username);
-   $this -> db -> where('Password',$password);
-   $this -> db -> limit(1);
 
-   $query = $this -> db -> get();
+   $query = $this->db->query("select UserName,Password,EmailAddress from User where Password='$password' 
+                                and (UserName='$username' or EmailAddress='$username' ) limit 1 ");
+
    if($query -> num_rows() == 1){
      return $query->result();
    }else{
      return false;
    }
  }
+
 
 
   function question(){
@@ -41,6 +39,7 @@ Class User extends CI_Model
   function clients(){
    $this -> db -> select('*');
    $this -> db -> from('Consignee');
+   $this ->db->order_by('ConsigneeName');
    $this->db->limit(10);
    $query=$this->db->get();
    return $query->result();
@@ -136,6 +135,7 @@ Class User extends CI_Model
   function dropdown_shipper(){
     $this->db->select('ShipperName,ShipperId');
     $this ->db -> from('Shipper');
+    $this ->db->order_by('ShipperName');
     $query=$this->db->get();
     return $query->result();
   }
@@ -144,6 +144,7 @@ Class User extends CI_Model
   function settings_consignee(){
     $this->db->select('*');
     $this ->db -> from('Consignee');
+    $this ->db->order_by('ConsigneeName');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -152,6 +153,7 @@ Class User extends CI_Model
     function settings_broker(){
     $this->db->select('*');
     $this -> db -> from('Broker');
+    $this ->db->order_by('FirstName');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -159,6 +161,7 @@ Class User extends CI_Model
     function settings_vessel(){
     $this->db->select('*');
     $this -> db -> from('ShipperVessel');
+    $this ->db->order_by('Vesselname');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -166,6 +169,7 @@ Class User extends CI_Model
     function settings_shipper(){
     $this->db->select('*');
     $this ->db-> from('Shipper');
+    $this ->db->order_by('ShipperName');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -173,6 +177,7 @@ Class User extends CI_Model
     function settings_shipper_con(){
     $this->db->select('*');
     $this -> db -> from('ShipperContacts');
+     $this ->db->order_by('FirstName');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -203,12 +208,12 @@ Class User extends CI_Model
 
 
     function select_shipperid(){
-             $this ->db->select('*');
-               $this ->db->from('Shipper');
-               $this ->db->order_by('ShipperId', 'DESC');
-                $this ->db->limit(10);
-               $count = $this -> db -> get();
-                return $count->result();
+              $this ->db->select('*');
+              $this ->db->from('Shipper');
+              $this ->db->order_by('ShipperId');
+              $this ->db->limit(10);
+              $count = $this -> db -> get();
+              return $count->result();
     }
 
   function shippercons($id){
@@ -229,21 +234,21 @@ Class User extends CI_Model
       if($search=='deactivated'){ 
       $search=0;
     }
-   $query = $this->db->query("select * from Consignee WHERE ConsigneeName LIKE '%$search%' ");
+   $query = $this->db->query("select * from Consignee WHERE ConsigneeName LIKE '%$search%' order by ConsigneeName ");
    return $query->result();
   }
   function search_broker($search_broker){
    $query = $this->db->query("select * from Broker WHERE FirstName LIKE '%$search_broker%' or 
    MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%' or Address  
-   LIKE '%$search_broker%'  ");
+   LIKE '%$search_broker%' order by FirstName  ");
    return $query->result();
   }
     function search_shipper($search_shipper){
-   $query = $this->db->query("select * from Shipper WHERE ShipperName LIKE '%$search_shipper%'  ");
+   $query = $this->db->query("select * from Shipper WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
    return $query->result();
   }
       function search_vessel($search_vessel){
-   $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%'  ");
+   $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%' order by Vesselname  ");
    return $query->result();
   }
 

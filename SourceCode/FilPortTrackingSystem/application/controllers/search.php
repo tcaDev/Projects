@@ -11,285 +11,44 @@ class Search extends CI_Controller {
    public function __construct()
 
        {
-
             parent::__construct();
-
             $this->load->model('User');
-
        }
 
-
-
 		function index(){
-
 			$search = $this->input->get('search');
-
 			$data['result']=$this->User->search_global($search);
-
 			$searchme= $data['result'];
-
-		
 
 			if(isset($search)){
 
-	
-
 							echo '<table class="table table-striped">
-
 							<tr>
-
 								<td>JobFileId</td>
-
 								<td>Broker</td>
-
 								<td>Consignee</td>
-
 							</tr>
-
-
-
-							<tr>';
+						<tr>';
 
 			
-
 					foreach ($searchme as $row) {
 
-					/*		if (count($friendActivity) > 0) {
-
-								   echo '<td>' . $row->JobFileId . '</td>';
-
-								}*/
-
 					   echo '<td>' . $row->JobFileId . '</td>';
-
 					   echo '<td>' .$row->Consignee . '</td>';
-
 					   echo '<td>' .$row->FirstName." ".$row->FirstName." ".$row->LastName . '</td>';
 
-					  
-
 					}
-
-
-
 					  echo '</tr>';
-
-
-
 					echo '</table>';
-
-
-
 			}else{
 
 					echo "NO result";
 
 			}
-
-
-
-
-
 		}
 
 
-	function get_broker(){
 
-    echo '		<div class="modal-dialog">
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Broker Information</h4>
-				        </div>
-				        <div class="modal-body">
-				            <input type="hidden" name="broker_id" value="" class="broker_id form-control"/>
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>First Name</label>
-					               <input type="text" name="broker_fname" value="" class="broker_fname form-control"/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Middle Name</label>
-					               <input type="text"   name="broker_mname" value="" class="broker_mname form-control"/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Last Name</label>
-					               <input type="text"   name="broker_lname"  value="" class="broker_lname form-control"/>
-					            </div>
-					        </div>
-					         <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Address</label>
-					               <input type="text"   name="broker_address" value="" class="broker_address form-control"/>
-					            </div>
-					        </div>
-					         <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Contact No.</label>
-					               <input type="text"   name="broker_contact" value="" class="broker_contact form-control"/>
-					            </div>
-					        </div>
-
-
-					        ' ?>
-					        <script>
-					          	
-					     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-					     var FirstName    = $(this).closest('tr').children('td:eq(1)').text();
-					     var MiddleName      = $(this).closest('tr').children('td:eq(2)').text();
-					     var LastName    = $(this).closest('tr').children('td:eq(3)').text();
-
-					     	$('.broker_id').val(id);
-					     	$('.broker_fname').val(FirstName);
-   					
-
-
-					           /*  if(<?php echo $status?>==1){
-				     				 $('.activate').prop('checked', true);
-				  					  }else{
-				  	  					     $('.deactivate').prop('checked', true);
-				  						  }*/
-
-					        </script>
-							<div class="col-lg-12">
-					        	<label>Status: </label>
-						        <div class="radio">
-								  <label><input type="radio" name="status_broker" class="activate  " value="1">activated</label>
-								</div>
-								 <div class="radio">
-								   <label><input type="radio"name="status_broker" class="deactivate " value="0">deactivated</label>
-								 </div>
-					        </div>
-					        <?php echo'
-					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" update_broker pull-right btn btn-default">Submit</button>
-					            </div>	
-					        </div>
-			   	 		</form>
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        </div>
-				      </div>      
-				 </div>'; ?>
-
-	<script>
-				$('.update_broker').click(function(){
-
-				var id= $('.broker_id').val();
-				var fname = $('.broker_fname').val();
-				var mname = $('.broker_mname').val();
- 				var lname = $('.broker_lname').val();
-				var addr = $('.broker_address').val();
- 				var c = $('.broker_contact').val();
- 				var status = $("[name='status_broker']").val();
- 				
- 				
-
-				$.ajax({
-			  		method: "POST",
-					  url: "<?php echo base_url('Update/update_broker');?>",
-			  		data: { broker_id:id,
-			  			    broker_fname:fname,
-			  			    broker_mname:mname,
-			  			    broker_lname:lname,
-			  			    broker_address:addr,
-			  			    broker_contact:c,
-			  			    status_broker:status
-
-
-
-			  		}
-				})
-		  		.done(function(data) {
-		   		 	    $.alert({
-								    title: 'Alert!',
-								    content: 'Data has been Updated!',
-								    confirm: function(){
-								   	 location.hash="broker";
-          							 location.reload();
-								    }
-								});
-				});
-		});
-	</script>
-
-
-
-<?php
-	}
-   function get_shipper(){
-   	$id=$this->input->get('shipper_id');
-	$info= $this->User->get_shipper_info($id);
-
-	foreach ($info as $row)
-    echo '		<div class="modal-dialog">
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Shipper Information</h4>
-				        </div>
-				        <div class="modal-body">
-		        	
-				            <input type="hidden" name="ship_id" value='.$row->ShipperId.' class="ship_id form-control"/>
-							
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Shipper Name</label>
-					               <input type="text" name="ship_name" value="'.$row->ShipperName.'" class="shipper_name form-control"/>
-					            </div>
-					        </div>
-					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="button" class=" add_shipper pull-right btn btn-default">Submit</button>
-					            </div>	
-					        </div>
-			   	 		
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="  btn btn-default" data-dismiss="modal">Close</button>
-				        </div>
-				      </div>      
-				 </div>';?>
-
-		<script>
-
-				$('.add_shipper').click(function(){
-
-				var id= $('.ship_id').val();
-				var ship_name = $('.shipper_name').val();
- 		
-				$.ajax({
-			  		method: "POST",
-					  url: "<?php echo base_url('Update/update_shipper');?>",
-			  		data: { ship_id:id,
-			  			    ship_name:ship_name
-			  		}
-				})
-		  		.done(function(data) {
-		   		 	    $.alert({
-								    title: 'Alert!',
-								    content: 'Data has been Updated!',
-								    confirm: function(){
-								   	 location.hash="shipper";
-          							 location.reload();
-
-								    }
-								});
-				});
-		});
-
-		</script>
-
-   <?php
-   }
 
    function shippercon(){
 
@@ -481,14 +240,14 @@ class Search extends CI_Controller {
 					         <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.1</label>
-					               <input type="text" value="" class="no_contact form-control"/>
+					               <input type="text" value="" minlength="7" maxlength="15" class="no_contact form-control"/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.2</label>
-					               <input type="text" value="" class="no1_contact form-control"/>
+					               <input type="text" value="" minlength="7" maxlength="15" class="no1_contact form-control"/>
 					            </div>
 					        </div>
 
@@ -738,7 +497,6 @@ class Search extends CI_Controller {
 					        <td>'.$row->Address.'</td>
 					        <td>'.$row->Address.'</td>
 					        <td>'.$row->ContactNo.'</td>
-					        <td>'.$stat .'</td>
 
 					         <td><button type="button" class="btn update_brokers" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>

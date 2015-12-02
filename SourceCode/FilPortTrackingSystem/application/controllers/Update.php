@@ -91,7 +91,7 @@ class Update extends CI_Controller {
 		$name 	= 	$this->input->post('ves_name');
 	
 		$this->User->update_vessel($id,$name);
-		redirect('Login_User/settings');
+		/*redirect('Login_User/settings');*/
 
 	
 	}
@@ -123,7 +123,7 @@ class Update extends CI_Controller {
 		
 		$this->User->update_broker($id,$broker_fname,$broker_mname,
 		$broker_lname,$broker_address,$broker_contact,$status_broker);
-		redirect('Login_User/settings');
+		/*redirect('Login_User/settings');*/
 
 	}
 
