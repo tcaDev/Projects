@@ -134,33 +134,16 @@
 
 
 
-							 <div class="dropdown">
-
-
-
-							    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">Username Account
-
-
-
-							    <span class="caret"></span></button>
-
-
-
-							    <ul class="dropdown-menu">
-
-							      <li><a href="<?= base_url('Login_user/account') ?>">Account Settings</a></li>  
-
-							      <li role="presentation" class="divider"></li>
-
-							      <li><a href="<?= base_url('Login_user/logout') ?>">Logout</a></li>  
-
-
-
-							    </ul>
-
-
-
-							  </div>
+							 <div class="btn-group">
+								  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>"><i class="fa fa-user fa-fw"></i> Username Account</a>
+								  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+								    <span class="fa fa-caret-down"></span></a>
+								  <ul class="dropdown-menu">
+								    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
+								    <li class="divider"></li>
+								    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+								  </ul>
+								</div>
 
 
 
