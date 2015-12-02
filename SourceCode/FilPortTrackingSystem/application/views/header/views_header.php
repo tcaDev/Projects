@@ -6,11 +6,11 @@
 
 
 
-				<div class="col-lg-12 col-md-12 col-sm-12 btn btn-info home">
+				<div class="col-lg-12 col-md-12 col-sm-12 btn btn-info">
 
 
 
-					<span>Home</span>
+					<span><i class="fa fa-home fa-lg"></i> Home</span>
 
 
 
@@ -22,7 +22,7 @@
 
 
 
-		</div>
+	</div>
 
 
 
