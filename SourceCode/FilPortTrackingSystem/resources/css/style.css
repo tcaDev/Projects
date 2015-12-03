@@ -410,9 +410,15 @@ position: absolute;
 
 .upload-pic{
 
-         position: absolute;
-    top: 70%;
+    position: absolute;
+    top: 45%;
     left: 45%;
+}
+.save-pic{
+
+       position: absolute;
+    top: 73%;
+    left: 48%;
 
 }
 

@@ -8,21 +8,23 @@
 						<hr class="line">
 
 				<!-- End Account Container -->
-
-				<div class="col-lg-12 col-md-12 col-sm-12"> 
-							<div class="col-lg-4 pull-right">
-								<div class="row">
-									<div class="col-lg-12">
-										<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo base_url('resources/img/user.png')?>" />								
+				<form>
+					<div class="col-lg-12 col-md-12 col-sm-12"> 
+								<div class="col-lg-4 pull-right">
+									<div class="row">
+										<div class="col-lg-12">
+											<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo base_url('resources/img/user.png')?>" />								
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<button class="upload-pic pull-right btn btn-info">Change Photo</button>	
+								<button class="upload-pic pull-right btn btn-info btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i> Change Photo</button>	
 
-							<input type="file" class="hidden file"  accept="image/*" onchange="readURL(this);"/>
-				</div>
-
+								<button type="submit" class="save-pic pull-right btn btn-info btn-sm"><i class="fa fa-floppy-o fa-lg"></i> Save Photo</button>
+								
+								<input type="file" class="hidden file" id="pic-file"  accept="image/*" onchange="readURL(this);"/>
+					</div>
+				</form>
 				<div class="col-lg-12 col-md-12 col-sm-12"> 
 				<!--Account form-->
 
@@ -98,7 +100,6 @@
 						     		   	
 
 						        	<div class="form-group">
-						        		<span class="pull-left"><a href="" style="font-size: 15px !important; "> Forgot Password? </a></span>
 						        		<button type="submit" class="pull-right btn btn-primary btn-sm" >Save Changes</button>
 						        	</div>
 
@@ -165,6 +166,17 @@
 		$(".upload-pic").on('click',function(){
 			$(".file").click();
 		});
+
+	/*
+	* if input type has data
+	*/
+
+		$(".save-pic").on('click',function(){
+			if($(".file").val() == ""){
+				alert("Choose Image.!");
+			}
+		});
+
 	});
 
 /*
@@ -186,6 +198,7 @@
 /*
 * End Password Matching
 */
+
 
 
 
