@@ -1,9 +1,4 @@
 
-<!-- Get Header -->
-<?php $this->load->view('header/header'); ?>
-<!-- End Header -->
-
-
 		<!-- Account continer -->
 
 		<div class="col-lg-12  account-cont">
@@ -50,17 +45,17 @@
 
 						        	<div class="form-group">
 						        		<label>First : </label>
-						        		<input class="form-control input-sm" type="text" name="fname"/>
+						        		<input class="form-control input-sm" type="text" name="fname" value="<?php echo $fname; ?>"/>
 						        	</div>
 
 						        	<div class="form-group">
 						        		<label>Middle : </label>
-						        		<input class="form-control input-sm" type="text" name="mname"/>
+						        		<input class="form-control input-sm" type="text" name="mname" value="<?php echo $mname; ?>"/>
 						        	</div>
 						        	
 						        	<div class="form-group">
 						        		<label for="fname">Last : </label>
-						        		<input class="form-control input-sm" type="text" name="lname"/>
+						        		<input class="form-control input-sm" type="text" name="lname" value="<?php echo $lname; ?>"/>
 						        	</div>
 						        		<hr>
 						        	<div class="form-group">
@@ -85,7 +80,7 @@
 						        	<form>
 						        	<div class="form-group">
 						        		<label>Current : </label>
-						        		<input class="form-control input-sm" type="password" name="current"/>
+						        		<input class="form-control input-sm" type="password" name="current" id="current"/>
 						        	</div>
 
 						        	<div class="form-group">
@@ -126,19 +121,15 @@
 
 						       		<div class="form-group">
 						        		<label>Email Address : </label>
-						        		<input class="form-control input-sm" type="text" name="uname" disabled />
+						        		<input class="form-control input-sm" type="text" name="email" value= "<?php echo $email; ?>" disabled />
 						        	</div>
 
 						       		<div class="form-group">
 						        		<label>Username : </label>
-						        		<input class="form-control input-sm" type="text" name="uname" value="<?php echo $username; ?>"/>
+						        		<input class="form-control input-sm" type="text" name="uname" value="<?php echo $username; ?>" disabled/>
 						        	</div>
 
 						        	<hr>
-
-						        	<div class="form-group">
-						        		<button type="submit" class="pull-right btn btn-primary btn-sm" >Save Changes</button>
-						        	</div>
 
 						       	</form>
 						      </div>

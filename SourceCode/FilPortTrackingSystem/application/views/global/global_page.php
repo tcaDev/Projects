@@ -1,6 +1,3 @@
-<!-- Get Header -->
-<?php $this->load->view('header/header'); ?>
-<!-- End Header -->
 
 	<div class="gl-bar">
 

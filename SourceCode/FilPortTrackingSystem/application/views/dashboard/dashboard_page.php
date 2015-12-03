@@ -1,6 +1,4 @@
-<!-- Get Header -->
-<?php $this->load->view('header/header'); ?>
-<!-- End Header -->
+
 
  		<div class="dash-cont">
 			<div class="dash-title"><h3>CHARTS</h3></div>

@@ -1,6 +1,4 @@
-<!-- Get Header -->
-<?php $this->load->view('header/header'); ?>
-<!-- End Header -->
+
 	<div class="container-fluid">
 		<div class="menu-container">
 				<div class="row">

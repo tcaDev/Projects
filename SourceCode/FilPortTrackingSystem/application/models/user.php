@@ -8,7 +8,7 @@ Class User extends CI_Model
 
  {
 
-   $query = $this->db->query("select UserName,Password,EmailAddress from User where Password='$password' 
+   $query = $this->db->query("select UserName,Password,EmailAddress,FirstName,LastName,MiddleName from User where Password='$password' 
                                 and (UserName='$username' or EmailAddress='$username' ) limit 1 ");
 
    if($query -> num_rows() == 1){

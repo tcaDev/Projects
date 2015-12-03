@@ -64,8 +64,12 @@ class Login_user extends CI_Controller {
 		     foreach($result as $row)
 		     {
 		       $sess_array = array(
-		         'email' => $row->EmailAddress,
-		         'username' => $row->UserName
+		         'email'     =>   $row->EmailAddress,
+		         'username'  =>   $row->UserName,
+		         'pass'      =>   $row->Password,
+		         'fname'     =>   $row->FirstName,
+		         'mname'     =>   $row->MiddleName,
+		         'lname'     =>   $row->LastName
 		       );
 		       $this->session->set_userdata('logged_in', $sess_array);
 		     }
@@ -82,7 +86,15 @@ class Login_user extends CI_Controller {
 	{
 		 //check if the user is already login
 		if($this->session->userdata('logged_in')){
-			$data['tab'] = "Main Menu";
+		  	$data['tab'] = "Main Menu";
+		  	$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 
+			$this->load->view('header/header',$data);
 			$this->load->view('menu/views_menu' , $data);
 		}else{
 			 $this->login();
@@ -95,7 +107,16 @@ class Login_user extends CI_Controller {
 	 function jobfile(){
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){		
+
 			$data['tab'] = "JobFile Monitoring - Sea";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		  
+			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{
 			$this->login();
@@ -122,6 +143,14 @@ class Login_user extends CI_Controller {
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "CONTAINER TRACKING";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 
+			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
 		}else{
 			$this->login();
@@ -132,8 +161,17 @@ class Login_user extends CI_Controller {
 	{		
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
-			$data['tab'] = "";
-			$this->load->view('account/account_page' , $data);
+
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		  	$data['tab'] = "";
+		 
+			$this->load->view('header/header',$data);
+			$this->load->view('account/account_page',$data);
 		}else{
 			$this->login();
 		}
@@ -156,6 +194,15 @@ class Login_user extends CI_Controller {
 	 	$data['lshippercon'] =  $this->User->settings_shipper_con();
 		$data['clients'] =     $this->User->clients();
 		$data['tab'] = "SITE SETTINGS";
+
+		$session_data = $this->session->userdata('logged_in');
+	    $data['username'] = $session_data['username'];
+	    $data['email'] =  $session_data['email'];
+	    $data['fname'] = $session_data['fname'];
+	    $data['mname'] = $session_data['mname'];
+	    $data['lname'] = $session_data['lname'];
+	 
+		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
 	 }else{
 	 	$this->login();
@@ -166,6 +213,14 @@ class Login_user extends CI_Controller {
 			//check if the user is already login
 		 if($this->session->userdata('logged_in')){		
 			$data['tab'] = "GLOBAL SEARCH";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 
+			$this->load->view('header/header',$data);
 			$this->load->view('global/global_page' , $data);
 		 }else{
 		 	$this->login();
@@ -176,6 +231,14 @@ class Login_user extends CI_Controller {
 		//check if the user is already login
 		 if($this->session->userdata('logged_in')){	
 			$data['tab'] = "USER MANUAL";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 
+			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
 		}else{
 			$this->login();
@@ -187,6 +250,14 @@ class Login_user extends CI_Controller {
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "Charts";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 
+			$this->load->view('header/header',$data);
 			$this->load->view('dashboard/dashboard_page' , $data);
 		}else{
 			$this->login();

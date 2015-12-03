@@ -73,7 +73,11 @@
 
 							<div class="pull-right" style="padding: 10px; color : #FFF;">
 								 <div class="btn-group" >
-									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); "><i class="fa fa-user fa-fw"></i>Username Account</a>
+									<!-- Username -->
+									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
+									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?>
+									  </a>
+									<!-- End Username -->
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu">
