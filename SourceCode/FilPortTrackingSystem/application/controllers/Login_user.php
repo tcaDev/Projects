@@ -66,10 +66,11 @@ class Login_user extends CI_Controller {
 		       $sess_array = array(
 		         'email'     =>   $row->EmailAddress,
 		         'username'  =>   $row->UserName,
-		         'pass'      =>   $row->Password,
 		         'fname'     =>   $row->FirstName,
 		         'mname'     =>   $row->MiddleName,
-		         'lname'     =>   $row->LastName
+		         'lname'     =>   $row->LastName,
+		         'uid'		 =>	  $row->UserId,
+		         'img'		 =>	  $row->ProfileImageSource
 		       );
 		       $this->session->set_userdata('logged_in', $sess_array);
 		     }
@@ -93,9 +94,11 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
-		 
+		 	$data['img'] = $session_data['img'];
+
 			$this->load->view('header/header',$data);
 			$this->load->view('menu/views_menu' , $data);
+
 		}else{
 			 $this->login();
 		}
@@ -115,6 +118,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
 		  
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
@@ -149,6 +153,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
@@ -168,6 +173,8 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['img'] = $session_data['img'];
 		  	$data['tab'] = "";
 		 
 			$this->load->view('header/header',$data);
@@ -201,6 +208,7 @@ class Login_user extends CI_Controller {
 	    $data['fname'] = $session_data['fname'];
 	    $data['mname'] = $session_data['mname'];
 	    $data['lname'] = $session_data['lname'];
+	    $data['img'] = $session_data['img'];
 	 
 		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
@@ -219,6 +227,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('global/global_page' , $data);
@@ -237,6 +246,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
@@ -256,6 +266,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('dashboard/dashboard_page' , $data);
@@ -263,5 +274,104 @@ class Login_user extends CI_Controller {
 			$this->login();
 		}
 	}
-									
+
+
+
+	/*
+	---------------------------------------------
+		Upload Photo
+	---------------------------------------------
+	*/
+			
+	function upload_photo(){
+
+		$status ="";
+		$msg = "";
+		$imageName = "img-file";
+
+/*
+		if(empty($_POST['img-file'])){
+			$this->account();
+		}*/
+
+		if($status != "error"){
+
+			$config['upload_path'] = './uploads/user/';
+			$config['allowed_types'] = 'gif|png|jpg';
+			$config['max_size']	= '1024 * 8';
+			$config['encrypt_name']  = true;
+		
+			$this->load->library('upload', $config);
+
+			if(!$this->upload->do_upload($imageName)){
+				$status = "error";
+				$msg = $this->upload->display_errors('','');
+			}
+			else{
+
+				$id = $this->input->post('user_id');
+				$data = $this->upload->data();
+				$image = $this->User->update_photo($id,$data['file_name']);
+
+				
+
+
+			
+		   		 $photo =  $this->User->get_updated_data($email);
+		   		 $sess_array = array();
+		   		 foreach ($photo as $row) {
+		   		 	
+				
+				       $sess_array = array(
+				         'email'     =>   $row->EmailAddress,
+				         'username'  =>   $row->UserName,
+				         'fname'     =>   $row->FirstName,
+				         'mname'     =>   $row->MiddleName,
+				         'lname'     =>   $row->LastName,
+				         'uid'		 =>	  $row->UserId,
+				         'img'		 =>	  $row->ProfileImageSource
+				       );
+				       $this->session->set_userdata('logged_in', $sess_array);
+				     }
+		   		 }
+
+		   		
+
+
+
+
+				redirect('Login_user/account');
+/*
+				$this->User->update_photo($);*/
+				/*--if($image){
+					redirect('Login_user/account');
+				}
+				else{
+					unlink($data["full_path"]);
+					$status = "error";
+					$msg = "Please try Again";
+				}*/
+				
+			}
+			/*@unlink($_FILES[$imageName]);*/
+
+		}
+	
+
+	/*
+	-----------------------------------------
+		Update Name
+	-----------------------------------------
+	*/
+
+	function update_name(){
+		$id = $this->input->post('user_id_name');
+		$fname = $this->input->post('fname');
+		$mname = $this->input->post('mname');
+		$lname = $this->input->post('lname');
+
+		$this->User->updateName($id,$fname,$mname,$lname);
+		redirect("Login_user/account");
+	}						
 }
+

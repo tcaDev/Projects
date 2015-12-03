@@ -5,10 +5,8 @@ Class User extends CI_Model
 {
 
  function login($username, $password)
-
  {
-
-   $query = $this->db->query("select UserName,Password,EmailAddress,FirstName,LastName,MiddleName from User where Password='$password' 
+   $query = $this->db->query("select UserName,Password,EmailAddress,FirstName,LastName,MiddleName,UserId,ProfileImageSource from User where Password='$password' 
                                 and (UserName='$username' or EmailAddress='$username' ) limit 1 ");
 
    if($query -> num_rows() == 1){
@@ -17,6 +15,9 @@ Class User extends CI_Model
      return false;
    }
  }
+
+
+
 
 
 
@@ -255,8 +256,51 @@ Class User extends CI_Model
   //for searching end
 
 
+  /*
+  --------------------------------------------
+    Upload Photo
+  --------------------------------------------
+  */
 
+  function update_photo($id,$imageName){
+
+    $data = array(
+                'ProfileImageSource' => $imageName 
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data);
+  }
+
+
+  /*
+  --------------------------------------
+    Update Name
+  --------------------------------------
+  */
+
+  function updateName($id,$fname,$mname,$lname){
+
+      $data = array(
+                'FirstName' => $fname,
+                'LastName'  => $lname,
+                'MiddleName'=> $mname 
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data);
+  }
+
+
+
+  function get_updated_data($email){
+   $query = $this->db->query("select * from User where EmailAddress='admin@gmail.com' ");
+    return $query->result();
+  }
     
 }
+
+
+
 
 ?>

@@ -8,27 +8,42 @@
 						<hr class="line">
 
 				<!-- End Account Container -->
-				<form>
+
+			<!-- Upload Photo -->
+			
+
+
+				<form action="<?php echo base_url('Login_user/upload_photo'); ?>" method="post" enctype="multipart/form-data" role="form"> 
 					<div class="col-lg-12 col-md-12 col-sm-12"> 
 								<div class="col-lg-4 pull-right">
 									<div class="row">
 										<div class="col-lg-12">
-											<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo base_url('resources/img/user.png')?>" />								
+											<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo base_url('uploads/user/'. $img); ?>" />								
 										</div>
 									</div>
 								</div>
 
-								<button class="upload-pic pull-right btn btn-info btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i> Change Photo</button>	
+								<button type="button" class="upload-pic pull-right btn btn-info btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i> Change Photo</button>	
+
+								<span id="save-msg"></span>
 
 								<button type="submit" class="save-pic pull-right btn btn-info btn-sm"><i class="fa fa-floppy-o fa-lg"></i> Save Photo</button>
 								
-								<input type="file" class="hidden file" id="pic-file"  accept="image/*" onchange="readURL(this);"/>
+								<input type="file" class="hidden file" id="pic-file" name="img-file" accept="image/*" onchange="readURL(this);"/>
+
+								<input type="text" class="hidden" name="user_id" value="<?php echo $uid; ?>" />
+
+								
+
 					</div>
 				</form>
+			<!-- End Upload Photo -->
+
+
 				<div class="col-lg-12 col-md-12 col-sm-12"> 
 				<!--Account form-->
 
-					<form class="log-form" role="form">
+					<div class="log-form" >
 
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 						  <div class="panel panel-default">
@@ -42,8 +57,9 @@
 						    </div>
 						    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 						      <div class="panel-body">
-						      	<form>
+						      	<form action="<?php echo base_url('Login_user/update_name'); ?>" method="post" enctype="multipart/form-data" role="form">
 						      		
+						      			<input type="text" class="hidden" name="user_id_name" value="<?php echo $uid; ?>" />
 
 						        	<div class="form-group">
 						        		<label>First : </label>
@@ -138,7 +154,7 @@
 						  </div>
 						</div>
 
-				    </form>
+				    </div>
 			   
 			   	</div>
 				<!--end Account form-->
@@ -167,15 +183,12 @@
 			$(".file").click();
 		});
 
-	/*
-	* if input type has data
-	*/
-
-		$(".save-pic").on('click',function(){
+		/*$(".save-pic").on('click',function(){
 			if($(".file").val() == ""){
-				alert("Choose Image.!");
+				$().load();
 			}
 		});
+*/
 
 	});
 
