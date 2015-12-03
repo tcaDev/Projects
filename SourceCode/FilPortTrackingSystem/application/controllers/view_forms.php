@@ -49,7 +49,7 @@ echo form_open('form');*/
 					        </div>
 					        <div class="">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
+					                <input type="text" name="OfficeNumber" class="form-control" placeholder="Office Number" required />
 					            </div>
 					        </div>
 
@@ -117,16 +117,8 @@ function broker(){
 						        </div>
 
 						        <div class="">
-<<<<<<< .mine
 						            <div class="form-group col-md-6">
 						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no1" required />
-||||||| .r17
-						            <div class="form-group col-md-12">
-						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no" required />
-=======
-						            <div class="form-group col-md-12">
-						                <input type="text" name="ContactNo" minlength="7" maxlength="15" class="form-control" placeholder="Contact no" required />
->>>>>>> .r24
 						            </div>
 
 						          	<div class="form-group col-md-6">
@@ -148,7 +140,6 @@ function vessel(){
   $this->load->model('User');
   $drop = $this->User->dropdown_shipper();
 
-
  echo '			<div class="vessels">
 					<div class="  con-info consig-pos" data-toggle="collapse" data-target="#vessels"  style="cursor:pointer">
 						<span style="cursor:pointer">ADD NEW VESSEL</span>
@@ -165,37 +156,15 @@ function vessel(){
 					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Name" required/>
 					            </div>
 					        </div>';?>
-<<<<<<< .mine
 						<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
 					        <div class="">
-||||||| .r17
-				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
-					        <div class="row">
-=======
-				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
-					        <div class="">
->>>>>>> .r24
 					            <div class="form-group  col-md-12 myselect">
-					            	<label style="margin-left: 10px;"> Shipper : </label>
 					               <select name="shipper" class="form-control">
-<<<<<<< .mine
 					               	<option disabled selected>Shipper name</option>
 					            	<?php  foreach($drop as $row){  ?> 
 					               <option value="<?php echo $row->ShipperId ?>">
 					               <?php echo $row->ShipperName ?>
 					               </option> 
-||||||| .r17
-					            <?php  foreach($drop as $row){  ?> 
-
-					               <option value="<?php echo $row->ShipperId ?>">
-					               <?php echo $row->ShipperName ?>
-					               </option> 
-=======
-					            	<?php  foreach($drop as $row){  ?> 
-					                <option value="<?php echo $row->ShipperId ?>">
-					                <?php echo $row->ShipperName ?>
-					                </option> 
->>>>>>> .r24
 					             <?php }?>
 					               </select>
 					            </div>
@@ -263,13 +232,13 @@ echo'				<div class="shippers tab-pane">
 
 						        <div class=" col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con1"class="form-control" minlength="7" maxlength="15"  placeholder="Contact no.1" required/>
+						                <input type="text" name="con1"class="form-control" placeholder="Contact no.1" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con2"class="form-control" minlength="7" maxlength="15"  placeholder="Contact no.2"/>
+						                <input type="text" name="con2"class="form-control" placeholder="Contact no.2"/>
 						            </div>
 						        </div>
 					 
@@ -313,13 +282,13 @@ echo'				<div class="shippers tab-pane">
 
 						        <div class=" col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con1" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.1" required/>
+						                <input type="text" name="con1"class="form-control" placeholder="Contact no.1" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con2" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.2"/>
+						                <input type="text" name="con2"class="form-control" placeholder="Contact no.2"/>
 						            </div>
 						        </div>
 					 
