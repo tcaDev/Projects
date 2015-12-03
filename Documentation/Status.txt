@@ -1,0 +1,29 @@
+
+1.	Comments on App
+a.	Settings (Master Data)
+•	Contact person for Consignee with contact # - Done on database side, but still working on UI
+•	Address fields segregation and standardization - Done on database side, but still working on UI
+•	Reports for Consignees - 
+?	to distinguish deactivated from activated - 
+?	Can print reports by status
+•	For Brokers - should have at least 2 contact #s (mobile and landline) - Done on database side, but still working on UI
+•	For Shippers - include address field - Done on database side, but still working on UI
+•	For Vessel -
+?	include label of shipper - Done
+?	Include vessel # - Done on database side, but still working on UI
+•	Master Data creator ?? - if not yet existing, who will create new data?
+b.	Job File (Transactions)
+•	Container size should be per container number – Still working
+•	Clarify what is Carrier - if it is the Vessel name, should be display field only– Still working
+•	Dropdown for all master data fields– Still working
+•	Include legend in Settings (Master Data) by Port– Still working
+•	Clarify trucks column/field - might need to have another page for multiple trucks with Gate In at Port / Gate Out at Port / Actual Delivery at Warehouse– Still working
+•	Two buttons - to distinguish containers from trucks– Still working
+•	Include the in Setting (Master Data) – Still working
+?	Haulers– Still working
+?	Forwarders– Still working
+?	Warehouses– Still working
+•	Invoice Amount - not yet shown (BDL??); what if not all amounts are indicated so total will not tally (BDL??)
+c.	Reports - no specified design yet but FCN proposed one 
+d.	Dashboard - no specified design yet but the team discussed different options
+
