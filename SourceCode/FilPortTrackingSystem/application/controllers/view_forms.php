@@ -27,8 +27,24 @@ echo form_open('form');*/
 					            </div>
 					        </div>
 					        <div class="">
+					            <div class="form-group col-md-2">
+					                <input type="text" name="Address" class="form-control" placeholder="St." required />
+					            </div>
+
+					       		<div class="form-group col-md-5">
+					                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
+					            </div>
+
+					           	<div class="form-group col-md-5">
+					                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
+					            </div>
+					        </div>
+					    	<div class="">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="Address" class="form-control" placeholder="Address" required />
+					                <select class="form-control">
+					                	<option disabled selected>Select Country</option>
+					                	<option>country</option>
+					                </select>
 					            </div>
 					        </div>
 					        <div class="">
@@ -79,14 +95,42 @@ function broker(){
 						        </div>
 
 						        <div class="">
+						            <div class="form-group col-md-2">
+						                <input type="text" name="Address" class="form-control" placeholder="St." required />
+						            </div>
+
+						       		<div class="form-group col-md-5">
+						                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
+						            </div>
+
+						           	<div class="form-group col-md-5">
+						                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
+						            </div>
+						        </div>
+						    	<div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="address"class="form-control" placeholder="Address" required/>
+						                <select class="form-control">
+						                	<option disabled selected>Select Country</option>
+						              		<option>country</option>
+						                </select>
 						            </div>
 						        </div>
 
 						        <div class="">
+<<<<<<< .mine
+						            <div class="form-group col-md-6">
+						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no1" required />
+||||||| .r17
+						            <div class="form-group col-md-12">
+						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no" required />
+=======
 						            <div class="form-group col-md-12">
 						                <input type="text" name="ContactNo" minlength="7" maxlength="15" class="form-control" placeholder="Contact no" required />
+>>>>>>> .r24
+						            </div>
+
+						          	<div class="form-group col-md-6">
+						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no2" required />
 						            </div>
 						        </div>
 						 
@@ -104,6 +148,7 @@ function vessel(){
   $this->load->model('User');
   $drop = $this->User->dropdown_shipper();
 
+
  echo '			<div class="vessels">
 					<div class="  con-info consig-pos" data-toggle="collapse" data-target="#vessels"  style="cursor:pointer">
 						<span style="cursor:pointer">ADD NEW VESSEL</span>
@@ -112,18 +157,45 @@ function vessel(){
 						<form action="'.base_url('Add_user/add_vessel/').'" method="post">
 							<div class="">
 					            <div class="form-group col-md-12">
+					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Number" required/>
+					            </div>
+					        </div>
+							<div class="">
+					            <div class="form-group col-md-12">
 					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Name" required/>
 					            </div>
 					        </div>';?>
+<<<<<<< .mine
+						<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
+					        <div class="">
+||||||| .r17
+				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
+					        <div class="row">
+=======
 				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
 					        <div class="">
+>>>>>>> .r24
 					            <div class="form-group  col-md-12 myselect">
 					            	<label style="margin-left: 10px;"> Shipper : </label>
 					               <select name="shipper" class="form-control">
+<<<<<<< .mine
+					               	<option disabled selected>Shipper name</option>
+					            	<?php  foreach($drop as $row){  ?> 
+					               <option value="<?php echo $row->ShipperId ?>">
+					               <?php echo $row->ShipperName ?>
+					               </option> 
+||||||| .r17
+					            <?php  foreach($drop as $row){  ?> 
+
+					               <option value="<?php echo $row->ShipperId ?>">
+					               <?php echo $row->ShipperName ?>
+					               </option> 
+=======
 					            	<?php  foreach($drop as $row){  ?> 
 					                <option value="<?php echo $row->ShipperId ?>">
 					                <?php echo $row->ShipperName ?>
 					                </option> 
+>>>>>>> .r24
 					             <?php }?>
 					               </select>
 					            </div>
