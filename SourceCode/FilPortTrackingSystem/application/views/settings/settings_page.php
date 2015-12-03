@@ -1,6 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<?php $this->load->view('header/header'); ?>
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/jquery_confirm/css/jquery-confirm.css');?>" />
+     <script type="text/javascript" src="<?php echo base_url('resources/jquery_confirm/js/jquery-confirm.js'); ?>"></script>
+		<style>
+.mycolor{
 
+	 background-color: #66FF99 !important;
+}
+</style>
+</head>
 
-
+<body>
+	<div class="container container-case">
+	<?php $this->load->view('header/views_header'); ?>
 		<div class="con-shiptxt">
 		  <ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
@@ -40,7 +54,6 @@
 					      	    if($i==1){
 					      	    	$cid   = $row->ConsigneeId;
 					      	    	$cname = $row->ConsigneeName;
-					      	    	$addr  = $row->Address;
 					      	    	$date  = $row->DateAdded;
 					      		}
 
@@ -65,7 +78,6 @@
 					   echo     '<tr style="cursor:pointer;">
 					    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
 							        <td>'. $row->ConsigneeName .'</td>
-							        <td>'. $row->Address .'</td>
 							        <td>'. $number .'</td>       
 							        <td>'.$stat .'</td>
 							        <td   class="hidden">'. $row->DateAdded .'</td>
@@ -86,7 +98,8 @@
 					      <tr>
 					        <th>Full Name</th>
 					        <th>Address</th>
-					        <th>Contact no.</th>
+					        <th>Contact no1.</th>
+					        <th>Contact no2.</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -119,12 +132,12 @@
 					        <td class="hidden">'.$row->FirstName.'</td>
 					        <td class="hidden">'.$row->MiddleName.'</td>
 					        <td class="hidden">'.$row->LastName.'</td>
-					        <td>'.$row->Address.'</td>
-					        <td>'.$row->ContactNo.'</td>
+					        <td>'.$row->FirstName.'</td>
 					        <td>'.$stat .'</td>
 
 					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>
+					      
 					      
 					      </tr>';}
 
@@ -171,7 +184,7 @@
 					  	    <td>'.$row->ShipperName.'</td>
 					        <td class="hidden">'.$row->DateAdded.'</td> 
 					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
-					       					   <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
+					       	<button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					        <td><button type="button" class="btn get_shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      </tr>';}
@@ -219,10 +232,27 @@
 					            </div>
 					        </div>
 					        <div class="">
-					            <div class="form-group col-lg-12">	            	
-					                <input type="text" name="Address" class="form-control" placeholder="Address" required />
+					            <div class="form-group col-md-2">
+					                <input type="text" name="Address" class="form-control" placeholder="St." required />
+					            </div>
+
+					       		<div class="form-group col-md-5">
+					                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
+					            </div>
+
+					           	<div class="form-group col-md-5">
+					                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
 					            </div>
 					        </div>
+					    	<div class="">
+					            <div class="form-group col-md-12">
+					                <select class="form-control">
+					                	<option disabled selected>Select Country</option>
+					              		<option>country</option>
+					                </select>
+					            </div>
+					        </div>
+
 					        <div class="">
 					            <div class="form-group col-lg-12">       	
 					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
