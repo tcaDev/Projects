@@ -1,14 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<?php $this->load->view('header/header'); ?>
+</head>
 
+<body>
+	<div class="container container-case">
+
+<!-- heaer -->
+	<?php $this->load->view('header/views_header'); ?>
 
  		<div class="dash-cont">
 			<div class="dash-title"><h3>REPORTS</h3></div>
 			<div class="dash-subtitle">
-				<ul class="nav nav-pills nav-stacked col-md-2">
-				  <li class="active"><a href="#tab_a" data-toggle="pill">Reports A</a></li>
-				  <li><a href="#tab_b" data-toggle="pill">Reports B</a></li>
-				  <li><a href="#tab_c" data-toggle="pill">Reports C</a></li>
-				  <li><a href="#tab_d" data-toggle="pill">Reports D</a></li>
-				</ul>
+					<ul class="nav nav-pills nav-stacked col-md-2">
+					  <li class="active"><a href="#tab_a" data-toggle="pill">Reports A</a></li>
+					  <li><a href="#tab_b" data-toggle="pill">Reports B</a></li>
+					  <li><a href="#tab_c" data-toggle="pill">Reports C</a></li>
+					  <li><a href="#tab_d" data-toggle="pill">Reports D</a></li>
+					</ul>
 			</div>
 		</div>
 
@@ -28,7 +38,6 @@
 					            </div> <!-- col-6 / end -->
 							</div>
 						"; 
-
 						$count = 20;
 						for ($i = 0; $i < $count; $i++) {
 						    echo $element;
