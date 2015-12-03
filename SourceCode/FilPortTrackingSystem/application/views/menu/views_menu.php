@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<?php $this->load->view('header/header'); ?>
-	
-</head>
-
-<body >
-	<div class="container-case">
-
-	<!-- Header -->
-		<?php $this->load->view('header/views_header'); ?>
-	<!-- End HEader -->
-		<div class="container-fluid">
-			
-		
-
-	
-
+<!-- Get Header -->
+<?php $this->load->view('header/header'); ?>
+<!-- End Header -->
+	<div class="container-fluid">
 		<div class="menu-container">
 				<div class="row">
 						<!-- Job File -->

@@ -1,32 +1,8 @@
-<!DOCTYPE html>
 
-<html lang="en">
+<!-- Get Header -->
+<?php $this->load->view('header/header'); ?>
+<!-- End Header -->
 
-<head>	
-
-	<?php $this->load->view('header/header'); ?>
-
-	<style type="text/css">
-	 th{
-
-	 	text-align:center !important;
-	 	padding-top:2px;
-	 }
-	</style>
-
-</head>
-
-
-
-<body>
-
-	<div class="container-case">
-
-	<!-- Header -->
-
-		<?php $this->load->view('header/views_header'); ?>
-
-	<!-- End HEader -->
 
 
 
@@ -165,3 +141,11 @@
 </body>
 
 </html>
+
+<style type="text/css">
+	 th{
+
+	 	text-align:center !important;
+	 	padding-top:2px;
+	 }
+	</style>

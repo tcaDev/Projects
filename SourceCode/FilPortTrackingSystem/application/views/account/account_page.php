@@ -1,32 +1,10 @@
 
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-	<?php $this->load->view('header/header'); ?>
-
-</head>
+<!-- Get Header -->
+<?php $this->load->view('header/header'); ?>
+<!-- End Header -->
 
 
-
-<body>
-
-	<div class="container container-case">
-
-
-
-	<!-- Header -->
-
-		<?php $this->load->view('header/views_header'); ?>
-
-	<!-- End HEader -->
-
-	
-
-		<!-- login continer -->
+		<!-- Account continer -->
 
 		<div class="col-lg-12  account-cont">
 
@@ -34,7 +12,7 @@
 
 						<hr class="line">
 
-				<!-- end login continer -->
+				<!-- End Account Container -->
 
 				<div class="col-lg-12 col-md-12 col-sm-12"> 
 							<div class="col-lg-4 pull-right">
@@ -47,7 +25,7 @@
 
 							<button class="upload-pic pull-right btn btn-info">Change Photo</button>	
 
-							<input type="file" class="hidden file"  onchange="readURL(this);"/>
+							<input type="file" class="hidden file"  accept="image/*" onchange="readURL(this);"/>
 				</div>
 
 				<div class="col-lg-12 col-md-12 col-sm-12"> 

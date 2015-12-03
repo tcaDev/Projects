@@ -135,7 +135,7 @@
 
 
 							 <div class="btn-group" >
-								  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); "><i class="fa fa-user fa-fw"></i><?php $this->session->userdata('username'); ?></a>
+								  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); "><i class="fa fa-user fa-fw"></i><?php  echo $fname; ?></a>
 								  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 								    <span class="fa fa-caret-down"></span></a>
 								  <ul class="dropdown-menu">
