@@ -1,5 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<?php $this->load->view('header/header'); ?>
+	
+</head>
 
-	<div class="container-fluid">
+<body >
+	<div class="container-case">
+
+	<!-- Header -->
+		<?php $this->load->view('header/views_header'); ?>
+	<!-- End HEader -->
+		<div class="container-fluid">
+			
+		
+
+	
+
 		<div class="menu-container">
 				<div class="row">
 						<!-- Job File -->
@@ -20,11 +37,9 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-jobfile card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Job File Description</span>
 								</div>
-								
 							</div>							
 						</div>
 					</div>
@@ -98,7 +113,7 @@
 								</div>
 
 								<div class="col-lg-8 col-md-8 col-sm-8">
-									<span class="report">Report</span>
+									<span class="report">Reports</span>
 								</div>
 								
 							</div>							
@@ -108,7 +123,7 @@
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Report Description</span>
+									<span class="job-file">Reports Description</span>
 								</div>
 								
 							</div>							
