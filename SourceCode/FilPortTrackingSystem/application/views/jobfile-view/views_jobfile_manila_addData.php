@@ -52,7 +52,7 @@
 
 
 
-						   <label for="cnts">Number of Cartons:</label>
+						  <label for="cnts">Number of Cartons:</label>
 
 						  <input type="text" class="form-control input-sm" id="cnts">
 

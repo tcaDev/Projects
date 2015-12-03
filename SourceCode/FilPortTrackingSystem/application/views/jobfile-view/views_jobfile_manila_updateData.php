@@ -20,28 +20,28 @@
 						   <label for="consignee">Consignee:</label>
 						  <input type="text" class="form-control input-sm" id="consignee">
 
-						   <label for="cnts">No. of CTNS:</label>
+						   <label for="cnts">Number of Cartons:</label>
 						  <input type="text" class="form-control input-sm" id="cnts">
 
-						   <label for="cntr">CNTR Size:</label>
+						   <label for="cntr">Container Size:</label>
 						  <input type="text" class="form-control input-sm" id="cntr">
 
 						   <label for="pipo">PI / PO No.:</label>
 						  <input type="text" class="form-control input-sm" id="pipo">
 
-						   <label for="hbl">HBL No.:</label>
+						   <label for="hbl">House Bill of Landing No.:</label>
 						  <input type="text" class="form-control input-sm" id="hbl">
 
-						   <label for="mbl">MBL No.:</label>
+						   <label for="mbl">Master Bill of Landing No.:</label>
 						  <input type="text" class="form-control input-sm" id="mbl">
 
 						   <label for="origin">Origin:</label>
 						  <input type="text" class="form-control input-sm" id="origin">
 
-						  <label for="etd">ETD:</label>
+						  <label for="etd">Estimated Time of Departure:</label>
 						  <input type="text" class="form-control input-sm" id="etd">
 
-						  <label for="eta">ETA:</label>
+						  <label for="eta">Estimated Time of Arrival:</label>
 						  <input type="text" class="form-control input-sm" id="eta">
 
 						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">ATA:</label>
@@ -49,10 +49,10 @@
 		  			</div>
 
 		  			<div class="col-lg-4" >
-		  				<label for="bank">LC No. Bank:</label>
+		  				<label for="bank">Letter of Credit No. from Bank:</label>
 						  <input type="text" class="form-control input-sm " id="bank">
 
-						   <label for="dem">Start of DEM:</label>
+						   <label for="dem">Start of Demorage:</label>
 						  <input type="text" class="form-control input-sm" id="dem">
 
 						   <label for="storage">Start Storage:</label>
@@ -61,33 +61,33 @@
 						   <label for="registry">Registry:</label>
 						  <input type="text" class="form-control input-sm" id="registry">
 
-						   <label for="vsl">VSL / VOY No.:</label>
+						   <label for="vsl">Vessel / Voyage No.:</label>
 						  <input type="text" class="form-control input-sm" id="vsl">
 
 						   <label for="carrier">Carrier:</label>
 						  <input type="text" class="form-control input-sm" id="carrier">
 
-						   <label for="dtRcvd">DT RCVD Arrival Notice FRM Client / SLINE:</label>
+						   <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
 						  <input type="text" class="form-control input-sm" id="dtRcvd">
 
-						   <label for="dtPckup">DT Pick-up / RCVD O-BL:</label>
+						   <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
 						  <input type="text" class="form-control input-sm" id="dtPckup">
 
-						   <label for="dtPckRcv">DT Pick-up / RCVD Other Docs :</label>
+						   <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
 						  <input type="text" class="form-control input-sm" id="dtPckRcv">
 
 						  <label for="broker">Broker:</label>
 						  <input type="text" class="form-control input-sm" id="broker">
 
-						  <label for="dtReq">DT Req. Budget to GL:</label>
+						  <label for="dtReq">Date Required Budget to GL:</label>
 						  <input type="text" class="form-control input-sm" id="dtReq">
 		  			</div>
 
 					<div class="col-lg-4" >
-		  				<label for="rfp">RFP Due Date:</label>
+		  				<label for="rfp">Reference Due Date:</label>
 						  <input type="text" class="form-control input-sm " id="rfp">
 
-						   <label for="dtSent">DT Sent Pre-Assess:</label>
+						   <label for="dtSent">Date Sent Pre-Assess:</label>
 						  <input type="text" class="form-control input-sm" id="dtSent">
 
 						   <label for="dtFile">Date File Entry to BOC:</label>
@@ -96,10 +96,10 @@
 						   <label for="slctvty">Selectivity:</label>
 						  <input type="text" class="form-control input-sm" id="slctvty">
 
-						   <label for="dtPaid">DT Paid D&T:</label>
+						   <label for="dtPaid">Date Paid (Date&Time):</label>
 						  <input type="text" class="form-control input-sm" id="dtPaid">
 
-						   <label for="dtClrd">DT Cleared BOC:</label>
+						   <label for="dtClrd">Date Cleared BOC:</label>
 						  <input type="text" class="form-control input-sm" id="dtClrd">
 
 						   <label for="plteNum">Plate No. /Truck Name:</label>
@@ -123,8 +123,8 @@
 			        <th>Container Number</th>
 			        <th>Description of Goods</th>
 			        <th>Target Delivery Date</th>
-			        <th>Actual P-Out DT of CNTR at Port</th>
-			        <th>Actual DT RCVD CNTR to WHSE</th>
+			        <th>Actual P-Out date of container at Port</th>
+			        <th>Actual date recieve container to WHSE</th>
 			        <th>Status Report</th>
 			        <th></th>
 			      </tr>

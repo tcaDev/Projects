@@ -144,17 +144,19 @@
 
 				          <th rowspan="2">Number of Cartons</th>
 
-				          <th rowspan="2">Container Size</th>
+				          <th rowspan="2">Gross Weight</th>
 
 				          <th rowspan="2">Description of Goods</th>
 
-				          <th rowspan="2">PI / PO No.</th>
+				          <th rowspan="2">WK/PI/PO No.</th>
 
 				          <th rowspan="2">House Bill of Lading No.</th>
 
 				          <th rowspan="2">Master Bill of Landing No.</th>
 
-				          <th rowspan="2">Container No.</th>
+				          <th rowspan="2">Flight No.</th>
+
+				          <th rowspan="2">Air Craft</th>
 
 				          <th rowspan="2">Origin</th>
 
@@ -164,53 +166,45 @@
 
 				          <th rowspan="2">Actual Time of Arrival</th>
 
-				          <th rowspan="2">Letter of Credit No. from Bank</th>
+				          <th rowspan="2">Forwarder/Warehouse</th>
 
-				          <th rowspan="2">Start of Demorage</th>
+				          <th rowspan="2">Date Recieved Arrival notice from Airline/Forwarder</th>
 
-				          <th rowspan="2">Start Storage</th>
+						  <th rowspan="2">Date Recieved Arrival notice from Client</th>
 
-				          <th rowspan="2">Registry</th>
+				          <th rowspan="2">Date Pick-up O-Hawb</th>
 
-				          <th rowspan="2">Vessel / Voyage no.</th>
-
-				          <th rowspan="2">Carrier</th>
-
-				          <th rowspan="2">Date Recieved Arrival Notice from Client/s</th>
-
-				          <th rowspan="2">Date Pick-up / Recieved O-BL</th>
-
-				          <th rowspan="2">Date Pick-up / Recieved other Documents</th>
+				          <th rowspan="2">Date Pick-up other Docs</th>
 
 				          <th rowspan="2">Broker</th>
 
-				          <th rowspan="2">>Date Required Budget to GL</th>
+				          <th rowspan="2">Date Req. Budget to GL</th>
 
-				          <th rowspan="2">Reference Due Date</th>
+				          <th rowspan="2">RFP Due Date</th>
 
-				          <th rowspan="2">Date sent Pre-Assess</th>
+				          <th rowspan="2">Date Sent Pre-Assess</th>
 
-				          <th rowspan="2">Date File Entry to BOC</th>
-
-				          <th rowspan="2">Date Sent Final Assess</th>
+				          <th rowspan="2">Date final Assess</th>
 
 				          <th rowspan="2">Reference Entry No.</th>
 
-				          <th rowspan="2">Color Selectivity</th>
+				          <th rowspan="2">Selectivity</th>
 
-				          <th rowspan="2">Date Paid (Date&Time)</th>
+				          <th rowspan="2">Date Paid (date&time)</th>
 
 				          <th rowspan="2">Date Cleared BOC</th>
 
 				          <th rowspan="2">Target Delivery Date</th>
 
-				          <th rowspan="2">Plate No. / Truckers Name</th>
+				          <th rowspan="2">Actual P-out date of at NAIA</th>
 
-				          <th rowspan="2">Gate In at Port</th>
+				          <th rowspan="2">Actual Date Recieved Good at WHSE</th>
 
-				          <th rowspan="2">Gate Out at Port</th>
+				          <th rowspan="2">Haulers</th>
 
-				          <th rowspan="2"  style="text-align:center !important">Actual Delivery WHSE</th>
+				          <th rowspan="2">Total Storage</th>
+
+				          <th rowspan="2">Additional per Day included VAT</th>
 
 				          <th colspan="2" style="text-align:center !important">Status Reports</th>
 

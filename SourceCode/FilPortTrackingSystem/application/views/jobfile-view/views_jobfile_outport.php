@@ -73,17 +73,13 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-2-2" style="margin-right: 10px;">Add Data</button>
-
-
+					<button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-2-2" style="margin-right: 10px;">Add Data</button>
 
 					  <!-- Modal -->
 
-					<!--   <div class="modal fade" id="myModal-2-2" role="dialog">
+						<!--   <div class="modal fade" id="myModal-2-2" role="dialog">
 
 					    <div class="modal-dialog"> -->
-
-					    
 
 					      <!-- Modal content-->
 
@@ -109,9 +105,7 @@
 
 					        </div>
 
-					      </div>
-
-					      
+					      </div>					      
 
 					    </div>
 
@@ -129,7 +123,7 @@
 
 			 <div class="col-lg-12 col-md-12 col-sm-12" style= "overflow-y:auto; height :450px;">
 
-				    				    <table class="table table-striped table-hover table-bordered" style="width: 7000px;">
+				    <table class="table table-striped table-hover table-bordered" style="width: 7000px;">
 
 				      <thead>
 
@@ -185,7 +179,7 @@
 
 				          <th rowspan="2">Broker</th>
 
-				          <th rowspan="2">>Date Required Budget to GL</th>
+				          <th rowspan="2">Date Required Budget to GL</th>
 
 				          <th rowspan="2">Reference Due Date</th>
 
@@ -197,7 +191,7 @@
 
 				          <th rowspan="2">Reference Entry No.</th>
 
-				          <th rowspan="2">Color Selectivity</th>
+				          <th rowspan="2">Selectivity</th>
 
 				          <th rowspan="2">Date Paid (Date&Time)</th>
 
