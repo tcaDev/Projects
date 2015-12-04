@@ -292,15 +292,45 @@ Class User extends CI_Model
   }
 
 
+ /*
+  --------------------------------------
+    Get all data from User
+  --------------------------------------
+  */
 
   function get_updated_data($id){
    $query = $this->db->query("select * from User where UserId='$id' ");
+
     return $query->result();
   }
-    
+
+   /*
+  --------------------------------------
+    Get current Password
+  --------------------------------------
+  */
+
+  function get_current_pass($id){
+   
+   $query = $this->db->query("select Password from User where UserId='$id' ");
+   
+    return $query->result();
+  }
+
+   /*
+  --------------------------------------
+    Update Password
+  --------------------------------------
+  */
+
+  function updatePass($id,$renewpass){
+
+     $data = array(
+                'Password' => $renewpass
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data); 
+  }
 }
-
-
-
-
 ?>

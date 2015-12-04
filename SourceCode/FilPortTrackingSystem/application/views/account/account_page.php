@@ -12,7 +12,10 @@
 			<!-- Upload Photo -->
 			
 
-
+			<div class="alert alert-<?php echo $alert; ?> ">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			    <span id="span"><strong><?php echo $msg;?></strong></span>
+			  </div>
 				<form action="<?php echo base_url('Login_user/upload_photo'); ?>" method="post" enctype="multipart/form-data" role="form"> 
 					<div class="col-lg-12 col-md-12 col-sm-12"> 
 								<div class="col-lg-4 pull-right">
@@ -93,10 +96,14 @@
 						    </div>
 						    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 						      <div class="panel-body">
-						        	<form>
+						        	<form action="<?php echo base_url('Login_user/update_password'); ?>" method="post" enctype="multipart/form-data" role="form">
+
+						        	<input type="text" class="hidden" name="user_id_pass" value="<?php echo $uid; ?>" />
+
 						        	<div class="form-group">
 						        		<label>Current : </label>
 						        		<input class="form-control input-sm" type="password" name="current" id="current"/>
+						        	
 						        	</div>
 
 						        	<div class="form-group">
@@ -181,12 +188,9 @@
 			$(".file").click();
 		});
 
-		/*$(".save-pic").on('click',function(){
-			if($(".file").val() == ""){
-				$().load();
-			}
-		});
-*/
+		if($("#span").text() == ""){
+			$(".alert").addClass('hidden');
+		}
 
 	});
 

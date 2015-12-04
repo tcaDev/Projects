@@ -176,6 +176,8 @@ class Login_user extends CI_Controller {
 		    $data['uid'] = $session_data['uid'];
 		    $data['img'] = $session_data['img'];
 		  	$data['tab'] = "";
+		  	$data['msg'] = "";
+		  	$data['alert'] = "";
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('account/account_page',$data);
@@ -306,6 +308,7 @@ class Login_user extends CI_Controller {
 			if(!$this->upload->do_upload($imageName)){
 				$status = "error";
 				$msg = $this->upload->display_errors('','');
+				$this->not_updated_photo();
 			}
 			else{
 
@@ -331,29 +334,57 @@ class Login_user extends CI_Controller {
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
+
+				     $this->updated_photo();
 		   		 }
-
-		   		
-
-
-
-
-				redirect('Login_user/account');
-/*
-				$this->User->update_photo($);*/
-				/*--if($image){
-					redirect('Login_user/account');
-				}
-				else{
-					unlink($data["full_path"]);
-					$status = "error";
-					$msg = "Please try Again";
-				}*/
 				
 			}
-			/*@unlink($_FILES[$imageName]);*/
-
 		}
+
+
+		/*
+		----------------------------------
+		 Alert if Success changing Photo
+		---------------------------------
+		*/
+	function updated_photo(){
+				$session_data = $this->session->userdata('logged_in');
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "success";
+				$data['msg'] = "Photo Successfully Change !";
+
+				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);
+	}	
+
+	/*
+		----------------------------------
+		 Alert if Not image 
+		---------------------------------
+		*/
+	function not_updated_photo(){
+				$session_data = $this->session->userdata('logged_in');
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "danger";
+				$data['msg'] = "Your photos couldn't be uploaded. Photos should be saved as JPG or PNG files.";
+
+				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);
+	}	
 	
 
 	/*
@@ -389,7 +420,113 @@ class Login_user extends CI_Controller {
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
 		   		 
-		redirect("Login_user/account");
-	}						
+		$this->updated_name();
+	}
+
+
+	/*
+	----------------------------------
+	 Alert if Success changing name
+	---------------------------------
+	*/
+	function updated_name(){
+				$session_data = $this->session->userdata('logged_in');
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "success";
+				$data['msg'] = "Name Successfully Change !";
+
+				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);
+	}	
+
+	/*
+	-----------------------------------------
+		Update Password
+	-----------------------------------------
+	*/
+
+	function update_password(){
+
+		$id = $this->input->post('user_id_pass');
+		$current = $this->input->post('current');
+		 	$salt  = 'fwodhsljkfhnouh';
+		    $salt2 = 'djaoiuelanwdoiwq';
+		    $pass = sha1($salt.$current.$salt2);
+
+		$renewpass = $this->input->post('renewpass');
+			$salt  = 'fwodhsljkfhnouh';
+		    $salt2 = 'djaoiuelanwdoiwq';
+		    $newpass = sha1($salt.$renewpass.$salt2);
+
+		$db_pass =  $this->User->get_current_pass($id);
+
+		foreach ($db_pass as $row) {
+			$userpass = $row->Password;
+		}
+
+		if($pass != $userpass){
+			
+				$this->not_success_pass();
+		}
+		else{
+
+				$this->updated_pass();			
+		}
+
+	}
+
+
+/*
+----------------------------------
+ Alert if Success changing Password
+---------------------------------
+*/
+	function updated_pass(){
+				$session_data = $this->session->userdata('logged_in');
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "success";
+				$data['msg'] = "Password Successfully Change !";
+
+				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);
+	}		
+
+/*
+----------------------------------
+ Alert if Not Success changing Password
+---------------------------------
+*/
+	function not_success_pass(){
+				$session_data = $this->session->userdata('logged_in');
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "danger";
+				$data['msg'] = "Incorrect Current Password. Try Again.";
+
+				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);
+	}		
+
+
 }
 

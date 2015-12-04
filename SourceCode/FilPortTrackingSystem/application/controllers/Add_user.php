@@ -46,6 +46,7 @@ class Add_user extends CI_Controller {
                             $pass = sha1($salt.$password.$salt2);
                             $contact1 =  $this->input->post('contact1');;
                             $addr     =  $this->input->post('addr');
+                            $photo = "user.png";
 
                           $add_users = "CALL sp_AddUser(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                           $this->db->query($add_users,
@@ -56,7 +57,7 @@ class Add_user extends CI_Controller {
                                    'P_MiddleName'           =>$mname,
                                    'P_LastName'             =>$lname,
                                    'P_EmailAddress'         =>$email,
-                                   'P_ProfileImageSource'   =>' ',
+                                   'P_ProfileImageSource'   =>$photo,
                                    'P_RoleId'               =>1,
                                    'P_ContactNo1'           =>$contact1,
                                    'P_ContactNo2'           =>' ',
