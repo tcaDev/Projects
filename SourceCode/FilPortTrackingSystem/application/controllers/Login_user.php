@@ -298,7 +298,7 @@ class Login_user extends CI_Controller {
 
 		if($status != "error"){
 
-			$config['upload_path'] = './uploads/user/';
+			$config['upload_path'] = './upload/user/';
 			$config['allowed_types'] = 'gif|png|jpg';
 			$config['max_size']	= '1024 * 8';
 			$config['encrypt_name']  = true;

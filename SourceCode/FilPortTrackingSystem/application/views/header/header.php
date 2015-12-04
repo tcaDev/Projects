@@ -68,7 +68,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 20px;">
 						<div class="row">
 							<div class=" img-user pull-right">
-								<img class="img-responsive" src="<?php echo base_url('uploads/user/'.$img)?>" />	
+								<img class="img-responsive" src="<?php echo base_url('upload/user/'.$img)?>" />	
 							</div> 
 
 							<div class="pull-right" style="padding: 10px; color : #FFF;">
