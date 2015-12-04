@@ -33,8 +33,6 @@
 
 								<input type="text" class="hidden" name="user_id" value="<?php echo $uid; ?>" />
 
-								
-
 					</div>
 				</form>
 			<!-- End Upload Photo -->
@@ -77,7 +75,7 @@
 						        	</div>
 						        		<hr>
 						        	<div class="form-group">
-						        		<button type="submit" class="pull-right btn btn-primary btn-sm" >Save Changes</button>
+						        		<button type="submit" class="pull-right btn btn-primary btn-sm" ><i class="fa fa-floppy-o fa-lg"></i> Save Changes</button>
 						        	</div>
 
 						        </form>
@@ -116,7 +114,7 @@
 						     		   	
 
 						        	<div class="form-group">
-						        		<button type="submit" class="pull-right btn btn-primary btn-sm" >Save Changes</button>
+						        		<button type="submit" class="pull-right btn btn-primary btn-sm" ><i class="fa fa-floppy-o fa-lg"></i> Save Changes</button>
 						        	</div>
 
 						        </form>

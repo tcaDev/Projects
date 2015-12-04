@@ -290,8 +290,8 @@ class Login_user extends CI_Controller {
 		$imageName = "img-file";
 
 /*
-		if(empty($_POST['img-file'])){
-			$this->account();
+		if(empty($imageName)){
+			$status = "error";
 		}*/
 
 		if($status != "error"){
@@ -313,13 +313,11 @@ class Login_user extends CI_Controller {
 				$data = $this->upload->data();
 				$image = $this->User->update_photo($id,$data['file_name']);
 
-				
-
-
 			
-		   		 $photo =  $this->User->get_updated_data($email);
-		   		 $sess_array = array();
-		   		 foreach ($photo as $row) {
+		   		$photo =  $this->User->get_updated_data($id);
+
+		   		$sess_array = array();
+		   		foreach ($photo as $row) {
 		   		 	
 				
 				       $sess_array = array(
@@ -371,6 +369,26 @@ class Login_user extends CI_Controller {
 		$lname = $this->input->post('lname');
 
 		$this->User->updateName($id,$fname,$mname,$lname);
+
+
+		$update =  $this->User->get_updated_data($id);
+
+		   		$sess_array = array();
+		   		foreach ($update as $row) {
+		   		 	
+				
+				       $sess_array = array(
+				         'email'     =>   $row->EmailAddress,
+				         'username'  =>   $row->UserName,
+				         'fname'     =>   $row->FirstName,
+				         'mname'     =>   $row->MiddleName,
+				         'lname'     =>   $row->LastName,
+				         'uid'		 =>	  $row->UserId,
+				         'img'		 =>	  $row->ProfileImageSource
+				       );
+				       $this->session->set_userdata('logged_in', $sess_array);
+				     }
+		   		 
 		redirect("Login_user/account");
 	}						
 }

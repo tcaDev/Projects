@@ -293,8 +293,8 @@ Class User extends CI_Model
 
 
 
-  function get_updated_data($email){
-   $query = $this->db->query("select * from User where EmailAddress='admin@gmail.com' ");
+  function get_updated_data($id){
+   $query = $this->db->query("select * from User where UserId='$id' ");
     return $query->result();
   }
     
