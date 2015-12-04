@@ -180,7 +180,6 @@
 
 								          <td>61406573556</td>
 
-
 								          <td>HONGKONG</td>
 
 								          <td>9/15/2015 11:00AM</td>
@@ -222,7 +221,7 @@
 								          <td>C254093</td>
 
 								          <td><select class="form-control" id="select">
-								          	 <option value="" disabled selected>Select your option</option>
+								          	<option value="" disabled selected>Select your option</option>
 											<option value="B" style="background-color: red;">Red</option>
 											<option value="C" style="background-color: yellow;">Yellow</option>
 											<option value="D" style="background-color: green;">Green</option>
@@ -246,20 +245,13 @@
 								          <td>10/27- receive original docs   11/3- start processing of lifting,  11/6 - lifting of abandonement</td>
 								      
 								        </tr>
-				           
-				         
 				        </tbody>
 				    </table>
-
-			  </div> 
-			 
+			  	</div> 
 		  	</div>
 		</div>
-
 <script>
-
 	$(function() {
-
 	    var pressed = false;
 	    var start = undefined;
 	    var startX, startWidth;
