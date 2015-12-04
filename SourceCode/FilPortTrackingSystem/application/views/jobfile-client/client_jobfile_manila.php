@@ -133,12 +133,6 @@
 
 								          <th >Date Pick-up / Recieved other Documents</th>
 
-								          <th >Broker</th>
-
-								          <th >Date Required Budget to GL</th>
-
-								          <th >Reference Due Date</th>
-
 								          <th >Date sent Pre-Assess</th>
 
 								          <th >Date File Entry to BOC</th>
@@ -186,11 +180,6 @@
 
 								          <td>61406573556</td>
 
-								          <td>HKG158121912</td>
-
-								          <td>N/A</td>
-
-								          <td>FCIU5273883</td>
 
 								          <td>HONGKONG</td>
 

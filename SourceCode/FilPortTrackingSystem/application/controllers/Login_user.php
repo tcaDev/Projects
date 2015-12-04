@@ -102,9 +102,17 @@ class Login_user extends CI_Controller {
 		}else{
 			 $this->login();
 		}
+	}
 
-			
-	
+	function clientmenu()
+	{
+		 //check if the user is already login
+		if($this->session->userdata('logged_in')){
+			$data['tab'] = "Main Menu";
+			$this->load->view('client_menu/views_clientmenu' , $data);
+		}else{
+			 $this->login();
+		}
 	}
 
 	 function jobfile(){
@@ -122,6 +130,16 @@ class Login_user extends CI_Controller {
 		  
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
+		}else{
+			$this->login();
+		}
+	}
+
+	function clientjobfile(){
+	 	 //check if the user is already login
+		if($this->session->userdata('logged_in')){		
+			$data['tab'] = "JobFile Monitoring - Sea";
+			$this->load->view('jobfile-client/client_jobfile' , $data);
 		}else{
 			$this->login();
 		}
@@ -146,7 +164,7 @@ class Login_user extends CI_Controller {
 	{	
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
-			$data['tab'] = "CONTAINER TRACKING";
+			$data['tab'] = "GENERAL REPORTS";
 			$session_data = $this->session->userdata('logged_in');
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
@@ -157,6 +175,17 @@ class Login_user extends CI_Controller {
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
+		}else{
+			$this->login();
+		}
+	}
+
+	function clientreports()
+	{	
+		//check if the user is already login
+		if($this->session->userdata('logged_in')){	
+			$data['tab'] = "DOCUMENTS";
+			$this->load->view('clientreports/report_client' , $data);
 		}else{
 			$this->login();
 		}
@@ -252,6 +281,17 @@ class Login_user extends CI_Controller {
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
+		}else{
+			$this->login();
+		}
+	}
+
+	function tracking()
+	{
+		//check if the user is already login
+		 if($this->session->userdata('logged_in')){	
+			$data['tab'] = "Tracking Summary";
+			$this->load->view('tracking/tracking_page' , $data);
 		}else{
 			$this->login();
 		}
