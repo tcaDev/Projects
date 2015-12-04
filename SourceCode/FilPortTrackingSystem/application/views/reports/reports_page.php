@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>	
-	<?php $this->load->view('header/header'); ?>
-</head>
 
-<body>
-	<div class="container container-case">
-
-<!-- heaer -->
-	<?php $this->load->view('header/views_header'); ?>
 
  		<div class="dash-cont">
 			<div class="dash-title"><h3>REPORTS</h3></div>

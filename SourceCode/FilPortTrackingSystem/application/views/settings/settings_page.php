@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>	
-	<?php $this->load->view('header/header'); ?>
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/jquery_confirm/css/jquery-confirm.css');?>" />
-     <script type="text/javascript" src="<?php echo base_url('resources/jquery_confirm/js/jquery-confirm.js'); ?>"></script>
-		<style>
-.mycolor{
 
-	 background-color: #66FF99 !important;
-}
-</style>
-</head>
-
-<body>
-	<div class="container container-case">
-	<?php $this->load->view('header/views_header'); ?>
 		<div class="con-shiptxt">
 		  <ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>

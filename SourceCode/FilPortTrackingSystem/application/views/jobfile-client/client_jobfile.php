@@ -1,10 +1,4 @@
-<!DOCTYPE html>
 
-<html lang="en">
-
-<head>	
-
-	<?php $this->load->view('header/header'); ?>
 
 	<style type="text/css">
 	 th{
@@ -14,19 +8,7 @@
 	 }
 	</style>
 
-</head>
 
-
-
-<body>
-
-	<div class="container-case">
-
-	<!-- Header -->
-
-		<?php $this->load->view('header/views_header'); ?>
-
-	<!-- End HEader -->
 
 
 

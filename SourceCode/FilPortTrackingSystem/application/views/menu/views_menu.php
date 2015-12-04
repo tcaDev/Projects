@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<?php $this->load->view('header/header'); ?>
-	
-</head>
 
-<body >
-	<div class="container-case">
-
-	<!-- Header -->
-		<?php $this->load->view('header/views_header'); ?>
-	<!-- End HEader -->
 		<div class="container-fluid">
 			
 		
