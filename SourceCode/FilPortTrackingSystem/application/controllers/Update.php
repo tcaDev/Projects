@@ -59,16 +59,17 @@ class Update extends CI_Controller {
 	function update_vessel(){
 		$id 	= 	$this->input->post('ves_id');
 		$name 	= 	$this->input->post('ves_name');
+		$vesno 	= 	$this->input->post('vesno');
 		
 		    $query= $this->db->query("Select * from 
 		    	ShipperVessel where Vesselname = '$name' and 
-                ShipperVesselId=$id limit 1");
+                ShipperVesselId=$id and VesselNo='$vesno' limit 1");
             
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           } 
        else{  
-				$this->User->update_vessel($id,$name);
+				$this->User->update_vessel($id,$name,$vesno);
 				$this->session->success= 'update_success';
 		 }
 		redirect('Login_User/settings/#vessel');

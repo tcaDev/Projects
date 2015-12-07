@@ -73,9 +73,10 @@ Class User extends CI_Model
       
 
   }
-    function update_vessel($id,$name){
+    function update_vessel($id,$name,$vesno){
         $data = array(
-        'Vesselname'      => $name
+        'Vesselname'      => $name,
+        'VesselNo'      => $vesno,
 
         );
           $this->db->where('ShipperVesselId', $id);

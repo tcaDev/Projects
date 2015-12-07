@@ -177,14 +177,24 @@ function vessel(){
  echo '			<div class="vessels">
 					<div class="  con-info consig-pos" data-toggle="collapse" data-target="#vessels"  style="cursor:pointer">
 						<span style="cursor:pointer">ADD NEW VESSEL</span>
-					</div>
+				</div>
 				<div class="vessels consig-posbox collapse" id="vessels">
 						<form action="'.base_url('Add_user/add_vessel/').'" method="post">
 							<div class="">
 					            <div class="form-group col-md-12">
 					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Name" required/>
 					            </div>
-					        </div>';?>
+					        </div>
+					        <div class="">
+					            <div class="form-group col-md-12">
+					                <input type="text" name="vesno" class="form-control" placeholder="Vessel No." required/>
+					            </div>
+					        </div>
+
+
+
+
+					        ';?>
 				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
 					        <div class="">
 					            <div class="form-group  col-md-12 myselect">

@@ -173,7 +173,7 @@
             <div class="con-ship tab-content"> 
 
                <!--FOr consignee data view  start--> 
-                  <div class="consignee tab-pane fade in active"> 
+                  <div class=" consignee tab-pane fade in active"> 
                   <div class="consigneepage"> </div>
                   	<div class="pagination_consignee pull-right"> </div>
                   </div>
@@ -377,6 +377,12 @@
 					            <div class="form-group col-lg-12">
 					            	<label>Vessel Name</label>
 					               <input type="text"   name="ves_name"  class="vessel_name form-control" required/>
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Vessel No./Plate No.</label>
+					               <input type="text"   name="vesno"  class="vesno form-control" required/>
 					            </div>
 					        </div>
 					  

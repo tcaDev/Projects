@@ -654,10 +654,11 @@ function search_shipper(){
 					    <thead>
 					      <tr>
 					        <th>Vessel Name</th>
+					        <th>Vessel No./Plate No.</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
-					    <tbody>' ?>; 
+					    <tbody>' ?>
 					    <?php 
 					    $i=0;
 					    foreach ($vessel as $row) {
@@ -668,13 +669,14 @@ function search_shipper(){
 					    echo  '<tr>
 							        <td class="hidden">'.$row->ShipperVesselId.'</td>
 							        <td>'.$row->Vesselname.'</td>
+							        <td>'.$row->VesselNo.'</td>
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        <button class="btn delete_vessel"><span class="glyphicon glyphicon-trash"></span></button></td>
 					    	  </tr>';}
 
 ?>
 					    </tbody>
-					  </table>';
+					  </table>
 
 
 

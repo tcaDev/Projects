@@ -158,6 +158,8 @@ class Add_user extends CI_Controller {
     function add_vessel(){
               $vessels = $this->input->post('vessels');
               $shipper = $this->input->post('shipper');
+              $vesno = $this->input->post('vesno');
+              
 
                   $query= $this->db->query("Select * from ShipperVessel where Vesselname = '$vessels' and 
                    ShipperId='$shipper' limit 1");
@@ -168,7 +170,8 @@ class Add_user extends CI_Controller {
             }else{
                $data = array(
                   'Vesselname' => $vessels,
-                  'ShipperId' => $shipper
+                  'ShipperId' => $shipper,
+                  'VesselNo' => $vesno
                   );
 
             $this->db->insert('ShipperVessel', $data); 
