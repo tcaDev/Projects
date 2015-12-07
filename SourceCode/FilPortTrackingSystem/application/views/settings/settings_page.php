@@ -151,7 +151,6 @@
 				
 		</script>
 	     <!--For  pagination end -->
-</head>
 
 		<div class="con-shiptxt">
 		  <ul class="nav nav-pills pull-left">
