@@ -155,6 +155,31 @@ Class User extends CI_Model
     return $query->result();
   }
 
+  function dropdown_consignee(){
+    $this->db->select('ConsigneeName,ConsigneeId');
+    $this ->db -> from('Consignee');
+    $this ->db->order_by('ConsigneeName');
+    $query=$this->db->get();
+    return $query->result();
+  }
+   function dropdown_broker(){
+    $this->db->select('BrokerId,FirstName,MiddleName,LastName');
+    $this ->db -> from('Broker');
+    $this ->db->order_by('FirstName');
+    $query=$this->db->get();
+    return $query->result();
+  }
+     function dropdown_colors(){
+    $this->db->select('StatusId,StatusName,ColorCode');
+    $this ->db -> from('Status');
+    $query=$this->db->get();
+    return $query->result();
+  }
+
+
+
+
+
   //for settings datas start
   function settings_consignee(){
     $this->db->select('*');

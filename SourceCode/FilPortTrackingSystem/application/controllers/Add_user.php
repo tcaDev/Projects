@@ -262,5 +262,4 @@ class Add_user extends CI_Controller {
 
 
 
-
 }

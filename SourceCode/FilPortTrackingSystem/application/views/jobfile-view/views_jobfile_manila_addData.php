@@ -14,18 +14,20 @@
 
 					   	<label for="shipper">Shipper:</label>
 					  		<select name="shipper" id="shipper" class="form-control">
-				            	<?php  foreach($drop as $row){  ?> 
-				                <option value="<?php echo $row->ConsigneeId ?>">
+				            	<option> </option>
+				            	<?php  foreach($shipper_data as $row){  ?> 
+				                <option value="<?php echo $row->ShipperId ?>">
 				                <?php echo $row->ShipperName ?>
 				                </option> 
 				             	<?php }?>
 			               	</select>
 
 					   	<label for="consignee">Consignee:</label>
-					  		<select name="shipper" class="form-control">
-				            	<?php  foreach($drop as $row){  ?> 
+					  		<select name="consignee" class="form-control">
+					  			<option> </option>
+				            	<?php  foreach($consignee_data as $row){  ?> 
 				                <option value="<?php echo $row->ConsigneeId ?>">
-				                <?php echo $row->ShipperName ?>
+				                <?php echo $row->ConsigneeName ?>
 				                </option> 
 				             	<?php }?>
 				            </select>
@@ -76,19 +78,16 @@
 
 						  <label for="registry">Registry:</label>
 						  <input type="text" class="form-control input-sm" id="registry">
-
+<!-- -->
 						  <label for="vsl">Vessel / Voyage No.:</label>
-						  	<select name="shipper" id="vsl"class="form-control">
-				            	<?php  foreach($drop as $row){  ?> 
-				                <option value="<?php echo $row->ConsigneeId ?>">
-				                <?php echo $row->ShipperName ?>
-				                </option> 
-				            	 <?php }?>
-					        </select>
-
-						  <label for="carrier">Carrier:</label>
-						  <input type="text" class="form-control input-sm" id="carrier">
-
+						  	<div id="vesel" >
+						  		<input type="text" required/>
+						  	</div>
+						  
+						  <div class="tab_manila hidden"> 	
+							  <label for="carrier">Carrier:</label>
+							  <input type="text" class="  form-control input-sm" id="carrier">
+						  </div>
 						  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
 						  <input type="datetime-local" class="form-control input-sm" name="">
 
@@ -102,9 +101,9 @@
 					<div class="col-lg-4" >
 						  <label for="broker">Broker:</label>
 				  			<select name="shipper" id="vsl"class="form-control">
-				            	<?php  foreach($drop as $row){  ?> 
-				                <option value="<?php echo $row->ConsigneeId ?>">
-				                <?php echo $row->ShipperName ?>
+				            	<?php  foreach($broker_data as $row){  ?> 
+				                <option value="<?php echo $row->BrokerId ?>">
+				                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
 				                </option> 
 				             	<?php }?>
 			               </select>
@@ -125,10 +124,16 @@
 						 <label for="slctvty">Color Selectivity:</label>
 			  				<select class="form-control" id="colsel">
 					          	<option value="" disabled selected>Jobfile Status</option>
-								<option value="B" style="background-color: red;">Red</option>
-								<option value="C" style="background-color: yellow;">Yellow</option>
-								<option value="D" style="background-color: green;">Green</option>
-								<option value="E" style="background-color: pink;">pink</option>
+								<?php  foreach($color_data as $row){ 
+								   $status = $row->StatusName;
+								   if($status=='Red Font'){?> 
+								   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+							 <?php }else{?>
+				                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+				                <?php }?>
+				                <?php echo $row->StatusName; ?>
+				                </option> 
+				             	<?php }?>
 					        </select>
 
 						  <label for="dtPaid">Date Paid(Date& Time):</label>
@@ -235,22 +240,15 @@
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
 	$('#colsel').change(function(){
-  if($(this).val() == 'A'){ 
-    $("select#colsel").css('background-color', 'white');
-  }
-    if($(this).val() == 'B'){
-    $("select#colsel").css('background-color', 'red');
-  }
-    if($(this).val() == 'C'){
-    $("select#colsel").css('background-color', 'yellow');
-  }
-    if($(this).val() == 'D'){
-    $("select#colsel").css('background-color', 'green');
-  }
-  if($(this).val() == 'E'){
-    $("select#colsel").css('background-color', 'pink');
-  }
-});
+  var status = $(this).val();
+  var color = $('#colsel option:selected').attr('data-color');
+    if(status==1){
+    	$('#colsel').css({ 'color': 'red','background-color':'white' });
+    }else{
+     $('#colsel').css({'background-color': color,'color': 'white'});
+  	}
+ });
+
 </script>
 
 
@@ -376,6 +374,29 @@ headers.forEach(function (header, i) {
 
 });
 </script>
+
+
+
+
 <script>
-//for	
+//for  getting the vessel based on shipper
+$(document).ready(function(){
+	 $(' #shipper').change(function(){
+		
+ var shipids= $(this).val();
+
+			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/');?>",
+			  		 data: { ship_id:shipids}
+				})
+		  		.done(function(data) {
+		  		 $('#vesel').html(data);	
+		  			
+		  		
+		  		});
+
+	});
+});
 </script>
+

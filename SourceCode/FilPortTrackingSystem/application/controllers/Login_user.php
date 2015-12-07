@@ -127,6 +127,13 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+
+		    // drop down in add data form in jofile start
+		    $data['shipper_data']   = $this->User->dropdown_shipper();
+		    $data['consignee_data'] = $this->User->dropdown_consignee();
+		    $data['broker_data']    = $this->User->dropdown_broker();
+		    $data['color_data']    = $this->User->dropdown_colors();
+		    // drop down in add data form in jofile end
 		  
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
