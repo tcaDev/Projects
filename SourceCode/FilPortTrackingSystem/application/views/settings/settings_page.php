@@ -221,7 +221,6 @@
 					  </table>
 			    </div>
 			  </div>
-			</div>
 			
 
 			<div class="" id="mycontent">
