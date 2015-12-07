@@ -730,10 +730,9 @@ function search_vessel(){
 	}
 
 
-
-
-
-
+/////////////////////////////////
+//  REIN ADDED
+/////////////////////////////////
 
 function search_haulers(){
 
@@ -772,12 +771,12 @@ $this->message();
 		     //  	    	$cid   = $row->HaulersId;
 		      	  
 		     //  		}
-					    echo  '<tr>
-							        <td class="hidden"></td>
-							        <td></td>
-							         <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
-					    	  </tr>';
+	    echo  '<tr>
+			        <td class="hidden"></td>
+			        <td></td>
+			         <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+			        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+	    	  </tr>';
 
 ?>
     </tbody>
