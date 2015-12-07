@@ -6,8 +6,6 @@
 }
 </style>
 
-
-
  <script>
   var content_consignee = "<?php echo base_url('Login_user/consignee_content')?>";
   var total_consignee   =  "<?php echo $consignee_total; ?>";
@@ -17,13 +15,15 @@
   var total_shipper     =  "<?php echo $shipper_total; ?>";
   var content_vessel   = "<?php echo base_url('Search/search_vessel')?>";
   var total_vessel     =  "<?php echo $vessel_total; ?>";
+  var content_haulers   = "<?php echo base_url('Search/search_haulers')?>";
+  var total_haulers     =  "<?php  ?>";
+  var content_forward   = "<?php echo base_url('Search/search_forward')?>";
+  var total_forward     =  "<?php  ?>";
  </script>
 
 		
 		<!--For  pagination start -->		
 		<script type="text/javascript">
-	
-		     
 				$(document).ready(function() {
 				    $(".consigneepage").load(content_consignee);  //initial page number to load
 				    $(".pagination_consignee").bootpag({
@@ -111,7 +111,6 @@
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
 				        $(".shipperpage").load(content_shipper, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
-				    	
 				    });
 			
 			});
@@ -147,7 +146,36 @@
 			
 			});
 			
-		
+				 $(document).ready(function() {
+				    $(".haulerspage").load(content_haulers);  //initial page number to load
+				    $(".pagination_haulers").bootpag({
+				        total:total_haulers, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".haulerspage").load(content_haulers, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
 				
 		</script>
 	     <!--For  pagination end -->
@@ -156,8 +184,11 @@
 		  <ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 		    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
-		     <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
+		    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
 		    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
+		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
+		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forward</a></li>
+		    <li><a data-toggle="tab" href=".legend"						id="form_legend">Legend</a></li>
 		
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
@@ -171,7 +202,6 @@
 	        </div>
 		</div>
             <div class="con-ship tab-content"> 
-
                <!--FOr consignee data view  start--> 
                   <div class=" consignee tab-pane fade in active"> 
                   <div class="consigneepage"> </div>
@@ -183,7 +213,6 @@
 			    <div class="tab-pane fade broker">
 			      <div class="brokerpage"> </div>
                   <div class="pagination_broker pull-right"> </div>
-
 			    </div>
 			     <!--FOr BROKER data view  END-->
 
@@ -192,13 +221,82 @@
                   <div class="pagination_vessel pull-right"> </div>
 			    </div>
 
+			    <div  class="haulers tab-pane fade">
+			 	  <div class="haulerspage">
+			 	  	<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Hauler Name</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+						</thead>
+					  	<tbody>
+					  	<tr>
+					        <td class="hidden"></td>
+					        <td></td>
+					         <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+					   	</tr>
+				      </tbody>
+					</table>
+			 	  </div>
+                  <div class="pagination_haulers pull-right"> </div>
+			    </div>
+
+			    <div  class="forward tab-pane fade">
+			 	  <div class="forwardpage">
+			 	  	<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Forwarder/Warehouse Name</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+						</thead>
+					  	<tbody>
+					  	<tr>
+					        <td class="hidden"></td>
+					        <td></td>
+					        <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+					   	</tr>
+				      </tbody>
+					</table>
+			 	  </div>
+                  <div class="pagination_forward pull-right"> </div>
+			    </div>
+
+			    <div  class="legend tab-pane fade">
+			 	  <div class="legendpage">
+			 	  	<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Status Name</th>
+					        <th>Description</th>
+					        <th>Color</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+						</thead>
+					  	<tbody>
+					  	<tr>
+					        <td></td>
+					        <td></td>
+					        <td style="background-color:red;">Red</td>
+					        <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+					   	</tr>
+				      </tbody>
+					</table>
+			 	  </div>
+                  <div class="pagination_legend pull-right"> </div>
+			    </div>
+
 			    <div  class="tab-pane fade shipper">
 				  <div class="shipperpage"> </div>
                   <div class="pagination_shipper pull-right"> </div>
 			    </div>
 
 			    <div class="container tab-pane fade">
-			      <table class="table table-striped">
+			      	<table class="table table-striped">
 					    <thead>
 					      <tr>
 					        <th>Vessel ID</th>
@@ -218,7 +316,7 @@
 					        <button class="btn update"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      </tr>
 					    </tbody>
-					  </table>
+					</table>
 			    </div>
 			  </div>
 			
@@ -262,7 +360,6 @@
 					           			<?php 
 					           			  foreach($countries as $row)
 					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
-
 					           			?>
 					           			</select>
 					           		</div>
@@ -355,7 +452,6 @@
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
-				      
 				    </div>
 				  </div>
 
@@ -531,13 +627,13 @@
 				</div>
 		</div>
 
-				  	  	<!-- Modal FOr shippercontacts-->
+				  <!-- Modal FOr shippercontacts-->
 				  <div class="modal fade" id="modal_shippercontacts" role="dialog">
 
 
 				  </div>
 
-				    	  	<!-- Modal FOr add_shippercontacts-->
+			<!-- Modal FOr add_shippercontacts-->
 			<div class="modal fade" id="modal_add_shippercontacts" role="dialog">
 				  <div class="modal-dialog">
 				      <!-- Modal content-->
@@ -599,14 +695,6 @@
 				      </div>      
 				 </div>'
 			</div>
-
- 
-
-
-
-
-
-
 </body>
 </html>
 
