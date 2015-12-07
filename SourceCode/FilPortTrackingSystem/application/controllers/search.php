@@ -47,7 +47,52 @@ class Search extends CI_Controller {
 			}
 		}
 
+function message(){
 
+//for message popup when update  adding data is success/failed start			      		
+  
+if(isset($_SESSION['success'])){
+	$success = $_SESSION['success'];
+  	if($success=='success'){
+  	 $message_success = 'Data is successfully added!';
+  	}
+    if($success=='update_success'){
+  	$message_success = 'Data is successfully updated!';
+    }
+	 echo  "<script>
+			    $.alert({
+							title: 'Alert!',
+						    content: '$message_success',
+						    confirm: function(){									    
+							}
+						});
+	  </script>";
+	  	$this->session->unset_userdata('success');
+  }
+  if(isset($_SESSION['failed'])){
+  	$failed = $_SESSION['failed'];
+  	if($failed=='failed'){
+  	 $message = 'Failed to add, because the data  is already exists!';
+  	
+  	}
+  if($failed=='update_failed'){
+  	$message = 'Failed to update, because the data  is already exists!';
+  }
+ 		echo "<script>
+		 		   $.alert({
+						title: 'Alert!',
+					    content: '$message',
+					    confirm: function(){										    
+						}
+						});
+  			</script>";
+
+  	$this->session->unset_userdata('failed');
+  }
+//for message popup when update  adding data is success/failed start			      		
+  
+
+}
 
 
    function shippercon(){
@@ -203,6 +248,7 @@ class Search extends CI_Controller {
 
    function add_shippercontacts(){
 
+
     $id=$this->input->post('shipper_id');
 
     echo '		<div class="modal-dialog">
@@ -214,8 +260,7 @@ class Search extends CI_Controller {
 				        </div>
 				        <div class="modal-body">
 		       
-				            <input type="hidden"  value='.$id.' class="shipper_id form-control"/>
-							
+				          
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>First Name</label>
@@ -254,7 +299,7 @@ class Search extends CI_Controller {
 					
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" add_contancts pull-right btn btn-default">Submit</button>
+					            	<button type="submit" class=" add_shipper pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
 			   	 		
@@ -268,7 +313,12 @@ class Search extends CI_Controller {
 
 		<script>
 
-			$('.add_contancts').click(function(){
+		$('.add_shipper').click(function(){
+			alert('aaaa');
+		});
+
+	$('.contacts_shipper').click(function(){
+		
 		 var shipper_id    =  $('.shipper_id').val();
 		 var fname_contact =  $('.fname_contact').val();
 		 var mname_contact =  $('.mname_contact').val();
@@ -276,7 +326,7 @@ class Search extends CI_Controller {
 		 var no_contact    =  $('.no_contact').val();
 		 var no1_contact   =  $('.no1_contact').val();
 		
-
+		 	alert(fname_contact);
 						$.ajax({
 					  method: "POST",
 					  url: "<?php echo base_url('Add_user/add_shippercon');?>",
@@ -299,163 +349,40 @@ class Search extends CI_Controller {
 
 
 
-   function search_consignee(){
-   $id = $this->input->post('consignee_id');
-   $clients = $this->User->search_consignee($id);
-
   
-		echo	      '<table class="table table-striped table_consignee">
-					    <thead>
-					      <tr>
-					        <th>Consignee Name</th>
-					        <th>Address</th>
-					        <th>OfficeNumber</th>
-					        <th>Status</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>'; ?>
-					      
-								<?php  
-								$i=0;
-								foreach ($clients as $row) {
-									     	    $i++;
-					      	    //for default value
-					      	    if($i==1){
-					      	    	$cid   = $row->ConsigneeId;
-					      	    	$cname = $row->ConsigneeName;
-					      	    	$addr  = $row->Address;
-					      	    	$date  = $row->DateAdded;
-					      		}
-
-					     	    $active= $row->IsActive;
-					      		if($active==1){ 
-					      		  $stat = 'activated';
-					      		  $mystat = '1';
-					      		}else{
-					      		  $stat = 'deactivated';
-					      		  $mystat= '0';
-					      		}
-					      		if($stat=='activated')
-					      		{
-					      			$stats = 'deactivated';
-					      			$mystats = '0';	
-					      		}else{
-					      			$stats = 'activated';
-					      			$mystats = '1';
-					         	}
-					         	$number = $row->OfficeNumber;
-								
-						echo	'<tr style="cursor:pointer;">
-					    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
-							        <td>'. $row->ConsigneeName .'</td>
-							        <td>'. $row->Address .'</td>
-							        <td>'. $number .'</td>       
-							        <td>'.$stat .'</td>
-							        <td   class="hidden">'. $row->DateAdded .'</td>
-							        <td   class="hidden">'. $mystat .'</td>
-							        <td><button type="button" class="btn update_consignee" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="btn delete_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
-					     		 </tr>';
-					      		 }
-					      	echo' </tbody>
-					 				 </table>'; ?>
-
-			 <script>
-				cid = <?php echo $cid;?>;
-				  $('td').click(function(){
-
-		 		  $('tr').removeClass('mycolor').children('td');
-		          
-		          var cid=$(this).closest('tr').addClass('mycolor').children('td:first').text();
-
-		          var check = $.isNumeric(cid);
-
-		          if(check==false){
-		         	$('tr').removeClass('mycolor').children('td');
-		         	cid = <?php echo $cid;?>;
-/*
-		         var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var Consignee    = $(this).closest('tr').children('td:eq(1)').text();
-			     var Address      = $(this).closest('tr').children('td:eq(2)').text();
-			     var dtupdated    = $(this).closest('tr').children('td:eq(5)').text();
-*/
-
-		          }
-		         var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var Consignee    = $(this).closest('tr').children('td:eq(1)').text();
-			     var Address      = $(this).closest('tr').children('td:eq(2)').text();
-			     var num          = $(this).closest('tr').children('td:eq(3)').text();
-			     /*var dtupdated    = $(this).closest('tr').children('td:eq(5)').text();*/
-  				 var status       = $(this).closest('tr').children('td:eq(6)').text();
-
-			     $('.consignee_id').val(id);
-			     $('.consignee_name').val(Consignee);
-			     $('.consignee_addr').val(Address);
-			     $('.consignee_of').val(num);
-			      if(status==1){
-			      $('.activate').prop('checked', true);
-			  	  }else{
-			  	  	   $('.deactivate').prop('checked', true);
-			  	  }
-		       });
-
-				  $('.delete_consignee').click(function(){
- 					 var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-               
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){												    
-													    }
-													});
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
-                         
- });
-		     </script>     
-					  
-
-
-
-
-
-<?php
-   }
-
-
     function search_broker(){
-   $id = $this->input->post('broker_id');
-   $broker = $this->User->search_broker($id);
+     $this->message();
+       $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	 }else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
+ $id = $this->input->post('broker_id');
+   if(isset($id)){
+     $broker = $this->User->search_broker($id);
+   }else{
+   	 $broker  =  $this->User->findlimit_broker($item_per_page,$page_position);	
+   } 	
+
 
   
 		echo '      <table class="table table-striped">
 					    <thead>
 					      <tr>
-					        <th>First Name</th>
-					        <th>Middle Name</th>
-					        <th>Last Name</th>
-					        <th>Address</th>
-					        <th>Contact no.</th>
+					        <th>Full Name</th>
+					        <th>HouseBuildingNo/Street</th>
+					        <th>Barangay/Village</th>
+					         <th>Town/City/Province</th>
+					         <th>Country</th>
+					        <th>Contact no1.</th>
+					        <th>Contact no2.</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -491,71 +418,34 @@ class Search extends CI_Controller {
 					     echo'
 					      <tr>
 					      	<td class="hidden">'.$row->BrokerId.'</td>
-					        <td>'.$row->FirstName.'</td>
-					        <td>'.$row->MiddleName.'</td>
-					        <td>'.$row->LastName.'</td>
-					        <td>'.$row->Address.'</td>
-					        <td>'.$row->Address.'</td>
-					        <td>'.$row->ContactNo.'</td>
-
-					         <td><button type="button" class="btn update_brokers" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td>'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.'</td>
+					        <td>'.$row->HouseBuildingNoStreet.'</td>
+					        <td>'.$row->BarangarOrVillage.'</td>
+					        <td>'.$row->TownOrCityProvince.'</td>
+					        <td>'.$row->Country.'</td>
+					        <td>'.$row->ContactNo1.'</td>
+					        <td>'.$row->ContactNo2.'</td>
+					        <td>'.$stat .'</td>
+						    <td  class="hidden">'. $mystat .'</td>
+						    <td  class="hidden">'. $row->CountryId .'</td>
+						    <td class="hidden">'.$row->FirstName.' </td>
+						    <td class="hidden">'.$row->MiddleName.' </td>
+						    <td class="hidden">'.$row->LastName.' </td>		
+					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      
 					      </tr>';}
-
 					      ?>
 					    </tbody>
-					  </table>';
-
-			 <script>
-				cid = <?php echo $cid;?>;
-				 
-				  $('td').click(function(){
-		 		  $('tr').removeClass('mycolor').children('td');
-		          
-		          var cid=$(this).closest('tr').addClass('mycolor').children('td:first').text();
-		          var check = $.isNumeric(cid);
-
-		          if(check==false){
-		         	$('tr').removeClass('mycolor').children('td');
-		         	cid = <?php echo $cid;?>;
-
-	
-		          }
-		       });
-
-			$('.update_brokers').click(function(){
-
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var FirstName    = $(this).closest('tr').children('td:eq(1)').text();
-			     var MiddleName      = $(this).closest('tr').children('td:eq(2)').text();
-			     var LastName          = $(this).closest('tr').children('td:eq(3)').text();
-			     var Address          = $(this).closest('tr').children('td:eq(4)').text();
-			     var ContactNo          = $(this).closest('tr').children('td:eq(5)').text();
-  				 var status       = $(this).closest('tr').children('td:eq(6)').text();
-	
+					  </table>
 
 
-				 $('.broker_id').val(id);
-			     $('.broker_fname').val(FirstName);
-			     $('.broker_mname').val(MiddleName);
-			     $('.broker_lname').val(LastName);
-			     $('.broker_address').val(Address);
-			     $('.broker_contact').val(ContactNo);
-			     $('.status').val(status);
-			      if(status=='activated'){
-			      $('.activate').prop('checked', true);
-			  	  }else{
-			  	  	   $('.deactivate').prop('checked', true);
-			  	  }
-
-				
-		   });  
-
-			
-
-				 $('.delete_broker').click(function(){
- 					var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+<script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
+<script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
+	<script>
+ $('.delete_broker').click(function(){
+  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
         
                                   $.confirm({
                                     title: 'Delete the information?',
@@ -588,18 +478,37 @@ class Search extends CI_Controller {
                                 });
                          
 
- 				});
-                         
+ });
+	</script>
 
-			</script>
-   
 <?php
 	}
 
 
 function search_shipper(){
+  $this->message();
+   $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	 }else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
 	$id = $this->input->post('shipper_id');
-    $shipper = $this->User->search_shipper($id);
+   if(isset($id)){
+       $shipper = $this->User->search_shipper($id);
+   }else{
+   	 $shipper  =  $this->User->findlimit_shipper($item_per_page,$page_position);	
+   } 	
+
+
+
+
 
     	echo '      <table class="table table-striped">
 					    <thead>
@@ -622,41 +531,33 @@ function search_shipper(){
 					  	    <td class="hidden">'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
 					        <td class="hidden">'.$row->DateAdded.'</td> 
-					        <td><button type="button" class="btn update_shipper contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
+					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
 					       					   <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					        <td><button type="button" class="btn add_shipper" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      </tr>';}
+
 					     ?>
+
 					    </tbody>
 					  </table>
 
 
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 				<script>
-				cid = <?php echo $cid;?>;
-				 
-				$('td').click(function(){
-		 		  $('tr').removeClass('mycolor').children('td');
-		          
-		          var cid=$(this).closest('tr').addClass('mycolor').children('td:first').text();
-		          var check = $.isNumeric(cid);
 
-		          if(check==false){
-		         	$('tr').removeClass('mycolor').children('td');
-		         	cid = <?php echo $cid;?>;
-
-	
-		          }
-		       });
+					
 
 				
 				$('.add_contact').click(function(){
 				  var id= $(this).closest('tr').children('td:eq(0)').text();
 				  $('.shipper_id').val(id);
 
+
 				});
 
-				 $('.add_shipper').click(function(){
+				 $('.get__shipper_datas').click(function(){
 			     var id= $(this).closest('tr').children('td:eq(0)').text();
 			     var name= $(this).closest('tr').children('td:eq(1)').text();
 
@@ -726,8 +627,29 @@ function search_shipper(){
 }
 
 	function search_vessel(){
+
+    $this->message();
+
+   $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	 }else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
 	$id = $this->input->post('vessel_id');
-    $vessel = $this->User->search_vessel($id);
+   if(isset($id)){
+           $vessel = $this->User->search_vessel($id);
+   }else{
+   	 $vessel  =  $this->User->findlimit_vessel($item_per_page,$page_position);	
+   } 	
+
+
 	  echo '	      <table class="table table-striped">
 					    <thead>
 					      <tr>
@@ -749,30 +671,15 @@ function search_shipper(){
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        <button class="btn delete_vessel"><span class="glyphicon glyphicon-trash"></span></button></td>
 					    	  </tr>';}
-					      ?>
+
+?>
 					    </tbody>
 					  </table>';
 
 
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
-
-		cid = <?php echo $cid;?>;
-				 
-				$('td').click(function(){
-		 		  $('tr').removeClass('mycolor').children('td');
-		          
-		          var cid=$(this).closest('tr').addClass('mycolor').children('td:first').text();
-		          var check = $.isNumeric(cid);
-
-		          if(check==false){
-		         	$('tr').removeClass('mycolor').children('td');
-		         	cid = <?php echo $cid;?>;
-
-	
-		          }
-		       });
-
-
 
 
  $('.delete_vessel').click(function(){

@@ -1,34 +1,65 @@
  $(document).ready(function(){	
-	 $('.update_consignee').click(function(){
-
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var Consignee    = $(this).closest('tr').children('td:eq(1)').text();
-			     var Address      = $(this).closest('tr').children('td:eq(2)').text();
-			     var number       = $(this).closest('tr').children('td:eq(3)').text();
-			     var status       = $(this).closest('tr').children('td:eq(6)').text();
 
 
-			      $('.consignee_id').val(id);
-			      $('.consignee_name').val(Consignee);
-			      $('.consignee_addr').val(Address);
-			      $('.consignee_of').val(number);
-			      if(status==1){
-			      $('.activate').prop('checked', true);
-			  	  }else{
-			  	  	   $('.deactivate').prop('checked', true);
-			  	  }
-	 }); 
+			
 
-	 	 $('.update_vessels').click(function(){
+	 	//for updating the values in pop up start
 
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var vessel    	  = $(this).closest('tr').children('td:eq(1)').text();
-			      $('.vessel_id').val(id);
-			      $('.vessel_name').val(vessel);
-	
+
+	  $('.update_broker').click(function(){
+
+
+	 	var ids 	   =	     $('.broker_id').val();
+		var fnames     =	     $('.broker_fname').val();
+		var mnames     =	     $('.broker_mname').val();
+		var lnames     =	     $('.broker_lname').val();
+		var	housenos   =         $('.broker_houseno').val();
+		var vils       =	     $('.broker_village').val();
+		var citys	   =	 	 $('.broker_city').val();
+		var cids       =         $('.broker_countryid').val();
+		var c1s		   =     	 $('.broker_c1').val();
+		var c2s 	   =	     $('.broker_c2').val();
+		var	 statuss   =         $('.status').val();
+
 		
-			 });
+
+			      if(statuss=='activated'){
+			        statuss=1;
+			  	  }else{
+			  	  	statuss=0;
+			  	  }
+
+
+			 		    $.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Update/update_broker/",
+					  data: { brokerid:ids,
+					  		  fname:fnames,
+					  		  mname:mnames,
+					  		  lname:lnames,
+					  		  houseno:housenos,
+					  		  vil:vils,
+					  		  city:citys,
+					  		  cid:cids,
+					  		  c1:c1s,
+					  		  c2:c2s,
+					  		  status:statuss
+
+
+					  		  	  		  
+					  		}
+					})
+					  .done(function(data) {
+					  	location.hash="broker";
+					  	location.reload();
+					      
+					  }); 
+	    });
+
+
+
 	 	 $('.update_vessel').click(function(){
+
 	 	  var	  id     = $('.vessel_id').val();
 		  var     vessel = $('.vessel_name').val();
 
@@ -46,66 +77,33 @@
 					      
 					  }); 
 	    });
-	 	  	 $('.update_shipper').click(function(){
-
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var sname   	  = $(this).closest('tr').children('td:eq(1)').text();
-	
-			      $('.shipper_id').val(id);
-			      $('.shipper_name').val(sname);
-			 });
 
 
-			$('.update_broker').click(function(){
-
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var FirstName    = $(this).closest('tr').children('td:eq(1)').text();
-			     var MiddleName      = $(this).closest('tr').children('td:eq(2)').text();
-			     var LastName          = $(this).closest('tr').children('td:eq(3)').text();
-			     var Address          = $(this).closest('tr').children('td:eq(4)').text();
-			     var ContactNo          = $(this).closest('tr').children('td:eq(5)').text();
-  				 var status       = $(this).closest('tr').children('td:eq(6)').text();
-	
-
-
-				 $('.broker_id').val(id);
-			     $('.broker_fname').val(FirstName);
-			     $('.broker_mname').val(MiddleName);
-			     $('.broker_lname').val(LastName);
-			     $('.broker_address').val(Address);
-			     $('.broker_contact').val(ContactNo);
-			     $('.status').val(status);
-			      if(status=='activated'){
-			      $('.activate').prop('checked', true);
-			  	  }else{
-			  	  	   $('.deactivate').prop('checked', true);
-			  	  }
-
-				
-			 });
-		/*		 $('.update_shipper').click(function(){
-			     var id= $(this).closest('tr').children('td:eq(0)').text();
-			 		//for default data in pop up modal start
-	 		      	$.ajax({
-					  method: "GET",
-					  url: "http://localhost/FilPortTrackingSystem/search/get_shipper/",
-					  data: { shipper_id: id }
+	$('.update_shipper').click(function(){
+		  var id     =   $('.shipper_id').val();
+		  var  name  =   $('.shipper_name').val();
+			 		$.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Update/update_shipper/",
+					  data: { ship_id:id,
+					  		  ship_name:name
+					  		  	  		  
+					  		}
 					})
-					  .done(function( msg ) {
-					     $('#modal_update_shipper').html(msg);
-					  });
-					//for default data in pop up modal end
-			 });*/
-			 $('.edit_shipper').click(function(){
-			     var id= $(this).closest('tr').children('td:eq(0)').text();
-			 	 var name= $(this).closest('tr').children('td:eq(1)').text();
-			 	$('.ship_id').val(id);
-			 	$('.shipper_name').val(name);
+					  .done(function(data) {
+					  	location.hash="shipper";
+					  	location.reload();
+					      
+					  }); 
+	 });
 
-			 });
 
+	 	 //for updating the values in pop up end
 
  });
+
+
+
 
  $('.delete_consignee').click(function(){
   var delete_id = $(this).closest('tr').children('td:eq(0)').text();
@@ -139,7 +137,7 @@
                                 });
                          
  });
- $('.delete_vessel').click(function(){
+/* $('.delete_vessel').click(function(){
   var delete_id = $(this).closest('tr').children('td:eq(0)').text();
    
                                   $.confirm({
@@ -169,11 +167,11 @@
                                     },
                                     cancel: function () {
                                        /* alert('Vacation cancelled!');*/
-                                    }
-                                });
- });
+                               //     }
+                               // });
+// });*/
 
- $('.delete_shipper').click(function(){
+/* $('.delete_shipper').click(function(){
   var delete_id = $(this).closest('tr').children('td:eq(0)').text();
    
                                   $.confirm({
@@ -203,51 +201,17 @@
                                     },
                                     cancel: function () {
                                        /* alert('Vacation cancelled!');*/
-                                    }
-                                });
+                                //    }
+                               // });
                          
 
- });
- $('.delete_broker').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-        
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_broker/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="broker";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
-                         
-
- });
+ //});*/
 
 
 
 
-		$('.contac').click(function(){
+ 	// for shipper tab  functions start
+/*		$('.contac').click(function(){
 			var con    = $(this).closest('tr').children('td:eq(0)').text();
 
 						$.ajax({
@@ -259,8 +223,8 @@
 					   $('#modal_shippercontacts').html(data);
 					  });
 
-		});
-
+		});*/
+/*
 			$('.add_contact').click(function(){
 			var con    = $(this).closest('tr').children('td:eq(0)').text();
 
@@ -273,24 +237,52 @@
 					   $('#modal_add_shippercontacts').html(data);
 					  });
 
-		});
+		});*/
+    	// for shipper tab  functions start
 
 
-		<!--//for autoclick of shipper tab -->
+		<!--//for autoclick of shipper tab based on the hash -->
 
 		$(document).ready(function(){
 		       if(location.hash=="#shipper"){
 		      		  $('#form_shipper').trigger('click');
+
+		      		   	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
+		  					$('#mycontent').html(data);
+		 				 });
+
 		      		  location.hash='';
+		      		  //for searching code start
+		      		  $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('shipper_tab');
+		      		    //for searching code start
 
 		       }
 		       if(location.hash=="#broker"){
 		      		  $('#form_broker').trigger('click');
+
+		     		   $.get("http://localhost/FilPortTrackingSystem/View_forms/broker/",function(data){
+		 			    	$('#mycontent').html(data);
+		 		    	});
+
 		      		   location.hash='';
+		      		   //for searching code start
+		      		   $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('broker_tab');
+		      		     //for searching code end
 		       }
 		         if(location.hash=="#vessel"){
 		      		  $('#form_vessel').trigger('click');
+
+		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/vessel/",function(data){
+		  					$('#mycontent').html(data);
+					   });
+
 		      		   location.hash='';
+		      		      //for searching code start
+		      		   $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('vessel_tab');
+		      		     //for searching code end
 		       }
        
 
@@ -356,7 +348,7 @@
 		  });
 	  });
 	   $('#form_shipper').click(function(){
-
+          
 	   	$('#search').removeClass('consignee_tab');
 	  	$('#search').removeClass('broker_tab');
 	    $('#search').addClass('shipper_tab');
@@ -369,15 +361,39 @@
 
 	  	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
 		  	$('#mycontent').html(data);
+		  		
 		  });
 	  });   
  });
 
 		
 
-//for searching 
 
-function search(item){
+ $('.consignee_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+ });
+  $('.broker_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
+ $('.shipper_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
+ $('.vessel_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
+
+
+
+
+function search(){
  var consignee =  $('.consignee_tab').val();
  var broker =  $('.broker_tab').val();
  var shipper =  $('.shipper_tab').val();
@@ -402,11 +418,11 @@ function search_consignee(consignee){
 
 		 		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_consignee/",
+					  url: "http://localhost/FilPortTrackingSystem/Login_user/consignee_content/",
 					  data: { consignee_id:consignee}
 					})
 					  .done(function(data) {
-					   $('.consignee').html(data);
+					   $('.consigneepage').html(data);
 					      
 					  }); 
 
@@ -419,7 +435,7 @@ function search_broker(broker){
 					  data: { broker_id:broker}
 					})
 					  .done(function(data) {
-					   $('.broker').html(data);
+					   $('.brokerpage').html(data);
 					      
 					  }); 
 
@@ -433,7 +449,7 @@ function search_shipper(shipper){
 					  data: { shipper_id:shipper}
 					})
 					  .done(function(data) {
-					   $('.shipper').html(data);
+					   $('.shipperpage').html(data);
 					      
 					  }); 
 
@@ -448,9 +464,19 @@ function search_vessel(vessel){
 					  data: { vessel_id:vessel}
 					})
 					  .done(function(data) {
-					   $('.vessel').html(data);
+					   $('.vesselpage').html(data);
+
 					      
 					  }); 
 
 
 }
+
+
+//for searching  end
+
+
+
+
+
+

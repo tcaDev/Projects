@@ -5,8 +5,10 @@ Class User extends CI_Model
 {
 
  function login($username, $password)
+
  {
-   $query = $this->db->query("select UserName,Password,EmailAddress,FirstName,LastName,MiddleName,UserId,ProfileImageSource from User where Password='$password' 
+
+   $query = $this->db->query("select UserName,Password,EmailAddress from User where Password='$password' 
                                 and (UserName='$username' or EmailAddress='$username' ) limit 1 ");
 
    if($query -> num_rows() == 1){
@@ -15,9 +17,6 @@ Class User extends CI_Model
      return false;
    }
  }
-
-
-
 
 
 
@@ -47,14 +46,24 @@ Class User extends CI_Model
   }
 
 
-  function update_cosignee($id,$Consignee,$Address,$ofnum,$stat){
-     $stat =  (int) $stat; 
+  function update_cosignee($id,$name,$hbno,$vilage,$city,$country,$ofnum,$status){
+     $status =  (int) $status;
+
+   /*  $query = $this->db->query('Select * from Countries where CountryName=$country');
+     foreach ($query as $row) {
+      $country =  $row->CountryId;     
+     }*/
+
+
         $data = array(
-        'ConsigneeName'      => $Consignee,
-        'Address'            => $Address,
-        'OfficeNumber'       => $ofnum,
-        'DateAdded'          => date('Y-m-d'),
-        'IsActive'           => $stat
+        'ConsigneeName'       => $name,
+        'HouseBuildingNoOrStreet' => $hbno,
+        'BarangayOrVillage'   =>$vilage,
+        'TownOrCityProvince'  =>$city,
+        'CountryId'           =>$country,
+        'OfficeNumber'        => $ofnum,
+        'DateAdded'           => date('Y-m-d'),
+        'IsActive'            => $status
        /* 'DateAdded' => $date*/
 
         );
@@ -115,15 +124,19 @@ Class User extends CI_Model
          $this->db->update('ShipperContacts', $data2);
     }
 
-        function update_broker($id,$broker_fname,
-          $broker_mname,$broker_lname,$broker_address,
-          $broker_contact,$status_broker ){
+        function update_broker($id,$broker_fname,$broker_mname,
+    $broker_lname,$broker_houseno,$broker_vil,$broker_city,
+    $broker_cid,$broker_contact1,$broker_contact2,$status_broker){
         $data = array(
         'FirstName'         => $broker_fname,
         'MiddleName'        => $broker_mname,
         'LastName'          => $broker_lname,
-        'Address'           => $broker_address,
-        'ContactNo'         => $broker_contact,
+        'ContactNo1'        => $broker_contact1,
+        'ContactNo2'        => $broker_contact2,
+        'HouseBuildingNoStreet' =>$broker_houseno,
+        'BarangarOrVillage' => $broker_vil,
+        'TownOrCityProvince'=> $broker_city,
+        'CountryId'         => $broker_cid,
         'IsActive'          => $status_broker
 
         );
@@ -229,19 +242,16 @@ Class User extends CI_Model
 
   //for searching  start
   function search_consignee($search){
-    if($search=='activated'){ 
-      $search=1;
-    }
-      if($search=='deactivated'){ 
-      $search=0;
-    }
-   $query = $this->db->query("select * from Consignee WHERE ConsigneeName LIKE '%$search%' order by ConsigneeName ");
+   
+  
+   $query = $this->db->query("select * from vw_consignee_full_info WHERE ConsigneeName LIKE '%$search%'  or HouseBuildingNoOrStreet like '%$search%'   
+    or BarangayOrVillage like  '%$search%' or TownOrCityProvince  like  '%$search%'  or Country like '%$search%' 
+    or OfficeNumber like '%$search%'  order by ConsigneeName  ");
    return $query->result();
   }
   function search_broker($search_broker){
-   $query = $this->db->query("select * from Broker WHERE FirstName LIKE '%$search_broker%' or 
-   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%' or Address  
-   LIKE '%$search_broker%' order by FirstName  ");
+   $query = $this->db->query("select * from vw_broker_full_info WHERE FirstName LIKE '%$search_broker%' or 
+   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by FirstName  ");
    return $query->result();
   }
     function search_shipper($search_shipper){
@@ -255,82 +265,40 @@ Class User extends CI_Model
 
   //for searching end
 
-
-  /*
-  --------------------------------------------
-    Upload Photo
-  --------------------------------------------
-  */
-
-  function update_photo($id,$imageName){
-
-    $data = array(
-                'ProfileImageSource' => $imageName 
-                );
-
-          $this->db->where('UserId', $id);
-          $this->db->update('User', $data);
+//for pagimation start
+ function findlimit($page_position,$item_per_page)
+  {
+   return $this->db->get('vw_consignee_full_info',$page_position, $item_per_page)->result();
+  }
+   function findlimit_broker($page_position,$item_per_page)
+  {
+   return $this->db->get('vw_broker_full_info',$page_position, $item_per_page)->result();
+  }
+  function findlimit_shipper($page_position,$item_per_page)
+  {
+   return $this->db->get('Shipper',$page_position, $item_per_page)->result();
+  }
+    function findlimit_vessel($page_position,$item_per_page)
+  {
+   return $this->db->get('ShipperVessel',$page_position, $item_per_page)->result();
   }
 
+  
 
-  /*
-  --------------------------------------
-    Update Name
-  --------------------------------------
-  */
+//for pagimation end
 
-  function updateName($id,$fname,$mname,$lname){
 
-      $data = array(
-                'FirstName' => $fname,
-                'LastName'  => $lname,
-                'MiddleName'=> $mname 
-                );
+  function country($id){
+     $query = $this->db->query("select * from Countries where CountryId!=$id   ");
+   return $query->result();
 
-          $this->db->where('UserId', $id);
-          $this->db->update('User', $data);
   }
+    function countries(){
+     $query = $this->db->query("select * from Countries   ");
+   return $query->result();
 
-
- /*
-  --------------------------------------
-    Get all data from User
-  --------------------------------------
-  */
-
-  function get_updated_data($id){
-   $query = $this->db->query("select * from User where UserId='$id' ");
-
-    return $query->result();
   }
-
-   /*
-  --------------------------------------
-    Get current Password
-  --------------------------------------
-  */
-
-  function get_current_pass($id){
-   
-   $query = $this->db->query("select Password from User where UserId='$id' ");
-   
-    return $query->result();
-  }
-
-   /*
-  --------------------------------------
-    Update Password
-  --------------------------------------
-  */
-
-  function updatePass($id,$renewpass){
-
-     $data = array(
-                'Password' => $renewpass
-                );
-
-          $this->db->where('UserId', $id);
-          $this->db->update('User', $data); 
-  }
+    
 }
+
 ?>

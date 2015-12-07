@@ -13,7 +13,7 @@ class Update extends CI_Controller {
             $this->load->model('User');	
 
        }
-
+//index function is no longer use
 	  function index(){
 			$id 	   = $this->input->post('ConsigneeId');
 			$Consignee = $this->input->post('Cons');
@@ -21,84 +21,76 @@ class Update extends CI_Controller {
 			$stat      = $this->input->post('stat');
 			$this->User->update_cosignee($id,$Consignee,$Address,$stat);
 
-		$data['clients'] = $this->User->clients();
-		$client = $data['clients'];
-
-
-			 echo     '<table class="table table-striped" id="table">
-					    <thead>
-					      <tr>
-					        <th>Consignee</th>
-					        <th>Address</th>
-					        <th>Status</th>
-					        <th>Update</th>
-					      </tr>
-					    </thead>
-					    <tbody>';
-
-				
-
-					  
-
-					      	foreach ($client as $row) {	
-					      	    $active= $row->IsActive;
-					      		if($active==1){ 
-					      		  $stat = 'activated';
-					      		  $mystat = 1;
-					      		}else{
-					      		  $stat = 'deactivated';
-					      		  $mystat= 0;
-					      		}
-					      		if($stat=='activated')
-					      		{
-					      			$stats = 'deactivated';
-					      			$mystats = 0;	
-					      		}else{
-					      			$stats = 'activated';
-					      			$mystats =1;
-					         	}
-					          echo '<tr>
-						    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
-								        <td   contenteditable="true">'. $row->ConsigneeName .'</td>
-								        <td   contenteditable="true">'. $row->Address .'</td>
-								        <td><select class="status">
-								        		<option value='.$mystat.'> '.$stat.' </option>
-								        		<option value='.$mystats.'> '.$stats.' </option>
-								       		</select>
-								         </td>
-								        <td><button class="btn update"><span class="glyphicon glyphicon-edit"></span></button></td>		       
-					     		    </tr>';
-					      	}
-					 echo  '</tbody>
-					  </table>';
-
 		}
 
 	function update_consignee(){
 		$id 	= 	$this->input->post('consig_id');
 		$name 	= 	$this->input->post('consig_name');
-		$addr 	=	$this->input->post('consig_addr');
+		$hbno 	=	$this->input->post('hbno');
+		$vilage =	$this->input->post('vilage');
+		$city 	=	$this->input->post('city');
+	    $country=	$this->input->post('country');
 		$ofnum  = 	$this->input->post('consig_ofnum');
 		$status = 	$this->input->post('status');
 
-		$this->User->update_cosignee($id,$name,$addr,$ofnum,$status);
-		redirect('Login_User/settings');
+		$query= $this->db->query("Select * from Consignee where ConsigneeName = '$name' limit 1");
+
+        $query2= $this->db->query("Select * from Consignee where 
+          ConsigneeId   = $id              and
+          ConsigneeName = '$name'          and 
+          OfficeNumber='$ofnum'            and 
+          IsActive='$status'               and 
+          HouseBuildingNoOrStreet ='$hbno' and 
+          BarangayOrVillage='$vilage'      and 
+          CountryId='$country'             and 
+          TownOrCityProvince='$city'  
+          limit 1");
+		
+          if(($query->num_rows() ==1) && ($query2->num_rows() ==1)){
+              $this->session->failed= 'update_failed';
+          }else{            
+			     $this->User->update_cosignee($id,$name,$hbno,$vilage,$city,$country,$ofnum,$status);
+			     $this->session->success= 'update_success';
+		  }
+		   redirect('Login_User/settings');
 
 	
 	}
 	function update_vessel(){
 		$id 	= 	$this->input->post('ves_id');
 		$name 	= 	$this->input->post('ves_name');
-	
-		$this->User->update_vessel($id,$name);
-		/*redirect('Login_User/settings');*/
+		
+		    $query= $this->db->query("Select * from 
+		    	ShipperVessel where Vesselname = '$name' and 
+                ShipperVesselId=$id limit 1");
+            
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          } 
+       else{  
+				$this->User->update_vessel($id,$name);
+				$this->session->success= 'update_success';
+		 }
+		redirect('Login_User/settings/#vessel');
 
 	
 	}
 		function update_shipper(){
 		$id 	= 	$this->input->post('ship_id');
 		$name 	= 	$this->input->post('ship_name');
-		$this->User->update_shipper($id,$name);
+		
+
+		$query= $this->db->query("Select * from Shipper where ShipperName = '$name' limit 1");
+          
+		if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          } 
+       else{ 
+       		$this->User->update_shipper($id,$name);
+       		 $this->session->success= 'update_success';
+       	   }
+		redirect('Login_User/settings/#shipper');
+
 	
 	}
 	function update_shippercon(){
@@ -113,17 +105,46 @@ class Update extends CI_Controller {
 	redirect('Login_User/settings');
 	}
 		function update_broker(){
-		$id 	= 	$this->input->post('broker_id');
+		$id 			= 			$this->input->post('broker_id');
 		$broker_fname 	= 			$this->input->post('broker_fname');
 		$broker_mname 	= 			$this->input->post('broker_mname');
 		$broker_lname 	= 			$this->input->post('broker_lname');
-		$broker_address = 	 		$this->input->post('broker_address');
-		$broker_contact = 			$this->input->post('broker_contact');
+
+		$broker_houseno = 			$this->input->post('houseno');
+		$broker_vil	    = 			$this->input->post('village');
+		$broker_city	= 			$this->input->post('city');
+	    $broker_cid	    = 			$this->input->post('country');
+
+
+		$broker_contact1 = 			$this->input->post('c1');
+		$broker_contact2 = 			$this->input->post('c2');
+
 		$status_broker 	= 			$this->input->post('status_broker');
 		
-		$this->User->update_broker($id,$broker_fname,$broker_mname,
-		$broker_lname,$broker_address,$broker_contact,$status_broker);
-		/*redirect('Login_User/settings');*/
+		$query= $this->db->query("Select * from Broker where FirstName = '$broker_fname' 
+              and MiddleName='$broker_mname' and LastName='$broker_lname' limit 1");
+        $query2= $this->db->query("Select * from Broker where
+            BrokerId  =$id              and
+        	FirstName = '$broker_fname' and 
+        	MiddleName='$broker_mname'  and 
+        	LastName='$broker_lname'    and
+        	HouseBuildingNoStreet='$broker_houseno'      and
+        	BarangarOrVillage='$broker_vil'   and
+        	TownOrCityProvince='$broker_city' and
+        	CountryId='$broker_cid'             and
+        	IsActive=$status_broker
+        	limit 1");
+             
+		if(($query->num_rows() ==1) && ($query2->num_rows() ==1)){
+             $this->session->failed= 'update_failed';
+          } 
+       else{ 
+  			$this->User->update_broker($id,$broker_fname,$broker_mname,
+			$broker_lname,$broker_houseno,$broker_vil,$broker_city,
+			$broker_cid,$broker_contact1,$broker_contact2,$status_broker);
+  	  		 $this->session->success= 'update_success';
+  	  	}
+		redirect('Login_User/settings/#broker');
 
 	}
 

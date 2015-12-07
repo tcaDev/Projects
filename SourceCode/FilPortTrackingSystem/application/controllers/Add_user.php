@@ -84,97 +84,142 @@ class Add_user extends CI_Controller {
     function add_client(){
     
              $cname = $this->input->post('cname');
-             $addr = $this->input->post('Address');
+             $hbno = $this->input->post('hbno');
+             $vilage = $this->input->post('vilage');
+             $city = $this->input->post('city');
+             $country = $this->input->post('country');
              $ofnum = $this->input->post('OfficeNumber');
+
+
+            $query= $this->db->query("Select * from Consignee where ConsigneeName = '$cname' limit 1");
+            if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+
+            }else{
 
                $data = array(
                   'ConsigneeName' => $cname,
-                  'Address' => $addr,
+                  'HouseBuildingNoOrStreet' =>$hbno,
+                  'BarangayOrVillage'=>$vilage,
+                  'TownOrCityProvince'=>$city,
+                  'CountryId'=>$country,
                   'OfficeNumber' => $ofnum,
                   'DateAdded'   => date('Y-m-d'),
                   'IsActive'    =>0
                   );
 
             $this->db->insert('Consignee', $data);
+             $this->session->success = 'success';
+          }
              redirect('Login_user/settings/#');
     }
 
-          function add_broker(){
+      function add_broker(){
              $fname = $this->input->post('fname');
              $mname = $this->input->post('mname');
              $lname = $this->input->post('lname');
-             $addr = $this->input->post('address');
+
+
+             $query= $this->db->query("Select * from Broker where FirstName = '$fname' 
+              and MiddleName='$mname' and LastName='$lname' limit 1");
+            if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+
+            }else{
+             $hbno = $this->input->post('hbno');
+             $vilage = $this->input->post('vilage');
+             $city = $this->input->post('city');
+             $country = $this->input->post('country');
+             $c1 = $this->input->post('c1');
+             $c2 = $this->input->post('c2');
+
              $cn = $this->input->post('ContactNo');
 
                $data = array(
-                  'FirstName' => $fname,
-                  'MiddleName' => $mname,
-                  'LastName' => $lname,
-                  'Address'   => $addr,
-                  'ContactNo'   => $cn,
-                  'IsActive'    =>0
+                  'FirstName'             => $fname,
+                  'MiddleName'            => $mname,
+                  'LastName'              => $lname,
+                  'HouseBuildingNoStreet' => $hbno,
+                  'BarangarOrVillage'     => $vilage,
+                  'TownOrCityProvince'    => $city,
+                  'CountryId'             => $country,
+                  'ContactNo1'             => $c1,
+                  'ContactNo2'             => $c2,
+                  'IsActive'              =>0
                   );
 
             $this->db->insert('Broker', $data);
-            redirect('Login_user/settings/#broker');
+             $this->session->success = 'success';
           }
+            redirect('Login_user/settings/#broker');
+     }
 
 
-          function add_vessel(){
+    function add_vessel(){
               $vessels = $this->input->post('vessels');
               $shipper = $this->input->post('shipper');
+
+                  $query= $this->db->query("Select * from ShipperVessel where Vesselname = '$vessels' and 
+                   ShipperId='$shipper' limit 1");
+            
+            if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+
+            }else{
                $data = array(
                   'Vesselname' => $vessels,
                   'ShipperId' => $shipper
                   );
 
-            $this->db->insert('ShipperVessel', $data);
-            redirect('Login_user/settings/#vessel');
-
+            $this->db->insert('ShipperVessel', $data); 
+             $this->session->success = 'success';    
           }
+          redirect('Login_user/settings/#vessel');
+    }
           
-          function add_shipper(){
+    function add_shipper(){
             //ps get the shipper id ;
              $shipper = $this->input->post('shipper');
 
-             $data = array(
-                  'ShipperName' => $shipper,
-                  'DateAdded'   => date('Y-m-d')
+            $query= $this->db->query("Select * from Shipper where ShipperName = '$shipper' limit 1");
+          
+          if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+          } 
+       else{
+               $data = array(
+                    'ShipperName' => $shipper,
+                    'DateAdded'   => date('Y-m-d')
+                    );
+
+              $this->db->insert('Shipper', $data);
+
+              //inset to shippercontact table
+               $fname = $this->input->post('fname');
+               $mname = $this->input->post('mname');
+               $lname = $this->input->post('lname');
+               $c1 = $this->input->post('con1');
+               $c2 = $this->input->post('con2');
+
+           
+               $count = $this->User->select_shipperid();
+                 foreach($count as $row){
+                $count = $row->ShipperId;
+                } 
+                $sid= $count;
+
+                     $data = array(
+                    'FirstName' => $fname,
+                    'MiddleName' => $mname,
+                    'LastName' => $lname,
+                    'ContactNo1'   => $c1,
+                    'ContactNo2'   => $c2,
+                    'ShipperId'    => $sid
                   );
 
-            $this->db->insert('Shipper', $data);
-
-            //inset to shippercontact table
-             $fname = $this->input->post('fname');
-             $mname = $this->input->post('mname');
-             $lname = $this->input->post('lname');
-             $c1 = $this->input->post('con1');
-             $c2 = $this->input->post('con2');
-
-         
-             $count = $this->User->select_shipperid();
-               foreach($count as $row){
-              $count = $row->ShipperId;
-              } 
-              $sid= $count;
-
-                   $data = array(
-                  'FirstName' => $fname,
-                  'MiddleName' => $mname,
-                  'LastName' => $lname,
-                  'ContactNo1'   => $c1,
-                  'ContactNo2'   => $c2,
-                  'ShipperId'    => $sid
-                );
-
-            $this->db->insert('ShipperContacts', $data);
-
-                         $data = array(
-                  'FirstName' => $fname
-                );
-
-            $this->db->insert('ShipperContacts', $data);
-
+              $this->db->insert('ShipperContacts', $data);
+              $this->session->success = 'success';   
+      }
               redirect('Login_user/settings/#shipper');
          
           }
@@ -183,10 +228,10 @@ class Add_user extends CI_Controller {
              $fname = $this->input->post('fname_contact');
              $mname = $this->input->post('mname_contact');
              $lname = $this->input->post('lname_contact');
-             $c1 = $this->input->post('no_contact');
-             $c2 = $this->input->post('no1_contact');
+             $c1 = $this->input->post('no_contact1');
+             $c2 = $this->input->post('no_contact2');
 
-             $shipper = $this->input->post('shipper');
+            
                 $data = array(
                   'FirstName' => $fname,
                   'MiddleName' => $mname,
@@ -197,14 +242,15 @@ class Add_user extends CI_Controller {
                 );
 
             $this->db->insert('ShipperContacts', $data);
-             /* redirect('Login_user/settings');*/
+              redirect('Login_user/settings/#shipper');
              ?>
 
-          <script>
-            $('#modal_add_shippercontacts').click();
+ 
+   <?php 
+            
 
-          </script>
-   <?php }
+
+ }
           
 
          

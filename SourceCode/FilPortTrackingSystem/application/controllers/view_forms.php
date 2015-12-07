@@ -15,6 +15,8 @@ class view_forms extends CI_Controller {
 function index(){
 /*echo validation_errors();
 echo form_open('form');*/
+
+$countries=$this->User->countries();
 	echo 	'<div class="consignees ">
 				<div class="con-info consig-pos "  data-toggle="collapse" data-target="#consignee" style="cursor:pointer">
 					<span style="cursor:pointer">ADD NEW CONSIGNEE</span>
@@ -26,30 +28,47 @@ echo form_open('form');*/
 					                <input type="text" name="cname"class="form-control" placeholder="Client Name" required/>
 					            </div>
 					        </div>
-					        <div class="">
-					            <div class="form-group col-md-2">
-					                <input type="text" name="Address" class="form-control" placeholder="St." required />
-					            </div>
-
-					       		<div class="form-group col-md-5">
-					                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
-					            </div>
-
-					           	<div class="form-group col-md-5">
-					                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
+					     	 <div class="">
+					            <div class="form-group col-lg-12">
+					            <!-- 	<label>HouseBuildingNo/Street</label> -->
+					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control"/>
+					          </div>
+					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>Barangay/Village</label> -->
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control" required />
 					            </div>
 					        </div>
-					    	<div class="">
-					            <div class="form-group col-md-12">
-					                <select class="form-control">
-					                	<option disabled selected>Select Country</option>
-					                	<option>country</option>
-					                </select>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>TownOrCityProvince</label> -->
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control" required />
+					            </div>
+					        </div>'?>
+
+					              <div class="">
+					            <div class="form-group col-lg-12 " >
+					            	<label>Countries</label>
+					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
+					           		<div class="change_select" >
+					           			<select name="country" class="form-control">
+					           			<?php 
+					           			  foreach($countries as $row)
+					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+
+					           			?>
+					           			</select>
+					           		</div>
 					            </div>
 					        </div>
-					        <div class="">
+
+
+
+
+			<?php	echo	 '<div class="">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="OfficeNumber" class="form-control" placeholder="Office Number" required />
+					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
 					            </div>
 					        </div>
 
@@ -68,7 +87,7 @@ echo form_open('form');*/
 }
  
 function broker(){
- 
+ $countries=$this->User->countries();
 	echo	'<div class="brokers tab-pane">
 				<div class="con-info consig-pos tab-pane" data-toggle="collapse" data-target="#broker"  style="cursor:pointer">
 					<span style="cursor:pointer">ADD NEW BROKER</span>
@@ -77,52 +96,67 @@ function broker(){
 							<form action=" '.base_url('Add_user/add_broker/').'" method="post">
 								<div class=" col-md-8">
 						            <div class="form-group ">
-						                <input type="text" name="fname"class="form-control" placeholder="First Name" required/>
+						                <input type="text" name="fname"class="form-control broker_fname" placeholder="First Name" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-4">
 						            <div class="form-group ">
-						                <input type="text" name="mname"class="form-control" placeholder="Middle Name"/>
+						                <input type="text" name="mname"class="form-control broker_mname" placeholder="Middle Name"/>
 						            </div>
 						        </div>
 
 
-						       	<div class="">
+						    <div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="lname"class="form-control" placeholder="Last Name" required/>
+						                <input type="text" name="lname"class="form-control broker_lname" placeholder="Last Name" required/>
 						            </div>
-						        </div>
+						    </div>
 
-						        <div class="">
-						            <div class="form-group col-md-2">
-						                <input type="text" name="Address" class="form-control" placeholder="St." required />
-						            </div>
+						    <div class="">
+					            <div class="form-group col-lg-12">
+					            <!-- 	<label>HouseBuildingNo/Street</label> -->
+					             <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="broker_houseno form-control"/>
+					          </div>
+					        </div>
+					        <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>Barangay/Village</label> -->
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="broker_village form-control" required />
+					            </div>
+					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>TownOrCityProvince</label> -->
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="broker_city form-control" required />
+					            </div>
+					         </div>'?>
 
-						       		<div class="form-group col-md-5">
-						                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
-						            </div>
+					              <div class="">
+					            <div class="form-group col-lg-12 " >
+					            	<label>Countries</label>
+					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
+					           		<div class="change_select" >
+					           			<select name="country" class="form-control">
+					           			<?php 
+					           			  foreach($countries as $row)
+					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
 
-						           	<div class="form-group col-md-5">
-						                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
-						            </div>
-						        </div>
-						    	<div class="">
+					           			?>
+					           			</select>
+					           		</div>
+					            </div>
+					        </div>
+
+
+				<?php		echo'  <div class="">
 						            <div class="form-group col-md-12">
-						                <select class="form-control">
-						                	<option disabled selected>Select Country</option>
-						              		<option>country</option>
-						                </select>
+						                <input type="text" name="c1" minlength="7" maxlength="15" class="form-control" placeholder="Contact No1" required />
 						            </div>
 						        </div>
-
 						        <div class="">
-						            <div class="form-group col-md-6">
-						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no1" required />
-						            </div>
-
-						          	<div class="form-group col-md-6">
-						                <input type="text" name="ContactNo" class="form-control" placeholder="Contact no2" required />
+						            <div class="form-group col-md-12">
+						                <input type="text" name="c2" minlength="7" maxlength="15" class="form-control" placeholder="Contact No2"  />
 						            </div>
 						        </div>
 						 
@@ -148,23 +182,18 @@ function vessel(){
 						<form action="'.base_url('Add_user/add_vessel/').'" method="post">
 							<div class="">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Number" required/>
-					            </div>
-					        </div>
-							<div class="">
-					            <div class="form-group col-md-12">
 					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Name" required/>
 					            </div>
 					        </div>';?>
-						<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
+				<script type="text/javascript" src="<?php echo base_url('resources/dropdown/jquery.searchabledropdown-1.0.8.min.js'); ?>"></script>	        
 					        <div class="">
 					            <div class="form-group  col-md-12 myselect">
+					            	<label style="margin-left: 10px;"> Shipper : </label>
 					               <select name="shipper" class="form-control">
-					               	<option disabled selected>Shipper name</option>
 					            	<?php  foreach($drop as $row){  ?> 
-					               <option value="<?php echo $row->ShipperId ?>">
-					               <?php echo $row->ShipperName ?>
-					               </option> 
+					                <option value="<?php echo $row->ShipperId ?>">
+					                <?php echo $row->ShipperName ?>
+					                </option> 
 					             <?php }?>
 					               </select>
 					            </div>
@@ -213,6 +242,7 @@ echo'				<div class="shippers tab-pane">
 					        </div>
 					        <div class="col-md-12">
 						            <div class="form-group ">
+						              <label>Shipper Contacts</label>
 						                <input type="text" name="fname"class="form-control" placeholder="First Name" required/>
 						            </div>
 						        </div>
@@ -232,13 +262,13 @@ echo'				<div class="shippers tab-pane">
 
 						        <div class=" col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con1"class="form-control" placeholder="Contact no.1" required/>
+						                <input type="text" name="con1"class="form-control" minlength="7" maxlength="15"  placeholder="Contact no.1" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con2"class="form-control" placeholder="Contact no.2"/>
+						                <input type="text" name="con2"class="form-control" minlength="7" maxlength="15"  placeholder="Contact no.2"/>
 						            </div>
 						        </div>
 					 
@@ -282,13 +312,13 @@ echo'				<div class="shippers tab-pane">
 
 						        <div class=" col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con1"class="form-control" placeholder="Contact no.1" required/>
+						                <input type="text" name="con1" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.1" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con2"class="form-control" placeholder="Contact no.2"/>
+						                <input type="text" name="con2" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.2"/>
 						            </div>
 						        </div>
 					 
