@@ -1,9 +1,3 @@
-  
-
-
-
-
-
   <div class="modal-content" style="width:180%;right:40%;">
 
     <div class="modal-header" style="background-color: deepskyblue;">
@@ -54,7 +48,7 @@
 
 						  <label for="cnts">Number of Cartons:</label>
 
-						  <input type="text" class="form-control input-sm" id="cnts">
+						  <input type="number" class="form-control input-sm" id="cnts">
 
 
 
@@ -93,48 +87,41 @@
 
 
 						  <label for="etd">Estimated Time of Departure:</label>
-						  
-						  <input type="date" class="form-control input-sm" id="etd" size="100" >
-						  <input type="time" class="form-control input-sm" id="etd_time" size="100" >
+						  <input type="datetime-local" name="bdaytime">
 
 
 						  <label for="eta">Estimated Time of Arrival:</label>
-
-						  <input type="date" class="form-control input-sm" id="eta">
-						  <input type="time" class="form-control input-sm" id="eta_time" size="100" >
+						  <input type="datetime-local" name="bdaytime">
 						</div>
 
 						<div class="col-lg-4" >
 						  <label for="AVT">AVT:</label>
 
-						  <input type="date" class="form-control input-sm" id="avt">
-						  <input type="time" class="form-control input-sm" id="avt_time" size="100" >
+						 	<input type="datetime-local" name="bdaytime">
 
 
 						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">Actual Time of Arrival:</label>
 
-						  <input type="date" class="form-control input-sm" id="ata">
-						  <input type="time" class="form-control input-sm" id="ata_time" size="100" >
+						  <input type="datetime-local" name="bdaytime">
 
-		  				<label for="bank">Letter of Credit No. from Bank:</label>
+		  				  <label for="bank">Letter of Credit No. from Bank:</label>
 
 						  <input type="text" class="form-control input-sm " id="bank">
 
+						  <label for="dem">Start of Demorage:</label>
+
+						  <input type="date" class="form-control input-sm" id="etd" size="100" >
+						  <input type="time" class="form-control input-sm" id="etd_time" size="100" >
 
 
-						   <label for="dem">Start of Demorage:</label>
+						  <label for="storage">Start Storage:</label>
 
-						  <input type="text" class="form-control input-sm" id="dem">
-
-
-
-						   <label for="storage">Start Storage:</label>
-
-						  <input type="text" class="form-control input-sm" id="storage">
+						  <input type="date" class="form-control input-sm" id="etd" size="100" >
+						  <input type="time" class="form-control input-sm" id="etd_time" size="100" >
 
 
 
-						   <label for="registry">Registry:</label>
+						  <label for="registry">Registry:</label>
 
 						  <input type="text" class="form-control input-sm" id="registry">
 
@@ -154,25 +141,23 @@
 
 						   <label for="carrier">Carrier:</label>
 
-						  <input type="text" class="form-control input-sm" id="carrier">
+						   <input type="text" class="form-control input-sm" id="carrier">
 
 
 
 						   <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-
-						  <input type="text" class="form-control input-sm" id="dtRcvd">
+							  <input type="datetime-local" name="bdaytime">
 
 
 
 						   <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-
-						  <input type="text" class="form-control input-sm" id="dtPckup">
+							  <input type="datetime-local" name="bdaytime">
 
 
 
 						   <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
 
-						  <input type="text" class="form-control input-sm" id="dtPckRcv">
+						  	<input type="datetime-local" name="bdaytime">
 
 		  			</div>
 
@@ -210,7 +195,7 @@
 
 						   <label for="dtFile">Date File Entry to BOC:</label>
 
-						  <input type="date" class="form-control input-sm" id="dtFile">
+						  <input type="datetime-local" name="">
 
 
 
@@ -222,7 +207,7 @@
 
 						   <label for="dtPaid">Date Paid(Date& Time):</label>
 
-						  <input type="date" class="form-control input-sm" id="dtPaid">
+						  <input type="datetime-local" name="">
 
 
 
@@ -231,22 +216,15 @@
 						  <input type="date" class="form-control input-sm" id="dtClrd">
 
 
-
-						   <label for="plteNum">Plate No. /Truck Name:</label>
-
-						  <input type="text" class="form-control input-sm" id="plteNum">
-
-
-
 						   <label for="gateIn">Gate In at Port:</label>
 
-						  <input type="date" class="form-control input-sm" id="gateIn">
+						  	<input type="datetime-local" name="">
 
 
 
 						   <label for="gateOut">Gate Out at Port:</label>
 
-						  <input type="date" class="form-control input-sm" id="gateOut">
+						  	<input type="datetime-local" name="">
 
 
 
