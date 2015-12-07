@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 	<?php $this->load->view('header/header'); ?>
-	
 </head>
 
 <body >
