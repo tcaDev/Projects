@@ -298,6 +298,84 @@ Class User extends CI_Model
    return $query->result();
 
   }
+
+  
+  /*
+  --------------------------------------------
+    Upload Photo
+  --------------------------------------------
+  */
+
+  function update_photo($id,$imageName){
+
+    $data = array(
+                'ProfileImageSource' => $imageName 
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data);
+  }
+
+
+  /*
+  --------------------------------------
+    Update Name
+  --------------------------------------
+  */
+
+  function updateName($id,$fname,$mname,$lname){
+
+      $data = array(
+                'FirstName' => $fname,
+                'LastName'  => $lname,
+                'MiddleName'=> $mname 
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data);
+  }
+
+
+ /*
+  --------------------------------------
+    Get all data from User
+  --------------------------------------
+  */
+
+  function get_updated_data($id){
+   $query = $this->db->query("select * from User where UserId='$id' ");
+
+    return $query->result();
+  }
+
+   /*
+  --------------------------------------
+    Get current Password
+  --------------------------------------
+  */
+
+  function get_current_pass($id){
+   
+   $query = $this->db->query("select Password from User where UserId='$id' ");
+   
+    return $query->result();
+  }
+
+   /*
+  --------------------------------------
+    Update Password
+  --------------------------------------
+  */
+
+  function updatePass($id,$renewpass){
+
+     $data = array(
+                'Password' => $renewpass
+                );
+
+          $this->db->where('UserId', $id);
+          $this->db->update('User', $data); 
+  }
     
 }
 
