@@ -225,6 +225,41 @@ class Login_user extends CI_Controller {
 	{
 	//check if the user is already login
 	 if($this->session->userdata('logged_in')){		
+
+
+	 	 $item_per_page = 10;
+
+	 	//total page of consignee start
+	 	$this->db->from('vw_consignee_full_info');
+		$total_consignee= $this->db->count_all_results();
+		$page = ceil($total_consignee/$item_per_page);
+		$data['consignee_total'] = $page;
+		//total page of consignee end
+
+	     //total page of broker start
+	 	$this->db->from('vw_broker_full_info');
+		$total_broker= $this->db->count_all_results();
+		$page = ceil($total_broker/$item_per_page);
+		$data['broker_total'] = $page;
+		//total page of broker end
+
+		  //total page of shipper start
+	 	$this->db->from('Shipper');
+		$total_shipper= $this->db->count_all_results();
+		$page = ceil($total_shipper/$item_per_page);
+		$data['shipper_total'] = $page;
+		//total page of shipper end
+
+		 //total page of shipper start
+	 	$this->db->from('ShipperVessel');
+		$total_shipper= $this->db->count_all_results();
+		$page = ceil($total_shipper/$item_per_page);
+		$data['vessel_total'] = $page;
+		//total page of shipper end
+
+
+		//select country
+		$data['countries']=$this->User->countries();
 	 	$data['lconsignee']  =  $this->User->settings_consignee();
 	 	$data['lbroker']	 =  $this->User->settings_broker();
 	 	$data['lvessel'] 	 =  $this->User->settings_vessel();
@@ -568,5 +603,174 @@ class Login_user extends CI_Controller {
 	}		
 
 
+
+   //for pagination  start
+
+
+	function consignee_content(){
+	
+    $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	 }else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	
+
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+
+   $id       =  $this->input->post('consignee_id');
+   if(isset($id)){
+   	$clients = $this->User->search_consignee($id);
+   }else{
+   	 $clients  =  $this->User->findlimit($item_per_page,$page_position);
+	
+   }
+
+
+  
+			echo	  '<table class="table table-striped table_consignee">
+					    <thead>
+					      <tr>
+					        <th>Consignee Name</th>
+					        <th>HouseBuildingNo/Street</th>
+					        <th>Barangay/Village</th>
+					         <th>Town/City/Province</th>
+					         <th>Country</th>
+					        <th>OfficeNumber</th>
+					        <th>Status</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+					    </thead>
+					    <tbody>' ?>
+					      	<?php 
+					         $i=0;
+					      		foreach ($clients as $row) {
+					      	    $i++;
+
+					      	   
+					      	    //for default value
+					      	    if($i==1){
+					      	    	$cid   = $row->ConsigneeId; 
+					      		}
+
+					     	    $active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
+					         	$number = $row->OfficeNumber;
+	
+					   echo     '<tr style="cursor:pointer;">
+					    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
+							        <td>'. $row->ConsigneeName .'</td>
+							      	<td>'. $row->HouseBuildingNoOrStreet .'</td>
+							        <td>'. $row->BarangayOrVillage .'</td>  
+							        <td>'. $row->TownOrCityProvince .'</td> 
+							        <td>'. $row->Country .'</td>          
+							        <td>'. $number .'</td>       
+							        <td>'.$stat .'</td>
+							        <td   class="hidden">'. $mystat .'</td>
+							        <td   class="hidden">'. $row->CountryId .'</td>
+							        <td><button type="button" class="btn get_consignee_datas" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="btn delete_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+					     		 </tr>';
+					      		}
+
+//for message popup when update  adding data is success/failed start			      		
+  
+  if(isset($_SESSION['success'])){
+    $success = $_SESSION['success'];
+  	if($success=='success'){
+  	 $message_success = 'Data is successfully added!';
+  	}
+    if($success=='update_success'){
+  	$message_success = 'Data is successfully updated!';
+    }
+
+	 echo  "<script>
+			    $.alert({
+							title: 'Alert!',
+						    content: '$message_success',
+						    confirm: function(){
+														    
+							}
+							});
+	  </script>";
+
+	  	$this->session->unset_userdata('success');
+  }
+  if(isset($_SESSION['failed'])){
+  	$failed = $_SESSION['failed'];
+  	if($failed=='failed'){
+  	 $message = 'Failed to add, because the data  is already exists!';
+  	
+  	}
+    if($failed=='update_failed'){
+  	$message = 'Failed to update, because the data  is already exists!';
+  }
+
+  
+ 		echo "<script>
+		 		   $.alert({
+						title: 'Alert!',
+					    content: '$message',
+					    confirm: function(){
+													    
+						}
+						});
+  			</script>";
+
+  	$this->session->unset_userdata('failed');
+  }
+  //for message popup when update  adding data is success/failed start	
+
+
+					      ?>
+					    <!--   <td><button class="btn update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td> -->
+					    </tbody>
+					  </table> 
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>
+ <script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
+ 
+ <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
+   
+
+
+
+
+
+	<?php	
+
+
+
+	}
+
+
+
+
+
+
+
+   //for pagination  end
+
 }
+
+
 
