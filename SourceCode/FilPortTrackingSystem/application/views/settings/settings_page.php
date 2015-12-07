@@ -1,4 +1,156 @@
 
+<style>
+.mycolor{
+
+	 background-color: #66FF99 !important;
+}
+</style>
+
+
+
+ <script>
+  var content_consignee = "<?php echo base_url('Login_user/consignee_content')?>";
+  var total_consignee   =  "<?php echo $consignee_total; ?>";
+  var content_broker    = "<?php echo base_url('Search/search_broker')?>";
+  var total_broker      =  "<?php echo $broker_total; ?>";
+  var content_shipper   = "<?php echo base_url('Search/search_shipper')?>";
+  var total_shipper     =  "<?php echo $shipper_total; ?>";
+  var content_vessel   = "<?php echo base_url('Search/search_vessel')?>";
+  var total_vessel     =  "<?php echo $vessel_total; ?>";
+ </script>
+
+		
+		<!--For  pagination start -->		
+		<script type="text/javascript">
+	
+		     
+				$(document).ready(function() {
+				    $(".consigneepage").load(content_consignee);  //initial page number to load
+				    $(".pagination_consignee").bootpag({
+				        total:total_consignee, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".consigneepage").load(content_consignee, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+				});
+
+				$(document).ready(function() {
+				    $(".brokerpage").load(content_broker);  //initial page number to load
+				    $(".pagination_broker").bootpag({
+				        total:total_broker, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".brokerpage").load(content_broker, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+
+			 $(document).ready(function() {
+				    $(".shipperpage").load(content_shipper);  //initial page number to load
+				    $(".pagination_shipper").bootpag({
+				        total:total_shipper, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".shipperpage").load(content_shipper, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+
+		 $(document).ready(function() {
+				    $(".vesselpage").load(content_vessel);  //initial page number to load
+				    $(".pagination_vessel").bootpag({
+				        total:total_vessel, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".vesselpage").load(content_vessel, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+			
+		
+				
+		</script>
+	     <!--For  pagination end -->
 		<div class="con-shiptxt">
 		  <ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
@@ -17,165 +169,33 @@
 	            </span>
 	        </div>
 		</div>
-            <div class="con-ship tab-content">  
-                  <div class="consignee tab-pane fade in active">
-			      <table class="table table-striped table_consignee">
-					    <thead>
-					      <tr>
-					        <th>Consignee Name</th>
-					        <th>Address</th>
-					        <th>OfficeNumber</th>
-					        <th>Status</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					      	<?php 
-					         $i=0;
-					      		foreach ($clients as $row) {
-					      	    $i++;
-					      	    //for default value
-					      	    if($i==1){
-					      	    	$cid   = $row->ConsigneeId;
-					      	    	$cname = $row->ConsigneeName;
-					      	    	$date  = $row->DateAdded;
-					      		}
+            <div class="con-ship tab-content"> 
 
-					     	    $active= $row->IsActive;
-					      		if($active==1){ 
-					      		  $stat = 'activated';
-					      		  $mystat = '1';
-					      		}else{
-					      		  $stat = 'deactivated';
-					      		  $mystat= '0';
-					      		}
-					      		if($stat=='activated')
-					      		{
-					      			$stats = 'deactivated';
-					      			$mystats = '0';	
-					      		}else{
-					      			$stats = 'activated';
-					      			$mystats = '1';
-					         	}
-					         	$number = $row->OfficeNumber;
-	
-					   echo     '<tr style="cursor:pointer;">
-					    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
-							        <td>'. $row->ConsigneeName .'</td>
-							        <td>'. $number .'</td>       
-							        <td>'.$stat .'</td>
-							        <td   class="hidden">'. $row->DateAdded .'</td>
-							        <td   class="hidden">'. $mystat .'</td>
-							        <td><button type="button" class="btn get_consignee_datas" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="btn delete_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
-					     		 </tr>';
-					      		}
+               <!--FOr consignee data view  start--> 
+                  <div class="consignee tab-pane fade in active"> 
+                  <div class="consigneepage"> </div>
+                  	<div class="pagination_consignee pull-right"> </div>
+                  </div>
+			    <!--FOr consignee data view  end-->
 
-					      ?>
-					    <!--   <td><button class="btn update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td> -->
-					    </tbody>
-					  </table>
-			    </div>
+			    <!--FOr BROKER data view  start--> 
 			    <div class="tab-pane fade broker">
-			      <table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Full Name</th>
-					        <th>Address</th>
-					        <th>Contact no1.</th>
-					        <th>Contact no2.</th>
-					        <th>Status</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>
+			      <div class="brokerpage"> </div>
+                  <div class="pagination_broker pull-right"> </div>
 
-					    <?php
-					    foreach ($lbroker as $row) {
-					    	  	 $active= $row->IsActive;
-					      		if($active==1){ 
-					      		  $stat = 'activated';
-					      		  $mystat = '1';
-					      		}else{
-					      		  $stat = 'deactivated';
-					      		  $mystat= '0';
-					      		}
-					      		if($stat=='activated')
-					      		{
-					      			$stats = 'deactivated';
-					      			$mystats = '0';	
-					      		}else{
-					      			$stats = 'activated';
-					      			$mystats = '1';
-					         	}
-					    
-					     echo'
-					      <tr>
-					      	<td class="hidden">'.$row->BrokerId.'</td>
-					      	<td >'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.' </td>
-					        <td class="hidden">'.$row->FirstName.'</td>
-					        <td class="hidden">'.$row->MiddleName.'</td>
-					        <td class="hidden">'.$row->LastName.'</td>
-					        <td>'.$row->FirstName.'</td>
-					        <td>'.$stat .'</td>
-
-					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>
-					      
-					      
-					      </tr>';}
-
-					      ?>
-					    </tbody>
-					  </table>
 			    </div>
+			     <!--FOr BROKER data view  END-->
+
 			    <div  class="vessel tab-pane fade">
-			      <table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Vessel Name</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					    <?php 
-					    foreach ($lvessel as $row) {
-					    echo  '<tr>
-							        <td class="hidden">'.$row->ShipperVesselId.'</td>
-							        <td>'.$row->Vesselname.'</td>
-							         <td><button type="button" class="btn get_vessel_datas" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_vessel"><span class="glyphicon glyphicon-trash"></span></button></td>
-					    	  </tr>';}
-					      ?>
-					    </tbody>
-					  </table>
+			 	  <div class="vesselpage"> </div>
+                  <div class="pagination_vessel pull-right"> </div>
 			    </div>
+
 			    <div  class="tab-pane fade shipper">
-			      <table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Shipper Name</th>
-					        <th>Shipper Contacts</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					    <?php 
-					     $count=0;
-					      foreach ($lshipper as $row) {	
-					  echo  '<tr>
-					  	    <td class="hidden">'.$row->ShipperId.'</td>
-					  	    <td>'.$row->ShipperName.'</td>
-					        <td class="hidden">'.$row->DateAdded.'</td> 
-					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
-					       	<button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					        <td><button type="button" class="btn get_shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
-					      </tr>';}
-					     ?>
-					    </tbody>
-					  </table>
+				  <div class="shipperpage"> </div>
+                  <div class="pagination_shipper pull-right"> </div>
 			    </div>
+
 			    <div class="container tab-pane fade">
 			      <table class="table table-striped">
 					    <thead>
@@ -215,28 +235,39 @@
 					                <input type="text" name="cname"class="form-control" placeholder="Client Name" required/>
 					            </div>
 					        </div>
-					        <div class="">
-					            <div class="form-group col-md-2">
-					                <input type="text" name="Address" class="form-control" placeholder="St." required />
-					            </div>
-
-					       		<div class="form-group col-md-5">
-					                <input type="text" name="Address" class="form-control" placeholder="Baranggay or Village" required />
-					            </div>
-
-					           	<div class="form-group col-md-5">
-					                <input type="text" name="Address" class="form-control" placeholder="Town or Province" required />
+					      	  <div class="">
+					            <div class="form-group col-lg-12">
+					            <!-- 	<label>HouseBuildingNo/Street</label> -->
+					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control"/>
+					          </div>
+					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>Barangay/Village</label> -->
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control" required />
 					            </div>
 					        </div>
-					    	<div class="">
-					            <div class="form-group col-md-12">
-					                <select class="form-control">
-					                	<option disabled selected>Select Country</option>
-					              		<option>country</option>
-					                </select>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<!-- <label>TownOrCityProvince</label> -->
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control" required />
 					            </div>
 					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12 " >
+					            	<label>Countries</label>
+					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
+					           		<div class="change_select" >
+					           			<select name="country" class="form-control">
+					           			<?php 
+					           			  foreach($countries as $row)
+					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
 
+					           			?>
+					           			</select>
+					           		</div>
+					            </div>
+					        </div>
 					        <div class="">
 					            <div class="form-group col-lg-12">       	
 					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
@@ -268,13 +299,32 @@
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Client Name</label>
-					               <input type="text"   name="consig_name"  class="consignee_name form-control"/>
+					               <input type="text"   name="consig_name"  class="consignee_name form-control" required/>
 					            </div>
 					        </div>
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Address</label>
-					               <input type="text"   name="consig_addr"  class="consignee_addr form-control"/>
+					            	<label>HouseBuildingNo/Street</label>
+					               <input type="text"   name="hbno"  class="hbno form-control"/>
+					            </div>
+					        </div>
+					         <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Barangay/Village</label>
+					                <input type="text" name="vilage"   class="vilage form-control" required />
+					            </div>
+					        </div>
+					         <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>TownOrCityProvince</label>
+					                <input type="text" name="city"   class="city form-control" required />
+					            </div>
+					        </div>
+					         <div class="row">
+					            <div class="form-group col-lg-12 " >
+					            	<label>Countries</label>
+					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
+					           		<div class="change_select"></div>
 					            </div>
 					        </div>
 					        <div class="row">
@@ -321,22 +371,23 @@
 				          <h4 class="modal-title">Vessel Information</h4>
 				        </div>
 				        <div class="modal-body">
+				       <?php echo form_open('Update/update_vessel/');?>
 				          	  <input type="hidden" name="ves_id"      class="vessel_id" />
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Vessel Name</label>
-					               <input type="text"   name="ves_name"  class="vessel_name form-control"/>
+					               <input type="text"   name="ves_name"  class="vessel_name form-control" required/>
 					            </div>
 					        </div>
 					  
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="button" class="update_vessel pull-right btn btn-default">Submit</button>
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
-			
+					 </form>
 				        </div>
-
+				     
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
@@ -357,21 +408,21 @@
 				          <h4 class="modal-title">Shipper Information</h4>
 				        </div>
 				        <div class="modal-body">
-		        	
+		        	<?php echo  form_open('Update/update_shipper/'); ?>
 				            <input type="hidden" name="ship_id" value='' class="ship_id form-control"/>
 							
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Shipper Name</label>
-					               <input type="text" name="ship_name" value="" class="shipper_name form-control"/>
+					               <input type="text" name="ship_name" value="" class="shipper_name form-control" required/>
 					            </div>
 					        </div>
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="button" class=" update_shipper pull-right btn btn-default">Submit</button>
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
-			   	 		
+			   	    </form>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="  btn btn-default" data-dismiss="modal">Close</button>
@@ -390,6 +441,7 @@
 				          <h4 class="modal-title">Broker Information</h4>
 				        </div>
 				        <div class="modal-body">
+				        <?php echo form_open('Update/update_broker');?>
 				            <input type="hidden" name="broker_id" value="" class="broker_id form-control"/>
 							<div class="row">
 					            <div class="form-group col-lg-12">
@@ -411,17 +463,45 @@
 					        </div>
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Address</label>
-					               <input type="text"   name="broker_address" value="" class="broker_address form-control"/>
+					            	<label>HouseBuildingNo</label>
+					               <input type="text"   name="houseno" value="" class="broker_houseno form-control"/>
 					            </div>
 					        </div>
-					         <div class="row">
+					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.</label>
-					               <input type="text"   name="broker_contact" minlength="7" maxlength="15" value="" class="broker_contact form-control"/>
+					            	<label>Barangay/Village</label>
+					               <input type="text"   name="village" value="" class="broker_village form-control"/>
 					            </div>
 					        </div>
-
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Town/City/Province</label>
+					               <input type="text"   name="city" value="" class="broker_city form-control"/>
+					            </div>
+					       </div>
+					 
+					        <input type="text"   name="countryid" value="" class=" hidden broker_countryid form-control"/>
+					        
+					       <div class="row">
+					          <div class="form-group col-lg-12 change_select" >
+					            	<label>Countries</label>
+					              <!--   <input type="text" name="country"   class="broker_country form-control" required /> -->
+					           		<div class="change_select"> </div>
+					            </div>
+					       </div>
+					       <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Contact No.1</label>
+					               <input type="text"   name="c1" value="" minlength="7" maxlength="15" class="broker_c1 form-control"/>
+					            </div>
+					       </div>
+					       <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Contact No.2</label>
+					               <input type="text"   name="c2" value="" minlength="7" maxlength="15"  class="broker_c2 form-control"/>
+					            </div>
+					       </div>
+					   
 					        <div class="col-lg-12">
 					        	<label>Status: </label>
 						        <div class="radio">
@@ -433,9 +513,10 @@
 					        </div>
 					         <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="button" class="update_broker pull-right btn btn-default">Submit</button>
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
+					     </form>
 						</div>
 						 <div class="modal-footer">
 				          <button type="button " class="btn btn-default" data-dismiss="modal">Close</button>
@@ -460,51 +541,51 @@
 				          <h4 class="modal-title">Add Shipper Contacts</h4>
 				        </div>
 				        <div class="modal-body">
-		       
-				            <input type="hidden"  value="" class="shipper_id form-control"/>
+		       		<?php echo form_open('Add_user/add_shippercon');?>
+				            <input type="hidden" name="shipper_id" value="" class="shipper_id form-control"/>
 							
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>First Name</label>
-					               <input type="text" value="" class="fname_contact form-control" required/>
+					               <input type="text" name="fname_contact" value="" class="fname_contact form-control" required/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Middle Name</label>
-					               <input type="text" value="" class="mname_contact form-control"/>
+					               <input type="text" name="mname_contact" value="" class="mname_contact form-control"/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Last Name</label>
-					               <input type="text" value="" class="lname_contact form-control"/>
+					               <input type="text" name="lname_contact" value="" class="lname_contact form-control" required/>
 					            </div>
 					        </div>
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.1</label>
-					               <input type="text" value="" minlength="7" maxlength="15" class="no_contact form-control"/>
+					               <input type="text" name="no_contact1" value="" minlength="7" maxlength="15" class="no_contact form-control" required/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.2</label>
-					               <input type="text" value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
+					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
 					            </div>
 					        </div>
 
 					
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" add_contancts pull-right btn btn-default">Submit</button>
+					            	<button type="submit" class=" submit_contact pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
-			   	 		
+			   	 	</form>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -514,43 +595,14 @@
 			</div>
 
  
- 		<script>
-		//for highlight and getting the data
-
-				 cid = <?php echo $cid;?>;
-				 
-				  $('td').click(function(){
-		 		  $('tr').removeClass('mycolor').children('td');
-		          
-		          var cid=$(this).closest('tr').addClass('mycolor').children('td:first').text();
-		          var check = $.isNumeric(cid);
-
-		          if(check==false){
-		         	$('tr').removeClass('mycolor').children('td');
-		         	cid = <?php echo $cid;?>;
-
-		          }
-	/*	         var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var Consignee    = $(this).closest('tr').children('td:eq(1)').text();
-			     var Address      = $(this).closest('tr').children('td:eq(2)').text();
-			     var dtupdated    = $(this).closest('tr').children('td:eq(5)').text();*/
-
-		           });
-		</script>
 
 
- <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
+
+
 
 
 </body>
 </html>
-
-<style>
-.mycolor{
-
-	 background-color: #66FF99 !important;
-}
-</style>
 
 
           
