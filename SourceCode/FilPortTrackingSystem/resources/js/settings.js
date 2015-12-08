@@ -302,6 +302,19 @@ $('.add_consignee_contact').click(function(){
 		      		   $('#search').addClass('vessel_tab');
 		      		     //for searching code end
 		       }
+		         if(location.hash=="#hauler"){
+		      		  $('#form_haulers').trigger('click');
+
+		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/hauler/",function(data){
+		  					$('#mycontent').html(data);
+					   });
+
+		      		   location.hash='';
+		      		      //for searching code start
+		      		   $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('hauler_tab');
+		      		     //for searching code end
+		       }
        
 
         });
@@ -321,12 +334,9 @@ $('.add_consignee_contact').click(function(){
 	  	$('#search').removeClass('broker_tab');
 	    $('#search').removeClass('shipper_tab');
 	    $('#search').removeClass('vessel_tab');
+	    $('#search').removeClass('hauler_tab');
 
-	    $('#submit_search').addClass('submit_consignee');
-	    $('#submit_search').removeClass('submit_broker');
-	    $('#submit_search').removeClass('submit_shipper');
-	    $('#submit_search').removeClass('submit_vessel');
-	    
+ 
 
 		  $.get("http://localhost/FilPortTrackingSystem/View_forms/",function(data){
 		  	$('#mycontent').html(data);
@@ -338,12 +348,9 @@ $('.add_consignee_contact').click(function(){
 	  	$('#search').addClass('broker_tab');
 	    $('#search').removeClass('shipper_tab');
 	    $('#search').removeClass('vessel_tab');
+	    $('#search').removeClass('hauler_tab');
 
-	    $('#submit_search').removeClass('submit_consignee');
-	    $('#submit_search').addClass('submit_broker');
-	    $('#submit_search').removeClass('submit_shipper');
-	    $('#submit_search').removeClass('submit_vessel');
-
+	
 
 	  	  $.get("http://localhost/FilPortTrackingSystem/View_forms/broker/",function(data){
 		  	$('#mycontent').html(data);
@@ -355,11 +362,7 @@ $('.add_consignee_contact').click(function(){
 	  	$('#search').removeClass('broker_tab');
 	    $('#search').removeClass('shipper_tab');
 	    $('#search').addClass('vessel_tab');
-
-	    $('#submit_search').removeClass('submit_consignee');
-	    $('#submit_search').removeClass('submit_broker');
-	    $('#submit_search').removeClass('submit_shipper');
-	    $('#submit_search').addClass('submit_vessel');
+	    $('#search').removeClass('hauler_tab');
 
 	  	  $.get("http://localhost/FilPortTrackingSystem/View_forms/vessel/",function(data){
 		  	$('#mycontent').html(data);
@@ -371,17 +374,33 @@ $('.add_consignee_contact').click(function(){
 	  	$('#search').removeClass('broker_tab');
 	    $('#search').addClass('shipper_tab');
 	    $('#search').removeClass('vessel_tab');
+	    $('#search').removeClass('hauler_tab');
 
-	    $('#submit_search').removeClass('submit_consignee');
-	    $('#submit_search').removeClass('submit_broker');
-	    $('#submit_search').addClass('submit_shipper');
-	    $('#submit_search').removeClass('submit_vessel');
 
 	  	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
 	  });   
+
+	$('#form_haulers').click(function(){
+          
+	   	$('#search').removeClass('consignee_tab');
+	  	$('#search').removeClass('broker_tab');
+	    $('#search').removeClass('shipper_tab');
+	    $('#search').removeClass('vessel_tab');
+	    $('#search').addClass('hauler_tab');
+
+	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/hauler/",function(data){
+		  	$('#mycontent').html(data);
+		  		
+		  });
+	 });  
+
+
+
+
+
  });
 
 		
@@ -407,6 +426,11 @@ $('.add_consignee_contact').click(function(){
 								    	search();								    
 									}
 });
+$('.hauler_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
 
 
 
@@ -416,6 +440,7 @@ function search(){
  var broker =  $('.broker_tab').val();
  var shipper =  $('.shipper_tab').val();
  var vessel =  $('.vessel_tab').val();
+ var hauler =  $('.hauler_tab').val();
  if(consignee!=undefined){
      search_consignee(consignee);
  }else if(broker!=undefined){
@@ -424,6 +449,8 @@ function search(){
   	search_shipper(shipper);
   }else if (vessel!=undefined){
   	search_vessel(vessel);
+  }else if (hauler!=undefined){
+  	search_hauler(hauler);
   }
 
 
@@ -483,6 +510,23 @@ function search_vessel(vessel){
 					})
 					  .done(function(data) {
 					   $('.vesselpage').html(data);
+
+					      
+					  }); 
+
+
+}
+
+
+function search_hauler(hauler){
+
+ 		    $.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Search/search_hauler/",
+					  data: { hauler_id:hauler}
+					})
+					  .done(function(data) {
+					   $('.haulerpage').html(data);
 
 					      
 					  }); 

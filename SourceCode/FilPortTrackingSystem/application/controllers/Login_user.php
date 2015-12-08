@@ -279,6 +279,13 @@ class Login_user extends CI_Controller {
 		$data['vessel_total'] = $page;
 		//total page of shipper end
 
+	    //total page of haulers start
+	 	$this->db->from('Hauler');
+		$total_hauler= $this->db->count_all_results();
+		$page = ceil($total_hauler/$item_per_page);
+		$data['hauler_total'] = $page;
+		//total page of haulers end
+
 
 		//select country
 		$data['countries']   =  $this->User->countries();

@@ -895,8 +895,10 @@ function search_vessel(){
 
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var vessel    	  = $(this).closest('tr').children('td:eq(1)').text();
+			     var vesno    	  = $(this).closest('tr').children('td:eq(2)').text();
 			      $('.vessel_id').val(id);
 			      $('.vessel_name').val(vessel);
+			      $('.vesno').val(vesno);
 	
 		
 			 });
@@ -916,7 +918,7 @@ function search_vessel(){
 //  REIN ADDED
 /////////////////////////////////
 
-function search_haulers(){
+function search_hauler(){
 
 $this->message();
    $item_per_page=10;
@@ -931,11 +933,11 @@ $this->message();
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
  
-	$id = $this->input->post('haulerid');
+	$id = $this->input->post('hauler_id');
 	   if(isset($id)){
-	        $haulers = $this->User->search_haulers($id);
+	        $haulers = $this->User->search_hauler($id);
 	   }else{
-	   	 $haulers  =  $this->User->findlimit_haulers($item_per_page,$page_position);	
+	   	 $haulers  =  $this->User->findlimit_hauler($item_per_page,$page_position);	
 	   } 	
 	echo '<table class="table table-striped">
 		    <thead>
@@ -945,20 +947,19 @@ $this->message();
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
-	 <?php 
-		     // $i=0;
-		     //  foreach ($haulers as $row) {	
-		     //  	$i++;
-		     //  	 if($i==1){
-		     //  	    	$cid   = $row->HaulersId;
-		      	  
-		     //  		}
-	    echo  '<tr>
-			        <td class="hidden"></td>
-			        <td></td>
-			         <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-			        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
-	    	  </tr>';
+				    <?php 
+					    $i=0;
+					    foreach ($haulers as $row) {
+					    $i++;
+					    if($i==1){
+					    $cid= $row->HaulerId;
+					    }
+					    echo  '<tr>
+							        <td class="hidden">'.$row->HaulerId.'</td>
+							        <td>'.$row->HaulerName.'</td>
+							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+					    	  </tr>';}
 
 ?>
     </tbody>
@@ -988,7 +989,7 @@ $this->message();
 							    confirm: function(){
 							    }
 							});
-					    location.hash="haulers";
+					    location.hash="hauler";
 					    location.reload();
 					  });
 		        },
@@ -997,11 +998,11 @@ $this->message();
 		        }
 		    });
 			});
-	 	 $('.update_haulers').click(function(){
+	 	 $('.update_hauler').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var haulers   	  = $(this).closest('tr').children('td:eq(1)').text();
-			      $('.haulers_id').val(id);
-			      $('.haulers_name').val(haulers);
+			      $('.hauler_id').val(id);
+			      $('.hauler_name').val(haulers);
 			 });
 	</script>
 	<?php

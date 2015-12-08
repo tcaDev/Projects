@@ -31,6 +31,10 @@ class Delete_datas extends CI_Controller {
  	 $id = $this->input->post('id');
  	 $this->db->delete('Broker', array('BrokerId' => $id));
  }
+  function del_haulers(){
+ 	 $id = $this->input->post('id');
+ 	 $this->db->delete('Hauler', array('HaulerId' => $id));
+ }
 
 
 }

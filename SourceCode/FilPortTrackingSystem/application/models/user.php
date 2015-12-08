@@ -86,11 +86,15 @@ Class User extends CI_Model
 
      /* function update_shipper($id,$name,$fname,$mname,$lname,$c1,$c2){
       */
-       function update_shipper($id,$name){
+       function update_shipper($id,$name,$hbno,$vilage,$city,$country){
       
         $data = array(
-        'ShipperName'      => $name,
-        'DateAdded'        => date('Y-m-d')
+        'ShipperName'               => $name,
+        'DateAdded'                 => date('Y-m-d'),
+        'HouseBuildingNoStreet'     => $hbno,
+        'BarangarOrVillage'         => $vilage,
+        'TownOrCityProvince'        => $city,
+        'CountryId'                 => $country
         );
           $this->db->where('ShipperId', $id);
           $this->db->update('Shipper', $data);
@@ -110,6 +114,8 @@ Class User extends CI_Model
     
   }
 
+
+// FOR UPDATING CONTACT PERSONS IN SETTINGS START
     function update_shippercon($id,$fname,$mname,$lname,$c1,$c2){
 
               $data2 = array(
@@ -124,6 +130,21 @@ Class User extends CI_Model
          $this->db->where('ShipperContactId', $id);
          $this->db->update('ShipperContacts', $data2);
     }
+    function update_consigneecon($id,$fname,$mname,$lname,$c1,$c2){
+
+              $data2 = array(
+                'FirstName'        =>$fname,
+                'MiddleName'       =>$mname,
+                'LastName'         =>$lname,
+                'ContactNo1'       =>$c1,
+                'ContactNo2'       =>$c2
+
+
+          );
+         $this->db->where('ConsigneeContactId', $id);
+         $this->db->update('ConsigneeContacts', $data2);
+    }
+// FOR UPDATING CONTACT PERSONS IN SETTINGS END
 
         function update_broker($id,$broker_fname,$broker_mname,
     $broker_lname,$broker_houseno,$broker_vil,$broker_city,
@@ -256,6 +277,9 @@ Class User extends CI_Model
               return $count->result();
     }
 
+
+
+//for viewing and editing contacts in settings start
   function shippercons($id){
 
     $this->  db ->select('*');
@@ -264,6 +288,16 @@ Class User extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
+    function consigneecon($id){
+
+    $this->  db ->select('*');
+    $this -> db -> from('ConsigneeContacts');
+    $this -> db ->where('ConsigneeId', $id);
+    $query=$this->db->get();
+    return $query->result();
+  }
+
+//for viewing and editing contacts in settings end
 
 
   //for searching  start
@@ -281,11 +315,15 @@ Class User extends CI_Model
    return $query->result();
   }
     function search_shipper($search_shipper){
-   $query = $this->db->query("select * from Shipper WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
+   $query = $this->db->query("select * from vw_shipper_full_info WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
    return $query->result();
   }
       function search_vessel($search_vessel){
    $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%' order by Vesselname  ");
+   return $query->result();
+  }
+     function search_hauler($search_hauler){
+   $query = $this->db->query("select * from Hauler WHERE HaulerName LIKE '%$search_hauler%' order by HaulerName  ");
    return $query->result();
   }
 
@@ -302,11 +340,15 @@ Class User extends CI_Model
   }
   function findlimit_shipper($page_position,$item_per_page)
   {
-   return $this->db->get('Shipper',$page_position, $item_per_page)->result();
+   return $this->db->get('vw_shipper_full_info',$page_position, $item_per_page)->result();
   }
     function findlimit_vessel($page_position,$item_per_page)
   {
    return $this->db->get('ShipperVessel',$page_position, $item_per_page)->result();
+  }
+  function findlimit_hauler($page_position,$item_per_page)
+  {
+   return $this->db->get('Hauler',$page_position, $item_per_page)->result();
   }
 
   
@@ -407,7 +449,6 @@ Class User extends CI_Model
           $this->db->update('User', $data); 
   }
 
-
   /*
   --------------------------------------
     Get all data from status
@@ -419,6 +460,14 @@ Class User extends CI_Model
     return $query->result();
   }
 
+ function update_hauler($id,$name){
+         $data = array(
+                'HaulerName' => $name
+                );
+
+          $this->db->where('HaulerId', $id);
+          $this->db->update('Hauler', $data); 
+  }
      /*
   --------------------------------------
     Email Exist
@@ -455,6 +504,5 @@ Class User extends CI_Model
 
     }
 }
-
 
 ?>

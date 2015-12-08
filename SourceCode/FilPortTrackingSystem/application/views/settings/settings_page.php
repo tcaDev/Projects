@@ -15,8 +15,8 @@
   var total_shipper     =  "<?php echo $shipper_total; ?>";
   var content_vessel   = "<?php echo base_url('Search/search_vessel')?>";
   var total_vessel     =  "<?php echo $vessel_total; ?>";
-  var content_haulers   = "<?php echo base_url('Search/search_haulers')?>";
-  var total_haulers     =  "<?php  ?>";
+  var content_hauler   = "<?php echo base_url('Search/search_hauler')?>";
+  var total_hauler    =  "<?php echo $hauler_total;  ?>";
   var content_forward   = "<?php echo base_url('Search/search_forward')?>";
   var total_forward     =  "<?php  ?>";
  </script>
@@ -147,9 +147,9 @@
 			});
 			
 				 $(document).ready(function() {
-				    $(".haulerspage").load(content_haulers);  //initial page number to load
-				    $(".pagination_haulers").bootpag({
-				        total:total_haulers, // total number of pages
+				    $(".haulerpage").load(content_hauler);  //initial page number to load
+				    $(".pagination_hauler").bootpag({
+				        total:total_hauler, // total number of pages
 				        page: 1, //initial page
 				        maxVisible: 5, //maximum visible links
 					    leaps: true,
@@ -170,7 +170,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				        $(".haulerspage").load(content_haulers, {'page':num});
+				        $(".haulerpage").load(content_hauler, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
@@ -216,32 +216,19 @@
 			    </div>
 			     <!--FOr BROKER data view  END-->
 
+			      <!--FOr vessel data view  start--> 
 			    <div  class="vessel tab-pane fade">
 			 	  <div class="vesselpage"> </div>
                   <div class="pagination_vessel pull-right"> </div>
 			    </div>
+			       <!--FOr vessel data view  end--> 
 
+				 <!--FOr Hauler data view  start--> 
 			    <div  class="haulers tab-pane fade">
-			 	  <div class="haulerspage">
-			 	  	<table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Hauler Name</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-						</thead>
-					  	<tbody>
-					  	<tr>
-					        <td class="hidden"></td>
-					        <td></td>
-					         <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
-					   	</tr>
-				      </tbody>
-					</table>
-			 	  </div>
-                  <div class="pagination_haulers pull-right"> </div>
+			 	  <div class="haulerpage"> </div>
+                  <div class="pagination_hauler pull-right"> </div>
 			    </div>
+			       <!--FOr Hauler data view  end--> 
 
 			    <div  class="forward tab-pane fade">
 			 	  <div class="forwardpage">
@@ -569,7 +556,7 @@
 					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
-					 </form>
+					 <?php echo form_close();?>
 				        </div>
 				     
 				        <div class="modal-footer">
@@ -814,6 +801,47 @@
 				      </div>      
 				 </div>'
 			</div>
+
+
+
+			<!--Modal for updating haulers -->
+			  				  <!-- Modal FOr vessel
+				  				  -->
+				  <div class="modal fade" id="modal_update_hauler" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Hauler Information</h4>
+				        </div>
+				        <div class="modal-body">
+				       <?php echo form_open('Update/update_hauler/');?>
+				          	  <input type="hidden" name="hauler_id"      class="hauler_id" />
+							<div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Hauler Name</label>
+					               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
+					            </div>
+					        </div>
+	
+					  
+					        <div class="row">
+					        	<div class="form-group col-lg-12">
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					            </div>	
+					        </div>
+					 <?php echo form_close();?>
+				        </div>
+				     
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				  </div>
 </body>
 </html>
 

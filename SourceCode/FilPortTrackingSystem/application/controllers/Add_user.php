@@ -273,6 +273,10 @@ class Add_user extends CI_Controller {
     function add_shipper(){
             //ps get the shipper id ;
              $shipper = $this->input->post('shipper');
+             $hbno = $this->input->post('hbno');
+             $vil = $this->input->post('vil');
+             $city = $this->input->post('city');
+             $country = $this->input->post('country');
 
             $query= $this->db->query("Select * from Shipper where ShipperName = '$shipper' limit 1");
           
@@ -281,14 +285,18 @@ class Add_user extends CI_Controller {
           } 
        else{
                $data = array(
-                    'ShipperName' => $shipper,
-                    'DateAdded'   => date('Y-m-d')
+                    'ShipperName'           => $shipper,
+                    'DateAdded'             => date('Y-m-d'),
+                    'HouseBuildingNoStreet' => $hbno,
+                    'BarangarOrVillage'     => $vil,
+                    'TownOrCityProvince'    => $city,
+                    'CountryId'             => $country
                     );
 
               $this->db->insert('Shipper', $data);
 
               //inset to shippercontact table
-               $fname = $this->input->post('fname');
+        /*       $fname = $this->input->post('fname');
                $mname = $this->input->post('mname');
                $lname = $this->input->post('lname');
                $c1 = $this->input->post('con1');
@@ -310,7 +318,7 @@ class Add_user extends CI_Controller {
                     'ShipperId'    => $sid
                   );
 
-              $this->db->insert('ShipperContacts', $data);
+              $this->db->insert('ShipperContacts', $data);*/
               $this->session->success = 'success';   
       }
               redirect('Login_user/settings/#shipper');
@@ -359,6 +367,25 @@ class Add_user extends CI_Controller {
 
             $this->db->insert('ConsigneeContacts', $data);
               redirect('Login_user/settings/#'); 
+
+     }
+
+     function add_hauler(){
+             $name = $this->input->post('hauler_name');
+                $data = array(
+                  'HaulerName' => $name
+                );
+
+          $query= $this->db->query("Select * from Hauler where HaulerName = '$name' limit 1");
+          if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+          } 
+       else{
+
+                $this->db->insert('Hauler', $data);
+                $this->session->success = 'success';  
+          }
+             redirect('Login_user/settings/#hauler');
 
      }
           

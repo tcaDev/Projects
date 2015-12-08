@@ -171,8 +171,26 @@ class Update extends CI_Controller {
 
 	}
 
-}	
+    function update_hauler(){
+		$id 	= 	$this->input->post('hauler_id');
+		$name 	= 	$this->input->post('hauler_name');
 
+
+   		 $query= $this->db->query("Select * from Hauler where
+     		  HaulerName='$name' limit 1");
+    
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          }else{  
+			     $this->User->update_hauler($id,$name);
+			     $this->session->success= 'update_success';    
+		       }
+		        redirect('Login_User/settings/#hauler');
+
+	}	
+
+
+}
 
 
 
