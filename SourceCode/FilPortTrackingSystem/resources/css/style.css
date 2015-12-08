@@ -145,6 +145,8 @@ body{
 
 /* report PAGE*/
 
+
+
 .cont-ship{
 
     position: absolute;
@@ -202,9 +204,6 @@ body{
     display: inline-block;
 
     vertical-align: middle;
-
-
-
 }
 
 
@@ -259,7 +258,7 @@ body{
 
 .cont-info{
 
-position: absolute;
+    position: absolute;
 
     padding-left: 20%;
 
@@ -279,7 +278,17 @@ position: absolute;
 
 }
 
+.tools-bar{
 
+    padding-left: 20%;
+
+    height: 6%;
+
+    border: 1px solid #0166bc;
+
+    background-color: rgba(0, 140, 221, 0.6);
+
+}
 
 .info-pos{
 
@@ -1446,7 +1455,7 @@ position: absolute;
 
 .dash-cont{
 
-      position: absolute;
+    position: absolute;
 
     top: 25%;
 
@@ -1467,14 +1476,12 @@ position: absolute;
 .dash-side{
 
     position: absolute;
-    padding-left: 2%;
-    padding-top: 2%;
     top: 25%;
     left: 30%;
     width: 67%;
     height: 70%;
     border: 1px solid #828383;
-    background-color: rgba(220, 220, 220, 0.6);
+    background-color: rgba(255,255,255,1);
     overflow: auto;
     overflow-x:hidden;
 
@@ -1602,4 +1609,3 @@ fieldset legend {
     text-shadow: none;    
     color: #333;
 }
-
