@@ -269,12 +269,12 @@ Class User extends CI_Model
 
 
     function select_shipperid(){
-              $this ->db->select('*');
-              $this ->db->from('Shipper');
-              $this ->db->order_by('ShipperId');
-              $this ->db->limit(10);
-              $count = $this -> db -> get();
-              return $count->result();
+    $this ->db->select('*');
+    $this ->db->from('Shipper');
+    $this ->db->order_by('ShipperId');
+    $this ->db->limit(10);
+    $count = $this -> db -> get();
+    return $count->result();
     }
 
 
@@ -367,10 +367,6 @@ Class User extends CI_Model
 
   }
 
-
-
-
-  
   /*
   --------------------------------------------
     Upload Photo
@@ -459,6 +455,34 @@ Class User extends CI_Model
    $query = $this->db->query("select * from Status ");
     return $query->result();
   }
+<<<<<<< .mine
+  
+
+//////////////////////////////
+// FOR REPORT PAGE
+//////////////////////////////  
+  function get_consignee(){
+    $query = $this->db->query("select * from vw_consignee_full_info ");
+    return $query->result();
+  }
+
+  function get_broker(){
+    $query = $this->db->query("select * from vw_broker_full_info ");
+    return $query->result();
+  }
+
+  function get_shipper(){
+    $query = $this->db->query("select * from vw_shipper_full_info ");
+    return $query->result();
+  }
+
+  function get_vessel(){
+    $query = $this->db->query("select * from vw_shipper_vessel ");
+    return $query->result();
+  }
+||||||| .r73
+    
+=======
 
  function update_hauler($id,$name){
          $data = array(
@@ -483,6 +507,7 @@ Class User extends CI_Model
     return ($result->num_rows === 1 && $row->EmailAddress) ? $row->FirstName : false;
   }
     
+>>>>>>> .r86
 
     /*
       --------------------------------
@@ -504,5 +529,4 @@ Class User extends CI_Model
 
     }
 }
-
 ?>
