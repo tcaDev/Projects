@@ -85,7 +85,7 @@
 				    <table class="table table_manila table-striped table-bordered table-hover" style="width:7000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
-								        <th class="hidden">ID</th>
+								        
 								          <th > No. </th>
 								          <th > Update </th>
 								          <th >Jobfile Number</th>
@@ -168,47 +168,50 @@
 								      </tr>
 				        </thead>
 				        <tbody>
+				        				<?php $i= 0; foreach ($manila as $row) {
+				        					$i++;
+				        				?>
 				            <tr>
-								         <td class="hidden">1</td>
-								          <td>1</td>
+								         
+								          <td><?php echo $i;?></td>
 								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
 
-								          <td>SOC-15-10-009<a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
+								          <td><?php echo $row->JobFileId; ?><a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
 
-								          <td>MOTOROLA</td>
+								          <td><?php echo $row->ShipperName; ?></td>
 
-								          <td>Open Comm</td>
-								          <td>11 PKGS</td>
+								          <td><?php echo $row->ConsigneeName; ?></td>
+								          <td><?php echo $row->NoOfCartons; ?></td>
 
-								          <td>1x20</td>
+								          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td>Tablet Computer</td>
+								          <td><?php echo $row->ProductName; ?></td>
 
-								          <td>61406573556</td>
+								          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
-								          <td>HKG158121912</td>
+								          <td><?php echo $row->HouseBillLadingNo; ?></td>
 
-								          <td>N/A</td>
+								          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td>FCIU5273883</td>
+								          <td><?php echo $row->ContainerNo; ?></td>
 
-								          <td>HONGKONG</td>
+								          <td><?php echo $row->Origin; ?></td>
 
-								          <td>9/15/2015 11:00AM</td>
+								          <td><?php echo $row->EstDepartureTime; ?></td>
 
-								          <td>9/27/2015 11:00AM</td>
+								          <td><?php echo $row->EstArrivalTime; ?></td>
 
-								          <td>9/27/2015 11:00AM</td>
+								          <td><?php echo $row->ActualArrivalTime; ?></td>
 
-								          <td>10/27/2015 11:00AM</td>
+								          <td><?php echo $row->LetterCreditFromBank; ?></td>
 
-								          <td>TT</td>
+								          <td><?php echo $row->StartOfDemorage; ?></td>
 
-								          <td>11/3/2015</td>
+								          <td><?php echo $row->StartOfStorage; ?></td>
 
-								          <td>10/31/2015</td>
+								          <td><?php echo $row->Registry; ?></td>
 
-								          <td>TSL0065-15</td>
+								          <td></td>
 
 								          <td>ISTRIAN EXPRESS V.15015S</td>
 
@@ -218,7 +221,7 @@
 
 								          <td>10/27/2015</td>
 
-								          <td>10/27/2015</td>
+								          <td><?php echo $row->Broker; ?></td>
 
 								          <td>MONA</td>
 
@@ -232,13 +235,7 @@
 
 								          <td>C254093</td>
 
-								          <td><select class="form-control" id="select">
-								          	 <option value="" disabled selected>Select your option</option>
-											<option value="B" style="background-color: red;">Red</option>
-											<option value="C" style="background-color: yellow;">Yellow</option>
-											<option value="D" style="background-color: green;">Green</option>
-											<option value="E" style="background-color: pink;">pink</option>
-								          </select></td>
+								          <td>COLOR</td>
 
 								          <td>11/9/2015  1300H </td>
 
@@ -257,6 +254,8 @@
 								          <td>10/27- receive original docs   11/3- start processing of lifting,  11/6 - lifting of abandonement</td>
 								      
 								        </tr>
+
+								        <?php } ?>
 				           
 				         
 				        </tbody>

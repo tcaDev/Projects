@@ -140,6 +140,10 @@ class Login_user extends CI_Controller {
 		    /* get status*/
 		    $data['status'] =     $this->User->get_status();
 		  	
+
+		  	/*Jobfile manila*/
+		  	$data['manila']    = $this->User->get_jobfile_manila();
+
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{

@@ -455,8 +455,7 @@ Class User extends CI_Model
    $query = $this->db->query("select * from Status ");
     return $query->result();
   }
-<<<<<<< .mine
-  
+
 
 //////////////////////////////
 // FOR REPORT PAGE
@@ -480,9 +479,12 @@ Class User extends CI_Model
     $query = $this->db->query("select * from vw_shipper_vessel ");
     return $query->result();
   }
-||||||| .r73
-    
-=======
+
+
+function get_jobfile_manila(){
+    $query = $this->db->query("select * from vw_MLAJobFile");
+    return $query->result();
+  }
 
  function update_hauler($id,$name){
          $data = array(
@@ -507,7 +509,7 @@ Class User extends CI_Model
     return ($result->num_rows === 1 && $row->EmailAddress) ? $row->FirstName : false;
   }
     
->>>>>>> .r86
+
 
     /*
       --------------------------------
