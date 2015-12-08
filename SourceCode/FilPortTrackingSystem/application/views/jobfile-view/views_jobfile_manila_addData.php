@@ -9,7 +9,7 @@
 		  <div class="col-lg-12 addData" style="margin-bottom: 10px;">
 		  	<div class="row">
 		  		<div class="col-lg-4" >	
-		  <?php echo  form_open('Job');?>
+		  <?php echo  form_open('Job/jofile_data');?>
 		           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 	  				<label for="jbfl">JobFile No.:</label>
 					  <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
@@ -83,8 +83,8 @@
 <!-- -->
 						  <label for="vsl">Vessel / Voyage No.:</label>
 						  	<div id="vesel" >
-						  		<select name="vessel" />
-						  		<option></option>
+						  		<select name="vessel" class="form-control"/>
+						  		<option  name="colors" value="" disabled selected></option>
 						  		</select>
 						  	</div>
 						  

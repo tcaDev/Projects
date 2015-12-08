@@ -32,7 +32,7 @@ class Job extends CI_Controller {
 
      function jofile_data(){
 
-           $uname = $this->input->post('jbfl');
+           $job = $this->input->post('jbfl');
            $consignee = $this->input->post('consignee');
            $broker = $this->input->post('broker');
            $mon = $this->input->post('monitoring_type');
@@ -41,44 +41,46 @@ class Job extends CI_Controller {
            $hbl =  $this->input->post('hbl');
            $mbl =  $this->input->post('mbl');
            $letter_cred_bank =  $this->input->post('letter_cred_bank');
-
-
+           $dtRcvd_notice  =  $this->input->post('dtRcvd');
+           $dt_pickup_obl  =  $this->input->post('dt_pickup_obl');
+           $dt_pickup_docs  =  $this->input->post('dt_pickup_docs');
+           $dt_req_budget  =  $this->input->post('dt_req_budget');
+           $ref_due_dt  =  $this->input->post('ref_due_dt');
            
 
-           
+           $warehouseid  =  $this->input->post('warehouseid');
+           $DatePaid  =  $this->input->post('DatePaid');
+           $FlightNo  =  $this->input->post('FlightNo');
+           $P_AirCraftNo  =  $this->input->post('P_AirCraftNo');
+           $dt_forwarder  =  $this->input->post('DateReceivedNoticeFromForwarder');
+       
 
-           
 
-           $shipper = $this->input->post('shipper');
-           $mon = $this->input->post('monitoring_type');
-           $bdate = $this->input->post('bdate');
 
            $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                           $this->db->query($add_jobfile,
                             array(
-                                   'P_UserName'             =>$uname,
-                                   'P_Password'             =>$pass,
-                                   'P_FirstName'            =>$fname,
-                                   'P_MiddleName'           =>$mname,
-                                   'P_LastName'             =>$lname,
-                                   'P_BirthDate'            =>$bdate,
-                                   'P_EmailAddress'         =>$email,
-                                   'P_ProfileImageSource'   =>$photo,
-                                   'P_RoleId'               =>2,
-                                   'P_ContactNo1'           =>$contact1,
-                                   'P_ContactNo2'           =>$contact2,
-                                   'P_HouseBuildingNoStreet'=>$addr,
-                                   'P_BarangarOrVillage'    =>$brgy,
-                                   'P_TownOrCityProvince'   =>$town,
-                                   'P_CountryId'            =>$country,
-                                   'P_ConsigneeId'          =>$consignee,
-                                   'P_SecretQuestionId'     =>$questions,
-                                   'P_SecretAnswer'         =>$answer,
-                                   'P_SecretAnswerHint'     =>$shint
-
-
+                                   'P_JobFileID'                             =>$job,
+                                   'P_ConsigneeId'                           =>$consignee,
+                                   'P_BrokerID'                              =>$broker,
+                                   'P_MonitoringTypeId'                      =>$mon,
+                                   'P_RefEntryNo'                            =>$entryno,
+                                   'P_Registry'                              =>$registry,             
+                                   'P_HouseBillLadingNo'                     =>$hbl,
+                                   'P_MasterBillLadingNo'                    =>$mbl,
+                                   'P_LetterCreditFromBank'                  =>$letter_cred_bank,
+                                   'P_DateReceivedNoticeFromClients'         =>$dtRcvd_notice,
+                                   'P_DateReceivedOfBL'                      =>$dt_pickup_obl,
+                                   'P_DateReceivedOfOtherDocs'               =>$dt_pickup_docs,
+                                   'P_DateRequestBudgetToGL'                 =>$dt_req_budget,
+                                   'P_RFPDueDate'                            =>$ref_due_dt,
+                                   'ForwarderWarehouseId'                    =>$warehouseid,
+                                   'P_DatePaid'                              =>$DatePaid,
+                                   'P_FlightNo'                              =>$FlightNo,                    
+                                   'P_AirCraftNo'                            =>$P_AirCraftNo,
+                                   'P_DateReceivedNoticeFromForwarder'       =>$dt_forwarder
                                         ));
-                                  $this->success_register();
+                               
       }
 
      }
