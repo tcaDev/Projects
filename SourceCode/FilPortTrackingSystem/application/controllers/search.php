@@ -110,7 +110,7 @@ if(isset($_SESSION['success'])){
 				          <h4 class="modal-title">Consignee Contacts Information</h4>
 				        </div>
 				        <div class="modal-body">
-		        						
+		        		<div style="overflow-x:auto;">			
 						<table class="table table-striped table_consignee">
 					    <thead>
 					      <tr>
@@ -145,6 +145,7 @@ if(isset($_SESSION['success'])){
 					    } ?>
 					     </tbody>
 					  </table>
+					  </div>
 
 					    <?php
 					echo   '
@@ -261,7 +262,7 @@ if(isset($_SESSION['success'])){
 				          <h4 class="modal-title">Shipper Contacts Information</h4>
 				        </div>
 				        <div class="modal-body">
-		        						
+		        		<div style="overflow-x:auto;">	
 						<table class="table table-striped table_consignee">
 					    <thead>
 					      <tr>
@@ -297,6 +298,7 @@ if(isset($_SESSION['success'])){
 					    } ?>
 					     </tbody>
 					  </table>
+					  </div>
 
 					    <?php
 					echo   '

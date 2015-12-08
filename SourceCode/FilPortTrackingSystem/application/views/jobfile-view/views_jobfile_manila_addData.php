@@ -76,7 +76,7 @@
 								<div class="col-lg-4" >
 									<label for="eta">Estimated Time of Arrival:</label>
 								  <input type="datetime-local" class="form-control input-sm" name="eta">
-								  
+
 								  <label for="AVT">AVT:</label>
 								  <input type="datetime-local" class="form-control input-sm" name="avt">
 
@@ -140,7 +140,7 @@
 								 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
 
 								 <label for="slctvty">Color Selectivity:</label>
-					  				<select class="form-control" id="colsel">
+					  				<select class="form-control colsel" >
 							          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusName;
@@ -268,15 +268,37 @@
 <?php echo form_close();?>
 
 
+<script>
+//for  getting the vessel based on shipper
+$(document).ready(function(){
+	 $(' #shipper').change(function(){
+		
+ 		var shipids= $(this).val();
+
+			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/');?>",
+			  		 data: { ship_id:shipids}
+				})
+		  		.done(function(data) {
+		  		 $('#vesel').html(data);	
+		  			
+		  		
+		  		});
+
+	});
+});
+</script>
+
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
-	$('#colsel').change(function(){
+	$('.colsel').change(function(){
   var status = $(this).val();
-  var color = $('#colsel option:selected').attr('data-color');
+  var color = $('.colsel option:selected').attr('data-color');
     if(status==1){
-    	$('#colsel').css({ 'color': 'red','background-color':'white' });
+    	$('.colsel').css({ 'color': 'red','background-color':'white' });
     }else{
-     $('#colsel').css({'background-color': color,'color': 'white'});
+     $('.colsel').css({'background-color': color,'color': 'white'});
   	}
  });
 
@@ -403,25 +425,5 @@ $('.table-remove-cont').click(function () {
 
 
 
-<script>
-//for  getting the vessel based on shipper
-$(document).ready(function(){
-	 $(' #shipper').change(function(){
-		
- var shipids= $(this).val();
 
-			$.ajax({
-			  		method: "POST",
-					  url: "<?php echo base_url('Job/');?>",
-			  		 data: { ship_id:shipids}
-				})
-		  		.done(function(data) {
-		  		 $('#vesel').html(data);	
-		  			
-		  		
-		  		});
-
-	});
-});
-</script>
 
