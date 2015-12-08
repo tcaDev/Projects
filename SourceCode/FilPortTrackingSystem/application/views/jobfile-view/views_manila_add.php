@@ -4,6 +4,7 @@
       <h4 class="modal-title text-uppercase">Add Data Form</h4>
     </div>
 
+
     <div class="modal-body" >
     	<div class="container-fluid">
     		 <ul class="nav nav-pills">
@@ -15,11 +16,10 @@
     	<hr>
     	<div style="overflow-x:auto;">
     		<div class="container-fluid">
-		    	<?php echo  form_open('Job/jofile_data');?>
+    		<?php echo form_open('Job/jofile_data');?>
 			    	<div class="pill-jobfile-mnla-add col-lg-12 col-md-12">
 			   			<div class="row">
 			   				<div class="col-lg-4 col-md-4">
-			   					
 			   						<input type="hidden" value="1" name="monitoring_type" id="manila"/>
 			  				
 					  				<label for="jbfl">JobFile No.:</label>
@@ -267,7 +267,7 @@
 			    			
 			    		</div>
 			    	</div>
-				<?php echo form_close();?>
+				
 			 </div>
     	</div>
 	    	
@@ -282,7 +282,7 @@
     </div>
 
   </div>
-
+<?php echo form_close();?>
   <script>
 //FOR COLOR SELECT DROPDOWN
 		$('#colsel').change(function(){
