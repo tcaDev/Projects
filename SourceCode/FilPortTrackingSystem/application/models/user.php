@@ -408,6 +408,17 @@ Class User extends CI_Model
   }
 
 
+  /*
+  --------------------------------------
+    Get all data from status
+  --------------------------------------
+  */
+
+  function get_status(){
+   $query = $this->db->query("select * from Status ");
+    return $query->result();
+  }
+
      /*
   --------------------------------------
     Email Exist
