@@ -76,7 +76,7 @@
 								<div class="col-lg-4" >
 									<label for="eta">Estimated Time of Arrival:</label>
 								  <input type="datetime-local" class="form-control input-sm" name="eta">
-
+								  
 								  <label for="AVT">AVT:</label>
 								  <input type="datetime-local" class="form-control input-sm" name="avt">
 
@@ -96,24 +96,53 @@
 								  <input type="text" class="form-control input-sm" name="registry" id="registry">
 		<!-- -->
 								  <label for="vsl">Vessel / Voyage No.:</label>
-								  	<div id="vesel" >
-								  		<select name="vessel" class="form-control"/>
-								  		<option  name="colors" value="" disabled selected></option>
-								  		</select>
+								  	<div class="vesel" >
+								  	
 								  	</div>
+								  	 <label for="dtClrd">Vessel Arrival Time</label>
+								 		 <input type="datetime-local" name="ves_arrival_time" class="form-control input-sm">
+								    <label for="dtClrd">Vessel Discharge Time</label>
+								 		 <input type="datetime-local" name="ves_discharge_time" class="form-control input-sm">
+								  
 								  
 								  <div class="tab_manila hidden"> 	
 									  <label for="carrier">Carrier:</label>
 									  <input type="text" name="carrier" class="  form-control input-sm" id="carrier">
 								  </div>
 								  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" name="">
+								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" >
 
 								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" name="">
+								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" >
 
 								  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
-								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" name="">
+								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
+
+								  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
+								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
+
+								  <!--fo testing only -->
+								  <label for="" name="warehouseid">Ware House</label>
+								   <select>
+								   	<option value="1">PAL</option>
+								   	<option value="2">PAIR CARGO</option>
+
+								   </select>
+
+								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
+								  <input type="datetime-local" name="DatePaid" class="form-control input-sm" >
+
+								  <div class="flight hidden">
+										  <label for="dtPckRcv">Flight No. :</label>
+										  <input type="text"  name="FlightNo" class="form-control input-sm hidden" >
+									  <label for="dtPckRcv">Air Craft No.:</label>
+									  <input type="datetime-local" name="P_AirCraftNo" class="form-control input-sm" >
+								  </div>
+								  <label for="dtPckRcv">DateReceived Notice From Forwarder :</label>
+								  <input type="datetime-local" name="DateReceivedNoticeFromForwarder" class="form-control input-sm" >
+
+
+
 				  			</div>
 
 							<div class="col-lg-4" >
@@ -166,6 +195,7 @@
 								  <input type="text" name="reg" class="form-control input-sm">
 								  	<label for="dtClrd">Letter Credit From Bank:</label>
 								  <input type="text" name="letter_cred_bank" class="form-control input-sm">
+
 				  			</div>
 				  		</div>
 				  </div>
@@ -268,28 +298,6 @@
 <?php echo form_close();?>
 
 
-<script>
-//for  getting the vessel based on shipper
-$(document).ready(function(){
-	 $(' #shipper').change(function(){
-		
- 		var shipids= $(this).val();
-
-			$.ajax({
-			  		method: "POST",
-					  url: "<?php echo base_url('Job/');?>",
-			  		 data: { ship_id:shipids}
-				})
-		  		.done(function(data) {
-		  		 $('#vesel').html(data);	
-		  			
-		  		
-		  		});
-
-	});
-});
-</script>
-
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
 	$('.colsel').change(function(){
@@ -389,7 +397,7 @@ Truck Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var truck= $('#tableAddTruck');
+var truck= $('.tableAddTruck');
 
 $('.table-add-truck').click(function () {
   var $clone = truck.find('tr.hide').clone(true).removeClass('hide table-line');
@@ -425,5 +433,25 @@ $('.table-remove-cont').click(function () {
 
 
 
+<script>
+//for  getting the vessel based on shipper
+$(document).ready(function(){
+	 $(' #shipper').change(function(){
+		
+ var shipids= $(this).val();
 
+			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/');?>",
+			  		 data: { ship_id:shipids}
+				})
+		  		.done(function(data) {
+		  		 $('div .vesel').html(data);	
+		  			
+		  		
+		  		});
+
+	});
+});
+</script>
 

@@ -79,17 +79,29 @@ class Job extends CI_Controller {
                                    'P_FlightNo'                              =>$FlightNo,                    
                                    'P_AirCraftNo'                            =>$P_AirCraftNo,
                                    'P_DateReceivedNoticeFromForwarder'       =>$dt_forwarder
-                                        ));
-                               
+                                ));
+
+
+           $vessel        =  $this->input->post('vessel');
+           
+           $vat           =  $this->input->post('ves_arrival_time');
+           $vdt           =  $this->input->post('ves_discharge_time');
+
+           
+           $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?)";
+             $this->db->query($add_vessel,
+              array(
+                  'P_JobFileId'           => $job,
+                  'P_ShipperVesselId'     => 1,
+                  'P_VesselArrivalTime'   => $vat,
+                  'P_VesselDischargeTime' => $vdt
+
+
+
+
+             ));
       }
-
-     }
-
-
-
-
-
-
+}
 
 
 ?>
