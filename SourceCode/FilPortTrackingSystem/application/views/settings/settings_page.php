@@ -455,7 +455,7 @@
 				    </div>
 				  </div>
 
-				  				  <!-- Modal FOr vessel
+				 <!-- Modal FOr vessel
 				  				  -->
 				  <div class="modal fade" id="modal_update_vessel" role="dialog">
 				    <div class="modal-dialog">
