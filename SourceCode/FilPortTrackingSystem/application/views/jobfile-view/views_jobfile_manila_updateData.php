@@ -1,254 +1,397 @@
-  
+<div class="modal-content" style="width:180%;right:40%;">
+	<div class="modal-header" style="background-color: deepskyblue;">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title text-uppercase ">Add Data Form</h4>
+</div>
 
-
-  <div class="modal-content" style="width:180%;right:40%;">
-    <div class="modal-header" style="background-color: deepskyblue;">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title text-uppercase ">update Data Form</h4>
-    </div>
     <div class="modal-body">
       	<div class="form-group">
-		  <div class="col-lg-12 updateData" style="margin-bottom: 10px;">
+		  <div class="col-lg-12 addData" style="margin-bottom: 10px;">
 		  	<div class="row">
-		  			<div class="col-lg-4" >	
-		  				<label for="jbfl">JobFile No.:</label>
-						  <input type="text" class="form-control input-sm " id="jbfl" />
+		  		<div class="col-lg-4" >	
+		  <?php echo  form_open('Job');?>
+		           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
+	  				<label for="jbfl">JobFile No.:</label>
+					  <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
 
-						   <label for="shipper">Shipper:</label>
-						  <input type="text" class="form-control input-sm" id="shipper">
+					   	<label for="shipper">Shipper:</label>
+					  		<select name="shipper" id="shipper" class="form-control">
+				            	<option> </option>
+				            	<?php  foreach($shipper_data as $row){  ?> 
+				                <option value="<?php echo $row->ShipperId ?>">
+				                <?php echo $row->ShipperName ?>
+				                </option> 
+				             	<?php }?>
+			               	</select>
 
-						   <label for="consignee">Consignee:</label>
-						  <input type="text" class="form-control input-sm" id="consignee">
+					   	<label for="consignee">Consignee:</label>
+					  		<select name="consignee" class="form-control">
+					  			<option> </option>
+				            	<?php  foreach($consignee_data as $row){  ?> 
+				                <option value="<?php echo $row->ConsigneeId ?>">
+				                <?php echo $row->ConsigneeName ?>
+				                </option> 
+				             	<?php }?>
+				            </select>
 
-						   <label for="cnts">Number of Cartons:</label>
-						  <input type="text" class="form-control input-sm" id="cnts">
+						  <label for="cnts">Number of Cartons:</label>
+						  <input type="text" class="form-control input-sm" name="cartoons" id="cnts">
 
-						   <label for="cntr">Container Size:</label>
-						  <input type="text" class="form-control input-sm" id="cntr">
+						  <label for="cntr">Container Size:</label>
+						  <input type="text" class="form-control input-sm" name="container" id="cntr">
 
-						   <label for="pipo">PI / PO No.:</label>
-						  <input type="text" class="form-control input-sm" id="pipo">
+						  <label for="pipo">PI / PO No.:</label>
+						  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
 
-						   <label for="hbl">House Bill of Landing No.:</label>
-						  <input type="text" class="form-control input-sm" id="hbl">
+						  <label for="hbl">House Bill of Landing No.:</label>
+						  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
 
-						   <label for="mbl">Master Bill of Landing No.:</label>
-						  <input type="text" class="form-control input-sm" id="mbl">
+						  <label for="mbl">Master Bill of Landing No1.:</label>
+						  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
 
-						   <label for="origin">Origin:</label>
-						  <input type="text" class="form-control input-sm" id="origin">
+						  <label for="mbl">Master Bill of Landing No2.:</label>
+						  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
+
+						  <label for="origin">Origin:</label>
+						  <input type="text" class="form-control input-sm" name="origin" id="origin">
 
 						  <label for="etd">Estimated Time of Departure:</label>
-						  <input type="text" class="form-control input-sm" id="etd">
+						  <input type="datetime-local" class="form-control input-sm" name="etd">
 
 						  <label for="eta">Estimated Time of Arrival:</label>
-						  <input type="text" class="form-control input-sm" id="eta">
+						  <input type="datetime-local" class="form-control input-sm" name="eta">
+						</div>
 
-						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">ATA:</label>
-						  <input type="text" class="form-control input-sm" id="ata">
-		  			</div>
+						<div class="col-lg-4" >
+						  <label for="AVT">AVT:</label>
+						  <input type="datetime-local" class="form-control input-sm" name="avt">
 
-		  			<div class="col-lg-4" >
-		  				<label for="bank">Letter of Credit No. from Bank:</label>
-						  <input type="text" class="form-control input-sm " id="bank">
+						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">Actual Time of Arrival:</label>
+						  <input type="datetime-local" class="form-control input-sm" name="ata">
 
-						   <label for="dem">Start of Demorage:</label>
-						  <input type="text" class="form-control input-sm" id="dem">
+		  				  <label for="bank">Letter of Credit No. from Bank:</label>
+						  <input type="text" class="form-control input-sm " name="bank" id="bank">
 
-						   <label for="storage">Start Storage:</label>
-						  <input type="text" class="form-control input-sm" id="storage">
+						  <label for="dem">Start of Demorage:</label>
+						  <input type="datetime-local" class="form-control input-sm" name="start_demorage">
 
-						   <label for="registry">Registry:</label>
-						  <input type="text" class="form-control input-sm" id="registry">
+						  <label for="storage">Start Storage:</label>
+						  <input type="datetime-local" class="form-control input-sm" name="start_storage">
 
-						   <label for="vsl">Vessel / Voyage No.:</label>
-						  <input type="text" class="form-control input-sm" id="vsl">
+						  <label for="registry">Registry:</label>
+						  <input type="text" class="form-control input-sm" name="registry" id="registry">
+<!-- -->
+						  <label for="vsl">Vessel / Voyage No.:</label>
+						  	<div id="vesel" >
+						  		<select name="vessel" />
+						  		<option></option>
+						  		</select>
+						  	</div>
+						  
+						  <div class="tab_manila hidden"> 	
+							  <label for="carrier">Carrier:</label>
+							  <input type="text" name="carrier" class="  form-control input-sm" id="carrier">
+						  </div>
+						  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
+						  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" name="">
 
-						   <label for="carrier">Carrier:</label>
-						  <input type="text" class="form-control input-sm" id="carrier">
+						  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
+						  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" name="">
 
-						   <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-						  <input type="text" class="form-control input-sm" id="dtRcvd">
-
-						   <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-						  <input type="text" class="form-control input-sm" id="dtPckup">
-
-						   <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
-						  <input type="text" class="form-control input-sm" id="dtPckRcv">
-
-						  <label for="broker">Broker:</label>
-						  <input type="text" class="form-control input-sm" id="broker">
-
-						  <label for="dtReq">Date Required Budget to GL:</label>
-						  <input type="text" class="form-control input-sm" id="dtReq">
+						  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
+						  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" name="">
 		  			</div>
 
 					<div class="col-lg-4" >
-		  				<label for="rfp">Reference Due Date:</label>
-						  <input type="text" class="form-control input-sm " id="rfp">
+						  <label for="broker">Broker:</label>
+				  			<select name="broker" id="vsl"class="form-control">
+				            	<?php  foreach($broker_data as $row){  ?> 
+				                <option value="<?php echo $row->BrokerId ?>">
+				                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
+				                </option> 
+				             	<?php }?>
+			               </select>
 
-						   <label for="dtSent">Date Sent Pre-Assess:</label>
-						  <input type="text" class="form-control input-sm" id="dtSent">
+						  <label for="dtReq">Date Required Budget to GL:</label>
+						  <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
 
-						   <label for="dtFile">Date File Entry to BOC:</label>
-						  <input type="text" class="form-control input-sm" id="dtFile">
 
-						   <label for="slctvty">Selectivity:</label>
-						  <input type="text" class="form-control input-sm" id="slctvty">
+		  				 <label for="rfp">Reference Due Date:</label>
+						 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
 
-						   <label for="dtPaid">Date Paid (Date&Time):</label>
-						  <input type="text" class="form-control input-sm" id="dtPaid">
+						 <label for="dtSent">Date Sent Pre-Assess:</label>
+						 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent">
 
-						   <label for="dtClrd">Date Cleared BOC:</label>
-						  <input type="text" class="form-control input-sm" id="dtClrd">
+						 <label for="dtFile">Date File Entry to BOC:</label>
+						 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
 
-						   <label for="plteNum">Plate No. /Truck Name:</label>
-						  <input type="text" class="form-control input-sm" id="plteNum">
+						 <label for="slctvty">Color Selectivity:</label>
+			  				<select class="form-control" id="colsel">
+					          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
+								<?php  foreach($color_data as $row){ 
+								   $status = $row->StatusName;
+								   if($status=='Red Font'){?> 
+								   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+							 <?php }else{?>
+				                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+				                <?php }?>
+				                <?php echo $row->StatusName; ?>
+				                </option> 
+				             	<?php }?>
+					        </select>
 
-						   <label for="gateIn">Gate In at Port:</label>
-						  <input type="text" class="form-control input-sm" id="gateIn">
+						  <label for="dtPaid">Date Paid(Date& Time):</label>
+						  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
 
-						   <label for="gateOut">Gate Out at Port:</label>
-						  <input type="text" class="form-control input-sm" id="gateOut">
+						  <label for="dtClrd">Date Cleared BOC:</label>
+						  <input type="datetime-local" name="dt_boc" class="form-control input-sm">
 
+						   <label for="dtClrd">Reference Entry No.:</label>
+						  <input type="text" name="entryno" class="form-control input-sm">
+						   <label for="dtClrd">Registry:</label>
+						  <input type="text" name="reg" class="form-control input-sm">
+						  	<label for="dtClrd">Letter Credit From Bank:</label>
+						  <input type="text" name="letter_cred_bank" class="form-control input-sm">
 		  			</div>
 		  		</div>
 		  </div>
 
-		 
-		  	<div id="table1" class="hidden table-update table-editable col-lg-12">
-			    <span class="table-add table-updateData glyphicon glyphicon-plus"></span>
+		<!-- TRUCK PLATE WINDOW-->
+		  	<div id="tableAddTruck" class="hidden truck-addData truck-editable col-lg-12">
+			    <span class="table-add table-add-truck glyphicon glyphicon-plus"></span>
+			    <table class="table">
+			      <tr>
+			        <th>Truck /Plate No.</th>
+			        <th>Gate In at Port</th>
+			        <th>Gate Out at Port</th>
+			        <th>Actual date Delivered to Warehouse</th>
+			        <th>Status Report</th>
+			        <th></th>
+			      </tr>
+<!-truck plate is no names yet -->
+			      <tr>
+			        <td contenteditable="true">Untitled</td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true">undefined</td>
+			        <td>
+			          <span class="table-remove table-remove-truck glyphicon glyphicon-remove"></span>
+			        </td>
+			      </tr>
+
+			      <!-- This is our clonable table line -->
+			      <tr class="hide">
+			        <td contenteditable="true">Untitled</td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true">undefined</td>
+			        <td>
+			          <span class="table-remove table-remove-truck glyphicon glyphicon-remove"></span>
+			        </td>
+			      </tr>
+			    </table>
+			</div>
+
+<!-container plate is no names yet -->
+		<!--CONTAINER WINDOW-->
+		  	<div id="tableAddContainer" class="hidden table-addData table-editable col-lg-12">
+			    <span class="table-add table-add-cont glyphicon glyphicon-plus"></span>
 			    <table class="table ">
 			      <tr>
 			        <th>Container Number</th>
 			        <th>Description of Goods</th>
 			        <th>Target Delivery Date</th>
 			        <th>Actual P-Out date of container at Port</th>
-			        <th>Actual date recieve container to WHSE</th>
+			        <th>Actual date recieved container to Warehouse</th>
 			        <th>Status Report</th>
 			        <th></th>
 			      </tr>
+
 			      <tr>
 			        <td contenteditable="true">Untitled</td>
 			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true">undefined</td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 			        <td contenteditable="true">undefined</td>
 			        <td>
-			          <span class="table-remove table-updateData-remove glyphicon glyphicon-remove"></span>
+			          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
 			        </td>
-			        
 			      </tr>
+
 			      <!-- This is our clonable table line -->
 			      <tr class="hide">
 			        <td contenteditable="true">Untitled</td>
 			        <td contenteditable="true">undefined</td>
-			         <td contenteditable="true">undefined</td>
-			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true">undefined</td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 			        <td contenteditable="true">undefined</td>
 			        <td>
-			          <span class="table-remove table-updateData-remove glyphicon glyphicon-remove"></span>
+			          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
 			        </td>
-			        
 			      </tr>
 			    </table>
-			  </div>
+			</div>
 		</div>
     </div>
+
     <div class="footer-modal" >
-      <button type="button" class="next_edit btn btn-danger" >Next</button>
-      <button type="button" class="hidden save_edit btn btn-danger" >Save</button>
-      <button type="button" class="hidden back_edit btn btn-danger" >Back</button>
+      <button type="button" class="hidden btn-back-truck btn btn-danger" >Back</button>
+      <button type="button" class="hidden btn-back-cont btn btn-danger" >Back</button>
+      <button type="button" class="btn-truck btn btn-danger" >Truck/Plate</button>
+      <button type="button" class="btn-cont btn btn-danger" >Container</button>
+      <button type="submit" class=" hidden save_add btn btn-danger" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
+<?php echo form_close();?>
 
 
+<script type="text/javascript">
+//FOR COLOR SELECT DROPDOWN
+	$('#colsel').change(function(){
+  var status = $(this).val();
+  var color = $('#colsel option:selected').attr('data-color');
+    if(status==1){
+    	$('#colsel').css({ 'color': 'red','background-color':'white' });
+    }else{
+     $('#colsel').css({'background-color': color,'color': 'white'});
+  	}
+ });
+
+</script>
 
 
   <script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
+	$(document).ready(function(){
 
+    $('[data-toggle="tooltip"]').tooltip(); 
 
-    $(".next_edit").on('click', function(){
+/*
+* Container Button
+*/
+    $(".btn-cont").on('click', function(){
+    	$(".addData").addClass('hidden');
+    	$(".btn-cont").addClass('hidden');
+    	$(".btn-truck").addClass('hidden');
 
-    	$(".next_edit").addClass('hidden');
-    	$(".updateData").addClass('hidden');
-
-    	$(".save_edit").removeClass('hidden');
-    	$(".back_edit").removeClass('hidden');
-    	$(".table-update").removeClass('hidden');
+    	$(".table-addData").removeClass('hidden');
+    	$(".btn-back-cont").removeClass('hidden');
     });
 
-	$(".back_edit").on('click', function(){
-    	$(".back_edit").addClass('hidden');
-    	$(".save_edit").addClass('hidden');
-    	$(".table-update").addClass('hidden');
 
-    	$(".next_edit").removeClass('hidden');
-    	$(".updateData").removeClass('hidden');
+/*
+* back Button container
+*/
 
+	$(".btn-back-cont").on('click', function(){
+    	$(".table-addData").addClass('hidden');
+    	$(".btn-back-cont").addClass('hidden');
+
+    	$(".addData").removeClass('hidden');
+    	$(".btn-cont").removeClass('hidden');
+    	$(".btn-truck").removeClass('hidden');
     });
+
+
+/*
+* Truck Button
+*/
+    $(".btn-truck").on('click', function(){
+    	$(".addData").addClass('hidden');
+    	$(".btn-cont").addClass('hidden');
+    	$(".btn-truck").addClass('hidden');
+
+    	$(".truck-addData").removeClass('hidden');
+    	$(".btn-back-truck").removeClass('hidden');
+    });
+
+/*
+* back Button truck
+*/
+
+	$(".btn-back-truck").on('click', function(){
+		$(".truck-addData").addClass('hidden');
+    	$(".btn-back-truck").addClass('hidden');
+
+    	$(".addData").removeClass('hidden');
+    	$(".btn-cont").removeClass('hidden');
+    	$(".btn-truck").removeClass('hidden');
+    });
+
+
 
 });
 
 
+</script>
 
-var $TABLE = $('#table1');
-var $BTN = $('#export-btn');
-var $EXPORT = $('#export');
 
-$('.table-updateData').click(function () {
-  var $clone1 = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-  $TABLE.find('table').append($clone1);
+<script>
+/*
+-----------------------------
+Truck Table Adding row table  : agrc(12/8/15)
+-----------------------------
+*/
+
+var truck= $('#tableAddTruck');
+
+$('.table-add-truck').click(function () {
+  var $clone = truck.find('tr.hide').clone(true).removeClass('hide table-line');
+  truck.find('table').append($clone);
 });
 
-$('.table-updateData-remove').click(function () {
+$('.table-remove-truck').click(function () {
   $(this).parents('tr').detach();
 });
 
-$('.table-up').click(function () {
-  var $row = $(this).parents('tr');
-  if ($row.index() === 1) return; // Don't go above the header
-  $row.prev().before($row.get(0));
+</script>
+
+<script>
+/*
+-----------------------------
+Container Table Adding row table  : agrc(12/8/15)
+-----------------------------
+*/
+
+var container = $('#tableAddContainer');
+
+$('.table-add-cont').click(function () {
+  var $clone = container.find('tr.hide').clone(true).removeClass('hide table-line');
+  container.find('table').append($clone);
 });
 
-$('.table-down').click(function () {
-  var $row = $(this).parents('tr');
-  $row.next().after($row.get(0));
+$('.table-remove-cont').click(function () {
+  $(this).parents('tr').detach();
 });
 
-// A few jQuery helpers for exporting only
-jQuery.fn.pop = [].pop;
-jQuery.fn.shift = [].shift;
+</script>
 
-$BTN.click(function () {
-  var $rows = $TABLE.find('tr:not(:hidden)');
-  var headers = [];
-  var data = [];
-  
-  // Get the headers (add special header logic here)
-  $($rows.shift()).find('th:not(:empty)').each(function () {
-    headers.push($(this).text().toLowerCase());
-  });
-  
-  // Turn all existing rows into a loopable array
-  $rows.each(function () {
-    var $td = $(this).find('td');
-    var h = {};
-    
-    // Use the headers from earlier to name our hash keys
-    headers.forEach(function (header, i) {
-      h[header] = $td.eq(i).text();   
-    });
-    
-    data.push(h);
-  });
-  
-  // Output the result
-/*  $EXPORT.text(JSON.stringify(data));*/
+
+
+
+<script>
+//for  getting the vessel based on shipper
+$(document).ready(function(){
+	 $(' #shipper').change(function(){
+		
+ var shipids= $(this).val();
+
+			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/');?>",
+			  		 data: { ship_id:shipids}
+				})
+		  		.done(function(data) {
+		  		 $('#vesel').html(data);	
+		  			
+		  		
+		  		});
+
+	});
 });
 </script>
+

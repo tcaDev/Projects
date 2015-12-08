@@ -38,7 +38,7 @@
 
 					      <!-- Modal content-->
 
-					      <?php $this->load->view('jobfile-view/views_jobfile_manila_updateData'); ?>
+					      <?php $this->load->view('jobfile-view/views_manila_update'); ?>
 
 					      
 
@@ -66,7 +66,7 @@
 
 					      <!-- Modal content-->
 
-					    	<?php $this->load->view('jobfile-view/views_jobfile_manila_addData'); ?>
+					    	<?php $this->load->view('jobfile-view/views_manila_add'); ?>
 
 
 					    </div>
