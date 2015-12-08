@@ -659,6 +659,10 @@ function search_shipper(){
 					    <thead>
 					      <tr>
 					        <th>Shipper Name</th>
+					        <th>HouseBuildingNo/Street</th>
+					        <th>Barangay/Village</th>
+					        <th>Town/City/Province</th>
+					         <th>Country</th>
 					        <th>Shipper Contacts</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -675,7 +679,11 @@ function search_shipper(){
 					  echo  '<tr>
 					  	    <td class="hidden">'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
-					        <td class="hidden">'.$row->DateAdded.'</td> 
+					  	    <td>'.$row->HouseBuildingNoStreet.'</td>
+					  	    <td>'.$row->BarangarOrVillage.'</td>
+					  	    <td>'.$row->TownOrCityProvince.'</td>
+					  	    <td>'.$row->Country.'</td>
+					  	    <td class="hidden">'.$row->CountryId.'</td>
 					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
 					       					   <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -703,11 +711,35 @@ function search_shipper(){
 				});
 
 				 $('.get__shipper_datas').click(function(){
-			     var id= $(this).closest('tr').children('td:eq(0)').text();
-			     var name= $(this).closest('tr').children('td:eq(1)').text();
+			     var id     	    = $(this).closest('tr').children('td:eq(0)').text();
+			     var name   	    = $(this).closest('tr').children('td:eq(1)').text();
+			     var hosno          = $(this).closest('tr').children('td:eq(2)').text();
+			     var vil            = $(this).closest('tr').children('td:eq(3)').text();
+			     var city           = $(this).closest('tr').children('td:eq(4)').text();
+			     var country        = $(this).closest('tr').children('td:eq(5)').text();
+			     var countryid      = $(this).closest('tr').children('td:eq(6)').text();
 
 			     $('.ship_id').val(id);
 			     $('.shipper_name').val(name);
+			     $('.hbno').val(id);
+			     $('.vilage').val(name);
+			      $('.city').val(city);
+
+			     if(id!=0){
+			  	  	$.ajax({
+						  method: "POST",
+					 	  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
+					  	  data: { countryid:id,
+					  		  conname:country 	  		  
+					  		}
+						})
+						  .done(function(data) {
+					  		$('.change_select').html(data);
+					      
+					}); 
+				 }
+			   
+
 			 	
 			 });
 

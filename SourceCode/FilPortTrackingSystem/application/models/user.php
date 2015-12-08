@@ -86,11 +86,15 @@ Class User extends CI_Model
 
      /* function update_shipper($id,$name,$fname,$mname,$lname,$c1,$c2){
       */
-       function update_shipper($id,$name){
+       function update_shipper($id,$name,$hbno,$vilage,$city,$country){
       
         $data = array(
-        'ShipperName'      => $name,
-        'DateAdded'        => date('Y-m-d')
+        'ShipperName'               => $name,
+        'DateAdded'                 => date('Y-m-d'),
+        'HouseBuildingNoStreet'     => $hbno,
+        'BarangarOrVillage'         => $vilage,
+        'TownOrCityProvince'        => $city,
+        'CountryId'                 => $country
         );
           $this->db->where('ShipperId', $id);
           $this->db->update('Shipper', $data);
@@ -311,7 +315,7 @@ Class User extends CI_Model
    return $query->result();
   }
     function search_shipper($search_shipper){
-   $query = $this->db->query("select * from Shipper WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
+   $query = $this->db->query("select * from vw_shipper_full_info WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
    return $query->result();
   }
       function search_vessel($search_vessel){
@@ -332,7 +336,7 @@ Class User extends CI_Model
   }
   function findlimit_shipper($page_position,$item_per_page)
   {
-   return $this->db->get('Shipper',$page_position, $item_per_page)->result();
+   return $this->db->get('vw_shipper_full_info',$page_position, $item_per_page)->result();
   }
     function findlimit_vessel($page_position,$item_per_page)
   {

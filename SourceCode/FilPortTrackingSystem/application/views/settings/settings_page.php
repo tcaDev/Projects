@@ -421,7 +421,14 @@
 					            <div class="form-group col-lg-12 " >
 					            	<label>Countries</label>
 					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
-					           		<div class="change_select"></div>
+					           		<div class="change_select">
+					         		    <select name="country" class="form-control">
+					           			   <?php 
+					           			     foreach($countries as $row)
+					           			      echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+					           			    ?>
+					           		   </select>  			
+					           		</div>
 					            </div>
 					        </div>
 					        <div class="row">
@@ -588,10 +595,42 @@
 		        	<?php echo  form_open('Update/update_shipper/'); ?>
 				            <input type="hidden" name="ship_id" value='' class="ship_id form-control"/>
 							
-							<div class="row">
+							<div class="">
 					            <div class="form-group col-lg-12">
 					            	<label>Shipper Name</label>
-					               <input type="text" name="ship_name" value="" class="shipper_name form-control" required/>
+					               <input type="text" name="ship_name" placeholder="Shipper Name" value="" class="shipper_name form-control" required/>
+					            </div>
+					        </div>
+					 		<div class="">
+					           <div class="form-group col-lg-12">
+					            	<label>HouseBuildingNo/Street</label>
+					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control"/>
+					          </div>
+					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<label>Barangay/Village</label>
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control" required />
+					            </div>
+					        </div>
+					         <div class="">
+					            <div class="form-group col-lg-12">
+					            	<label>TownOrCityProvince</label>
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control" required />
+					            </div>
+					         </div>
+					         <div class="">
+					            <div class="form-group col-lg-12 " >
+					            	<label>Countries</label>
+					                <!-- <input type="text" name="country"   class="country form-control" required /> -->
+					           		<div class="change_select" >
+					           			<select name="country" class="form-control">
+					           			<?php 
+					           			  foreach($countries as $row)
+					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+					           			?>
+					           			</select>
+					           		</div>
 					            </div>
 					        </div>
 					        <div class="row">
@@ -663,7 +702,14 @@
 					          <div class="form-group col-lg-12 change_select" >
 					            	<label>Countries</label>
 					              <!--   <input type="text" name="country"   class="broker_country form-control" required /> -->
-					           		<div class="change_select"> </div>
+					           		<div class="change_select">
+					           		   <select name="country" class="form-control">
+					           			   <?php 
+					           			    foreach($countries as $row)
+					           			     echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+					           			    ?>
+					           			</select>
+					           		 </div>
 					            </div>
 					       </div>
 					       <div class="row">

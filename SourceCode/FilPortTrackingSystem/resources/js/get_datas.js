@@ -28,18 +28,19 @@
 			  	  	   $('.deactivate').prop('checked', true);
 			  	  }
 			  	  	
-
-				$.ajax({
-					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
-					  data: { countryid:country_ids,
-					  		  conname:Country 	  		  
-					  		}
-					})
-					  .done(function(data) {
-					  	$('.change_select').html(data);
-					      
-				}); 
+			  	 if(country_ids!=0){ 
+						$.ajax({
+							  method: "POST",
+							  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
+							  data: { countryid:country_ids,
+							  		  conname:Country 	  		  
+							  		}
+							})
+							  .done(function(data) {
+							  	$('.change_select').html(data);
+							      
+						}); 
+				}
 
 	 }); 
 
@@ -83,20 +84,19 @@
 			  	  	   $('.deactivate').prop('checked', true);
 			  	  }
 
-
-			  	  		$.ajax({
-					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
-					  data: { countryid:cid,
+			  	  if(cid!=0){
+			  	  	$.ajax({
+						  method: "POST",
+					 	  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
+					  	  data: { countryid:cid,
 					  		  conname:Country 	  		  
 					  		}
-					})
-					  .done(function(data) {
-					  	$('.change_select').html(data);
+						})
+						  .done(function(data) {
+					  		$('.change_select').html(data);
 					      
-				}); 
-
-
+					}); 
+				 }
 				
 		   });
 
@@ -112,14 +112,7 @@
 
 
 
-         	 $('.get_shipper_datas').click(function(){
-
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var sname   	  = $(this).closest('tr').children('td:eq(1)').text();
-	
-			      $('.shipper_id').val(id);
-			      $('.shipper_name').val(sname);
-			 });
+      
 	
 		//for get in the value to pop up modal end	
 

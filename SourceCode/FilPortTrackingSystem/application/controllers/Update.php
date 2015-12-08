@@ -77,17 +77,28 @@ class Update extends CI_Controller {
 	
 	}
 		function update_shipper(){
-		$id 	= 	$this->input->post('ship_id');
-		$name 	= 	$this->input->post('ship_name');
+		$id 	   = 	$this->input->post('ship_id');
+		$name 	   = 	$this->input->post('ship_name');
+		$hbno 	   = 	$this->input->post('hbno');
+		$vilage    = 	$this->input->post('vilage');
+		$city 	   = 	$this->input->post('city');
+		$country   = 	$this->input->post('country');
+
 		
 
-		$query= $this->db->query("Select * from Shipper where ShipperName = '$name' limit 1");
+		$query= $this->db->query("Select * from Shipper where ShipperName = '$name' 
+		and HouseBuildingNoStreet='$$hbno'
+		and BarangarOrVillage='$vilage'
+		and TownOrCityProvince='$city'
+		and CountryId='country'
+
+		limit 1");
           
 		if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           } 
        else{ 
-       		$this->User->update_shipper($id,$name);
+       		$this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country);
        		 $this->session->success= 'update_success';
        	   }
 		redirect('Login_User/settings/#shipper');
