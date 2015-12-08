@@ -135,7 +135,11 @@ class Login_user extends CI_Controller {
 		    $data['broker_data']    = $this->User->dropdown_broker();
 		    $data['color_data']    = $this->User->dropdown_colors();
 		    // drop down in add data form in jofile end
-		  
+
+
+		    /* get status*/
+		    $data['status'] =     $this->User->get_status();
+		  	
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{
@@ -180,6 +184,7 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
