@@ -364,8 +364,119 @@ class Add_user extends CI_Controller {
           
           
 
+/*
+------------------------------
+  Forgot PAssword
+------------------------------
+*/
+  function forgot_password(){
+
+    
+
+     if(isset($_POST['email']) && !empty($_POST['email'])){
+
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+     
+        if( $this->form_validation->run() == FALSE){
+
+          $data['tab'] = "Forgot Password";
+          $this->load->view('forgotpass/password' , $data);
+        } else {
+          $email = $this->input->post('email');
+          $result = $this->User->email_exists($email);
+
+            if($result){
+              $this->send_reset_password_email($email,$result);
+              $data['tab'] = "Forgot Password";
+              $this->load->view('forgotpass/password' , $data);
+
+              /*Put email address*/
+
+            } else {
+              /* Email address not registered*/
+            }
+
+        }
+
+     } else {
+         $data['tab'] = "Forgot Password";
+         $this->load->view('forgotpass/password' , $data);
+     }
+
+  }
+
+
+
+  /*
+  ---------------------------
+    Send Reset PAssword Email
+  ---------------------------
+  */
+
+  function send_reset_password_email($email,$firstname){
+
+    $this->load->library('email');
+    $email_code = md5($this->config->item('salt') . $firstname);
+
+    $this->email->set_mailtype('html');
+    $this->email->from($this->config->item('bot_email'),'Freight Forum');
+    $this->email->to($email);
+    $this->email->subject('Please reset your Password at Frieght Forum');
+
+    $message = '<!DOCTYPE html>
+                <html lang="en">
+                  <head>
+                  <meta charset="utf-8">
+                  </head><body>
+                ';
+    $message .= '<p>Dear '.$firstname.'</p>';
+    $message .= '<p>We want to help you reset your passowrd! Please <strong><a href="'.base_url().'Add_user/reset_password_form/'.$email.'/'.$email_code.'Click Here</a></strong> to reset your password.</p>';
+    $message .= '<p>Thank you!</p>';
+    $message .= '<p>The Team at Freight Forum</p>';
+    $message .= '</body></html>';
+
+    $this->email->message($message);
+    $this->email->send();
+  }
          
   
+  function reset_password_form($email ,$email_code){
+
+    if(isset($email, $email_code)){
+      $email = trim($email);
+      $email_hash = sha1($email . $email_code);
+      $verified = $this->User->verify_reset_password_code($email , $email_code);
+
+      if($verified){
+        $data['tab'] = "Forgot Password";
+        $this->load->view('forgotpass/update_password', array('email_hash' => $email_hash , 'email_code' => $email_code , 'email' => $email));
+      }else{
+        //back to forgot password and try again
+        // There was a prob in your link,, Try again or Request to reset your password againj
+      }
+    }
+  }
+
+  function update_password(){
+
+    if(!isset($_POST['email'], $_POST['email_hash']) || $_POST['email_hash'] !== sha1($_POST['email'] . $_POST['email_code'])){
+       die("Error updating your Password")
+    }
+
+    $this->form_validation->set_rules('email_hash','Email Hash', 'trim|required');
+    $this->form_validation->set_rules('email','Email', 'trim|required|valid_email|xss_clean');
+    $this->form_validation->set_rules('pass','Password', 'trim|required|min_length[6]|max_length[50]|matches[newpass]|xss_clean');
+    $this->form_validation->set_rules('newpass','New Password', 'trim|required|min_length[6]|max_length[50]|xss_clean');
+
+
+    if($this->form_validation->run() == FALSE){
+        $data['tab'] = "Forgot Password";
+         $this->load->view('forgotpass/update_password' , $data);
+    }else{
+      //success
+      $result = $this->User->update_password();
+    }
+  }
 
 
 

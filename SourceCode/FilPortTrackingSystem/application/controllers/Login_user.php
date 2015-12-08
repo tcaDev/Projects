@@ -164,6 +164,13 @@ class Login_user extends CI_Controller {
 			$this->load->view('login/login_page' , $data);
 	}
 
+	function forgot()
+	{	
+
+			$data['tab'] = "Forgot Password";
+			$this->load->view('forgotpass/password' , $data);
+	}
+
  	 function logout()
 	 {
 	   $this->session->unset_userdata('logged_in');
@@ -569,7 +576,7 @@ class Login_user extends CI_Controller {
 				$this->not_success_pass();
 		}
 		else{
-
+				$this->User->updatePass($id,$newpass);
 				$this->updated_pass();			
 		}
 

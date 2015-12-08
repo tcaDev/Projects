@@ -114,7 +114,7 @@
 
 								</div>
 
-								<span class="pull-right"><a href="" style="font-size: 15px !important; "> Forgot Email or Password? </a></span>
+								<span class="pull-right"><a href="<?php echo base_url('login_user/forgot');?>" style="font-size: 15px !important; "> Forgot your Password? </a></span>
 
 				            </div>	
 
