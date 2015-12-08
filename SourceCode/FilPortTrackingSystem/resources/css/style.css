@@ -1340,7 +1340,7 @@ position: absolute;
 
 
 
-.table-remove {
+.table-remove{
 
   color: #700;
 
@@ -1351,24 +1351,6 @@ position: absolute;
   &:hover {
 
     color: #f00;
-
-  }
-
-}
-
-
-
-.table-up, .table-down {
-
-  color: #007;
-
-  cursor: pointer;
-
-  
-
-  &:hover {
-
-    color: #00f;
 
   }
 
@@ -1397,6 +1379,7 @@ position: absolute;
   }
 
 }
+
 
 
 
