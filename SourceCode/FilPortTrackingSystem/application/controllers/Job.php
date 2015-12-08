@@ -32,8 +32,29 @@ class Job extends CI_Controller {
 
      function jofile_data(){
 
-           $add_users = "CALL sp_AddUser(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                          $this->db->query($add_users,
+           $uname = $this->input->post('jbfl');
+           $consignee = $this->input->post('consignee');
+           $broker = $this->input->post('broker');
+           $mon = $this->input->post('monitoring_type');
+           $entryno = $this->input->post('entryno');
+           $registry =  $this->input->post('reg');
+           $hbl =  $this->input->post('hbl');
+           $mbl =  $this->input->post('mbl');
+           $letter_cred_bank =  $this->input->post('letter_cred_bank');
+
+
+           
+
+           
+
+           
+
+           $shipper = $this->input->post('shipper');
+           $mon = $this->input->post('monitoring_type');
+           $bdate = $this->input->post('bdate');
+
+           $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                          $this->db->query($add_jobfile,
                             array(
                                    'P_UserName'             =>$uname,
                                    'P_Password'             =>$pass,
@@ -66,7 +87,6 @@ class Job extends CI_Controller {
 
 
 
-}
 
 
 ?>

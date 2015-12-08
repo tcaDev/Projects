@@ -10,6 +10,7 @@
 		  	<div class="row">
 		  		<div class="col-lg-4" >	
 		  <?php echo  form_open('Job');?>
+		           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 	  				<label for="jbfl">JobFile No.:</label>
 					  <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
 
@@ -144,6 +145,13 @@
 
 						  <label for="dtClrd">Date Cleared BOC:</label>
 						  <input type="datetime-local" name="dt_boc" class="form-control input-sm">
+
+						   <label for="dtClrd">Reference Entry No.:</label>
+						  <input type="text" name="entryno" class="form-control input-sm">
+						   <label for="dtClrd">Registry:</label>
+						  <input type="text" name="reg" class="form-control input-sm">
+						  	<label for="dtClrd">Letter Credit From Bank:</label>
+						  <input type="text" name="letter_cred_bank" class="form-control input-sm">
 		  			</div>
 		  		</div>
 		  </div>
