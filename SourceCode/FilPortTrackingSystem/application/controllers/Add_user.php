@@ -15,27 +15,40 @@ class Add_user extends CI_Controller {
         public function index()
 
         {
-        
-
                  $this->form_validation->set_rules('uname', 'Uname', 'required');
                  $this->form_validation->set_rules('fname', 'Fname', 'required');
                  $this->form_validation->set_rules('mname', 'Mname', 'required');
                  $this->form_validation->set_rules('lname', 'Lname', 'required');
+                 $this->form_validation->set_rules('bdate', 'Bdate', 'required');
+                 $this->form_validation->set_rules('contact1', 'Contact No 1', 'required');
+                 $this->form_validation->set_rules('addr', 'Home', 'required');
+                 $this->form_validation->set_rules('brgy', 'Barangay', 'required');
+                 $this->form_validation->set_rules('towncity', 'Town', 'required');
+                 $this->form_validation->set_rules('country', 'Country', 'required');
                  $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
                  $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-                 $this->form_validation->set_rules('email', 'Email', 'required|is_unique[User.EmailAddress]|valid_email');
+                 $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
                  $this->form_validation->set_rules('shint', 'Shint', 'required');
                  $this->form_validation->set_rules('answer', 'Answer', 'required');
+                 $this->form_validation->set_rules('questions', 'Questions', 'required');
 
                     if ($this->form_validation->run() == FALSE){
+                        $data['countries']=$this->User->countries();
                         $data['questions'] =$this->User->question();
                         $data['tab'] = "Registration Page";
+                        $data['alert'] = "";
+                        $data['msg'] = "";
+            
+
                         $this->load->view('register/register_page' , $data);
                     }else{
+                       
+
                            $uname = $this->input->post('uname');
                            $fname = $this->input->post('fname');
                            $mname = $this->input->post('mname');
                            $lname = $this->input->post('lname');
+                           $bdate = $this->input->post('bdate');
                            $password = $this->input->post('password');
                            $email = $this->input->post('email');
                            $shint = $this->input->post('shint');
@@ -44,11 +57,25 @@ class Add_user extends CI_Controller {
                             $salt  = 'fwodhsljkfhnouh';
                             $salt2 = 'djaoiuelanwdoiwq';
                             $pass = sha1($salt.$password.$salt2);
-                            $contact1 =  $this->input->post('contact1');;
+                            $contact1 =  $this->input->post('contact1');
+                            $contact2 =  $this->input->post('contact2');
                             $addr     =  $this->input->post('addr');
+                            $brgy = $this->input->post('brgy');
+                           echo $town = $this->input->post('towncity');
+                            $country = $this->input->post('country');
                             $photo = "user.png";
 
-                          $add_users = "CALL sp_AddUser(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                            $query= $this->db->query("Select EmailAddress from User where EmailAddress='$email' limit 1");
+                            $query2= $this->db->query("Select Username from User where Username='$uname' limit 1");
+                            if($query->num_rows() ==1){
+                                $this->email_exist();
+                              }
+                              else if($query2->num_rows() ==1){
+                                $this->username_exist();
+                              }
+                              else{
+
+                          $add_users = "CALL sp_AddUser(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                           $this->db->query($add_users,
                             array(
                                    'P_UserName'             =>$uname,
@@ -56,30 +83,86 @@ class Add_user extends CI_Controller {
                                    'P_FirstName'            =>$fname,
                                    'P_MiddleName'           =>$mname,
                                    'P_LastName'             =>$lname,
+                                   'P_BirthDate'            =>$bdate,
                                    'P_EmailAddress'         =>$email,
                                    'P_ProfileImageSource'   =>$photo,
-                                   'P_RoleId'               =>1,
+                                   'P_RoleId'               =>'',
                                    'P_ContactNo1'           =>$contact1,
-                                   'P_ContactNo2'           =>' ',
-                                   'P_Address1'             =>$addr,
-                                   'P_Address2'             =>' ',
-                                   'P_ConsigneeId'          =>1,
-                                   'P_SecretQuestionId'     =>1,
+                                   'P_ContactNo2'           =>$contact2,
+                                   'P_HouseBuildingNoStreet'=>$addr,
+                                   'P_BarangarOrVillage'    =>$brgy,
+                                   'P_TownOrCityProvince'   =>$town,
+                                   'P_CountryId'            =>$country,
+                                   'P_ConsigneeId'          =>'',
+                                   'P_SecretQuestionId'     =>$questions,
                                    'P_SecretAnswer'         =>$answer,
                                    'P_SecretAnswerHint'     =>$shint
+
+                                        
                              ));
 
-                                  redirect('Login_user');
+                                  $this->success_register();
+                                }
+
+                 
 
                     }
 
-    
+        
 
                                       
 
                 
 
         }
+
+        /*
+        ----------------------------------
+         Alert if Success Registration
+        ---------------------------------
+         */
+          function success_register(){
+                $data['countries']=$this->User->countries();
+                $data['questions'] =$this->User->question();
+                $data['alert'] = "success";
+                $data['msg'] = "Successfully Regsitered!";
+                $data['tab'] = "Registration Page";
+
+                $this->load->view('register/register_page',$data);
+          } 
+
+        /*
+        ----------------------------------
+         Alert if Email Already Exist
+        ---------------------------------
+         */
+        function email_exist(){
+              $data['countries']=$this->User->countries();
+              $data['questions'] =$this->User->question();
+              $data['alert'] = "danger";
+              $data['msg'] = "Email Address Already Exist!";
+              $data['tab'] = "Registration Page";
+            
+
+              $this->load->view('register/register_page',$data);
+        } 
+
+
+        /*
+        ----------------------------------
+         Alert if Username Exist
+        ---------------------------------
+         */
+        function username_exist(){
+              $data['countries']=$this->User->countries();
+              $data['questions'] =$this->User->question();
+              $data['alert'] = "danger";
+              $data['msg'] = "Username Already Exist!";
+              $data['tab'] = "Registration Page";
+              $data['log'] = "";
+
+              $this->load->view('register/register_page',$data);
+        } 
 
     function add_client(){
     

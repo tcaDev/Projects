@@ -1392,7 +1392,7 @@ position: absolute;
 
 .reg-form{
 
-   padding: 10px 50px;
+   padding: 10px 15px;
 
 
 }
@@ -1404,9 +1404,9 @@ position: absolute;
     border-radius: 1em;
     background-color: rgba(255,255,255,0.8);
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     width: 900px;
     height: auto;
 
