@@ -227,10 +227,10 @@
     </div>
 
     <div class="footer-modal" >
-      <button type="button" class="truck btn btn-danger" >Truck/Plate</button>
-      <button type="button" class="next_add btn btn-danger" >Container</button>
-      <button type="button" class="save_add btn btn-danger" >Save</button>
       <button type="button" class="hidden back_add btn btn-danger" >Back</button>
+      <button type="button" class="hidden truck btn btn-danger" >Truck/Plate</button>
+      <button type="button" class="next_add btn btn-danger" >Container</button>
+      <button type="button" class=" hidden save_add btn btn-danger" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -263,11 +263,10 @@
 */
     $(".next_add").on('click', function(){
     	$(".addData").addClass('hidden');
-    	$(".truck").addClass('hidden');
+    	$(".truck").removeClass('hidden');
     	$(".back_add").removeClass('hidden');
+    	$(".next_add").addClass('hidden');
     	$(".table-addData").removeClass('hidden');
-
-    	
     });
 
 
@@ -295,6 +294,7 @@
     	$(".next_add").addClass('hidden');
     	$(".addData").addClass('hidden');
     	$(".back_add").removeClass('hidden');
+    	$(".save_add").removeClass('hidden');
     	$(".truck-addData").removeClass('hidden')
     });
 	});
