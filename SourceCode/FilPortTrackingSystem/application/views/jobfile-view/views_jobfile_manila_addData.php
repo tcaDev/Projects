@@ -228,9 +228,10 @@
     </div>
 
     <div class="footer-modal" >
-      <button type="button" class="hidden back_add btn btn-danger" >Back</button>
+      <button type="button" class="hidden back_truck btn btn-danger" >Back</button>
+      <button type="button" class="hidden back_cont btn btn-danger" >Back</button>
       <button type="button" class="hidden truck btn btn-danger" >Truck/Plate</button>
-      <button type="button" class="next_add btn btn-danger" >Container</button>
+      <button type="button" class="cont btn btn-danger" >Container</button>
       <button type="button" class=" hidden save_add btn btn-danger" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
@@ -256,33 +257,34 @@
   <script>
 	$(document).ready(function(){
 
-    $('[data-toggle="tooltip"]').tooltip();  
-
+    $('[data-toggle="tooltip"]').tooltip(); 
 
 /*
 * Container Button
 */
-    $(".next_add").on('click', function(){
+    $(".cont").on('click', function(){
     	$(".addData").addClass('hidden');
+    	$(".cont").addClass('hidden');
+
+
     	$(".truck").removeClass('hidden');
-    	$(".back_add").removeClass('hidden');
-    	$(".next_add").addClass('hidden');
+    	$(".back_cont").removeClass('hidden');
     	$(".table-addData").removeClass('hidden');
     });
 
 
 /*
-* back Button
+* back Button container
 */
 
-	$(".back_add").on('click', function(){
-    	$(".back_add").addClass('hidden');
+	$(".back_cont").on('click', function(){
+    	$(".back_cont").addClass('hidden');
     	$(".truck-addData").addClass('hidden');
     	$(".table-addData").addClass('hidden');
-    	$(".truck").removeClass('hidden');
-    	$(".next_add").removeClass('hidden');
+    	$(".truck").addClass('hidden');
+
+    	$(".cont").removeClass('hidden');
     	$(".addData").removeClass('hidden');
-    	
     });
 
 
@@ -292,12 +294,36 @@
     $(".truck").on('click', function(){
     	$(".truck").addClass('hidden');
     	$(".table-addData").addClass('hidden');
-    	$(".next_add").addClass('hidden');
+    	$(".cont").addClass('hidden');
     	$(".addData").addClass('hidden');
-    	$(".back_add").removeClass('hidden');
+    	$(".back_cont").addClass('hidden');
+
+
+    	$(".back_truck").removeClass('hidden');
     	$(".save_add").removeClass('hidden');
     	$(".truck-addData").removeClass('hidden')
     });
+
+/*
+* back Button truck
+*/
+
+	$(".back_truck").on('click', function(){
+    	$(this).addClass('hidden');
+    	$(".addData").addClass('hidden');
+    	$(".cont").addClass('hidden');
+    	$(".truck-addData").addClass('hidden');
+		$(".cont").addClass('hidden');	
+		$(".save_add").addClass('hidden');
+
+    	$(".truck").removeClass('hidden');
+    	$(".table-addData").removeClass('hidden');;
+    	$(".back_cont").removeClass('hidden');
+    	
+    });
+
+
+
 });
 
 
