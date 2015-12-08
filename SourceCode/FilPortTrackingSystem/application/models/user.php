@@ -436,6 +436,17 @@ Class User extends CI_Model
           $this->db->where('UserId', $id);
           $this->db->update('User', $data); 
   }
+
+  /*
+  --------------------------------------
+    Get all data from status
+  --------------------------------------
+  */
+
+  function get_status(){
+   $query = $this->db->query("select * from Status ");
+    return $query->result();
+  }
     
 }
 
