@@ -1,10 +1,7 @@
   <fieldset >
     <legend align="left">Legend :</legend>
-
 			<div class="row" style="padding-bottom: 10px;">
-
 				<div class="col-lg-10 col-md-10 col-sm-10 " >
-
 					<div class="row">
 						<table style="font-size: 90%;">
 							<?php
@@ -22,7 +19,5 @@
 						</table>
 					</div>
 				</div>
-
 			</div>
-		
   </fieldset>
