@@ -9,8 +9,9 @@
 		  <div class="col-lg-12 addData" style="margin-bottom: 10px;">
 		  	<div class="row">
 		  		<div class="col-lg-4" >	
+		  <?php echo  form_open('Job');?>
 	  				<label for="jbfl">JobFile No.:</label>
-					  <input type="text" class="form-control input-sm " id="jbfl">
+					  <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
 
 					   	<label for="shipper">Shipper:</label>
 					  		<select name="shipper" id="shipper" class="form-control">
@@ -33,74 +34,76 @@
 				            </select>
 
 						  <label for="cnts">Number of Cartons:</label>
-						  <input type="text" class="form-control input-sm" id="cnts">
+						  <input type="text" class="form-control input-sm" name="cartoons" id="cnts">
 
-						  <label for="cntr">Conainer Size:</label>
-						  <input type="text" class="form-control input-sm" id="cntr">
+						  <label for="cntr">Container Size:</label>
+						  <input type="text" class="form-control input-sm" name="container" id="cntr">
 
 						  <label for="pipo">PI / PO No.:</label>
-						  <input type="text" class="form-control input-sm" id="pipo">
+						  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
 
-						  <label for="hbl">House Bill of Landding No.:</label>
-						  <input type="text" class="form-control input-sm" id="hbl">
+						  <label for="hbl">House Bill of Landing No.:</label>
+						  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
 
 						  <label for="mbl">Master Bill of Landing No1.:</label>
-						  <input type="text" class="form-control input-sm" id="mbl">
+						  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
 
 						  <label for="mbl">Master Bill of Landing No2.:</label>
-						  <input type="text" class="form-control input-sm text-uppercase" placeholder="optional" id="mbl2">
+						  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
 
 						  <label for="origin">Origin:</label>
-						  <input type="text" class="form-control input-sm" id="origin">
+						  <input type="text" class="form-control input-sm" name="origin" id="origin">
 
 						  <label for="etd">Estimated Time of Departure:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="etd">
 
 						  <label for="eta">Estimated Time of Arrival:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="eta">
 						</div>
 
 						<div class="col-lg-4" >
 						  <label for="AVT">AVT:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="avt">
 
 						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">Actual Time of Arrival:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="ata">
 
 		  				  <label for="bank">Letter of Credit No. from Bank:</label>
-						  <input type="text" class="form-control input-sm " id="bank">
+						  <input type="text" class="form-control input-sm " name="bank" id="bank">
 
 						  <label for="dem">Start of Demorage:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="start_demorage">
 
 						  <label for="storage">Start Storage:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" class="form-control input-sm" name="start_storage">
 
 						  <label for="registry">Registry:</label>
-						  <input type="text" class="form-control input-sm" id="registry">
+						  <input type="text" class="form-control input-sm" name="registry" id="registry">
 <!-- -->
 						  <label for="vsl">Vessel / Voyage No.:</label>
 						  	<div id="vesel" >
-						  		<input type="text" required/>
+						  		<select name="vessel" />
+						  		<option></option>
+						  		</select>
 						  	</div>
 						  
 						  <div class="tab_manila hidden"> 	
 							  <label for="carrier">Carrier:</label>
-							  <input type="text" class="  form-control input-sm" id="carrier">
+							  <input type="text" name="carrier" class="  form-control input-sm" id="carrier">
 						  </div>
 						  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" name="">
 
 						  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" name="">
 
 						  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" name="">
 		  			</div>
 
 					<div class="col-lg-4" >
 						  <label for="broker">Broker:</label>
-				  			<select name="shipper" id="vsl"class="form-control">
+				  			<select name="broker" id="vsl"class="form-control">
 				            	<?php  foreach($broker_data as $row){  ?> 
 				                <option value="<?php echo $row->BrokerId ?>">
 				                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
@@ -109,21 +112,21 @@
 			               </select>
 
 						  <label for="dtReq">Date Required Budget to GL:</label>
-						  <input type="date" class="form-control input-sm" id="dtReq">
+						  <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
 
 
 		  				 <label for="rfp">Reference Due Date:</label>
-						 <input type="date" class="form-control input-sm " id="rfp">
+						 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
 
 						 <label for="dtSent">Date Sent Pre-Assess:</label>
-						 <input type="date" class="form-control input-sm" id="dtSent">
+						 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent">
 
 						 <label for="dtFile">Date File Entry to BOC:</label>
-						 <input type="date" class="form-control input-sm" id="dtFile">
+						 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
 
 						 <label for="slctvty">Color Selectivity:</label>
 			  				<select class="form-control" id="colsel">
-					          	<option value="" disabled selected>Jobfile Status</option>
+					          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
 								<?php  foreach($color_data as $row){ 
 								   $status = $row->StatusName;
 								   if($status=='Red Font'){?> 
@@ -137,10 +140,10 @@
 					        </select>
 
 						  <label for="dtPaid">Date Paid(Date& Time):</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
 
 						  <label for="dtClrd">Date Cleared BOC:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="">
+						  <input type="datetime-local" name="dt_boc" class="form-control input-sm">
 		  			</div>
 		  		</div>
 		  </div>
@@ -157,7 +160,7 @@
 			        <th>Status Report</th>
 			        <th></th>
 			      </tr>
-
+<!-truck plate is no names yet -->
 			      <tr>
 			        <td contenteditable="true">Untitled</td>
 			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
@@ -183,7 +186,7 @@
 			    </table>
 			</div>
 
-
+<!-container plate is no names yet -->
 		<!--CONTAINER WINDOW-->
 		  	<div id="tableAddContainer" class="hidden table-addData table-editable col-lg-12">
 			    <span class="table-add table-add-cont glyphicon glyphicon-plus"></span>
@@ -232,11 +235,11 @@
       <button type="button" class="hidden back_cont btn btn-danger" >Back</button>
       <button type="button" class="hidden truck btn btn-danger" >Truck/Plate</button>
       <button type="button" class="cont btn btn-danger" >Container</button>
-      <button type="button" class=" hidden save_add btn btn-danger" >Save</button>
+      <button type="submit" class=" hidden save_add btn btn-danger" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
-
+<?php echo form_close();?>
 
 
 <script type="text/javascript">
