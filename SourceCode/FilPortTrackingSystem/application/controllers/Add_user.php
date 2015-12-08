@@ -61,7 +61,7 @@ class Add_user extends CI_Controller {
                             $contact2 =  $this->input->post('contact2');
                             $addr     =  $this->input->post('addr');
                             $brgy = $this->input->post('brgy');
-                           echo $town = $this->input->post('towncity');
+                            $town = $this->input->post('towncity');
                             $country = $this->input->post('country');
                             $photo = "user.png";
 
