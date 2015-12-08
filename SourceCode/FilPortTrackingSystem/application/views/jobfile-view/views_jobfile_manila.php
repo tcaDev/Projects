@@ -81,7 +81,7 @@
 			
 				
 
-			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :450px; width:100%;">
+			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
 				    <table class="table table_manila table-striped table-bordered table-hover" style="width:7000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">

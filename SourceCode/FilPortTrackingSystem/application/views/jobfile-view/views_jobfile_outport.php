@@ -119,7 +119,7 @@
 
 
 
-			 <div class="col-lg-12 col-md-12 col-sm-12" style= "overflow-y:auto; height :450px;">
+			 <div class="col-lg-12 col-md-12 col-sm-12" style= "overflow-y:auto; height: 635px;">
 
 				    <table class="table table-striped table-hover table-bordered" style="width: 7000px;">
 

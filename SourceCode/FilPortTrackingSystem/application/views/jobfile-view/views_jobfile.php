@@ -1,7 +1,7 @@
 
 
 	<!-- Tabs -->
-
+	<div class="jobfile-cont">
 		<div class="container-tab" id="tabs">
 
 		  <ul class="nav nav-tabs">
@@ -46,20 +46,20 @@
 
 
 
+
+		</div>
+</div>
+
+
 			<!-- Legend -->
 
-			<div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:10px; ">
+			<div class=" legend">
 
 				<?php $this->load->view('footer/legend'); ?>
 
 			</div>
 
 			<!-- End Legend -->
-
-		</div>
-
-
-
 
 
 
