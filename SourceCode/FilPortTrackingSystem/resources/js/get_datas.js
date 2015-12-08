@@ -8,8 +8,9 @@
 			     var city   				      = $(this).closest('tr').children('td:eq(4)').text();
 			     var Country   				      = $(this).closest('tr').children('td:eq(5)').text();
 			     var number     			      = $(this).closest('tr').children('td:eq(6)').text();
-			     var stat     			          = $(this).closest('tr').children('td:eq(8)').text();
-			     var country_ids 			      = $(this).closest('tr').children('td:eq(9)').text();
+			  /*   var contact_persons     		  = $(this).closest('tr').children('td:eq(7)').text();*/
+			     var stat     			          = $(this).closest('tr').children('td:eq(9)').text();
+			     var country_ids 			      = $(this).closest('tr').children('td:eq(10)').text();
 
 			      $('.consignee_id').val(id);
 			      $('.consignee_name').val(Consignee);

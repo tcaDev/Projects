@@ -102,7 +102,25 @@
 
  });
 
+ //for view and edit consignee contact information
+ $('.view_consignee_contact').click(function(){
+			var consignee_id    = $(this).closest('tr').children('td:eq(0)').text();
 
+						$.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Search/consigneecon/",
+					  data: { cons:consignee_id}
+					})
+					  .done(function(data) {
+					   $('#modal_view_consignee_contact').html(data);
+					  });
+
+		});
+//for adding consignee contact persons
+$('.add_consignee_contact').click(function(){
+			var consignee_id    = $(this).closest('tr').children('td:eq(0)').text();
+			$('.consig_id').val(consignee_id);					  
+		});
 
 
  $('.delete_consignee').click(function(){

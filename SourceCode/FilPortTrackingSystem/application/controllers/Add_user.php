@@ -335,15 +335,33 @@ class Add_user extends CI_Controller {
                 );
 
             $this->db->insert('ShipperContacts', $data);
-              redirect('Login_user/settings/#shipper');
-             ?>
+              redirect('Login_user/settings/#shipper'); 
 
- 
-   <?php 
+     }
+
+         function add_consigneecon(){
+             $id = $this->input->post('consig_id');
+             $fname = $this->input->post('fname_contact');
+             $mname = $this->input->post('mname_contact');
+             $lname = $this->input->post('lname_contact');
+             $c1 = $this->input->post('no_contact1');
+             $c2 = $this->input->post('no_contact2');
+
             
+                $data = array(
+                  'FirstName' => $fname,
+                  'MiddleName' => $mname,
+                  'LastName' => $lname,
+                  'ContactNo1'   => $c1,
+                  'ContactNo2'   => $c2,
+                  'ConsigneeId' => $id,
+                );
 
+            $this->db->insert('ConsigneeContacts', $data);
+              redirect('Login_user/settings/#'); 
 
- }
+     }
+          
           
 
          

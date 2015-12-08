@@ -110,6 +110,8 @@ Class User extends CI_Model
     
   }
 
+
+// FOR UPDATING CONTACT PERSONS IN SETTINGS START
     function update_shippercon($id,$fname,$mname,$lname,$c1,$c2){
 
               $data2 = array(
@@ -124,6 +126,21 @@ Class User extends CI_Model
          $this->db->where('ShipperContactId', $id);
          $this->db->update('ShipperContacts', $data2);
     }
+    function update_consigneecon($id,$fname,$mname,$lname,$c1,$c2){
+
+              $data2 = array(
+                'FirstName'        =>$fname,
+                'MiddleName'       =>$mname,
+                'LastName'         =>$lname,
+                'ContactNo1'       =>$c1,
+                'ContactNo2'       =>$c2
+
+
+          );
+         $this->db->where('ConsigneeContactId', $id);
+         $this->db->update('ConsigneeContacts', $data2);
+    }
+// FOR UPDATING CONTACT PERSONS IN SETTINGS END
 
         function update_broker($id,$broker_fname,$broker_mname,
     $broker_lname,$broker_houseno,$broker_vil,$broker_city,
@@ -256,6 +273,9 @@ Class User extends CI_Model
               return $count->result();
     }
 
+
+
+//for viewing and editing contacts in settings start
   function shippercons($id){
 
     $this->  db ->select('*');
@@ -264,6 +284,16 @@ Class User extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
+    function consigneecon($id){
+
+    $this->  db ->select('*');
+    $this -> db -> from('ConsigneeContacts');
+    $this -> db ->where('ConsigneeId', $id);
+    $query=$this->db->get();
+    return $query->result();
+  }
+
+//for viewing and editing contacts in settings end
 
 
   //for searching  start

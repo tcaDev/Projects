@@ -22,6 +22,10 @@ class Delete_datas extends CI_Controller {
  	 $id = $this->input->post('id');
  	 $this->db->delete('ShipperContacts', array('ShipperContactId' => $id));
  }
+  function del_consignee_con(){
+ 	 $id = $this->input->post('id');
+ 	 $this->db->delete('ConsigneeContacts', array('ConsigneeContactId' => $id));
+ }
  function del_broker(){
  	 $id = $this->input->post('id');
  	 $this->db->delete('Broker', array('BrokerId' => $id));

@@ -269,14 +269,14 @@ class Login_user extends CI_Controller {
 
 
 		//select country
-		$data['countries']=$this->User->countries();
+		$data['countries']   =  $this->User->countries();
 	 	$data['lconsignee']  =  $this->User->settings_consignee();
 	 	$data['lbroker']	 =  $this->User->settings_broker();
 	 	$data['lvessel'] 	 =  $this->User->settings_vessel();
 	 	$data['lshipper'] 	 =  $this->User->settings_shipper();
 	 	$data['lshippercon'] =  $this->User->settings_shipper_con();
-		$data['clients'] =     $this->User->clients();
-		$data['tab'] = "SITE SETTINGS";
+		$data['clients']     =  $this->User->clients();
+		$data['tab']         =  "SITE SETTINGS";
 
 		$session_data = $this->session->userdata('logged_in');
 	    $data['username'] = $session_data['username'];
@@ -619,6 +619,25 @@ class Login_user extends CI_Controller {
 
 
 
+	//foe selecting country
+function select_country(){
+	$id      = $this->input->post('countryid');
+	$country = $this->input->post('conname');
+	
+	$newdata = $this->User->country($id); 
+	echo "<select name='country' class='form-control'>";
+		echo '<option value='.$id.'> '.$country.'</option>';
+		foreach ($newdata as $row) {
+			$cid      = $row->CountryId;
+			$cname    = $row->CountryName;
+			echo '<option value='.$cid.'> '.$cname.'</option>';
+		}
+	echo "</select>";
+		
+}
+
+
+
    //for pagination  start
 
 
@@ -656,7 +675,8 @@ class Login_user extends CI_Controller {
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
 					         <th>Country</th>
-					        <th>OfficeNumber</th>
+					         <th>OfficeNumber</th>
+					         <th>Contact Persons</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -698,7 +718,11 @@ class Login_user extends CI_Controller {
 							        <td>'. $row->BarangayOrVillage .'</td>  
 							        <td>'. $row->TownOrCityProvince .'</td> 
 							        <td>'. $row->Country .'</td>          
-							        <td>'. $number .'</td>       
+							        <td>'. $number .'</td> 
+							           <td>
+							           		   <button type="button" class="btn  view_consignee_contact" data-toggle="modal" data-target="#modal_view_consignee_contact">View</button>   
+					       					   <button type="button" class="btn  add_consignee_contact"  data-toggle="modal" data-target="#modal_add_consignee_contact">Add</button> 
+					       			   </td>   
 							        <td>'.$stat .'</td>
 							        <td   class="hidden">'. $mystat .'</td>
 							        <td   class="hidden">'. $row->CountryId .'</td>

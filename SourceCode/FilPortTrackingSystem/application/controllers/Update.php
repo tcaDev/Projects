@@ -105,6 +105,17 @@ class Update extends CI_Controller {
 	$this->User->update_shippercon($id,$fname,$mname,$lname,$c1,$c2);
 	redirect('Login_User/settings');
 	}
+    function update_consigneecon(){
+		$id 	= 	$this->input->post('c_id');
+		$fname 	= 	$this->input->post('fname');
+		$mname 	= 	$this->input->post('mname');
+		$lname 	= 	$this->input->post('lname');
+		$c1 	= 	$this->input->post('c1');
+		$c2 	= 	$this->input->post('c2');
+
+	$this->User->update_consigneecon($id,$fname,$mname,$lname,$c1,$c2);
+	redirect('Login_User/settings');
+	}
 		function update_broker(){
 		$id 			= 			$this->input->post('broker_id');
 		$broker_fname 	= 			$this->input->post('broker_fname');

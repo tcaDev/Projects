@@ -94,6 +94,156 @@ if(isset($_SESSION['success'])){
 
 }
 
+   function consigneecon(){
+
+   	$cons=$this->input->post('cons');
+   	$info = $this->User->consigneecon($cons);
+
+   	
+   	
+   	    echo '	    <div class="mycontent" >  	
+   	    			<div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Consignee Contacts Information</h4>
+				        </div>
+				        <div class="modal-body">
+		        						
+						<table class="table table-striped table_consignee">
+					    <thead>
+					      <tr>
+					        <th>FirstName</th>
+					        <th>MiddleName</th>
+					        <th>LastName</th>
+					        <th>ContactNo1</th>
+					        <th>ContactNo2</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+					    </thead>
+					    <tbody>';
+					    if($info==null){
+					    	echo '<tr>
+					    		 <center><td style="color:red">No Contacts Yet </td></center>
+					    		</tr>';
+					    }
+					    $i=0;
+					    foreach ($info as $row) {
+					    	$i++;
+					    	      echo     '<tr style="cursor:pointer;" class="values_content">
+					    		    <td  class="hidden">'.$row->ConsigneeContactId.'</td>
+					    		     <td  class="hidden">'.$i.'</td>
+							        <td contenteditable="true">'.$row->FirstName.'</td>
+							        <td contenteditable="true">'.$row->MiddleName.'</td>
+							        <td contenteditable="true">'.$row->LastName.'</td>       
+							        <td contenteditable="true">'.$row->ContactNo1.'</td>
+							        <td contenteditable="true">'. $row->ContactNo2. '</td>
+							        <td><button class="update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+					     		 </tr>';
+					    } ?>
+					     </tbody>
+					  </table>
+
+					    <?php
+					echo   '
+			   	 		
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div> 
+				   </div>        
+				 </div>'
+
+				 ;?>
+
+		
+				
+		<script>
+		$('.update_contacts_consignee').click(function(){
+
+   
+					var cid    = $(this).closest('tr').children('td:eq(0)').text();
+					var fname    = $(this).closest('tr').children('td:eq(2)').text();
+					var mname    = $(this).closest('tr').children('td:eq(3)').text();
+					var lname    = $(this).closest('tr').children('td:eq(4)').text();
+					var c1    = $(this).closest('tr').children('td:eq(5)').text();
+					var c2    = $(this).closest('tr').children('td:eq(6)').text();
+						
+				$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Update/update_consigneecon');?>",
+			  		data: { c_id:cid,
+			  			    fname:fname, 
+			  			    mname:mname,
+			  			    lname:lname,
+			  			    c1:c1,
+			  			    c2:c2
+			  		}
+				})
+		  		.done(function(data) {
+		  			$(this).closest('tr').addClass('.mycolor');
+		   		 /* $('#modal_shippercontacts').html(data); 
+		   		  $('#modal_shippercontacts').click();*/
+		   		 	    $.alert({
+								    title: 'Alert!',
+								    content: 'Data has been Updated!',
+								    confirm: function(){
+								    
+								    }
+								});
+				});
+		});
+		$('.delete_contacts_consignee').click(function(){
+			  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+
+
+        
+                                  $.confirm({
+                                    title: 'Delete the information?',
+                                    content: 'You have 6 seconds to make a choice',
+                                    autoClose: 'cancel|6000',
+                                    confirmButton: 'Yes',
+                                    confirmButtonClass: 'btn-info',
+                                    cancelButton: 'No',
+                                    confirm: function () {            
+               
+
+
+                                        $.post( "<?php echo base_url('Delete_datas/del_consignee_con');?>", 
+                                        	{ 
+                                        	  id:delete_id
+                                        	})
+										  .done(function( data ) {
+										
+										    $.alert({
+													    title: 'Alert!',
+													    content: 'Data has been deleted!',
+													    confirm: function(){
+					  									   $('#modal_shippercontacts').html(data); 
+		   												  $('#modal_shippercontacts').click();	
+													   
+													   }
+													});
+										    
+										  });
+                                    },
+                                    cancel: function () {
+                                       /* alert('Vacation cancelled!');*/
+                                    }
+                                });
+		});
+		
+
+
+		 </script>
+
+
+   <?php 
+   }
+
 
    function shippercon(){
 

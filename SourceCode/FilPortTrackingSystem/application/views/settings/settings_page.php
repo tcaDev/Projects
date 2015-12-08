@@ -381,7 +381,7 @@
 			</div>
 
 				<!--For Pop up update -->
-				  <!-- Modal -->
+		 <!-- Modal  for Consignee start-->
 				  <div class="modal fade" id="modal_update_consignee" role="dialog">
 				    <div class="modal-dialog">  
 				      <!-- Modal content-->
@@ -455,7 +455,82 @@
 				    </div>
 				  </div>
 
-				 <!-- Modal FOr vessel
+				   <!--pop up for viewing/editing  contacts start -->
+				   		  <div class="modal fade" id="modal_view_consignee_contact" role="dialog"></div>
+				   <!--pop up for viewing/editing end -->
+
+		  <!-- Modal FOr adding consignee contacts start-->
+			<div class="modal fade" id="modal_add_consignee_contact" role="dialog">
+				  <div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Add Consignee Contacts</h4>
+				        </div>
+				        <div class="modal-body">
+		       		<?php echo form_open('Add_user/add_consigneecon');?>
+				            <input type="hidden" name="consig_id" value="" class="consig_id form-control"/>
+							
+							<div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>First Name</label>
+					               <input type="text" name="fname_contact" value="" class="fname_contact form-control" required/>
+					            </div>
+					        </div>
+
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Middle Name</label>
+					               <input type="text" name="mname_contact" value="" class="mname_contact form-control"/>
+					            </div>
+					        </div>
+
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Last Name</label>
+					               <input type="text" name="lname_contact" value="" class="lname_contact form-control" required/>
+					            </div>
+					        </div>
+
+					         <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Contact No.1</label>
+					               <input type="text" name="no_contact1" value="" minlength="7" maxlength="15" class="no_contact form-control" required/>
+					            </div>
+					        </div>
+
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Contact No.2</label>
+					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
+					            </div>
+					        </div>
+
+					
+					        <div class="row">
+					        	<div class="form-group col-lg-12">
+					            	<button type="submit" class=" submit_contact pull-right btn btn-default">Submit</button>
+					            </div>	
+					        </div>
+			   	 	<?php echo form_close();?>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>      
+				 </div>
+			</div>
+		<!-- Modal FOr adding consignee contacts end-->
+
+
+		<!-- Modal  for Consignee end-->
+
+
+
+
+
+				  				  <!-- Modal FOr vessel
 				  				  -->
 				  <div class="modal fade" id="modal_update_vessel" role="dialog">
 				    <div class="modal-dialog">
@@ -629,8 +704,6 @@
 
 				  <!-- Modal FOr shippercontacts-->
 				  <div class="modal fade" id="modal_shippercontacts" role="dialog">
-
-
 				  </div>
 
 			<!-- Modal FOr add_shippercontacts-->
@@ -687,7 +760,7 @@
 					            	<button type="submit" class=" submit_contact pull-right btn btn-default">Submit</button>
 					            </div>	
 					        </div>
-			   	 	</form>
+			   	 	<?php echo form_close();?>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
