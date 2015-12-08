@@ -73,8 +73,13 @@
 						        	</div>
 						        	
 						        	<div class="form-group">
-						        		<label for="fname">Last : </label>
+						        		<label>Last : </label>
 						        		<input class="form-control input-sm" type="text" name="lname" value="<?php echo $lname; ?>"/>
+						        	</div>
+
+						        	<div class="form-group">
+						        		<label >Birth Date : </label>
+						        		<input class="form-control input-sm" type="date" name="bdate" value="<?php echo $bdate; ?>"/>
 						        	</div>
 						        		<hr>
 						        	<div class="form-group">
@@ -112,7 +117,7 @@
 						        	</div>
 						        	
 						        	<div class="form-group">
-						        		<label for="fname">Re-type New : </label>
+						        		<label >Re-type New Password : </label>
 						        		<input class="form-control input-sm" type="password" name="renewpass" id="renewpass"/>
 						        	</div>
 						        	<span id='message'></span>

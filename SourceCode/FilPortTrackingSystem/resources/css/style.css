@@ -389,14 +389,14 @@ position: absolute;
 
     padding: 20px;
     box-shadow: 0px 2px 5px #000;
+    margin-bottom: 20px;
     border-radius: 1em;
     background-color: rgba(255,255,255,0.8);
     position: absolute;
-    top: 55%;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
     width: 600px;
-
  
 
 }

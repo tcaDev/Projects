@@ -325,6 +325,9 @@ Class User extends CI_Model
 
   }
 
+
+
+
   
   /*
   --------------------------------------------
@@ -349,12 +352,13 @@ Class User extends CI_Model
   --------------------------------------
   */
 
-  function updateName($id,$fname,$mname,$lname){
+  function updateName($id,$fname,$mname,$lname,$bdate){
 
       $data = array(
                 'FirstName' => $fname,
                 'LastName'  => $lname,
-                'MiddleName'=> $mname 
+                'MiddleName'=> $mname,
+                'BirthDate' => $bdate
                 );
 
           $this->db->where('UserId', $id);

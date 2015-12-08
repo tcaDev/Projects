@@ -105,14 +105,14 @@
 
 
 					<!-- Column One -->
-						<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="col-lg-6 col-md-6 col-sm-6" style="border-right : 1px solid #ddd;">
 
 							<div class="row">
 
 
 								<div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                <input type="text" name='fname' placeholder="First Name" class="form-control"  value="<?php echo set_value('fname'); ?>" required >
+					                <input type="text" name='fname' placeholder="First Name" class="form-control"  value="<?php echo set_value('fname'); ?>" data-toggle="tooltip" data-placement="left" title="First Name" required >
 
 					            </div>
 
@@ -120,7 +120,7 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                  <input type="text" name='mname' placeholder="Middle Name" class="form-control"  value="<?php echo set_value('mname'); ?>" required>
+					                  <input type="text" name='mname' placeholder="Middle Name" class="form-control"  value="<?php echo set_value('mname'); ?>" data-toggle="tooltip" data-placement="left" title="Middle Name" required>
 
 					            </div>
 
@@ -128,26 +128,26 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="text" name="lname"  placeholder="Last Name" class="form-control" value="<?php echo set_value('lname'); ?>" required >
+					                 <input type="text" name="lname"  placeholder="Last Name" class="form-control" value="<?php echo set_value('lname'); ?>" data-toggle="tooltip" data-placement="left" title="Last Name" required >
 
 					            </div>
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 										
-									<input placeholder="Birth Date" class="form-control" type="text" onfocus="(this.type='date')" name="bdate" value="<?php echo set_value('bdate'); ?>" required>
+									<input placeholder="Birth Date" class="form-control" type="text" onfocus="(this.type='date')" name="bdate" value="<?php echo set_value('bdate'); ?>" data-toggle="tooltip" data-placement="left" title="Birth Date" required>
 
 					            </div>
 
 							
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="text" name="contact1"  placeholder="Contact Number 1" class="form-control" value="<?php echo set_value('contact1'); ?>" min="7" max="11" required >
+					                 <input type="text" name="contact1"  placeholder="Contact Number 1" class="form-control" value="<?php echo set_value('contact1'); ?>" min="7" max="11" data-toggle="tooltip" data-placement="left" title="Contact Number 1" required >
 
 					            </div>
 
 					             <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="text" name="contact2"  placeholder="Contact Number 2" class="form-control" value="<?php echo set_value('contact2'); ?>" min="7" max="11">
+					                 <input type="text" name="contact2"  placeholder="Contact Number 2" class="form-control" value="<?php echo set_value('contact2'); ?>" min="7" max="11" data-toggle="tooltip" data-placement="left" title="Contact Number 2">
 
 					            </div>
 
@@ -156,7 +156,7 @@
 
 								 <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                <input type="text" name='addr' placeholder="House / Building No. / Street" class="form-control" value="<?php echo set_value('addr'); ?>"  required >
+					                <input type="text" name='addr' placeholder="House / Building No. / Street" class="form-control" value="<?php echo set_value('addr'); ?>" data-toggle="tooltip" data-placement="left" title="House / Building No. / Street"  required >
 
 					            </div>
 
@@ -164,7 +164,7 @@
 
 					             <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="text" name="brgy" placeholder="Barangay / Village" class="form-control"  value="<?php echo set_value('brgy'); ?>" required>
+					                 <input type="text" name="brgy" placeholder="Barangay / Village" class="form-control"  value="<?php echo set_value('brgy'); ?>" data-toggle="tooltip" data-placement="left" title="Barangay / Village"  required>
 
 					            </div>
 
@@ -172,7 +172,7 @@
 
 								<div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                <input type="text" name="towncity" placeholder="Town / City Province" class="form-control" value="<?php echo set_value('towncity'); ?>"  required >
+					                <input type="text" name="towncity" placeholder="Town / City Province" class="form-control" value="<?php echo set_value('towncity'); ?>" data-toggle="tooltip" data-placement="left" title="Town / City Province" required >
 
 					            </div>
 					           
@@ -181,11 +181,26 @@
 					               <!--  <input type="text" name="question" class="form-control"  placeholder="question" value="<?php //echo set_value('question'); ?>"required> -->
 					               
 					              
-					              <select name="country" class="form-control" >
+					              <select name="country" class="form-control" data-toggle="tooltip" data-placement="left" title="Country">
 					           			<?php 
 					           				echo "<option selected='selected'>Select your Country</option>";
 					           			  foreach($countries as $row)
 					           			   echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+					           			?>
+					           	</select>
+					            
+					            </div>
+
+					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+
+					               <!--  <input type="text" name="question" class="form-control"  placeholder="question" value="<?php //echo set_value('question'); ?>"required> -->
+					               
+					              
+					              <select name="consignee" class="form-control" data-toggle="tooltip" data-placement="left" title="Consignee">
+					           			<?php 
+					           				echo "<option selected='selected'>Select your Consignee</option>";
+					           			  foreach($consignee as $row)
+					           			   echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
 					           			?>
 					           	</select>
 					            
@@ -204,7 +219,7 @@
 
 								 <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                <input type="text" name='uname' placeholder="Username" class="form-control" value="<?php echo set_value('uname'); ?>"  required >
+					                <input type="text" name='uname' placeholder="Username" class="form-control" value="<?php echo set_value('uname'); ?>" data-toggle="tooltip" data-placement="left" title="Username" required >
 
 					            </div>
 
@@ -212,7 +227,7 @@
 
 					             <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="email" name="email" placeholder="Email" class="form-control"  value="<?php echo set_value('email'); ?>" required>
+					                 <input type="email" name="email" placeholder="Email" class="form-control"  value="<?php echo set_value('email'); ?>" data-toggle="tooltip" data-placement="left" title="Email Address" required>
 
 					            </div>
 
@@ -220,13 +235,13 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="password" name="password"  placeholder="Password" id="pass" value="<?php echo set_value('password'); ?>" class="form-control" required>
+					                 <input type="password" name="password"  placeholder="Password" id="pass" value="<?php echo set_value('password'); ?>" class="form-control" data-toggle="tooltip" data-placement="left" title="Password" required>
 
 					            </div>
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="password" name="passconf" placeholder="Confirm Password" value="<?php echo set_value('passconf'); ?>" id="conpass" class="form-control" required>
+					                 <input type="password" name="passconf" placeholder="Confirm Password" value="<?php echo set_value('passconf'); ?>" id="conpass" class="form-control"  data-toggle="tooltip" data-placement="left" title="Re-type Password" required>
 					                  <span id='message'></span>
 					            </div>
 
@@ -234,7 +249,7 @@
 
 					               <!--  <input type="text" name="question" class="form-control"  placeholder="question" value="<?php //echo set_value('question'); ?>"required> -->
 					               
-					               <select class="form-control" name="questions">
+					               <select class="form-control" name="questions" data-toggle="tooltip" data-placement="left" title="Question">
 					               <?php 
 					               $i=0;
 					               echo "<option selected='selected'>Secret Question</option>";
@@ -250,7 +265,7 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                 <input type="password" name="answer" class="form-control" value="<?php echo set_value('answer'); ?>" placeholder="Answer" required>
+					                 <input type="password" name="answer" class="form-control" value="<?php echo set_value('answer'); ?>" placeholder="Answer" data-toggle="tooltip" data-placement="left" title="Answer" required>
 
 					            </div>
 
@@ -258,7 +273,7 @@
 
 					            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-					                  <input type="text" name="shint"class="form-control" value="<?php echo set_value('shint'); ?>" placeholder="Secret Hint"  required>
+					                  <input type="text" name="shint"class="form-control" value="<?php echo set_value('shint'); ?>" placeholder="Secret Hint"  data-toggle="tooltip" data-placement="left" title="Secret Hint" required>
 
 					            </div>
 
@@ -269,7 +284,11 @@
 						<div class="row">
 
 				        	<div class="form-group col-lg-12 col-md-12 col-sm-12">
+				        		<a style="display:block" href="<?php echo base_url('Login_user/login')?>">
+				        			<button type="button" class="pull-right btn btn-primary" style="margin-right: 10px;">Log in</button>
+				        		</a>
 				        		<button type="submit" class="pull-right btn btn-primary" style="margin-right: 10px;">Create Account</button>
+
 				       </form>
 				            	
 
@@ -313,12 +332,16 @@ $(document).ready(function(){
 		if($("#error").text() == ""){
 			$(".error-alert").addClass('hidden');
 		}
+
+
 });
 
 
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 
-
-	/*
+/*
 * Password Matching
 */
     $('#conpass').on('keyup', function () {

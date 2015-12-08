@@ -31,10 +31,12 @@ class Add_user extends CI_Controller {
                  $this->form_validation->set_rules('shint', 'Shint', 'required');
                  $this->form_validation->set_rules('answer', 'Answer', 'required');
                  $this->form_validation->set_rules('questions', 'Questions', 'required');
+                 $this->form_validation->set_rules('consignee', 'Consignee', 'required');
 
                     if ($this->form_validation->run() == FALSE){
                         $data['countries']=$this->User->countries();
                         $data['questions'] =$this->User->question();
+                        $data['consignee'] =$this->User->dropdown_consignee();
                         $data['tab'] = "Registration Page";
                         $data['alert'] = "";
                         $data['msg'] = "";
@@ -50,6 +52,7 @@ class Add_user extends CI_Controller {
                            $lname = $this->input->post('lname');
                            $bdate = $this->input->post('bdate');
                            $password = $this->input->post('password');
+                           $passconf = $this->input->post('passconf');
                            $email = $this->input->post('email');
                            $shint = $this->input->post('shint');
                            $answer = $this->input->post('answer');
@@ -64,6 +67,8 @@ class Add_user extends CI_Controller {
                             $town = $this->input->post('towncity');
                             $country = $this->input->post('country');
                             $photo = "user.png";
+                            $consignee = $this->input->post('consignee');
+
 
                             $query= $this->db->query("Select EmailAddress from User where EmailAddress='$email' limit 1");
                             $query2= $this->db->query("Select Username from User where Username='$uname' limit 1");
@@ -73,6 +78,7 @@ class Add_user extends CI_Controller {
                               else if($query2->num_rows() ==1){
                                 $this->username_exist();
                               }
+
                               else{
 
                           $add_users = "CALL sp_AddUser(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -86,21 +92,20 @@ class Add_user extends CI_Controller {
                                    'P_BirthDate'            =>$bdate,
                                    'P_EmailAddress'         =>$email,
                                    'P_ProfileImageSource'   =>$photo,
-                                   'P_RoleId'               =>'',
+                                   'P_RoleId'               =>2,
                                    'P_ContactNo1'           =>$contact1,
                                    'P_ContactNo2'           =>$contact2,
                                    'P_HouseBuildingNoStreet'=>$addr,
                                    'P_BarangarOrVillage'    =>$brgy,
                                    'P_TownOrCityProvince'   =>$town,
                                    'P_CountryId'            =>$country,
-                                   'P_ConsigneeId'          =>'',
+                                   'P_ConsigneeId'          =>$consignee,
                                    'P_SecretQuestionId'     =>$questions,
                                    'P_SecretAnswer'         =>$answer,
                                    'P_SecretAnswerHint'     =>$shint
 
                                         
                              ));
-
                                   $this->success_register();
                                 }
 
@@ -124,6 +129,7 @@ class Add_user extends CI_Controller {
           function success_register(){
                 $data['countries']=$this->User->countries();
                 $data['questions'] =$this->User->question();
+                $data['consignee'] =$this->User->dropdown_consignee();
                 $data['alert'] = "success";
                 $data['msg'] = "Successfully Regsitered!";
                 $data['tab'] = "Registration Page";
@@ -139,6 +145,7 @@ class Add_user extends CI_Controller {
         function email_exist(){
               $data['countries']=$this->User->countries();
               $data['questions'] =$this->User->question();
+              $data['consignee'] =$this->User->dropdown_consignee();
               $data['alert'] = "danger";
               $data['msg'] = "Email Address Already Exist!";
               $data['tab'] = "Registration Page";
@@ -156,6 +163,7 @@ class Add_user extends CI_Controller {
         function username_exist(){
               $data['countries']=$this->User->countries();
               $data['questions'] =$this->User->question();
+              $data['consignee'] =$this->User->dropdown_consignee();
               $data['alert'] = "danger";
               $data['msg'] = "Username Already Exist!";
               $data['tab'] = "Registration Page";
@@ -163,7 +171,6 @@ class Add_user extends CI_Controller {
 
               $this->load->view('register/register_page',$data);
         } 
-
     function add_client(){
     
              $cname = $this->input->post('cname');
