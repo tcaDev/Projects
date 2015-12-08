@@ -71,6 +71,10 @@
 				<hr class="line">
 
 				<!--Pass form-->
+					<div class="alert success-alert alert-<?php echo $alert; ?> ">
+					    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					    <span id="span"><strong><?php echo $msg;?></strong></span>
+					  </div>
 
 					<div class="forgot-form">
 						<form action="<?php echo base_url('Add_user/forgot_password'); ?>" method="post" enctype="multipart/form-data" role="form">
@@ -86,6 +90,13 @@
 
 				            </div>	
 				          </form>
+
+				          <?php 
+				          	echo validation_errors('<p class="error">');
+				          	if(isset($error)){
+				          		echo '<p class="error">' .$error .'</p>';
+				          	}
+				          ?>
 				    </div>
 
 				    	
@@ -106,7 +117,16 @@
 
 </html>
 
+<script>
+	
+	$(document).ready(function(){
 
+		if($("#span").text() == ""){
+			$(".success-alert").addClass('hidden');
+		}
+
+	});
+</script>
 
 
 

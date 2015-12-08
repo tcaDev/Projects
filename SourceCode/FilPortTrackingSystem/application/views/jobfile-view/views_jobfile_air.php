@@ -26,15 +26,14 @@
 
 					  <!-- Modal -->
 
-					<!--   <div class="modal fade" id="myModal-3-1" role="dialog">
+					  <div class="modal fade" id="myModal-3-1" role="dialog">
 
-					    <div class="modal-dialog"> -->
-
+					    <div class="modal-dialog"> 
 					    
 
 					      <!-- Modal content-->
 
-					    <!--   <div class="modal-content">
+					      <div class="modal-content">
 
 					        <div class="modal-header">
 
@@ -62,7 +61,7 @@
 
 					    </div>
 
-					  </div> -->
+					  </div> 
 
 
 
@@ -76,15 +75,15 @@
 
 					  <!-- Modal -->
 
-					  <!-- <div class="modal fade" id="myModal-3-2" role="dialog">
+					  <div class="modal fade" id="myModal-3-2" role="dialog">
 
-					    <div class="modal-dialog"> -->
+					    <div class="modal-dialog">
 
 					    
 
 					      <!-- Modal content-->
 
-					      <!-- <div class="modal-content">
+					       <div class="modal-content">
 
 					        <div class="modal-header">
 
@@ -112,7 +111,7 @@
 
 					    </div>
 
-					  </div> -->	
+					  </div> 	
 
 					</div>
 
@@ -132,90 +131,163 @@
 
 				        <tr style="cursor:w-resize">
 
-				          <th rowspan="2"> No. </th>
+				          <th class="hidden"> ID </th>
 
-				          <th rowspan="2">Jobfile Number</th>
+				          <th> No. </th>
 
-				          <th rowspan="2">Shipper</th>
+				          <th> Update </th>
 
-				          <th rowspan="2">Consignee</th>
+				          <th>Jobfile Number</th>
 
-				          <th rowspan="2">Number of Cartons</th>
+				          <th>Shipper</th>
 
-				          <th rowspan="2">Gross Weight</th>
+				          <th>Consignee</th>
 
-				          <th rowspan="2">Description of Goods</th>
+				          <th>Number of Cartons</th>
 
-				          <th rowspan="2">WK/PI/PO No.</th>
+				          <th>Gross Weight</th>
 
-				          <th rowspan="2">House Bill of Lading No.</th>
+				          <th>Description of Goods</th>
 
-				          <th rowspan="2">Master Bill of Landing No.</th>
+				          <th>WK/PI/PO No.</th>
 
-				          <th rowspan="2">Flight No.</th>
+				          <th>House Bill of Lading No.</th>
 
-				          <th rowspan="2">Air Craft</th>
+				          <th>Master Bill of Landing No.</th>
 
-				          <th rowspan="2">Origin</th>
+				          <th>Flight No.</th>
 
-				          <th rowspan="2">Estimated Time of Departure</th>
+				          <th>Air Craft</th>
 
-				          <th rowspan="2">Estimated Time of Arrival</th>
+				          <th>Origin</th>
 
-				          <th rowspan="2">Actual Time of Arrival</th>
+				          <th>Estimated Time of Departure</th>
 
-				          <th rowspan="2">Forwarder/Warehouse</th>
+				          <th>Estimated Time of Arrival</th>
 
-				          <th rowspan="2">Date Recieved Arrival notice from Airline/Forwarder</th>
+				          <th>Actual Time of Arrival</th>
 
-						  <th rowspan="2">Date Recieved Arrival notice from Client</th>
+				          <th>Forwarder/Warehouse</th>
 
-				          <th rowspan="2">Date Pick-up O-Hawb</th>
+				          <th>Date Recieved Arrival notice from Airline/Forwarder</th>
 
-				          <th rowspan="2">Date Pick-up other Docs</th>
+						  <th>Date Recieved Arrival notice from Client</th>
 
-				          <th rowspan="2">Broker</th>
+				          <th>Date Pick-up O-Hawb</th>
 
-				          <th rowspan="2">Date Req. Budget to GL</th>
+				          <th>Date Pick-up other Docs</th>
 
-				          <th rowspan="2">RFP Due Date</th>
+				          <th>Broker</th>
 
-				          <th rowspan="2">Date Sent Pre-Assess</th>
+				          <th>Date Req. Budget to GL</th>
 
-				          <th rowspan="2">Date final Assess</th>
+				          <th>RFP Due Date</th>
 
-				          <th rowspan="2">Reference Entry No.</th>
+				          <th>Date Sent Pre-Assess</th>
 
-				          <th rowspan="2">Selectivity</th>
+				          <th>Date final Assess</th>
 
-				          <th rowspan="2">Date Paid (date&time)</th>
+				          <th>Reference Entry No.</th>
 
-				          <th rowspan="2">Date Cleared BOC</th>
+				          <th>Selectivity</th>
 
-				          <th rowspan="2">Target Delivery Date</th>
+				          <th>Date Paid (date&time)</th>
 
-				          <th rowspan="2">Actual P-out date of at NAIA</th>
+				          <th>Date Cleared BOC</th>
 
-				          <th rowspan="2">Actual Date Recieved Good at WHSE</th>
+				          <th>Target Delivery Date</th>
 
-				          <th rowspan="2">Haulers</th>
+				          <th>Actual P-out date of at NAIA</th>
 
-				          <th rowspan="2">Total Storage</th>
+				          <th>Actual Date Recieved Good at WHSE</th>
 
-				          <th rowspan="2">Additional per Day included VAT</th>
+				          <th>Haulers</th>
 
-				          <th colspan="2" style="text-align:center !important">Status Reports</th>
+				          <th>Total Storage</th>
 
-				          </tr>
-				          <tr>
-				          <th style="text-align:center !important">status1</th>
-					     <th style="text-align:center !important">status2</th>
-					    </tr>
+				          <th>Additional per Day included VAT</th>
 
+				          <th  style="text-align:center !important">Status Reports</th>
 				      </tr>
+				      <tbody>
+				      		<tr>
+				      					<td class="hidden">1</td>
+								          <td>1</td>
+								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
 
-				    </tbody>
+								          <td>SOC-15-10-009<a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
 
+								          <td>MOTOROLA</td>
+
+								          <td>Open Comm</td>
+								          <td>11 PKGS</td>
+
+								          <td>1x20</td>
+
+								          <td>Tablet Computer</td>
+
+								          <td>61406573556</td>
+
+								          <td>HKG158121912</td>
+
+								          <td>N/A</td>
+
+								          <td>FCIU5273883</td>
+
+								          <td>HONGKONG</td>
+
+								          <td>9/15/2015 11:00AM</td>
+
+								          <td>9/27/2015 11:00AM</td>
+
+								          <td>9/27/2015 11:00AM</td>
+
+								          <td>10/27/2015 11:00AM</td>
+
+								          <td>TT</td>
+
+								          <td>11/3/2015</td>
+
+								          <td>10/31/2015</td>
+
+								          <td>TSL0065-15</td>
+
+								          <td>ISTRIAN EXPRESS V.15015S</td>
+
+								          <td>CEVA/BENLINE</td>
+
+								          <td>10/27/2015</td>
+
+								          <td>10/27/2015</td>
+
+								          <td>10/27/2015</td>
+
+								          <td>MONA</td>
+
+								          <td>10/27/2015</td>
+
+								          <td>0.37037037037037</td>
+
+								          <td>11/6/2015</td>
+
+								          <td>10/27/2015</td>
+
+								          <td>C254093</td>
+
+								          <td>11/9/2015  1300H </td>
+
+								          <td>11/9/2015</td>
+
+								          <td>11/10/2015</td>
+
+								          <td>Mardean Jaems/ ALA7300</td>
+
+								          <td>11/10 5:30am</td>
+
+								          <td>11/10 6:20am</td>
+				      		</tr>
+				      </tbody>
+				    
 				  </table>
 
 			  </div>

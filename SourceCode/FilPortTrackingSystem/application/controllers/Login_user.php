@@ -166,7 +166,8 @@ class Login_user extends CI_Controller {
 
 	function forgot()
 	{	
-
+			$data['msg'] = "";
+			$data['alert'] = "";
 			$data['tab'] = "Forgot Password";
 			$this->load->view('forgotpass/password' , $data);
 	}

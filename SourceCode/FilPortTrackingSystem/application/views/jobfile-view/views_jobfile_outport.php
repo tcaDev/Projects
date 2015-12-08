@@ -27,15 +27,15 @@
 
 					  <!-- Modal -->
 
-					  <!-- <div class="modal fade" id="myModal-2-1" role="dialog">
+					   <div class="modal fade" id="myModal-2-1" role="dialog">
 
-					    <div class="modal-dialog"> -->
+					    <div class="modal-dialog">
 
 					    
 
 					      <!-- Modal content-->
 
-					     <!--  <div class="modal-content">
+					      <div class="modal-content">
 
 					        <div class="modal-header">
 
@@ -63,7 +63,7 @@
 
 					    </div>
 
-					  </div> -->
+					  </div> 
 
 
 
@@ -75,39 +75,17 @@
 
 					  <!-- Modal -->
 
-						<!--   <div class="modal fade" id="myModal-2-2" role="dialog">
+						   <div class="modal fade" id="myModal-2-2" role="dialog">
 
-					    <div class="modal-dialog"> -->
+					    <div class="modal-dialog">
 
 					      <!-- Modal content-->
 
-					      <!-- <div class="modal-content">
-
-					        <div class="modal-header">
-
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-					          <h4 class="modal-title">Modal Header</h4>
-
-					        </div>
-
-					        <div class="modal-body">
-
-					          <p>Some text in the modal.</p>
-
-					        </div>
-
-					        <div class="modal-footer">
-
-					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-					        </div>
-
-					      </div>					      
+					      <?php $this->load->view('jobfile-view/views_jobfile_outport_addData'); ?>				      
 
 					    </div>
 
-					  </div> -->
+					  </div> 
 
 					</div>
 
@@ -119,99 +97,97 @@
 
 
 
-			 <div class="col-lg-12 col-md-12 col-sm-12" style= "overflow-y:auto; height: 635px;">
+			<div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
 
-				    <table class="table table-striped table-hover table-bordered" style="width: 7000px;">
+				    <table class="table  table-striped table-bordered table-hover" style="width:7000px;">
 
 				      <thead>
 
 				        <tr style="cursor:w-resize">
 
-				          <th rowspan="2"> No. </th>
+				          <th class="hidden"> ID </th>
+				          
+				          <th> No. </th>
 
-				          <th rowspan="2">Jobfile Number</th>
+				          <th > Update </th>
 
-				          <th rowspan="2">Shipper</th>
+				          <th>Jobfile Number</th>
 
-				          <th rowspan="2">Consignee</th>
+				          <th>Shipper</th>
 
-				          <th rowspan="2">Number of Cartons</th>
+				          <th>Consignee</th>
 
-				          <th rowspan="2">Container Size</th>
+				          <th>Number of Cartons</th>
 
-				          <th rowspan="2">Description of Goods</th>
+				          <th>Container Size</th>
 
-				          <th rowspan="2">PI / PO No.</th>
+				          <th>Description of Goods</th>
 
-				          <th rowspan="2">House Bill of Lading No.</th>
+				          <th>PI / PO No.</th>
 
-				          <th rowspan="2">Master Bill of Landing No.</th>
+				          <th>House Bill of Lading No.</th>
 
-				          <th rowspan="2">Container No.</th>
+				          <th>Master Bill of Landing No.</th>
 
-				          <th rowspan="2">Origin</th>
+				          <th>Container No.</th>
 
-				          <th rowspan="2">Estimated Time of Departure</th>
+				          <th>Origin</th>
 
-				          <th rowspan="2">Estimated Time of Arrival</th>
+				          <th>Estimated Time of Departure</th>
 
-				          <th rowspan="2">Actual Time of Arrival</th>
+				          <th>Estimated Time of Arrival</th>
 
-				          <th rowspan="2">Letter of Credit No. from Bank</th>
+				          <th>Actual Time of Arrival</th>
 
-				          <th rowspan="2">Start of Demorage</th>
+				          <th>Letter of Credit No. from Bank</th>
 
-				          <th rowspan="2">Start Storage</th>
+				          <th>Start of Demorage</th>
 
-				          <th rowspan="2">Registry</th>
+				          <th>Start Storage</th>
 
-				          <th rowspan="2">Vessel / Voyage no.</th>
+				          <th>Registry</th>
 
-				          <th rowspan="2">Carrier</th>
+				          <th>Vessel / Voyage no.</th>
 
-				          <th rowspan="2">Date Recieved Arrival Notice from Client/s</th>
+				          <th>Carrier</th>
 
-				          <th rowspan="2">Date Pick-up / Recieved O-BL</th>
+				          <th>Date Recieved Arrival Notice from Client/s</th>
 
-				          <th rowspan="2">Date Pick-up / Recieved other Documents</th>
+				          <th>Date Pick-up / Recieved O-BL</th>
 
-				          <th rowspan="2">Broker</th>
+				          <th>Date Pick-up / Recieved other Documents</th>
 
-				          <th rowspan="2">Date Required Budget to GL</th>
+				          <th>Broker</th>
 
-				          <th rowspan="2">Reference Due Date</th>
+				          <th>Date Required Budget to GL</th>
 
-				          <th rowspan="2">Date sent Pre-Assess</th>
+				          <th>Reference Due Date</th>
 
-				          <th rowspan="2">Date File Entry to BOC</th>
+				          <th>Date sent Pre-Assess</th>
 
-				          <th rowspan="2">Date Sent Final Assess</th>
+				          <th>Date File Entry to BOC</th>
 
-				          <th rowspan="2">Reference Entry No.</th>
+				          <th>Date Sent Final Assess</th>
 
-				          <th rowspan="2">Selectivity</th>
+				          <th>Reference Entry No.</th>
 
-				          <th rowspan="2">Date Paid (Date&Time)</th>
+				          <th>Selectivity</th>
 
-				          <th rowspan="2">Date Cleared BOC</th>
+				          <th>Date Paid (Date&Time)</th>
 
-				          <th rowspan="2">Target Delivery Date</th>
+				          <th>Date Cleared BOC</th>
 
-				          <th rowspan="2">Plate No. / Truckers Name</th>
+				          <th>Target Delivery Date</th>
 
-				          <th rowspan="2">Gate In at Port</th>
+				          <th>Plate No. / Truckers Name</th>
 
-				          <th rowspan="2">Gate Out at Port</th>
+				          <th>Gate In at Port</th>
 
-				          <th rowspan="2"  style="text-align:center !important">Actual Delivery WHSE</th>
+				          <th>Gate Out at Port</th>
 
-				          <th colspan="2" style="text-align:center !important">Status Reports</th>
+				          <th style="text-align:center !important">Actual Delivery WHSE</th>
 
-				          </tr>
-				          <tr>
-				          <th style="text-align:center !important">status1</th>
-					     <th style="text-align:center !important">status2</th>
-					    </tr>
+				          <th style="text-align:center !important">Status Reports</th>
 
 				      </thead>
 
@@ -219,85 +195,94 @@
 
 				     <tr>
 
-				     	<td></td>
+				     	 <td class="hidden">1</td>
+								          <td>1</td>
+								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
 
-				     	<td></td>
+								          <td>SOC-15-10-009<a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
 
-				     	<td></td>
+								          <td>MOTOROLA</td>
 
-				     	<td></td>
+								          <td>Open Comm</td>
+								          <td>11 PKGS</td>
 
-				     	<td></td>
+								          <td>1x20</td>
 
-				     	<td></td>
+								          <td>Tablet Computer</td>
 
-				     	<td></td>
+								          <td>61406573556</td>
 
-				     	<td></td>
+								          <td>HKG158121912</td>
 
-				     	<td></td>
+								          <td>N/A</td>
 
-				     	<td></td>
+								          <td>FCIU5273883</td>
 
-				     	<td></td>
+								          <td>HONGKONG</td>
 
-				     	<td></td>
+								          <td>9/15/2015 11:00AM</td>
 
-				     	<td></td>
+								          <td>9/27/2015 11:00AM</td>
 
-				     	<td></td>
+								          <td>9/27/2015 11:00AM</td>
 
-				     	<td></td>
+								          <td>10/27/2015 11:00AM</td>
 
-				     	<td></td>
+								          <td>TT</td>
 
-				     	<td></td>
+								          <td>11/3/2015</td>
 
-				     	<td></td>
+								          <td>10/31/2015</td>
 
-				     	<td></td>
+								          <td>TSL0065-15</td>
 
-				     	<td></td>
+								          <td>ISTRIAN EXPRESS V.15015S</td>
 
-				     	<td></td>
+								          <td>CEVA/BENLINE</td>
 
-				     	<td></td>
+								          <td>10/27/2015</td>
 
-				     	<td></td>
+								          <td>10/27/2015</td>
 
-				     	<td></td>
+								          <td>10/27/2015</td>
 
-				     	<td></td>
+								          <td>MONA</td>
 
-				     	<td></td>
+								          <td>10/27/2015</td>
 
-				     	<td></td>
+								          <td>0.37037037037037</td>
 
-				     	<td></td>
+								          <td>11/6/2015</td>
 
-				     	<td></td>
+								          <td>10/27/2015</td>
 
-				     	<td></td>
+								          <td>C254093</td>
 
-				     	<td></td>
+								          <td><select class="form-control" id="select">
+								          	 <option value="" disabled selected>Select your option</option>
+											<option value="B" style="background-color: red;">Red</option>
+											<option value="C" style="background-color: yellow;">Yellow</option>
+											<option value="D" style="background-color: green;">Green</option>
+											<option value="E" style="background-color: pink;">pink</option>
+								          </select></td>
 
-				     	<td></td>
+								          <td>11/9/2015  1300H </td>
 
-				     	<td></td>
+								          <td>11/9/2015</td>
 
-				     	<td></td>
+								          <td>11/10/2015</td>
 
-				     	<td></td>
+								          <td>Mardean Jaems/ ALA7300</td>
 
-				     	<td></td>
+								          <td>11/10 5:30am</td>
 
-				     	<td></td>
+								          <td>11/10 6:20am</td>
 
-				     	<td></td>
+								          <td>11/10 1230h abd</td>
 
-				     	<td></td>
-
-				     </tr>
+								          <td>10/27- receive original docs   11/3- start processing of lifting,  11/6 - lifting of abandonement</td>
+								      
+								        </tr>
 
 				    </tbody>
 

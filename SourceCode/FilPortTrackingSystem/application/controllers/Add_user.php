@@ -412,8 +412,11 @@ class Add_user extends CI_Controller {
           $email = $this->input->post('email');
           $result = $this->User->email_exists($email);
 
-            if($result){
+            if($result = true){
               $this->send_reset_password_email($email,$result);
+
+              $data['msg'] = "Success";
+              $data['alert'] = "success";
               $data['tab'] = "Forgot Password";
               $this->load->view('forgotpass/password' , $data);
 
@@ -484,7 +487,7 @@ class Add_user extends CI_Controller {
     }
   }
 
-  function update_password(){
+ /* function update_password(){
 
     if(!isset($_POST['email'], $_POST['email_hash']) || $_POST['email_hash'] !== sha1($_POST['email'] . $_POST['email_code'])){
        die("Error updating your Password")
@@ -503,7 +506,7 @@ class Add_user extends CI_Controller {
       //success
       $result = $this->User->update_password();
     }
-  }
+  }*/
 
 
 

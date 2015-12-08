@@ -476,7 +476,7 @@ Class User extends CI_Model
 
   function email_exists($email){
 
-    $query = "Select `FirstName`,`EmailAddress` from `User` where `EmailAddress`='{$email}' limit 1";
+    $query = "Select FirstName,EmailAddress from User where EmailAddress='$email' limit 1";
     $result = $this->db->query($query);
     $row = $result->row();
 
