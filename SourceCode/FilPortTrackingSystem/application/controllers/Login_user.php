@@ -193,6 +193,11 @@ class Login_user extends CI_Controller {
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
 
+		    /* get status*/
+		    $data['consignee'] = $this->User->get_consignee();
+		    $data['broker'] = $this->User->get_broker();
+		    $data['shipper'] = $this->User->get_shipper();
+		    $data['vessel'] = $this->User->get_vessel();
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
