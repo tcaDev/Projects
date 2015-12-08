@@ -29,8 +29,18 @@ body{
 }
 
 
+.jobfile-cont{
+    width: 80%;
+    height: 635px;
+}
 
-
+.legend{
+    position: absolute;
+    top: 19%;
+    padding-bottom: 10px;
+    left: 80%;
+    width: 18%;
+}
 
 /*Menu Tiles*/
 
@@ -1596,7 +1606,7 @@ fieldset {
 fieldset legend {
     background: #1F497D;
     color: #fff;
-    width: 15%;
+    width: 35%;
     padding: 2px 14px;
     font-size: 20px;
     border-radius: 5px;
