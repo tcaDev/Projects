@@ -467,6 +467,12 @@ echo '
 		         	 <label class="color-lg-2">Choose Color</label> 
 		            <div class="form-group col-md-12">
 		                <input type="color" name="color" class="form-control" placeholder="color" value="#ff0000" required />
+		                    <label class="radio-inline">
+						      <input type="radio" value="0" name="IsBackground">Font
+						    </label>
+						    <label class="radio-inline">
+						      <input type="radio" value="1" name="IsBackground">Background
+						    </label>
 		            </div>
 		        </div>
 		  
