@@ -328,6 +328,20 @@ $('.add_consignee_contact').click(function(){
 		      		   $('#search').addClass('forward_tab');
 		      		     //for searching code end
 		       }
+
+		         if(location.hash=="#legend"){
+		      		  $('#form_legend').trigger('click');
+
+		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/legend/",function(data){
+		  					$('#mycontent').html(data);
+					   });
+
+		      		   location.hash='';
+		      		      //for searching code start
+		      		   $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('legend_tab');
+		      		     //for searching code end
+		       }
        
 
         });
@@ -349,6 +363,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('vessel_tab');
 	    $('#search').removeClass('hauler_tab');
 	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
  
 
@@ -364,6 +379,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('vessel_tab');
 	    $('#search').removeClass('hauler_tab');
 	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
 	
 
@@ -379,6 +395,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').addClass('vessel_tab');
 	    $('#search').removeClass('hauler_tab');
 	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
 	  	  $.get("http://localhost/FilPortTrackingSystem/View_forms/vessel/",function(data){
 		  	$('#mycontent').html(data);
@@ -392,6 +409,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('vessel_tab');
 	    $('#search').removeClass('hauler_tab');
 	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
 	  	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
 		  	$('#mycontent').html(data);
@@ -407,6 +425,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('vessel_tab');
 	    $('#search').addClass('hauler_tab');
 	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
 	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/hauler/",function(data){
 		  	$('#mycontent').html(data);
@@ -423,8 +442,28 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('vessel_tab');
 	    $('#search').removeClass('hauler_tab');
 	    $('#search').addClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
 
 	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/forward/",function(data){
+		  	$('#mycontent').html(data);
+		  		
+		  });
+	 });  
+
+
+
+	$('#form_legend').click(function(){
+          
+	   	$('#search').removeClass('consignee_tab');
+	  	$('#search').removeClass('broker_tab');
+	    $('#search').removeClass('shipper_tab');
+	    $('#search').removeClass('vessel_tab');
+	    $('#search').removeClass('hauler_tab');
+	    $('#search').removeClass('forward_tab');
+	    $('#search').addClass('legend_tab');
+
+
+	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/legend/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -470,6 +509,12 @@ $('.forward_tab').keydown(function(e){
 								    	search();								    
 									}
 });
+$('.legend_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
+
 
 
 
@@ -481,6 +526,7 @@ function search(){
  var vessel =  $('.vessel_tab').val();
  var hauler =  $('.hauler_tab').val();
  var forward =  $('.forward_tab').val();
+ var legend =  $('.legend_tab').val();
  if(consignee!=undefined){
      search_consignee(consignee);
  }else if(broker!=undefined){
@@ -493,6 +539,8 @@ function search(){
   	search_hauler(hauler);
   }else if (forward!=undefined){
   	search_forward(forward);
+  }else if (legend!=undefined){
+  	search_legend(legend);
   }
 
 
@@ -592,6 +640,23 @@ function search_forward(forward){
 
 
 }
+function search_legend(legend){
+
+
+ 		    $.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Search/search_legend/",
+					  data: { legend_id:legend}
+					})
+					  .done(function(data) {
+					   $('.legendpage').html(data);
+
+					      
+					  }); 
+
+
+}
+
 
 
 //for searching  end

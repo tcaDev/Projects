@@ -206,7 +206,28 @@ class Update extends CI_Controller {
 		       }
 		        redirect('Login_User/settings/#forward');
 
-	}		
+	}
+
+    function update_legend(){
+		$legend_id 	    = 	$this->input->post('legend_id');
+		$name 	= 	$this->input->post('name');
+	    $description    = 	$this->input->post('legend_descrip');
+		$legend_color 	= 	$this->input->post('legend_color');
+
+
+   		 $query= $this->db->query("Select * from Status where
+     		  StatusName='$name' and Description='$description' and
+     		  ColorCode='$legend_color' limit 1");
+    
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          }else{  
+			     $this->User->update_legend($legend_id,$name,$description,$legend_color);
+			     $this->session->success= 'update_success';    
+		       }
+		        redirect('Login_User/settings/#legend');
+
+	}			
 
 
 }

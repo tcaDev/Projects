@@ -65,6 +65,8 @@ class Job extends CI_Controller {
            $dt_forwarder  =  $this->input->post('DateReceivedNoticeFromForwarder');
        
 
+          $session_data = $this->session->userdata('logged_in');
+          $userid = $session_data['uid'];
 
 
            $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -88,7 +90,8 @@ class Job extends CI_Controller {
                                    'P_DatePaid'                              =>$DatePaid,
                                    'P_FlightNo'                              =>$FlightNo,                    
                                    'P_AirCraftNo'                            =>$P_AirCraftNo,
-                                   'P_DateReceivedNoticeFromForwarder'       =>$dt_forwarder
+                                   'P_DateReceivedNoticeFromForwarder'       =>$dt_forwarder,
+                                   'P_UserId'                                => $userid 
                                 ));
 
 
@@ -135,9 +138,7 @@ class Job extends CI_Controller {
 
 
         
-        $session_data = $this->session->userdata('logged_in');
-        $userid = $session_data['uid'];
-
+     
 
         //ongoing
           $container = $session_data['container'];

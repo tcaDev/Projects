@@ -306,6 +306,13 @@ class Login_user extends CI_Controller {
 		$data['forward_total'] = $page;
 		//total page of forward end
 
+		//total page of legend start
+	 	$this->db->from('Status');
+		$total_legend= $this->db->count_all_results();
+		$page = ceil($total_legend/$item_per_page);
+		$data['forward_legend'] = $page;
+		//total page of legend end
+
 		//select country
 		$data['countries']   =  $this->User->countries();
 	 	$data['lconsignee']  =  $this->User->settings_consignee();

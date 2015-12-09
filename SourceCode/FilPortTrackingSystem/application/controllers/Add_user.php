@@ -379,16 +379,58 @@ class Add_user extends CI_Controller {
           $query= $this->db->query("Select * from Hauler where HaulerName = '$name' limit 1");
           if($query->num_rows() ==1){
              $this->session->failed = 'failed';
-          } 
-       else{
-
+          }else{
                 $this->db->insert('Hauler', $data);
                 $this->session->success = 'success';  
           }
              redirect('Login_user/settings/#hauler');
 
      }
+
+
+    function add_forward(){
+             $name = $this->input->post('forward');
+                $data = array(
+                  'ForwarderWarehouseName' => $name
+                );
+
+          $query= $this->db->query("Select * from ForwarderWarehouse where ForwarderWarehouseName = '$name' limit 1");
+          if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+          } 
+          else{
+                $this->db->insert('ForwarderWarehouse', $data);
+                $this->session->success = 'success';  
+          }
+             redirect('Login_user/settings/#forward');
+
+   }
+    function add_legend(){
+
+
+               $legend  = $this->input->post('legend');
+               $descrip = $this->input->post('descrip');
+               $color   = $this->input->post('color');
+                $data   = array(
+                  'StatusName' => $legend,
+                  'Description'=> $descrip,
+                  'ColorCode'  => $color
+                );
+
+          $query= $this->db->query("Select * from Status where StatusName = '$legend' 
+            and Description='$descrip' and ColorCode='$color'  limit 1");
+          if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+          } 
+          else{
+                $this->db->insert('Status', $data);
+                $this->session->success = 'success';  
+          }
+             redirect('Login_user/settings/#legend');
+
+   }
           
+     
           
 
 /*

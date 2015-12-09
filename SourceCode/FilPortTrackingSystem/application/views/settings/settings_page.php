@@ -13,12 +13,14 @@
   var total_broker      =  "<?php echo $broker_total; ?>";
   var content_shipper   = "<?php echo base_url('Search/search_shipper')?>";
   var total_shipper     =  "<?php echo $shipper_total; ?>";
-  var content_vessel   = "<?php echo base_url('Search/search_vessel')?>";
-  var total_vessel     =  "<?php echo $vessel_total; ?>";
-  var content_hauler   = "<?php echo base_url('Search/search_hauler')?>";
-  var total_hauler    =  "<?php echo $hauler_total;  ?>";
+  var content_vessel    = "<?php echo base_url('Search/search_vessel')?>";
+  var total_vessel      =  "<?php echo $vessel_total; ?>";
+  var content_hauler    = "<?php echo base_url('Search/search_hauler')?>";
+  var total_hauler      =  "<?php echo $hauler_total;  ?>";
   var content_forward   = "<?php echo base_url('Search/search_forward')?>";
-  var total_forward     =  "<?php  ?>";
+  var total_forward     =  "<?php echo $forward_total; ?>";
+  var content_legend    = "<?php echo base_url('Search/search_legend')?>";
+  var total_legend      =  "<?php echo $forward_legend; ?>";
  </script>
 
 		
@@ -176,6 +178,73 @@
 				    });
 			
 			});
+
+				
+
+			$(document).ready(function() {
+				    $(".forwardpage").load(content_forward);  //initial page number to load
+				    $(".pagination_forward").bootpag({
+				        total:total_forward, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".forwardpage").load(content_forward, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+
+
+
+			$(document).ready(function() {
+				    $(".legendpage").load(content_legend);  //initial page number to load
+				    $(".pagination_legend").bootpag({
+				        total:total_legend, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".legendpage").load(content_legend, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+				
 				
 		</script>
 	     <!--For  pagination end -->
@@ -187,8 +256,8 @@
 		    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
 		    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
 		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
-		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forward</a></li>
-		    <li><a data-toggle="tab" href=".legend"						id="form_legend">Legend</a></li>
+		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder Warehouse</a></li>
+		    <li><a data-toggle="tab" href=".legends"						id="form_legend">Legend</a></li>
 		
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
@@ -230,52 +299,24 @@
 			    </div>
 			       <!--FOr Hauler data view  end--> 
 
+			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
-			 	  <div class="forwardpage">
-			 	  	<table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Forwarder/Warehouse Name</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-						</thead>
-					  	<tbody>
-					  	<tr>
-					        <td class="hidden"></td>
-					        <td></td>
-					        <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
-					   	</tr>
-				      </tbody>
-					</table>
-			 	  </div>
+			 	  <div class="forwardpage"> </div>
                   <div class="pagination_forward pull-right"> </div>
 			    </div>
+			       <!--FOr forward data view  end--> 
 
-			    <div  class="legend tab-pane fade">
-			 	  <div class="legendpage">
-			 	  	<table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Status Name</th>
-					        <th>Description</th>
-					        <th>Color</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-						</thead>
-					  	<tbody>
-					  	<tr>
-					        <td></td>
-					        <td></td>
-					        <td style="background-color:red;">Red</td>
-					        <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
-					   	</tr>
-				      </tbody>
-					</table>
-			 	  </div>
+
+			    <!--FOr legend data view  start--> 
+			    <div  class="legends tab-pane fade">
+			 	  <div class="legendpage"> </div>
                   <div class="pagination_legend pull-right"> </div>
 			    </div>
+			       <!--FOr legend data view  end--> 
+
+		
+
+
 
 			    <div  class="tab-pane fade shipper">
 				  <div class="shipperpage"> </div>
@@ -805,8 +846,7 @@
 
 
 			<!--Modal for updating haulers -->
-			  				  <!-- Modal FOr vessel
-				  				  -->
+			  		
 				  <div class="modal fade" id="modal_update_hauler" role="dialog">
 				    <div class="modal-dialog">
 				    
@@ -842,6 +882,92 @@
 				      
 				    </div>
 				  </div>
+
+
+				<div class="modal fade" id="modal_update_forward" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Forward Information</h4>
+				        </div>
+				        <div class="modal-body">
+				       <?php echo form_open('Update/update_forward/');?>
+				          	  <input type="hidden" name="forward_id"      class="forward_ids" />
+							<div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Forwarder Warehouse Name</label>
+					               <input type="text"   name="forward_name"  class="forward_names form-control" required/>
+					            </div>
+					        </div>
+	
+					  
+					        <div class="row">
+					        	<div class="form-group col-lg-12">
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					            </div>	
+					        </div>
+					 <?php echo form_close();?>
+				        </div>
+				     
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+			    </div>
+
+			    <div class="modal fade" id="modal_update_legend" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Legend Information</h4>
+				        </div>
+				        <div class="modal-body">
+				       <?php echo form_open('Update/update_legend/');?>
+				          	  <input type="hidden" name="legend_id"      class="legend_id" />
+							<div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Status Name</label>
+					               <input type="text"   name="name"  class="legend_status form-control" required/>
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Description Name</label>
+					               <input type="text"   name="legend_descrip"  class="legend_descrip form-control" required/>
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Choose Color</label>
+					               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
+					            
+					            </div>
+					        </div>
+	
+					  
+					        <div class="row">
+					        	<div class="form-group col-lg-12">
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					            </div>	
+					        </div>
+					 <?php echo form_close();?>
+				        </div>
+				     
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+			    </div>
 </body>
 </html>
 

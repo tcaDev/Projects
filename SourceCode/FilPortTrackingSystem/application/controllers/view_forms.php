@@ -411,6 +411,78 @@ echo '
 </div>';
 }
 
+function forward(){
+
+echo '			
+	<div class="forwards tab-pane">
+		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#forward" style="cursor:pointer">
+			<span style="cursor:pointer" >ADD NEW FOWARDER WAREHOUSE</span>
+		</div>
+		   <div class="forward consig-posbox collapse" id="forward">
+			<form action="' .base_url('Add_user/add_forward/').'" method="post">
+		
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="forward" class="form-control" placeholder="Forwarder Name" required />
+		            </div>
+		        </div>
+		  
+		        <div class="">
+		        	<div class="form-group col-md-12">
+		            	<button type="submit" class="pull-right btn btn-default">Submit</button>
+		            </div>	
+		        </div>
+   	 		</form>
+		</div>	
+
+	</div>
+
+</div>';
+}
+
+
+function legend(){
+
+echo '			
+	<div class="forwards tab-pane">
+		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#forward" style="cursor:pointer">
+			<span style="cursor:pointer" >ADD NEW Legend</span>
+		</div>
+		   <div class="forward consig-posbox collapse" id="forward">
+			<form action="' .base_url('Add_user/add_legend/').'" method="post">
+		
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="legend" class="form-control" placeholder="Status Name" required />
+		            </div>
+		        </div>
+
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="descrip" class="form-control" placeholder="Description Name" required />
+		            </div>
+		        </div>
+
+		        <div class="">
+		         	 <label class="color-lg-2">Choose Color</label> 
+		            <div class="form-group col-md-12">
+		                <input type="color" name="color" class="form-control" placeholder="color" value="#ff0000" required />
+		            </div>
+		        </div>
+		  
+		        <div class="">
+		        	<div class="form-group col-md-12">
+		            	<button type="submit" class="pull-right btn btn-default">Submit</button>
+		            </div>	
+		        </div>
+   	 		</form>
+		</div>	
+
+	</div>
+
+</div>';
+}
+
 
 
 

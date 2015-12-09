@@ -39,6 +39,11 @@ class Delete_datas extends CI_Controller {
  	 $id = $this->input->post('id');
  	 $this->db->delete('ForwarderWarehouse', array('ForwarderWarehouseId' => $id));
  }
+ function del_legend(){
+ 	 $id = $this->input->post('id');
+ 	 $this->db->delete('Status', array('StatusId' => $id));
+ }
+
 
 
 }

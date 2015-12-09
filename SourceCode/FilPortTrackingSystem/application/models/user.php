@@ -336,6 +336,10 @@ Class User extends CI_Model
    $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseName  ");
    return $query->result();
   }
+    function search_legend($search_status){
+   $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusName  ");
+   return $query->result();
+  }
 
   //for searching end
 
@@ -363,6 +367,10 @@ Class User extends CI_Model
   function findlimit_forward($page_position,$item_per_page)
   {
    return $this->db->get('ForwarderWarehouse',$page_position, $item_per_page)->result();
+  }
+   function findlimit_legend($page_position,$item_per_page)
+  {
+   return $this->db->get('Status',$page_position, $item_per_page)->result();
   }
 
   
@@ -519,6 +527,17 @@ function get_jobfile_manila(){
           $this->db->where('ForwarderWarehouseId', $id);
           $this->db->update('ForwarderWarehouse', $data); 
   }
+  function update_legend($legend_id,$legend_status,$description,$legend_color){
+         $data = array(
+                'StatusName' => $legend_status,
+                'Description'=> $description,
+                'ColorCode'  => $legend_color
+                );
+
+          $this->db->where('StatusId', $legend_id);
+          $this->db->update('Status', $data); 
+  }
+
 
      /*
   --------------------------------------

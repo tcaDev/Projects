@@ -1035,7 +1035,7 @@ $this->message();
 	echo '<table class="table table-striped">
 		    <thead>
 		      <tr>
-		        <th>Forward Name</th>
+		        <th>Forwarder Name</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
@@ -1050,7 +1050,7 @@ $this->message();
 					    echo  '<tr>
 							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
 							        <td>'.$row->ForwarderWarehouseName.'</td>
-							         <td><button type="button" class="btn update_forward" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        <button class="btn delete_forward"><span class="glyphicon glyphicon-trash"></span></button></td>
 					    	  </tr>';}
 
@@ -1091,14 +1091,117 @@ $this->message();
 		        }
 		    });
 			});
-	 	 $('.update_forward').click(function(){
+	 	 $('.update_forwards').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var forward   	  = $(this).closest('tr').children('td:eq(1)').text();
-			      $('.forward_id').val(id);
-			      $('.forward_name').val(haulers);
+			      $('.forward_ids').val(id);
+			      $('.forward_names').val(forward);
 			 });
 	</script>
 	<?php
-	}	
+	}
+
+
+
+
+  function search_legend(){
+   $this->message();
+   $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	}else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
+	$id = $this->input->post('legend_id');
+	   if(isset($id)){
+	        $legend = $this->User->search_legend($id);
+	   }else{
+	   	 $legend  =  $this->User->findlimit_legend($item_per_page,$page_position);	
+	   } 	
+	echo '<table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th>Status Name</th>
+		        <th>Description Name</th>
+		        <th>Color</th>
+		        <th colspan="2">Action</th>
+		      </tr>
+		    </thead>
+		  <tbody>' ?>
+				    <?php 
+					    $i=0;
+					    foreach ($legend as $row) {
+					    $i++;
+					    if($i==1){
+					    $cid= $row->StatusId;
+					    }
+					    echo  '<tr>
+							        <td class="hidden">'.$row->StatusId.'</td>
+							        <td>'.$row->StatusName.'</td>
+							        <td>'.$row->Description.'</td>
+							        <td>'.$row->ColorCode.'</td>
+							         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <button class="btn delete_legend"><span class="glyphicon glyphicon-trash"></span></button></td>
+					    	  </tr>';}
+
+?>
+    </tbody>
+</table>
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+
+	<script>
+		 $('.delete_legend').click(function(){
+		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+		      $.confirm({
+		        title: 'Delete the information?',
+		        content: 'You have 6 seconds to make a choice',
+		        autoClose: 'cancel|6000',
+		        confirmButton: 'Yes',
+		        confirmButtonClass: 'btn-info',
+		        cancelButton: 'No',
+		        confirm: function () {            
+		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_legend", 
+		            	{ 
+		            	  id:delete_id
+		            	})
+					  .done(function( data ) {
+					    $.alert({
+							    title: 'Alert!',
+							    content: 'Data has been deleted!',
+							    confirm: function(){
+							    }
+							});
+					    location.hash="legend";
+					    location.reload();
+					  });
+		        },
+		        cancel: function () {
+		           /* alert('Vacation cancelled!');*/
+		        }
+		    });
+			});
+	 	 $('.update_legend').click(function(){
+			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
+			     var status   	  = $(this).closest('tr').children('td:eq(1)').text();
+			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
+			     var color   	  = $(this).closest('tr').children('td:eq(3)').text();
+
+			      $('.legend_id').val(id);
+			      $('.legend_status').val(status);
+			      $('.legend_descrip').val(descr);
+			      $('.legend_color').val(color);
+			 
+
+			 });
+	</script>
+	<?php
+	}		
 }
 ?>
