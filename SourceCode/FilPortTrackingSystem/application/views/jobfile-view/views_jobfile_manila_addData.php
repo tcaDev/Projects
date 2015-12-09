@@ -269,7 +269,8 @@
 
 					      <tr>
 					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">undefined</td>
+					        <td contenteditable="true"><button class="">View</button></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="lodging"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
