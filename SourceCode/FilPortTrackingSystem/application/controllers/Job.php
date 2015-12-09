@@ -149,7 +149,7 @@ class Job extends CI_Controller {
                      $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(
-                  'P_ContainerId'           => $container   //ongoing    ///    auto incre in the table
+                  'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
                   'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
                   'P_NoOfCartons'           => $cartoons,
                   'P_TruckerPlateNo'        => $plateno,
@@ -158,14 +158,14 @@ class Job extends CI_Controller {
                   'P_EstArrivalTime'        => $eta,
                   'P_ActualArrivalTime'     => $ata,
                   'P_StartOfStorage'        => $start_storage,
-                  'P_Lodging'               => $lodging  //ongoing //container
+                  'P_Lodging'               => $lodging,  //ongoing //container
                   'P_HaulerId'              => $hauler,
                   'P_DateSentPreAssessment' => $dtSent,
                   'P_TargetDeliveryDate'    => $tdt,
                   'P_GateInAtPort'          => $gip,
                   'P_GateOutAtPort'         => $gop,
                   'P_ActualDeliveryAtWarehouse' =>$adtw,
-                  'P_Weight'                    =>$weight  //weight 
+                  'P_Weight'                    =>$weight,  //weight 
                   'P_StartOfDemorage'           =>$start_demorage,
                   'P_UserId'                    => $userid 
 
