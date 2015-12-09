@@ -51,7 +51,7 @@
 
 		<!-- Legend -->
 
-			<div class=" legend">
+			<div class=" legends">
 
 				<?php $this->load->view('footer/legend'); ?>
 
