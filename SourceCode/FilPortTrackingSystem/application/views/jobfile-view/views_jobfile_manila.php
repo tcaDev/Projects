@@ -129,8 +129,6 @@
 
 								          <th >Vessel / Voyage no.</th>
 
-								          <th >Carrier</th>
-
 								          <th >Date Recieved Arrival Notice from Client/s</th>
 
 								          <th >Date Pick-up / Recieved O-BL</th>
@@ -139,11 +137,11 @@
 
 								          <th >Broker</th>
 
-								          <th >Date Required Budget to GL</th>
+								          <th >Date Request Budget to GL</th>
 
 								          <th >Reference Due Date</th>
 
-								          <th >Date sent Pre-Assess</th>
+								          <th >Date Sent Pre-Assess</th>
 
 								          <th >Date File Entry to BOC</th>
 
@@ -165,7 +163,7 @@
 
 								          <th >Gate Out at Port</th>
 
-								          <th >Actual Delivery WHSE</th>
+								          <th >Actual Delivery Warehouse</th>
 
 								          <th >Status Reports</th>
 
@@ -180,7 +178,7 @@
 								          <td><?php echo $i;?></td>
 								          <td><button type="button" class="btn btn-Update" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
 
-								          <td><?php echo $row->JobFileId; ?><a data-toggle="modal" data-target="#jobfiles" href="#" class="pull-right"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
+								          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-sm  pull-right"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></td>
 
 								          <td><?php echo $row->ShipperName; ?></td>
 
@@ -189,7 +187,7 @@
 
 								          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td><button type="button" class="btn btn-Goods" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Goods</button></td>
+								          <td><button type="button" class="btn btn-Goods " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Goods</button></td>
 
 								          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
@@ -197,7 +195,7 @@
 
 								          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td><button type="button" class="btn btn-Container" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Container No.</button></td>
+								          <td><button type="button" class="btn btn-Container " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Container No.</button></td>
 
 								          <td><?php echo $row->Origin; ?></td>
 
@@ -216,9 +214,7 @@
 								          <td><?php echo $row->Registry; ?></td>
 
 								          <td><?php echo $row->VSL_NO; ?></td>
-								          
-								          <td><?php echo $row->CarrierName; ?></td>
-
+								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
 								          <td><?php echo $row->DateReceivedOfBL; ?></td>
@@ -255,7 +251,7 @@
 
 								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td><button type="button" class="btn btn-StatusReport" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Status Report</button></td>
 								      
 								        </tr>
 

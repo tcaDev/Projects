@@ -18,7 +18,7 @@ class Job extends CI_Controller {
 		 $data =	$this->input->post('ship_id');
 		 $shipper = $this->Jobdata->get_vessel($data);
 
-		echo'<select name="vessel" class="myvessel form-control">';
+		echo'<select name="vessel" class="myvessel form-control input-sm">';
 			echo '<option value="0" disabled selected>List of Vessels</option>';		            				       
 		 foreach ($shipper as $row){
 		 	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
