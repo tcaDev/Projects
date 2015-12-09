@@ -419,7 +419,8 @@ class Add_user extends CI_Controller {
 
           $query= $this->db->query("Select * from Status where StatusName = '$legend' 
             and Description='$descrip' and ColorCode='$color'  limit 1");
-          if($query->num_rows() ==1){
+          $query2=$this->db->query("Select * from Status where StatusName = '$legend' ");
+          if(($query->num_rows() ==1) || ($query2->num_rows() ==1) ) {
              $this->session->failed = 'failed';
           } 
           else{
@@ -427,6 +428,32 @@ class Add_user extends CI_Controller {
                 $this->session->success = 'success';  
           }
              redirect('Login_user/settings/#legend');
+
+   }
+
+       function add_container(){
+
+
+               $containers  = $this->input->post('containers');
+               $descrip = $this->input->post('descrip');
+               $size   = $this->input->post('size');
+                $data   = array(
+                  'ContainerNo' => $containers,
+                  'ContainerDescription'=> $descrip,
+                  'ContainerSize'  => $size
+                );
+
+          $query= $this->db->query("Select * from Container where ContainerNo = '$containers' 
+            and ContainerDescription='$descrip' and ContainerSize='$size'  limit 1");
+          $query2 =  $this->db->query("Select * from Container where ContainerNo = '$containers' ");
+          if(($query->num_rows() ==1) || ($query2->num_rows() ==1) ) {
+             $this->session->failed = 'failed';
+          } 
+          else{
+                $this->db->insert('Container', $data);
+                $this->session->success = 'success';  
+          }
+             redirect('Login_user/settings/#container');
 
    }
           

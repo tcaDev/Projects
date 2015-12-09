@@ -349,6 +349,10 @@ Class User extends CI_Model
    $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusName  ");
    return $query->result();
   }
+    function search_container($search_container){
+   $query = $this->db->query("select * from Container WHERE ContainerNo LIKE '%$search_container%' order by ContainerNo  ");
+   return $query->result();
+  }
 
   //for searching end
 
@@ -380,6 +384,10 @@ Class User extends CI_Model
    function findlimit_legend($page_position,$item_per_page)
   {
    return $this->db->get('Status',$page_position, $item_per_page)->result();
+  }
+   function findlimit_container($page_position,$item_per_page)
+  {
+   return $this->db->get('Container',$page_position, $item_per_page)->result();
   }
 
   
@@ -545,6 +553,16 @@ function get_jobfile_manila(){
 
           $this->db->where('StatusId', $legend_id);
           $this->db->update('Status', $data); 
+  }
+    function update_container($container_id,$con,$con_descrip,$con_size){
+         $data = array(
+                'ContainerNo' => $con,
+                'ContainerDescription'=> $con_descrip,
+                'ContainerSize'  => $con_size
+                );
+
+          $this->db->where('ContainerId', $container_id);
+          $this->db->update('Container', $data); 
   }
 
 

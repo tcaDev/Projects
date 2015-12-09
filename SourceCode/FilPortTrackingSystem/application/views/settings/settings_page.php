@@ -7,20 +7,22 @@
 </style>
 
  <script>
-  var content_consignee = "<?php echo base_url('Login_user/consignee_content')?>";
-  var total_consignee   =  "<?php echo $consignee_total; ?>";
-  var content_broker    = "<?php echo base_url('Search/search_broker')?>";
-  var total_broker      =  "<?php echo $broker_total; ?>";
-  var content_shipper   = "<?php echo base_url('Search/search_shipper')?>";
-  var total_shipper     =  "<?php echo $shipper_total; ?>";
-  var content_vessel    = "<?php echo base_url('Search/search_vessel')?>";
-  var total_vessel      =  "<?php echo $vessel_total; ?>";
-  var content_hauler    = "<?php echo base_url('Search/search_hauler')?>";
-  var total_hauler      =  "<?php echo $hauler_total;  ?>";
-  var content_forward   = "<?php echo base_url('Search/search_forward')?>";
-  var total_forward     =  "<?php echo $forward_total; ?>";
-  var content_legend    = "<?php echo base_url('Search/search_legend')?>";
-  var total_legend      =  "<?php echo $forward_legend; ?>";
+  var content_consignee    = "<?php echo base_url('Login_user/consignee_content')?>";
+  var total_consignee      =  "<?php echo $consignee_total; ?>";
+  var content_broker       = "<?php echo base_url('Search/search_broker')?>";
+  var total_broker         =  "<?php echo $broker_total; ?>";
+  var content_shipper      = "<?php echo base_url('Search/search_shipper')?>";
+  var total_shipper        =  "<?php echo $shipper_total; ?>";
+  var content_vessel       = "<?php echo base_url('Search/search_vessel')?>";
+  var total_vessel         =  "<?php echo $vessel_total; ?>";
+  var content_hauler       = "<?php echo base_url('Search/search_hauler')?>";
+  var total_hauler         =  "<?php echo $hauler_total;  ?>";
+  var content_forward      = "<?php echo base_url('Search/search_forward')?>";
+  var total_forward        =  "<?php echo $forward_total; ?>";
+  var content_legend       = "<?php echo base_url('Search/search_legend')?>";
+  var total_legend         =  "<?php echo $legend_total; ?>";
+  var content_container    = "<?php echo base_url('Search/search_container')?>";
+  var total_container      =  "<?php echo $container_total; ?>";
  </script>
 
 		
@@ -244,6 +246,37 @@
 				    });
 			
 			});
+
+				$(document).ready(function() {
+				    $(".containerpage").load(content_container);  //initial page number to load
+				    $(".pagination_container").bootpag({
+				        total:total_container, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".containerpage").load(content_container, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+				});
 				
 				
 		</script>
@@ -257,7 +290,8 @@
 		    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
 		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
 		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder Warehouse</a></li>
-		    <li><a data-toggle="tab" href=".legendss"						id="form_legend">Legend</a></li>
+		    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
+		    <li><a data-toggle="tab" href=".container"				    id="form_container">Container</a></li>
 		
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
@@ -314,38 +348,21 @@
 			    </div>
 			       <!--FOr legend data view  end--> 
 
-		
 
+			       <!--FOr container data view  start--> 
+			    <div  class="container tab-pane fade">
+			 	  <div class="containerpage"> </div>
+                  <div class="pagination_container pull-right"> </div>
+			    </div>
+			       <!--FOr container data view  end--> 
 
-
+		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
 				  <div class="shipperpage"> </div>
                   <div class="pagination_shipper pull-right"> </div>
 			    </div>
+			     <!--FOr shipper data view  end-->
 
-			    <div class="container tab-pane fade">
-			      	<table class="table table-striped">
-					    <thead>
-					      <tr>
-					        <th>Vessel ID</th>
-					        <th>Container Desc</th>
-					        <th>container Size</th>
-					        <th colspan="2">Action</th>
-					      </tr>
-					    </thead>
-					    <tbody>
-					      <tr>
-					        <td>
-					        	<select><option>option1</option></select>
-					        </td>
-					        <td>Doe</td>
-					        <td>123</td>
-					        <td><button class="btn update"><span class="glyphicon glyphicon-edit"></span></button>
-					        <button class="btn update"><span class="glyphicon glyphicon-trash"></span></button></td>
-					      </tr>
-					    </tbody>
-					</table>
-			    </div>
 			  </div>
 			
 
@@ -952,6 +969,57 @@
 					            <div class="form-group col-lg-12">
 					            	<label>Choose Color</label>
 					               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
+					            
+					            </div>
+					        </div>
+	
+					  
+					        <div class="row">
+					        	<div class="form-group col-lg-12">
+					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					            </div>	
+					        </div>
+					 <?php echo form_close();?>
+				        </div>
+				     
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+			    </div>
+
+
+
+			   <div class="modal fade" id="modal_update_container" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Container Information</h4>
+				        </div>
+				        <div class="modal-body">
+				       <?php echo form_open('Update/update_container/');?>
+				          	  <input type="hidden" name="container_id"      class="container_id" />
+							<div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Container No.</label>
+					               <input type="text"   name="con"  class="con form-control" required/>
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Container Description</label>
+					               <input type="text"  name="con_descrip"  class="con_descrip form-control" required/>
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="form-group col-lg-12">
+					            	<label>Container Size</label>
+					               <input type="text" name="con_size"  class="con_size form-control" required/>
 					            
 					            </div>
 					        </div>

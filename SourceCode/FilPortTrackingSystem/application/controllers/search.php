@@ -1279,6 +1279,100 @@ $this->message();
 
 
 
-	}		
+	}
+
+	function search_container(){
+   $this->message();
+   $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	}else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
+	$id = $this->input->post('container_id');
+	   if(isset($id)){
+	        $forward = $this->User->search_container($id);
+	   }else{
+	   	 $forward  =  $this->User->findlimit_container($item_per_page,$page_position);	
+	   } 	
+	echo '<table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th>Container No.</th>
+		        <th>Container Description</th>
+		        <th>ContainerSize</th>
+		        <th colspan="2">Action</th>
+		      </tr>
+		    </thead>
+		  <tbody>' ?>
+				    <?php 
+					    foreach ($forward as $row) {
+					    echo  '<tr>
+							        <td class="hidden">'.$row->ContainerId.'</td>
+							         <td>'.$row->ContainerNo.'</td>
+							         <td>'.$row->ContainerDescription.'</td>
+							         <td>'.$row->ContainerSize.'</td>
+							         <td><button type="button" class="btn update_container" data-toggle="modal" data-target="#modal_update_container"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <button class="btn delete_container"><span class="glyphicon glyphicon-trash"></span></button></td>
+					    	  </tr>';}
+
+?>
+    </tbody>
+</table>
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+
+	<script>
+		 $('.delete_container').click(function(){
+		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+		      $.confirm({
+		        title: 'Delete the information?',
+		        content: 'You have 6 seconds to make a choice',
+		        autoClose: 'cancel|6000',
+		        confirmButton: 'Yes',
+		        confirmButtonClass: 'btn-info',
+		        cancelButton: 'No',
+		        confirm: function () {            
+		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_container", 
+		            	{ 
+		            	  id:delete_id
+		            	})
+					  .done(function( data ) {
+					    $.alert({
+							    title: 'Alert!',
+							    content: 'Data has been deleted!',
+							    confirm: function(){
+							    }
+							});
+					    location.hash="container";
+					    location.reload();
+					  });
+		        },
+		        cancel: function () {
+		           /* alert('Vacation cancelled!');*/
+		        }
+		    });
+			});
+	 	 $('.update_container').click(function(){
+			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
+			     var con   		  = $(this).closest('tr').children('td:eq(1)').text();
+			     var con_descrip  = $(this).closest('tr').children('td:eq(2)').text();
+			     var con_size     = $(this).closest('tr').children('td:eq(3)').text();
+
+
+			      $('.container_id').val(id);
+			      $('.con').val(con);
+			      $('.con_descrip').val(con_descrip);
+			      $('.con_size').val(con_size);
+			 });
+	</script>
+	<?php
+	}	
 }
 ?>

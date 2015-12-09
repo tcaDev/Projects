@@ -310,8 +310,17 @@ class Login_user extends CI_Controller {
 	 	$this->db->from('Status');
 		$total_legend= $this->db->count_all_results();
 		$page = ceil($total_legend/$item_per_page);
-		$data['forward_legend'] = $page;
+		$data['legend_total'] = $page;
 		//total page of legend end
+
+		//total page of container start
+	 	$this->db->from('Container');
+		$total_container= $this->db->count_all_results();
+		$page = ceil($total_container/$item_per_page);
+		$data['container_total'] = $page;
+		//total page of container end
+
+		
 
 		//select country
 		$data['countries']   =  $this->User->countries();

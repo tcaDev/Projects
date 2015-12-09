@@ -87,10 +87,10 @@ class Update extends CI_Controller {
 		
 
 		$query= $this->db->query("Select * from Shipper where ShipperName = '$name' 
-		and HouseBuildingNoStreet='$$hbno'
+		and HouseBuildingNoStreet='$hbno'
 		and BarangarOrVillage='$vilage'
 		and TownOrCityProvince='$city'
-		and CountryId='country'
+		and CountryId='$country'
 
 		limit 1");
           
@@ -147,18 +147,18 @@ class Update extends CI_Controller {
 		$query= $this->db->query("Select * from Broker where FirstName = '$broker_fname' 
               and MiddleName='$broker_mname' and LastName='$broker_lname' limit 1");
         $query2= $this->db->query("Select * from Broker where
-            BrokerId  =$id              and
-        	FirstName = '$broker_fname' and 
-        	MiddleName='$broker_mname'  and 
-        	LastName='$broker_lname'    and
-        	HouseBuildingNoStreet='$broker_houseno'      and
-        	BarangarOrVillage='$broker_vil'   and
-        	TownOrCityProvince='$broker_city' and
-        	CountryId='$broker_cid'             and
-        	IsActive=$status_broker
+            BrokerId                 =   '$id'              and
+        	FirstName                =   '$broker_fname'    and 
+        	MiddleName			     =   '$broker_mname'    and 
+        	LastName		         =   '$broker_lname'    and
+        	HouseBuildingNoStreet    =   '$broker_houseno'  and
+        	BarangarOrVillage		 =   '$broker_vil'  	and
+        	TownOrCityProvince		 =   '$broker_city' 	and
+        	CountryId				 =   '$broker_cid'      and
+        	IsActive			     =    $status_broker
         	limit 1");
              
-		if(($query->num_rows() ==1) && ($query2->num_rows() ==1)){
+		if(($query->num_rows() ==1) || ($query2->num_rows() ==1)){
              $this->session->failed= 'update_failed';
           } 
        else{ 
@@ -210,7 +210,7 @@ class Update extends CI_Controller {
 
     function update_legend(){
 		$legend_id 	    = 	$this->input->post('legend_id');
-		$name 	= 	$this->input->post('name');
+		$name 			= 	$this->input->post('name');
 	    $description    = 	$this->input->post('legend_descrip');
 		$legend_color 	= 	$this->input->post('legend_color');
 
@@ -227,7 +227,31 @@ class Update extends CI_Controller {
 		       }
 		        redirect('Login_User/settings/#legend');
 
-	}			
+	}
+	    function update_container(){
+		$container_id 	= 	$this->input->post('container_id');
+		$con 	        = 	$this->input->post('con');
+	    $con_descrip    = 	$this->input->post('con_descrip');
+		$con_size 	    = 	$this->input->post('con_size');
+
+
+   		 $query= $this->db->query("Select * from Container where
+     		  ContainerNo='$con' and ContainerDescription='$con_descrip' and
+     		  ContainerSize=$con_size limit 1");
+    
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          }else{
+			     $this->User->update_container($container_id,$con,$con_descrip,$con_size);
+			     $this->session->success= 'update_success';    
+		       }
+		        redirect('Login_User/settings/#container');
+
+	}
+
+
+
+
 
 
 }

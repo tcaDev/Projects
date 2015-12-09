@@ -358,58 +358,7 @@ echo'				<div class="shippers tab-pane">
 				</div>';
 }
  
-function container(){
 
-echo '			
-	<div class="containers tab-pane">
-		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#container" style="cursor:pointer">
-			<span style="cursor:pointer" >ADD NEW CONTAINERS</span>
-		</div>
-		   <div class="citys consig-posbox collapse" id="container">
-			<form action="' .base_url('Add_user/add_container/').'" method="post">
-				<div class="">
-		            <div class="form-group col-md-4">
-		                <input type="text" name="cno"class="form-control" placeholder="Container No" required/>
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-12">
-		                <input type="text" name="cd" class="form-control" placeholder="Container Description" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="cs" class="form-control" placeholder="Container Size" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="ncs" class="form-control" placeholder="No of Cartons" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="tp" class="form-control" placeholder="Trucker Plate No" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="tname" class="form-control" placeholder="Trucker Name" required />
-		            </div>
-		        </div>
-
-		        <div class="">
-		        	<div class="form-group col-md-12">
-		            	<button type="submit" class="pull-right btn btn-default">Submit</button>
-		            </div>	
-		        </div>
-   	 		</form>
-		</div>	
-
-	</div>
-
-</div>';
-}
 
 function forward(){
 
@@ -467,6 +416,48 @@ echo '
 		         	 <label class="color-lg-2">Choose Color</label> 
 		            <div class="form-group col-md-12">
 		                <input type="color" name="color" class="form-control" placeholder="color" value="#ff0000" required />
+		            </div>
+		        </div>
+		  
+		        <div class="">
+		        	<div class="form-group col-md-12">
+		            	<button type="submit" class="pull-right btn btn-default">Submit</button>
+		            </div>	
+		        </div>
+   	 		</form>
+		</div>	
+
+	</div>
+
+</div>';
+}
+
+
+function container(){
+
+echo '			
+	<div class="forwards tab-pane">
+		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#forward" style="cursor:pointer">
+			<span style="cursor:pointer" >ADD NEW Container</span>
+		</div>
+		   <div class="forward consig-posbox collapse" id="forward">
+			<form action="' .base_url('Add_user/add_container/').'" method="post">
+		
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="containers" class="form-control" placeholder="Container No." required />
+		            </div>
+		        </div>
+
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="descrip" class="form-control" placeholder="Container Description" required />
+		            </div>
+		        </div>
+
+		        <div class="">
+		            <div class="form-group col-md-12">
+		                <input type="text" name="size" class="form-control" placeholder="ContainerSize"  required />
 		                    <label class="radio-inline">
 						      <input type="radio" value="0" name="IsBackground">Font
 						    </label>
