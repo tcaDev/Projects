@@ -455,7 +455,6 @@ Class User extends CI_Model
    $query = $this->db->query("select * from Status ");
     return $query->result();
   }
-<<<<<<< .mine
 
   
 
