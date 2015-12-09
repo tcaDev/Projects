@@ -1,3 +1,7 @@
+<head>
+		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
+</head>
+
 <div class="dash-cont">
 	<div class="dash-title"><h3>REPORTS</h3></div>
 		<div class="dash-subtitle">
@@ -27,17 +31,17 @@
 								</div>   
 			        	</div>
 			        	<div id="taba">
-			        	<table style="background-color:#fff;" class="table table-bordered order-table">
-							<thead>
+			        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">
+							<thead style="background-color:#D2D2D2; border: 1px solid black;">
 								<tr>
-									<th>Consignee Name</th>
-									<th>Address</th>
-									<th>Country</th>
-									<th>Office Number</th>
-									<th>Status</th>
+									<th style="border: 1px solid gray;">Consignee Name</th>
+									<th style="border: 1px solid gray;">Address</th>
+									<th style="border: 1px solid gray;">Country</th>
+									<th style="border: 1px solid gray;">Office Number</th>
+									<th style="border: 1px solid gray;">Status</th>
 								</tr>
 							</thead>	
-							<tbody>	
+							<tbody  style=" border: 1px solid black;">	
 			        		<?php
 								foreach ($consignee as $row) {
 								$consigname = $row->ConsigneeName;
@@ -49,14 +53,14 @@
 								$conact = $row->IsActive; ?>
 
 
-								<tr><td style="text-align:left;"><?php echo $consigname; ?></td>
-									<td style="text-align:left;">
+								<tr><td style="border: 1px solid gray; text-align:left;"><?php echo $consigname; ?></td>
+									<td style=" border: 1px solid gray; text-align:left;">
 										<?php echo $conaddn; ?>
 										<?php echo $conaddb; ?>
 										<?php echo $conaddt; ?></td>
-									<td style="text-align:left;"><?php echo $concountry; ?></td>	
-									<td style="text-align:left;"><?php echo $conoffice; ?></td>
-									<td style="text-align:left;"><?php if($conact=='1'){
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $concountry; ?></td>	
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $conoffice; ?></td>
+									<td style="border: 1px solid gray; text-align:left;"><?php if($conact=='1'){
 									echo "Active";	
 									}else{
 									echo "Deactivated";
@@ -78,7 +82,7 @@
 		        			<div class="col-md-3 pull-left">
 			        			<input type="search" class="form-control light-table-filter" data-table="order-table1" placeholder="Search List" />
 			        		</div>
-			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#taba')" />	 
+			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabb')" />	 
 			        		<div class="col-md-3 pull-right">
 							  <select type="search" class="form-control select-table-filter" data-table="order-table1">
 							    <option value="">All Status</option>  
@@ -88,16 +92,16 @@
 							</div>
 			        	</div>
 			        	<div id="tabb">
-			        		<table style="background-color:#fff;" class="table table-bordered order-table1" >
-								<thead>
+			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table1" >
+								<thead style="background-color:#D2D2D2; border: 1px solid black;">
 									<tr>
-										<th>First Name</th>
-										<th>Middle Name</th>
-										<th>Last Name</th>
-										<th>Address</th>
-										<th>Country</th>
-										<th>Contact No</th>
-										<th>Status</th>
+										<th style="border: 1px solid gray;">First Name</th>
+										<th style="border: 1px solid gray;">Middle Name</th>
+										<th style="border: 1px solid gray;">Last Name</th>
+										<th style="border: 1px solid gray;">Address</th>
+										<th style="border: 1px solid gray;">Country</th>
+										<th style="border: 1px solid gray;">Contact No</th>
+										<th style="border: 1px solid gray;">Status</th>
 									</tr>
 								</thead>	
 								<tbody>	
@@ -114,18 +118,18 @@
 										$brcontt = $row->ContactNo2;
 										$brstat = $row->IsActive; ?>
 
-									<tr><td style="text-align:left;"><?php echo $bname; ?></td>
-									<td style="text-align:left;"><?php echo $bmname; ?></td>
-									<td style="text-align:left;"><?php echo $blname; ?></td>
-									<td style="text-align:left;">
+									<tr><td style="border: 1px solid gray; text-align:left;"><?php echo $bname; ?></td>
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $bmname; ?></td>
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $blname; ?></td>
+									<td style="border: 1px solid gray; text-align:left;">
 										<?php echo $brnaddb; ?>
 										<?php echo $braddb; ?>
 										<?php echo $braddt; ?></td>
-									<td style="text-align:left;"><?php echo $brcountry; ?></td>
-									<td style="text-align:left;"><?php echo $brcont; ?>
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $brcountry; ?></td>
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $brcont; ?>
 									<?php echo $brcontt; ?>
 									</td>
-									<td style="text-align:left;"><?php if($brstat=='1'){
+									<td style="border: 1px solid gray; text-align:left;"><?php if($brstat=='1'){
 									echo "Activated";	
 									}else{
 									echo "Deactivated";
@@ -147,15 +151,15 @@
 			        			<div class="col-md-3 pull-left">
 				        			<input type="search" class="form-control light-table-filter" data-table="order-table2" placeholder="Search List" />
 				        		</div>
-				        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#taba')" />	 
+				        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabc')" />	 
 			        	</div>
 			        	<div id="tabc">
-			        		<table style="background-color:#fff;" class="table table-bordered order-table2" >
-								<thead>
+			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table2" >
+								<thead style="background-color:#D2D2D2; border: 1px solid black;">
 									<tr>
-										<th>Shipper Name</th>
-										<th>Address</th>
-										<th>Country</th>
+										<th style="border: 1px solid gray;">Shipper Name</th>
+										<th style="border: 1px solid gray;">Address</th>
+										<th style="border: 1px solid gray;">Country</th>
 									</tr>
 								</thead>	
 								<tbody>	
@@ -167,12 +171,12 @@
 										$shaddt = $row->TownOrCityProvince;
 										$shcountry = $row->Country;
 										?>
-									<tr><td style="text-align:left;"><?php echo $sname; ?></td>
-									<td style="text-align:left;">
+									<tr><td style="border: 1px solid gray; text-align:left;"><?php echo $sname; ?></td>
+									<td style="border: 1px solid gray; text-align:left;">
 										<?php echo $shnaddb; ?>
 										<?php echo $shaddb; ?>
 										<?php echo $shaddt; ?></td>
-									<td style="text-align:left;"><?php echo $shcountry; ?></td>	
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $shcountry; ?></td>	
 									</tr>
 									<?php } ?>
 								</tbody>
@@ -183,16 +187,16 @@
 			        <div class="tab-pane" id="tab_d">
 			        	<div class="col-md-12 tools-bar" >
 		        	 		<div class="col-md-3 pull-left">
-			        			<input type="search" class="form-control light-table-filter" data-table="order-table3" placeholder="Filter List" />
+			        			<input type="search" class="form-control light-table-filter" data-table="order-table3" placeholder="Search List" />
 			        		</div>
-			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#taba')" />	 
+			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabd')" />	 
 			        	</div>
 			        	<div id="tabd">
-			        		<table style="background-color:#fff;" class="table table-bordered order-table3" >
-								<thead>
+			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table3" >
+								<thead style="background-color:#D2D2D2; border: 1px solid black;">
 									<tr>
-										<th>Shipper Name</th>
-										<th>Vessel Name</th>
+										<th style="border: 1px solid gray;">Shipper Name</th>
+										<th style="border: 1px solid gray;">Vessel Name</th>
 									</tr>
 								</thead>	
 								<tbody>	
@@ -201,8 +205,8 @@
 										$shname = $row->ShipperName;
 										$vname = $row->Vesselname;
 								?>	
-								<tr><td style="text-align:left;"><?php echo $shname; ?></td>
-								<td style="text-align:left;"><?php echo $vname; ?></td></tr>
+								<tr><td style="border: 1px solid gray; text-align:left;"><?php echo $shname; ?></td>
+								<td style="border: 1px solid gray; text-align:left;"><?php echo $vname; ?></td></tr>
 								<?php } ?>
 							</tbody>
 						</table>		
@@ -213,94 +217,5 @@
 	</div>
 </body>
 
-<script type="text/javascript">
-		(function(document) {
-			'use strict';
-
-			var LightTableFilter = (function(Arr) {
-
-				var _input;
-		    var _select;
-
-				function _onInputEvent(e) {
-					_input = e.target;
-					var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-					Arr.forEach.call(tables, function(table) {
-						Arr.forEach.call(table.tBodies, function(tbody) {
-							Arr.forEach.call(tbody.rows, _filter);
-						});
-					});
-				}
-		    
-				function _onSelectEvent(e) {
-					_select = e.target;
-					var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
-					Arr.forEach.call(tables, function(table) {
-						Arr.forEach.call(table.tBodies, function(tbody) {
-							Arr.forEach.call(tbody.rows, _filterSelect);
-						});
-					});
-				}
-
-				function _filter(row) {
-		      
-					var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-					row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-
-				}
-		    
-				function _filterSelect(row) {
-		     
-					var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
-					row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
-
-				}
-
-				return {
-					init: function() {
-						var inputs = document.getElementsByClassName('light-table-filter');
-						var selects = document.getElementsByClassName('select-table-filter');
-						Arr.forEach.call(inputs, function(input) {
-							input.oninput = _onInputEvent;
-						});
-						Arr.forEach.call(selects, function(select) {
-		         select.onchange  = _onSelectEvent;
-						});
-					}
-				};
-			})(Array.prototype);
-
-			document.addEventListener('readystatechange', function() {
-				if (document.readyState === 'complete') {
-					LightTableFilter.init();
-				}
-			});
-
-		})(document);
-
-    function PrintElem(elem)
-    {
-        Popup($(elem).html());
-    }
-
-    function Popup(data) 
-    {
-        var mywindow = window.open('', 'Filport Document', 'height=400,width=600');
-        mywindow.document.write('<html><head><title>Filport Document</title>');
-       // mywindow.document.write('<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">');
-        mywindow.document.write('</head><body >');
-        mywindow.document.write(data);
-        mywindow.document.write('</body></html>');
-
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10
-
-        mywindow.print();
-        mywindow.close();
-
-        return true;
-    }
-
-</script>
 </html>
 
