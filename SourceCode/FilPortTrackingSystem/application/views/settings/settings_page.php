@@ -257,7 +257,7 @@
 		    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
 		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
 		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder Warehouse</a></li>
-		    <li><a data-toggle="tab" href=".legends"						id="form_legend">Legend</a></li>
+		    <li><a data-toggle="tab" href=".legendss"						id="form_legend">Legend</a></li>
 		
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
@@ -308,7 +308,7 @@
 
 
 			    <!--FOr legend data view  start--> 
-			    <div  class="legends tab-pane fade">
+			    <div  class="legendss tab-pane fade">
 			 	  <div class="legendpage"> </div>
                   <div class="pagination_legend pull-right"> </div>
 			    </div>
