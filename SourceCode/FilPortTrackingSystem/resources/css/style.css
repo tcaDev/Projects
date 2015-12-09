@@ -36,12 +36,9 @@ body{
 
 .legend{
     position: absolute;
-    top: 19%;
-    padding-bottom: 10px;
+    top: 200px;
     left: 80%;
-    width: 334px;
-    overflow: scroll;
-    overflow-x:hidden; 
+    margin-right: 10px;
 }
 
 /*Menu Tiles*/
