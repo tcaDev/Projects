@@ -28,7 +28,7 @@
 	<script type="text/javascript" src="<?php echo base_url('resources/jquery_confirm/js/jquery-confirm.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('resources/js/dropdowns-enhancement.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('resources/js/bootpag.min.js'); ?>"></script>
-
+	
 
 </head>
 
