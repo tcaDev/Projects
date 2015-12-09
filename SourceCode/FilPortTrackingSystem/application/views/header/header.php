@@ -30,6 +30,7 @@
 	<script type="text/javascript" src="<?php echo base_url('resources/js/bootpag.min.js'); ?>"></script>
 	
 
+
 </head>
 
 
