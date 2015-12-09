@@ -39,7 +39,9 @@ body{
     top: 19%;
     padding-bottom: 10px;
     left: 80%;
-    width: 18%;
+    width: 334px;
+    overflow: scroll;
+    overflow-x:hidden; 
 }
 
 /*Menu Tiles*/
