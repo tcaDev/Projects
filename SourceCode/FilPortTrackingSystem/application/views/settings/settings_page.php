@@ -18,7 +18,7 @@
   var content_hauler   = "<?php echo base_url('Search/search_hauler')?>";
   var total_hauler    =  "<?php echo $hauler_total;  ?>";
   var content_forward   = "<?php echo base_url('Search/search_forward')?>";
-  var total_forward     =  "<?php echo $forward_total; ?>";
+  var total_forward     =  "<?php  ?>";
  </script>
 
 		
@@ -176,40 +176,6 @@
 				    });
 			
 			});
-
-				
-
-			$(document).ready(function() {
-				    $(".forwardpage").load(content_forward);  //initial page number to load
-				    $(".pagination_forward").bootpag({
-				        total:total_forward, // total number of pages
-				        page: 1, //initial page
-				        maxVisible: 5, //maximum visible links
-					    leaps: true,
-					    firstLastUse: true,
-					    first: 'First',
-					    last: 'Last',
-					    prev: 'Previous',
-					    next: 'Next',
-					    wrapClass: 'pagination',
-					    activeClass: 'active',
-					    disabledClass: 'disabled',
-					    nextClass: 'next',
-					    prevClass: 'prev',
-					    lastClass: 'last',
-					    firstClass: 'first'
-				    }).on("page", function(e, num){
-				        e.preventDefault();
-				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				        $(".forwardpage").load(content_forward, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
-				    });
-			
-			});
-				
 				
 		</script>
 	     <!--For  pagination end -->
@@ -264,14 +230,27 @@
 			    </div>
 			       <!--FOr Hauler data view  end--> 
 
-			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
-			 	  <div class="forwardpage"> </div>
+			 	  <div class="forwardpage">
+			 	  	<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Forwarder/Warehouse Name</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+						</thead>
+					  	<tbody>
+					  	<tr>
+					        <td class="hidden"></td>
+					        <td></td>
+					        <td><button type="button" class="btn update_haulers" data-toggle="modal" data-target="#modal_update_haulers"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+					   	</tr>
+				      </tbody>
+					</table>
+			 	  </div>
                   <div class="pagination_forward pull-right"> </div>
 			    </div>
-			       <!--FOr forward data view  end--> 
-
-		
 
 			    <div  class="legend tab-pane fade">
 			 	  <div class="legendpage">
@@ -826,7 +805,8 @@
 
 
 			<!--Modal for updating haulers -->
-			  		
+			  				  <!-- Modal FOr vessel
+				  				  -->
 				  <div class="modal fade" id="modal_update_hauler" role="dialog">
 				    <div class="modal-dialog">
 				    
@@ -862,43 +842,6 @@
 				      
 				    </div>
 				  </div>
-
-
-				<div class="modal fade" id="modal_update_forward" role="dialog">
-				    <div class="modal-dialog">
-				    
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Forward Information</h4>
-				        </div>
-				        <div class="modal-body">
-				       <?php echo form_open('Update/update_forward/');?>
-				          	  <input type="hidden" name="forward_id"      class="forward_id" />
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Forwarder Warehouse Name</label>
-					               <input type="text"   name="forward_name"  class="forward_name form-control" required/>
-					            </div>
-					        </div>
-	
-					  
-					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
-					            </div>	
-					        </div>
-					 <?php echo form_close();?>
-				        </div>
-				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        </div>
-				      </div>
-				      
-				    </div>
-			    </div>
 </body>
 </html>
 
