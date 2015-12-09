@@ -174,9 +174,9 @@
 				            <tr>
 								         
 								          <td><?php echo $i;?></td>
-								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
+								          <td><button type="button" class="btn btn-Update" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
 
-								          <td><?php echo $row->JobFileId; ?><a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
+								          <td><?php echo $row->JobFileId; ?><a data-toggle="modal" data-target="#jobfiles" href="#" class="pull-right"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
 
 								          <td><?php echo $row->ShipperName; ?></td>
 
@@ -185,7 +185,7 @@
 
 								          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td><?php echo $row->ProductName; ?></td>
+								          <td><button type="button" class="btn btn-Goods" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Goods</button></td>
 
 								          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
@@ -193,7 +193,7 @@
 
 								          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td><?php echo $row->ContainerNo; ?></td>
+								          <td><button type="button" class="btn btn-Container" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Container No.</button></td>
 
 								          <td><?php echo $row->Origin; ?></td>
 
@@ -211,47 +211,47 @@
 
 								          <td><?php echo $row->Registry; ?></td>
 
-								          <td></td>
+								          <td><?php echo $row->VSL_NO; ?></td>
+								          
+								          <td><?php echo $row->CarrierName; ?></td>
 
-								          <td>ISTRIAN EXPRESS V.15015S</td>
+								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
-								          <td>CEVA/BENLINE</td>
+								          <td><?php echo $row->DateReceivedOfBL; ?></td>
 
-								          <td>10/27/2015</td>
-
-								          <td>10/27/2015</td>
+								          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
 
 								          <td><?php echo $row->Broker; ?></td>
 
-								          <td>MONA</td>
+								          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
 
-								          <td>10/27/2015</td>
+								          <td><?php echo $row->RFPDueDate; ?></td>
 
-								          <td>0.37037037037037</td>
+								          <td><?php echo $row->DateSentPreAssessment; ?></td>
 
-								          <td>11/6/2015</td>
+								          <td><?php echo $row->DateFileEntryToBOC; ?></td>
 
-								          <td>10/27/2015</td>
+								          <td><?php echo $row->DateSentFinalAssessment; ?></td>
 
-								          <td>C254093</td>
+								          <td><?php echo $row->RefEntryNo; ?></td>
 
-								          <td>COLOR</td>
+								          <td><?php echo $row->StatusName; ?></td>
 
-								          <td>11/9/2015  1300H </td>
+								          <td><?php echo $row->DatePaid; ?></td>
 
-								          <td>11/9/2015</td>
+								          <td><?php echo $row->DateBOCCleared; ?></td>
 
-								          <td>11/10/2015</td>
+								          <td><?php echo $row->TargetDeliveryDate; ?></td>
 
-								          <td>Mardean Jaems/ ALA7300</td>
+								          <td><?php echo $row->PlateNo_Trucker; ?></td>
 
-								          <td>11/10 5:30am</td>
+								          <td><?php echo $row->GateInAtPort; ?></td>
 
-								          <td>11/10 6:20am</td>
+								          <td><?php echo $row->GateOutAtPort; ?></td>
 
-								          <td>11/10 1230h abd</td>
+								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td>10/27- receive original docs   11/3- start processing of lifting,  11/6 - lifting of abandonement</td>
+								          <td><button type="button" class="btn btn-StatusReport" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Status Report</button></td>
 								      
 								        </tr>
 

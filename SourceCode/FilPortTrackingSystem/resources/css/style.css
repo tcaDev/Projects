@@ -1547,22 +1547,22 @@ body{
 /*legend*/
 fieldset {
     font-family: sans-serif;
-    border: 2px solid #1F497D;
+    border: 1px solid #1F497D;
     background: #fff;
-    border-radius: 5px;
-    padding-left: 27px;
+    border-radius: 4px;
+    padding: 10px;
     margin-top: 12px;
 }
 
 fieldset legend {
     background: #1F497D;
     color: #fff;
-    width: 35%;
-    padding: 2px 14px;
+    width: 136px;
+    padding: 1px 15px;
     font-size: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);
-    /*margin-bottom: 0px;*/
+    /* box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52); */
+    margin-bottom: 0px !important;
 }
 
 /*TABS*/
