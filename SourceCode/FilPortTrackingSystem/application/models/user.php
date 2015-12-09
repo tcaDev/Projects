@@ -294,11 +294,20 @@ Class User extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
-    function consigneecon($id){
+
+  function consigneecon($id){
 
     $this->  db ->select('*');
     $this -> db -> from('ConsigneeContacts');
     $this -> db ->where('ConsigneeId', $id);
+    $query=$this->db->get();
+    return $query->result();
+  }
+    function vessel_shipper($id){
+
+    $this->  db ->select('Vesselname,VesselNo');
+    $this -> db -> from('ShipperVessel');
+    $this -> db ->where('ShipperId', $id);
     $query=$this->db->get();
     return $query->result();
   }

@@ -666,6 +666,7 @@ function search_shipper(){
 					        <th>Town/City/Province</th>
 					         <th>Country</th>
 					        <th>Shipper Contacts</th>
+					        <th>Vessels</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
@@ -686,8 +687,9 @@ function search_shipper(){
 					  	    <td>'.$row->TownOrCityProvince.'</td>
 					  	    <td>'.$row->Country.'</td>
 					  	    <td class="hidden">'.$row->CountryId.'</td>
-					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">View</button>   
-					       					   <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
+					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit/Delete</button>   
+					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
+					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td>   				   
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
 					      </tr>';}
@@ -793,6 +795,20 @@ function search_shipper(){
 					   $('#modal_shippercontacts').html(data);
 					  });
 	});
+
+
+	 $('.get_vessels_of_shipp').click(function(){
+	  var id    = $(this).closest('tr').children('td:eq(0)').text();
+	 	  $.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/search/vessel_shipper/",
+					  data: { id:id}
+					})
+					  .done(function(data) {
+					   $('#modal_vessels').html(data);
+		  }); 
+
+	 });
  </script>	  
 
 
@@ -1202,6 +1218,67 @@ $this->message();
 			 });
 	</script>
 	<?php
+	}
+
+	function vessel_shipper(){
+
+	$id=$this->input->post('id');
+   	$info = $this->User->vessel_shipper($id);
+
+   	
+   	
+   	    echo '	    <div class="mycontent" >  	
+   	    			<div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Vessels Under Shipper</h4>
+				        </div>
+				        <div class="modal-body">
+		        		
+						<table class="table table-striped table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Vessels</th>
+					        <th>Plate No.</th>		  
+					      </tr>
+					    </thead>
+					    <tbody>';
+					    if($info==null){
+					    	echo '<tr>
+					    		 <center><td style="color:red">No Contacts Yet </td></center>
+					    		</tr>
+					    	';
+					    }
+					    $i=0;
+					    foreach ($info as $row) {
+					    	$i++;
+					    	      echo     '<tr style="cursor:pointer;" class="values_content">
+							        <td style="text-align:left;">'.$row->Vesselname.'</td>
+							        <td style="text-align:left;">'.$row->VesselNo.'</td>
+
+					     		 </tr>';
+					    } ?>
+					     </tbody>
+					  </table>
+					  
+
+					    <?php
+					echo   '
+			   	 		
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div> 
+				   </div>        
+				 </div>';
+
+				 
+
+
+
 	}		
 }
 ?>

@@ -780,6 +780,10 @@
 				  <div class="modal fade" id="modal_shippercontacts" role="dialog">
 				  </div>
 
+				  	  <!-- Modal FOr vessels under shippers-->
+				  <div class="modal fade" id="modal_vessels" role="dialog">
+				  </div>
+
 			<!-- Modal FOr add_shippercontacts-->
 			<div class="modal fade" id="modal_add_shippercontacts" role="dialog">
 				  <div class="modal-dialog">

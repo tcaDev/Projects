@@ -765,7 +765,7 @@ function select_country(){
 							        <td>'. $row->Country .'</td>          
 							        <td>'. $number .'</td> 
 							           <td>
-							           		   <button type="button" class="btn  view_consignee_contact" data-toggle="modal" data-target="#modal_view_consignee_contact">View</button>   
+							           		   <button type="button" class="btn  view_consignee_contact" data-toggle="modal" data-target="#modal_view_consignee_contact">Edit/Delete</button>   
 					       					   <button type="button" class="btn  add_consignee_contact"  data-toggle="modal" data-target="#modal_add_consignee_contact">Add</button> 
 					       			   </td>   
 							        <td>'.$stat .'</td>
