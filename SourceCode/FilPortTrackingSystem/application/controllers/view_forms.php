@@ -367,7 +367,7 @@ echo '
 		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#forward" style="cursor:pointer">
 			<span style="cursor:pointer" >ADD NEW FOWARDER WAREHOUSE</span>
 		</div>
-		   <div class="forward consig-posbox collapse" id="forward">
+		   <div class="collapse forward consig-posbox " id="forward">
 			<form action="' .base_url('Add_user/add_forward/').'" method="post">
 		
 		        <div class="">
@@ -384,9 +384,9 @@ echo '
    	 		</form>
 		</div>	
 
-	</div>
+	  </div>
 
-</div>';
+    </div>';
 }
 
 
@@ -458,12 +458,7 @@ echo '
 		        <div class="">
 		            <div class="form-group col-md-12">
 		                <input type="text" name="size" class="form-control" placeholder="ContainerSize"  required />
-		                    <label class="radio-inline">
-						      <input type="radio" value="0" name="IsBackground">Font
-						    </label>
-						    <label class="radio-inline">
-						      <input type="radio" value="1" name="IsBackground">Background
-						    </label>
+		            
 		            </div>
 		        </div>
 		  
