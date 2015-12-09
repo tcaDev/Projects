@@ -48,10 +48,8 @@
 
 
 		</div>
-</div>
 
-
-			<!-- Legend -->
+		<!-- Legend -->
 
 			<div class=" legend">
 
@@ -60,7 +58,11 @@
 			</div>
 
 			<!-- End Legend -->
+<hr>
+</div>
 
+
+			
 
 
 

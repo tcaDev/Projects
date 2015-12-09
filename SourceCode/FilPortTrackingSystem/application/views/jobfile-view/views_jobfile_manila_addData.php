@@ -218,13 +218,12 @@
 					      <tr>
 					        <th>Truck Name</th>
 					        <th>Truck /Plate No.</th>
-					        <th>Gate In at Port</th>
-					        <th>Gate Out at Port</th>
+					        
 					        <th>Actual date Delivered to Warehouse</th>
 					        <th>Status Report</th>
 					        <th></th>
 					      </tr>
-		<!-truck plate is no names yet -->
+		<!--truck plate is no names yet -->
 					      <tr>
 					        <td contenteditable="true"><input type="text"  name="truckername" class="truckername form-control" placeholder="Trucker Name" /></td>
 					        <td contenteditable="true"><input type="text"  name="plateno" class="plateno form-control" placeholder="Plate No." /></td>
@@ -251,45 +250,55 @@
 					    </table>
 					</div>
 
-		<!-container plate is no names yet -->
+		<!--container plate is no names yet -->
 				<!--CONTAINER WINDOW-->
 				  	<div id="tableAddContainer" class="hidden pill-container-mnla-add table-editable col-lg-12">
-					    <span class="table-add table-add-cont glyphicon glyphicon-plus"></span>
-					    <table class="table ">
+					    <table class="table " style="width: 3000px;">
 					      <tr>
+					      	<th>Number of Cartons</th>
 					        <th>Container Number</th>
 					        <th>Description of Goods</th>
 					        <th>Lodging</th>
 					        <th>Target Delivery Date</th>
 					        <th>Actual P-Out date of container at Port</th>
 					        <th>Actual date recieved container to Warehouse</th>
+					        <th>Gate In at Port</th>
+					        <th>Gate Out at Port</th>
 					        <th>Status Report</th>
-					        <th></th>
+					        <th><button type="button" class="btn btn-default table-add-cont"><span class="table-add  fa fa-plus"></span></button></th>
 					      </tr>
 
 					      <tr>
 					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true"><button class="">View</button></td>
+					        <td><button type="button" class="btn btn-View"><span class="fa fa-eye fa-fw"></span>View</button></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="lodging"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true">undefined</td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true">undefined</td>
 					        <td>
-					          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
+					      	  <button type="button" class="btn btn-default table-remove-cont"><span class="table-remove  fa fa-times"></span></button>
+					          
 					        </td>
 					      </tr>
 
 					      <!-- This is our clonable table line -->
 					      <tr class="hide">
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">undefined</td>
+					         <td contenteditable="true">Untitled</td>
+					        <td><button type="button" class="btn btn-View"><span class="fa fa-eye fa-fw"></span>View</button></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="lodging"></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true">undefined</td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true">undefined</td>
 					        <td>
-					          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
+					           <button type="button" class="btn btn-default table-remove-cont"><span class="table-remove fa fa-times"></span></button>
 					        </td>
 					      </tr>
 					    </table>
