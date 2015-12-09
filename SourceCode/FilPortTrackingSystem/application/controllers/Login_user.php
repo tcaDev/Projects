@@ -134,6 +134,7 @@ class Login_user extends CI_Controller {
 		    $data['consignee_data'] = $this->User->dropdown_consignee();
 		    $data['broker_data']    = $this->User->dropdown_broker();
 		    $data['color_data']    = $this->User->dropdown_colors();
+		    $data['hauler_data']    = $this->User->dropdown_hauler();
 		    // drop down in add data form in jofile end
 
 
@@ -296,6 +297,14 @@ class Login_user extends CI_Controller {
 		$data['hauler_total'] = $page;
 		//total page of haulers end
 
+
+
+	    //total page of forward start
+	 	$this->db->from('ForwarderWarehouse');
+		$total_forward= $this->db->count_all_results();
+		$page = ceil($total_forward/$item_per_page);
+		$data['forward_total'] = $page;
+		//total page of forward end
 
 		//select country
 		$data['countries']   =  $this->User->countries();

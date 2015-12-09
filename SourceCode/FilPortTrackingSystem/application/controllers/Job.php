@@ -18,15 +18,25 @@ class Job extends CI_Controller {
 		 $data =	$this->input->post('ship_id');
 		 $shipper = $this->Jobdata->get_vessel($data);
 
-		echo'<select name="vessel" id="myvessel "class="form-control">';
-					            				       
+		echo'<select name="vessel" class="myvessel form-control">';
+			echo '<option value="0" disabled selected>List of Vessels</option>';		            				       
 		 foreach ($shipper as $row){
 		 	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
 		 }
 
 		  echo '</select>';
 
-     }
+
+      ?>
+      <script>
+      $('.myvessel').change(function(){
+        var id= $(this).val();
+        alert(id);
+        $('.veselid').val(id);
+      });
+      </script>
+
+    <?php }
 
 
 
@@ -82,8 +92,8 @@ class Job extends CI_Controller {
                                 ));
 
 
-           $vessel        =  $this->input->post('vessel');
-           
+           $vessel        =  $this->input->post('veselid');
+          
            $vat           =  $this->input->post('ves_arrival_time');
            $vdt           =  $this->input->post('ves_discharge_time');
 
@@ -92,14 +102,82 @@ class Job extends CI_Controller {
              $this->db->query($add_vessel,
               array(
                   'P_JobFileId'           => $job,
-                  'P_ShipperVesselId'     => 1,
+                  'P_ShipperVesselId'     => $vessel ,
                   'P_VesselArrivalTime'   => $vat,
                   'P_VesselDischargeTime' => $vdt
+             ));
 
+
+
+          //for getting the last insert in P_VesselByJobFileId start
+           $table ='VesselByJobFile';
+           $id = 'VesselByJobFileId';  
+         $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
+           
+           
+
+        $cartoons            =  $this->input->post('cartoons');
+        $plateno             =  $this->input->post('plateno');
+        $gip                 =  $this->input->post('gip');
+        $gop                 =  $this->input->post('gop');
+        $adtw                =  $this->input->post('adtw');
+        $etd                 =  $this->input->post('etd');
+        $eta                 =  $this->input->post('eta');
+        $ata                 =  $this->input->post('ata');
+        $start_storage       =  $this->input->post('start_storage');
+        $hauler              =  $this->input->post('hauler');
+        $tdt                 =  $this->input->post('tdt');
+        $start_demorage      =  $this->input->post('start_demorage');
+        $dtSent              =  $this->input->post('dtSent');
+        $truckername         =  $this->input->post('truckername');
+
+
+
+        
+        $session_data = $this->session->userdata('logged_in');
+        $userid = $session_data['uid'];
+
+
+        //ongoing
+          $container = $session_data['container'];
+          $lodging = $session_data['lodging'];
+          $weight = $session_data['weight'];
+        //
+
+
+                     $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $this->db->query($containerbyvessel,
+              array(
+                  'P_ContainerId'           => $container   //ongoing    ///    auto incre in the table
+                  'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
+                  'P_NoOfCartons'           => $cartoons,
+                  'P_TruckerPlateNo'        => $plateno,
+                  'P_TruckerName'           => $truckername,
+                  'P_EstDepartureTime'      => $etd,
+                  'P_EstArrivalTime'        => $eta,
+                  'P_ActualArrivalTime'     => $ata,
+                  'P_StartOfStorage'        => $start_storage,
+                  'P_Lodging'               => $lodging  //ongoing //container
+                  'P_HaulerId'              => $hauler,
+                  'P_DateSentPreAssessment' => $dtSent,
+                  'P_TargetDeliveryDate'    => $tdt,
+                  'P_GateInAtPort'          => $gip,
+                  'P_GateOutAtPort'         => $gop,
+                  'P_ActualDeliveryAtWarehouse' =>$adtw,
+                  'P_Weight'                    =>$weight  //weight 
+                  'P_StartOfDemorage'           =>$start_demorage,
+                  'P_UserId'                    => $userid 
 
 
 
              ));
+
+
+
+
+
+
       }
 }
 

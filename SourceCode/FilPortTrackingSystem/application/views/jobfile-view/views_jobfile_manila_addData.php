@@ -95,6 +95,7 @@
 								  <label for="registry">Registry:</label>
 								  <input type="text" class="form-control input-sm" name="registry" id="registry">
 		<!-- -->
+								<input type="text" name="veselid" class="veselid">
 								  <label for="vsl">Vessel / Voyage No.:</label>
 								  	<div class="vesel" >
 								  	
@@ -118,18 +119,28 @@
 								  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
 								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
 
-								  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
-								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
+					<!-- 			  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
+								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" > -->
 
 								  <!--fo testing only -->
-								  <label for="" name="warehouseid">Ware House</label>
-								   <select>
+								  <label for="" >Ware House</label>
+								   <select name="warehouseid" class="form-control">
 								   	<option value="1">PAL</option>
 								   	<option value="2">PAIR CARGO</option>
 
 								   </select>
 
-								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
+								   <label for="" >Hauler</label>
+								   <select name="hauler" class="form-control">
+							  			<option> </option>
+						            	<?php  foreach($hauler_data as $row){  ?> 
+						                <option value="<?php echo $row->HaulerId ?>">
+						                <?php echo $row->HaulerName ?>
+						                </option> 
+						             	<?php }?>
+						            </select>
+
+								  <label for="dtPckup">Date Paid</label>
 								  <input type="datetime-local" name="DatePaid" class="form-control input-sm" >
 
 								  <div class="flight hidden">
@@ -203,8 +214,9 @@
 				<!-- TRUCK PLATE WINDOW-->
 				  	<div id="tableAddTruck" class="hidden pill-truck-mnla-add truck-editable col-lg-12">
 					    <span class="table-add table-add-truck glyphicon glyphicon-plus"></span>
-					    <table class="table">
+					    <table class="table trucker">
 					      <tr>
+					        <th>Truck Name</th>
 					        <th>Truck /Plate No.</th>
 					        <th>Gate In at Port</th>
 					        <th>Gate Out at Port</th>
@@ -214,10 +226,11 @@
 					      </tr>
 		<!-truck plate is no names yet -->
 					      <tr>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="text"  name="truckername" class="truckername form-control" placeholder="Trucker Name" /></td>
+					        <td contenteditable="true"><input type="text"  name="plateno" class="plateno form-control" placeholder="Plate No." /></td>
+					        <td contenteditable="true"><input type="datetime-local"  class="form-control input-sm" name="gip"></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="gop"></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="adtw"></td>
 					        <td contenteditable="true">undefined</td>
 					        <td>
 					          <span class="table-remove table-remove-truck glyphicon glyphicon-remove"></span>
@@ -246,6 +259,7 @@
 					      <tr>
 					        <th>Container Number</th>
 					        <th>Description of Goods</th>
+					        <th>Lodging</th>
 					        <th>Target Delivery Date</th>
 					        <th>Actual P-Out date of container at Port</th>
 					        <th>Actual date recieved container to Warehouse</th>
@@ -256,7 +270,7 @@
 					      <tr>
 					        <td contenteditable="true">Untitled</td>
 					        <td contenteditable="true">undefined</td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
 					        <td contenteditable="true">undefined</td>
@@ -291,7 +305,7 @@
 
     <div class="footer-modal" >
     <hr>
-      <button type="submit" class="btn btn-danger" >Save</button>
+      <button type="submit" class="btn btn-danger test_data" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -453,5 +467,23 @@ $(document).ready(function(){
 
 	});
 });
+</script>
+
+
+
+<script>
+//for trucker
+$('.test_data').click(function(){
+ var p = $('.plateno').val();
+  alert(p);
+});
+  
+  var gate_in_port 			    = $(this).closest('tr').children('td:eq(1)').text();
+  var gate_out_port    			= $(this).closest('tr').children('td:eq(2)').text();	
+  var time_to_deliver_warehouse = $(this).closest('tr').children('td:eq(3)').text();
+  var status_report             = $(this).closest('tr').children('td:eq(4)').text();
+
+
+
 </script>
 

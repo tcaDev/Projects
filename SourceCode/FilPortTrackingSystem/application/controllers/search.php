@@ -1026,7 +1026,7 @@ $this->message();
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
  
-	$id = $this->input->post('ForwarderWarehouseId');
+	$id = $this->input->post('forward_id');
 	   if(isset($id)){
 	        $forward = $this->User->search_forward($id);
 	   }else{
@@ -1035,25 +1035,24 @@ $this->message();
 	echo '<table class="table table-striped">
 		    <thead>
 		      <tr>
-		        <th>Forwarder /Warehouse Name</th>
+		        <th>Forward Name</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
-	 <?php 
-		     // $i=0;
-		     //  foreach ($haulers as $row) {	
-		     //  	$i++;
-		     //  	 if($i==1){
-		     //  	    	$cid   = $row->HaulersId;
-		      	  
-		     //  		}
-    echo  '<tr>
-		        <td class="hidden"></td>
-		        <td></td>
-		         <td><button type="button" class="btn update_forward" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-		        <button class="btn delete_forward"><span class="glyphicon glyphicon-trash"></span></button></td>
-    	  </tr>';
+				    <?php 
+					    $i=0;
+					    foreach ($forward as $row) {
+					    $i++;
+					    if($i==1){
+					    $cid= $row->ForwarderWarehouseId;
+					    }
+					    echo  '<tr>
+							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
+							        <td>'.$row->ForwarderWarehouseName.'</td>
+							         <td><button type="button" class="btn update_forward" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <button class="btn delete_forward"><span class="glyphicon glyphicon-trash"></span></button></td>
+					    	  </tr>';}
 
 ?>
     </tbody>
@@ -1096,7 +1095,7 @@ $this->message();
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var forward   	  = $(this).closest('tr').children('td:eq(1)').text();
 			      $('.forward_id').val(id);
-			      $('.forward_name').val(forward);
+			      $('.forward_name').val(haulers);
 			 });
 	</script>
 	<?php

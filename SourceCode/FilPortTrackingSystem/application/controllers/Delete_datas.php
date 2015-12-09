@@ -35,6 +35,10 @@ class Delete_datas extends CI_Controller {
  	 $id = $this->input->post('id');
  	 $this->db->delete('Hauler', array('HaulerId' => $id));
  }
+   function del_forward(){
+ 	 $id = $this->input->post('id');
+ 	 $this->db->delete('ForwarderWarehouse', array('ForwarderWarehouseId' => $id));
+ }
 
 
 }

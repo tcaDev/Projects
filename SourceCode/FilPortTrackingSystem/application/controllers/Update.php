@@ -187,7 +187,26 @@ class Update extends CI_Controller {
 		       }
 		        redirect('Login_User/settings/#hauler');
 
-	}	
+	}
+
+
+	function update_forward(){
+		$id 	= 	$this->input->post('forward_id');
+		$name 	= 	$this->input->post('forward_name');
+
+
+   		 $query= $this->db->query("Select * from ForwarderWarehouse where
+     		  ForwarderWarehouseName='$name' limit 1");
+    
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          }else{  
+			     $this->User->update_forward($id,$name);
+			     $this->session->success= 'update_success';    
+		       }
+		        redirect('Login_User/settings/#forward');
+
+	}		
 
 
 }

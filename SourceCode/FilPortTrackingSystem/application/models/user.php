@@ -196,6 +196,12 @@ Class User extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
+       function dropdown_hauler(){
+    $this->db->select('*');
+    $this ->db -> from('Hauler');
+    $query=$this->db->get();
+    return $query->result();
+  }
 
 
 
@@ -326,6 +332,10 @@ Class User extends CI_Model
    $query = $this->db->query("select * from Hauler WHERE HaulerName LIKE '%$search_hauler%' order by HaulerName  ");
    return $query->result();
   }
+     function search_forward($search_forward){
+   $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseName  ");
+   return $query->result();
+  }
 
   //for searching end
 
@@ -349,6 +359,10 @@ Class User extends CI_Model
   function findlimit_hauler($page_position,$item_per_page)
   {
    return $this->db->get('Hauler',$page_position, $item_per_page)->result();
+  }
+  function findlimit_forward($page_position,$item_per_page)
+  {
+   return $this->db->get('ForwarderWarehouse',$page_position, $item_per_page)->result();
   }
 
   
@@ -458,7 +472,6 @@ Class User extends CI_Model
 
   
 
-
 //////////////////////////////
 // FOR REPORT PAGE
 //////////////////////////////  
@@ -498,6 +511,15 @@ function get_jobfile_manila(){
           $this->db->where('HaulerId', $id);
           $this->db->update('Hauler', $data); 
   }
+   function update_forward($id,$name){
+         $data = array(
+                'ForwarderWarehouseName' => $name
+                );
+
+          $this->db->where('ForwarderWarehouseId', $id);
+          $this->db->update('ForwarderWarehouse', $data); 
+  }
+
      /*
   --------------------------------------
     Email Exist
@@ -512,7 +534,6 @@ function get_jobfile_manila(){
 
     return ($result->num_rows === 1 && $row->EmailAddress) ? $row->FirstName : false;
   }
-    
 
 
     /*

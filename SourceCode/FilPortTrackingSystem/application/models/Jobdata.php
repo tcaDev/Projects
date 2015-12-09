@@ -13,6 +13,14 @@ Class Jobdata extends CI_Model
 
 	}
 
+	//get the last inserted id
+function getLastInserted($table, $id) {
+	$this->db->select_max($id);
+	$Q = $this->db->get($table);
+	$row = $Q->row_array();
+	return $row[$id];
+ }
+
 
 }
 
