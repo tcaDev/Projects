@@ -1,3 +1,7 @@
+<head>
+		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
+</head>
+
 <div class="row">
 		<div class="container-fluid"> 
 		  		 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 10px; margin-bottom: -15px;">
@@ -8,7 +12,7 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="text" class="form-control input-sm" id="search_manila" >
+						<input type="search" class="form-control input-sm light-table-filter" data-table="order-tablejob" id="search_manila" >
 
 			 		</div>	
 
@@ -82,7 +86,7 @@
 				
 
 			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
-				    <table class="table table_manila table-striped table-bordered table-hover table-condensed" style="width:7000px;">
+				    <table class="table table_manila table-striped table-bordered table-hover table-condensed order-tablejob" style="width:7000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								        
