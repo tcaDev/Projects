@@ -475,7 +475,8 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
-				         'img'		 =>	  $row->ProfileImageSource
+				         'img'		 =>	  $row->ProfileImageSource,
+				         'bdate'		 =>	  $row->BirthDate
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
@@ -504,6 +505,7 @@ class Login_user extends CI_Controller {
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Photo Successfully Change !";
+				$data['bdate'] = $session_data['bdate'];
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
@@ -523,6 +525,7 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
+			    $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "danger";
 				$data['msg'] = "Your photos couldn't be uploaded. Photos should be saved as JPG or PNG files.";
@@ -588,7 +591,7 @@ class Login_user extends CI_Controller {
 			    $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
-				$data['msg'] = "Name Successfully Change !";
+				$data['msg'] = "Record Successfully Change !";
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
