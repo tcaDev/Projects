@@ -475,7 +475,8 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
-				         'img'		 =>	  $row->ProfileImageSource
+				         'img'		 =>	  $row->ProfileImageSource,
+				         'bdate'	 =>	  $row->BirthDate
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
@@ -501,6 +502,7 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
+			    $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Photo Successfully Change !";
@@ -521,6 +523,7 @@ class Login_user extends CI_Controller {
 			    $data['fname'] = $session_data['fname'];
 			    $data['mname'] = $session_data['mname'];
 			    $data['lname'] = $session_data['lname'];
+			    $data['bdate'] = $session_data['bdate'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
 			  	$data['tab'] = "";
