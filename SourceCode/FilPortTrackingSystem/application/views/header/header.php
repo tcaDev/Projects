@@ -18,7 +18,7 @@
 	<title>Filport</title>
 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/jquery_confirm/css/jquery-confirm.css');?>" />
 	<?php echo link_tag('resources/css/style.css') ?>
 	<?php echo link_tag('resources/css/dropdowns-enhancement.css') ?>

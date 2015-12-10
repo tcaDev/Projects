@@ -148,6 +148,8 @@ class Login_user extends CI_Controller {
 		  	/*Jobfile manila*/
 		  	$data['manila']    = $this->User->get_jobfile_manila();
 
+		  	$data['outport']    = $this->User->get_jobfile_outport();
+
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{

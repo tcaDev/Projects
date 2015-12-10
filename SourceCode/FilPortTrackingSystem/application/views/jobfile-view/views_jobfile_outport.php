@@ -99,190 +99,182 @@
 
 			<div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
 
-				    <table class="table  table-striped table-bordered table-hover" style="width:7000px;">
+				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:7000px;">
 
 				      <thead>
 
-				        <tr style="cursor:w-resize">
+					        <tr style="cursor:w-resize">
 
-				          <th class="hidden"> ID </th>
-				          
-				          <th> No. </th>
+					          <th > No. </th>
 
-				          <th > Update </th>
+					          <th > Update </th>
 
-				          <th>Jobfile Number</th>
+					          <th >Jobfile Number</th>
 
-				          <th>Shipper</th>
+					          <th >Shipper</th>
 
-				          <th>Consignee</th>
+					          <th >Consignee</th>
 
-				          <th>Number of Cartons</th>
+					          <th >Number of Cartons</th>
 
-				          <th>Container Size</th>
+					          <th >Container Size</th>
 
-				          <th>Description of Goods</th>
+					          <th >Description of Goods</th>
 
-				          <th>PI / PO No.</th>
+					          <th >PI / PO No.</th>
 
-				          <th>House Bill of Lading No.</th>
+					          <th >House Bill of Lading No.</th>
 
-				          <th>Master Bill of Landing No.</th>
+					          <th >Master Bill of Landing No.</th>
 
-				          <th>Container No.</th>
+					          <th >Container No.</th>
 
-				          <th>Origin</th>
+					          <th >Origin</th>
 
-				          <th>Estimated Time of Departure</th>
+					          <th >Estimated Time of Departure</th>
 
-				          <th>Estimated Time of Arrival</th>
+					          <th >Estimated Time of Arrival</th>
 
-				          <th>Actual Time of Arrival</th>
+					          <th >Actual Time of Arrival</th>
 
-				          <th>Letter of Credit No. from Bank</th>
+					          <th >Letter of Credit No. from Bank</th>
 
-				          <th>Start of Demorage</th>
+					          <th >Start of Demorage</th>
 
-				          <th>Start Storage</th>
+					          <th >Start Storage</th>
 
-				          <th>Registry</th>
+					          <th >Registry</th>
 
-				          <th>Vessel / Voyage no.</th>
+					          <th >Vessel / Voyage no.</th>
 
-				          <th>Carrier</th>
+					          <th >Date Recieved Arrival Notice from Client/s</th>
 
-				          <th>Date Recieved Arrival Notice from Client/s</th>
+					          <th >Date Pick-up / Recieved O-BL</th>
 
-				          <th>Date Pick-up / Recieved O-BL</th>
+					          <th >Date Pick-up / Recieved other Documents</th>
 
-				          <th>Date Pick-up / Recieved other Documents</th>
+					          <th >Broker</th>
 
-				          <th>Broker</th>
+					          <th >Date Request Budget to GL</th>
 
-				          <th>Date Required Budget to GL</th>
+					          <th >Reference Due Date</th>
 
-				          <th>Reference Due Date</th>
+					          <th >Date Sent Pre-Assess</th>
 
-				          <th>Date sent Pre-Assess</th>
+					          <th >Date File Entry to BOC</th>
 
-				          <th>Date File Entry to BOC</th>
+					          <th >Date Sent Final Assess</th>
 
-				          <th>Date Sent Final Assess</th>
+					          <th >Reference Entry No.</th>
 
-				          <th>Reference Entry No.</th>
+					          <th >Color Selectivity</th>
 
-				          <th>Selectivity</th>
+					          <th >Date Paid (Date&Time)</th>
 
-				          <th>Date Paid (Date&Time)</th>
+					          <th >Date Cleared BOC</th>
 
-				          <th>Date Cleared BOC</th>
+					          <th >Target Delivery Date</th>
 
-				          <th>Target Delivery Date</th>
+					          <th >Plate No. / Truckers Name</th>
 
-				          <th>Plate No. / Truckers Name</th>
+					          <th >Gate In at Port</th>
 
-				          <th>Gate In at Port</th>
+					          <th >Gate Out at Port</th>
 
-				          <th>Gate Out at Port</th>
+					          <th >Actual Delivery Warehouse</th>
 
-				          <th style="text-align:center !important">Actual Delivery WHSE</th>
+					          <th >Status Reports</th>
+					   </tr>
+				   </thead>
 
-				          <th style="text-align:center !important">Status Reports</th>
+				   <tbody>
 
-				      </thead>
+				     <?php $i= 0; foreach ($outport as $row) {
+				        					$i++;
+				        				?>
+				            <tr>
+								         
+					          <td><?php echo $i;?></td>
+					          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
 
-				    <tbody>
+					          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
-				     <tr>
+					          <td><?php echo $row->ShipperName; ?></td>
 
-				     	 <td class="hidden">1</td>
-								          <td>1</td>
-								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
+					          <td><?php echo $row->ConsigneeName; ?></td>
+					          <td><?php echo $row->NoOfCartons; ?></td>
 
-								          <td>SOC-15-10-009<a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
+					          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td>MOTOROLA</td>
+					          <td><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 
-								          <td>Open Comm</td>
-								          <td>11 PKGS</td>
+					          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
-								          <td>1x20</td>
+					          <td><?php echo $row->HouseBillLadingNo; ?></td>
 
-								          <td>Tablet Computer</td>
+					          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td>61406573556</td>
+					          <td><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
 
-								          <td>HKG158121912</td>
+					          <td><?php echo $row->Origin; ?></td>
 
-								          <td>N/A</td>
+					          <td><?php echo $row->EstDepartureTime; ?></td>
 
-								          <td>FCIU5273883</td>
+					          <td><?php echo $row->EstArrivalTime; ?></td>
 
-								          <td>HONGKONG</td>
+					          <td><?php echo $row->ActualArrivalTime; ?></td>
 
-								          <td>9/15/2015 11:00AM</td>
+					          <td><?php echo $row->LetterCreditFromBank; ?></td>
 
-								          <td>9/27/2015 11:00AM</td>
+					          <td><?php echo $row->StartOfDemorage; ?></td>
 
-								          <td>9/27/2015 11:00AM</td>
+					          <td><?php echo $row->StartOfStorage; ?></td>
 
-								          <td>10/27/2015 11:00AM</td>
+					          <td><?php echo $row->Registry; ?></td>
 
-								          <td>TT</td>
+					          <td><?php echo $row->VSL_NO; ?></td>
+					        
+					          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
-								          <td>11/3/2015</td>
+					          <td><?php echo $row->DateReceivedOfBL; ?></td>
 
-								          <td>10/31/2015</td>
+					          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
 
-								          <td>TSL0065-15</td>
+					          <td><?php echo $row->Broker; ?></td>
 
-								          <td>ISTRIAN EXPRESS V.15015S</td>
+					          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
 
-								          <td>CEVA/BENLINE</td>
+					          <td><?php echo $row->RFPDueDate; ?></td>
 
-								          <td>10/27/2015</td>
+					          <td><?php echo $row->DateSentPreAssessment; ?></td>
 
-								          <td>10/27/2015</td>
+					          <td><?php echo $row->DateFileEntryToBOC; ?></td>
 
-								          <td>10/27/2015</td>
+					          <td><?php echo $row->DateSentFinalAssessment; ?></td>
 
-								          <td>MONA</td>
+					          <td><?php echo $row->RefEntryNo; ?></td>
 
-								          <td>10/27/2015</td>
+					          <td><?php echo $row->StatusName; ?></td>
 
-								          <td>0.37037037037037</td>
+					          <td><?php echo $row->DatePaid; ?></td>
 
-								          <td>11/6/2015</td>
+					          <td><?php echo $row->DateBOCCleared; ?></td>
 
-								          <td>10/27/2015</td>
+					          <td><?php echo $row->TargetDeliveryDate; ?></td>
 
-								          <td>C254093</td>
+					          <td><?php echo $row->PlateNo_Trucker; ?></td>
 
-								          <td><select class="form-control" id="select">
-								          	 <option value="" disabled selected>Select your option</option>
-											<option value="B" style="background-color: red;">Red</option>
-											<option value="C" style="background-color: yellow;">Yellow</option>
-											<option value="D" style="background-color: green;">Green</option>
-											<option value="E" style="background-color: pink;">pink</option>
-								          </select></td>
+					          <td><?php echo $row->GateInAtPort; ?></td>
 
-								          <td>11/9/2015  1300H </td>
+					          <td><?php echo $row->GateOutAtPort; ?></td>
 
-								          <td>11/9/2015</td>
+					          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td>11/10/2015</td>
+					          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+					      
+					        </tr>
 
-								          <td>Mardean Jaems/ ALA7300</td>
-
-								          <td>11/10 5:30am</td>
-
-								          <td>11/10 6:20am</td>
-
-								          <td>11/10 1230h abd</td>
-
-								          <td>10/27- receive original docs   11/3- start processing of lifting,  11/6 - lifting of abandonement</td>
-								      
-								        </tr>
+					        <?php } ?>
 
 				    </tbody>
 

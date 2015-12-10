@@ -42,7 +42,7 @@
 
 					      <!-- Modal content-->
 
-					      <?php $this->load->view('jobfile-view/views_manila_update'); ?>
+					      <?php $this->load->view('jobfile-view/views_jobfile_manila_updateData'); ?>
 
 					      
 
@@ -176,9 +176,9 @@
 				            <tr>
 								         
 								          <td><?php echo $i;?></td>
-								          <td><button type="button" class="btn btn-Update" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
+								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
 
-								          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-sm  pull-right"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></td>
+								          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
 								          <td><?php echo $row->ShipperName; ?></td>
 
@@ -187,7 +187,7 @@
 
 								          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td><button type="button" class="btn btn-Goods " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Goods</button></td>
+								          <td><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 
 								          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
@@ -195,7 +195,7 @@
 
 								          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td><button type="button" class="btn btn-Container " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Container No.</button></td>
+								          <td><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
 
 								          <td><?php echo $row->Origin; ?></td>
 
@@ -251,7 +251,7 @@
 
 								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td><button type="button" class="btn btn-StatusReport " data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-eye fa-fw"></span> View All Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								      
 								        </tr>
 
@@ -342,9 +342,9 @@
 
 	 $('.update_jobfile').click(function(){
 
-			     var jobfile_id   = $(this).closest('tr').children('td:eq(0)').text();
-			     var jobfile_num  = $(this).closest('tr').children('td:eq(3)').text();
-			     var jobfile_shipper  = $(this).closest('tr').children('td:eq(4)').text();
+			     var jobfile_id   = $(this).closest('tr').children('td:eq(2)').text();
+			     var jobfile_num  = $(this).closest('tr').children('td:eq(0)').text();
+			     var jobfile_shipper  = $(this).closest('tr').children('td:eq(3)').text();
 
 
 

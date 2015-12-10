@@ -1,249 +1,454 @@
-<div class="modal-content" style="width:180%;right:40%;">
+<div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title text-uppercase ">Add Data Form</h4>
+		<h4 class="modal-title text-uppercase ">Update Data Form</h4>
 </div>
 
     <div class="modal-body">
-      	<div class="form-group">
-		  <div class="col-lg-12 addData" style="margin-bottom: 10px;">
-		  	<div class="row">
-		  		<div class="col-lg-4" >	
-		  <?php echo  form_open('Job');?>
-		           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
-	  				<label for="jbfl">JobFile No.:</label>
-					  <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
+    	<div class="container-fluid">
+    		 <ul class="nav nav-pills">
+			    <li id="btn-jobfile-mnla-update" class="active"><a role="button">Jobfile</a></li>
+			    <li id="btn-container-mnla-update"><a role="button">Container</a></li>
+			    <li id="btn-truck-mnla-update"><a role="button">Description of Goods</a></li>
+			    <li id="btn-charges-mnla-update"><a role="button">Running Charges</a></li>
+			  </ul>
+    	<hr>
+    	<div style="overflow-x:auto;">
+    		<div class="container-fluid">
 
-					   	<label for="shipper">Shipper:</label>
-					  		<select name="shipper" id="shipper" class="form-control">
-				            	<option> </option>
-				            	<?php  foreach($shipper_data as $row){  ?> 
-				                <option value="<?php echo $row->ShipperId ?>">
-				                <?php echo $row->ShipperName ?>
-				                </option> 
-				             	<?php }?>
-			               	</select>
 
-					   	<label for="consignee">Consignee:</label>
-					  		<select name="consignee" class="form-control">
-					  			<option> </option>
-				            	<?php  foreach($consignee_data as $row){  ?> 
-				                <option value="<?php echo $row->ConsigneeId ?>">
-				                <?php echo $row->ConsigneeName ?>
-				                </option> 
-				             	<?php }?>
-				            </select>
+		      	<div class="form-group">
+				  <div class="col-lg-12 pill-jobfile-mnla-update">
+				  	<div class="row">
+				  		<div class="col-lg-4" >	
+				  	<?php echo  form_open('Job/jofile_data');?>
+				           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 
-						  <label for="cnts">Number of Cartons:</label>
-						  <input type="text" class="form-control input-sm" name="cartoons" id="cnts">
+				           <div class="form-group">
+				           		<label for="jbfl">JobFile No.:</label>
+								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
+				           </div>
+				  				
+				           <div class="form-group">
+							 	 <label for="shipper">Shipper:</label>
+								  		<select name="shipper" id="shipper" class="form-control input-sm">
+							            	<option> </option>
+							            	<?php  foreach($shipper_data as $row){  ?> 
+							                <option value="<?php echo $row->ShipperId ?>">
+							                <?php echo $row->ShipperName ?>
+							                </option> 
+							             	<?php }?>
+						               	</select>
+						      </div>
 
-						  <label for="cntr">Container Size:</label>
-						  <input type="text" class="form-control input-sm" name="container" id="cntr">
+						     <div class="form-group">
+								  <label for="consignee">Consignee:</label>
+								  		<select name="consignee" class="form-control input-sm">
+								  			<option> </option>
+							            	<?php  foreach($consignee_data as $row){  ?> 
+							                <option value="<?php echo $row->ConsigneeId ?>">
+							                <?php echo $row->ConsigneeName ?>
+							                </option> 
+							             	<?php }?>
+							            </select>
+							   </div>
+								   	
+					
+								<div class="form-group">
+								  <label for="pipo">PI / PO No.:</label>
+								  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
+								 </div>
 
-						  <label for="pipo">PI / PO No.:</label>
-						  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
+								<div class="form-group">
+								  <label for="hbl">House Bill of Landing No.:</label>
+								  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
+								</div>
 
-						  <label for="hbl">House Bill of Landing No.:</label>
-						  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
+								<div class="form-group">
+								  <label for="mbl">Master Bill of Landing No1.:</label>
+								  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
+								 </div>
 
-						  <label for="mbl">Master Bill of Landing No1.:</label>
-						  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
+								<div class="form-group">
+								  <label for="mbl">Master Bill of Landing No2.:</label>
+								  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
+								</div>
 
-						  <label for="mbl">Master Bill of Landing No2.:</label>
-						  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
-
-						  <label for="origin">Origin:</label>
-						  <input type="text" class="form-control input-sm" name="origin" id="origin">
-
-						  <label for="etd">Estimated Time of Departure:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="etd">
-
-						  <label for="eta">Estimated Time of Arrival:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="eta">
+								<div class="form-group">
+								  <label for="bank">Letter of Credit No. from Bank:</label>
+								  <input type="text" class="form-control input-sm " name="bank" id="bank">
+								</div>
 						</div>
 
-						<div class="col-lg-4" >
-						  <label for="AVT">AVT:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="avt">
+					<div class="col-lg-4">
 
-						  <label for="ata" data-toggle="tooltip" title="Actual Time of Arrival">Actual Time of Arrival:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="ata">
+								<div class="form-group">
+								  <label for="registry">Registry:</label>
+								  <input type="text" class="form-control input-sm" name="registry" id="registry">
+								</div>
 
-		  				  <label for="bank">Letter of Credit No. from Bank:</label>
-						  <input type="text" class="form-control input-sm " name="bank" id="bank">
+								<div class="form-group">
+				  				  <input type="text" name="veselid" class="veselid hidden">
+									  <label for="vsl">Vessel / Voyage No.:</label>
+									  	<div class="vesel" >
+								  	
+								  		</div>
+								 </div>
 
-						  <label for="dem">Start of Demorage:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="start_demorage">
+								 <div class="form-group">
+								  	<label for="dtClrd">Vessel Arrival Time</label>
+								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm">
+								 </div>
 
-						  <label for="storage">Start Storage:</label>
-						  <input type="datetime-local" class="form-control input-sm" name="start_storage">
+								<div class="form-group">	 
+								    <label for="dtClrd">Vessel Discharge Time</label>
+								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm">
+								 </div>
 
-						  <label for="registry">Registry:</label>
-						  <input type="text" class="form-control input-sm" name="registry" id="registry">
-<!-- -->
-						  <label for="vsl">Vessel / Voyage No.:</label>
-						  	<div id="vesel" >
-						  		<select name="vessel" />
-						  		<option></option>
-						  		</select>
-						  	</div>
-						  
-						  <div class="tab_manila hidden"> 	
-							  <label for="carrier">Carrier:</label>
-							  <input type="text" name="carrier" class="  form-control input-sm" id="carrier">
-						  </div>
-						  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-						  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" name="">
+								<div class="form-group">
+								  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
+								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" >
+								</div>
 
-						  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-						  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" name="">
+								<div class="form-group">
+								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
+								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" >
+								</div>
 
-						  <label for="dtPckRcv">Date Pick-up / Recieved Other Docs :</label>
-						  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" name="">
-		  			</div>
+								<div class="form-group">
+								  <label for="dtPckRcv">Date Pick-up / Recieved Other Document :</label>
+								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
+								 </div>
+								 	
 
-					<div class="col-lg-4" >
-						  <label for="broker">Broker:</label>
-				  			<select name="broker" id="vsl"class="form-control">
-				            	<?php  foreach($broker_data as $row){  ?> 
-				                <option value="<?php echo $row->BrokerId ?>">
-				                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
-				                </option> 
-				             	<?php }?>
-			               </select>
+								 <div class="form-group">
+									 <label for="broker">Broker:</label>
+							  			<select name="broker" id="vsl"class="form-control input-sm">
+							            	<?php  foreach($broker_data as $row){  ?> 
+							                <option value="<?php echo $row->BrokerId ?>">
+							                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
+							                </option> 
+							             	<?php }?>
+						               </select>
+						          </div>
 
-						  <label for="dtReq">Date Required Budget to GL:</label>
-						  <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
+						         
+				  				
 
 
-		  				 <label for="rfp">Reference Due Date:</label>
-						 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
 
-						 <label for="dtSent">Date Sent Pre-Assess:</label>
-						 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent">
+								  <!--  <label for="" >Hauler</label>
+								   <select name="hauler" class="form-control">
+							  			<option> </option>
+						            	<?php  //foreach($hauler_data as $row){  ?> 
+						                <option value="<?php //echo $row->HaulerId ?>">
+						                <?php //echo $row->HaulerName ?>
+						                </option> 
+						             	<?php //}?>
+						            </select> -->
 
-						 <label for="dtFile">Date File Entry to BOC:</label>
-						 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
+				  			</div>
 
-						 <label for="slctvty">Color Selectivity:</label>
-			  				<select class="form-control" id="colsel">
-					          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
-								<?php  foreach($color_data as $row){ 
-								   $status = $row->StatusName;
-								   if($status=='Red Font'){?> 
-								   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-							 <?php }else{?>
-				                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-				                <?php }?>
-				                <?php echo $row->StatusName; ?>
-				                </option> 
-				             	<?php }?>
-					        </select>
+							<div class="col-lg-4" >
+								 <div class="form-group">
+						               <label for="dtReq">Date Request Budget to GL:</label>
+									   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
+								  </div>
 
-						  <label for="dtPaid">Date Paid(Date& Time):</label>
-						  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
+								<div class="form-group">
+									 <label for="rfp">Reference Due Date:</label>
+									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
+								 </div>
 
-						  <label for="dtClrd">Date Cleared BOC:</label>
-						  <input type="datetime-local" name="dt_boc" class="form-control input-sm">
+								 <div class="form-group">
+									 <label for="dtSent">Date Sent Pre-Assess:</label>
+									 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent">
+								</div>
 
-						   <label for="dtClrd">Reference Entry No.:</label>
-						  <input type="text" name="entryno" class="form-control input-sm">
-						   <label for="dtClrd">Registry:</label>
-						  <input type="text" name="reg" class="form-control input-sm">
-						  	<label for="dtClrd">Letter Credit From Bank:</label>
-						  <input type="text" name="letter_cred_bank" class="form-control input-sm">
-		  			</div>
-		  		</div>
-		  </div>
+								<div class="form-group">
+									 <label for="dtFile">Date File Entry to BOC:</label>
+									 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
+								</div>
 
-		<!-- TRUCK PLATE WINDOW-->
-		  	<div id="tableAddTruck" class="hidden truck-addData truck-editable col-lg-12">
-			    <span class="table-add table-add-truck glyphicon glyphicon-plus"></span>
-			    <table class="table">
-			      <tr>
-			        <th>Truck /Plate No.</th>
-			        <th>Gate In at Port</th>
-			        <th>Gate Out at Port</th>
-			        <th>Actual date Delivered to Warehouse</th>
-			        <th>Status Report</th>
-			        <th></th>
-			      </tr>
-<!-truck plate is no names yet -->
-			      <tr>
-			        <td contenteditable="true">Untitled</td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true">undefined</td>
-			        <td>
-			          <span class="table-remove table-remove-truck glyphicon glyphicon-remove"></span>
-			        </td>
-			      </tr>
+								<div class="form-group">
+								 	<label for="dtSent">Date Sent Final-Assess:</label>
+								 	<input type="date" name="dt_sent_finalassed" class="form-control input-sm" id="dtSent">
+								</div>
 
-			      <!-- This is our clonable table line -->
-			      <tr class="hide">
-			        <td contenteditable="true">Untitled</td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true">undefined</td>
-			        <td>
-			          <span class="table-remove table-remove-truck glyphicon glyphicon-remove"></span>
-			        </td>
-			      </tr>
-			    </table>
-			</div>
+								<div class="form-group">
+								 	<label for="dtClrd">Reference Entry No.:</label>
+								 	<input type="text" name="entryno" class="form-control input-sm">
+								</div>
 
-<!-container plate is no names yet -->
-		<!--CONTAINER WINDOW-->
-		  	<div id="tableAddContainer" class="hidden table-addData table-editable col-lg-12">
-			    <span class="table-add table-add-cont glyphicon glyphicon-plus"></span>
-			    <table class="table ">
-			      <tr>
-			        <th>Container Number</th>
-			        <th>Description of Goods</th>
-			        <th>Target Delivery Date</th>
-			        <th>Actual P-Out date of container at Port</th>
-			        <th>Actual date recieved container to Warehouse</th>
-			        <th>Status Report</th>
-			        <th></th>
-			      </tr>
+							     <div class="form-group">
+								 	 <label for="dtPaid">Date Paid(Date& Time):</label>
+									  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
+								 </div>
 
-			      <tr>
-			        <td contenteditable="true">Untitled</td>
-			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true">undefined</td>
-			        <td>
-			          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
-			        </td>
-			      </tr>
+								 <div class="form-group">
+								  	<label for="dtClrd">Date Cleared BOC:</label>
+								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm">
+								 </div>
 
-			      <!-- This is our clonable table line -->
-			      <tr class="hide">
-			        <td contenteditable="true">Untitled</td>
-			        <td contenteditable="true">undefined</td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-			        <td contenteditable="true">undefined</td>
-			        <td>
-			          <span class="table-remove table-remove-cont glyphicon glyphicon-remove"></span>
-			        </td>
-			      </tr>
-			    </table>
+								 <div class="form-group">
+								   <label for="status">Status Report:</label>
+								  	<input type="text" name="status" class="form-control input-sm">
+								 </div>
+				  			</div>
+				  		</div>
+				  </div>
+
+				<!-- Products PLATE WINDOW-->
+				  	<div id="tableAddProduct-update" class="hidden pill-truck-mnla-update col-lg-12">
+					    <table class="table" style="width: 2000px;">
+					      <tr>
+					        <th>Product Name</th>
+					        <th>Container by Vessel ID</th>
+					        <th>Color Selectivity</th>
+					        <th>Purchase Order Number</th>
+					        <th>Origin Country ID</th>
+					        <th>Origin City</th>
+					        <th><button type="button" class="btn btn-default table-add-prod-update"><span class="table-add  fa fa-plus"></span></button></th>
+					      </tr>
+		<!--Products plate is no names yet -->
+					      <tr>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td><select class="form-control colsel-update input-sm" >
+												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
+															<?php  foreach($color_data as $row){ 
+															   $status = $row->IsBackground;
+															   if($status==1){?> 
+															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+														 <?php }else{?>
+											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+											                <?php }?>
+											                <?php echo $row->StatusName; ?>
+											                </option> 
+											             	<?php }?>
+												        </select></td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td>
+					          <button type="button" class="btn btn-default table-remove-prod-update"><span class="table-remove  fa fa-times"></span></button>
+					        </td>
+					      </tr>
+
+					      <!-- This is our clonable table line -->
+					      <tr class="hide">
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td><select class="form-control colsel-update input-sm" >
+												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
+															<?php  foreach($color_data as $row){ 
+															   $status = $row->IsBackground;
+															   if($status==1){?> 
+															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+														 <?php }else{?>
+											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+											                <?php }?>
+											                <?php echo $row->StatusName; ?>
+											                </option> 
+											             	<?php }?>
+												        </select></td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td>
+					          <button type="button" class="btn btn-default table-remove-prod-update"><span class="table-remove  fa fa-times"></span></button>
+					        </td>
+					      </tr>
+					    </table>
+					</div>
+
+		<!--container plate is no names yet -->
+				<!--CONTAINER WINDOW-->
+				  	<div id="tableAddContainer-update" class="hidden pill-container-mnla-update table-editable col-lg-12">
+					    <table class="table " style="width: 3000px;">
+					      <tr>
+					      	<th>Container Number</th>
+					        <th>Vessel by JobFile</th>
+					        <th>Number of Cartons</th>
+					        <th>Trucker Plate No.</th>
+					        <th>Trucker Name</th>
+					        <th>Estimated Departure Time</th>
+					        <th>Estimated Arrival Time</th>
+					        <th>Actual Arrival Time</th>
+					        <th>Start of Storage</th>
+					        <th>Start of Demorage</th>
+					        <th>Lodging</th>
+					        <th>Hauler</th>
+					        <th>Target Delivery Date</th>
+					        <th>Gate In at Port</th>
+					        <th>Gate Out at Port</th>
+					        <th>Actual Delivery at Warehouse</th>
+					        <th><button type="button" class="btn btn-default table-add-cont-update"><span class="table-add  fa fa-plus"></span></button></th>
+					      </tr>
+
+					      <tr>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td>
+					      	  <button type="button" class="btn btn-default table-remove-cont-update"><span class="table-remove  fa fa-times"></span></button>
+					          
+					        </td>
+					      </tr>
+
+					      <!-- This is our clonable table line -->
+					      <tr class="hide">
+					       	 <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true">Untitled</td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td>
+					           <button type="button" class="btn btn-default table-remove-cont-update"><span class="table-remove fa fa-times"></span></button>
+					        </td>
+					      </tr>
+					    </table>
+					</div>
+
+					<div class="hidden pill-charges-mnla-update col-lg-12">
+						
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>Lodgement Fee</label>
+								<input type="text" name="lodge" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Container Deposit</label>
+								<input type="text" name="cont-deposit" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>THC Charges</label>
+								<input type="text" name="thc-charges" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Arrastre </label>
+								<input type="text" name="arrastre" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Wharfage</label>
+								<input type="text" name="wharfage" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Weighing</label>
+								<input type="text" name="weight" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>DEL</label>
+								<input type="text" name="del" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Dispatch Fee</label>
+								<input type="text" name="dispatch" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Storage</label>
+								<input type="text" name="storage" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+									<label>Demurrage</label>
+									<input type="text" name="demurrage" class="form-control input-sm" />
+								</div>
+
+
+						</div>
+							
+
+						<div class="col-lg-6">
+							
+								<div class="form-group">
+									<label>Detention</label>
+									<input type="text" name="detention" class="form-control input-sm" />
+								</div>
+								
+								<div class="form-group">
+									<label>EIC</label>
+									<input type="text" name="EIC" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>BAI Application</label>
+									<input type="text" name="bai-app" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>BAI Inspection</label>
+									<input type="text" name="bai-inspect" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>SRA Application</label>
+									<input type="text" name="sra-app" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>SRA Inspection</label>
+									<input type="text" name="sra-inspect" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>Bad Cargo</label>
+									<input type="text" name="bad-cargo" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>All Charges</label>
+									<input type="text" name="all-charges" class="form-control input-sm" />
+								</div>
+
+								<div class="form-group">
+									<label>Particular Charges</label>
+									<input type="text" name="part-charges" class="form-control input-sm" />
+								</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		</div>	
     </div>
 
     <div class="footer-modal" >
-      <button type="button" class="hidden btn-back-truck btn btn-danger" >Back</button>
-      <button type="button" class="hidden btn-back-cont btn btn-danger" >Back</button>
-      <button type="button" class="btn-truck btn btn-danger" >Truck/Plate</button>
-      <button type="button" class="btn-cont btn btn-danger" >Container</button>
-      <button type="submit" class=" hidden save_add btn btn-danger" >Save</button>
+    <hr>
+      <button type="button" class="btn btn-danger btn-Next-update">Next</button>
+      <button type="submit" class="hidden btn btn-danger btn-Save-update" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -252,13 +457,13 @@
 
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
-	$('#colsel').change(function(){
+	$('.colsel-update').change(function(){
   var status = $(this).val();
-  var color = $('#colsel option:selected').attr('data-color');
+  var color = $('.colsel-update option:selected').attr('data-color');
     if(status==1){
-    	$('#colsel').css({ 'color': 'red','background-color':'white' });
+    	$('.colsel-update').css({ 'color': 'red','background-color':'white' });
     }else{
-     $('#colsel').css({'background-color': color,'color': 'white'});
+     $('.colsel-update').css({'background-color': color,'color': 'white'});
   	}
  });
 
@@ -270,59 +475,105 @@
 
     $('[data-toggle="tooltip"]').tooltip(); 
 
-/*
-* Container Button
-*/
-    $(".btn-cont").on('click', function(){
-    	$(".addData").addClass('hidden');
-    	$(".btn-cont").addClass('hidden');
-    	$(".btn-truck").addClass('hidden');
+		/*
+		* Show Container
+		*/
 
-    	$(".table-addData").removeClass('hidden');
-    	$(".btn-back-cont").removeClass('hidden');
-    });
+		$('#btn-container-mnla-update').on('click',function(){
+			$(this).addClass('active');
+			$('#btn-jobfile-mnla-update').removeClass('active');
+			$('#btn-truck-mnla-update').removeClass('active');
+			$('#btn-charges-mnla-update').removeClass('active');
 
+			$('.pill-jobfile-mnla-update').addClass('hidden');
+			$('.pill-truck-mnla-update').addClass('hidden');
+			$('.pill-charges-mnla-update').addClass('hidden');
+			$('.pill-container-mnla-update').removeClass('hidden');
+			$('.btn-Save-update').addClass('hidden');
 
-/*
-* back Button container
-*/
+			$('.btn-Next-update').removeClass('hidden');
 
-	$(".btn-back-cont").on('click', function(){
-    	$(".table-addData").addClass('hidden');
-    	$(".btn-back-cont").addClass('hidden');
+			i=1;
+		});
 
-    	$(".addData").removeClass('hidden');
-    	$(".btn-cont").removeClass('hidden');
-    	$(".btn-truck").removeClass('hidden');
-    });
+		/*
+		* Show Truck
+		*/
 
+		$('#btn-truck-mnla-update').on('click',function(){
+			$(this).addClass('active');
+			$('#btn-jobfile-mnla-update').removeClass('active');
+			$('#btn-container-mnla-update').removeClass('active');
+			$('#btn-charges-mnla-update').removeClass('active');
 
-/*
-* Truck Button
-*/
-    $(".btn-truck").on('click', function(){
-    	$(".addData").addClass('hidden');
-    	$(".btn-cont").addClass('hidden');
-    	$(".btn-truck").addClass('hidden');
+			$('.pill-jobfile-mnla-update').addClass('hidden');
+			$('.pill-truck-mnla-update').removeClass('hidden');
+			$('.pill-charges-mnla-update').addClass('hidden');
+			$('.pill-container-mnla-update').addClass('hidden');
+			$('.btn-Save-update').addClass('hidden');
 
-    	$(".truck-addData").removeClass('hidden');
-    	$(".btn-back-truck").removeClass('hidden');
-    });
+			$('.btn-Next-update').removeClass('hidden');
 
-/*
-* back Button truck
-*/
+			i=2;
+		});
 
-	$(".btn-back-truck").on('click', function(){
-		$(".truck-addData").addClass('hidden');
-    	$(".btn-back-truck").addClass('hidden');
+		/*
+		* Show Charges
+		*/
 
-    	$(".addData").removeClass('hidden');
-    	$(".btn-cont").removeClass('hidden');
-    	$(".btn-truck").removeClass('hidden');
-    });
+		$('#btn-charges-mnla-update').on('click',function(){
+			$(this).addClass('active');
+			$('#btn-jobfile-mnla-update').removeClass('active');
+			$('#btn-container-mnla-update').removeClass('active');
+			$('#btn-truck-mnla-update').removeClass('active');
+			$('.btn-Save-update').removeClass('hidden');
 
+			$('.pill-jobfile-mnla-update').addClass('hidden');
+			$('.pill-truck-mnla-update').addClass('hidden');
+			$('.pill-charges-mnla-update').removeClass('hidden');
+			$('.pill-container-mnla-update').addClass('hidden');
 
+			$('.btn-Next-update').addClass('hidden');
+		});
+
+		/*
+		* Show Jobfile
+		*/
+
+		$('#btn-jobfile-mnla-update').on('click',function(){
+			$(this).addClass('active');
+			$('#btn-charges-mnla-update').removeClass('active');
+			$('#btn-container-mnla-update').removeClass('active');
+			$('#btn-truck-mnla-update').removeClass('active');
+
+			$('.pill-jobfile-mnla-update').removeClass('hidden');
+			$('.pill-truck-mnla-update').addClass('hidden');
+			$('.pill-charges-mnla-update').addClass('hidden');
+			$('.pill-container-mnla-update').addClass('hidden');
+			$('.btn-Save-update').addClass('hidden');
+
+			$('.btn-Next-update').removeClass('hidden');
+
+			i=0;
+		});
+
+		/*
+		* Next Button
+		*/
+
+		var i=0;
+
+		$(".btn-Next-update").on('click',function(){
+			i++;
+
+			if(i==1){
+				$("#btn-container-mnla-update").click();
+			}else if(i==2){
+				$("#btn-truck-mnla-update").click();
+			}else if(i==3){
+				$("#btn-charges-mnla-update").click();
+			}
+		});
 
 });
 
@@ -337,14 +588,14 @@ Truck Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var truck= $('#tableAddTruck');
+var prodmnla= $('#tableAddProduct-update');
 
-$('.table-add-truck').click(function () {
-  var $clone = truck.find('tr.hide').clone(true).removeClass('hide table-line');
-  truck.find('table').append($clone);
+$('.table-add-prod-update').click(function () {
+  var $clone = prodmnla.find('tr.hide').clone(true).removeClass('hide table-line');
+  prodmnla.find('table').append($clone);
 });
 
-$('.table-remove-truck').click(function () {
+$('.table-remove-prod-update').click(function () {
   $(this).parents('tr').detach();
 });
 
@@ -357,14 +608,14 @@ Container Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var container = $('#tableAddContainer');
+var containermnla = $('#tableAddContainer-update');
 
-$('.table-add-cont').click(function () {
-  var $clone = container.find('tr.hide').clone(true).removeClass('hide table-line');
-  container.find('table').append($clone);
+$('.table-add-cont-update').click(function () {
+  var $clone = containermnla.find('tr.hide').clone(true).removeClass('hide table-line');
+  containermnla.find('table').append($clone);
 });
 
-$('.table-remove-cont').click(function () {
+$('.table-remove-cont-update').click(function () {
   $(this).parents('tr').detach();
 });
 
@@ -386,12 +637,28 @@ $(document).ready(function(){
 			  		 data: { ship_id:shipids}
 				})
 		  		.done(function(data) {
-		  		 $('#vesel').html(data);	
+		  		 $('div .vesel').html(data);	
 		  			
 		  		
 		  		});
 
 	});
 });
+</script>
+
+
+
+<script>
+//for trucker
+$('.btn-Save-update').click(function(){
+ var p = $('.plateno').val();
+  alert(p);
+});
+  
+  var gate_in_port 			    = $(this).closest('tr').children('td:eq(1)').text();
+  var gate_out_port    			= $(this).closest('tr').children('td:eq(2)').text();	
+  var time_to_deliver_warehouse = $(this).closest('tr').children('td:eq(3)').text();
+  var status_report             = $(this).closest('tr').children('td:eq(4)').text();
+
 </script>
 
