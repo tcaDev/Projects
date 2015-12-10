@@ -457,8 +457,13 @@ echo '
 
 		        <div class="">
 		            <div class="form-group col-md-12">
-		                <input type="text" name="size" class="form-control" placeholder="ContainerSize"  required />
-		            
+		                <input type="color" name="color" class="form-control" placeholder="color" value="#ff0000" required />
+		                    <label class="radio-inline">
+						      <input type="radio" value="" name="backg">Font
+						    </label>
+						    <label class="radio-inline">
+						      <input type="radio" value="true" name="backg">Background
+						    </label>
 		            </div>
 		        </div>
 		  
