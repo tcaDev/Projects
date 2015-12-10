@@ -433,9 +433,9 @@ class Add_user extends CI_Controller {
        function add_container(){
 
 
-               $containers  = $this->input->post('containers');
-               $descrip = $this->input->post('descrip');
-               $size   = $this->input->post('size');
+               $containers  = $this->input->post('cno');
+               $descrip = $this->input->post('cd');
+               $size   = $this->input->post('cs');
                 $data   = array(
                   'ContainerNo' => $containers,
                   'ContainerDescription'=> $descrip,

@@ -369,21 +369,6 @@ echo '
 		                <input type="text" name="cs" class="form-control" placeholder="Container Size" required />
 		            </div>
 		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="ncs" class="form-control" placeholder="No of Cartons" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="tp" class="form-control" placeholder="Trucker Plate No" required />
-		            </div>
-		        </div>
-		        <div class="">
-		            <div class="form-group col-md-6">
-		                <input type="text" name="tname" class="form-control" placeholder="Trucker Name" required />
-		            </div>
-		        </div>
 
 		        <div class="">
 		        	<div class="form-group col-md-12">
