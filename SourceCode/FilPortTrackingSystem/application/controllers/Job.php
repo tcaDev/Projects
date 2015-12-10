@@ -168,7 +168,7 @@ class Job extends CI_Controller {
                   'P_ActualArrivalTime'     => $ata,
                   'P_StartOfStorage'        => $start_storage,
                   'P_Lodging'               => $lodging,  //ongoing //container
-                  'P_HaulerId'              => $hauler,
+                  'P_HaulerId'              => NULL,
                /*   'P_DateSentPreAssessment' => $dtSent,*/
                   'P_TargetDeliveryDate'    => $tdt,
                   'P_GateInAtPort'          => $gip,

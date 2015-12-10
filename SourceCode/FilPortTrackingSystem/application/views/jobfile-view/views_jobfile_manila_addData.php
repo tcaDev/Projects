@@ -319,9 +319,9 @@
 					        <td ><input type="datetime-local" class="form-control input-sm" name="etd"></td>
 					        <td ><input type="datetime-local" class="form-control input-sm" name="eta"></td>
 					        <td><input type="datetime-local" class="form-control input-sm" name="ata"></td>
-					        <td><input type="text" name="start_storage" /></td>
-					        <td><input type="text" name="start_demorage" /></td>
-					        <td><input type="text" name="lodging"/></td>
+					        <td><input type="datetime-local" name="start_storage" /></td>
+					        <td><input type="datetime-local" name="start_demorage" /></td>
+					        <td><input type="datetime-local" name="lodging"/></td>
 					        <td><input type="text" name="hauler"/></td>
 					        <td><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td><input type="datetime-local" class="form-control input-sm" name="gip"></td>
