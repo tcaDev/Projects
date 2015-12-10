@@ -21,7 +21,7 @@
 			        			<div class="col-md-3 pull-left">
 				        			<input type="search" class="form-control light-table-filter" data-table="order-table" placeholder="Search List" />
 				        		</div>
-				        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#taba')" />	 
+				        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#taba')" />	 
 				        		<div class="col-md-3 pull-right">
 								  <select type="search" class="form-control select-table-filter" data-table="order-table">
 								    <option value="">All Status</option>  
@@ -82,7 +82,7 @@
 		        			<div class="col-md-3 pull-left">
 			        			<input type="search" class="form-control light-table-filter" data-table="order-table1" placeholder="Search List" />
 			        		</div>
-			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabb')" />	 
+			        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#tabb')" />	 
 			        		<div class="col-md-3 pull-right">
 							  <select type="search" class="form-control select-table-filter" data-table="order-table1">
 							    <option value="">All Status</option>  
@@ -151,7 +151,7 @@
 			        			<div class="col-md-3 pull-left">
 				        			<input type="search" class="form-control light-table-filter" data-table="order-table2" placeholder="Search List" />
 				        		</div>
-				        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabc')" />	 
+				        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#tabc')" />	 
 			        	</div>
 			        	<div id="tabc">
 			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table2" >
@@ -189,7 +189,7 @@
 		        	 		<div class="col-md-3 pull-left">
 			        			<input type="search" class="form-control light-table-filter" data-table="order-table3" placeholder="Search List" />
 			        		</div>
-			        		<input class="btn btn-default pull-right" type="button" value="Print This" onclick="PrintElem('#tabd')" />	 
+			        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#tabd')" />	 
 			        	</div>
 			        	<div id="tabd">
 			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table3" >
