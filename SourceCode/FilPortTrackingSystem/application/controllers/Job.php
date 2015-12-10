@@ -150,7 +150,7 @@ class Job extends CI_Controller {
            $id = 'VesselByJobFileId';  
          $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
           //for getting the last insert in P_VesselByJobFileId end
-         
+
         //vessell by jobfile
          //drop down in container TAB
         $vessels=  $this->input->post('vessels'); 
@@ -202,8 +202,8 @@ class Job extends CI_Controller {
                   'P_ProductName'         => $products,   //ongoing    ///    auto incre in the table
                   'P_ContainerByVesselId' => $ContainerByVesselId ,    // last inserted id from VesselByJobFIle table
                   'P_StatusId'            => $status,
-                  'P_PurchaseOrderNo'     => $purch_order_no,
                   'P_DateBOCCLeared'      => $dt_boc,
+                  'P_PurchaseOrderNo'     => $purch_order_no,
                   'P_Origin_CountryId'    => $countries,
                   'P_Origin_City'         => $city,
                   'P_UserId'              => $userid
