@@ -300,9 +300,8 @@ if(isset($_SESSION['success'])){
 					  </table>
 					  </div>
 
-					    <?php
-					echo   '
-			   	 		
+						<?php
+						echo'
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -310,15 +309,12 @@ if(isset($_SESSION['success'])){
 				      </div> 
 				   </div>        
 				 </div>'
-
 				 ;?>
 
 		
 				
 		<script>
 		$('.update_contacts').click(function(){
-
-   
 					var ship_id    = $(this).closest('tr').children('td:eq(0)').text();
 					var fname    = $(this).closest('tr').children('td:eq(2)').text();
 					var mname    = $(this).closest('tr').children('td:eq(3)').text();
@@ -352,9 +348,6 @@ if(isset($_SESSION['success'])){
 		});
 		$('.delete_contacts').click(function(){
 			  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-
-
-        
                                   $.confirm({
                                     title: 'Delete the information?',
                                     content: 'You have 6 seconds to make a choice',
@@ -364,8 +357,6 @@ if(isset($_SESSION['success'])){
                                     cancelButton: 'No',
                                     confirm: function () {            
                
-
-
                                         $.post( "<?php echo base_url('Delete_datas/del_shipper_con');?>", 
                                         	{ 
                                         	  id:delete_id
@@ -381,7 +372,6 @@ if(isset($_SESSION['success'])){
 													   
 													   }
 													});
-										    
 										  });
                                     },
                                     cancel: function () {
@@ -399,8 +389,6 @@ if(isset($_SESSION['success'])){
    }
 
    function add_shippercontacts(){
-
-
     $id=$this->input->post('shipper_id');
 
     echo '		<div class="modal-dialog">
@@ -1150,23 +1138,28 @@ $this->message();
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
-				    <?php 
-					    $i=0;
-					    foreach ($legend as $row) {
-					    $i++;
-					    if($i==1){
-					    $cid= $row->StatusId;
-					    }
-					    echo  '<tr>
-							        <td class="hidden">'.$row->StatusId.'</td>
-							        <td>'.$row->StatusName.'</td>
-							        <td>'.$row->Description.'</td>
-							        <td style="background-color:'.$row->ColorCode.';"></td>
-							         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_legend"><span class="glyphicon glyphicon-trash"></span></button></td>
-					    	  </tr>';}
+		    <?php 
+			    $i=0;
+			    foreach ($legend as $row) {
+			    $i++;
+    			$pick =$row->IsBackground;
+    			if($pick==0){
+		        	$pick1= "Font";
+		        }else{
+		        	$pick1 ="Background";
+		        }
 
-?>
+			    if($i==1){
+			    $cid= $row->StatusId;
+			    }
+			    echo '<tr>
+				        <td class="hidden">'.$row->StatusId.'</td>
+				        <td>'.$row->StatusName.'</td>
+				        <td>'.$row->Description.'</td>
+				        <td style="background-color:'.$row->ColorCode.';">'.$pick1.'</td>
+				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+				        <button class="btn delete_legend"><span class="glyphicon glyphicon-trash"></span></button></td>
+			    	  </tr>';}?>
     </tbody>
 </table>
 
@@ -1208,11 +1201,13 @@ $this->message();
 			     var status   	  = $(this).closest('tr').children('td:eq(1)').text();
 			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
 			     var color   	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var bground   	  = $(this).closest('tr').children('td:eq(4)').text();
 
 			      $('.legend_id').val(id);
 			      $('.legend_status').val(status);
 			      $('.legend_descrip').val(descr);
 			      $('.legend_color').val(color);
+			      $('.legend_backg').val(bground);
 			 
 
 			 });
@@ -1311,18 +1306,17 @@ $this->message();
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
-				    <?php 
-					    foreach ($forward as $row) {
-					    echo  '<tr>
-							        <td class="hidden">'.$row->ContainerId.'</td>
-							         <td>'.$row->ContainerNo.'</td>
-							         <td>'.$row->ContainerDescription.'</td>
-							         <td>'.$row->ContainerSize.'</td>
-							         <td><button type="button" class="btn update_container" data-toggle="modal" data-target="#modal_update_container"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_container"><span class="glyphicon glyphicon-trash"></span></button></td>
-					    	  </tr>';}
-
-?>
+			<?php 
+			    foreach ($forward as $row) {
+			    echo  '<tr>
+					        <td class="hidden">'.$row->ContainerId.'</td>
+					         <td>'.$row->ContainerNo.'</td>
+					         <td>'.$row->ContainerDescription.'</td>
+					         <td>'.$row->ContainerSize.'</td>
+					         <td><button type="button" class="btn update_container" data-toggle="modal" data-target="#modal_update_container"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <button class="btn delete_container"><span class="glyphicon glyphicon-trash"></span></button></td>
+			    	  </tr>';}
+			?>
     </tbody>
 </table>
 

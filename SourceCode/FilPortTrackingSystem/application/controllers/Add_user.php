@@ -406,13 +406,11 @@ class Add_user extends CI_Controller {
 
    }
     function add_legend(){
-
-
                $legend  = $this->input->post('legend');
                $descrip = $this->input->post('descrip');
-               $backg = $this->input->post('backg');
+               $backg   = $this->input->post('backg');
                $color   = $this->input->post('color');
-                $data   = array(
+               $data   = array(
                   'StatusName' => $legend,
                   'Description'=> $descrip,
                   'IsBackground' => $backg,
