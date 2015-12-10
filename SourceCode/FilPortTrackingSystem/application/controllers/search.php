@@ -1161,7 +1161,7 @@ $this->message();
 							        <td class="hidden">'.$row->StatusId.'</td>
 							        <td>'.$row->StatusName.'</td>
 							        <td>'.$row->Description.'</td>
-							        <td>'.$row->ColorCode.'</td>
+							        <td style="background-color:'.$row->ColorCode.';"></td>
 							         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        <button class="btn delete_legend"><span class="glyphicon glyphicon-trash"></span></button></td>
 					    	  </tr>';}
