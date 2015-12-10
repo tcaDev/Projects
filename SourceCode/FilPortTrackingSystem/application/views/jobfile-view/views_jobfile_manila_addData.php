@@ -672,20 +672,5 @@ $(document).ready(function(){
 
 
 
-<script>
-//for trucker
-$('.test_data').click(function(){
- var p = $('.plateno').val();
-  alert(p);
-});
-  
-  var gate_in_port 			    = $(this).closest('tr').children('td:eq(1)').text();
-  var gate_out_port    			= $(this).closest('tr').children('td:eq(2)').text();	
-  var time_to_deliver_warehouse = $(this).closest('tr').children('td:eq(3)').text();
-  var status_report             = $(this).closest('tr').children('td:eq(4)').text();
-
-
-
-</script>
 
 

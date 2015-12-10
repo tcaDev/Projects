@@ -119,39 +119,7 @@ class Login_user extends CI_Controller {
 	 function jobfile(){
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){		
-
-			$data['tab'] = "JobFile Monitoring - Sea";
-			$session_data = $this->session->userdata('logged_in');
-		    $data['username'] = $session_data['username'];
-		    $data['email'] =  $session_data['email'];
-		    $data['fname'] = $session_data['fname'];
-		    $data['mname'] = $session_data['mname'];
-		    $data['lname'] = $session_data['lname'];
-		    $data['img'] = $session_data['img'];
-
-		    // drop down in add data form in jofile start
-		    $data['shipper_data']   = $this->User->dropdown_shipper();
-		    $data['vessel_data']   = $this->User->settings_vessel();
-		    $data['container_data']   = $this->User->dropdown_container();
-		    $data['consignee_data'] = $this->User->dropdown_consignee();
-		    $data['broker_data']    = $this->User->dropdown_broker();
-		    $data['color_data']    = $this->User->dropdown_colors();
-		    $data['hauler_data']    = $this->User->dropdown_hauler();
-		    $data['countries']   =  $this->User->countries();
-		    // drop down in add data form in jofile end
-
-
-		    /* get status*/
-		    $data['status'] =     $this->User->get_status();
-		  	
-
-		  	/*Jobfile manila*/
-		  	$data['manila']    = $this->User->get_jobfile_manila();
-
-		  	$data['outport']    = $this->User->get_jobfile_outport();
-
-			$this->load->view('header/header',$data);
-			$this->load->view('jobfile-view/views_jobfile' , $data);
+			redirect('Job/jofile_data');
 		}else{
 			$this->login();
 		}
