@@ -572,7 +572,7 @@ if(isset($_SESSION['success'])){
 						    <td class="hidden">'.$row->MiddleName.' </td>
 						    <td class="hidden">'.$row->LastName.' </td>		
 					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_broker"><span class="glyphicon glyphicon-trash"></span></button></td>
+					        
 					      
 					      </tr>';}
 					      ?>
@@ -679,7 +679,7 @@ function search_shipper(){
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td>   				   
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_shipper"><span class="glyphicon glyphicon-trash"></span></button></td>
+					      
 					      </tr>';}
 
 					     ?>
@@ -848,7 +848,7 @@ function search_vessel(){
 							        <td>'.$row->Vesselname.'</td>
 							        <td>'.$row->VesselNo.'</td>
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_vessel"><span class="glyphicon glyphicon-trash"></span></button></td>
+							        
 					    	  </tr>';}
 
 ?>
@@ -964,7 +964,7 @@ $this->message();
 							        <td class="hidden">'.$row->HaulerId.'</td>
 							        <td>'.$row->HaulerName.'</td>
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_haulers"><span class="glyphicon glyphicon-trash"></span></button></td>
+							       
 					    	  </tr>';}
 
 ?>
@@ -1055,7 +1055,7 @@ $this->message();
 							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
 							        <td>'.$row->ForwarderWarehouseName.'</td>
 							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        <button class="btn delete_forward"><span class="glyphicon glyphicon-trash"></span></button></td>
+							        
 					    	  </tr>';}
 
 ?>
@@ -1158,7 +1158,7 @@ $this->message();
 				        <td>'.$row->Description.'</td>
 				        <td style="background-color:'.$row->ColorCode.';">'.$pick1.'</td>
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-				        <button class="btn delete_legend"><span class="glyphicon glyphicon-trash"></span></button></td>
+				        
 			    	  </tr>';}?>
     </tbody>
 </table>
@@ -1314,7 +1314,7 @@ $this->message();
 					         <td>'.$row->ContainerDescription.'</td>
 					         <td>'.$row->ContainerSize.'</td>
 					         <td><button type="button" class="btn update_container" data-toggle="modal" data-target="#modal_update_container"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        <button class="btn delete_container"><span class="glyphicon glyphicon-trash"></span></button></td>
+					        
 			    	  </tr>';}
 			?>
     </tbody>
