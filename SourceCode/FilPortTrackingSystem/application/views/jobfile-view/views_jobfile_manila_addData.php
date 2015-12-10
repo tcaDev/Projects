@@ -25,8 +25,9 @@
 				           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 
 				           <div class="form-group">
-				           		<label for="jbfl">JobFile No.:</label>
-								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
+				              <!--check if jofile is already exists -->
+				           		<label for="jbfl">JobFile No.:</label>   <span class="check_jobfiles"></span>
+								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 				           </div>
 				  				
 				           <div class="form-group">
@@ -89,10 +90,10 @@
 
 								<div class="form-group">
 				  				  <input type="text" name="veselid" class="veselid hidden">
-									  <label for="vsl">Vessel / Voyage No.:</label>
+								<!-- 	  <label for="vsl">Vessel / Voyage No.:</label>
 									  	<div class="vesel" >
 								  	
-								  		</div>
+								  		</div> -->
 								 </div>
 
 								 <div class="form-group">
@@ -306,11 +307,7 @@
 					        </td>
 					       <!--for shippervessel -->
 					        <td>
-					            <select name="vessels">
-					            <?php foreach($vessel_data as $row){?>
-					                <option value="<?php echo $row->ShipperVesselId;?>"><?php echo $row->Vesselname;?></option>
-					             <?php }?>
-					            </select>
+								<div class="vesel" ></div>
 					        </td> 
 
 					        <td><input type="text" name="cartons"/></td>
@@ -672,5 +669,20 @@ $(document).ready(function(){
 
 
 
+<script>
+ function search_jobfile(jobfile){
+   jobfile = jobfile.value; 
 
+   			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/check_jobfile');?>",
+			  		data: { jobfile:jobfile}
+			})
+			.done(function(data) {
+		   		 	   $('.check_jobfiles').html(data);
+				});
+
+ }
+
+</script>
 

@@ -18,7 +18,7 @@ class Job extends CI_Controller {
 		 $data =	$this->input->post('ship_id');
 		 $shipper = $this->Jobdata->get_vessel($data);
 
-		echo'<select name="vessel" class="myvessel form-control">';
+		echo'<select name="vessel" class="myvessel ">';
 			echo '<option value="0" disabled selected>List of Vessels</option>';		            				       
 		 foreach ($shipper as $row){
 		 	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
@@ -37,6 +37,19 @@ class Job extends CI_Controller {
       </script>
 
     <?php }
+
+    function  check_jobfile(){
+     $jobfile =  $this->input->post('jobfile');
+      $query= $this->db->query("Select * from 
+          JobFile where JobFileId='$jobfile' limit 1");
+            
+          if($query->num_rows() ==1){
+            echo  "<p>Jobfile is already exists</p>";     
+          }else{
+             echo "<p>Jobfile is available</p>"; 
+          }
+
+    }
 
 
 
@@ -58,21 +71,18 @@ class Job extends CI_Controller {
            $ref_due_dt  =  $this->input->post('ref_due_dt');
            $dt_sent_preassed  =  $this->input->post('dt_sent_preassed');
            $dt_file_entry_boc  =  $this->input->post('dt_file_entry_boc');
-           $dt_sent_finalassed  =  $this->input->post('dt_sent_finalassed');
-
-
-           
-
-          /* $warehouseid  =  $this->input->post('warehouseid');*/
+           $dt_sent_finalassed  =  $this->input->post('dt_sent_finalassed'); 
            $DatePaid  =  $this->input->post('dt_paid');
-         /*  $FlightNo  =  $this->input->post('FlightNo');*/
-          /* $P_AirCraftNo  =  $this->input->post('P_AirCraftNo');*/
-        /*   $dt_forwarder  =  $this->input->post('DateReceivedNoticeFromForwarder');
-       */
+ 
+           $session_data = $this->session->userdata('logged_in');
+           $userid = $session_data['uid'];
 
-          $session_data = $this->session->userdata('logged_in');
-          $userid = $session_data['uid'];
 
+            $query= $this->db->query("Select * from JobFile where JobFileId = '$job' limit 1");
+            if($query->num_rows() ==1){
+
+              return;
+            }
 
            $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                           $this->db->query($add_jobfile,
@@ -104,11 +114,9 @@ class Job extends CI_Controller {
 
 
            $vessel        =  $this->input->post('veselid');
-          
            $vat           =  $this->input->post('ves_arrival_time');
            $vdt           =  $this->input->post('ves_discharge_time');
 
-           
            $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
              $this->db->query($add_vessel,
               array(
@@ -119,15 +127,9 @@ class Job extends CI_Controller {
                   'P_UserId'              => $userid
              ));
 
-
-
-         
-
   
-           
-           
 
-        $cartons            =  $this->input->post('cartons');
+        $cartons             =  $this->input->post('cartons');
         $plateno             =  $this->input->post('plateno');
         $gip                 =  $this->input->post('gip');
         $gop                 =  $this->input->post('gop');
@@ -177,8 +179,6 @@ class Job extends CI_Controller {
                   'P_StartOfDemorage'           =>$start_demorage,
                   'P_UserId'                    => $userid 
 
-
-
              ));
 
                       //for getting the last insert in P_VesselByJobFileId start
@@ -187,7 +187,6 @@ class Job extends CI_Controller {
          $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
           //for getting the last insert in P_VesselByJobFileId end
 
-
               $products = $this->input->post('products');
               $purch_order_no = $this->input->post('purch_order_no');
               $countries = $this->input->post('countries');
@@ -195,7 +194,6 @@ class Job extends CI_Controller {
               $status = $this->input->post('colors');
               $dt_boc = $this->input->post('dt_boc'); 
               
-
                 $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
@@ -208,12 +206,7 @@ class Job extends CI_Controller {
                   'P_Origin_City'         => $city,
                   'P_UserId'              => $userid
 
-
              ));
-
-
-
-
       }
 }
 
