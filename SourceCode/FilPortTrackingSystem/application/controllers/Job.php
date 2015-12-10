@@ -62,7 +62,7 @@ class Job extends CI_Controller {
 
 
            
-           
+
           /* $warehouseid  =  $this->input->post('warehouseid');*/
            $DatePaid  =  $this->input->post('dt_paid');
          /*  $FlightNo  =  $this->input->post('FlightNo');*/
@@ -121,17 +121,9 @@ class Job extends CI_Controller {
 
 
 
-          //for getting the last insert in P_VesselByJobFileId start
-           $table ='VesselByJobFile';
-           $id = 'VesselByJobFileId';  
-         $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
-          //for getting the last insert in P_VesselByJobFileId end
+         
 
-          //for getting the last insert in P_VesselByJobFileId start
-           $table ='ContainerByVessel';
-           $id = 'ContainerByVesselId';  
-         $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
-          //for getting the last insert in P_VesselByJobFileId end
+  
            
            
 
@@ -152,7 +144,13 @@ class Job extends CI_Controller {
 
          $container         =  $this->input->post('container_nos');
          $lodging           =  $this->input->post('lodging');
-        
+
+         //for getting the last insert in P_VesselByJobFileId start
+           $table ='VesselByJobFile';
+           $id = 'VesselByJobFileId';  
+         $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
+         
         //vessell by jobfile
          //drop down in container TAB
         $vessels=  $this->input->post('vessels'); 
@@ -183,7 +181,11 @@ class Job extends CI_Controller {
 
              ));
 
-
+                      //for getting the last insert in P_VesselByJobFileId start
+           $table ='ContainerByVessel';
+           $id = 'ContainerByVesselId';  
+         $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
 
 
               $products = $this->input->post('products');
@@ -208,13 +210,6 @@ class Job extends CI_Controller {
 
 
              ));
-
-
-
-
-              
-
-
 
 
 
