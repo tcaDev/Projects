@@ -969,11 +969,14 @@
 					            <div class="form-group col-lg-12">
 					            	<label>Choose Color</label>
 					               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
-					            
+					                <label class="radio-inline">
+								      <input type="radio" value="0" name="legend_bacg">Font
+								    </label>
+								    <label class="radio-inline">
+								      <input type="radio" value="1" name="legend_bacg">Background
+								    </label>
 					            </div>
 					        </div>
-	
-					  
 					        <div class="row">
 					        	<div class="form-group col-lg-12">
 					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
