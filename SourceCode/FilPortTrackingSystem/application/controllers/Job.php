@@ -84,7 +84,7 @@ class Job extends CI_Controller {
 
   function get_containers(){
    $containers =  $this->input->post('id'); 
-   $container  = $this->Jobdata->get_goods($products);
+   $container  = $this->Jobdata->get_containers($containers);
 
     if($container==NULL){
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
@@ -92,7 +92,10 @@ class Job extends CI_Controller {
          echo "<table class='table-bordered'>
               <tr>
                    <th>No.</th>
-                   <th>Product Name</th>
+                   <th>Vessel Name</th>
+                    <th>Vessel Arrival Time</th>
+                    <th>Vessel DischargeT ime</th>
+
               </tr>";
 
           $i=0;
@@ -100,9 +103,9 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->ContainerNo."</td>";
-             echo "<td class='row'>".$row->ContainerNo."</td>";
-             echo "<td class='row'>".$row->ContainerNo."</td>";
+             echo "<td class='row'>".$row->JobFileId."</td>";
+             echo "<td class='row'>".$row->VesselArrivalTime."</td>";
+             echo "<td class='row'>".$row->VesselDischargeTime."</td>";
              echo "</tr>";
          }
 

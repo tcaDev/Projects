@@ -177,9 +177,9 @@
 								         <td class="list_goods hidden"><?php echo $row->ContainerByVesselId;?>   </td>
 								         <td class="list_containers hidden "><?php echo $row->VesselByJobFileId;?>   </td>
 								          <td><?php echo $i;?></td>
-								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
+								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 
-								          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+								          <td><?php echo $row->JobFileId; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
 								          <td><?php echo $row->ShipperName; ?></td>
 
@@ -327,6 +327,8 @@
 <script>
 $(document).ready(function(){
 
+
+
 	//for getting the product goods
  $('.view_goods').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(0)').text();
@@ -344,7 +346,7 @@ $(document).ready(function(){
 
   $('.view_containers').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(1)').text();
- 		alert(ids);
+ 	
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_containers');?>",
@@ -362,7 +364,15 @@ $(document).ready(function(){
 </script>
 
 
+<script>
+//for getting the  data in update
+  
+  
 
+
+
+
+</script>
 
 
 
@@ -448,17 +458,53 @@ $(document).ready(function(){
 		$("th").css("vertical-align","middle");
 
 
-	 $('.update_jobfile').click(function(){
+	 $('.btn-Update').click(function(){
+			     var jobfileid      = $(this).closest('tr').children('td:eq(4)').text();
+			     var ShipperName    = $(this).closest('tr').children('td:eq(5)').text();
+			     var ConsigneeName  = $(this).closest('tr').children('td:eq(6)').text();
+			     var NoOfCartons    = $(this).closest('tr').children('td:eq(7)').text();
+   				 var ContainerSize  = $(this).closest('tr').children('td:eq(8)').text();
+			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(10)').text();
+					
+				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(11)').text();
+			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(12)').text();
+			     var Origin                 = $(this).closest('tr').children('td:eq(14)').text();
+				
+			     var EstDepartureTime      = $(this).closest('tr').children('td:eq(15)').text();
+			     var EstArrivalTime        = $(this).closest('tr').children('td:eq(16)').text();
+			     var ActualArrivalTime     = $(this).closest('tr').children('td:eq(17)').text();
+	
+			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(18)').text();
+			     var StartOfDemorage        = $(this).closest('tr').children('td:eq(19)').text();
+			     var StartOfStorage         = $(this).closest('tr').children('td:eq(20)').text();
+				
+			     var Registry      = $(this).closest('tr').children('td:eq(21)').text();
+			     var VSL_NO        = $(this).closest('tr').children('td:eq(22)').text();
+			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(23)').text();
+		
 
-			     var jobfile_id   = $(this).closest('tr').children('td:eq(2)').text();
-			     var jobfile_num  = $(this).closest('tr').children('td:eq(0)').text();
-			     var jobfile_shipper  = $(this).closest('tr').children('td:eq(3)').text();
+			     DateReceivedOfBL  		  = $(this).closest('tr').children('td:eq(24)').text();
+			     DateReceivedOfOtherDocs  = $(this).closest('tr').children('td:eq(25)').text();
+			     Broker  				  = $(this).closest('tr').children('td:eq(26)').text();
+			     DateRequestBudgetToGL    = $(this).closest('tr').children('td:eq(27)').text();
+			     RFPDueDate 			  = $(this).closest('tr').children('td:eq(28)').text();
+			     DateSentPreAssessment    = $(this).closest('tr').children('td:eq(29)').text();
+			     DateFileEntryToBOC       = $(this).closest('tr').children('td:eq(30)').text();
+			     DateSentFinalAssessment  = $(this).closest('tr').children('td:eq(31)').text();
+			     RefEntryNo 			  = $(this).closest('tr').children('td:eq(32)').text();
+
+			      $('#jbfl').val(jobfileid);
+			    /*  $('#shipper').val(ShipperName);
+			      $('#consignee').val(ConsigneeName);
+			      $('#jbfl').val(NoOfCartons);*/
+			       /*$('#pipo').val(jobfileid);*/  //wala one to many ata to
+			       $('#mbl').val(MasterBillLadingNo);
+			       
 
 
+			      
 
-			      $('#jobfile_id').val(jobfile_id);
-			      $('#jbfl').val(jobfile_num);
-			      $('#shipper').val(jobfile_shipper);
+			     
 			 }); 
 });
 

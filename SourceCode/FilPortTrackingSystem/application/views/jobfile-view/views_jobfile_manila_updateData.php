@@ -26,7 +26,7 @@
 
 				           <div class="form-group">
 				           		<label for="jbfl">JobFile No.:</label>
-								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
+								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl" class="jbfl">
 				           </div>
 				  				
 				           <div class="form-group">
@@ -43,7 +43,7 @@
 
 						     <div class="form-group">
 								  <label for="consignee">Consignee:</label>
-								  		<select name="consignee" class="form-control input-sm">
+								  		<select name="consignee" id="consignee" class="form-control input-sm">
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
 							                <option value="<?php echo $row->ConsigneeId ?>">
