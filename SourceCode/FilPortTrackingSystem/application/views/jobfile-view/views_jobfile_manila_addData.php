@@ -287,7 +287,7 @@
 					        <th>Start of Storage</th>
 					        <th>Start of Demorage</th>
 					        <th>Lodging</th>
-					        <th>Hauler</th>
+					     <!--    <th>Hauler</th> -->
 					        <th>Target Delivery Date</th>
 					        <th>Gate In at Port</th>
 					        <th>Gate Out at Port</th>
@@ -322,7 +322,7 @@
 					        <td><input type="datetime-local" name="start_storage" /></td>
 					        <td><input type="datetime-local" name="start_demorage" /></td>
 					        <td><input type="datetime-local" name="lodging"/></td>
-					        <td><input type="text" name="hauler"/></td>
+					    <!--     <td><input type="text" name="hauler"/></td> -->
 					        <td><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
 					        <td><input type="datetime-local" class="form-control input-sm" name="gip"></td>
 					        <td><input type="datetime-local" class="form-control input-sm" name="gop"></td>
