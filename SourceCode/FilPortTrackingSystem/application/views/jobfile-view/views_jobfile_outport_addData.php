@@ -261,73 +261,125 @@
 		<!--container plate is no names yet -->
 				<!--CONTAINER WINDOW-->
 				  	<div id="tableAddContainer-outport" class="hidden pill-container-outport-add table-editable col-lg-12">
-					    <table class="table " style="width: 3000px;">
-					      <tr>
-					      	<th>Container Number</th>
-					        <th>Vessel by JobFile</th>
-					        <th>Number of Cartons</th>
-					        <th>Trucker Plate No.</th>
-					        <th>Trucker Name</th>
-					        <th>Estimated Departure Time</th>
-					        <th>Estimated Arrival Time</th>
-					        <th>Actual Arrival Time</th>
-					        <th>Start of Storage</th>
-					        <th>Start of Demorage</th>
-					        <th>Lodging</th>
-					        <th>Hauler</th>
-					        <th>Target Delivery Date</th>
-					        <th>Gate In at Port</th>
-					        <th>Gate Out at Port</th>
-					        <th>Actual Delivery at Warehouse</th>
-					        <th><button type="button" class="btn btn-default table-add-cont-outport"><span class="table-add  fa fa-plus"></span></button></th>
-					      </tr>
 
-					      <tr>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td>
-					      	  <button type="button" class="btn btn-default table-remove-cont-outport"><span class="table-remove  fa fa-times"></span></button>
-					          
-					        </td>
-					      </tr>
 
-					      <!-- This is our clonable table line -->
-					      <tr class="hide">
-					       	 <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true"><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td>
-					           <button type="button" class="btn btn-default table-remove-cont-outport"><span class="table-remove fa fa-times"></span></button>
-					        </td>
-					      </tr>
+					  	<div class="col-lg-6">
+				  			<div class="form-group">
+								<label>Container Number</label>
+								<input type="text" name="cont-num" class="form-control input-sm cont-data" />
+							</div>
+
+							<div class="form-group">
+								<label>Vessel by JobFile</label>
+								<input type="text" name="vsl-jbfl" class="form-control input-sm vsl-jbfl" />
+							</div>
+
+							<div class="form-group">
+								<label>Number of Cartons</label> <span id="errmsg" style="color:red;"></span>
+								<input type="text" step="1" class="form-control input-sm cartons" id="cartons" name="numofcartons">
+							</div>
+
+							<div class="form-group">
+								<label>Trucker Plate No.</label>
+								<input type="text" name="trckplte" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Trucker Name</label>
+								<input type="text" name="trckname" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Estimated Departure Time</label>
+								<input type="datetime-local" name="est-dept" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Estimated Arrival Time</label>
+								<input type="datetime-local" name="est-arr" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Actual Arrival Time</label>
+								<input type="datetime-local" name="act-arr" class="form-control input-sm" />
+							</div>
+					  	</div>
+				  			
+
+
+
+					  	<div class="col-lg-6">
+					  		<div class="form-group">
+								<label>Start of Storage</label>
+								<input type="datetime-local" name="strtstrge" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Start of Demorage</label>
+								<input type="datetime-local" name="strtdmrage" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Lodging</label>
+								<input type="datetime-local" name="lodging" class="form-control input-sm" />
+							</div>
+
+							<!-- <div class="form-group">
+								<label>Hauler</label>
+								<input type="text" name="lodge" class="form-control input-sm" />
+							</div> -->
+
+							<div class="form-group">
+								<label>Target Delivery Date</label>
+								<input type="datetime-local" name="trgtdeldt" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Gate In at Port</label>
+								<input type="datetime-local" name="gtinport" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Gate Out at Port</label>
+								<input type="datetime-local" name="gtoutport" class="form-control input-sm" />
+							</div>
+
+							<div class="form-group">
+								<label>Actual Delivery at Warehouse</label>
+								<input type="datetime-local" name="act-del-whse" class="form-control input-sm" />
+							</div>
+
+							<button type="button" class="btn-Add-Container-Data btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
+							<button type="button" class="btn-Add-Container-Alert btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
+					  	</div>
+
+
+						
+					    <table class="table " style="width: 3000px;" border="1">
+					      <thead>
+						      <tr>
+						      	<th>Container Number</th>
+						        <th>Vessel by JobFile</th>
+						        <th>Number of Cartons</th>
+						        <th>Trucker Plate No.</th>
+						        <th>Trucker Name</th>
+						        <th>Estimated Departure Time</th>
+						        <th>Estimated Arrival Time</th>
+						        <th>Actual Arrival Time</th>
+						        <th>Start of Storage</th>
+						        <th>Start of Demorage</th>
+						        <th>Lodging</th>
+						        <!-- <th>Hauler</th> -->
+						        <th>Target Delivery Date</th>
+						        <th>Gate In at Port</th>
+						        <th>Gate Out at Port</th>
+						        <th>Actual Delivery at Warehouse</th>
+						      </tr>
+					      </thead>
 					    </table>
+
+
+
 					</div>
 
 					<div class="hidden pill-charges-outport-add table-editable col-lg-12">
@@ -660,3 +712,49 @@ $('.btn-Save-outport-add').click(function(){
 
 </script>
 
+
+<script type="text/javascript">        
+            $(document).ready(function () {
+              //called when key is pressed in textbox
+              $("#cartons").keypress(function (e) {
+                 //if the letter is not digit then display error and don't type anything
+                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Numbers Only").show().fadeOut("slow");
+                           return false;
+                }
+               });
+            });
+
+            </script>
+
+<script>
+	
+	$(document).ready(function(){
+		$(".btn-Add-Container-Data").click(function(){
+			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td></tr>');
+	        $('#tableAddContainer-outport table tr:last td:nth-child(1)').html($(".cont-data").val());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(2)').html($(".vsl-jbfl").val());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(3)').html($(".cartons").val());
+		});
+
+
+		
+		        
+		    $(".btn-Add-Container-Alert").click(function(){
+		    	  var table = $("#tableAddContainer-outport table tbody");
+
+				    table.find('tr').each(function (i) {
+				        var $tds = $(this).find('td'),
+				            productId = $tds.eq(0).text(),
+				            product = $tds.eq(1).text(),
+				            Quantity = $tds.eq(2).text();
+				        // do something with productId, product, Quantity
+				        alert('Row ' + (i + 1) + ':\nContainer: ' + productId
+				              + '\nVessel: ' + product
+				              + '\nCartons: ' + Quantity);
+				    });
+		    });
+
+		});
+</script>
