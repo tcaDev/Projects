@@ -410,15 +410,17 @@ class Add_user extends CI_Controller {
 
                $legend  = $this->input->post('legend');
                $descrip = $this->input->post('descrip');
+               $backg = $this->input->post('backg');
                $color   = $this->input->post('color');
                 $data   = array(
                   'StatusName' => $legend,
                   'Description'=> $descrip,
+                  'IsBackground' => $backg,
                   'ColorCode'  => $color
                 );
 
           $query= $this->db->query("Select * from Status where StatusName = '$legend' 
-            and Description='$descrip' and ColorCode='$color'  limit 1");
+            and Description='$descrip' and IsBackground='$backg' and ColorCode='$color'  limit 1");
           $query2=$this->db->query("Select * from Status where StatusName = '$legend' ");
           if(($query->num_rows() ==1) || ($query2->num_rows() ==1) ) {
              $this->session->failed = 'failed';
@@ -428,7 +430,6 @@ class Add_user extends CI_Controller {
                 $this->session->success = 'success';  
           }
              redirect('Login_user/settings/#legend');
-
    }
 
        function add_container(){
