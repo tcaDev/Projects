@@ -89,7 +89,7 @@
 								</div>
 
 								<div class="form-group">
-				  				  <input type="text" name="veselid" class="veselid hidden">
+				  				  
 								<!-- 	  <label for="vsl">Vessel / Voyage No.:</label>
 									  	<div class="vesel" >
 								  	
@@ -200,75 +200,72 @@
 				  </div>
 
 				<!-- Products PLATE WINDOW-->
-				  	<div id="tableAddTruck" class="hidden pill-truck-mnla-add truck-editable col-lg-12">
-					    <table class="table" style="width: 2000px;">
-					      <tr>
-					        <th>Product Name</th>
-					       <!--  <th>Container by Vessel ID</th> -->
-					        <th>Color Selectivity</th>
-					        <th>Purchase Order Number</th>
-					        <th>Origin Country ID</th>
-					        <th>Origin City</th>
-					        <th><button type="button" class="btn btn-default table-add-truck"><span class="table-add  fa fa-plus"></span></button></th>
-					      </tr>
-		<!--Products plate is no names yet -->
-					      <tr>
-					        <!-- <td><input type="text" name="products" /></td> -->
-					        <td><input type="text" name="products" /></td>
-					        <td><select name="colors"class="form-control colsel input-sm" >
-												          	<option  value="" disabled selected>Jobfile Status</option>
-															<?php  foreach($color_data as $row){ 
-															   $status = $row->IsBackground;
-															   if($status==1){?> 
-															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-														 <?php }else{?>
-											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-											                <?php }?>
-											                <?php echo $row->StatusName; ?>
-											                </option> 
-											             	<?php }?>
-												        </select></td>
-					       
-					        <td><input type="text" name="purch_order_no" /></td>
-					        <td>
-					        	<select name="countries">
-					        		<?php foreach($countries as $row){ ?>
-					        		 <option value="<?php echo $row->CountryId?>">
-					        		 <?php echo $row->CountryName;?>
-					        		 </option>
-					        		<?php }?> 
-					        	</select>		
-					        </td>
-					        <td><input type="text" name="city" /></td>
-					        <td>
-					          <button type="button" class="btn btn-default table-remove-truck"><span class="table-remove  fa fa-times"></span></button>
-					        </td>
-					      </tr>
+				  	<div id="tableAddTruck-mnla" class="hidden pill-truck-mnla-add truck-editable col-lg-12">
 
-					      <!-- This is our clonable table line -->
-					      <tr class="hide">
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><select  name="colors" class="form-control colsel input-sm" >
-												          	<option  value="" disabled selected>Jobfile Status</option>
-															<?php  foreach($color_data as $row){ 
-															   $status = $row->IsBackground;
-															   if($status==1){?> 
-															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-														 <?php }else{?>
-											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-											                <?php }?>
-											                <?php echo $row->StatusName; ?>
-											                </option> 
-											             	<?php }?>
-												        </select></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td>
-					          <button type="button" class="btn btn-default table-remove-truck"><span class="table-remove  fa fa-times"></span></button>
-					        </td>
-					      </tr>
+				  		<div class="col-lg-6">
+				  			<div class="form-group">
+								<label>Product Name</label>
+								<input type="text" class="form-control input-sm prodname" name="prodname">
+							</div>
+
+							<div class="form-group">
+								<label>Container Number</label>
+									<select name="colors" class="form-control colsel input-sm" >
+									  	<option  value="" disabled selected>Jobfile Status</option>
+										<?php  foreach($color_data as $row){ 
+										   $status = $row->IsBackground;
+										   if($status==1){?> 
+										   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+									 <?php }else{?>
+									    			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+									    <?php }?>
+									    <?php echo $row->StatusName; ?>
+									    </option> 
+									 	<?php }?>
+									</select>
+							</div>
+
+							<div class="form-group">
+								<label>Purchase Order Number</label> 
+								<input type="text" class="form-control input-sm PON"  name="PON">
+							</div>
+				  		</div>
+
+				  		<div class="col-lg-6">
+					  		<div class="form-group ">
+									<label>Origin Country</label>
+										<select  class="form-control origin" name="countries">
+											<?php foreach($countries as $row){ ?>
+											 <option value="<?php echo $row->CountryId?>">
+											 <?php echo $row->CountryName;?>
+											 </option>
+											<?php }?> 
+										</select>	
+							</div>
+
+							<div class="form-group">
+								<label>Origin City</label>
+								<input type="text" name="origcity" class="form-control input-sm origcity" />
+							</div>
+
+							<button type="button" class="btn-Add-Product-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
+				  			<button type="button" class="btn-Add-Product-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
+
+				  		</div>
+
+					    <table class="table" style="width: 2000px;">
+						    <thead>
+						    	 <tr>
+							        <th>Product Name</th>
+							        <th class="">Color Value</th>
+							        <th>Color Selectivity</th>
+							        <th>Purchase Order Number</th>
+							        <th class="">Origin Value</th>
+							        <th>Origin Country ID</th>
+							        <th>Origin City</th>
+							        <th></th>
+						      	</tr>
+						    </thead>
 					    </table>
 					</div>
 
@@ -276,16 +273,24 @@
 				<!--CONTAINER WINDOW-->
 				  	<div id="tableAddContainer-mnla" class="hidden pill-container-mnla-add table-editable col-lg-12">
 
-
+				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
 								<label>Container Number</label>
-								<input type="text" name="cont-num" class="form-control input-sm cont-data" />
+							     <select name="container" class="form-control containerss" >
+					        		<?php foreach($container_data as $row){ ?>
+					        		 <option value="<?php echo $row->ContainerId?>">
+					        		 <?php echo $row->ContainerNo;?>
+					        		 </option>
+					        		<?php }?> 
+					        	</select>	
 							</div>
 
 							<div class="form-group">
+								<input type="text" name="veselid" class="veselid">
+				  				  <input type="text" name="veselid" class="veseltext">
 								<label>Vessel by JobFile</label>
-								<input type="text" name="vsl-jbfl" class="form-control input-sm vsl-jbfl" />
+									<div class="vesel" ></div>
 							</div>
 
 							<div class="form-group">
@@ -295,29 +300,31 @@
 
 							<div class="form-group">
 								<label>Trucker Plate No.</label>
-								<input type="text" name="trckplte" class="form-control input-sm" />
+								<input type="text" name="trckplte" class="form-control input-sm plate" />
 							</div>
 
 							<div class="form-group">
 								<label>Trucker Name</label>
-								<input type="text" name="trckname" class="form-control input-sm" />
+								<input type="text" name="trckname" class="form-control input-sm truckname" />
 							</div>
 
 							<div class="form-group">
 								<label>Estimated Departure Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm" />
+								<input type="datetime-local" name="est-dept" class="form-control input-sm est-dept" />
 							</div>
 
 							<div class="form-group">
 								<label>Estimated Arrival Time</label>
-								<input type="datetime-local" name="est-arr" class="form-control input-sm" />
+								<input type="datetime-local" name="est-arr" class="form-control input-sm est-arr" />
 							</div>
 
 							<div class="form-group">
 								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="act-arr" class="form-control input-sm" />
+								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
 							</div>
+
 					  	</div>
+					  	
 				  			
 
 
@@ -325,17 +332,17 @@
 					  	<div class="col-lg-6">
 					  		<div class="form-group">
 								<label>Start of Storage</label>
-								<input type="datetime-local" name="strtstrge" class="form-control input-sm" />
+								<input type="datetime-local" name="strtstrge" class="form-control input-sm storage" />
 							</div>
 
 							<div class="form-group">
 								<label>Start of Demorage</label>
-								<input type="datetime-local" name="strtdmrage" class="form-control input-sm" />
+								<input type="datetime-local" name="strtdmrage" class="form-control input-sm demorage" />
 							</div>
 
 							<div class="form-group">
 								<label>Lodging</label>
-								<input type="datetime-local" name="lodging" class="form-control input-sm" />
+								<input type="datetime-local" name="lodging" class="form-control input-sm lodging" />
 							</div>
 
 							<!-- <div class="form-group">
@@ -345,34 +352,34 @@
 
 							<div class="form-group">
 								<label>Target Delivery Date</label>
-								<input type="datetime-local" name="trgtdeldt" class="form-control input-sm" />
+								<input type="datetime-local" name="trgtdeldt" class="form-control input-sm trgtdeldt" />
 							</div>
 
 							<div class="form-group">
 								<label>Gate In at Port</label>
-								<input type="datetime-local" name="gtinport" class="form-control input-sm" />
+								<input type="datetime-local" name="gtinport" class="form-control input-sm gtinport" />
 							</div>
 
 							<div class="form-group">
 								<label>Gate Out at Port</label>
-								<input type="datetime-local" name="gtoutport" class="form-control input-sm" />
+								<input type="datetime-local" name="gtoutport" class="form-control input-sm gtouport" />
 							</div>
 
 							<div class="form-group">
 								<label>Actual Delivery at Warehouse</label>
-								<input type="datetime-local" name="act-del-whse" class="form-control input-sm" />
+								<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse" />
 							</div>
 
 							<button type="button" class="btn-Add-Container-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
-							<button type="button" class="btn-Add-Container-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
+					  		<button type="button" class="btn-Add-Container-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> alert</button>
+
 					  	</div>
-
-
-						
-					    <table class="table " style="width: 3000px;" border="1">
+					    <table class="table" style="width: 3000px;" border="1">
 					      <thead>
 						      <tr>
+						      	<th class="">Container Value</th>
 						      	<th>Container Number</th>
+						      	<th class="">Vessel Value</th>
 						        <th>Vessel by JobFile</th>
 						        <th>Number of Cartons</th>
 						        <th>Trucker Plate No.</th>
@@ -388,6 +395,7 @@
 						        <th>Gate In at Port</th>
 						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
+						        <th></th>
 						      </tr>
 					      </thead>
 					    </table>
@@ -656,9 +664,6 @@ $('.table-add-truck').click(function () {
   truck.find('table').append($clone);
 });
 
-$('.table-remove-truck').click(function () {
-  $(this).parents('tr').detach();
-});
 
 </script>
 
@@ -669,15 +674,9 @@ Container Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var container = $('#tableAddContainer');
-
-$('.table-add-cont').click(function () {
-  var $clone = container.find('tr.hide').clone(true).removeClass('hide table-line');
-  container.find('table').append($clone);
-});
 
 $('.table-remove-cont').click(function () {
-  $(this).parents('tr').detach();
+  $(this).parents('tr:last').remove();
 });
 
 </script>
@@ -744,18 +743,64 @@ $(document).ready(function(){
 
 <script>
 	
+	$(function(){
+  
+    
+   /* $(".deleteButton").click(function(){
+        $(this).closest("tr").remove();
+    });*/
+
+    $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
+
+    	$(this).closest("tr").remove();
+
+	});
+	$('#tableAddTruck-mnla').on('click', '.deleteButton', function() {
+
+    	$(this).closest("tr").remove();
+
+	});
+});
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-mnla").click(function(){
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td></tr>');
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".cont-data").val());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".vsl-jbfl").val());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".cartons").val());
+			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		});
 
+	
 
+
+		$(".btn-Add-Product-Data-mnla").click(function(){
+			$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
+			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".colsel").val());
+			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".colsel option:selected").text());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".PON").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val());
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		});
 		
-		        
-		    $(".btn-Add-Container-Alert-mnla").click(function(){
+
+		$(".btn-Add-Container-Alert-mnla").click(function(){
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 
 				    table.find('tr').each(function (i) {
@@ -769,6 +814,22 @@ $(document).ready(function(){
 				              + '\nCartons: ' + Quantity);
 				    });
 		    });
+		       
+		       $(".btn-Add-Product-Alert-mnla").click(function(){
+		    	  var table = $("#tableAddTruck-mnla table tbody");
+
+				    table.find('tr').each(function (i) {
+				        var $tds = $(this).find('td'),
+				            productId = $tds.eq(0).text(),
+				            product = $tds.eq(1).text(),
+				            Quantity = $tds.eq(2).text();
+				        // do something with productId, product, Quantity
+				        alert('Row ' + (i + 1) + ':\nProduct Name: ' + productId
+				              + '\n Color Value: ' + product
+				              + '\n Color: ' + Quantity);
+				    });
+		    });
+		  
 
 		});
 </script>

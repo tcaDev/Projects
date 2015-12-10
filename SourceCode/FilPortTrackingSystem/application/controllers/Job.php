@@ -18,8 +18,8 @@ class Job extends CI_Controller {
 		 $data =	$this->input->post('ship_id');
 		 $shipper = $this->Jobdata->get_vessel($data);
 
-		echo'<select name="vessel" class="myvessel ">';
-			echo '<option value="0" disabled selected>List of Vessels</option>';		            				       
+		echo'<select name="vessel" id="vess" class="myvessel form-control ">';
+					            				       
 		 foreach ($shipper as $row){
 		 	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
 		 }
@@ -31,9 +31,20 @@ class Job extends CI_Controller {
       <script>
       $('.myvessel').change(function(){
         var id= $(this).val();
-       /* alert(id);*/
+        var text = $(this).find("option:selected").text();
         $('.veselid').val(id);
+
+        $('.veseltext').val(text);
       });
+
+       $('.myvessel').click(function(){
+        var id= $(this).val();
+        var text = $(this).find("option:selected").text();
+        $('.veselid').val(id);
+        $('.veseltext').val(text);
+        
+      });
+
       </script>
 
     <?php }
