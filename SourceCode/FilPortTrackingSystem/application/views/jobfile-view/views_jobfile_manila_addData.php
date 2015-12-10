@@ -203,7 +203,7 @@
 					    <table class="table" style="width: 2000px;">
 					      <tr>
 					        <th>Product Name</th>
-					        <th>Container by Vessel ID</th>
+					       <!--  <th>Container by Vessel ID</th> -->
 					        <th>Color Selectivity</th>
 					        <th>Purchase Order Number</th>
 					        <th>Origin Country ID</th>
@@ -212,10 +212,10 @@
 					      </tr>
 		<!--Products plate is no names yet -->
 					      <tr>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><select class="form-control colsel input-sm" >
-												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
+					        <!-- <td><input type="text" name="products" /></td> -->
+					        <td><input type="text" name="products" /></td>
+					        <td><select name="colors"class="form-control colsel input-sm" >
+												          	<option  value="" disabled selected>Jobfile Status</option>
 															<?php  foreach($color_data as $row){ 
 															   $status = $row->IsBackground;
 															   if($status==1){?> 
@@ -227,9 +227,18 @@
 											                </option> 
 											             	<?php }?>
 												        </select></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
+					       
+					        <td><input type="text" name="purch_order_no" /></td>
+					        <td>
+					        	<select name="countries">
+					        		<?php foreach($countries as $row){ ?>
+					        		 <option value="<?php echo $row->CountryId?>">
+					        		 <?php echo $row->CountryName;?>
+					        		 </option>
+					        		<?php }?> 
+					        	</select>		
+					        </td>
+					        <td><input type="text" name="city" /></td>
 					        <td>
 					          <button type="button" class="btn btn-default table-remove-truck"><span class="table-remove  fa fa-times"></span></button>
 					        </td>
@@ -287,22 +296,29 @@
 					      </tr>
 
 					      <tr>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td ><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
-					        <td><input type="datetime-local" class="form-control input-sm" name=""></td>
+					        <td>
+					            <select name="container">
+					            <?php foreach($container_data as $row){?>
+					                <option value="<?php echo $row->ContainerId;?>"><?php echo $row->ContainerNo;?></option>
+					             <?php }?>
+					            </select>
+					        </td>
+
+					        <td contenteditable="true">Untitled</td>  
+					        <td><input type="text" name="cartons"/></td>
+					        <td><input type="text" name="plateno" /></td>
+					        <td><input type="text" name="truckername" /></td>
+					        <td ><input type="datetime-local" class="form-control input-sm" name="etd"></td>
+					        <td ><input type="datetime-local" class="form-control input-sm" name="eta"></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name="ata"></td>
+					        <td><input type="text" name="start_storage" /></td>
+					        <td><input type="text" name="start_demorage" /></td>
+					        <td><input type="text" name="lodging"/></td>
+					        <td><input type="text" name="hauler"/></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name="tdt"></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name="gip"></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name="gop"></td>
+					        <td><input type="datetime-local" class="form-control input-sm" name="adtw"></td>
 					        <td>
 					      	  <button type="button" class="btn btn-default table-remove-cont"><span class="table-remove  fa fa-times"></span></button>
 					          

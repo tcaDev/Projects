@@ -202,6 +202,12 @@ Class User extends CI_Model
     $query=$this->db->get();
     return $query->result();
   }
+ function dropdown_container(){
+    $this->db->select('*');
+    $this ->db -> from('Container');
+    $query=$this->db->get();
+    return $query->result();
+  }
 
 
 
