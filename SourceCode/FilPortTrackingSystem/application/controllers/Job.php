@@ -126,6 +126,12 @@ class Job extends CI_Controller {
            $id = 'VesselByJobFileId';  
          $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
           //for getting the last insert in P_VesselByJobFileId end
+
+          //for getting the last insert in P_VesselByJobFileId start
+           $table ='ContainerByVessel';
+           $id = 'ContainerByVesselId';  
+         $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
            
            
 
@@ -144,10 +150,12 @@ class Job extends CI_Controller {
         $dtSent              =  $this->input->post('dtSent');
         $truckername         =  $this->input->post('truckername');
 
-         $container         =  $this->input->post('container');
+         $container         =  $this->input->post('container_nos');
          $lodging           =  $this->input->post('lodging');
         
-     
+        //vessell by jobfile
+         //drop down in container TAB
+        $vessels=  $this->input->post('vessels'); 
 
                      $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
@@ -183,15 +191,17 @@ class Job extends CI_Controller {
               $countries = $this->input->post('countries');
               $city = $this->input->post('city');
               $status = $this->input->post('colors');
+              $dt_boc = $this->input->post('dt_boc'); 
               
 
-                $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
+                $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
                   'P_ProductName'         => $products,   //ongoing    ///    auto incre in the table
-                  'P_ContainerByVesselId' => $container ,    // last inserted id from VesselByJobFIle table
+                  'P_ContainerByVesselId' => $ContainerByVesselId ,    // last inserted id from VesselByJobFIle table
                   'P_StatusId'            => $status,
                   'P_PurchaseOrderNo'     => $purch_order_no,
+                  'P_DateBOCCLeared'      => $dt_boc,
                   'P_Origin_CountryId'    => $countries,
                   'P_Origin_City'         => $city,
                   'P_UserId'              => $userid

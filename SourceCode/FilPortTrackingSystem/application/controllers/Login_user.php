@@ -131,6 +131,7 @@ class Login_user extends CI_Controller {
 
 		    // drop down in add data form in jofile start
 		    $data['shipper_data']   = $this->User->dropdown_shipper();
+		    $data['vessel_data']   = $this->User->settings_vessel();
 		    $data['container_data']   = $this->User->dropdown_container();
 		    $data['consignee_data'] = $this->User->dropdown_consignee();
 		    $data['broker_data']    = $this->User->dropdown_broker();

@@ -54,10 +54,10 @@
 							   </div>
 								   	
 					
-								<div class="form-group">
+						<!-- 		<div class="form-group">
 								  <label for="pipo">PI / PO No.:</label>
 								  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
-								 </div>
+								 </div> -->
 
 								<div class="form-group">
 								  <label for="hbl">House Bill of Landing No.:</label>
@@ -248,8 +248,8 @@
 					      <tr class="hide">
 					        <td contenteditable="true">Untitled</td>
 					        <td contenteditable="true">Untitled</td>
-					        <td><select class="form-control colsel input-sm" >
-												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
+					        <td><select  name="colors" class="form-control colsel input-sm" >
+												          	<option  value="" disabled selected>Jobfile Status</option>
 															<?php  foreach($color_data as $row){ 
 															   $status = $row->IsBackground;
 															   if($status==1){?> 
@@ -296,15 +296,23 @@
 					      </tr>
 
 					      <tr>
+					      <!--for container -->
 					        <td>
-					            <select name="container">
+					            <select name="container_nos">
 					            <?php foreach($container_data as $row){?>
 					                <option value="<?php echo $row->ContainerId;?>"><?php echo $row->ContainerNo;?></option>
 					             <?php }?>
 					            </select>
 					        </td>
+					       <!--for shippervessel -->
+					        <td>
+					            <select name="vessels">
+					            <?php foreach($vessel_data as $row){?>
+					                <option value="<?php echo $row->ShipperVesselId;?>"><?php echo $row->Vesselname;?></option>
+					             <?php }?>
+					            </select>
+					        </td> 
 
-					        <td contenteditable="true">Untitled</td>  
 					        <td><input type="text" name="cartons"/></td>
 					        <td><input type="text" name="plateno" /></td>
 					        <td><input type="text" name="truckername" /></td>
@@ -679,4 +687,5 @@ $('.test_data').click(function(){
 
 
 </script>
+
 
