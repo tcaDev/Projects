@@ -212,11 +212,13 @@ class Update extends CI_Controller {
 		$legend_id 	    = 	$this->input->post('legend_id');
 		$name 			= 	$this->input->post('name');
 	    $description    = 	$this->input->post('legend_descrip');
-		$legend_color 	= 	$this->input->post('legend_color');
+	    $background 	=	$this->input->post('legend_backg');
+ 		$legend_color 	= 	$this->input->post('legend_color');
 
 
    		 $query= $this->db->query("Select * from Status where
      		  StatusName='$name' and Description='$description' and
+     		  IsBackground='$background' and
      		  ColorCode='$legend_color' limit 1");
     
           if($query->num_rows() ==1){
