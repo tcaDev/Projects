@@ -284,7 +284,7 @@
 	    <div>
 		<div class="con-shiptxt ">
 
-		<div class="col-lg-9">
+		<div class="col-lg-10">
 			<ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 		    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
