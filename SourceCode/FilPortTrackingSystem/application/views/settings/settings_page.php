@@ -281,9 +281,18 @@
 				
 		</script>
 	     <!--For  pagination end -->
-
-		<div class="con-shiptxt">
-		  <ul class="nav nav-pills pull-left">
+	    
+		<div class="con-shiptxt col-lg-12">
+				<div class="input-group pull-right col-lg-2">
+	            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
+	            <span class="input-group-btn">
+	                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
+	                    <span class=" glyphicon glyphicon-search"></span>
+	                </button>
+	            </span>
+	        </div>
+		<div class="col-lg-9">
+			<ul class="nav nav-pills pull-left">
 		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 		    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 		    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
@@ -292,17 +301,11 @@
 		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder Warehouse</a></li>
 		    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
 		    <li><a data-toggle="tab" href=".container"				    id="form_container">Container</a></li>
-		
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
-		 	<div class="input-group col-md-6 pull-right" style="width: 27%;">
-	            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
-	            <span class="input-group-btn">
-	                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
-	                    <span class=" glyphicon glyphicon-search"></span>
-	                </button>
-	            </span>
-	        </div>
+
+		  </div>
+	    </div>
 		</div>
             <div class="con-ship tab-content"> 
                <!--FOr consignee data view  start--> 
@@ -1040,11 +1043,3 @@
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
-				      
-				    </div>
-			    </div>
-</body>
-</html>
-
-
-          
