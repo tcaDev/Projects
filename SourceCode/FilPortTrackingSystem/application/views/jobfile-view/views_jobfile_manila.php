@@ -89,7 +89,7 @@
 				    <table class="table table_manila table-striped table-bordered table-hover table-condensed order-tablejob" style="width:7000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
-								        
+								          
 								          <th > No. </th>
 								          <th > Update </th>
 								          <th >Jobfile Number</th>
@@ -174,7 +174,8 @@
 				        					$i++;
 				        				?>
 				            <tr>
-								         
+								         <td class="list_goods hidden"><?php echo $row->ContainerByVesselId;?>   </td>
+								         <td class="list_containers hidden "><?php echo $row->VesselByJobFileId;?>   </td>
 								          <td><?php echo $i;?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
 
@@ -187,7 +188,7 @@
 
 								          <td><?php echo $row->ContainerSize; ?></td>
 
-								          <td><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
+								          <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 
 								          <td><?php echo $row->PurchaseOrderNo; ?></td>
 
@@ -195,7 +196,7 @@
 
 								          <td><?php echo $row->MasterBillLadingNo; ?></td>
 
-								          <td><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
+								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
 
 								          <td><?php echo $row->Origin; ?></td>
 
@@ -265,6 +266,113 @@
 			 
 		  	</div>
 		</div>
+
+
+		<!--pop up for goods start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewgoods" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Products</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_products"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+
+		<!--pop up for containers start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewcontainers" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Containers</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_conts"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+ 
+
+
+<script>
+$(document).ready(function(){
+
+	//for getting the product goods
+ $('.view_goods').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(0)').text();
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_goods');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_products').html(data);
+					});
+ });
+
+
+  $('.view_containers').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(1)').text();
+ 		alert(ids);
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_containers');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_conts').html(data);
+					});
+ });
+
+
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--end -->
 
 <script>
 

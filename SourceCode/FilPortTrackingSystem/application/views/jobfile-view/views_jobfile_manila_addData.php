@@ -26,7 +26,7 @@
 
 				           <div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:</label>   <span class="check_jobfiles"></span>
+				           		<label for="jbfl">JobFile No.:</label>   <span id="check_jobfiles"></span>
 								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 				           </div>
 				  				
@@ -719,7 +719,7 @@ $(document).ready(function(){
 			  		data: { jobfile:jobfile}
 			})
 			.done(function(data) {
-		   		 	   $('.check_jobfiles').html(data);
+		   		 	   $('#check_jobfiles').html(data);
 				});
 
  }

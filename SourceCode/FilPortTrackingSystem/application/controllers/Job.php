@@ -44,12 +44,72 @@ class Job extends CI_Controller {
           JobFile where JobFileId='$jobfile' limit 1");
             
           if($query->num_rows() ==1){
-            echo  "<p>Jobfile is already exists</p>";     
+            echo  "Jobfile is already exists";     
           }else{
-             echo "<p>Jobfile is available</p>"; 
+             echo "Jobfile is available"; 
           }
 
     }
+
+    function get_goods(){
+      $products =  $this->input->post('id');   
+      $product  = $this->Jobdata->get_goods($products);
+
+     
+            
+    if($product==NULL){
+          echo    '<center><span style="color:red">No Goods Yet </span></center>';
+    }else{
+         echo "<table class='table-bordered'>
+              <tr>
+                   <th>No.</th>
+                   <th>Product Name</th>
+              </tr>";
+
+          $i=0;
+         foreach($product as $row){
+          $i++;
+             echo "<tr>";
+             echo "<td> ".$i." </td>";
+             echo "<td class='row'>".$row->ProductName."</td>";
+             echo "</tr>";
+         }
+
+         echo "</table>";
+    }
+
+
+
+    }
+
+  function get_containers(){
+   $containers =  $this->input->post('id'); 
+   $container  = $this->Jobdata->get_goods($products);
+
+    if($container==NULL){
+          echo    '<center><span style="color:red">No Containers Yet </span></center>';
+    }else{
+         echo "<table class='table-bordered'>
+              <tr>
+                   <th>No.</th>
+                   <th>Product Name</th>
+              </tr>";
+
+          $i=0;
+         foreach($container as $row){
+          $i++;
+             echo "<tr>";
+             echo "<td> ".$i." </td>";
+             echo "<td class='row'>".$row->ContainerNo."</td>";
+             echo "<td class='row'>".$row->ContainerNo."</td>";
+             echo "<td class='row'>".$row->ContainerNo."</td>";
+             echo "</tr>";
+         }
+
+         echo "</table>";
+    }
+
+  }
 
 
 

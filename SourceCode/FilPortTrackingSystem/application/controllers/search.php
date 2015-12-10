@@ -596,7 +596,7 @@ if(isset($_SESSION['success'])){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_broker/", 
+                                        $.post( window.location.href + "/Delete_datas/del_broker/", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -720,7 +720,7 @@ function search_shipper(){
 			     if(id!=0){
 			  	  	$.ajax({
 						  method: "POST",
-					 	  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
+					 	  url: window.location.href + "/Login_user/select_country",
 					  	  data: { countryid:id,
 					  		  conname:country 	  		  
 					  		}
@@ -747,7 +747,7 @@ function search_shipper(){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_shipper/", 
+                                        $.post( window.location.href + "/Delete_datas/del_shipper/", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -776,7 +776,7 @@ function search_shipper(){
 
 						$.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/search/shippercon/",
+					  url: window.location.href + "/search/shippercon/",
 					  data: { cons:con}
 					})
 					  .done(function(data) {
@@ -789,7 +789,7 @@ function search_shipper(){
 	  var id    = $(this).closest('tr').children('td:eq(0)').text();
 	 	  $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/search/vessel_shipper/",
+					  url: window.location.href + "/search/vessel_shipper/",
 					  data: { id:id}
 					})
 					  .done(function(data) {
@@ -873,7 +873,7 @@ function search_vessel(){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_vessel", 
+                                        $.post( window.location.href + "/Delete_datas/del_vessel", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -984,7 +984,7 @@ $this->message();
 		        confirmButtonClass: 'btn-info',
 		        cancelButton: 'No',
 		        confirm: function () {            
-		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_haulers", 
+		            $.post( window.location.href + "/Delete_datas/del_haulers", 
 		            	{ 
 		            	  id:delete_id
 		            	})
@@ -1075,7 +1075,7 @@ $this->message();
 		        confirmButtonClass: 'btn-info',
 		        cancelButton: 'No',
 		        confirm: function () {            
-		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_forward", 
+		            $.post( window.location.href + "/Delete_datas/del_forward", 
 		            	{ 
 		            	  id:delete_id
 		            	})
@@ -1176,7 +1176,7 @@ $this->message();
 		        confirmButtonClass: 'btn-info',
 		        cancelButton: 'No',
 		        confirm: function () {            
-		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_legend", 
+		            $.post( window.location.href + "/Delete_datas/del_legend", 
 		            	{ 
 		            	  id:delete_id
 		            	})
@@ -1333,7 +1333,7 @@ $this->message();
 		        confirmButtonClass: 'btn-info',
 		        cancelButton: 'No',
 		        confirm: function () {            
-		            $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_container", 
+		            $.post( window.location.href + "/Delete_datas/del_container", 
 		            	{ 
 		            	  id:delete_id
 		            	})

@@ -22,6 +22,15 @@ function getLastInserted($table, $id) {
  }
 
 
+ function get_goods($products){
+    $this->  db ->select('*');
+    $this -> db -> from('Products');
+    $this -> db ->where('ContainerByVesselId', $products);
+    $query=$this->db->get();
+    return $query->result();
+ }
+
+
 
 }
 
