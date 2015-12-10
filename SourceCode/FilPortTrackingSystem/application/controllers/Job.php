@@ -8,9 +8,6 @@ class Job extends CI_Controller {
        {
             parent::__construct();
            	$this->load->model('Jobdata');
-            $this->load->helper('html');
-            $this->load->model('User'); 
-            $this->load->library('form_validation');
        }
 
   // for jobfile 
@@ -42,40 +39,8 @@ class Job extends CI_Controller {
     <?php }
 
 
- function jofile_data(){
 
-       
-
-   if($this->form_validation->run() == FALSE){
-
-        $data['tab'] = "JobFile Monitoring - Sea";
-        $session_data = $this->session->userdata('logged_in');
-        $data['username'] = $session_data['username'];
-        $data['email'] =  $session_data['email'];
-        $data['fname'] = $session_data['fname'];
-        $data['mname'] = $session_data['mname'];
-        $data['lname'] = $session_data['lname'];
-        $data['img'] = $session_data['img'];
-
-        // drop down in add data form in jofile start
-        $data['shipper_data']   = $this->User->dropdown_shipper();
-        $data['vessel_data']   = $this->User->settings_vessel();
-        $data['container_data']   = $this->User->dropdown_container();
-        $data['consignee_data'] = $this->User->dropdown_consignee();
-        $data['broker_data']    = $this->User->dropdown_broker();
-        $data['color_data']    = $this->User->dropdown_colors();
-        $data['hauler_data']    = $this->User->dropdown_hauler();
-        $data['countries']   =  $this->User->countries();
-        // drop down in add data form in jofile end
-
-        /* get status*/
-        $data['status'] =     $this->User->get_status();
-        
-        /*Jobfile manila*/
-        $data['manila']    = $this->User->get_jobfile_manila();
-        $this->load->view('header/header',$data);
-        $this->load->view('jobfile-view/views_jobfile' , $data);
-  }else{
+     function jofile_data(){
 
            $job = $this->input->post('jbfl');
            $consignee = $this->input->post('consignee');
@@ -94,37 +59,20 @@ class Job extends CI_Controller {
            $dt_sent_preassed  =  $this->input->post('dt_sent_preassed');
            $dt_file_entry_boc  =  $this->input->post('dt_file_entry_boc');
            $dt_sent_finalassed  =  $this->input->post('dt_sent_finalassed');
+
+
+           
+           
+          /* $warehouseid  =  $this->input->post('warehouseid');*/
            $DatePaid  =  $this->input->post('dt_paid');
+         /*  $FlightNo  =  $this->input->post('FlightNo');*/
+          /* $P_AirCraftNo  =  $this->input->post('P_AirCraftNo');*/
+        /*   $dt_forwarder  =  $this->input->post('DateReceivedNoticeFromForwarder');
+       */
 
-            $cartons             =  $this->input->post('cartons');
-            $plateno             =  $this->input->post('plateno');
-            $gip                 =  $this->input->post('gip');
-            $gop                 =  $this->input->post('gop');
-            $adtw                =  $this->input->post('adtw');
-            $etd                 =  $this->input->post('etd');
-            $eta                 =  $this->input->post('eta');
-            $ata                 =  $this->input->post('ata');
-            $start_storage       =  $this->input->post('start_storage');
-            $hauler              =  $this->input->post('hauler');
-            $tdt                 =  $this->input->post('tdt');
-            $start_demorage      =  $this->input->post('start_demorage');
-            $dtSent              =  $this->input->post('dtSent');
-            $truckername         =  $this->input->post('truckername');
-            $container           =  $this->input->post('container_nos');
-            $lodging             =  $this->input->post('lodging');
-            $vessel               =  $this->input->post('veselid');
-            $vat                  =  $this->input->post('ves_arrival_time');
-            $vdt                  =  $this->input->post('ves_discharge_time');
-
-            $products = $this->input->post('products');
-            $purch_order_no = $this->input->post('purch_order_no');
-            $countries = $this->input->post('countries');
-            $city = $this->input->post('city');
-            $status = $this->input->post('colors');
-            $dt_boc = $this->input->post('dt_boc'); 
- 
           $session_data = $this->session->userdata('logged_in');
           $userid = $session_data['uid'];
+
 
            $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                           $this->db->query($add_jobfile,
@@ -154,6 +102,13 @@ class Job extends CI_Controller {
                                    'P_UserId'                                => $userid 
                                 ));
 
+
+           $vessel        =  $this->input->post('veselid');
+          
+           $vat           =  $this->input->post('ves_arrival_time');
+           $vdt           =  $this->input->post('ves_discharge_time');
+
+           
            $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
              $this->db->query($add_vessel,
               array(
@@ -179,37 +134,66 @@ class Job extends CI_Controller {
           //for getting the last insert in P_VesselByJobFileId end
            
            
-    
+
+        $cartons            =  $this->input->post('cartons');
+        $plateno             =  $this->input->post('plateno');
+        $gip                 =  $this->input->post('gip');
+        $gop                 =  $this->input->post('gop');
+        $adtw                =  $this->input->post('adtw');
+        $etd                 =  $this->input->post('etd');
+        $eta                 =  $this->input->post('eta');
+        $ata                 =  $this->input->post('ata');
+        $start_storage       =  $this->input->post('start_storage');
+        $hauler              =  $this->input->post('hauler');
+        $tdt                 =  $this->input->post('tdt');
+        $start_demorage      =  $this->input->post('start_demorage');
+        $dtSent              =  $this->input->post('dtSent');
+        $truckername         =  $this->input->post('truckername');
+
+         $container         =  $this->input->post('container_nos');
+         $lodging           =  $this->input->post('lodging');
+        
         //vessell by jobfile
          //drop down in container TAB
         $vessels=  $this->input->post('vessels'); 
+
                      $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(
-                  'P_ContainerId'              => $container,   //ongoing    ///    auto incre in the table
-                  'P_VesselByJobFileId'        => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
-                  'P_NoOfCartons'              => $cartons,
-                  'P_TruckerPlateNo'           => $plateno,
-                  'P_TruckerName'              => $truckername,
-                  'P_EstDepartureTime'         => $etd,
-                  'P_EstArrivalTime'           => $eta,
-                  'P_ActualArrivalTime'        => $ata,
-                  'P_StartOfStorage'           => $start_storage,
-                  'P_Lodging'                  => $lodging,  //ongoing //container
-                  'P_HaulerId'                 => $hauler,
+                  'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
+                  'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
+                  'P_NoOfCartons'           => $cartons,
+                  'P_TruckerPlateNo'        => $plateno,
+                  'P_TruckerName'           => $truckername,
+                  'P_EstDepartureTime'      => $etd,
+                  'P_EstArrivalTime'        => $eta,
+                  'P_ActualArrivalTime'     => $ata,
+                  'P_StartOfStorage'        => $start_storage,
+                  'P_Lodging'               => $lodging,  //ongoing //container
+                  'P_HaulerId'              => $hauler,
                /*   'P_DateSentPreAssessment' => $dtSent,*/
-                  'P_TargetDeliveryDate'        => $tdt,
-                  'P_GateInAtPort'              => $gip,
-                  'P_GateOutAtPort'             => $gop,
+                  'P_TargetDeliveryDate'    => $tdt,
+                  'P_GateInAtPort'          => $gip,
+                  'P_GateOutAtPort'         => $gop,
                   'P_ActualDeliveryAtWarehouse' =>$adtw,
                   'P_StartOfDemorage'           =>$start_demorage,
                   'P_UserId'                    => $userid 
+
+
 
              ));
 
 
 
+
+              $products = $this->input->post('products');
+              $purch_order_no = $this->input->post('purch_order_no');
+              $countries = $this->input->post('countries');
+              $city = $this->input->post('city');
+              $status = $this->input->post('colors');
+              $dt_boc = $this->input->post('dt_boc'); 
               
+
                 $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
@@ -221,9 +205,20 @@ class Job extends CI_Controller {
                   'P_Origin_CountryId'    => $countries,
                   'P_Origin_City'         => $city,
                   'P_UserId'              => $userid
+
+
              ));
 
-       }
+
+
+
+              
+
+
+
+
+
+
       }
 }
 

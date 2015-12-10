@@ -69,7 +69,7 @@
 					    
 
 					      <!-- Modal content-->
-
+					      
 					    	<?php $this->load->view('jobfile-view/views_jobfile_manila_addData'); ?>
 
 
