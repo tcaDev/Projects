@@ -388,7 +388,7 @@ function forward(){
 echo '			
 	<div class="forwards tab-pane">
 		<div class="  con-info consig-pos"  data-toggle="collapse" data-target="#forward" style="cursor:pointer">
-			<span style="cursor:pointer" >ADD NEW FOWARDER WAREHOUSE</span>
+			<span style="cursor:pointer" >ADD NEW FOWARDER</span>
 		</div>
 		   <div class="forward consig-posbox collapse" id="forward">
 			<form action="' .base_url('Add_user/add_forward/').'" method="post">
