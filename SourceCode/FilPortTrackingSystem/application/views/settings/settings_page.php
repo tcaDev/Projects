@@ -372,7 +372,7 @@
 
 			<div class="" id="mycontent">
 				<div class="consignees ">
-				<button type="button" class="con-info consig-pos " data-toggle="modal" data-target="#consignee">ADD NEW CONSIGNEE</button>
+				<button type="button" class="con-info consig-pos " data-toggle="modal" data-target="#consignee">ADD CONSIGNEE</button>
 
 					<div class="consignees collapse modal fade consig-posbox add_consignee" id="consignee">
 					  <div class="modal-dialog">
