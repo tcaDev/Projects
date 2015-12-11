@@ -236,8 +236,11 @@ class Update extends CI_Controller {
 		$con_size 	    = 	$this->input->post('con_size');
 
 
-   		 $query= $this->db->query("Select * from Container where
+   	/*	 $query= $this->db->query("Select * from Container where
      		  ContainerNo='$con' and ContainerDescription='$con_descrip' and
+     		  ContainerSize='$con_size' limit 1");*/
+		   $query= $this->db->query("Select * from Container where
+     		  ContainerNo='$con' and
      		  ContainerSize='$con_size' limit 1");
     
           if($query->num_rows() ==1){
