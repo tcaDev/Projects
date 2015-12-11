@@ -45,6 +45,8 @@ class Job extends CI_Controller {
         
       });
 
+
+
       </script>
 
     <?php }
@@ -122,6 +124,174 @@ class Job extends CI_Controller {
 
          echo "</table>";
     }
+
+  }
+
+//for testing function
+  function jobfile_add(){
+
+   $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+
+
+  //for sp_CreateJobFile proc  1st proc
+   $job             =$this->input->post('jbfl');
+   $consignee       =$this->input->post('consignee');
+   $mbl             =$this->input->post('mbl');
+   $mbl2            =$this->input->post('mbl2');   //no insert in db
+   $hbl             =$this->input->post('hbl');
+   $bank            =$this->input->post('bank');
+   $registry        =$this->input->post('registry');
+   $dtRcvd          =$this->input->post('dtRcvd');
+   $dt_pickup_obl   =$this->input->post('dt_pickup_obl');
+   $dt_pickup_docs  =$this->input->post('dt_pickup_docs');
+   $broker          =$this->input->post('broker');
+   $dt_req_budget   =$this->input->post('dt_req_budget');
+   $ref_due_dt      =$this->input->post('ref_due_dt');
+   $dtSent          =$this->input->post('dtSent');
+   $dtFile          =$this->input->post('dtFile');  
+   $dtfinal_assess  =$this->input->post('dtfinal_assess');  
+   $dt_paid         =$this->input->post('dt_paid');
+   $dt_boc          =$this->input->post('dt_boc');    
+   $status          =$this->input->post('status');  //status report in job tab has no insert in db  
+   $entryno         =$this->input->post('entryno'); 
+ 
+
+  //for sp_AddVesselByJobFile   2nd proc
+   $vessel          =  $this->input->post('vesselid');
+   $cartons         =  $this->input->post('cartons_no');
+   $vat             =$this->input->post('vat');
+   $vdt             =$this->input->post('vdt');
+
+
+ //for sp_AddContainerByVessel   3rd proc
+   $container       =  $this->input->post('containerId');
+   $plateno         =  $this->input->post('trucker_plate');
+   $truckername     =  $this->input->post('trucker_name');
+   $edt             =  $this->input->post('edt');
+   $eat             =  $this->input->post('eat');
+   $aat             =  $this->input->post('aat');
+   $start_storage   =  $this->input->post('start_storage');
+   $start_demorage  =  $this->input->post('start_demorage');
+   $lodging         =  $this->input->post('lodging');
+   $tdt             =  $this->input->post('tdt');
+   $gip             =  $this->input->post('gip');
+   $gop             =  $this->input->post('gop');
+   $adw             =  $this->input->post('adw');
+
+
+
+
+
+         
+            //first proc
+             $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $this->db->query($add_jobfile,
+                  array(
+                         'P_JobFileID'                             =>$job,           
+                         'P_ConsigneeId'                           =>$consignee,
+                         'P_BrokerID'                              =>$broker,
+                         'P_MonitoringTypeId'                      =>1,
+                         'P_RefEntryNo'                            =>$entryno,
+                         'P_Registry'                              =>$registry,            
+                         'P_HouseBillLadingNo'                     =>$hbl,
+                         'P_MasterBillLadingNo'                    =>$mbl,
+                         'P_LetterCreditFromBank'                  =>$bank,
+                         'P_DateSentPreAssessment'                 =>$dtSent,                  
+                         'P_DateFileEntryToBOC'                    =>$dtFile,
+                         'P_DateSentFinalAssessment'               =>$dtfinal_assess,
+                         'P_DateReceivedNoticeFromClients'         =>$dtRcvd,
+                         'P_DateReceivedOfBL'                      =>$dt_pickup_obl,
+                         'P_DateReceivedOfOtherDocs'               =>$dt_pickup_docs,
+                         'P_DateRequestBudgetToGL'                 =>$dt_req_budget,
+                         'P_RFPDueDate'                            =>$ref_due_dt,
+                         'P_ForwarderWarehouseId'                  =>NULL, //dropdown from master data for air only
+                         'P_DatePaid'                              =>$dt_paid,
+                         'P_FlightNo'                              =>NULL,                    
+                         'P_AirCraftNo'                            =>NULL,
+                         'P_DateReceivedNoticeFromForwarder'       =>NULL,
+                         'P_UserId'                                => $userid 
+                      ));
+            //
+
+            //2nd proc
+            $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
+             $this->db->query($add_vessel,
+              array(
+                  'P_JobFileId'           => $job,
+                  'P_ShipperVesselId'     => $vessel,
+                  'P_VesselArrivalTime'   => $vat,
+                  'P_VesselDischargeTime' => $vdt,
+                  'P_UserId'              => $userid
+            ));
+
+       //for getting the last insert in P_VesselByJobFileId start
+           $table ='VesselByJobFile';
+           $id    ='VesselByJobFileId';  
+             $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
+
+
+         //3rd proc
+         $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+         $this->db->query($containerbyvessel,
+          array(
+              'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
+              'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
+              'P_NoOfCartons'           => $cartons,
+              'P_TruckerPlateNo'        => $plateno,
+              'P_TruckerName'           => $truckername,
+              'P_EstDepartureTime'      => $edt,
+              'P_EstArrivalTime'        => $eat,
+              'P_ActualArrivalTime'     => $aat,
+              'P_StartOfStorage'        => $start_storage,
+              'P_Lodging'               => $lodging,  
+              'P_HaulerId'              => NULL,      //
+/*              'P_DateSentPreAssessment' => $dtSent,*/
+              'P_TargetDeliveryDate'    => $tdt,
+              'P_GateInAtPort'          => $gip,
+              'P_GateOutAtPort'         => $gop,
+              'P_ActualDeliveryAtWarehouse' =>$adw,
+              'P_StartOfDemorage'           =>$start_demorage,
+              'P_UserId'                    => $userid 
+
+         ));
+
+
+  }
+
+  function jobfile_add2(){
+   $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+      //for sp_AddProducts   4th proc
+   $product_name         =  $this->input->post('product_name');
+   $color_id             =  $this->input->post('color_id');
+   $prod_orderno        =  $this->input->post('prod_orderno');
+   $origin_id            =  $this->input->post('origin_id');
+   $origin_cty           =  $this->input->post('origin_cty');
+ /*  $dt_boc               =  $this->input->post('dt_boc');*/
+ /*  $status               =  $this->input->post('status');*/ // no insert for status haha check it please xd
+          //for getting the last insert in P_VesselByJobFileId start
+           $table ='ContainerByVessel';
+           $id    = 'ContainerByVesselId';  
+           $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
+          //for getting the last insert in P_VesselByJobFileId end
+
+        //4th proc
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
+             $this->db->query($addproducts,
+              array(
+                  'P_ProductName'         => $product_name,   
+                  'P_ContainerByVesselId' => $ContainerByVesselId ,    // last inserted id from VesselByJobFIle table
+                  'P_StatusId'            => $color_id,   //color code
+                  'P_DateBOCCLeared'      => NULL,
+                  'P_PurchaseOrderNo'     => $prod_orderno,
+                  'P_Origin_CountryId'    => $origin_id,
+                  'P_Origin_City'         => $origin_cty,
+                  'P_UserId'              => $userid
+
+             ));
+
 
   }
 
@@ -223,7 +393,7 @@ class Job extends CI_Controller {
 
          //for getting the last insert in P_VesselByJobFileId start
            $table ='VesselByJobFile';
-           $id = 'VesselByJobFileId';  
+           $id    ='VesselByJobFileId';  
          $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
           //for getting the last insert in P_VesselByJobFileId end
 
@@ -273,7 +443,7 @@ class Job extends CI_Controller {
               array(
                   'P_ProductName'         => $products,   //ongoing    ///    auto incre in the table
                   'P_ContainerByVesselId' => $ContainerByVesselId ,    // last inserted id from VesselByJobFIle table
-                  'P_StatusId'            => $status,
+                  'P_StatusId'            => $color_id,  //status
                   'P_DateBOCCLeared'      => $dt_boc,
                   'P_PurchaseOrderNo'     => $purch_order_no,
                   'P_Origin_CountryId'    => $countries,

@@ -27,12 +27,12 @@
 				           <div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:</label>   <span id="check_jobfiles"></span>
-								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl" onchange="search_jobfile(this)">
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onblur ="search_jobfile(this)">
 				           </div>
 				  				
 				           <div class="form-group">
 							 	 <label for="shipper">Shipper:</label>
-								  		<select name="shipper" id="shipper" class="form-control input-sm">
+								  		<select name="shipper" id="shipper" class="form-control input-sm shipper">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
 							                <option value="<?php echo $row->ShipperId ?>">
@@ -44,7 +44,7 @@
 
 						     <div class="form-group">
 								  <label for="consignee">Consignee:</label>
-								  		<select name="consignee" class="form-control input-sm">
+								  		<select name="consignee" class="form-control input-sm consignee">
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
 							                <option value="<?php echo $row->ConsigneeId ?>">
@@ -62,22 +62,22 @@
 
 								<div class="form-group">
 								  <label for="hbl">House Bill of Landing No.:</label>
-								  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
+								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
 								</div>
 
 								<div class="form-group">
 								  <label for="mbl">Master Bill of Landing No1.:</label>
-								  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
+								  <input type="text" class="form-control input-sm mbl" name="mbl" id="mbl">
 								 </div>
 
 								<div class="form-group">
 								  <label for="mbl">Master Bill of Landing No2.:</label>
-								  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
+								  <input type="text" class="form-control input-sm text-uppercase mbl2" name="mbl2" placeholder="optional" id="mbl2">
 								</div>
 
 								<div class="form-group">
 								  <label for="bank">Letter of Credit No. from Bank:</label>
-								  <input type="text" class="form-control input-sm " name="bank" id="bank">
+								  <input type="text" class="form-control input-sm bank" name="bank" id="bank">
 								</div>
 						</div>
 
@@ -85,7 +85,7 @@
 
 								<div class="form-group">
 								  <label for="registry">Registry:</label>
-								  <input type="text" class="form-control input-sm" name="registry" id="registry">
+								  <input type="text" class="form-control input-sm registry" name="registry" id="registry">
 								</div>
 
 								<div class="form-group">
@@ -98,33 +98,33 @@
 
 								 <div class="form-group">
 								  	<label for="dtClrd">Vessel Arrival Time</label>
-								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm">
+								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
 								 </div>
 
 								<div class="form-group">	 
 								    <label for="dtClrd">Vessel Discharge Time</label>
-								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm">
+								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
 								 </div>
 
 								<div class="form-group">
 								  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
-								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" >
+								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm dtRcvd" >
 								</div>
 
 								<div class="form-group">
 								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
-								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm" >
+								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm dt_pickup_obl" >
 								</div>
 
 								<div class="form-group">
 								  <label for="dtPckRcv">Date Pick-up / Recieved Other Document :</label>
-								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
+								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm dt_pickup_docs" >
 								 </div>
 								 	
 
 								 <div class="form-group">
 									 <label for="broker">Broker:</label>
-							  			<select name="broker" id="vsl"class="form-control input-sm">
+							  			<select name="broker"id="Broker"class="form-control input-sm broker">
 							            	<?php  foreach($broker_data as $row){  ?> 
 							                <option value="<?php echo $row->BrokerId ?>">
 							                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
@@ -163,7 +163,7 @@
 
 								 <div class="form-group">
 									 <label for="dtSent">Date Sent Pre-Assess:</label>
-									 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent">
+									 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent-preassess">
 								</div>
 
 								<div class="form-group">
@@ -173,27 +173,27 @@
 
 								<div class="form-group">
 								 	<label for="dtSent">Date Sent Final-Assess:</label>
-								 	<input type="date" name="dt_sent_finalassed" class="form-control input-sm" id="dtSent">
+								 	<input type="date" name="dt_sent_finalassed" class="form-control input-sm" id="dtfinal-assess">
 								</div>
 
 								<div class="form-group">
 								 	<label for="dtClrd">Reference Entry No.:</label>
-								 	<input type="text" name="entryno" class="form-control input-sm">
+								 	<input type="text" name="entryno" class="form-control input-sm " id="entryno">
 								</div>
 
 							     <div class="form-group">
 								 	 <label for="dtPaid">Date Paid(Date& Time):</label>
-									  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
+									  <input type="datetime-local" name="dt_paid" class="form-control input-sm " id="dt_paid">
 								 </div>
 
 								 <div class="form-group">
 								  	<label for="dtClrd">Date Cleared BOC:</label>
-								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm">
+								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
 								 </div>
 
 								 <div class="form-group">
 								   <label for="status">Status Report:</label>
-								  	<input type="text" name="status" class="form-control input-sm">
+								  	<input type="text" name="status" class="form-control input-sm status" id="status">
 								 </div>
 				  			</div>
 				  		</div>
@@ -210,7 +210,7 @@
 
 							<div class="form-group">
 								<label>Container Number</label>
-									<select name="colors" class="form-control colsel input-sm" >
+									<select name="colors" class="form-control colsel input-sm colors" >
 									  	<option  value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->IsBackground;
@@ -257,10 +257,10 @@
 						    <thead>
 						    	 <tr>
 							        <th>Product Name</th>
-							        <th class="">Color Value</th>
+							        <th class="hidden">Color Value</th>
 							        <th>Color Selectivity</th>
 							        <th>Purchase Order Number</th>
-							        <th class="">Origin Value</th>
+							        <th class="hidden">Origin Value</th>
 							        <th>Origin Country ID</th>
 							        <th>Origin City</th>
 							        <th></th>
@@ -288,7 +288,7 @@
 
 							<div class="form-group">
 								<input type="text" name="veselid" class="veselid">
-				  				  <input type="text" name="veselid" class="veseltext">
+				  				<input type="text" name="veselid" class="veseltext">
 								<label>Vessel by JobFile</label>
 									<div class="vesel" ></div>
 							</div>
@@ -362,7 +362,7 @@
 
 							<div class="form-group">
 								<label>Gate Out at Port</label>
-								<input type="datetime-local" name="gtoutport" class="form-control input-sm gtouport" />
+								<input type="datetime-local" name="gtoutport" class="form-control input-sm gtoutport" />
 							</div>
 
 							<div class="form-group">
@@ -377,9 +377,9 @@
 					    <table class="table" style="width: 3000px;" border="1">
 					      <thead>
 						      <tr>
-						      	<th class="">Container Value</th>
+						      	<th class="hidden">Container Value</th>
 						      	<th>Container Number</th>
-						      	<th class="">Vessel Value</th>
+						      	<th class="hidden">Vessel Value</th>
 						        <th>Vessel by JobFile</th>
 						        <th>Number of Cartons</th>
 						        <th>Trucker Plate No.</th>
@@ -516,6 +516,7 @@
 
     <div class="footer-modal" >
     <hr>
+     <button type="button" class="btn btn-danger container_insert">test insert</button>
       <button type="button" class="btn btn-danger btn-Next">Next</button>
       <button type="submit" class="hidden btn btn-danger test_data" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -549,6 +550,9 @@
 		*/
 
 		$('#btn-container-mnla-add').on('click',function(){
+		
+
+
 			$(this).addClass('active');
 			$('#btn-jobfile-mnla-add').removeClass('active');
 			$('#btn-truck-mnla-add').removeClass('active');
@@ -764,9 +768,9 @@ $(document).ready(function(){
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-mnla").click(function(){
 			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
 	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
@@ -790,18 +794,18 @@ $(document).ready(function(){
 		$(".btn-Add-Product-Data-mnla").click(function(){
 			$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".colsel").val());
+			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".colsel").val()).hide();
 			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".colsel option:selected").text());
 			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".PON").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
 			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
 			       $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
 			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		});
 		
 
-		$(".btn-Add-Container-Alert-mnla").click(function(){
-		    	  var table = $("#tableAddContainer-mnla table tbody");
+		$(".btn-Add-Product-Alert-mnla").click(function(){
+		    	  var table = $("#tableAddTruck-mnla table tbody");
 
 				    table.find('tr').each(function (i) {
 				        var $tds = $(this).find('td'),
@@ -815,21 +819,194 @@ $(document).ready(function(){
 				    });
 		    });
 		       
-		       $(".btn-Add-Product-Alert-mnla").click(function(){
-		    	  var table = $("#tableAddTruck-mnla table tbody");
 
-				    table.find('tr').each(function (i) {
-				        var $tds = $(this).find('td'),
-				            productId = $tds.eq(0).text(),
-				            product = $tds.eq(1).text(),
-				            Quantity = $tds.eq(2).text();
-				        // do something with productId, product, Quantity
-				        alert('Row ' + (i + 1) + ':\nProduct Name: ' + productId
-				              + '\n Color Value: ' + product
-				              + '\n Color: ' + Quantity);
-				    });
-		    });
 		  
 
 		});
+</script>
+
+<script>
+	
+
+</script>
+
+
+<script>
+	//for testing of multiple insert of containers
+	$(".container_insert").click(function(){    
+       var jbfl       = $('.jobfiles').val();
+       var shipper 	  = $('.shipper').val();
+       var consignee  = $('.consignee').val();
+       var mbl 		  = $('.mbl').val();
+       var mbl2 	  = $('.mbl2').val();
+       var hbl 	 	  = $('.hbl').val(); 
+       var bank       = $('.bank').val();
+       var registry   = $('.registry').val(); 
+       var vat 		  = $('.vat').val();
+       var vdt        = $('.vdt').val();
+       var dtRcvd     = $('.dtRcvd').val();
+       var dt_pickup_obl  = $('.dt_pickup_obl').val();  
+ 	   var dt_pickup_docs = $('.dt_pickup_docs').val();  
+       var broker         =  $('.broker').val();
+       var dt_req_budget  =  $('#dtReq').val();
+       var ref_due_dt     =  $('#rfp').val();
+       var dtSent  		  =  $('#dtSent-preassess').val();
+ 	   var dtFile  		  =  $('#dtFile').val();
+ 	   var dtfinal_assess =  $('#dtfinal-assess').val();
+ 	   var dt_paid        =  $('#dt_paid').val();
+ 	   var dtfinal_assess =  $('#dtfinal-assess').val();
+ 	   var dt_boc        =   $('#dt_boc').val();
+       var status        =   $('#status').val();
+       var entryno        =  $('#entryno').val();
+
+       
+
+       
+
+
+
+
+
+
+       //for containers table
+		    	  var table = $("#tableAddContainer-mnla table tbody");
+
+		table.find('tr').each(function (i) {
+				        var $tds = $(this).find('td'),
+				            containerId 	= $tds.eq(0).text(),
+				            vesselid    	= $tds.eq(2).text();
+				          	cartons_no  	= $tds.eq(4).text(); 
+				        	trucker_plate   = $tds.eq(5).text(); 
+
+				            trucker_name 	= $tds.eq(6).text(),
+				            edt    	        = $tds.eq(7).text();
+				           	eat  			= $tds.eq(8).text(); 
+				          	aat  		   	= $tds.eq(9).text(); 
+				          	start_storage   = $tds.eq(10).text(); 
+
+				            start_demorage 	= $tds.eq(11).text(),
+				            lodging    	    = $tds.eq(12).text();
+				        	tdt  			= $tds.eq(13).text(); 
+				        	gip  		   	= $tds.eq(14).text();
+				         	gop  		   	= $tds.eq(15).text(); 
+				         	adw             = $tds.eq(16).text(); 
+
+				    
+		  		$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/jobfile_add');?>",
+			  		data: {
+			  				//from container tab
+			  			    containerId    :containerId,
+			  			    vesselid       :vesselid, 
+			  			    cartons_no	   :cartons_no,
+			  			    trucker_plate  :trucker_plate,
+			  			    trucker_name   :trucker_name,
+			  			    edt            :edt,
+			  			    eat            :eat,
+			  			    aat            :aat,
+			  			    start_storage  :start_storage,
+			  			    start_demorage :start_demorage,
+			  			    lodging        :lodging,
+			  			    tdt            :tdt,
+			  			    gip            :gip,
+			  			    gop            :gop,
+			  			    adw            :adw,
+			  			   // from description goods tab
+			  			   /* product_name   :product_name,
+			  			    color_id 	   :color_id,
+			  			    prod_order_no  :prod_order_no,
+			  			    origin_id	   :origin_id,
+			  			    origin_cty	   :origin_cty,*/
+
+
+			  			    //from jobfile tab
+			  			    jbfl 		   :jbfl,
+			  			    shipper        :shipper,
+			  			    consignee      :consignee,
+			  			    mbl		       :mbl,
+			  			    mbl2		   :mbl2,
+			  			    hbl			   :hbl,
+			  			    bank		   :bank,
+			  			    registry	   :registry,
+			  			    vat            :vat,
+			  			    vdt            :vdt,
+			  			    dtRcvd         :dtRcvd,
+			  			    dt_pickup_obl  :dt_pickup_obl,
+			  			    dt_pickup_docs :dt_pickup_docs,
+			  			    broker         :broker,
+			  			    dt_req_budget  :dt_req_budget,
+			  			    ref_due_dt     :ref_due_dt,
+			  			    dtSent         :dtSent,
+			  			    dtFile         :dtFile,
+			  			    dtfinal_assess :dtfinal_assess,
+			  			    dt_paid	       :dt_paid,
+			  			    status		   :status,
+			  			    dt_boc 		   :dt_boc,
+			  			    entryno		   :entryno
+
+			  		}
+				})
+		.done(function(data) {
+		   		 	    $.alert({
+								    title: 'Alert!',
+								    content: 'procecure 1-3 inserted!',
+								    confirm: function(){
+								    
+								    }
+								});
+
+
+		});
+	});
+
+						//for the 4th proc insert start
+		             //description of goods
+
+	    	     var table2 = $("#tableAddTruck-mnla table tbody");
+				    table2.find('tr').each(function (i) {
+				        var $tds 		  = $(this).find('td'),
+						     product_name  = $tds.eq(0).text(),
+						     color_id      = $tds.eq(1).text(),
+						     prod_orderno = $tds.eq(3).text();
+						     origin_id     = $tds.eq(4).text();
+					         origin_cty    = $tds.eq(6).text();
+
+
+					       
+
+
+
+					         	$.ajax({
+				  		           method: "POST",
+						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
+				  			  	   data: {
+				  			  	   			   product_name    :product_name,
+				  			                   color_id 	   :color_id,
+				  			                   prod_orderno   :prod_orderno,
+				  			                   origin_id	   :origin_id,
+				  			                   origin_cty	   :origin_cty
+				  			                  /* status		   :status*/
+				  			                  /* dt_boc 		   :dt_boc*/
+				  			  	   		 }
+						        })
+		  						.done(function(data) {
+		   		 	  				 $.alert({
+								        title: 'Alert!',
+								        content: 'Data 4 been inserted!',
+								        confirm: function(){
+
+								         }
+								    });
+						        });
+
+
+				    });
+    			//for the 4th proc insert end
+		
+   
+
+ });
+
+
 </script>
