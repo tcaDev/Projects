@@ -355,7 +355,8 @@
 						        <th>Start of Storage</th>
 						        <th>Start of Demorage</th>
 						        <th>Lodging</th>
-						        <th>Hauler</th> 
+						        <th class="">Hauler value</th> 
+						        <th>Hauler</th>
 						        <th>Target Delivery Date</th>
 						        <th>Actual Delivery at Warehouse</th>
 						        <th></th>
@@ -726,21 +727,23 @@ $(document).ready(function(){
 });
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-outport").click(function(){
-			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-outport table tr:last td:nth-child(1)').html($(".container-outport").val());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(2)').html($(".container-outport option:selected").text());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(3)').html($(".veselid-outport").val());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(4)').html($(".veseltext-outport").val());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(5)').html($(".cartons-outport").val());
-	           $('#tableAddContainer-outport table tr:last td:nth-child(8)').html($(".est-dept-outport").val());
-	            $('#tableAddContainer-outport table tr:last td:nth-child(9)').html($(".est-arr-ouport").val());
-	             $('#tableAddContainer-outport table tr:last td:nth-child(10)').html($(".act-arr-ouport").val());
-	              $('#tableAddContainer-outport table tr:last td:nth-child(11)').html($(".storage-outport").val());
-	               $('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".demorage-outport").val());
-	                $('#tableAddContainer-outport table tr:last td:nth-child(13)').html($(".lodging-outport").val());
-	                 $('#tableAddContainer-outport table tr:last td:nth-child(14)').html($(".trgtdeldt-outport").val());
-	                    $('#tableAddContainer-outport table tr:last td:nth-child(17)').html($(".act-del-whse-outport").val());
-	                     $('#tableAddContainer-outport table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	           $('#tableAddContainer-outport table tr:last td:nth-child(6)').html($(".est-dept-outport").val());
+	            $('#tableAddContainer-outport table tr:last td:nth-child(7)').html($(".est-arr-ouport").val());
+	             $('#tableAddContainer-outport table tr:last td:nth-child(8)').html($(".act-arr-ouport").val());
+	              $('#tableAddContainer-outport table tr:last td:nth-child(9)').html($(".storage-outport").val());
+	               $('#tableAddContainer-outport table tr:last td:nth-child(10)').html($(".demorage-outport").val());
+	                $('#tableAddContainer-outport table tr:last td:nth-child(11)').html($(".lodging-outport").val());
+	                	$('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".hauler").val());
+	                	$('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".hauler option:selected").text());
+	                 $('#tableAddContainer-outport table tr:last td:nth-child(13)').html($(".trgtdeldt-outport").val());
+	                    $('#tableAddContainer-outport table tr:last td:nth-child(14)').html($(".act-del-whse-outport").val());
+	                     $('#tableAddContainer-outport table tr:last td:nth-child(15)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		});
 
 	
