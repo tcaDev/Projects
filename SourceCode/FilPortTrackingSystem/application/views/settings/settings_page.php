@@ -451,7 +451,7 @@
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>HouseBuildingNo/Street</label>
-					               <input type="text"   name="hbno"  class="hbno form-control"/>
+					               <input type="text"   name="hbno"  class="hbno form-control" required/>
 					            </div>
 					        </div>
 					         <div class="row">
@@ -559,7 +559,7 @@
 					        <div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Contact No.2</label>
-					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
+					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control" />
 					            </div>
 					        </div>
 
