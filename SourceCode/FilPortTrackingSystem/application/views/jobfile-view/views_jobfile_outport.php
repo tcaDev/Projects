@@ -111,6 +111,8 @@
 
 					          <th >Jobfile Number</th>
 
+					          <th >Color Selectivity</th>
+
 					          <th >Shipper</th>
 
 					          <th >Consignee</th>
@@ -169,8 +171,6 @@
 
 					          <th >Referrence Entry No.</th>
 
-					          <th >Color Selectivity</th>
-
 					          <th >Date Paid (Date&Time)</th>
 
 					          <th >Date Cleared BOC</th>
@@ -199,6 +199,8 @@
 
 					          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
+					          <td><?php echo $row->StatusName; ?></td>
+					          
 					          <td><?php echo $row->ShipperName; ?></td>
 
 					          <td><?php echo $row->ConsigneeName; ?></td>
@@ -253,8 +255,6 @@
 					          <td><?php echo $row->DateSentFinalAssessment; ?></td>
 
 					          <td><?php echo $row->RefEntryNo; ?></td>
-
-					          <td><?php echo $row->StatusName; ?></td>
 
 					          <td><?php echo $row->DatePaid; ?></td>
 

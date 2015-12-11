@@ -117,6 +117,8 @@
 
 				          <th>Jobfile Number</th>
 
+				          <th>Color Selectivity</th>
+
 				          <th>Shipper</th>
 
 				          <th>Consignee</th>
@@ -170,8 +172,6 @@
 				          <th>Date final Assess</th>
 
 				          <th>Reference Entry No.</th>
-
-				          <th>Color Selectivity</th>
 
 				          <th>Date Paid (Date&Time)</th>
 
