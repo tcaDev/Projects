@@ -120,7 +120,7 @@ class Login_user extends CI_Controller {
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){		
 
-			$data['tab'] = "JobFile Monitoring - Sea";
+			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
