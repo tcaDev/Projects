@@ -327,7 +327,7 @@ Class User extends CI_Model
   
    $query = $this->db->query("select * from vw_consignee_full_info WHERE ConsigneeName LIKE '%$search%'  or HouseBuildingNoOrStreet like '%$search%'   
     or BarangayOrVillage like  '%$search%' or TownOrCityProvince  like  '%$search%'  or Country like '%$search%' 
-    or OfficeNumber like '%$search%'  order by ConsigneeName  ");
+    or OfficeNumber like '%$search%'  order by ConsigneeId  ");
    return $query->result();
   }
   function search_broker($search_broker){
