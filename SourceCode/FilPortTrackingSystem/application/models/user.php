@@ -332,31 +332,31 @@ Class User extends CI_Model
   }
   function search_broker($search_broker){
    $query = $this->db->query("select * from vw_broker_full_info WHERE FirstName LIKE '%$search_broker%' or 
-   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by FirstName  ");
+   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by BrokerId  ");
    return $query->result();
   }
     function search_shipper($search_shipper){
-   $query = $this->db->query("select * from vw_shipper_full_info WHERE ShipperName LIKE '%$search_shipper%' order by ShipperName  ");
+   $query = $this->db->query("select * from vw_shipper_full_info WHERE ShipperName LIKE '%$search_shipper%' order by ShipperId  ");
    return $query->result();
   }
       function search_vessel($search_vessel){
-   $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%' order by Vesselname  ");
+   $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%' order by ShipperVesselId  ");
    return $query->result();
   }
      function search_hauler($search_hauler){
-   $query = $this->db->query("select * from Hauler WHERE HaulerName LIKE '%$search_hauler%' order by HaulerName  ");
+   $query = $this->db->query("select * from Hauler WHERE HaulerName LIKE '%$search_hauler%' order by HaulerId  ");
    return $query->result();
   }
      function search_forward($search_forward){
-   $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseName  ");
+   $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseId  ");
    return $query->result();
   }
     function search_legend($search_status){
-   $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusName  ");
+   $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusId  ");
    return $query->result();
   }
     function search_container($search_container){
-   $query = $this->db->query("select * from Container WHERE ContainerNo LIKE '%$search_container%' order by ContainerNo  ");
+   $query = $this->db->query("select * from Container WHERE ContainerNo LIKE '%$search_container%' order by ContainerId  ");
    return $query->result();
   }
 
