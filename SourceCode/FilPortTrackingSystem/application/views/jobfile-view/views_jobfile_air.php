@@ -123,11 +123,11 @@
 
 				          <th>Number of Cartons</th>
 
-				          <th>Gross Weight</th>
-
-				          <th>Description of Goods</th>
+				          <th>Gross Weight (kg)</th>
 
 				          <th>WK/PI/PO No.</th>
+
+				          <th>Description of Goods</th>
 
 				          <th>House Bill of Lading No.</th>
 
@@ -145,7 +145,11 @@
 
 				          <th>Actual Time of Arrival</th>
 
-				          <th>Forwarder/Warehouse</th>
+				          <th >Letter of Credit No. from Bank</th>
+
+				          <th>Forwarder</th>
+
+				          <th>Warehouse</th>
 
 				          <th>Date Recieved Arrival notice from Airline/Forwarder</th>
 
@@ -157,9 +161,9 @@
 
 				          <th>Broker</th>
 
-				          <th>Date Req. Budget to GL</th>
+				          <th>Date Request Budget to GL</th>
 
-				          <th>RFP Due Date</th>
+				          <th>Referrence Due Date</th>
 
 				          <th>Date Sent Pre-Assess</th>
 
@@ -167,23 +171,23 @@
 
 				          <th>Reference Entry No.</th>
 
-				          <th>Selectivity</th>
+				          <th>Color Selectivity</th>
 
-				          <th>Date Paid (date&time)</th>
+				          <th>Date Paid (Date&Time)</th>
 
 				          <th>Date Cleared BOC</th>
 
 				          <th>Target Delivery Date</th>
 
-				          <th>Actual P-out date of at NAIA</th>
+				          <th>Actual P-Out Date of at NAIA</th>
 
-				          <th>Actual Date Recieved Good at WHSE</th>
+				          <th>Actual Date Recieved Good at Warehouse</th>
 
 				          <th>Haulers</th>
 
 				          <th>Total Storage</th>
 
-				          <th>Additional per Day included VAT</th>
+				          <th>Additional per Day Included VAT</th>
 
 				          <th  style="text-align:center !important">Status Reports</th>
 				      </tr>

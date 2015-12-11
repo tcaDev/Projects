@@ -7,10 +7,10 @@
     <div class="modal-body">
     	<div class="container-fluid">
     		 <ul class="nav nav-pills">
-			    <li id="btn-jobfile-outprt-add" class="active"><a role="button">Jobfile</a></li>
-			    <li id="btn-container-outprt-add"><a role="button">Container</a></li>
+			    <li id="btn-jobfile-outport-add" class="active"><a role="button">Jobfile</a></li>
+			    <li id="btn-container-outport-add"><a role="button">Container</a></li>
 			    <li id="btn-product-outport-add"><a role="button">Description of Goods</a></li>
-			    <li id="btn-charges-outprt-add"><a role="button">Running Charges</a></li>
+			    <li id="btn-charges-outport-add"><a role="button">Running Charges</a></li>
 			  </ul>
     	<hr>
     	<div style="overflow-x:auto;">
@@ -18,15 +18,16 @@
 
 
 		      	<div class="form-group">
-				  <div class="col-lg-12 pill-jobfile-outprt-add">
+				  <div class="col-lg-12 pill-jobfile-outport-add">
 				  	<div class="row">
 				  		<div class="col-lg-4" >	
 				  	<?php echo  form_open('Job/jofile_data');?>
 				           <input type="hidden" value="2" name="monitoring_type" id="manila"/>
 
 				           <div class="form-group">
-				           		<label for="jbfl">JobFile No.:</label>
-								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl">
+				              <!--check if jofile is already exists -->
+				           		<label for="jbfl">JobFile No.:</label>   <span id="check_jobfiles"></span>
+								 <input type="text" class="form-control input-sm " name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 				           </div>
 				  				
 				           <div class="form-group">
@@ -53,18 +54,24 @@
 							            </select>
 							   </div>
 								   	
+					
+						<!-- 		<div class="form-group">
+								  <label for="pipo">PI / PO No.:</label>
+								  <input type="text" class="form-control input-sm" name="pipo" id="pipo">
+								 </div> -->
+
 								<div class="form-group">
-								  <label for="hbl">House Bill of Landing No.:</label>
+								  <label for="hbl">House Bill of Lading No.:</label>
 								  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
 								</div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Landing No1.:</label>
+								  <label for="mbl">Master Bill of Lading No1.:</label>
 								  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
 								 </div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Landing No2.:</label>
+								  <label for="mbl">Master Bill of Lading No2.:</label>
 								  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
 								</div>
 
@@ -72,37 +79,22 @@
 								  <label for="bank">Letter of Credit No. from Bank:</label>
 								  <input type="text" class="form-control input-sm " name="bank" id="bank">
 								</div>
+						</div>
+
+					<div class="col-lg-4">
 
 								<div class="form-group">
 								  <label for="registry">Registry:</label>
 								  <input type="text" class="form-control input-sm" name="registry" id="registry">
 								</div>
-						</div>
-
-					<div class="col-lg-4">
-
-								
 
 								<div class="form-group">
-				  				  <input type="text" name="veselid" class="veselid hidden">
-									  <label for="vsl">Vessel / Voyage No.:</label>
-									  	<div class="vesel" >
-								  	
-								  		</div>
-								 </div>
-
-								 <div class="form-group">
-								  	<label for="dtClrd">Vessel Arrival Time</label>
-								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm">
-								 </div>
-
-								<div class="form-group">	 
-								    <label for="dtClrd">Vessel Discharge Time</label>
-								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm">
-								 </div>
+								  <label for="carrier">Carrier:</label>
+								  <input type="text" class="form-control input-sm" name="registry" id="registry">
+								</div>
 
 								<div class="form-group">
-								  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
+								  <label for="dtRcvd">Date Recieved Arrival Notice From Client/s:</label>
 								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm" >
 								</div>
 
@@ -112,7 +104,7 @@
 								</div>
 
 								<div class="form-group">
-								  <label for="dtPckRcv">Date Pick-up / Recieved Other Document :</label>
+								  <label for="dtPckRcv">Date Pick-up / Recieved Other Documents :</label>
 								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm" >
 								 </div>
 								 	
@@ -133,15 +125,7 @@
 
 
 
-								  <!--  <label for="" >Hauler</label>
-								   <select name="hauler" class="form-control">
-							  			<option> </option>
-						            	<?php  //foreach($hauler_data as $row){  ?> 
-						                <option value="<?php //echo $row->HaulerId ?>">
-						                <?php //echo $row->HaulerName ?>
-						                </option> 
-						             	<?php //}?>
-						            </select> -->
+								 
 
 				  			</div>
 
@@ -177,7 +161,7 @@
 								</div>
 
 							     <div class="form-group">
-								 	 <label for="dtPaid">Date Paid(Date& Time):</label>
+								 	 <label for="dtPaid">Date Paid(Date & Time):</label>
 									  <input type="datetime-local" name="dt_paid" class="form-control input-sm">
 								 </div>
 
@@ -185,6 +169,7 @@
 								  	<label for="dtClrd">Date Cleared BOC:</label>
 								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm">
 								 </div>
+
 
 								 <div class="form-group">
 								   <label for="status">Status Report:</label>
@@ -195,66 +180,72 @@
 				  </div>
 
 				<!-- Products PLATE WINDOW-->
-				  	<div id="tableAddProd-outport" class="hidden pill-product-outport-add truck-editable col-lg-12">
-					    <table class="table" style="width: 2000px;">
-					      <tr>
-					        <th>Product Name</th>
-					        <th>Container by Vessel ID</th>
-					        <th>Color Selectivity</th>
-					        <th>Purchase Order Number</th>
-					        <th>Origin Country ID</th>
-					        <th>Origin City</th>
-					        <th><button type="button" class="btn btn-default table-add-prod-outport"><span class="table-add  fa fa-plus"></span></button></th>
-					      </tr>
-		<!--Products plate is no names yet -->
-					      <tr>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><select class="form-control colsel-outprt-add input-sm" >
-												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
-															<?php  foreach($color_data as $row){ 
-															   $status = $row->IsBackground;
-															   if($status==1){?> 
-															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-														 <?php }else{?>
-											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-											                <?php }?>
-											                <?php echo $row->StatusName; ?>
-											                </option> 
-											             	<?php }?>
-												        </select></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td>
-					          <button type="button" class="btn btn-default table-remove-prod-outport"><span class="table-remove  fa fa-times"></span></button>
-					        </td>
-					      </tr>
+				  	<div id="tableAddProduct-outport" class="hidden pill-product-outport-add truck-editable col-lg-12">
 
-					      <!-- This is our clonable table line -->
-					      <tr class="hide">
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td><select class="form-control colsel-outprt-add input-sm" >
-												          	<option  name="colors" value="" disabled selected>Jobfile Status</option>
-															<?php  foreach($color_data as $row){ 
-															   $status = $row->IsBackground;
-															   if($status==1){?> 
-															   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-														 <?php }else{?>
-											                			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-											                <?php }?>
-											                <?php echo $row->StatusName; ?>
-											                </option> 
-											             	<?php }?>
-												        </select></td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td contenteditable="true">Untitled</td>
-					        <td>
-					          <button type="button" class="btn btn-default table-remove-prod-outport"><span class="table-remove  fa fa-times"></span></button>
-					        </td>
-					      </tr>
+				  		<div class="col-lg-6">
+				  			<div class="form-group">
+								<label>Product Name</label>
+								<input type="text" class="form-control input-sm prodname-outport" name="prodname">
+							</div>
+
+							<div class="form-group">
+								<label>Color Selectivity</label>
+									<select name="colors" class="form-control colsel-outport input-sm" >
+									  	<option  value="" disabled selected>Jobfile Status</option>
+										<?php  foreach($color_data as $row){ 
+										   $status = $row->IsBackground;
+										   if($status==1){?> 
+										   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+									 <?php }else{?>
+									    			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+									    <?php }?>
+									    <?php echo $row->StatusName; ?>
+									    </option> 
+									 	<?php }?>
+									</select>
+							</div>
+
+							<div class="form-group">
+								<label>Purchase Order Number</label> 
+								<input type="text" class="form-control input-sm PON-outport"  name="PON">
+							</div>
+				  		</div>
+
+				  		<div class="col-lg-6">
+					  		<div class="form-group ">
+									<label>Origin Country</label>
+										<select  class="form-control origin-outport" name="countries">
+											<?php foreach($countries as $row){ ?>
+											 <option value="<?php echo $row->CountryId?>">
+											 <?php echo $row->CountryName;?>
+											 </option>
+											<?php }?> 
+										</select>	
+							</div>
+
+							<div class="form-group">
+								<label>Origin City</label>
+								<input type="text" name="origcity" class="form-control input-sm origcity-outport" />
+							</div>
+
+							<button type="button" class="btn-Add-Product-Data-outport btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
+				  			<button type="button" class="btn-Add-Product-Alert-outport btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
+
+				  		</div>
+
+					    <table class="table" style="width: 2000px;" border="1">
+						    <thead>
+						    	 <tr>
+							        <th>Product Name</th>
+							        <th class="">Color Value</th>
+							        <th>Color Selectivity</th>
+							        <th>Purchase Order Number</th>
+							        <th class="">Origin Value</th>
+							        <th>Origin Country ID</th>
+							        <th>Origin City</th>
+							        <th></th>
+						      	</tr>
+						    </thead>
 					    </table>
 					</div>
 
@@ -262,48 +253,48 @@
 				<!--CONTAINER WINDOW-->
 				  	<div id="tableAddContainer-outport" class="hidden pill-container-outport-add table-editable col-lg-12">
 
-
+				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
 								<label>Container Number</label>
-								<input type="text" name="cont-num" class="form-control input-sm cont-data" />
+							     <select name="container" class="form-control container-outport" >
+					        		<?php foreach($container_data as $row){ ?>
+					        		 <option value="<?php echo $row->ContainerId?>">
+					        		 <?php echo $row->ContainerNo;?>
+					        		 </option>
+					        		<?php }?> 
+					        	</select>	
 							</div>
 
 							<div class="form-group">
+								<input type="text" name="veselid" class="veselid-outport">
+				  				  <input type="text" name="veselid" class="veseltext-outport">
 								<label>Vessel by JobFile</label>
-								<input type="text" name="vsl-jbfl" class="form-control input-sm vsl-jbfl" />
+									<div class="vesel" ></div>
 							</div>
 
 							<div class="form-group">
 								<label>Number of Cartons</label> <span id="errmsg" style="color:red;"></span>
-								<input type="text" step="1" class="form-control input-sm cartons" id="cartons" name="numofcartons">
-							</div>
-
-							<div class="form-group">
-								<label>Trucker Plate No.</label>
-								<input type="text" name="trckplte" class="form-control input-sm" />
-							</div>
-
-							<div class="form-group">
-								<label>Trucker Name</label>
-								<input type="text" name="trckname" class="form-control input-sm" />
+								<input type="text" step="1" class="form-control input-sm cartons-outport" id="cartonss" name="numofcartons">
 							</div>
 
 							<div class="form-group">
 								<label>Estimated Departure Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm" />
+								<input type="datetime-local" name="est-dept" class="form-control input-sm est-dept-outport" />
 							</div>
 
 							<div class="form-group">
 								<label>Estimated Arrival Time</label>
-								<input type="datetime-local" name="est-arr" class="form-control input-sm" />
+								<input type="datetime-local" name="est-arr" class="form-control input-sm est-arr-ouport" />
 							</div>
 
 							<div class="form-group">
 								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="act-arr" class="form-control input-sm" />
+								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr-ouport" />
 							</div>
+
 					  	</div>
+					  	
 				  			
 
 
@@ -311,69 +302,63 @@
 					  	<div class="col-lg-6">
 					  		<div class="form-group">
 								<label>Start of Storage</label>
-								<input type="datetime-local" name="strtstrge" class="form-control input-sm" />
+								<input type="datetime-local" name="strtstrge" class="form-control input-sm storage-outport" />
 							</div>
 
 							<div class="form-group">
 								<label>Start of Demorage</label>
-								<input type="datetime-local" name="strtdmrage" class="form-control input-sm" />
+								<input type="datetime-local" name="strtdmrage" class="form-control input-sm demorage-outport" />
 							</div>
 
 							<div class="form-group">
 								<label>Lodging</label>
-								<input type="datetime-local" name="lodging" class="form-control input-sm" />
+								<input type="datetime-local" name="lodging" class="form-control input-sm lodging-outport" />
 							</div>
 
-							<!-- <div class="form-group">
-								<label>Hauler</label>
-								<input type="text" name="lodge" class="form-control input-sm" />
-							</div> -->
+							<div class="form-group">
+								 	  <label for="" >Hauler</label>
+								   <select name="hauler" class="form-control hauler">
+							  			<option> </option>
+						            	<?php  foreach($hauler_data as $row){  ?> 
+						                <option value="<?php echo $row->HaulerId ?>">
+						                <?php echo $row->HaulerName ?>
+						                </option> 
+						             	<?php }?>
+						            </select> 
+								 </div>
 
 							<div class="form-group">
 								<label>Target Delivery Date</label>
-								<input type="datetime-local" name="trgtdeldt" class="form-control input-sm" />
+								<input type="datetime-local" name="trgtdeldt" class="form-control input-sm trgtdeldt-outport" />
 							</div>
 
 							<div class="form-group">
-								<label>Gate In at Port</label>
-								<input type="datetime-local" name="gtinport" class="form-control input-sm" />
+								<label>Actual Date Received Container to  Warehouse</label>
+								<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-outport" />
 							</div>
 
-							<div class="form-group">
-								<label>Gate Out at Port</label>
-								<input type="datetime-local" name="gtoutport" class="form-control input-sm" />
-							</div>
+							<button type="button" class="btn-Add-Container-Data-outport btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
+					  		<button type="button" class="btn-Add-Container-Alert-outport btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> alert</button>
 
-							<div class="form-group">
-								<label>Actual Delivery at Warehouse</label>
-								<input type="datetime-local" name="act-del-whse" class="form-control input-sm" />
-							</div>
-
-							<button type="button" class="btn-Add-Container-Data btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
-							<button type="button" class="btn-Add-Container-Alert btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
 					  	</div>
-
-
-						
-					    <table class="table " style="width: 3000px;" border="1">
+					    <table class="table" style="width: 3000px;" border="1">
 					      <thead>
 						      <tr>
+						      	<th class="">Container Value</th>
 						      	<th>Container Number</th>
+						      	<th class="">Vessel Value</th>
 						        <th>Vessel by JobFile</th>
 						        <th>Number of Cartons</th>
-						        <th>Trucker Plate No.</th>
-						        <th>Trucker Name</th>
 						        <th>Estimated Departure Time</th>
 						        <th>Estimated Arrival Time</th>
 						        <th>Actual Arrival Time</th>
 						        <th>Start of Storage</th>
 						        <th>Start of Demorage</th>
 						        <th>Lodging</th>
-						        <!-- <th>Hauler</th> -->
+						        <th>Hauler</th> 
 						        <th>Target Delivery Date</th>
-						        <th>Gate In at Port</th>
-						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
+						        <th></th>
 						      </tr>
 					      </thead>
 					    </table>
@@ -381,7 +366,6 @@
 
 
 					</div>
-
 					<div class="hidden pill-charges-outport-add table-editable col-lg-12">
 						
 						<div class="col-lg-6">
@@ -496,7 +480,7 @@
     <div class="footer-modal" >
     <hr>
       <button type="button" class="btn btn-danger btn-Next-outport-add">Next</button>
-      <button type="submit" class="hidden btn btn-danger btn-Save-outport-add" >Save</button>
+      <button type="submit" class="hidden btn btn-danger btn-Save-ouport-add" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -505,13 +489,13 @@
 
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
-	$('.colsel-outprt-add').change(function(){
+	$('.colsel-outport').change(function(){
   var status = $(this).val();
-  var color = $('.colsel-outprt-add option:selected').attr('data-color');
+  var color = $('.colsel-outport option:selected').attr('data-color');
     if(status==1){
-    	$('.colsel-outprt-add').css({ 'color': 'red','background-color':'white' });
+    	$('.colsel-outport:first').css({ 'color': 'red','background-color':'white' });
     }else{
-     $('.colseloutprt-add').css({'background-color': color,'color': 'white'});
+     $('.colsel-outport:first').css({'background-color': color,'color': 'white'});
   	}
  });
 
@@ -527,17 +511,17 @@
 		* Show Container
 		*/
 
-		$('#btn-container-outprt-add').on('click',function(){
+		$('#btn-container-outport-add').on('click',function(){
 			$(this).addClass('active');
-			$('#btn-jobfile-outprt-add').removeClass('active');
+			$('#btn-jobfile-outport-add').removeClass('active');
 			$('#btn-product-outport-add').removeClass('active');
-			$('#btn-charges-outprt-add').removeClass('active');
+			$('#btn-charges-outport-add').removeClass('active');
 
-			$('.pill-jobfile-outprt-add').addClass('hidden');
+			$('.pill-jobfile-outport-add').addClass('hidden');
 			$('.pill-product-outport-add').addClass('hidden');
 			$('.pill-charges-outport-add').addClass('hidden');
 			$('.pill-container-outport-add').removeClass('hidden');
-			$('.btn-Save-outport-add').addClass('hidden');
+			$('.btn-Save-ouport-add').addClass('hidden');
 
 			$('.btn-Next-outport-add').removeClass('hidden');
 
@@ -550,15 +534,15 @@
 
 		$('#btn-product-outport-add').on('click',function(){
 			$(this).addClass('active');
-			$('#btn-jobfile-outprt-add').removeClass('active');
-			$('#btn-container-outprt-add').removeClass('active');
-			$('#btn-charges-outprt-add').removeClass('active');
+			$('#btn-jobfile-outport-add').removeClass('active');
+			$('#btn-container-outport-add').removeClass('active');
+			$('#btn-charges-outport-add').removeClass('active');
 
-			$('.pill-jobfile-outprt-add').addClass('hidden');
+			$('.pill-jobfile-outport-add').addClass('hidden');
 			$('.pill-product-outport-add').removeClass('hidden');
 			$('.pill-charges-outport-add').addClass('hidden');
 			$('.pill-container-outport-add').addClass('hidden');
-			$('.btn-Save-outport-add').addClass('hidden');
+			$('.btn-Save-ouport-add').addClass('hidden');
 
 			$('.btn-Next-outport-add').removeClass('hidden');
 
@@ -569,14 +553,14 @@
 		* Show Charges
 		*/
 
-		$('#btn-charges-outprt-add').on('click',function(){
+		$('#btn-charges-outport-add').on('click',function(){
 			$(this).addClass('active');
-			$('#btn-jobfile-outprt-add').removeClass('active');
-			$('#btn-container-outprt-add').removeClass('active');
+			$('#btn-jobfile-outport-add').removeClass('active');
+			$('#btn-container-outport-add').removeClass('active');
 			$('#btn-product-outport-add').removeClass('active');
-			$('.btn-Save-outport-add').removeClass('hidden');
+			$('.test_data').removeClass('hidden');
 
-			$('.pill-jobfile-outprt-add').addClass('hidden');
+			$('.pill-jobfile-outport-add').addClass('hidden');
 			$('.pill-product-outport-add').addClass('hidden');
 			$('.pill-charges-outport-add').removeClass('hidden');
 			$('.pill-container-outport-add').addClass('hidden');
@@ -588,17 +572,17 @@
 		* Show Jobfile
 		*/
 
-		$('#btn-jobfile-outprt-add').on('click',function(){
+		$('#btn-jobfile-outport-add').on('click',function(){
 			$(this).addClass('active');
-			$('#btn-charges-outprt-add').removeClass('active');
-			$('#btn-container-outprt-add').removeClass('active');
+			$('#btn-charges-outport-add').removeClass('active');
+			$('#btn-container-outport-add').removeClass('active');
 			$('#btn-product-outport-add').removeClass('active');
 
-			$('.pill-jobfile-outprt-add').removeClass('hidden');
+			$('.pill-jobfile-outport-add').removeClass('hidden');
 			$('.pill-product-outport-add').addClass('hidden');
 			$('.pill-charges-outport-add').addClass('hidden');
 			$('.pill-container-outport-add').addClass('hidden');
-			$('.btn-Save-outport-add').addClass('hidden');
+			$('.btn-Save-ouport-add').addClass('hidden');
 
 			$('.btn-Next-outport-add').removeClass('hidden');
 
@@ -615,11 +599,11 @@
 			i++;
 
 			if(i==1){
-				$("#btn-container-outprt-add").click();
+				$("#btn-container-outport-add").click();
 			}else if(i==2){
 				$("#btn-product-outport-add").click();
 			}else if(i==3){
-				$("#btn-charges-outprt-add").click();
+				$("#btn-charges-outport-add").click();
 			}
 		});
 
@@ -636,16 +620,13 @@ Truck Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var prodOutprtAdd= $('#tableAddProd-outport');
+var truck= $('.tableAddTruck');
 
-$('.table-add-prod-outport').click(function () {
-  var $clone = prodOutprtAdd.find('tr.hide').clone(true).removeClass('hide table-line');
-  prodOutprtAdd.find('table').append($clone);
+$('.table-add-truck').click(function () {
+  var $clone = truck.find('tr.hide').clone(true).removeClass('hide table-line');
+  truck.find('table').append($clone);
 });
 
-$('.table-remove-prod-outport').click(function () {
-  $(this).parents('tr').detach();
-});
 
 </script>
 
@@ -656,15 +637,9 @@ Container Table Adding row table  : agrc(12/8/15)
 -----------------------------
 */
 
-var containerOutprtAdd= $('#tableAddContainer-outport');
 
-$('.table-add-cont-outport').click(function () {
-  var $clone = containerOutprtAdd.find('tr.hide').clone(true).removeClass('hide table-line');
-  containerOutprtAdd.find('table').append($clone);
-});
-
-$('.table-remove-cont-outport').click(function () {
-  $(this).parents('tr').detach();
+$('.table-remove-cont').click(function () {
+  $(this).parents('tr:last').remove();
 });
 
 </script>
@@ -697,18 +672,19 @@ $(document).ready(function(){
 
 
 <script>
-//for trucker
-$('.btn-Save-outport-add').click(function(){
- var p = $('.plateno').val();
-  alert(p);
-});
-  
-  var gate_in_port 			    = $(this).closest('tr').children('td:eq(1)').text();
-  var gate_out_port    			= $(this).closest('tr').children('td:eq(2)').text();	
-  var time_to_deliver_warehouse = $(this).closest('tr').children('td:eq(3)').text();
-  var status_report             = $(this).closest('tr').children('td:eq(4)').text();
+ function search_jobfile(jobfile){
+   jobfile = jobfile.value; 
 
+   			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/check_jobfile');?>",
+			  		data: { jobfile:jobfile}
+			})
+			.done(function(data) {
+		   		 	   $('#check_jobfiles').html(data);
+				});
 
+ }
 
 </script>
 
@@ -716,7 +692,7 @@ $('.btn-Save-outport-add').click(function(){
 <script type="text/javascript">        
             $(document).ready(function () {
               //called when key is pressed in textbox
-              $("#cartons").keypress(function (e) {
+              $("#cartonss").keypress(function (e) {
                  //if the letter is not digit then display error and don't type anything
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
@@ -730,18 +706,60 @@ $('.btn-Save-outport-add').click(function(){
 
 <script>
 	
+	$(function(){
+  
+    
+   /* $(".deleteButton").click(function(){
+        $(this).closest("tr").remove();
+    });*/
+
+    $('#tableAddContainer-outport').on('click', '.deleteButton', function() {
+
+    	$(this).closest("tr").remove();
+
+	});
+	$('#tableAddProduct-outport').on('click', '.deleteButton', function() {
+
+    	$(this).closest("tr").remove();
+
+	});
+});
 	$(document).ready(function(){
-		$(".btn-Add-Container-Data").click(function(){
-			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td></tr>');
-	        $('#tableAddContainer-outport table tr:last td:nth-child(1)').html($(".cont-data").val());
-	        $('#tableAddContainer-outport table tr:last td:nth-child(2)').html($(".vsl-jbfl").val());
-	        $('#tableAddContainer-outport table tr:last td:nth-child(3)').html($(".cartons").val());
+		$(".btn-Add-Container-Data-outport").click(function(){
+			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	        $('#tableAddContainer-outport table tr:last td:nth-child(1)').html($(".container-outport").val());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(2)').html($(".container-outport option:selected").text());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(3)').html($(".veselid-outport").val());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(4)').html($(".veseltext-outport").val());
+	        $('#tableAddContainer-outport table tr:last td:nth-child(5)').html($(".cartons-outport").val());
+	           $('#tableAddContainer-outport table tr:last td:nth-child(8)').html($(".est-dept-outport").val());
+	            $('#tableAddContainer-outport table tr:last td:nth-child(9)').html($(".est-arr-ouport").val());
+	             $('#tableAddContainer-outport table tr:last td:nth-child(10)').html($(".act-arr-ouport").val());
+	              $('#tableAddContainer-outport table tr:last td:nth-child(11)').html($(".storage-outport").val());
+	               $('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".demorage-outport").val());
+	                $('#tableAddContainer-outport table tr:last td:nth-child(13)').html($(".lodging-outport").val());
+	                 $('#tableAddContainer-outport table tr:last td:nth-child(14)').html($(".trgtdeldt-outport").val());
+	                    $('#tableAddContainer-outport table tr:last td:nth-child(17)').html($(".act-del-whse-outport").val());
+	                     $('#tableAddContainer-outport table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		});
 
+	
 
+
+		$(".btn-Add-Product-Data-outport").click(function(){
+			$('#tableAddProduct-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			 $('#tableAddProduct-outport table tr:last td:nth-child(1)').html($(".prodname-outport").val());
+			  $('#tableAddProduct-outport table tr:last td:nth-child(2)').html($(".colsel-outport").val());
+			   $('#tableAddProduct-outport table tr:last td:nth-child(3)').html($(".colsel-outport option:selected").text());
+			    $('#tableAddProduct-outport table tr:last td:nth-child(4)').html($(".PON-outport").val());
+			     $('#tableAddProduct-outport table tr:last td:nth-child(5)').html($(".origin-outport").val());
+			      $('#tableAddProduct-outport table tr:last td:nth-child(6)').html($(".origin-outport option:selected").text());
+			       $('#tableAddProduct-outport table tr:last td:nth-child(7)').html($(".origcity-outport").val());
+			       	 $('#tableAddProduct-outport table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		});
 		
-		        
-		    $(".btn-Add-Container-Alert").click(function(){
+
+		$(".btn-Add-Container-Alert-outport").click(function(){
 		    	  var table = $("#tableAddContainer-outport table tbody");
 
 				    table.find('tr').each(function (i) {
@@ -755,6 +773,22 @@ $('.btn-Save-outport-add').click(function(){
 				              + '\nCartons: ' + Quantity);
 				    });
 		    });
+		       
+		       $(".btn-Add-Product-Alert-outport").click(function(){
+		    	  var table = $("#tableAddProduct-outport table tbody");
+
+				    table.find('tr').each(function (i) {
+				        var $tds = $(this).find('td'),
+				            productId = $tds.eq(0).text(),
+				            product = $tds.eq(1).text(),
+				            Quantity = $tds.eq(2).text();
+				        // do something with productId, product, Quantity
+				        alert('Row ' + (i + 1) + ':\nProduct Name: ' + productId
+				              + '\n Color Value: ' + product
+				              + '\n Color: ' + Quantity);
+				    });
+		    });
+		  
 
 		});
 </script>

@@ -117,6 +117,8 @@
 
 								          <th >Estimated Time of Arrival</th>
 
+								          <th>Actual Verting Time of Vessel and Discharge</th>
+
 								          <th >Actual Time of Arrival</th>
 
 								          <th >Letter of Credit No. from Bank</th>
@@ -129,7 +131,9 @@
 
 								          <th >Vessel / Voyage no.</th>
 
-								          <th >Date Recieved Arrival Notice from Client/s</th>
+								          <th>Carrier</th>
+
+								          <th >Date Received Arrival Notice from Client/s</th>
 
 								          <th >Date Pick-up / Recieved O-BL</th>
 
@@ -204,6 +208,8 @@
 
 								          <td><?php echo $row->EstArrivalTime; ?></td>
 
+								          <th>Actual Verting Time of Vessel and Discharge</th>
+
 								          <td><?php echo $row->ActualArrivalTime; ?></td>
 
 								          <td><?php echo $row->LetterCreditFromBank; ?></td>
@@ -215,6 +221,8 @@
 								          <td><?php echo $row->Registry; ?></td>
 
 								          <td><?php echo $row->VSL_NO; ?></td>
+
+								          <th>Carrier</th>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 

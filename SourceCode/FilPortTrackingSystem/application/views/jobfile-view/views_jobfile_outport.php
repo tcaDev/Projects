@@ -125,9 +125,11 @@
 
 					          <th >House Bill of Lading No.</th>
 
-					          <th >Master Bill of Landing No.</th>
+					          <th >Master Bill of Lading No.</th>
 
 					          <th >Container No.</th>
+
+					          <th >Letter of Credit No. from Bank</th>
 
 					          <th >Origin</th>
 
@@ -137,8 +139,6 @@
 
 					          <th >Actual Time of Arrival</th>
 
-					          <th >Letter of Credit No. from Bank</th>
-
 					          <th >Start of Demorage</th>
 
 					          <th >Start Storage</th>
@@ -146,6 +146,8 @@
 					          <th >Registry</th>
 
 					          <th >Vessel / Voyage no.</th>
+
+					          <th>Carrier</th>
 
 					          <th >Date Recieved Arrival Notice from Client/s</th>
 
@@ -165,7 +167,7 @@
 
 					          <th >Date Sent Final Assess</th>
 
-					          <th >Reference Entry No.</th>
+					          <th >Referrence Entry No.</th>
 
 					          <th >Color Selectivity</th>
 
@@ -175,13 +177,11 @@
 
 					          <th >Target Delivery Date</th>
 
-					          <th >Plate No. / Truckers Name</th>
+					          <th>Actual P-Out Date of Container</th>
 
-					          <th >Gate In at Port</th>
+					          <th >Actual Date Received Container to  Warehouse</th>
 
-					          <th >Gate Out at Port</th>
-
-					          <th >Actual Delivery Warehouse</th>
+					          <th>Haulers</th>
 
 					          <th >Status Reports</th>
 					   </tr>
@@ -262,13 +262,9 @@
 
 					          <td><?php echo $row->TargetDeliveryDate; ?></td>
 
-					          <td><?php echo $row->PlateNo_Trucker; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->GateInAtPort; ?></td>
-
-					          <td><?php echo $row->GateOutAtPort; ?></td>
-
-					          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
+					          <td></td>
 
 					          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 					      
