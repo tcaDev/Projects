@@ -144,29 +144,28 @@ class Update extends CI_Controller {
 
 		$status_broker 	= 			$this->input->post('status_broker');
 		
-		$query= $this->db->query("Select * from Broker where FirstName = '$broker_fname' 
-              and MiddleName='$broker_mname' and LastName='$broker_lname' limit 1");
-        $query2= $this->db->query("Select * from Broker where
-            BrokerId                 =   '$id'              and
+/*		$query= $this->db->query("Select * from Broker where FirstName = '$broker_fname' 
+              and MiddleName='$broker_mname' and LastName='$broker_lname' limit 1");*/
+/*        $query2= $this->db->query("Select * from Broker where
+            BrokerId                 =    $id               and
         	FirstName                =   '$broker_fname'    and 
         	MiddleName			     =   '$broker_mname'    and 
         	LastName		         =   '$broker_lname'    and
         	HouseBuildingNoStreet    =   '$broker_houseno'  and
         	BarangarOrVillage		 =   '$broker_vil'  	and
         	TownOrCityProvince		 =   '$broker_city' 	and
-        	CountryId				 =   '$broker_cid'      and
-        	IsActive			     =    $status_broker
+        	CountryId				 =    $broker_cid   
         	limit 1");
              
-		if(($query->num_rows() ==1) || ($query2->num_rows() ==1)){
+		if($query2->num_rows() ==1){
              $this->session->failed= 'update_failed';
           } 
-       else{ 
+       else{ */
   			$this->User->update_broker($id,$broker_fname,$broker_mname,
 			$broker_lname,$broker_houseno,$broker_vil,$broker_city,
 			$broker_cid,$broker_contact1,$broker_contact2,$status_broker);
   	  		 $this->session->success= 'update_success';
-  	  	}
+  	  //	}
 		redirect('Login_User/settings/#broker');
 
 	}
@@ -240,7 +239,7 @@ class Update extends CI_Controller {
      		  ContainerNo='$con' and ContainerDescription='$con_descrip' and
      		  ContainerSize='$con_size' limit 1");*/
 		   $query= $this->db->query("Select * from Container where
-     		  ContainerNo='$con' and
+     		  ContainerNo='$con' and ContainerDescription='$con_descrip' and
      		  ContainerSize='$con_size' limit 1");
     
           if($query->num_rows() ==1){
