@@ -393,7 +393,7 @@
 					      	  <div class="">
 					            <div class="form-group col-lg-12">
 					            <!-- 	<label>HouseBuildingNo/Street</label> -->
-					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control"/>
+					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control" required/>
 					          </div>
 					        </div>
 					         <div class="">
