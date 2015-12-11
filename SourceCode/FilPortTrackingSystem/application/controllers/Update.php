@@ -238,7 +238,7 @@ class Update extends CI_Controller {
 
    		 $query= $this->db->query("Select * from Container where
      		  ContainerNo='$con' and ContainerDescription='$con_descrip' and
-     		  ContainerSize=$con_size limit 1");
+     		  ContainerSize='$con_size' limit 1");
     
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';

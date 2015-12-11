@@ -180,85 +180,88 @@ class Job extends CI_Controller {
    $adw             =  $this->input->post('adw');
 
 
+/*   $check = $this->db->query("SELECT * FROM  JobFile where JobFileId='$job' limit 1 ");
+ $i=0;
+ $i++;
+ if( ($check->num_rows() ==0) && ($i==1) ) {*/
+         //stop inserting data in jobfile to avoid duplication
 
-
-
-         
-            //first proc
-             $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                $this->db->query($add_jobfile,
+                          //first proc
+                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    $this->db->query($add_jobfile,
+                      array(
+                             'P_JobFileID'                             =>$job,           
+                             'P_ConsigneeId'                           =>$consignee,
+                             'P_BrokerID'                              =>$broker,
+                             'P_MonitoringTypeId'                      =>1,
+                             'P_RefEntryNo'                            =>$entryno,
+                             'P_Registry'                              =>$registry,            
+                             'P_HouseBillLadingNo'                     =>$hbl,
+                             'P_MasterBillLadingNo'                    =>$mbl,
+                             'P_LetterCreditFromBank'                  =>$bank,
+                             'P_DateSentPreAssessment'                 =>$dtSent,                  
+                             'P_DateFileEntryToBOC'                    =>$dtFile,
+                             'P_DateSentFinalAssessment'               =>$dtfinal_assess,
+                             'P_DateReceivedNoticeFromClients'         =>$dtRcvd,
+                             'P_DateReceivedOfBL'                      =>$dt_pickup_obl,
+                             'P_DateReceivedOfOtherDocs'               =>$dt_pickup_docs,
+                             'P_DateRequestBudgetToGL'                 =>$dt_req_budget,
+                             'P_RFPDueDate'                            =>$ref_due_dt,
+                             'P_ForwarderWarehouseId'                  =>NULL, //dropdown from master data for air only
+                             'P_DatePaid'                              =>$dt_paid,
+                             'P_FlightNo'                              =>NULL,                    
+                             'P_AirCraftNo'                            =>NULL,
+                             'P_DateReceivedNoticeFromForwarder'       =>NULL,
+                             'P_UserId'                                => $userid 
+                          ));
+                //
+      
+                //2nd proc
+                $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
+                 $this->db->query($add_vessel,
                   array(
-                         'P_JobFileID'                             =>$job,           
-                         'P_ConsigneeId'                           =>$consignee,
-                         'P_BrokerID'                              =>$broker,
-                         'P_MonitoringTypeId'                      =>1,
-                         'P_RefEntryNo'                            =>$entryno,
-                         'P_Registry'                              =>$registry,            
-                         'P_HouseBillLadingNo'                     =>$hbl,
-                         'P_MasterBillLadingNo'                    =>$mbl,
-                         'P_LetterCreditFromBank'                  =>$bank,
-                         'P_DateSentPreAssessment'                 =>$dtSent,                  
-                         'P_DateFileEntryToBOC'                    =>$dtFile,
-                         'P_DateSentFinalAssessment'               =>$dtfinal_assess,
-                         'P_DateReceivedNoticeFromClients'         =>$dtRcvd,
-                         'P_DateReceivedOfBL'                      =>$dt_pickup_obl,
-                         'P_DateReceivedOfOtherDocs'               =>$dt_pickup_docs,
-                         'P_DateRequestBudgetToGL'                 =>$dt_req_budget,
-                         'P_RFPDueDate'                            =>$ref_due_dt,
-                         'P_ForwarderWarehouseId'                  =>NULL, //dropdown from master data for air only
-                         'P_DatePaid'                              =>$dt_paid,
-                         'P_FlightNo'                              =>NULL,                    
-                         'P_AirCraftNo'                            =>NULL,
-                         'P_DateReceivedNoticeFromForwarder'       =>NULL,
-                         'P_UserId'                                => $userid 
-                      ));
-            //
+                      'P_JobFileId'           => $job,
+                      'P_ShipperVesselId'     => $vessel,
+                      'P_VesselArrivalTime'   => $vat,
+                      'P_VesselDischargeTime' => $vdt,
+                      'P_UserId'              => $userid
+                ));
+/*  }*/
 
-            //2nd proc
-            $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
-             $this->db->query($add_vessel,
+           //for getting the last insert in P_VesselByJobFileId start
+               $table ='VesselByJobFile';
+               $id    ='VesselByJobFileId';  
+                 $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+              //for getting the last insert in P_VesselByJobFileId end
+
+
+             //3rd proc
+             $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $this->db->query($containerbyvessel,
               array(
-                  'P_JobFileId'           => $job,
-                  'P_ShipperVesselId'     => $vessel,
-                  'P_VesselArrivalTime'   => $vat,
-                  'P_VesselDischargeTime' => $vdt,
-                  'P_UserId'              => $userid
-            ));
+                  'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
+                  'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
+                  'P_NoOfCartons'           => $cartons,
+                  'P_TruckerPlateNo'        => $plateno,
+                  'P_TruckerName'           => $truckername,
+                  'P_EstDepartureTime'      => $edt,
+                  'P_EstArrivalTime'        => $eat,
+                  'P_ActualArrivalTime'     => $aat,
+                  'P_StartOfStorage'        => $start_storage,
+                  'P_Lodging'               => $lodging,  
+                  'P_HaulerId'              => NULL,      //
+    /*              'P_DateSentPreAssessment' => $dtSent,*/
+                  'P_TargetDeliveryDate'    => $tdt,
+                  'P_GateInAtPort'          => $gip,
+                  'P_GateOutAtPort'         => $gop,
+                  'P_ActualDeliveryAtWarehouse' =>$adw,
+                  'P_StartOfDemorage'           =>$start_demorage,
+                  'P_UserId'                    => $userid 
 
-       //for getting the last insert in P_VesselByJobFileId start
-           $table ='VesselByJobFile';
-           $id    ='VesselByJobFileId';  
-             $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
-          //for getting the last insert in P_VesselByJobFileId end
+             ));
+   }
 
-
-         //3rd proc
-         $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-         $this->db->query($containerbyvessel,
-          array(
-              'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
-              'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
-              'P_NoOfCartons'           => $cartons,
-              'P_TruckerPlateNo'        => $plateno,
-              'P_TruckerName'           => $truckername,
-              'P_EstDepartureTime'      => $edt,
-              'P_EstArrivalTime'        => $eat,
-              'P_ActualArrivalTime'     => $aat,
-              'P_StartOfStorage'        => $start_storage,
-              'P_Lodging'               => $lodging,  
-              'P_HaulerId'              => NULL,      //
-/*              'P_DateSentPreAssessment' => $dtSent,*/
-              'P_TargetDeliveryDate'    => $tdt,
-              'P_GateInAtPort'          => $gip,
-              'P_GateOutAtPort'         => $gop,
-              'P_ActualDeliveryAtWarehouse' =>$adw,
-              'P_StartOfDemorage'           =>$start_demorage,
-              'P_UserId'                    => $userid 
-
-         ));
-
-
-  }
+  
 
   function jobfile_add2(){
    $session_data = $this->session->userdata('logged_in');
