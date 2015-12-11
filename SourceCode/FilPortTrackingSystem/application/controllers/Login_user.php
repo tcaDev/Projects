@@ -733,6 +733,7 @@ function select_country(){
 			echo	  '<table class="table table-striped table_consignee">
 					    <thead>
 					      <tr>
+					      	<th>Consignee ID</th>
 					        <th>Consignee Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -775,7 +776,7 @@ function select_country(){
 					         	$number = $row->OfficeNumber;
 	
 					   echo     '<tr style="cursor:pointer;">
-					    		    <td   class="hidden">'. $row->ConsigneeId .'</td>
+					    		    <td>'. $row->ConsigneeId .'</td>
 							        <td>'. $row->ConsigneeName .'</td>
 							      	<td>'. $row->HouseBuildingNoOrStreet .'</td>
 							        <td>'. $row->BarangayOrVillage .'</td>  

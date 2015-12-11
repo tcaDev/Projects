@@ -516,6 +516,7 @@ if(isset($_SESSION['success'])){
 		echo '      <table class="table table-striped">
 					    <thead>
 					      <tr>
+					      	<th>Broker ID</th>
 					        <th>Full Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -557,7 +558,7 @@ if(isset($_SESSION['success'])){
 					    
 					     echo'
 					      <tr>
-					      	<td class="hidden">'.$row->BrokerId.'</td>
+					      	<td>'.$row->BrokerId.'</td>
 					        <td>'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.'</td>
 					        <td>'.$row->HouseBuildingNoStreet.'</td>
 					        <td>'.$row->BarangarOrVillage.'</td>
@@ -616,8 +617,6 @@ if(isset($_SESSION['success'])){
                                        /* alert('Vacation cancelled!');*/
                                     }
                                 });
-                         
-
  });
 	</script>
 
@@ -648,6 +647,7 @@ function search_shipper(){
     	echo '      <table class="table table-striped">
 					    <thead>
 					      <tr>
+					    	<th>Shipper ID</th>
 					        <th>Shipper Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -668,7 +668,7 @@ function search_shipper(){
 					      	  
 					      		}
 					  echo  '<tr>
-					  	    <td class="hidden">'.$row->ShipperId.'</td>
+					  	    <td>'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
 					  	    <td>'.$row->HouseBuildingNoStreet.'</td>
 					  	    <td>'.$row->BarangarOrVillage.'</td>
@@ -830,6 +830,7 @@ function search_vessel(){
 	  echo '	      <table class="table table-striped">
 					    <thead>
 					      <tr>
+					        <th>Vessel ID</th>
 					        <th>Vessel Name</th>
 					        <th>Vessel No./Plate No.</th>
 					        <th colspan="2">Action</th>
@@ -844,7 +845,7 @@ function search_vessel(){
 					    $cid= $row->ShipperVesselId;
 					    }
 					    echo  '<tr>
-							        <td class="hidden">'.$row->ShipperVesselId.'</td>
+							        <td>'.$row->ShipperVesselId.'</td>
 							        <td>'.$row->Vesselname.'</td>
 							        <td>'.$row->VesselNo.'</td>
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -948,6 +949,7 @@ $this->message();
 	echo '<table class="table table-striped">
 		    <thead>
 		      <tr>
+		      	<th>Hauler ID</th>
 		        <th>Hauler Name</th>
 		        <th colspan="2">Action</th>
 		      </tr>
@@ -961,7 +963,7 @@ $this->message();
 					    $cid= $row->HaulerId;
 					    }
 					    echo  '<tr>
-							        <td class="hidden">'.$row->HaulerId.'</td>
+							        <td>'.$row->HaulerId.'</td>
 							        <td>'.$row->HaulerName.'</td>
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							       
@@ -1039,6 +1041,7 @@ $this->message();
 	echo '<table class="table table-striped">
 		    <thead>
 		      <tr>
+		      	<th>Forwarder ID</th>
 		        <th>Forwarder Name</th>
 		        <th colspan="2">Action</th>
 		      </tr>
@@ -1052,7 +1055,7 @@ $this->message();
 					    $cid= $row->ForwarderWarehouseId;
 					    }
 					    echo  '<tr>
-							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
+							        <td>'.$row->ForwarderWarehouseId.'</td>
 							        <td>'.$row->ForwarderWarehouseName.'</td>
 							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
@@ -1133,7 +1136,7 @@ $this->message();
 		      <tr>
 		        <th>Status Name</th>
 		        <th>Description Name</th>
-		        <th>Color</th>
+		        <th>Font/Background</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
@@ -1144,9 +1147,9 @@ $this->message();
 			    $i++;
     			$pick =$row->IsBackground;
     			if($pick==0){
-		        	$pick1= "Font";
+		        	$pick1= '<td style="color:'.$row->ColorCode.';"><strong>Font</strong></td>';
 		        }else{
-		        	$pick1 ="Background";
+		        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">Background</td>';
 		        }
 
 			    if($i==1){
@@ -1156,7 +1159,7 @@ $this->message();
 				        <td class="hidden">'.$row->StatusId.'</td>
 				        <td>'.$row->StatusName.'</td>
 				        <td>'.$row->Description.'</td>
-				        <td style="background-color:'.$row->ColorCode.';">'.$pick1.'</td>
+				        '.$pick1.'
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
@@ -1208,8 +1211,6 @@ $this->message();
 			      $('.legend_descrip').val(descr);
 			      $('.legend_color').val(color);
 			      $('.legend_backg').val(bground);
-			 
-
 			 });
 	</script>
 	<?php
@@ -1299,6 +1300,7 @@ $this->message();
 	echo '<table class="table table-striped">
 		    <thead>
 		      <tr>
+		      	<th>Container ID</th>
 		        <th>Container No.</th>
 		        <th>Container Description</th>
 		        <th>ContainerSize</th>
@@ -1309,7 +1311,7 @@ $this->message();
 			<?php 
 			    foreach ($forward as $row) {
 			    echo  '<tr>
-					        <td class="hidden">'.$row->ContainerId.'</td>
+					         <td>'.$row->ContainerId.'</td>
 					         <td>'.$row->ContainerNo.'</td>
 					         <td>'.$row->ContainerDescription.'</td>
 					         <td>'.$row->ContainerSize.'</td>
