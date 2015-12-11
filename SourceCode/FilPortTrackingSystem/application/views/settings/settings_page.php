@@ -293,7 +293,7 @@
 		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
 		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
 		    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
-		    <li><a data-toggle="tab" href=".container"				    id="form_container">Container</a></li>
+		    <li><a data-toggle="tab" href=".containers"				    id="form_container">Container</a></li>
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
 
@@ -354,7 +354,7 @@
 
 
 			       <!--FOr container data view  start--> 
-			    <div  class="container tab-pane fade">
+			    <div  class="containers tab-pane fade">
 			 	  <div class="containerpage"> </div>
                   <div class="pagination_container pull-right"> </div>
 			    </div>
@@ -372,10 +372,18 @@
 
 			<div class="" id="mycontent">
 				<div class="consignees ">
-				<div class="con-info consig-pos  tab-pane " data-toggle="collapse" data-target="#consignee"  style="cursor:pointer">
-					<span style="cursor:pointer">ADD NEW CONSIGNEE</span>
-				</div>
-					<div class="consignees collapse consig-posbox add_consignee" id="consignee">
+				<button type="button" class="con-info consig-pos " data-toggle="modal" data-target="#consignee">ADD NEW CONSIGNEE</button>
+
+					<div class="consignees collapse modal fade consig-posbox add_consignee" id="consignee">
+					  <div class="modal-dialog">
+
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">ADD NEW CONSIGNEE</h4>
+					      </div>
+					      <div class="modal-body">
 						<form action="<?php echo base_url('Add_user/add_client/');?>" method="post">
 							<div class="">
 					            <div class="form-group col-lg-12">          	
@@ -425,9 +433,14 @@
 					            </div>	
 					        </div>
 			   	 		</form>
-					</div>
-				</div>	
-			</div>
+   	 		      </div>
+		      	<div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
 
 				<!--For Pop up update -->
 		 <!-- Modal  for Consignee start-->
