@@ -413,25 +413,16 @@ body{
 
 
 .con-info{
-
     position: absolute;
-
-    padding: 14px; /*changed 11/23/2015 */
-
+    padding: 14px;
     top: 27%;
-
-    left: 81%;
-
-    width: 18%;
-
+    left: 3%;
+    width: 12%;
     height: 5%;
-
     border: 1px solid #0166bc;
-
     background-color: rgba(0, 140, 221,1);
-
     border-radius: 10px;
-
+    color: #fff;
 }
 
 
@@ -462,7 +453,7 @@ body{
 
 .consig-pos{
 
-    top: 27%;
+    top: 22%;
 
 }
 
@@ -472,7 +463,7 @@ body{
 
     padding-top: 12px;
 
-    font-size: 16px;
+    font-size: 14px;
 
     color: #fff;
 
@@ -510,7 +501,7 @@ body{
 
 
 
-.consig-posbox{
+/*.consig-posbox{
 
     position: absolute;
     padding-top: 2%;
@@ -523,7 +514,7 @@ body{
 }
 
 
-
+*/
 .con-infobox{
 
     position: absolute;
@@ -578,9 +569,9 @@ body{
 
     left: 3%;
 
-    width: 77%;
+    width: 95%;
 
-    height: 55%;
+    height: 62%;
 
     padding-right: 10px;
 
@@ -612,7 +603,7 @@ body{
 
     left: 3%;
 
-    width: 77%;
+    width: 95%;
 
     padding-top: 0.5%;
 
