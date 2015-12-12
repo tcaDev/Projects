@@ -13,7 +13,6 @@
 			    <li id="btn-charges-outport-add"><a role="button">Running Charges</a></li>
 			  </ul>
     	<hr>
-    	<div style="overflow-x:auto;">
     		<div class="container-fluid">
 
 
@@ -251,6 +250,8 @@
 
 		<!--container plate is no names yet -->
 				<!--CONTAINER WINDOW-->
+
+
 				  	<div id="tableAddContainer-outport" class="hidden pill-container-outport-add table-editable col-lg-12">
 
 				  	 	
@@ -341,28 +342,31 @@
 					  		<button type="button" class="btn-Add-Container-Alert-outport btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> alert</button>
 
 					  	</div>
-					    <table class="table" style="width: 3000px;" border="1">
-					      <thead>
-						      <tr>
-						      	<th class="">Container Value</th>
-						      	<th>Container Number</th>
-						      	<th class="">Vessel Value</th>
-						        <th>Vessel by JobFile</th>
-						        <th>Number of Cartons</th>
-						        <th>Estimated Departure Time</th>
-						        <th>Estimated Arrival Time</th>
-						        <th>Actual Arrival Time</th>
-						        <th>Start of Storage</th>
-						        <th>Start of Demorage</th>
-						        <th>Lodging</th>
-						        <th class="">Hauler value</th> 
-						        <th>Hauler</th>
-						        <th>Target Delivery Date</th>
-						        <th>Actual Delivery at Warehouse</th>
-						        <th></th>
-						      </tr>
-					      </thead>
-					    </table>
+					  	<div style="overflow-x:auto;width:100%;">
+					  		 <table class="table" style="width: 3000px;" border="1">
+							      <thead>
+								      <tr>
+								      	<th class="">Container Value</th>
+								      	<th>Container Number</th>
+								      	<th class="">Vessel Value</th>
+								        <th>Vessel by JobFile</th>
+								        <th>Number of Cartons</th>
+								        <th>Estimated Departure Time</th>
+								        <th>Estimated Arrival Time</th>
+								        <th>Actual Arrival Time</th>
+								        <th>Start of Storage</th>
+								        <th>Start of Demorage</th>
+								        <th>Lodging</th>
+								        <th class="">Hauler value</th> 
+								        <th>Hauler</th>
+								        <th>Target Delivery Date</th>
+								        <th>Actual Delivery at Warehouse</th>
+								        <th></th>
+								      </tr>
+							      </thead>
+							    </table>
+					  		</div>
+					   
 
 
 
@@ -474,7 +478,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 		</div>	
     </div>
 
@@ -727,7 +731,7 @@ $(document).ready(function(){
 });
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-outport").click(function(){
-			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-outport table tr:last td:nth-child(1)').html($(".container-outport").val());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(2)').html($(".container-outport option:selected").text());
 	        $('#tableAddContainer-outport table tr:last td:nth-child(3)').html($(".veselid-outport").val());
@@ -740,10 +744,10 @@ $(document).ready(function(){
 	               $('#tableAddContainer-outport table tr:last td:nth-child(10)').html($(".demorage-outport").val());
 	                $('#tableAddContainer-outport table tr:last td:nth-child(11)').html($(".lodging-outport").val());
 	                	$('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".hauler").val());
-	                	$('#tableAddContainer-outport table tr:last td:nth-child(12)').html($(".hauler option:selected").text());
-	                 $('#tableAddContainer-outport table tr:last td:nth-child(13)').html($(".trgtdeldt-outport").val());
-	                    $('#tableAddContainer-outport table tr:last td:nth-child(14)').html($(".act-del-whse-outport").val());
-	                     $('#tableAddContainer-outport table tr:last td:nth-child(15)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                	$('#tableAddContainer-outport table tr:last td:nth-child(13)').html($(".hauler option:selected").text());
+	                 $('#tableAddContainer-outport table tr:last td:nth-child(14)').html($(".trgtdeldt-outport").val());
+	                    $('#tableAddContainer-outport table tr:last td:nth-child(15)').html($(".act-del-whse-outport").val());
+	                     $('#tableAddContainer-outport table tr:last td:nth-child(16)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		});
 
 	
