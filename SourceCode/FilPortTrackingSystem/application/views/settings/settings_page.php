@@ -263,7 +263,7 @@
 		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
 		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
 		    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
-		    <li><a data-toggle="tab" href=".containers"				    id="form_container">Container</a></li>
+	
 <!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 		  </ul>
 
