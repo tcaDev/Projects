@@ -1134,7 +1134,7 @@ $(document).ready(function(){
        //for containers table
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 
-		table.find('tr').each(function (i) {
+		table.find('tr').each(function (count1) {
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
 				            vesselid    	= $tds.eq(2).text();
@@ -1209,34 +1209,29 @@ $(document).ready(function(){
 			  			    entryno		   :entryno
 
 			  		}
-				})
-		.done(function(data) {
-		   		 	    $.alert({
-								    title: 'Alert!',
-								    content: 'procecure 1-3 inserted!',
-								    confirm: function(){
-								    
-								    }
-								});
+				});
+
+	
+
+
+
 
 
 		});
-	});
 
-						//for the 4th proc insert start
+							   		 	  //for the 4th proc insert start
 		             //description of goods
 
 	    	     var table2 = $("#tableAddTruck-mnla table tbody");
 				    table2.find('tr').each(function (i) {
+				       //unset the maxid
 				        var $tds 		  = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
-						     color_id      = $tds.eq(1).text(), //change to  container 
+						     con_id        = $tds.eq(2).text(), //change to  container 
 						     prod_orderno = $tds.eq(3).text();
 						     origin_id     = $tds.eq(4).text();
 					         origin_cty    = $tds.eq(6).text();
 
-
-					       
 
 
 
@@ -1245,14 +1240,15 @@ $(document).ready(function(){
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
-				  			                /*   color_id 	   :color_id,  */ //change to container
-				  			                   prod_orderno   :prod_orderno,
+				  			                   con_id 	       :con_id,   //change to container
+				  			                   prod_orderno    :prod_orderno,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
+				  			                  /* max 			   :maxid
 				  			                  /* status		   :status*/
 				  			                  /* dt_boc 		   :dt_boc*/
 				  			  	   		 }
-						        })
+						              })
 		  						.done(function(data) {
 		   		 	  				 $.alert({
 								        title: 'Alert!',
@@ -1262,14 +1258,17 @@ $(document).ready(function(){
 								         }
 								    });
 						        });
-
-
+		  			
+		  			    
 				    });
     			//for the 4th proc insert end
 		
+	});
+
+	
    
 
- });
+
 
 
 </script>

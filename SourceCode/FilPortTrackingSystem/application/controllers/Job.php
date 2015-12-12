@@ -242,6 +242,8 @@ class Job extends CI_Controller {
                              'P_DateReceivedNoticeFromForwarder'       =>NULL,
                              'P_UserId'                                => $userid 
                           ));
+   
+
                 //
       
                 //2nd proc
@@ -259,12 +261,13 @@ class Job extends CI_Controller {
            //for getting the last insert in P_VesselByJobFileId start
                $table ='VesselByJobFile';
                $id    ='VesselByJobFileId';  
-                 $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+           $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
               //for getting the last insert in P_VesselByJobFileId end
 
 
+
              //3rd proc
-             $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
@@ -290,36 +293,50 @@ class Job extends CI_Controller {
                   'P_UserId'                    => $userid 
 
              ));
+
+  
    }
 
   
 
   function jobfile_add2(){
+
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
       //for sp_AddProducts   4th proc
    $product_name         =  $this->input->post('product_name');
-/*   $color_id             =  $this->input->post('color_id');*/
-   $prod_orderno        =  $this->input->post('prod_orderno');
+   $con_id               =  $this->input->post('con_id');   
+   $prod_orderno         =  $this->input->post('prod_orderno');
    $origin_id            =  $this->input->post('origin_id');
    $origin_cty           =  $this->input->post('origin_cty');
+   $max                  =  $this->input->post('max');
+   
  /*  $dt_boc               =  $this->input->post('dt_boc');*/
  /*  $status               =  $this->input->post('status');*/ // no insert for status haha check it please xd
           //for getting the last insert in P_VesselByJobFileId start
-           $table ='ContainerByVessel';
+     /*      $table ='ContainerByVessel';
            $id    = 'ContainerByVesselId';  
-           $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);
+           $ContainerByVesselId = $this->Jobdata->getLastInserted($table,$id);*/
           //for getting the last insert in P_VesselByJobFileId end
 
+           
+    //for getting the last insert in P_VesselByJobFileId start
+               $table ='VesselByJobFile';
+               $id    ='VesselByJobFileId';  
+           $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+              //for getting the last insert in P_VesselByJobFileId end
 
+           
+        
 
 
         //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
                   'P_ProductName'         => $product_name,   
-                  'P_ContainerByVesselId' => $ContainerByVesselId,    // last inserted id from VesselByJobFIle table
+                  'P_ContainerId'         => $con_id,
+                  'P_VesselByJobFileId'   => $VesselByJobFile,
                   'P_DateBOCCLeared'      => NULL,
                   'P_PurchaseOrderNo'     => $prod_orderno,
                   'P_Origin_CountryId'    => $origin_id,
@@ -328,8 +345,14 @@ class Job extends CI_Controller {
 
              ));
 
+              
+
 
   }
+
+
+
+
 
 
 
