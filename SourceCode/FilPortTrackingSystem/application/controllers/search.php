@@ -104,12 +104,12 @@ if(isset($_SESSION['success'])){
    	    echo '	    <div class="mycontent" >  	
    	    			<div class="modal-dialog">
 				      <!-- Modal content-->
-				      <div class="modal-content">
+				      <div class="modal-content" style="width:120%;">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Consignee Contacts Information</h4>
 				        </div>
-				        <div class="modal-body">
+				        <div class="modal-body" >
 		        		<div style="overflow-x:auto;">			
 						<table class="table table-striped table_consignee">
 					    <thead>
@@ -139,7 +139,7 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <td><button class="update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
 							  			<button class="delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
@@ -256,7 +256,7 @@ if(isset($_SESSION['success'])){
    	    echo '	    <div class="mycontent" >  	
    	    			<div class="modal-dialog">
 				      <!-- Modal content-->
-				      <div class="modal-content">
+				      <div class="modal-content" style="width:120%;">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Shipper Contacts Information</h4>
@@ -292,7 +292,7 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
 							  			<button class="delete_contacts"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
@@ -675,7 +675,7 @@ function search_shipper(){
 					  	    <td>'.$row->TownOrCityProvince.'</td>
 					  	    <td>'.$row->Country.'</td>
 					  	    <td class="hidden">'.$row->CountryId.'</td>
-					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit/Delete</button>   
+					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td>   				   
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
