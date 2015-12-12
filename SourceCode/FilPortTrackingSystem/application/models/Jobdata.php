@@ -32,7 +32,7 @@ function getLastInserted($table, $id) {
 
  function get_containers($id){
  	$this->  db ->select('*');
-    $this -> db -> from('VesselByJobFile');
+    $this -> db -> from('ContainerByVessel');
     $this -> db ->where('VesselByJobFileId', $id);
     $query=$this->db->get();
     return $query->result();

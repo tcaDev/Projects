@@ -105,9 +105,19 @@ class Job extends CI_Controller {
          echo "<table class='table-bordered'>
               <tr>
                    <th>No.</th>
-                   <th>Vessel Name</th>
-                    <th>Vessel Arrival Time</th>
-                    <th>Vessel DischargeT ime</th>
+                   <th>No Of Cartons</th>
+                    <th>Trucker PlateNo Time</th>
+                    <th>Trucker Name</th>
+                    <th>Estimated Departure Time</th>
+                    <th>Estimated Arrival Time</th>
+                    <th>Actual Arrival Time</th>
+                    <th>Start Of Storage</th>
+                    <th>Lodging</th>
+                    <th>Target Delivery Date</th>
+                    <th>Gate In At Port</th>
+                    <th>Gate Out At Port</th>
+                    <th>Actual Delivery At Warehouse</th>
+                    <th>Start Of Demorage</th>
 
               </tr>";
 
@@ -116,9 +126,21 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->JobFileId."</td>";
-             echo "<td class='row'>".$row->VesselArrivalTime."</td>";
-             echo "<td class='row'>".$row->VesselDischargeTime."</td>";
+             echo "<td class='row'>".$row->NoOfCartons."</td>";
+             echo "<td class='row'>".$row->TruckerPlateNo."</td>";
+             echo "<td class='row'>".$row->TruckerName."</td>";
+             echo "<td class='row'>".$row->EstDepartureTime."</td>";
+             echo "<td class='row'>".$row->EstArrivalTime."</td>";
+             echo "<td class='row'>".$row->ActualArrivalTime."</td>";
+             echo "<td class='row'>".$row->StartOfStorage."</td>";
+             echo "<td class='row'>".$row->Lodging."</td>";
+             echo "<td class='row'>".$row->TargetDeliveryDate."</td>";
+             echo "<td class='row'>".$row->GateInAtPort."</td>";
+             echo "<td class='row'>".$row->GateOutAtPort."</td>";
+             echo "<td class='row'>".$row->ActualDeliveryAtWarehouse."</td>";
+             echo "<td class='row'>".$row->StartOfDemorage."</td>";
+
+
              echo "</tr>";
          }
 
@@ -180,10 +202,10 @@ class Job extends CI_Controller {
    $adw             =  $this->input->post('adw');
 
 
-/*   $check = $this->db->query("SELECT * FROM  JobFile where JobFileId='$job' limit 1 ");
+   $check = $this->db->query("SELECT * FROM  JobFile where JobFileId='$job' limit 1 ");
  $i=0;
  $i++;
- if( ($check->num_rows() ==0) && ($i==1) ) {*/
+ if( ($check->num_rows() ==0) && ($i==1) ) {
          //stop inserting data in jobfile to avoid duplication
 
                           //first proc
@@ -226,7 +248,7 @@ class Job extends CI_Controller {
                       'P_VesselDischargeTime' => $vdt,
                       'P_UserId'              => $userid
                 ));
-/*  }*/
+  }
 
            //for getting the last insert in P_VesselByJobFileId start
                $table ='VesselByJobFile';
