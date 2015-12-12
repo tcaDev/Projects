@@ -155,7 +155,8 @@ class Update extends CI_Controller {
         	HouseBuildingNoStreet    =   '$broker_houseno'  and
         	BarangarOrVillage		 =   '$broker_vil'  	and
         	TownOrCityProvince		 =   '$broker_city' 	and
-        	CountryId				 =   '$broker_cid'   
+        	CountryId				 =   '$broker_cid'      and
+        	IsActive				 =    $status_broker 
         	limit 1");
              
 		if($query2->num_rows() ==1){
