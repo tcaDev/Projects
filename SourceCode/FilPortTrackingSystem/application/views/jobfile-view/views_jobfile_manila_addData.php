@@ -23,14 +23,17 @@
 				  	<?php echo  form_open('Job/jofile_data');?>
 				           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 
-				           <div class="form-group">
+
+				           	<div class="required-fields">
+				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:</label>   <span id="check_jobfiles"></span>
+				           		<label for="jbfl">JobFile No.:</label> <i style="color:red;font-size: 20px;">*</i> <span id="check_jobfiles"></span>
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onblur ="search_jobfile(this)">
+								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
 				           <div class="form-group">
-							 	 <label for="shipper">Shipper:</label>
+							 	 <label for="shipper">Shipper:</label> <i style="color:red;font-size: 20px;">*</i><span class"ship-check"></span>
 								  		<select name="shipper" id="shipper" class="form-control input-sm shipper">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
@@ -39,10 +42,11 @@
 							                </option> 
 							             	<?php }?>
 						               	</select>
+						            <i class="shipper-msg"  style="color:red;"></i>
 						      </div>
 
 						     <div class="form-group">
-								  <label for="consignee">Consignee:</label>
+								  <label for="consignee">Consignee:</label> <i style="color:red;font-size: 20px;">*</i>
 								  		<select name="consignee" class="form-control input-sm consignee">
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
@@ -51,8 +55,30 @@
 							                </option> 
 							             	<?php }?>
 							            </select>
+							            <i class="consignee-msg" style="color:red;"></i>
 							   </div>
 								   	
+				           	
+
+				           	<div class="form-group">
+								<label>Color Selectivity</label> <i style="color:red;font-size: 20px;">*</i>
+									<select name="colors" class="form-control colsel-outport input-sm" >
+									  	<option value="" disabled selected>Jobfile Status</option>
+										<?php  foreach($color_data as $row){ 
+										   $status = $row->IsBackground;
+										   if($status==1){?> 
+										   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+									 <?php }else{?>
+									    			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+									    <?php }?>
+									    <?php echo $row->StatusName; ?>
+									    </option> 
+									 	<?php }?>
+									</select>
+									<i class="colsel-msg" style="color:red;"></i>
+							</div>
+
+				           </div>
 					
 						<!-- 		<div class="form-group">
 								  <label for="pipo">PI / PO No.:</label>
@@ -60,7 +86,7 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Landing No.:</label>
+								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;font-size: 20px;">*</i> -->
 								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
 								</div>
 
@@ -176,8 +202,9 @@
 								</div>
 
 								<div class="form-group">
-								 	<label for="dtClrd">Reference Entry No.:</label>
-								 	<input type="text" name="entryno" class="form-control input-sm " id="entryno">
+								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;font-size: 20px;">*</i>
+								 	<input type="text" name="entryno" class="form-control input-sm reference" id="entryno">
+								 	<i class="reference-msg" style="color:red;"></i>
 								</div>
 
 							     <div class="form-group">
@@ -203,30 +230,30 @@
 
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Product Name</label>
+								<label>Product Name</label><i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm prodname" name="prodname">
+								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
-								<label>Container Number</label>
-									<select name="container" class="form-control containers-prod" >
-					        		<?php foreach($container_data as $row){ ?>
-					        		 <option value="<?php echo $row->ContainerId?>">
-					        		 <?php echo $row->ContainerNo;?>
-					        		 </option>
-					        		<?php }?> 
-					        		</select>	
-							</div>
-
-							<div class="form-group">
-								<label>Purchase Order Number</label> 
+								<label>Purchase Order Number</label> <i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm PON"  name="PON">
+								<i class="pon-msg" style="color:red;"></i>
+							</div>
+
+							<div class="form-group">
+								<label>Container Number</label> <i style="color:red;font-size: 20px;">*</i>
+								<select class="containers-prod form-control input-sm"> 
+
+								</select>
+								<i class="cont-size-msg" style="color:red;"></i>
+		
 							</div>
 				  		</div>
 
 				  		<div class="col-lg-6">
 					  		<div class="form-group ">
-									<label>Origin Country</label>
+									<label>Origin Country</label><i style="color:red;font-size: 20px;">*</i>
 										<select  class="form-control origin" name="countries">
 											<?php foreach($countries as $row){ ?>
 											 <option value="<?php echo $row->CountryId?>">
@@ -234,6 +261,8 @@
 											 </option>
 											<?php }?> 
 										</select>	
+
+										<i class="origin-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -242,18 +271,17 @@
 							</div>
 
 							<button type="button" class="btn-Add-Product-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
-				  			<button type="button" class="btn-Add-Product-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Alert</button>
+				  			
 
 				  		</div>
 
 				  		<div style="width: 100%; overflow-x: auto;">
-						    <table class="table" style="width: 2000px;" border="1">
+						    <table class="table" style="width: 1000px;" border="1">
 							    <thead>
 							    	 <tr>
 								        <th>Product Name</th>
-								        <th class="hidden">Color Value</th>
-								        <th>Container Number</th>
 								        <th>Purchase Order Number</th>
+								        <th>Container</th>
 								        <th class="hidden">Origin Value</th>
 								        <th>Origin Country ID</th>
 								        <th>Origin City</th>
@@ -271,21 +299,27 @@
 				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Container Number</label>
-							     <select name="container" class="form-control containerss" >
-					        		<?php foreach($container_data as $row){ ?>
-					        		 <option value="<?php echo $row->ContainerId?>">
-					        		 <?php echo $row->ContainerNo;?>
-					        		 </option>
-					        		<?php }?> 
-					        	</select>	
+								<label>Container Number</label><i style="color:red;font-size: 20px;">*</i>
+							     
+					        		<input type="text" class="containerss form-control input-sm">
+							<i class="container-msg" style="color:red;"></i>
+					        	
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="veselid" class="veselid">
-				  				<input type="text" name="veselid" class="veseltext">
-								<label>Vessel by JobFile</label>
+								<label>Container Size</label><i style="color:red;font-size: 20px;">*</i>
+							     
+					        		<input type="text" class="containerss-size form-control input-sm">
+								<i class="container-size-msg" style="color:red;"></i>
+					        	
+							</div>
+
+							<div class="form-group">
+								<input type="text" name="veselid" class="veselid hidden">
+				  				<input type="text" name="veselid" class="veseltext hidden">
+								<label>Vessel by JobFile</label><i style="color:red;font-size: 20px;">*</i>
 									<div class="vesel" ></div>
+									<i class="vessel-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -294,13 +328,15 @@
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Plate No.</label>
+								<label>Trucker Plate No.</label><i style="color:red;font-size: 20px;">*</i>
 								<input type="text" name="trckplte" class="form-control input-sm plate" />
+								<i class="truckplate-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Name</label>
+								<label>Trucker Name</label><i style="color:red;font-size: 20px;">*</i>
 								<input type="text" name="trckname" class="form-control input-sm truckname" />
+								<i class="truckname-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -366,7 +402,7 @@
 							</div>
 
 							<button type="button" class="btn-Add-Container-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
-					  		<button type="button" class="btn-Add-Container-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> alert</button>
+					  		<i class="table-msg" style="color:red;"></i>
 
 					  	</div>
 
@@ -374,8 +410,8 @@
 					    <table class="table" style="width: 3000px;" border="1">
 					      <thead>
 						      <tr>
-						      	<th class="hidden">Container Value</th>
 						      	<th>Container Number</th>
+						      	<th>Container Size</th>
 						      	<th class="hidden">Vessel Value</th>
 						        <th>Vessel by JobFile</th>
 						        <th>Number of Cartons</th>
@@ -521,6 +557,91 @@
 <?php echo form_close();?>
 
 
+`
+<!-- Form Restriction -->
+
+<script>
+	
+	/*$(document).ready(function(){
+		 $('.btn-Next').attr('disabled', 'disabled');
+		 $('#btn-container-mnla-add').attr('disabled', 'disabled');
+
+		 $('.required-fields .jobfiles').click(function() {
+		        if($('.required-fields .shipper').val() == "")
+				{
+					$('.btn-Next').attr('disabled', 'disabled');
+					$('#btn-container-mnla-add').attr('disabled', 'disabled');
+				}else if($('.required-fields .consignee').val() =="")
+				{
+					$('.btn-Next').attr('disabled', 'disabled');
+					$('#btn-container-mnla-add').attr('disabled', 'disabled');
+				}else if($(this).val() == ""){
+					$('.btn-Next').attr('disabled', 'disabled');
+					$('#btn-container-mnla-add').attr('disabled', 'disabled');
+				}
+				else if($('#check_jobfiles').text() == "Jobfile is already exists")
+				{
+					$('.btn-Next').attr('disabled', 'disabled');
+					$('#btn-container-mnla-add').attr('disabled', 'disabled');
+				}else
+				{
+					$('.btn-Next').removeAttr('disabled');
+				}
+	    });
+
+						$('.required-fields .shipper').click(function(){
+							if($('.required-fields .jobfiles').val() == "")
+							{
+								$('.btn-Next').attr('disabled', 'disabled');
+								$('#btn-container-mnla-add').attr('disabled', 'disabled');
+							}else if($('.required-fields .consignee').val() =="")
+							{
+								$('.btn-Next').attr('disabled', 'disabled');
+								$('#btn-container-mnla-add').attr('disabled', 'disabled');
+							}else if($(this).val() == ""){
+								$('.btn-Next').attr('disabled', 'disabled');
+								$('#btn-container-mnla-add').attr('disabled', 'disabled');
+							}
+							else if($('#check_jobfiles').text() == "Jobfile is already exists")
+							{
+								$('.btn-Next').attr('disabled', 'disabled');
+								$('#btn-container-mnla-add').attr('disabled', 'disabled');
+							}else
+							{
+								$('.btn-Next').removeAttr('disabled');
+							}
+						});
+
+
+													$('.required-fields .consignee').click(function(){
+														if($('.required-fields .jobfiles').val() == "")
+														{
+															$('.btn-Next').attr('disabled', 'disabled');
+															$('#btn-container-mnla-add').attr('disabled', 'disabled');
+
+														}else if($('.required-fields .shipper').val() =="")
+														{
+															$('.btn-Next').attr('disabled', 'disabled');
+															$('#btn-container-mnla-add').attr('disabled', 'disabled');
+														}else if($(this).val() == ""){
+															$('.btn-Next').attr('disabled', 'disabled');
+															$('#btn-container-mnla-add').attr('disabled', 'disabled');
+														}
+														else if($('#check_jobfiles').text() == "Jobfile is already exists")
+														{
+															$('.btn-Next').attr('disabled', 'disabled');
+															$('#btn-container-mnla-add').attr('disabled', 'disabled');
+														}else
+														{
+															$('.btn-Next').removeAttr('disabled');
+														}
+													});
+
+
+
+	});*/
+</script>
+
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
 	$('.colsel').change(function(){
@@ -546,8 +667,28 @@
 		*/
 
 		$('#btn-container-mnla-add').on('click',function(){
-		
-
+			
+			if($('.required-fields .jobfiles').val() == "")
+			{
+				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.colsel-outport').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
+			else if($('.required-fields .shipper').val() == "")
+			{
+				$('.shipper-msg').text("Need Shipper");
+			}
+			else if($('.required-fields .consignee').val() == "")
+			{
+				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.reference').val() == "")
+			{
+				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else{
 
 			$(this).addClass('active');
 			$('#btn-jobfile-mnla-add').removeClass('active');
@@ -561,8 +702,11 @@
 			$('.test_data').addClass('hidden');
 
 			$('.btn-Next').removeClass('hidden');
+				i=1;}
 
-			i=1;
+
+			
+
 		});
 
 		/*
@@ -570,20 +714,46 @@
 		*/
 
 		$('#btn-truck-mnla-add').on('click',function(){
-			$(this).addClass('active');
-			$('#btn-jobfile-mnla-add').removeClass('active');
-			$('#btn-container-mnla-add').removeClass('active');
-			$('#btn-charges-mnla-add').removeClass('active');
 
-			$('.pill-jobfile-mnla-add').addClass('hidden');
-			$('.pill-truck-mnla-add').removeClass('hidden');
-			$('.pill-charges-mnla-add').addClass('hidden');
-			$('.pill-container-mnla-add').addClass('hidden');
-			$('.test_data').addClass('hidden');
+			if($('.required-fields .jobfiles').val() == "")
+			{
+				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.colsel-outport').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
+			else if($('.required-fields .shipper').val() == "")
+			{
+				$('.shipper-msg').text("Need Shipper");
+			}
+			else if($('.required-fields .consignee').val() == "")
+			{
+				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.reference').val() == "")
+			{
+				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else{
 
-			$('.btn-Next').removeClass('hidden');
+				
+					$(this).addClass('active');
+					$('#btn-jobfile-mnla-add').removeClass('active');
+					$('#btn-container-mnla-add').removeClass('active');
+					$('#btn-charges-mnla-add').removeClass('active');
 
-			i=2;
+					$('.pill-jobfile-mnla-add').addClass('hidden');
+					$('.pill-truck-mnla-add').removeClass('hidden');
+					$('.pill-charges-mnla-add').addClass('hidden');
+					$('.pill-container-mnla-add').addClass('hidden');
+					$('.test_data').addClass('hidden');
+
+					$('.btn-Next').removeClass('hidden');
+
+					i=2;
+				
+			};
 		});
 
 		/*
@@ -632,9 +802,34 @@
 
 		var i=0;
 
-		$(".btn-Next").on('click',function(){
-			i++;
+		$(".btn-Next").click(function(){
+			
+			 if($('.required-fields .jobfiles').val() == "")
+			{
+				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.colsel-outport').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
+			else if($('.required-fields .shipper').val() == "")
+			{
+				$('.shipper-msg').text("Need Shipper");
+			}
+			else if($('.required-fields .consignee').val() == "")
+			{
+				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.reference').val() == "")
+			{
+				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else{i++;}
 
+			
+				   
+
+			/*Next Page*/
 			if(i==1){
 				$("#btn-container-mnla-add").click();
 			}else if(i==2){
@@ -642,6 +837,7 @@
 			}else if(i==3){
 				$("#btn-charges-mnla-add").click();
 			}
+
 		});
 
 });
@@ -753,6 +949,11 @@ $(document).ready(function(){
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
     	$(this).closest("tr").remove();
+   /* 	var a = $(this).closest('tr').children('td:eq(0)').text();
+    	$(".containers-prod option[value="+a+"]").remove();
+*/
+
+  
 
 	});
 	$('#tableAddTruck-mnla').on('click', '.deleteButton', function() {
@@ -763,9 +964,32 @@ $(document).ready(function(){
 });
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-mnla").click(function(){
+
+			if($('#tableAddContainer-mnla .containerss').val() == "")
+			{
+				$('.container-msg').text("Need Container Number.");
+			}
+			else if($('#tableAddContainer-mnla .containerss-size').val() == "")
+			{
+				$('.container-size-msg').text("Need Container Size.");
+			}
+			else if($('#tableAddContainer-mnla .vessel').val() == "")
+			{
+				$('.vessel-msg').text("Need Vessel.");
+			}
+			else if($('#tableAddContainer-mnla .plate').val() == "")
+			{
+				$('.truckplate-msg').text("Need Truck Plate No.");
+			}
+			else if($('#tableAddContainer-mnla .truckname').val() == "")
+			{
+				$('.truckname-msg').text("Need Truck Name");
+			}else{
+
 			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val()).hide();
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
+	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
@@ -782,22 +1006,65 @@ $(document).ready(function(){
 	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
 	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
 	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
-		});
+					
+	                     $('.containers-prod').append('<option>' + $(".containerss").val() + '</option>');
+
+			}
+
+			$('#tableAddContainer-mnla .containerss').val('');
+			$('#tableAddContainer-mnla .containerss-size').val('');
+			$('#tableAddContainer-mnla .vessel').val('');
+			$('#tableAddContainer-mnla .plate').val('');
+			$('#tableAddContainer-mnla .truckname').val('');
+			$('#tableAddContainer-mnla .cartons').val('');
+			$('#tableAddContainer-mnla .est-dept').val('');
+			$('#tableAddContainer-mnla .est-arr').val('');
+			$('#tableAddContainer-mnla .act-arr').val('');
+			$('#tableAddContainer-mnla .storage').val('');
+			$('#tableAddContainer-mnla .demorage').val('');
+			$('#tableAddContainer-mnla .lodging').val('');
+			$('#tableAddContainer-mnla .trgtdeldt').val('');
+			$('#tableAddContainer-mnla .gtinport').val('');
+			$('#tableAddContainer-mnla .gtoutport').val('');
+			$('#tableAddContainer-mnla .act-del-whse').val('');
+
+});
 
 	
-
+	
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
-			$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+
+			if($('#tableAddTruck-mnla .prodname').val() == "")
+			{
+				$('.prodname-msg').text("Need Product Name.");
+			}
+			else if($('#tableAddTruck-mnla .PON').val() == "")
+			{
+				$('.pon-msg').text("Need Purchase Order Number.");
+			}
+			else if($('#tableAddTruck-mnla .containers-prod').val() == "")
+			{
+				$('.cont-size-msg').text("Need Container Size.");
+			}
+			else if($('#tableAddTruck-mnla .origin').val() == "")
+			{
+				$('.origin-msg').text("Need Origin.");
+			}else{
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val()).hide();
-			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod option:selected").text());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".PON").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
-			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
-		});
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		
+			}
+			$('#tableAddTruck-mnla .prodname').val('');
+			$('#tableAddTruck-mnla .PON').val('');
+			$('#tableAddTruck-mnla .origincity').val('');
+			});
 		
 
 		$(".btn-Add-Product-Alert-mnla").click(function(){
@@ -1006,3 +1273,5 @@ $(document).ready(function(){
 
 
 </script>
+
+
