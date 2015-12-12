@@ -21,8 +21,7 @@
   var total_forward        =  "<?php echo $forward_total; ?>";
   var content_legend       = "<?php echo base_url('Search/search_legend')?>";
   var total_legend         =  "<?php echo $legend_total; ?>";
-  var content_container    = "<?php echo base_url('Search/search_container')?>";
-  var total_container      =  "<?php echo $container_total; ?>";
+
  </script>
 
 		
@@ -247,36 +246,7 @@
 			
 			});
 
-				$(document).ready(function() {
-				    $(".containerpage").load(content_container);  //initial page number to load
-				    $(".pagination_container").bootpag({
-				        total:total_container, // total number of pages
-				        page: 1, //initial page
-				        maxVisible: 5, //maximum visible links
-					    leaps: true,
-					    firstLastUse: true,
-					    first: 'First',
-					    last: 'Last',
-					    prev: 'Previous',
-					    next: 'Next',
-					    wrapClass: 'pagination',
-					    activeClass: 'active',
-					    disabledClass: 'disabled',
-					    nextClass: 'next',
-					    prevClass: 'prev',
-					    lastClass: 'last',
-					    firstClass: 'first'
-				    }).on("page", function(e, num){
-				        e.preventDefault();
-				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				        $(".containerpage").load(content_container, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
-				    });
-			
-				});
+
 				
 				
 		</script>
@@ -353,12 +323,6 @@
 			       <!--FOr legend data view  end--> 
 
 
-			       <!--FOr container data view  start--> 
-			    <div  class="containers tab-pane fade">
-			      <div class="pagination_container pull-right"> </div>
-			 	  <div class="containerpage"> </div>
-			    </div>
-			       <!--FOr container data view  end--> 
 
 		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
