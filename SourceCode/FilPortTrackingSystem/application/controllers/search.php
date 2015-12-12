@@ -72,11 +72,11 @@ if(isset($_SESSION['success'])){
   if(isset($_SESSION['failed'])){
   	$failed = $_SESSION['failed'];
   	if($failed=='failed'){
-  	 $message = 'Failed to add, because the data  is already exists!';
+  	 $message = 'Failed to Add, Data already exists!';
   	
   	}
   if($failed=='update_failed'){
-  	$message = 'Failed to update, because the data  is already exists!';
+  	$message = 'Failed to Update, Data already exists!';
   }
  		echo "<script>
 		 		   $.alert({

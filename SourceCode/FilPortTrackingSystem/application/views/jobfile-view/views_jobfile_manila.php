@@ -109,7 +109,7 @@
 
 								          <th >House Bill of Lading No.</th>
 
-								          <th >Master Bill of Landing No.</th>
+								          <th >Master Bill of Lading No.</th>
 
 								          <th >Container No.</th>
 
@@ -188,7 +188,7 @@
 								          <td><?php echo $row->JobFileId; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
 								          <td><?php echo $row->StatusName; ?></td>
-								          
+
 								          <td><?php echo $row->ShipperName; ?></td>
 
 								          <td><?php echo $row->ConsigneeName; ?></td>
