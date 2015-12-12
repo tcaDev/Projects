@@ -512,9 +512,9 @@
 
     <div class="footer-modal" >
     <hr>
-     <button type="button" class="btn btn-danger container_insert">test insert</button>
+
       <button type="button" class="btn btn-danger btn-Next">Next</button>
-      <button type="submit" class="hidden btn btn-danger test_data" >Save</button>
+      <button type="submit" class="hidden btn btn-danger insert_data" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -829,7 +829,7 @@ $(document).ready(function(){
 
 <script>
 	//for testing of multiple insert of containers
-	$(".container_insert").click(function(){    
+	$(".insert_data").click(function(){    
        var jbfl       = $('.jobfiles').val();
        var shipper 	  = $('.shipper').val();
        var consignee  = $('.consignee').val();
@@ -963,7 +963,7 @@ $(document).ready(function(){
 				    table2.find('tr').each(function (i) {
 				        var $tds 		  = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
-						     color_id      = $tds.eq(1).text(),
+						     color_id      = $tds.eq(1).text(), //change to  container 
 						     prod_orderno = $tds.eq(3).text();
 						     origin_id     = $tds.eq(4).text();
 					         origin_cty    = $tds.eq(6).text();
@@ -978,7 +978,7 @@ $(document).ready(function(){
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
-				  			                   color_id 	   :color_id,
+				  			                   color_id 	   :color_id,   //change to container
 				  			                   prod_orderno   :prod_orderno,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
