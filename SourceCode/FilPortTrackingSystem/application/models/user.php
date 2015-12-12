@@ -149,7 +149,7 @@ Class User extends CI_Model
         function update_broker($id,$broker_fname,$broker_mname,
       $broker_lname,$broker_houseno,$broker_vil,$broker_city,
       $broker_cid,$broker_contact1,$broker_contact2,$status_broker){
-    
+
         $data = array(
         'FirstName'         => $broker_fname,
         'MiddleName'        => $broker_mname,
@@ -181,12 +181,14 @@ Class User extends CI_Model
     $this->db->select('ConsigneeName,ConsigneeId');
     $this ->db -> from('Consignee');
     $this ->db->order_by('ConsigneeName');
+    $this->db->where('IsActive', 1);
     $query=$this->db->get();
     return $query->result();
   }
    function dropdown_broker(){
     $this->db->select('BrokerId,FirstName,MiddleName,LastName');
     $this ->db -> from('Broker');
+    $this->db->where('IsActive', 1);
     $this ->db->order_by('FirstName');
     $query=$this->db->get();
     return $query->result();
