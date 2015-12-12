@@ -71,7 +71,7 @@
 
 								<div class="form-group">
 								  <label for="mbl">Master Bill of Landing No2.:</label>
-								  <input type="text" class="form-control input-sm  mbl2" name="mbl2" placeholder="Optional" id="mbl2">
+								  <input type="text" class="form-control input-sm text-uppercase mbl2" name="mbl2" placeholder="optional" id="mbl2">
 								</div>
 
 								<div class="form-group">
@@ -96,12 +96,12 @@
 								 </div>
 
 								 <div class="form-group">
-								  	<label for="dtClrd">Vessel Actual Verting Time</label>
+								  	<label for="dtClrd">Vessel Arrival Time</label>
 								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
 								 </div>
 
 								<div class="form-group">	 
-								    <label for="dtClrd">Vessel Actual Discharge Time</label>
+								    <label for="dtClrd">Vessel Discharge Time</label>
 								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
 								 </div>
 
@@ -512,9 +512,9 @@
 
     <div class="footer-modal" >
     <hr>
-
+     <button type="button" class="btn btn-danger container_insert">test insert</button>
       <button type="button" class="btn btn-danger btn-Next">Next</button>
-      <button type="submit" class="hidden btn btn-danger insert_data" >Save</button>
+      <button type="submit" class="hidden btn btn-danger test_data" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -829,7 +829,7 @@ $(document).ready(function(){
 
 <script>
 	//for testing of multiple insert of containers
-	$(".insert_data").click(function(){    
+	$(".container_insert").click(function(){    
        var jbfl       = $('.jobfiles').val();
        var shipper 	  = $('.shipper').val();
        var consignee  = $('.consignee').val();
@@ -978,7 +978,7 @@ $(document).ready(function(){
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
-				  			                   color_id 	   :color_id,   //change to container
+				  			                /*   color_id 	   :color_id,  */ //change to container
 				  			                   prod_orderno   :prod_orderno,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
