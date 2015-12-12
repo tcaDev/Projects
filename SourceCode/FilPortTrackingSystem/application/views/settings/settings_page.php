@@ -310,60 +310,60 @@
 		</div>
             <div class="con-ship tab-content"> 
                <!--FOr consignee data view  start--> 
-                  <div class=" consignee tab-pane fade in active"> 
-                  <div class="consigneepage"> </div>
-                  	<div class="pagination_consignee pull-right"> </div>
+                  <div class="consignee tab-pane fade in active"> 
+                  <div class="pagination_consignee pull-right"></div>
+                  <div class="consigneepage" > </div>
                   </div>
 			    <!--FOr consignee data view  end-->
 
 			    <!--FOr BROKER data view  start--> 
 			    <div class="tab-pane fade broker">
+			      <div class="pagination_broker pull-right"> </div>
 			      <div class="brokerpage"> </div>
-                  <div class="pagination_broker pull-right"> </div>
 			    </div>
 			     <!--FOr BROKER data view  END-->
 
 			      <!--FOr vessel data view  start--> 
 			    <div  class="vessel tab-pane fade">
+			      <div class="pagination_vessel pull-right"> </div>
 			 	  <div class="vesselpage"> </div>
-                  <div class="pagination_vessel pull-right"> </div>
 			    </div>
 			       <!--FOr vessel data view  end--> 
 
 				 <!--FOr Hauler data view  start--> 
 			    <div  class="haulers tab-pane fade">
+			      <div class="pagination_hauler pull-right"> </div>
 			 	  <div class="haulerpage"> </div>
-                  <div class="pagination_hauler pull-right"> </div>
 			    </div>
 			       <!--FOr Hauler data view  end--> 
 
 			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
+			      <div class="pagination_forward pull-right"> </div>
 			 	  <div class="forwardpage"> </div>
-                  <div class="pagination_forward pull-right"> </div>
 			    </div>
 			       <!--FOr forward data view  end--> 
 
 
 			    <!--FOr legend data view  start--> 
 			    <div  class="legendss tab-pane fade">
+			      <div class="pagination_legend pull-right"> </div>
 			 	  <div class="legendpage"> </div>
-                  <div class="pagination_legend pull-right"> </div>
 			    </div>
 			       <!--FOr legend data view  end--> 
 
 
 			       <!--FOr container data view  start--> 
 			    <div  class="containers tab-pane fade">
+			      <div class="pagination_container pull-right"> </div>
 			 	  <div class="containerpage"> </div>
-                  <div class="pagination_container pull-right"> </div>
 			    </div>
 			       <!--FOr container data view  end--> 
 
 		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
+			      <div class="pagination_shipper pull-right"> </div>
 				  <div class="shipperpage"> </div>
-                  <div class="pagination_shipper pull-right"> </div>
 			    </div>
 			     <!--FOr shipper data view  end-->
 
