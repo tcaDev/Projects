@@ -71,7 +71,7 @@
 
 								<div class="form-group">
 								  <label for="mbl">Master Bill of Landing No2.:</label>
-								  <input type="text" class="form-control input-sm text-uppercase mbl2" name="mbl2" placeholder="optional" id="mbl2">
+								  <input type="text" class="form-control input-sm  mbl2" name="mbl2" placeholder="Optional" id="mbl2">
 								</div>
 
 								<div class="form-group">
@@ -96,12 +96,12 @@
 								 </div>
 
 								 <div class="form-group">
-								  	<label for="dtClrd">Vessel Arrival Time</label>
+								  	<label for="dtClrd">Vessel Actual Verting Time</label>
 								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
 								 </div>
 
 								<div class="form-group">	 
-								    <label for="dtClrd">Vessel Discharge Time</label>
+								    <label for="dtClrd">Vessel Actual Discharge Time</label>
 								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
 								 </div>
 
