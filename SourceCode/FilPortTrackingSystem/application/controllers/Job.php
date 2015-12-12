@@ -209,7 +209,10 @@ class Job extends CI_Controller {
 
 
          //stop inserting data in jobfile to avoid duplication
-
+     $query= $this->db->query("Select * from JobFile where
+          JobFileId='$job' limit 1");
+      if($query->num_rows() ==1){
+       }else{     
                           //first proc
                  $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $this->db->query($add_jobfile,
@@ -218,7 +221,7 @@ class Job extends CI_Controller {
                              'P_ConsigneeId'                           =>$consignee,
                              'P_BrokerID'                              =>$broker,
                              'P_MonitoringTypeId'                      =>1,
-                             'P_StatusId'                              =>$status,
+                             'P_StatusId'                              =>1,
                              'P_RefEntryNo'                            =>$entryno,
                              'P_Registry'                              =>$registry,            
                              'P_HouseBillLadingNo'                     =>$hbl,
@@ -251,7 +254,7 @@ class Job extends CI_Controller {
                       'P_VesselDischargeTime' => $vdt,
                       'P_UserId'              => $userid
                 ));
-  
+          }
 
            //for getting the last insert in P_VesselByJobFileId start
                $table ='VesselByJobFile';
@@ -261,10 +264,11 @@ class Job extends CI_Controller {
 
 
              //3rd proc
-             $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
-              array(
-                  'P_ContainerId'           => $container,   //ongoing    ///    auto incre in the table
+              array(       
+                  'P_ContainerNo'           =>$container,
+                  'P_ContainerSize'         => 100,
                   'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
                   'P_CarrierId'             => NULL,
                   'P_NoOfCartons'           => $cartons,

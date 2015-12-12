@@ -319,12 +319,7 @@ class Login_user extends CI_Controller {
 		$data['legend_total'] = $page;
 		//total page of legend end
 
-		//total page of container start
-	 	$this->db->from('Container');
-		$total_container= $this->db->count_all_results();
-		$page = ceil($total_container/$item_per_page);
-		$data['container_total'] = $page;
-		//total page of container end
+
 
 		
 
