@@ -73,7 +73,8 @@ class Job extends CI_Controller {
     if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
     }else{
-         echo "<table class='table-bordered'>
+         echo "<div style='width:100%; overflow-x:auto; '> 
+              <table class='table-bordered table table-striped table-hover table-condensed' style='width: 700px;'>
               <tr>
                    <th>No.</th>
                    <th>Product Name</th>
@@ -88,7 +89,8 @@ class Job extends CI_Controller {
              echo "</tr>";
          }
 
-         echo "</table>";
+         echo "</table>
+              </div>";
     }
 
 
@@ -102,7 +104,9 @@ class Job extends CI_Controller {
     if($container==NULL){
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
     }else{
-         echo "<table class='table-bordered'>
+         echo "
+         <div style='width:100%; overflow-x:auto; '> 
+         <table class='table-bordered table table-striped table-hover table-condensed' style='width: 3000px;'>
               <tr>
                    <th>No.</th>
                    <th>No Of Cartons</th>
@@ -144,7 +148,8 @@ class Job extends CI_Controller {
              echo "</tr>";
          }
 
-         echo "</table>";
+         echo "</table>
+                </div>";
     }
 
   }

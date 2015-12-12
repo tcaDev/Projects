@@ -13,7 +13,6 @@
 			    <li id="btn-charges-mnla-add"><a role="button">Running Charges</a></li>
 			  </ul>
     	<hr>
-    	<div style="overflow-x:auto;">
     		<div class="container-fluid">
 
 
@@ -210,19 +209,13 @@
 
 							<div class="form-group">
 								<label>Container Number</label>
-									<select name="colors" class="form-control colsel input-sm colors" >
-									  	<option  value="" disabled selected>Jobfile Status</option>
-										<?php  foreach($color_data as $row){ 
-										   $status = $row->IsBackground;
-										   if($status==1){?> 
-										   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
-									 <?php }else{?>
-									    			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
-									    <?php }?>
-									    <?php echo $row->StatusName; ?>
-									    </option> 
-									 	<?php }?>
-									</select>
+									<select name="container" class="form-control containers-prod" >
+					        		<?php foreach($container_data as $row){ ?>
+					        		 <option value="<?php echo $row->ContainerId?>">
+					        		 <?php echo $row->ContainerNo;?>
+					        		 </option>
+					        		<?php }?> 
+					        		</select>	
 							</div>
 
 							<div class="form-group">
@@ -253,20 +246,22 @@
 
 				  		</div>
 
-					    <table class="table" style="width: 2000px;">
-						    <thead>
-						    	 <tr>
-							        <th>Product Name</th>
-							        <th class="hidden">Color Value</th>
-							        <th>Color Selectivity</th>
-							        <th>Purchase Order Number</th>
-							        <th class="hidden">Origin Value</th>
-							        <th>Origin Country ID</th>
-							        <th>Origin City</th>
-							        <th></th>
-						      	</tr>
-						    </thead>
-					    </table>
+				  		<div style="width: 100%; overflow-x: auto;">
+						    <table class="table" style="width: 2000px;" border="1">
+							    <thead>
+							    	 <tr>
+								        <th>Product Name</th>
+								        <th class="hidden">Color Value</th>
+								        <th>Container Number</th>
+								        <th>Purchase Order Number</th>
+								        <th class="hidden">Origin Value</th>
+								        <th>Origin Country ID</th>
+								        <th>Origin City</th>
+								        <th></th>
+							      	</tr>
+							    </thead>
+						    </table>
+						</div>
 					</div>
 
 		<!--container plate is no names yet -->
@@ -374,6 +369,8 @@
 					  		<button type="button" class="btn-Add-Container-Alert-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> alert</button>
 
 					  	</div>
+
+					  	<div style="width: 100%; overflow-x: auto;">
 					    <table class="table" style="width: 3000px;" border="1">
 					      <thead>
 						      <tr>
@@ -399,7 +396,7 @@
 						      </tr>
 					      </thead>
 					    </table>
-
+					</div>
 
 
 					</div>
@@ -510,7 +507,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>	
     </div>
 
@@ -794,8 +790,8 @@ $(document).ready(function(){
 		$(".btn-Add-Product-Data-mnla").click(function(){
 			$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".colsel").val()).hide();
-			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".colsel option:selected").text());
+			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val()).hide();
+			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod option:selected").text());
 			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".PON").val());
 			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
 			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
