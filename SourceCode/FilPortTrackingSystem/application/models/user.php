@@ -147,8 +147,9 @@ Class User extends CI_Model
 // FOR UPDATING CONTACT PERSONS IN SETTINGS END
 
         function update_broker($id,$broker_fname,$broker_mname,
-    $broker_lname,$broker_houseno,$broker_vil,$broker_city,
-    $broker_cid,$broker_contact1,$broker_contact2,$status_broker){
+      $broker_lname,$broker_houseno,$broker_vil,$broker_city,
+      $broker_cid,$broker_contact1,$broker_contact2,$status_broker){
+    
         $data = array(
         'FirstName'         => $broker_fname,
         'MiddleName'        => $broker_mname,

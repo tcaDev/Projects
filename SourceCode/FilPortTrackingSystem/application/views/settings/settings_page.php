@@ -790,10 +790,10 @@
 					        <div class="col-lg-12">
 					        	<label>Status: </label>
 						        <div class="radio">
-								  <label><input type="radio" name="status_broker" class="activate  " value="1">activated</label>
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
 								</div>
 								 <div class="radio">
-								   <label><input type="radio"name="status_broker" class="deactivate " value="0">deactivated</label>
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
 								 </div>
 					        </div>
 					         <div class="row">
