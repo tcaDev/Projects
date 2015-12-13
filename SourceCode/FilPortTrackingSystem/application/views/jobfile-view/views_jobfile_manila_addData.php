@@ -28,7 +28,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:</label> <i style="color:red;font-size: 20px;">*</i> <span id="check_jobfiles"></span>
-								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onblur ="search_jobfile(this)">
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onmouseout="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -1126,11 +1126,6 @@ $(document).ready(function(){
 
        
 
-
-
-
-
-
        //for containers table
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 
@@ -1211,30 +1206,43 @@ $(document).ready(function(){
 			  		}
 				});
 
-	
 
-
-
+				insert_container();
 
 
 		});
 
-							   		 	  //for the 4th proc insert start
+	
+	});
+
+	
+  
+</script>
+
+<script>
+	function insert_container(){
+				       //for the 4th proc insert start
 		             //description of goods
 
-	    	     var table2 = $("#tableAddTruck-mnla table tbody");
-				    table2.find('tr').each(function (i) {
+	    	     var table2 	  = $("#tableAddTruck-mnla table tbody");
+	    	     var total_goods  = $("#tableAddTruck-mnla table tbody tr").length;
+   
+				table2.find('tr').each(function (i) {
+
+				    if(total_goods!=i){
+				    	/* alert(i); */
 				       //unset the maxid
-				        var $tds 		  = $(this).find('td'),
+				        var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
+						     prod_orderno  = $tds.eq(1).text();  //origin_id
 						     con_id        = $tds.eq(2).text(), //change to  container 
-						     prod_orderno = $tds.eq(3).text();
-						     origin_id     = $tds.eq(4).text();
-					         origin_cty    = $tds.eq(6).text();
+						     origin_id     = $tds.eq(3).text();  //origin_id
+					         origin_cty    = $tds.eq(5).text();
 
 
 
-
+					     /*    alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
+*/
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
@@ -1250,27 +1258,21 @@ $(document).ready(function(){
 				  			  	   		 }
 						              })
 		  						.done(function(data) {
+
 		   		 	  				 $.alert({
-								        title: 'Alert!',
-								        content: 'Data 4 been inserted!',
+								        title: 'Inserting Datus!',
+								        content: 'Data been inserted!',
 								        confirm: function(){
 
 								         }
 								    });
 						        });
+
+
 		  			
-		  			    
-				    });
+		  			 }
+				});
     			//for the 4th proc insert end
-		
-	});
-
-	
-   
-
-
-
-
+    }
 </script>
-
 

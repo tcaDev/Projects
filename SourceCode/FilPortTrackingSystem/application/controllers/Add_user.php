@@ -106,7 +106,7 @@ class Add_user extends CI_Controller {
 
                                         
                              ));
-                                  $this->success_register();
+                                 /* $this->success_register();*/
                                 }
 
                  

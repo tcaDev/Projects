@@ -326,11 +326,11 @@ class Job extends CI_Controller {
            $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
               //for getting the last insert in P_VesselByJobFileId end
 
-           
-        
+    
+ $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and ContainerByVesselId=$VesselByJobFile limit 1");  
+    if($query->num_rows() <1){
 
-
-        //4th proc
+                //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
@@ -344,6 +344,9 @@ class Job extends CI_Controller {
                   'P_UserId'              => $userid
 
              ));
+          }
+           
+
 
               
 
