@@ -328,8 +328,8 @@ class Job extends CI_Controller {
               //for getting the last insert in P_VesselByJobFileId end
 
     
- $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and ContainerByVesselId=$VesselByJobFile
- and PurchaseOrderNo='$prod_orderno' and Origin_CountryId=$origin_id and  Origin_City='$origin_cty' limit 1");  
+ $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and ContainerByVesselId='$VesselByJobFile'
+ and PurchaseOrderNo='$prod_orderno' and Origin_CountryId='$origin_id' and  Origin_City='$origin_cty' limit 1");  
     if($query->num_rows() ==0){
 
                 //4th proc
