@@ -1128,21 +1128,23 @@ $(document).ready(function(){
 
        //for containers table
 		    	  var table = $("#tableAddContainer-mnla table tbody");
-                 var total_container  = $("tableAddContainer-mnla table tbody tr").length;
+		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
+
 		table.find('tr').each(function (count1) {
+			var c = count1+1;
+			/*  alert(ct + " " + c);*/
 
+		if(ct==c){
 
-		    if(count1==total_container){
-		    	 $.alert({
-								        title: 'Inserting Datus!',
-								        content: 'ALL DATA HAS been inserted!',
+			 	  				 $.alert({
+								        title: 'Alert!',
+								        content: 'Data has been inserted!',
 								        confirm: function(){
 
 								         }
 								    });
-		    }
 
-
+		}
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
 				            vesselid    	= $tds.eq(2).text();
@@ -1254,7 +1256,7 @@ $(document).ready(function(){
 
 
 
-			/*		         alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
+					       /*  alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
 */
 					         	$.ajax({
 				  		           method: "POST",
@@ -1269,17 +1271,11 @@ $(document).ready(function(){
 				  			                  /* status		   :status*/
 				  			                  /* dt_boc 		   :dt_boc*/
 				  			  	   		 }
-						              });
-		  			/*			.done(function(data) {
+						              })
+		  						.done(function(data) {
 
-		   		 	  				 $.alert({
-								        title: 'Inserting Datus!',
-								        content: 'Data been inserted!',
-								        confirm: function(){
-
-								         }
-								    });
-						        });*/
+		   		 	  
+						        });
 
 
 		  			
