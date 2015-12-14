@@ -28,7 +28,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:</label> <i style="color:red;font-size: 20px;">*</i> <span id="check_jobfiles"></span>
-								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onmouseout="search_jobfile(this)">
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -1230,7 +1230,7 @@ $(document).ready(function(){
 				table2.find('tr').each(function (i) {
 
 				    if(total_goods!=i){
-				    	/* alert(i); */
+				    	
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
@@ -1241,8 +1241,8 @@ $(document).ready(function(){
 
 
 
-					     /*    alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
-*/
+					         alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
+
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
