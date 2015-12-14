@@ -310,7 +310,9 @@ class Job extends CI_Controller {
    $prod_orderno         =  $this->input->post('prod_orderno');
    $origin_id            =  $this->input->post('origin_id');
    $origin_cty           =  $this->input->post('origin_cty');
-   $max                  =  $this->input->post('max');
+
+
+ /*  $max                  =  $this->input->post('max');*/
    
  /*  $dt_boc               =  $this->input->post('dt_boc');*/
  /*  $status               =  $this->input->post('status');*/ // no insert for status haha check it please xd
@@ -328,10 +330,10 @@ class Job extends CI_Controller {
               //for getting the last insert in P_VesselByJobFileId end
 
     
- $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and ContainerByVesselId='$VesselByJobFile'
- and PurchaseOrderNo='$prod_orderno' and Origin_CountryId='$origin_id' and  Origin_City='$origin_cty' limit 1");  
+ $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
    
-    if($query->num_rows() ==0){
+    if($query->num_rows() ==1){
+       }else{
 
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
