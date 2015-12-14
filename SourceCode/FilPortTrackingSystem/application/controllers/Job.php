@@ -329,7 +329,7 @@ class Job extends CI_Controller {
 
     
  $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and ContainerByVesselId=$VesselByJobFile
- and PurchaseOrderNo='$prod_orderno' and Origin_CountryId=origin_id and  Origin_City='$origin_cty' limit 1");  
+ and PurchaseOrderNo='$prod_orderno' and Origin_CountryId=$origin_id and  Origin_City='$origin_cty' limit 1");  
     if($query->num_rows() ==0){
 
                 //4th proc
