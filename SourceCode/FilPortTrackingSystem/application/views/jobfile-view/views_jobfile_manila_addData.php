@@ -1129,21 +1129,16 @@ $(document).ready(function(){
        //for containers table
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
-
 		table.find('tr').each(function (count1) {
-			var c = count1+1;
-			/*  alert(ct + " " + c);*/
-
+			  var c = count1+1;
+			  /*alert(ct + " " + c);*/
 		if(ct==c){
-
 			 	  				 $.alert({
 								        title: 'Alert!',
 								        content: 'Data has been inserted!',
 								        confirm: function(){
-
 								         }
 								    });
-
 		}
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
@@ -1271,11 +1266,17 @@ $(document).ready(function(){
 				  			                  /* status		   :status*/
 				  			                  /* dt_boc 		   :dt_boc*/
 				  			  	   		 }
-						              })
-		  						.done(function(data) {
+						              });
+		  	/*					.done(function(data) {
 
-		   		 	  
-						        });
+		   		 	  				 $.alert({
+								        title: 'Inserting Datus!',
+								        content: 'Data been inserted!',
+								        confirm: function(){
+
+								         }
+								    });
+						        });*/
 
 
 		  			
