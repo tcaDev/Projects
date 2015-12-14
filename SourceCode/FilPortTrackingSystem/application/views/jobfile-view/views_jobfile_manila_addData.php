@@ -1241,7 +1241,7 @@ $(document).ready(function(){
 
 
 
-					       /*  alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
+			/*		         alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
 */
 					         	$.ajax({
 				  		           method: "POST",
