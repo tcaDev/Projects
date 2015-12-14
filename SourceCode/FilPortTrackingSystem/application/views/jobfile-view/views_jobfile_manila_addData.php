@@ -1131,9 +1131,8 @@ $(document).ready(function(){
                  var total_container  = $("tableAddContainer-mnla table tbody tr").length;
 		table.find('tr').each(function (count1) {
 
-		   var conme = count1+1;
 
-		    if(comeme==total_container){
+		    if(count1==total_container){
 		    	 $.alert({
 								        title: 'Inserting Datus!',
 								        content: 'ALL DATA HAS been inserted!',
