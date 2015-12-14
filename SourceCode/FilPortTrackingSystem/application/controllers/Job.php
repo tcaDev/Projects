@@ -332,8 +332,7 @@ class Job extends CI_Controller {
     
  $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
    
-    if($query->num_rows() ==1){
-       }else{
+    if($query->num_rows() ==0){
 
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
