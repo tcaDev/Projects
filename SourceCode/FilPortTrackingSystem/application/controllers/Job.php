@@ -16,8 +16,9 @@ class Job extends CI_Controller {
      function index(){
 	
 		 $data =	$this->input->post('ship_id');
+    if(isset($data)){
 		 $shipper = $this->Jobdata->get_vessel($data);
-
+     
 		echo'<select name="vessel" id="vess" class="myvessel form-control ">';
 					            				       
 		 foreach ($shipper as $row){
@@ -49,7 +50,7 @@ class Job extends CI_Controller {
 
       </script>
 
-    <?php }
+    <?php }}
 
     function  check_jobfile(){
      $jobfile =  $this->input->post('jobfile');
