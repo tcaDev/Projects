@@ -473,16 +473,14 @@
 								 </div>
 					        </div>
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class="pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 			   	 		</form>
 
 
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				    </div>
@@ -542,14 +540,15 @@
 
 					
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" submit_contact pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 			   	 	<?php echo form_close();?>
 				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+
 				        </div>
 				      </div>      
 				 </div>
@@ -591,15 +590,16 @@
 					        </div>
 					  
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					 <?php echo form_close();?>
 				        </div>
 				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>
 				      
@@ -660,14 +660,15 @@
 					            </div>
 					        </div>
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 			   	    </form>
 				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="  btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>      
 				 </div>
@@ -761,14 +762,15 @@
 								 </div>
 					        </div>
 					         <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					     </form>
 						</div>
-						 <div class="modal-footer">
-				          <button type="button " class="btn btn-default" data-dismiss="modal">Close</button>
+						 <div class="">
+				          
 				        </div>
 					</div>
 				</div>
@@ -832,14 +834,15 @@
 
 					
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" submit_contact pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 			   	 	<?php echo form_close();?>
 				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>      
 				 </div>'
@@ -870,15 +873,16 @@
 	
 					  
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					 <?php echo form_close();?>
 				        </div>
 				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>
 				      
@@ -907,15 +911,16 @@
 	
 					  
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					 <?php echo form_close();?>
 				        </div>
 				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>
 				      
@@ -959,15 +964,16 @@
 					            </div>
 					        </div>
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					 <?php echo form_close();?>
 				        </div>
 				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+				          
 				        </div>
 				      </div>
 				      
@@ -1010,14 +1016,15 @@
 	
 					  
 					        <div class="row">
-					        	<div class="form-group col-lg-12">
-					            	<button type="submit" class=" pull-right btn btn-default">Submit</button>
+					        	<div class="modal-footer form-group col-lg-12">
+					        		<button type="submit" class="btn btn-default">Submit</button>
+					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
 					            </div>	
 					        </div>
 					 <?php echo form_close();?>
 				        </div>
 				     
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <div class="">
+
 				        </div>
 				      </div>
