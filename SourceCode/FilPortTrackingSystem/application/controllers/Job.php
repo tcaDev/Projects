@@ -330,9 +330,9 @@ class Job extends CI_Controller {
               //for getting the last insert in P_VesselByJobFileId end
 
     
- $query = $this->db->query("select ProductName from Products where ProductName='$product_name'  limit 1");  
-   
-    if(($query->num_rows() ==0) && ($product_name!='')){
+ $query = $this->db->query("select ProductName from Products where ProductName='$product_name' and
+ ContainerByVesselId='$VesselByJobFile' and Origin_CountryId='$origin_id' and Origin_City='$origin_cty'  limit 1");  
+    if($query->num_rows() ==0 ){
 
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";

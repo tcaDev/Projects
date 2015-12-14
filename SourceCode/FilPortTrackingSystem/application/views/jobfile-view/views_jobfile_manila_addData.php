@@ -20,7 +20,7 @@
 				  <div class="col-lg-12 pill-jobfile-mnla-add">
 				  	<div class="row">
 				  		<div class="col-lg-4" >	
-				  	<?php echo  form_open('Job/jofile_data');?>
+				
 				           <input type="hidden" value="1" name="monitoring_type" id="manila"/>
 
 
@@ -548,16 +548,16 @@
 
     <div class="footer-modal" >
     <hr>
-     <button type="button" class="btn btn-danger container_insert">test insert</button>
+ <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
       <button type="button" class="btn btn-danger btn-Next">Next</button>
-      <button type="submit" class="hidden btn btn-danger test_data" >Save</button>
+      <button type="submit" class="hidden btn btn-danger test_data container_insert" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
-<?php echo form_close();?>
 
 
-`
+
+
 <!-- Form Restriction -->
 
 <script>
@@ -1241,8 +1241,8 @@ $(document).ready(function(){
 
 
 
-					         alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
-
+					       /*  alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
+*/
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
