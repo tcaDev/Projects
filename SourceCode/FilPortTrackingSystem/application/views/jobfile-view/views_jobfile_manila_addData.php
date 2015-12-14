@@ -1128,8 +1128,22 @@ $(document).ready(function(){
 
        //for containers table
 		    	  var table = $("#tableAddContainer-mnla table tbody");
-
+                 var total_container  = $("tableAddContainer-mnla table tbody tr").length;
 		table.find('tr').each(function (count1) {
+
+		   var conme = count1+1;
+
+		    if(comeme==total_container){
+		    	 $.alert({
+								        title: 'Inserting Datus!',
+								        content: 'ALL DATA HAS been inserted!',
+								        confirm: function(){
+
+								         }
+								    });
+		    }
+
+
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
 				            vesselid    	= $tds.eq(2).text();
@@ -1256,8 +1270,8 @@ $(document).ready(function(){
 				  			                  /* status		   :status*/
 				  			                  /* dt_boc 		   :dt_boc*/
 				  			  	   		 }
-						              })
-		  						.done(function(data) {
+						              });
+		  			/*			.done(function(data) {
 
 		   		 	  				 $.alert({
 								        title: 'Inserting Datus!',
@@ -1266,7 +1280,7 @@ $(document).ready(function(){
 
 								         }
 								    });
-						        });
+						        });*/
 
 
 		  			
