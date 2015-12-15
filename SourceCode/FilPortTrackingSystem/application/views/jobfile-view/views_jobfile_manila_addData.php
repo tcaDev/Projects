@@ -322,7 +322,7 @@
 							<div class="form-group">
 								<input type="text" name="veselid" class="veselid hidden">
 				  				<input type="text" name="veselid" class="veseltext hidden">
-								<label>Vessel by JobFile</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Vessel</label><i style="color:red;font-size: 20px;">*</i>
 									<div class="vesel" ></div>
 									<i class="vessel-msg" style="color:red;"></i>
 							</div>

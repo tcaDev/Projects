@@ -58,6 +58,16 @@ class Job extends CI_Controller {
           $('.veseltext').val(text);
         
       });
+       $('#btn-container-mnla-add').click(function(){
+          var id= $('.myvessel:first').val();
+          var text = $('.myvessel:first').find("option:selected").text();
+          $('.veselid').val(id);
+          $('.veseltext').val(text);
+        
+      });
+
+
+  
 
 
       
