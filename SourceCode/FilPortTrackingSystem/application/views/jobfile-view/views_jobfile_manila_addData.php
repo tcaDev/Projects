@@ -954,8 +954,8 @@ $(document).ready(function(){
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
     	$(this).closest("tr").remove();
-    	var del = $(this).closest('tr').children('td:eq(0)').text();
-    	$(".containers-prod option[value=" + del + "']").remove();
+    /*	var del = $(this).closest('tr').children('td:eq(0)').text();
+    	$(".containers-prod option[value='1']").remove();*/
 
    /* 	var a = $(this).closest('tr').children('td:eq(0)').text();
     	$(".containers-prod option[value="+a+"]").remove();
@@ -1131,7 +1131,7 @@ $(document).ready(function(){
        var entryno        =  $('#entryno').val();
        var purch_order_no =  $('#purch_order_no').val();
 
-       alert(purch_order_no);
+     /*  alert(purch_order_no);*/
 
        
 
@@ -1152,6 +1152,7 @@ $(document).ready(function(){
 								        confirm: function(){
 								         }
 								    });
+			 	  				 location.reload();
 		}
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
@@ -1265,8 +1266,8 @@ $(document).ready(function(){
 
 					      
 
-					         	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
-
+					       /*  	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
+*/
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
