@@ -86,7 +86,7 @@
 				
 
 			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
-				    <table class="table table_manila table-striped table-bordered table-hover table-condensed order-tablejob" style="width:7000px;">
+				    <table class="table table_manila table-bordered table-hover table-condensed order-tablejob" style="width:7000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          
@@ -262,7 +262,7 @@
 
 								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target=""><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								      
 								        </tr>
 
@@ -303,6 +303,32 @@
 				 </div>
 				  
 			</div>
+
+				<!--pop up for Status Report -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="statrepo" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Status Report</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class=""> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>	
 
 
 		<!--pop up for containers start -->
