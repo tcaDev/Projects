@@ -212,7 +212,7 @@
 
 								          <td><?php echo $row->EstArrivalTime; ?></td>
 
-								          <th> <!-- Actual Verting Time of Vessel and Discharge --></th>
+								          <td> <!-- Actual Verting Time of Vessel and Discharge --></td>
 
 								          <td><?php echo $row->ActualArrivalTime; ?></td>
 
@@ -226,7 +226,7 @@
 
 								          <td><?php echo $row->VSL_NO; ?></td>
 
-								          <th><!-- Carrier --></th>
+								          <td><!-- Carrier --></td>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
