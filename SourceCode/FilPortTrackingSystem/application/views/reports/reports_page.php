@@ -151,7 +151,14 @@
 			        			<div class="col-md-3 pull-left">
 				        			<input type="search" class="form-control light-table-filter" data-table="order-table2" placeholder="Search List" />
 				        		</div>
-				        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#tabc')" />	 
+				        		<input class="btn btn-default pull-right" type="button" value="Print" onclick="PrintElem('#tabc')" />
+				        	<div class="col-md-3 pull-right">
+							  <select type="search" class="form-control select-table-filter" data-table="order-table2">
+							    <option value="">All Status</option>  
+							    <option value="Active">Active</option>  
+							    <option value="Deactivated">Deactivated</option>  
+							  <select>
+							</div>	 
 			        	</div>
 			        	<div id="tabc">
 			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table2" >
@@ -160,6 +167,7 @@
 										<th style="border: 1px solid gray;">Shipper Name</th>
 										<th style="border: 1px solid gray;">Address</th>
 										<th style="border: 1px solid gray;">Country</th>
+										<th style="border: 1px solid gray;">Status</th>
 									</tr>
 								</thead>	
 								<tbody>	
@@ -170,13 +178,21 @@
 										$shaddb = $row->BarangarOrVillage;
 										$shaddt = $row->TownOrCityProvince;
 										$shcountry = $row->Country;
+										$shstat = $row->IsActive;
 										?>
 									<tr><td style="border: 1px solid gray; text-align:left;"><?php echo $sname; ?></td>
 									<td style="border: 1px solid gray; text-align:left;">
 										<?php echo $shnaddb; ?>
 										<?php echo $shaddb; ?>
 										<?php echo $shaddt; ?></td>
-									<td style="border: 1px solid gray; text-align:left;"><?php echo $shcountry; ?></td>	
+									<td style="border: 1px solid gray; text-align:left;"><?php echo $shcountry; ?></td>
+									<td style="border: 1px solid gray; text-align:left;"><?php if($shstat=='1'){
+									echo "Active";	
+									}else{
+									echo "Deactivated";
+									}
+
+									?></td>	
 									</tr>
 									<?php } ?>
 								</tbody>
