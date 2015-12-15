@@ -1331,7 +1331,7 @@ $this->message();
 			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
 			     var color   	  = $(this).closest('tr').children('td:eq(3)').text();
 			     var bground   	  = $(this).closest('tr').children('td:eq(4)').text();
-			     var status   	  = $(this).closest('tr').children('td:eq(5)').text();
+			     var stat   	  = $(this).closest('tr').children('td:eq(5)').text();
 
 			     /*alert(status);*/
 
@@ -1342,7 +1342,7 @@ $this->message();
 			      $('.legend_color').val(color);
 			      $('.legend_backg').val(bground);
 
-			      if(status==1){
+			      if(stat==1){
 			      $('.activate').prop('checked', true);
 			  	  }else{
 			  	  	  $('.deactivate').prop('checked', true);
