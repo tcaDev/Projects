@@ -28,6 +28,9 @@ body{
 
 }
 
+tbody tr:nth-child(odd) {
+   background-color: #CCEEFD;
+}
 
 .jobfile-cont{
     width: 80%;
@@ -577,7 +580,7 @@ body{
 
     box-shadow: 0px 2px 5px #000;
 
-    background-color: rgba(255, 255, 255, 0.81);
+    background-color: #F5F5F5;
 
     overflow: auto;
     
