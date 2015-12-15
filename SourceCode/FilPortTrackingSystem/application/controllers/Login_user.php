@@ -725,7 +725,7 @@ function select_country(){
 
 
   
-			echo	  '<table class="table table-striped table_consignee">
+			echo	  '<table class="table table-bordered table_consignee">
 					    <thead>
 					      <tr>
 					      	<th>Consignee ID</th>
