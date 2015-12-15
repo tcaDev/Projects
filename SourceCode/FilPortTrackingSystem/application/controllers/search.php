@@ -1147,7 +1147,7 @@ $this->message();
 			    $i++;
     			$pick =$row->IsBackground;
     			if($pick==0){
-		        	$pick1= '<td style="color:'.$row->ColorCode.';"><strong>Font</strong></td>';
+		        	$pick1= '<td style="background-color:#fff; color:'.$row->ColorCode.';"><strong>Font</strong></td>';
 		        }else{
 		        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">Background</td>';
 		        }
