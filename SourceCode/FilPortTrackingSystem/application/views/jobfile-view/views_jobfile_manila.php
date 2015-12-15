@@ -212,7 +212,7 @@
 
 								          <td><?php echo $row->EstArrivalTime; ?></td>
 
-								          <th>Actual Verting Time of Vessel and Discharge</th>
+								          <th> <!-- Actual Verting Time of Vessel and Discharge --></th>
 
 								          <td><?php echo $row->ActualArrivalTime; ?></td>
 
@@ -226,7 +226,7 @@
 
 								          <td><?php echo $row->VSL_NO; ?></td>
 
-								          <th>Carrier</th>
+								          <th><!-- Carrier --></th>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
@@ -262,7 +262,7 @@
 
 								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
-								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target=""><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								      
 								        </tr>
 
