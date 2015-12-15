@@ -565,13 +565,14 @@ function get_jobfile_manila(){
           $this->db->where('ForwarderWarehouseId', $id);
           $this->db->update('ForwarderWarehouse', $data); 
   }
-  function update_legend($legend_id,$legend_status,$description,$legend_color,$status){
+  function update_legend($legend_id,$legend_status,$description,$legend_color,$status,$back_ground){
            $status =  (int) $status;
          $data = array(
                 'StatusName' => $legend_status,
                 'Description'=> $description,
                 'ColorCode'  => $legend_color,
-                'IsActive'   => $status
+                'IsActive'   => $status,
+                'IsBackground' => $back_ground
                 );
 
           $this->db->where('StatusId', $legend_id);
