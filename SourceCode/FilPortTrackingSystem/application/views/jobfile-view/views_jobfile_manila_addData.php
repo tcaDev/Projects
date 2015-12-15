@@ -433,7 +433,7 @@
 						        <th>Gate In at Port</th>
 						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
-						       <!--  <th></th> -->
+						        <th></th>
 						      </tr>
 					      </thead>
 					    </table>
@@ -954,8 +954,14 @@ $(document).ready(function(){
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
     	$(this).closest("tr").remove();
-    /*	var del = $(this).closest('tr').children('td:eq(0)').text();
-    	$(".containers-prod option[value='1']").remove();*/
+    	var del = $(this).closest('tr').children('td:eq(0)').text();
+    	/*$(".containers-prod option[value='1']").remove();*/
+
+    	$('#tableAddTruck-mnla .containers-prod').each(function(){
+  		  if (this.value == del) {
+      		 $("#tableAddTruck-mnla .containers-prod' option[value="+del +"").remove();
+    		}
+});
 
    /* 	var a = $(this).closest('tr').children('td:eq(0)').text();
     	$(".containers-prod option[value="+a+"]").remove();
@@ -972,6 +978,10 @@ $(document).ready(function(){
 });
 	$(document).ready(function(){
 		$(".btn-Add-Container-Data-mnla").click(function(){
+
+			var compare = $('#tableAddContainer-mnla .containerss').val();
+		/*	alert(compare);*/
+
 
 			if($('#tableAddContainer-mnla .containerss').val() == "")
 			{
@@ -1059,7 +1069,7 @@ $(document).ready(function(){
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
 			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
 			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
