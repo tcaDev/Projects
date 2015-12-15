@@ -18,12 +18,17 @@ class Job extends CI_Controller {
 		 $data =	$this->input->post('ship_id');
     if(isset($data)){
 		 $shipper = $this->Jobdata->get_vessel($data);
+
+
+    if($shipper==NULL){
+          echo    '<center><span style="color:red">No Vessels in this shipper. </span></center>';
+    }else{
      
-		echo'<select name="vessel" id="vess" class="myvessel form-control ">';
-					            				       
-		 foreach ($shipper as $row){
-		 	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
-		 }
+		        echo'<select name="vessel" id="vess" class="myvessel form-control ">';				            				       
+		        foreach ($shipper as $row){
+		          	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
+		        }
+          }
 
 		  echo '</select>';
 
@@ -45,6 +50,17 @@ class Job extends CI_Controller {
         $('.veseltext').val(text);
         
       });
+
+      $('.containerss').click(function(){
+          var id= $('.myvessel:first').val();
+          var text = $('.myvessel:first').find("option:selected").text();
+          $('.veselid').val(id);
+          $('.veseltext').val(text);
+        
+      });
+
+
+      
 
 
 
@@ -182,7 +198,9 @@ class Job extends CI_Controller {
    $dt_paid         =$this->input->post('dt_paid');
    $dt_boc          =$this->input->post('dt_boc');    
    $status          =$this->input->post('status');  //status report in job tab has no insert in db  
-   $entryno         =$this->input->post('entryno'); 
+   $entryno         =$this->input->post('entryno');
+   $purch_order_no  =$this->input->post('purch_order_no');  
+
  
 
   //for sp_AddVesselByJobFile   2nd proc
@@ -215,12 +233,13 @@ class Job extends CI_Controller {
       if($query->num_rows() ==1){
        }else{     
                           //first proc
-                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $this->db->query($add_jobfile,
                       array(
                              'P_JobFileID'                             =>$job,           
                              'P_ConsigneeId'                           =>$consignee,
                              'P_BrokerID'                              =>$broker,
+                             'P_PurchaseOrderNo'                       =>$purch_order_no,
                              'P_MonitoringTypeId'                      =>1,
                              'P_StatusId'                              =>1,
                              'P_RefEntryNo'                            =>$entryno,
@@ -307,7 +326,7 @@ class Job extends CI_Controller {
       //for sp_AddProducts   4th proc
    $product_name         =  $this->input->post('product_name');
    $con_id               =  $this->input->post('con_id');   
-   $prod_orderno         =  $this->input->post('prod_orderno');
+/*   $prod_orderno         =  $this->input->post('prod_orderno');*/
    $origin_id            =  $this->input->post('origin_id');
    $origin_cty           =  $this->input->post('origin_cty');
 
@@ -335,14 +354,14 @@ class Job extends CI_Controller {
     if($query->num_rows() ==0 ){
 
                 //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
                   'P_ProductName'         => $product_name,   
                   'P_ContainerId'         => $con_id,
                   'P_VesselByJobFileId'   => $VesselByJobFile,
                   'P_DateBOCCLeared'      => NULL,
-                  'P_PurchaseOrderNo'     => $prod_orderno,
+                  /*'P_PurchaseOrderNo'     => $prod_orderno,*/
                   'P_Origin_CountryId'    => $origin_id,
                   'P_Origin_City'         => $origin_cty,
                   'P_UserId'              => $userid

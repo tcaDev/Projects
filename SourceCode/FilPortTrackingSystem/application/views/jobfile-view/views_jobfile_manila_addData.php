@@ -157,6 +157,11 @@
 							             	<?php }?>
 						               </select>
 						          </div>
+						           <div class="form-group">
+						              <label for="dtPckRcv">Purchase Order No.</label>
+								      <input type="text"  class="form-control input-sm dt_pickup_docs" id="purch_order_no">
+
+						           </div>
 
 						         
 				  				
@@ -235,12 +240,12 @@
 								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
-							<div class="form-group">
+<!-- 						<div class="form-group">
 								<label>Purchase Order Number</label> <i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm PON"  name="PON">
 								<i class="pon-msg" style="color:red;"></i>
 							</div>
-
+ -->
 							<div class="form-group">
 								<label>Container Number</label> <i style="color:red;font-size: 20px;">*</i>
 								<select class="containers-prod form-control input-sm"> 
@@ -280,7 +285,7 @@
 							    <thead>
 							    	 <tr>
 								        <th>Product Name</th>
-								        <th>Purchase Order Number</th>
+								       <!--  <th>Purchase Order Number</th> -->
 								        <th>Container</th>
 								        <th class="hidden">Origin Value</th>
 								        <th>Origin Country ID</th>
@@ -428,7 +433,7 @@
 						        <th>Gate In at Port</th>
 						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
-						        <th></th>
+						       <!--  <th></th> -->
 						      </tr>
 					      </thead>
 					    </table>
@@ -949,6 +954,9 @@ $(document).ready(function(){
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
     	$(this).closest("tr").remove();
+    	var del = $(this).closest('tr').children('td:eq(0)').text();
+    	$(".containers-prod option[value=" + del + "']").remove();
+
    /* 	var a = $(this).closest('tr').children('td:eq(0)').text();
     	$(".containers-prod option[value="+a+"]").remove();
 */
@@ -1039,10 +1047,10 @@ $(document).ready(function(){
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
-			else if($('#tableAddTruck-mnla .PON').val() == "")
+/*			else if($('#tableAddTruck-mnla .PON').val() == "")
 			{
 				$('.pon-msg').text("Need Purchase Order Number.");
-			}
+			}*/
 			else if($('#tableAddTruck-mnla .containers-prod').val() == "")
 			{
 				$('.cont-size-msg').text("Need Container Size.");
@@ -1053,12 +1061,12 @@ $(document).ready(function(){
 			}else{
 				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
-			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".origin").val()).hide();
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 		
 			}
 			$('#tableAddTruck-mnla .prodname').val('');
@@ -1118,9 +1126,14 @@ $(document).ready(function(){
  	   var dtfinal_assess =  $('#dtfinal-assess').val();
  	   var dt_paid        =  $('#dt_paid').val();
  	   var dtfinal_assess =  $('#dtfinal-assess').val();
- 	   var dt_boc        =   $('#dt_boc').val();
-       var status        =   $('#status').val();
+ 	   var dt_boc         =  $('#dt_boc').val();
+       var status         =  $('#status').val();
        var entryno        =  $('#entryno').val();
+       var purch_order_no =  $('#purch_order_no').val();
+
+       alert(purch_order_no);
+
+       
 
        
 
@@ -1211,7 +1224,8 @@ $(document).ready(function(){
 			  			    dt_paid	       :dt_paid,
 			  			    status		   :status,
 			  			    dt_boc 		   :dt_boc,
-			  			    entryno		   :entryno
+			  			    entryno		   :entryno,
+			  			    purch_order_no :purch_order_no
 
 			  		}
 				});
@@ -1244,22 +1258,22 @@ $(document).ready(function(){
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
-						     prod_orderno  = $tds.eq(1).text();  //origin_id
-						     con_id        = $tds.eq(2).text(), //change to  container 
-						     origin_id     = $tds.eq(3).text();  //origin_id
-					         origin_cty    = $tds.eq(5).text();
+						   /*  prod_orderno  = $tds.eq(1).text();*/  //origin_id
+						     con_id        = $tds.eq(1).text(), //change to  container 
+						     origin_id     = $tds.eq(2).text();  //origin_id
+					         origin_cty    = $tds.eq(4).text();
 
+					      
 
+					         	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
 
-					       /*  alert("product_name:"+product_name + "  " +"CountryId" + con_id + " " + "prod_orderno" +  prod_orderno + " " + "origin_id" + origin_id  + " " + "origin_cty"+ origin_cty);
-*/
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
 				  			                   con_id 	       :con_id,   //change to container
-				  			                   prod_orderno    :prod_orderno,
+				  			                  /* prod_orderno    :prod_orderno,*/
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
 				  			                  /* max 			   :maxid

@@ -655,6 +655,7 @@ function search_shipper(){
 					         <th>Country</th>
 					        <th>Shipper Contacts</th>
 					        <th>Vessels</th>
+					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
@@ -667,6 +668,23 @@ function search_shipper(){
 					      	    	$cid   = $row->ShipperId;
 					      	  
 					      		}
+					      	    $active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
+
 					  echo  '<tr>
 					  	    <td>'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
@@ -677,7 +695,9 @@ function search_shipper(){
 					  	    <td class="hidden">'.$row->CountryId.'</td>
 					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td>   				   
+					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td> 
+					       	<td>'.$stat .'</td>
+						    <td  class="hidden">'. $mystat .'</td>  				   
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					      
 					      </tr>';}
@@ -710,12 +730,19 @@ function search_shipper(){
 			     var city           = $(this).closest('tr').children('td:eq(4)').text();
 			     var country        = $(this).closest('tr').children('td:eq(5)').text();
 			     var countryid      = $(this).closest('tr').children('td:eq(6)').text();
+			     var stat    	    = $(this).closest('tr').children('td:eq(10)').text();
 
 			     $('.ship_id').val(id);
 			     $('.shipper_name').val(name);
 			     $('.hbno').val(id);
 			     $('.vilage').val(name);
 			      $('.city').val(city);
+
+			      if(stat==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	   $('.deactivate').prop('checked', true);
+			  	  }
 
 			     if(id!=0){
 			  	  	$.ajax({
@@ -833,6 +860,7 @@ function search_vessel(){
 					        <th>Vessel ID</th>
 					        <th>Vessel Name</th>
 					        <th>Vessel No./Plate No.</th>
+					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
@@ -844,10 +872,28 @@ function search_vessel(){
 					    if($i==1){
 					    $cid= $row->ShipperVesselId;
 					    }
+					    		$active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
 					    echo  '<tr>
 							        <td>'.$row->ShipperVesselId.'</td>
 							        <td>'.$row->Vesselname.'</td>
 							        <td>'.$row->VesselNo.'</td>
+							        <td>'.$stat .'</td>
+						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
@@ -903,9 +949,16 @@ function search_vessel(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var vessel    	  = $(this).closest('tr').children('td:eq(1)').text();
 			     var vesno    	  = $(this).closest('tr').children('td:eq(2)').text();
+			     var status    	  = $(this).closest('tr').children('td:eq(4)').text();
 			      $('.vessel_id').val(id);
 			      $('.vessel_name').val(vessel);
 			      $('.vesno').val(vesno);
+			      if(status==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	  $('.deactivate').prop('checked', true);
+			  	  }
+
 	
 		
 			 });
@@ -951,6 +1004,7 @@ $this->message();
 		      <tr>
 		      	<th>Hauler ID</th>
 		        <th>Hauler Name</th>
+		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
@@ -962,9 +1016,27 @@ $this->message();
 					    if($i==1){
 					    $cid= $row->HaulerId;
 					    }
+					    		$active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
 					    echo  '<tr>
 							        <td>'.$row->HaulerId.'</td>
 							        <td>'.$row->HaulerName.'</td>
+							      	<td>'.$stat .'</td>
+						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							       
 					    	  </tr>';}
@@ -1009,8 +1081,15 @@ $this->message();
 	 	 $('.update_hauler').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var haulers   	  = $(this).closest('tr').children('td:eq(1)').text();
+			     var status   	  = $(this).closest('tr').children('td:eq(3)').text();
 			      $('.hauler_id').val(id);
 			      $('.hauler_name').val(haulers);
+
+			      if(status==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	  $('.deactivate').prop('checked', true);
+			  	  }
 			 });
 	</script>
 	<?php
@@ -1043,6 +1122,7 @@ $this->message();
 		      <tr>
 		      	<th>Forwarder ID</th>
 		        <th>Forwarder Name</th>
+		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
@@ -1054,12 +1134,31 @@ $this->message();
 					    if($i==1){
 					    $cid= $row->ForwarderWarehouseId;
 					    }
+					    		$active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
 					    echo  '<tr>
 							        <td>'.$row->ForwarderWarehouseId.'</td>
 							        <td>'.$row->ForwarderWarehouseName.'</td>
+							        <td>'.$stat .'</td>
+						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
+
 
 ?>
     </tbody>
@@ -1101,8 +1200,15 @@ $this->message();
 	 	 $('.update_forwards').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var forward   	  = $(this).closest('tr').children('td:eq(1)').text();
+			     var status   	  = $(this).closest('tr').children('td:eq(3)').text();
 			      $('.forward_ids').val(id);
 			      $('.forward_names').val(forward);
+
+			      if(status==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	  $('.deactivate').prop('checked', true);
+			  	  }
 			 });
 	</script>
 	<?php
@@ -1137,6 +1243,7 @@ $this->message();
 		        <th>Status Name</th>
 		        <th>Description Name</th>
 		        <th>Font/Background</th>
+		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
 		    </thead>
@@ -1160,6 +1267,8 @@ $this->message();
 				        <td>'.$row->StatusName.'</td>
 				        <td>'.$row->Description.'</td>
 				        '.$pick1.'
+				         <td>'.$stat .'</td>
+						 <td  class="hidden">'. $mystat .'</td> 
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
@@ -1205,12 +1314,20 @@ $this->message();
 			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
 			     var color   	  = $(this).closest('tr').children('td:eq(3)').text();
 			     var bground   	  = $(this).closest('tr').children('td:eq(4)').text();
+			     var status   	  = $(this).closest('tr').children('td:eq(5)').text();
+			     alert(status);
 
 			      $('.legend_id').val(id);
 			      $('.legend_status').val(status);
 			      $('.legend_descrip').val(descr);
 			      $('.legend_color').val(color);
 			      $('.legend_backg').val(bground);
+
+			      if(status==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	  $('.deactivate').prop('checked', true);
+			  	  }
 			 });
 	</script>
 	<?php

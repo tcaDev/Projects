@@ -588,6 +588,15 @@
 					               <input type="text"   name="vesno"  class="vesno form-control" required/>
 					            </div>
 					        </div>
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
+					        </div>
 					  
 					        <div class="row">
 					        	<div class="modal-footer form-group col-lg-12">
@@ -658,6 +667,15 @@
 					           			</select>
 					           		</div>
 					            </div>
+					        </div>
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
 					        </div>
 					        <div class="row">
 					        	<div class="modal-footer form-group col-lg-12">
@@ -832,6 +850,16 @@
 					            </div>
 					        </div>
 
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
+					        </div>
+
 					
 					        <div class="row">
 					        	<div class="modal-footer form-group col-lg-12">
@@ -869,6 +897,15 @@
 					            	<label>Hauler Name</label>
 					               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
 					            </div>
+					        </div>
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
 					        </div>
 	
 					  
@@ -908,6 +945,16 @@
 					               <input type="text"   name="forward_name"  class="forward_names form-control" required/>
 					            </div>
 					        </div>
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
+					        </div>
+	
 	
 					  
 					        <div class="row">
@@ -962,6 +1009,15 @@
 								      <input type="radio" value="1" name="legend_bacg">Background
 								    </label>
 					            </div>
+					        </div>
+					        <div class="col-lg-12">
+					        	<label>Status: </label>
+						        <div class="radio">
+								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+								</div>
+								 <div class="radio">
+								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+								 </div>
 					        </div>
 					        <div class="row">
 					        	<div class="modal-footer form-group col-lg-12">
