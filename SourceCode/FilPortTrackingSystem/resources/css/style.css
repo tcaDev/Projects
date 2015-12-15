@@ -445,11 +445,11 @@ body{
 
     opacity: 0.8;
 
-
-
 }
 
-
+.con-scroll{
+    overflow: auto;
+}
 
 .consig-pos{
 
