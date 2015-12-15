@@ -60,16 +60,20 @@ class Update extends CI_Controller {
 		$id 	= 	$this->input->post('ves_id');
 		$name 	= 	$this->input->post('ves_name');
 		$vesno 	= 	$this->input->post('vesno');
+		$status = 	$this->input->post('status');
 		
 		    $query= $this->db->query("Select * from 
-		    	ShipperVessel where Vesselname = '$name' and 
-                ShipperVesselId=$id and VesselNo='$vesno' limit 1");
+		    	ShipperVessel where Vesselname = '$name' 
+		    	and ShipperVesselId=$id 
+		    	and VesselNo='$vesno' 
+		    	and IsActive='$status'
+		    	limit 1");
             
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           } 
        else{  
-				$this->User->update_vessel($id,$name,$vesno);
+				$this->User->update_vessel($id,$name,$vesno,$status);
 				$this->session->success= 'update_success';
 		 }
 		redirect('Login_User/settings/#vessel');
@@ -83,6 +87,7 @@ class Update extends CI_Controller {
 		$vilage    = 	$this->input->post('vilage');
 		$city 	   = 	$this->input->post('city');
 		$country   = 	$this->input->post('country');
+		$status    = 	$this->input->post('status');
 
 		
 
@@ -91,14 +96,14 @@ class Update extends CI_Controller {
 		and BarangarOrVillage='$vilage'
 		and TownOrCityProvince='$city'
 		and CountryId='$country'
-
+	    and IsActive='$status'
 		limit 1");
           
 		if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           } 
        else{ 
-       		$this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country);
+       		$this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country,$status);
        		 $this->session->success= 'update_success';
        	   }
 		redirect('Login_User/settings/#shipper');
@@ -175,15 +180,18 @@ class Update extends CI_Controller {
     function update_hauler(){
 		$id 	= 	$this->input->post('hauler_id');
 		$name 	= 	$this->input->post('hauler_name');
+	    $status = 	$this->input->post('status');
 
 
    		 $query= $this->db->query("Select * from Hauler where
-     		  HaulerName='$name' limit 1");
+     		  HaulerName='$name' and
+     		  IsActive  ='$status'
+     		   limit 1");
     
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_hauler($id,$name);
+			     $this->User->update_hauler($id,$name,$status);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#hauler');
@@ -194,15 +202,18 @@ class Update extends CI_Controller {
 	function update_forward(){
 		$id 	= 	$this->input->post('forward_id');
 		$name 	= 	$this->input->post('forward_name');
+		$status =   $this->input->post('status');
 
 
    		 $query= $this->db->query("Select * from ForwarderWarehouse where
-     		  ForwarderWarehouseName='$name' limit 1");
+     		  ForwarderWarehouseName='$name' and
+     		  IsActive='$status'
+     		  limit 1");
     
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_forward($id,$name);
+			     $this->User->update_forward($id,$name,$status);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#forward');
@@ -215,17 +226,20 @@ class Update extends CI_Controller {
 	    $description    = 	$this->input->post('legend_descrip');
 	    $back_ground 	=	$this->input->post('legend_bacg');
  		$legend_color 	= 	$this->input->post('legend_color');
+ 		$status 		= 	$this->input->post('status');
 
 
    		 $query= $this->db->query("Select * from Status where
      		  StatusName='$name' and Description='$description' and
      		  IsBackground='$back_ground' and
-     		  ColorCode='$legend_color' limit 1");
+     		  ColorCode='$legend_color'   and
+     		  IsActive ='$status'
+     		   limit 1");
     
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_legend($legend_id,$name,$description,$legend_color);
+			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#legend');

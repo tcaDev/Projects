@@ -73,10 +73,12 @@ Class User extends CI_Model
       
 
   }
-    function update_vessel($id,$name,$vesno){
+    function update_vessel($id,$name,$vesno,$status){
+        $status =  (int) $status;
         $data = array(
-        'Vesselname'      => $name,
+        'Vesselname'    => $name,
         'VesselNo'      => $vesno,
+        'IsActive'      => $status
 
         );
           $this->db->where('ShipperVesselId', $id);
@@ -86,15 +88,16 @@ Class User extends CI_Model
 
      /* function update_shipper($id,$name,$fname,$mname,$lname,$c1,$c2){
       */
-       function update_shipper($id,$name,$hbno,$vilage,$city,$country){
-      
+       function update_shipper($id,$name,$hbno,$vilage,$city,$country,$status){
+         $status =  (int) $status;
         $data = array(
         'ShipperName'               => $name,
         'DateAdded'                 => date('Y-m-d'),
         'HouseBuildingNoStreet'     => $hbno,
         'BarangarOrVillage'         => $vilage,
         'TownOrCityProvince'        => $city,
-        'CountryId'                 => $country
+        'CountryId'                 => $country,
+        'IsActive'                  => $status
         );
           $this->db->where('ShipperId', $id);
           $this->db->update('Shipper', $data);
@@ -542,27 +545,33 @@ function get_jobfile_manila(){
 
 
 
- function update_hauler($id,$name){
+ function update_hauler($id,$name,$status){
+   $status =  (int) $status;
          $data = array(
-                'HaulerName' => $name
+                'HaulerName' => $name,
+                'IsActive'   => $status
                 );
 
           $this->db->where('HaulerId', $id);
           $this->db->update('Hauler', $data); 
   }
-   function update_forward($id,$name){
+   function update_forward($id,$name,$status){
+       $status =  (int) $status;
          $data = array(
-                'ForwarderWarehouseName' => $name
+                'ForwarderWarehouseName' => $name,
+                'IsActive'               => $status
                 );
 
           $this->db->where('ForwarderWarehouseId', $id);
           $this->db->update('ForwarderWarehouse', $data); 
   }
-  function update_legend($legend_id,$legend_status,$description,$legend_color){
+  function update_legend($legend_id,$legend_status,$description,$legend_color,$status){
+           $status =  (int) $status;
          $data = array(
                 'StatusName' => $legend_status,
                 'Description'=> $description,
-                'ColorCode'  => $legend_color
+                'ColorCode'  => $legend_color,
+                'IsActive'   => $status
                 );
 
           $this->db->where('StatusId', $legend_id);
