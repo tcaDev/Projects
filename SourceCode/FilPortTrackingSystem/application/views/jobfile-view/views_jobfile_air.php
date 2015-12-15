@@ -193,80 +193,8 @@
 				      </tr>
 				      <tbody>
 				      		<tr>
-				      					<td class="hidden">1</td>
-								          <td>1</td>
-								          <td><button type="button" class="btn update_jobfile" data-toggle="modal" data-target="#myModal-1-1"><span class="glyphicon glyphicon-edit"></span></button></td>
-
-								          <td>SOC-15-10-009<a data-toggle="modal" data-target="#jobfiles" href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a></td>
-
-								          <td>MOTOROLA</td>
-
-								          <td>Open Comm</td>
-								          <td>11 PKGS</td>
-
-								          <td>1x20</td>
-
-								          <td>Tablet Computer</td>
-
-								          <td>61406573556</td>
-
-								          <td>HKG158121912</td>
-
-								          <td>N/A</td>
-
-								          <td>FCIU5273883</td>
-
-								          <td>HONGKONG</td>
-
-								          <td>9/15/2015 11:00AM</td>
-
-								          <td>9/27/2015 11:00AM</td>
-
-								          <td>9/27/2015 11:00AM</td>
-
-								          <td>10/27/2015 11:00AM</td>
-
-								          <td>TT</td>
-
-								          <td>11/3/2015</td>
-
-								          <td>10/31/2015</td>
-
-								          <td>TSL0065-15</td>
-
-								          <td>ISTRIAN EXPRESS V.15015S</td>
-
-								          <td>CEVA/BENLINE</td>
-
-								          <td>10/27/2015</td>
-
-								          <td>10/27/2015</td>
-
-								          <td>10/27/2015</td>
-
-								          <td>MONA</td>
-
-								          <td>10/27/2015</td>
-
-								          <td>0.37037037037037</td>
-
-								          <td>11/6/2015</td>
-
-								          <td>10/27/2015</td>
-
-								          <td>C254093</td>
-
-								          <td>11/9/2015  1300H </td>
-
-								          <td>11/9/2015</td>
-
-								          <td>11/10/2015</td>
-
-								          <td>Mardean Jaems/ ALA7300</td>
-
-								          <td>11/10 5:30am</td>
-
-								          <td>11/10 6:20am</td>
+	      					<td class="hidden">1</td>
+					         
 				      		</tr>
 				      </tbody>
 				    
