@@ -32,6 +32,15 @@ tbody tr:nth-child(even) {
    background-color: #CCEEFD;
 }
 
+tbody tr:hover{
+    background-color: #ddd;
+}
+
+th{
+    background-color: #53AAF5;
+    color: #fff;
+}
+
 .jobfile-cont{
     width: 80%;
     height: 635px;
@@ -43,6 +52,8 @@ tbody tr:nth-child(even) {
     left: 80%;
     margin-right: 10px;
 }
+
+
 
 /*Menu Tiles*/
 
