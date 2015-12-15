@@ -227,6 +227,7 @@ class Update extends CI_Controller {
 	    $back_ground 	=	$this->input->post('legend_bacg');
  		$legend_color 	= 	$this->input->post('legend_color');
  		$status 		= 	$this->input->post('status');
+ 		$back_ground			= (int) $back_ground;
 
 
    		 $query= $this->db->query("Select * from Status where
@@ -239,7 +240,7 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status);
+			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status,$back_ground);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#legend');
