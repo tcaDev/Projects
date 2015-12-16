@@ -1007,20 +1007,7 @@ $('.table-remove-cont').click(function () {
 				    return testme;
 				}
 
-				var testme2=false;
-				function isExist2(prod,cont){
-
-				var table2 = $("#tableAddTruck-mnla table tbody");
-
-				    testme2=false;
-				 	  table2.find('tr').each(function(){
-				 	  	if($('td:nth(1)',$(this)).html()===cont) 
-					    if($('td:nth(0)',$(this)).html()===prod) {
-					       testme2=true;            
-					        }   
-					     })
-				    return testme2;
-				}
+				
 
 		$(".btn-Add-Container-Data-mnla").click(function(){
 
@@ -1107,19 +1094,31 @@ $('.table-remove-cont').click(function () {
 });
 
 	
-		
+		var testme2=false;
+				function isExist2(prod,cont){
+
+				var table2 = $("#tableAddTruck-mnla table tbody");
+
+				    testme2=false;
+				 	  table2.find('tr').each(function(){
+				 	  	if($('td:nth(2)',$(this)).html()===cont) 
+					    if($('td:nth(0)',$(this)).html()===prod) {
+					       testme2=true;            
+					        }   
+					     })
+				    return testme2;
+				}
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
 
 			var cont = $('#tableAddTruck-mnla .containers-prod option:selected').val();
-			var prod = $('#tableAddTruck-mnla .prodname').val();
-
+			var prod = $('#tableAddTruck-mnla .prodname option:selected').val();
 
 			if(isExist2(prod,cont))
 			{	
 				$('.cont-size-msg').text("The Product is already in this Container");
 			}
-			else if($('#tableAddTruck-mnla .prodname').val() == "0")
+			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
@@ -1141,13 +1140,12 @@ $('.table-remove-cont').click(function () {
 			      $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
 			       	$('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
-			$('#tableAddTruck-mnla .prodname').val('');
+			
 			$('#tableAddTruck-mnla .PON').val('');
 			$('#tableAddTruck-mnla .origincity').val('');
 
 			$('.cont-size-msg').text('');
 			$('.prodname-msg').text('');
-			$('.cont-size-msg').text('');
 			$('.origin-msg').text('');
 
 			}
