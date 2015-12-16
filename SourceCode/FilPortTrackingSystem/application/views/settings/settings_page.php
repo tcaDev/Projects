@@ -251,33 +251,33 @@
 				
 		</script>
 	     <!--For  pagination end -->
-	    <div>
-		<div class="con-shiptxt ">
 
-		<div class="col-lg-10">
-			<ul class="nav nav-pills pull-left">
-		    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
-		    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
-		    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-		    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
-		    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
-		    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
-		    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
-	
-<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
-		  </ul>
+			<div class="con-shiptxt col-lg-12">
+				<div class="col-lg-10">
+					<ul class="nav nav-pills pull-left">
+				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
+				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
+				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
+				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
+				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
+				    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
+				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
+			
+		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
+				  </ul>
+				</div>
+				  <div class="col-lg-2">
+				  	<div class="input-group pull-right">
+			            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
+			            <span class="input-group-btn">
+			                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
+			                    <span class=" glyphicon glyphicon-search"></span>
+			                </button>
+			            </span>
+			        </div>
+			      </div>  
+		    </div>
 
-		  </div>
-		  			<div class="input-group pull-right col-lg-2">
-	            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
-	            <span class="input-group-btn">
-	                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
-	                    <span class=" glyphicon glyphicon-search"></span>
-	                </button>
-	            </span>
-	        </div>
-	    </div>
-		</div>
             <div class="con-ship tab-content"> 
                <!--FOr consignee data view  start--> 
                   <div class="consignee tab-pane fade in active"> 
@@ -526,15 +526,15 @@
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.1</label>
-					               <input type="text" name="no_contact1" value="" minlength="7" maxlength="15" class="no_contact form-control" required/>
+					            	<label>Contact Info.1</label>
+					               <input type="text" name="no_contact1" value=""  class="no_contact form-control" required/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.2</label>
-					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control" />
+					            	<label>Contact Info.2</label>
+					               <input type="text" name="no_contact2"  value="" class="no1_contact form-control" />
 					            </div>
 					        </div>
 
@@ -759,14 +759,14 @@
 					       </div>
 					       <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.1</label>
-					               <input type="text"   name="c1" value="" minlength="7" maxlength="15" class="broker_c1 form-control"/>
+					            	<label>Contact Info.1</label>
+					               <input type="text"   name="c1" value="" class="broker_c1 form-control"/>
 					            </div>
 					       </div>
 					       <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.2</label>
-					               <input type="text"   name="c2" value="" minlength="7" maxlength="15"  class="broker_c2 form-control"/>
+					            	<label>Contact Info.2</label>
+					               <input type="text"   name="c2" value="" class="broker_c2 form-control"/>
 					            </div>
 					       </div>
 					   
@@ -838,15 +838,15 @@
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.1</label>
-					               <input type="text" name="no_contact1" value="" minlength="7" maxlength="15" class="no_contact form-control" required/>
+					            	<label>Contact Info.1</label>
+					               <input type="text" name="no_contact1" value="" class="no_contact form-control" required/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.2</label>
-					               <input type="text" name="no_contact2"  value="" minlength="7" maxlength="15"  class="no1_contact form-control"/>
+					            	<label>Contact Info.2</label>
+					               <input type="text" name="no_contact2"  value="" class="no1_contact form-control"/>
 					            </div>
 					        </div>
 
@@ -1003,10 +1003,10 @@
 					            	<label>Choose Color</label>
 					               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
 					                <label class="radio-inline">
-								      <input type="radio" value="0" name="legend_bacg">Font
+								      <input type="radio"  name="legend_bacg" class="legend_bacg" value="0">Font
 								    </label>
 								    <label class="radio-inline">
-								      <input type="radio" value="1" name="legend_bacg">Background
+								      <input type="radio"  name="legend_bacg" class="legend_bacg" value="1">Background
 								    </label>
 					            </div>
 					        </div>
