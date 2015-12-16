@@ -114,7 +114,7 @@
 
 								          <th >Registry</th>
 
-								          <th >Vessel / Voyage no.</th>
+								          <th>SHipping Lines / Carrier</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
@@ -186,7 +186,7 @@
 
 								          <td><?php echo $row->Registry; ?></td>
 
-								          <td><?php echo $row->VSL_NO; ?></td>
+								          <td><?php echo $row->CarrierName; ?></td>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
