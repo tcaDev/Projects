@@ -513,22 +513,22 @@ Class User extends CI_Model
 // FOR REPORT PAGE
 //////////////////////////////  
   function get_consignee(){
-    $query = $this->db->query("select * from vw_consignee_full_info ");
+    $query = $this->db->query("select * from vw_consignee_full_info order by ConsigneeName asc");
     return $query->result();
   }
 
   function get_broker(){
-    $query = $this->db->query("select * from vw_broker_full_info ");
+    $query = $this->db->query("select * from vw_broker_full_info order by FirstName asc");
     return $query->result();
   }
 
   function get_shipper(){
-    $query = $this->db->query("select * from vw_shipper_full_info ");
+    $query = $this->db->query("select * from vw_shipper_full_info order by ShipperName asc");
     return $query->result();
   }
 
   function get_vessel(){
-    $query = $this->db->query("select * from vw_shipper_vessel ");
+    $query = $this->db->query("select * from vw_shipper_vessel order by ShipperName asc");
     return $query->result();
   }
 
