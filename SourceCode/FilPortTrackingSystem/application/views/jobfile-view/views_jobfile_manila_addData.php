@@ -65,7 +65,7 @@
 				           	<div class="form-group">
 								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
-									  	<option value="0" disabled selected>Jobfile Status</option>
+									  	<option value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusId;
 										   if($status==0){?> 
@@ -706,7 +706,10 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			
+			else if($('.colsel').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -714,10 +717,6 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -754,6 +753,10 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
+			else if($('.colsel').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -761,10 +764,6 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -843,7 +842,10 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			
+			else if($('.colsel').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -851,10 +853,6 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.colsel option:selected').val() == "0")
-			{
-				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -1220,7 +1218,7 @@ $(document).ready(function(){
        var purch_order_no =  $('#purch_order_no').val();
        var color          =  $('.colsel').val();
 	   var vessels        =  $('.vessels').val();
-       
+       var color_select   =  $('#color-select').val();
 
      /*  alert(purch_order_no);*/
 
@@ -1309,7 +1307,8 @@ $(document).ready(function(){
 			  			    dt_boc 		   :dt_boc,
 			  			    entryno		   :entryno,
 			  			    purch_order_no :purch_order_no,
-			  			    color          :color
+			  			    color          :color,
+			  			    color_select   :color_select
 
 			  		}
 				});

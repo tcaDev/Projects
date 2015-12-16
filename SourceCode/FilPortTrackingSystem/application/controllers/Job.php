@@ -219,6 +219,8 @@ class Job extends CI_Controller {
    $entryno         =$this->input->post('entryno');
    $purch_order_no  =$this->input->post('purch_order_no');  
    $color           =$this->input->post('color');  
+   $color_select    =$this->input->post('color_select');    
+   
  
 
   //for sp_AddVesselByJobFile   2nd proc
@@ -251,7 +253,7 @@ class Job extends CI_Controller {
       if($query->num_rows() ==1){
        }else{     
                           //first proc
-                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $this->db->query($add_jobfile,
                       array(
                              'P_JobFileID'                             =>$job,           
@@ -261,6 +263,7 @@ class Job extends CI_Controller {
                              'P_MonitoringTypeId'                      =>1,
                              'P_StatusId'                              =>$color,
                              'P_RefEntryNo'                            =>$entryno,
+                             'P_ColorSelectivityId'                    =>$color_select,
                              'P_Registry'                              =>$registry,            
                              'P_HouseBillLadingNo'                     =>$hbl,
                              'P_MasterBillLadingNo'                    =>$mbl,
@@ -285,13 +288,13 @@ class Job extends CI_Controller {
                 //
       
                 //2nd proc
-                $add_vessel ="CALL sp_AddVesselByJobFile(?,?,?,?,?)";
+                $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?)";
                  $this->db->query($add_vessel,
                   array(
                       'P_JobFileId'           => $job,
-                      'P_ShipperVesselId'     => $vessel,
-                      'P_VesselArrivalTime'   => $vat,
-                      'P_VesselDischargeTime' => $vdt,
+                      'P_Carrier'             => $vessel,
+                      'P_ArrivalTime'         => $vat,
+                      'P_DischargeTime'       => $vdt,
                       'P_UserId'              => $userid
                 ));
           }
@@ -304,12 +307,12 @@ class Job extends CI_Controller {
 
 
              //3rd proc
-            $containerbyvessel = "CALL sp_AddContainerByVessel(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
                   'P_ContainerSize'         => 100,
-                  'P_VesselByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
+                  'P_CarrierByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
                   'P_CarrierId'             => NULL,
                   'P_NoOfCartons'           => $cartons,
                   'P_TruckerPlateNo'        => $plateno,
@@ -319,7 +322,7 @@ class Job extends CI_Controller {
                   'P_ActualArrivalTime'     => $aat,
                   'P_StartOfStorage'        => $start_storage,
                   'P_Lodging'               => $lodging,  
-                  'P_HaulerId'              => NULL,      //
+                  'P_HaulerOrTruckId'       => NULL,      //
     /*              'P_DateSentPreAssessment' => $dtSent,*/
                   'P_TargetDeliveryDate'    => $tdt,
                   'P_GateInAtPort'          => $gip,
@@ -343,23 +346,22 @@ function jobfile_add2(){
    
   
     //for getting the last insert in P_VesselByJobFileId start
-               $table ='VesselByJobFile';
-               $id    ='VesselByJobFileId';  
+               $table ='CarrierByJobFile';
+               $id    ='CarrierByJobFileId';  
            $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
               //for getting the last insert in P_VesselByJobFileId end
  if(($product_name!=NULL) || ($product_name!='')){
-     $query = $this->db->query("select ProductName from Products where ProductName='$product_name'
-                                 and Origin_CountryId='$origin_id' 
-                                 and Origin_City='$origin_cty' limit 1");  
-     $query2= $this->db->query("select `CBV`.`CBV.ContainerByVesselId ` from  
-                                ContainerByVessel as CBV where `CBV`.`ContainerNo` =$con_id 
-                                and `CBV`.`VesselByJobFileId`=`$VesselByJobFile` ");
-     if(($query->num_rows() ==1 ) || ($query2->num_rows()==1)){
+     $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
+     $query2= $this->db->query("select `CBV`.`ContainerByCarrierId` from  
+                                ContainerByCarrier as CBV where `CBV`.`ContainerNo` =$con_id 
+                                and `CBV`.`ContainerByCarrierId`='$VesselByJobFile' ");
+     if(($query->num_rows() ==1 ) && ($query2->num_rows()==1)){
      }else{
                 //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
+                  'P_ProductId'           => $proid, //la pa value
                   'P_ProductName'         => $product_name,   
                   'P_ContainerId'         => $con_id,
                   'P_VesselByJobFileId'   => $VesselByJobFile,
