@@ -358,15 +358,15 @@
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Plate No.</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Trucker Plate No.</label>
 								<input type="text" name="trckplte" class="form-control input-sm plate" />
-								<i class="truckplate-msg" style="color:red;"></i>
+								
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Name</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Trucker Name</label>
 								<input type="text" name="trckname" class="form-control input-sm truckname" />
-								<i class="truckname-msg" style="color:red;"></i>
+								
 							</div>
 
 							<div class="form-group">
@@ -1017,13 +1017,14 @@ $(document).ready(function(){
 				}
 
 				var testme2=false;
-				function isExist2(strd2){
+				function isExist2(prod,cont){
 
 				var table2 = $("#tableAddTruck-mnla table tbody");
 
 				    testme2=false;
 				 	  table2.find('tr').each(function(){
-					    if($('td:nth(1)',$(this)).html()===strd2) {
+				 	  	if($('td:nth(1)',$(this)).html()===cont) 
+					    if($('td:nth(0)',$(this)).html()===prod) {
 					       testme2=true;            
 					        }   
 					     })
@@ -1051,35 +1052,30 @@ $(document).ready(function(){
 			{
 				$('.vessel-msg').text("Need Vessel.");
 			}
-			else if($('#tableAddContainer-mnla .plate').val() == "")
-			{
-				$('.truckplate-msg').text("Need Truck Plate No.");
-			}
-			else if($('#tableAddContainer-mnla .truckname').val() == "")
-			{
-				$('.truckname-msg').text("Need Truck Name");
-			}else{
+			else{
 
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-dept").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
+
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname").val());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
@@ -1120,9 +1116,13 @@ $(document).ready(function(){
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
 
-			if(isExist2($('#tableAddTruck-mnla .containers-prod option:selected').val()))
+			var cont = $('#tableAddTruck-mnla .containers-prod option:selected').val();
+			var prod = $('#tableAddTruck-mnla .prodname').val();
+
+
+			if(isExist2(prod,cont))
 			{	
-				$('.cont-size-msg').text("Container Number already have Product.");
+				$('.cont-size-msg').text("The Product is already in this Container");
 			}
 			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
