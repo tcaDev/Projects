@@ -190,30 +190,16 @@ class Job extends CI_Controller {
   }
   function testing(){
                           
-             //3rd proc
-             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-             $this->db->query($containerbyvessel,
-              array(       
-                  'P_ContainerNo'           =>1,
-                  'P_ContainerSize'         => 100,
-                  'P_CarrierByJobFileId'     =>1,    // last inserted id from VesselByJobFIle table
-                  'P_NoOfCartons'           => 1,
-                  'P_TruckerPlateNo'        => 1,
-                  'P_TruckerName'           => 1,
-                  'P_EstDepartureTime'      => 1,
-                  'P_EstArrivalTime'        => 1,
-                  'P_ActualArrivalTime'     => 1,
-                  'P_StartOfStorage'        => 1,
-                  'P_Lodging'               => 1,  
-                  'P_HaulerOrTruckId'       => NULL,      //
-                  'P_TargetDeliveryDate'    => 1,
-                  'P_GateInAtPort'          => 1,
-                  'P_GateOutAtPort'         => 1,
-                  'P_ActualDeliveryAtWarehouse' =>1,
-                  'P_StartOfDemorage'           =>1,
-                  'P_PullOutDateAtPort'         =>NULL,
-                  'P_UserId'                    =>1 
-
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
+             $this->db->query($addproducts,
+              array(
+                  'P_ProductId'           => 1, //la pa value                 
+                  'P_ContainerId'         => 1,
+                  'P_CarrierByJobFileId'   => 1,
+                  'P_DateBOCCLeared'      => 1,
+                  'P_Origin_CountryId'    => 1,
+                  'P_Origin_City'         => 1,
+                  'P_UserId'              => 1
              ));
    
   }
@@ -334,9 +320,9 @@ class Job extends CI_Controller {
 
           
 
-/*           //for getting the last insert in P_VesselByJobFileId start
-               $table ='VesselByJobFile';
-               $id    ='VesselByJobFileId';  
+           //for getting the last insert in P_VesselByJobFileId start
+               $table ='CarrierByJobFile';
+               $id    ='CarrierByJobFileId';  
            $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
               //for getting the last insert in P_VesselByJobFileId end
 
@@ -365,17 +351,19 @@ class Job extends CI_Controller {
                   'P_PullOutDateAtPort'         =>NULL,
                   'P_UserId'                    =>$userid 
 
-             ));*/
+             ));
    }
 function jobfile_add2(){
   $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
       //for sp_AddProducts   4th proc
+   $prodid               =  $this->input->post('prodid');
    $product_name         =  $this->input->post('product_name');
    $con_id               =  $this->input->post('con_id');   
    $origin_id            =  $this->input->post('origin_id');
    $origin_cty           =  $this->input->post('origin_cty');
    $dt_boc               =  $this->input->post('dt_boc');
+   
    
   
     //for getting the last insert in P_VesselByJobFileId start
@@ -391,11 +379,10 @@ function jobfile_add2(){
      if(($query->num_rows() ==1 ) && ($query2->num_rows()==1)){
      }else{
                 //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?,?)";
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
-                  'P_ProductId'           => $proid, //la pa value
-                  'P_ProductName'         => $product_name,   
+                  'P_ProductId'           => $prodid, //la pa value  
                   'P_ContainerId'         => $con_id,
                   'P_VesselByJobFileId'   => $VesselByJobFile,
                   'P_DateBOCCLeared'      => $dt_boc,

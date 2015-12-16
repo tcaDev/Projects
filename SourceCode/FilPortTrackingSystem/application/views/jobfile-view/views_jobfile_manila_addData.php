@@ -65,7 +65,7 @@
 				           	<div class="form-group">
 								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
-									  	<option value="" disabled selected>Jobfile Status</option>
+									  	<option value="0" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusId;
 										   if($status==0){?> 
@@ -246,7 +246,13 @@
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;font-size: 20px;">*</i>
-								<input type="text" class="form-control input-sm prodname" name="prodname">
+								<select class="form-control input-sm prodname" name="prodname">
+									<?php foreach($products as $row){ ?>
+											 <option value="<?php echo $row->ProductId?>">
+											 <?php echo $row->ProductName;?>
+											 </option>
+											<?php }?> 
+								</select> 
 								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
@@ -301,8 +307,8 @@
 						    <table class="table" style="width: 1000px;" border="1">
 							    <thead>
 							    	 <tr>
+							    	 	<th class="hidden">Product Value</th>
 								        <th>Product Name</th>
-								       <!--  <th>Purchase Order Number</th> -->
 								        <th>Container</th>
 								        <th>Date Cleared BOC</th>
 								        <th class="hidden">Origin Value</th>
@@ -338,11 +344,16 @@
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="veselid" class="veselid hidden">
-				  				<input type="text" name="veselid" class="veseltext hidden">
+
 							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
-								<div class="vesel" ></div>
-									<i class="vessel-msg" style="color:red;"></i>
+								<select class="form-control carrier" name="countries">
+										<?php foreach($carrier as $row){ ?>
+											 <option value="<?php echo $row->CarrierId?>">
+											 <?php echo $row->CarrierName;?>
+											 </option>
+											<?php }?> 
+								</select>
+									<i class="carrier-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -706,10 +717,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -717,6 +724,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -753,10 +764,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -764,6 +771,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -842,10 +853,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -853,6 +860,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel option:selected').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -1030,7 +1041,11 @@ $('.table-remove-cont').click(function () {
 			}
 			else if($('#tableAddContainer-mnla .vessel').val() == "")
 			{
-				$('.vessel-msg').text("Need Vessel.");
+				$('.vessel-vessel-msg').text("Need Vessel.");
+			}
+			else if($('#tableAddContainer-mnla .carrier').val() == "0")
+			{
+				$('.carrier-msg').text("Need Carrier.");
 			}
 			else{
 
@@ -1038,8 +1053,8 @@ $('.table-remove-cont').click(function () {
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
 
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
@@ -1062,9 +1077,9 @@ $('.table-remove-cont').click(function () {
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
 			$('.container-size-msg').text('');
-			$('.vessel-msg').text('');
+			$('.vessel-vessel-msg').text('');
 			$('.truckplate-msg').text('');
-			$('.truckname-msg').text('');
+			$('.carrier-msg').text('');
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
@@ -1104,7 +1119,7 @@ $('.table-remove-cont').click(function () {
 			{	
 				$('.cont-size-msg').text("The Product is already in this Container");
 			}
-			else if($('#tableAddTruck-mnla .prodname').val() == "")
+			else if($('#tableAddTruck-mnla .prodname').val() == "0")
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
@@ -1116,15 +1131,15 @@ $('.table-remove-cont').click(function () {
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
-			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
-			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val()).hide();
+			 	$('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".prodname option:selected").text());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".dt_boc").val());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
+			       	$('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');
@@ -1209,6 +1224,7 @@ $('.table-remove-cont').click(function () {
        
 
        //for containers table
+       			  	
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
 		table.find('tr').each(function (count1) {
@@ -1291,12 +1307,23 @@ $('.table-remove-cont').click(function () {
 			  			    color_select   :color_select
 
 			  		}
-				});
-						
-						if(c!=ct+1){				
-						insert_container(ct,c);
-						}
-				     
+				});	
+					
+					if(c<=ct){
+						 insert_container(ct,c);
+					}
+		/*			var b = 1;		
+					while (b < ct) {
+    					
+    					if(b<=c){
+    					
+    					}else{
+    						break;
+    					}	
+    				b++;	
+					}*/
+											
+
 
 
 		});
@@ -1310,35 +1337,40 @@ $('.table-remove-cont').click(function () {
 
 <script>
 	function insert_container(ct,c){
+
+
 				       //for the 4th proc insert start
 		             //description of goods
 	var table2 	  = $("#tableAddTruck-mnla table tbody");
 	var ct2  = $("#tableAddTruck-mnla table tbody tr").length;         
 	table2.find('tr').each(function (i) {
 	    var c2 = i+1;
-	    alert(c2 + " " +ct2)
-	if(c2!=ct2){
+if(ct2==c2){
+	if(ct==c){
  			    	
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
-						     product_name  = $tds.eq(0).text(),
+
+				       	 	 prodid        = $tds.eq(0).text(),
+						     product_name  = $tds.eq(1).text(),
 						   /*  prod_orderno  = $tds.eq(1).text();*/  //origin_id
-						     con_id        = $tds.eq(1).text(), //change to  container 
-						     dt_boc        = $tds.eq(2).text(); 
-						     origin_id     = $tds.eq(3).text();  //origin_id
-					         origin_cty    = $tds.eq(5).text();
+						     con_id        = $tds.eq(2).text(), //change to  container 
+						     dt_boc        = $tds.eq(3).text(); 
+						     origin_id     = $tds.eq(4).text();  //origin_id
+					         origin_cty    = $tds.eq(6).text();
+					    
 
-				 	      
+					         alert("prodid:" +prodid + " product_name" + product_name +
+					         " con_id" + con_id + " dt_boc:" + dt_boc + " origin_id" +
+					          "origin_cty" + origin_cty);
 
-					       /*  	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
-*/						
-					         	$.ajax({
+					            $.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
-				  			                   con_id 	       :con_id,   //change to container
-				  			                  /* prod_orderno    :prod_orderno,*/
+				  			                   con_id 	       :con_id,   
+				  			                   prodid          :prodid,
 				  			                   dt_boc          :dt_boc,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
@@ -1348,7 +1380,7 @@ $('.table-remove-cont').click(function () {
 				  			  	   		 }
 						              })
 										.done(function(data) {
-			  								if(ct2==c2){
+											  if(ct2==c2){
 				  								if(ct==c){
 						  							 $.alert({
 									        		title: 'Alert!',
@@ -1358,15 +1390,17 @@ $('.table-remove-cont').click(function () {
 									   			   });
 						  							location.reload();
 												}
-									   		}
+											  }
 						    		    })
 						    		    .fail(function(data) {
-				  						   console.log(data);
-						    		    });
-	}					    		    
+						    		    	alert('Data error');
+				  						   location.reload();
+						    			});
+	} 
+}    								
 
 			});
-    			//for the 4th proc insert end
- }
+//for the 4th proc insert end
+}
 </script>
 
