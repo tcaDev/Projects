@@ -1004,7 +1004,7 @@ $this->message();
 		    <thead>
 		      <tr>
 		      	<th>Hauler ID</th>
-		        <th>Hauler Name</th>
+		        <th>Hauler/Truck Name</th>
 		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>

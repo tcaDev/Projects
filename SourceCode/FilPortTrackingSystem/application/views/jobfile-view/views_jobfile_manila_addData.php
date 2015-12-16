@@ -1316,6 +1316,8 @@ $(document).ready(function(){
 						
 						if(c!=ct+1){				
 						insert_container(ct,c);
+						}else{
+							return;
 						}
 				     
 
