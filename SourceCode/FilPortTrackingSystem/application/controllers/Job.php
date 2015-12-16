@@ -188,6 +188,35 @@ class Job extends CI_Controller {
     }
 
   }
+  function testing(){
+                          
+             //3rd proc
+             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $this->db->query($containerbyvessel,
+              array(       
+                  'P_ContainerNo'           =>1,
+                  'P_ContainerSize'         => 100,
+                  'P_CarrierByJobFileId'     =>1,    // last inserted id from VesselByJobFIle table
+                  'P_NoOfCartons'           => 1,
+                  'P_TruckerPlateNo'        => 1,
+                  'P_TruckerName'           => 1,
+                  'P_EstDepartureTime'      => 1,
+                  'P_EstArrivalTime'        => 1,
+                  'P_ActualArrivalTime'     => 1,
+                  'P_StartOfStorage'        => 1,
+                  'P_Lodging'               => 1,  
+                  'P_HaulerOrTruckId'       => NULL,      //
+                  'P_TargetDeliveryDate'    => 1,
+                  'P_GateInAtPort'          => 1,
+                  'P_GateOutAtPort'         => 1,
+                  'P_ActualDeliveryAtWarehouse' =>1,
+                  'P_StartOfDemorage'           =>1,
+                  'P_PullOutDateAtPort'         =>NULL,
+                  'P_UserId'                    =>1 
+
+             ));
+   
+  }
 
 //for testing function
   function jobfile_add(){
@@ -199,6 +228,7 @@ class Job extends CI_Controller {
   //for sp_CreateJobFile proc  1st proc
    $job             =$this->input->post('jbfl');
    $consignee       =$this->input->post('consignee');
+   $shipper         =$this->input->post('shipper');
    $mbl             =$this->input->post('mbl');
    $mbl2            =$this->input->post('mbl2');   //no insert in db
    $hbl             =$this->input->post('hbl');
@@ -253,12 +283,13 @@ class Job extends CI_Controller {
       if($query->num_rows() ==1){
        }else{     
                           //first proc
-                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                 $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     $this->db->query($add_jobfile,
                       array(
                              'P_JobFileID'                             =>$job,           
                              'P_ConsigneeId'                           =>$consignee,
                              'P_BrokerID'                              =>$broker,
+                             'P_ShipperId'                             =>$shipper,
                              'P_PurchaseOrderNo'                       =>$purch_order_no,
                              'P_MonitoringTypeId'                      =>1,
                              'P_StatusId'                              =>$color,
@@ -283,23 +314,27 @@ class Job extends CI_Controller {
                              'P_DateReceivedNoticeFromForwarder'       =>NULL,
                              'P_UserId'                                => $userid 
                           ));
-   
 
-                //
-      
-                //2nd proc
-                $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?)";
-                 $this->db->query($add_vessel,
-                  array(
+                                    //2nd proc
+                    $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?)";
+                    $this->db->query($add_vessel,
+                     array(
                       'P_JobFileId'           => $job,
                       'P_Carrier'             => $vessel,
                       'P_ArrivalTime'         => $vat,
                       'P_DischargeTime'       => $vdt,
                       'P_UserId'              => $userid
-                ));
-          }
+                    ));
 
-           //for getting the last insert in P_VesselByJobFileId start
+            }
+   
+
+                //
+      
+
+          
+
+/*           //for getting the last insert in P_VesselByJobFileId start
                $table ='VesselByJobFile';
                $id    ='VesselByJobFileId';  
            $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
@@ -307,13 +342,12 @@ class Job extends CI_Controller {
 
 
              //3rd proc
-            $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
                   'P_ContainerSize'         => 100,
-                  'P_CarrierByJobFileId'     => $VesselByJobFile ,    // last inserted id from VesselByJobFIle table
-                  'P_CarrierId'             => NULL,
+                  'P_CarrierByJobFileId'     =>$VesselByJobFile,    // last inserted id from VesselByJobFIle table
                   'P_NoOfCartons'           => $cartons,
                   'P_TruckerPlateNo'        => $plateno,
                   'P_TruckerName'           => $truckername,
@@ -323,16 +357,15 @@ class Job extends CI_Controller {
                   'P_StartOfStorage'        => $start_storage,
                   'P_Lodging'               => $lodging,  
                   'P_HaulerOrTruckId'       => NULL,      //
-    /*              'P_DateSentPreAssessment' => $dtSent,*/
                   'P_TargetDeliveryDate'    => $tdt,
                   'P_GateInAtPort'          => $gip,
                   'P_GateOutAtPort'         => $gop,
                   'P_ActualDeliveryAtWarehouse' =>$adw,
                   'P_StartOfDemorage'           =>$start_demorage,
                   'P_PullOutDateAtPort'         =>NULL,
-                  'P_UserId'                    => $userid 
+                  'P_UserId'                    =>$userid 
 
-             ));
+             ));*/
    }
 function jobfile_add2(){
   $session_data = $this->session->userdata('logged_in');
