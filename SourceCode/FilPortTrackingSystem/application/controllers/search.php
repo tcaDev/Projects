@@ -22,7 +22,7 @@ class Search extends CI_Controller {
 
 			if(isset($search)){
 
-							echo '<table class="table table-striped">
+							echo '<table class="table ">
 							<tr>
 								<td>JobFileId</td>
 								<td>Broker</td>
@@ -111,7 +111,7 @@ if(isset($_SESSION['success'])){
 				        </div>
 				        <div class="modal-body" >
 		        		<div style="overflow-x:auto;">			
-						<table class="table table-striped table_consignee">
+						<table class="table  table_consignee">
 					    <thead>
 					      <tr>
 					        <th>FirstName</th>
@@ -263,7 +263,7 @@ if(isset($_SESSION['success'])){
 				        </div>
 				        <div class="modal-body">
 		        		<div style="overflow-x:auto;">	
-						<table class="table table-striped table_consignee">
+						<table class="table  table_consignee">
 					    <thead>
 					      <tr>
 					        <th>FirstName</th>
@@ -513,7 +513,7 @@ if(isset($_SESSION['success'])){
 
 
   
-		echo '      <table class="table table-striped">
+		echo '      <table class="table ">
 					    <thead>
 					      <tr>
 					      	<th>Broker ID</th>
@@ -644,7 +644,7 @@ function search_shipper(){
    }else{
    	 $shipper  =  $this->User->findlimit_shipper($item_per_page,$page_position);	
    } 	
-    	echo '      <table class="table table-striped">
+    	echo '      <table class="table ">
 					    <thead>
 					      <tr>
 					    	<th>Shipper ID</th>
@@ -854,7 +854,7 @@ function search_vessel(){
    } 	
 
 
-	  echo '	      <table class="table table-striped">
+	  echo '	      <table class="table ">
 					    <thead>
 					      <tr>
 					        <th>Vessel ID</th>
@@ -999,7 +999,7 @@ $this->message();
 	   }else{
 	   	 $haulers  =  $this->User->findlimit_hauler($item_per_page,$page_position);	
 	   } 	
-	echo '<table class="table table-striped">
+	echo '<table class="table ">
 		    <thead>
 		      <tr>
 		      	<th>Hauler ID</th>
@@ -1117,7 +1117,7 @@ $this->message();
 	   }else{
 	   	 $forward  =  $this->User->findlimit_forward($item_per_page,$page_position);	
 	   } 	
-	echo '<table class="table table-striped">
+	echo '<table class="table ">
 		    <thead>
 		      <tr>
 		      	<th>Forwarder ID</th>
@@ -1237,7 +1237,7 @@ $this->message();
 	   }else{
 	   	 $legend  =  $this->User->findlimit_legend($item_per_page,$page_position);	
 	   } 	
-	echo '<table class="table table-striped">
+	echo '<table class="table ">
 		    <thead>
 		      <tr>
 		        <th>Status Name</th>
@@ -1369,7 +1369,7 @@ $this->message();
 				        </div>
 				        <div class="modal-body">
 		        		
-						<table class="table table-striped table-bordered">
+						<table class="table  table-bordered">
 					    <thead>
 					      <tr>
 					        <th>Vessels</th>
