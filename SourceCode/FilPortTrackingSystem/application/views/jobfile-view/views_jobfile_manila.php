@@ -335,7 +335,7 @@
 			<div class="container">
 				  <!-- Modal -->
 				  <div class="modal fade" id="viewcontainers" role="dialog">
-				    <div class="modal-dialog">
+				    <div class="modal-dialog" style="width: 65%;">
 				    
 				      <!-- Modal content-->
 				      <div class="modal-content">
