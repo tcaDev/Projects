@@ -145,6 +145,8 @@
 
 								          <th >Status Reports</th>
 
+								          <th >Running Charges</th>
+
 								      </tr>
 				        </thead>
 				        <tbody>
@@ -155,7 +157,7 @@
 							    			if($pick==0){
 									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
 									        }else{
-									        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">'.$row->StatusName.'</td>';
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; color: white;">'.$row->StatusName.'</td>';
 									        }
 
 				        				?>
@@ -214,6 +216,7 @@
 								          <td><?php echo $row->DatePaid; ?></td>
 
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								      
 								        </tr>
 
@@ -296,6 +299,32 @@
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_conts"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+			<!--pop up for Running Charges start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="runchar" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Running Charges</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class=""> </div>
 
 				        </div>
 				        <div class="modal-footer">

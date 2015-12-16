@@ -857,9 +857,9 @@ function search_vessel(){
 	  echo '	      <table class="table table-bordered">
 					    <thead>
 					      <tr>
-					        <th>Vessel ID</th>
-					        <th>Vessel Name</th>
-					        <th>Vessel No./Plate No.</th>
+					        <th>Shipping Lines ID</th>
+					        <th>Shipping Lines Name</th>
+					        <th>Shipping Lines No.</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>

@@ -106,14 +106,16 @@
 								  <label for="bank">Letter of Credit No. from Bank:</label>
 								  <input type="text" class="form-control input-sm bank" name="bank" id="bank">
 								</div>
-						</div>
-
-					<div class="col-lg-4">
 
 								<div class="form-group">
 								  <label for="registry">Registry:</label>
 								  <input type="text" class="form-control input-sm registry" name="registry" id="registry">
 								</div>
+						</div>
+
+					<div class="col-lg-4">
+
+								
 
 								<div class="form-group">
 				  				  
@@ -165,7 +167,16 @@
 
 						           </div>
 
+						           <div class="form-group">
+						               <label for="dtReq">Date Request Budget to GL:</label>
+									   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
+								  </div>
+
 						         
+								<div class="form-group">
+									 <label for="rfp">Reference Due Date:</label>
+									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
+								 </div>
 				  				
 
 
@@ -183,15 +194,8 @@
 				  			</div>
 
 							<div class="col-lg-4" >
-								 <div class="form-group">
-						               <label for="dtReq">Date Request Budget to GL:</label>
-									   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
-								  </div>
+								 
 
-								<div class="form-group">
-									 <label for="rfp">Reference Due Date:</label>
-									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
-								 </div>
 
 								 <div class="form-group">
 									 <label for="dtSent">Date Sent Pre-Assess:</label>
@@ -214,19 +218,23 @@
 								 	<i class="reference-msg" style="color:red;"></i>
 								</div>
 
+								<div class="form-group">
+									<label>Color Selectivity :</label>
+									<select name="color-select" id="color-select" class="form-control input-sm color-select">
+										<option value="1">YELLOW</option>
+										<option value="2">RED</option>
+										<option value="3">GREEN</option>
+									</select>
+								</div>
+
 							     <div class="form-group">
 								 	 <label for="dtPaid">Date Paid(Date& Time):</label>
 									  <input type="datetime-local" name="dt_paid" class="form-control input-sm " id="dt_paid">
 								 </div>
 
 								 <div class="form-group">
-								  	<label for="dtClrd">Date Cleared BOC:</label>
-								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
-								 </div>
-
-								 <div class="form-group">
 								   <label for="status">Status Report:</label>
-								  	<input type="text" name="status" class="form-control input-sm status" id="status">
+								  	<textarea name="status" rows="5" class="form-control input-sm status" id="status"></textarea>
 								 </div>
 				  			</div>
 				  		</div>
@@ -256,6 +264,11 @@
 								<i class="cont-size-msg" style="color:red;"></i>
 		
 							</div>
+
+							<div class="form-group">
+								  	<label for="dtClrd">Date Cleared BOC:</label>
+								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
+								</div>
 				  		</div>
 
 				  		<div class="col-lg-6">
@@ -277,6 +290,8 @@
 								<input type="text" name="origcity" class="form-control input-sm origcity" />
 							</div>
 
+							
+
 							<button type="button" class="btn-Add-Product-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
 				  			
 
@@ -289,6 +304,7 @@
 								        <th>Product Name</th>
 								       <!--  <th>Purchase Order Number</th> -->
 								        <th>Container</th>
+								        <th>Date Cleared BOC</th>
 								        <th class="hidden">Origin Value</th>
 								        <th>Origin Country ID</th>
 								        <th>Origin City</th>
@@ -324,16 +340,18 @@
 							<div class="form-group">
 								<input type="text" name="veselid" class="veselid hidden">
 				  				<input type="text" name="veselid" class="veseltext hidden">
-								<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
-									<div class="vesel" ></div>
+							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
+								<div class="vesel" ></div>
 									<i class="vessel-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
-							<label>Vessel</label>
-							  <input type="text" class="vessels form-control" />	
+								<label>Vessel</label> <i style="color:red;font-size: 20px;">*</i>
+								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
+								<i class="vessel-vessel-msg" style="color:red;"></i>
 							</div>
 
+						
 							<div class="form-group">
 								<label>Number of Cartons</label> <span id="errmsg" style="color:red;"></span>
 								<input type="text" step="1" class="form-control input-sm cartons" id="cartons" name="numofcartons">
@@ -361,10 +379,7 @@
 								<input type="datetime-local" name="est-arr" class="form-control input-sm est-arr" />
 							</div>
 
-							<div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
-							</div>
+							
 
 					  	</div>
 					  	
@@ -373,6 +388,12 @@
 
 
 					  	<div class="col-lg-6">
+
+					  		<div class="form-group">
+								<label>Actual Arrival Time</label>
+								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
+							</div>
+
 					  		<div class="form-group">
 								<label>Start of Storage</label>
 								<input type="datetime-local" name="strtstrge" class="form-control input-sm storage" />
@@ -425,7 +446,8 @@
 						      	<th>Container Number</th>
 						      	<th>Container Size</th>
 						      	<th class="hidden">Vessel Value</th>
-						        <th>Vessel by JobFile</th>
+						        <th>Shipping Lines / Carrier</th>
+						        <th>Vessel</th>
 						        <th>Number of Cartons</th>
 						        <th>Trucker Plate No.</th>
 						        <th>Trucker Name</th>
@@ -1114,14 +1136,15 @@ $(document).ready(function(){
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
 			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
 			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".origin").val()).hide();
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin option:selected").text());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origcity").val());
-			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');
