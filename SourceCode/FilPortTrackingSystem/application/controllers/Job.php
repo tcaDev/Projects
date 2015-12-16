@@ -21,7 +21,7 @@ class Job extends CI_Controller {
 
 
     if($shipper==NULL){
-          echo    '<center><span style="color:red">No Vessels in this shipper. </span></center>';
+          echo    '<center><span style="color:red">No Shipping Lines / Carrier in this Shipper. </span></center>';
     }else{
      
 		        echo'<select name="vessel" id="vess" class="myvessel form-control ">';				            				       
