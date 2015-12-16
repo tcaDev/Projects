@@ -533,6 +533,12 @@ Class User extends CI_Model
   }
 */
 
+
+function get_carrier(){
+    $query = $this->db->query("select * from Carrier");
+    return $query->result();
+  }
+
 function get_jobfile_manila(){
     $query = $this->db->query("select * from vw_JobFile");
     return $query->result();

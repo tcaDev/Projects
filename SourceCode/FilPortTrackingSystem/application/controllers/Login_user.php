@@ -150,6 +150,8 @@ class Login_user extends CI_Controller {
 
 		  	$data['outport']    = $this->User->get_jobfile_manila();
 
+		  	$data['carrier'] = $this->User->get_carrier();
+
 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);

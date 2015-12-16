@@ -65,7 +65,7 @@
 				           	<div class="form-group">
 								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
-									  	<option value="" disabled selected>Jobfile Status</option>
+									  	<option value="0" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusId;
 										   if($status==0){?> 
@@ -338,11 +338,16 @@
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="veselid" class="veselid hidden">
-				  				<input type="text" name="veselid" class="veseltext hidden">
+
 							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
-								<div class="vesel" ></div>
-									<i class="vessel-msg" style="color:red;"></i>
+								<select class="form-control carrier" name="countries">
+										<?php foreach($carrier as $row){ ?>
+											 <option value="<?php echo $row->CarrierId?>">
+											 <?php echo $row->CarrierName;?>
+											 </option>
+											<?php }?> 
+								</select>
+									<i class="carrier-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -706,10 +711,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -717,6 +718,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -753,10 +758,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -764,6 +765,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -842,10 +847,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel').val() == "")
-			{
-				$('.colsel-msg').text("Need Color Selectivity");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -853,6 +854,10 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.colsel option:selected').val() == "0")
+			{
+				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -1030,7 +1035,11 @@ $('.table-remove-cont').click(function () {
 			}
 			else if($('#tableAddContainer-mnla .vessel').val() == "")
 			{
-				$('.vessel-msg').text("Need Vessel.");
+				$('.vessel-vessel-msg').text("Need Vessel.");
+			}
+			else if($('#tableAddContainer-mnla .carrier').val() == "0")
+			{
+				$('.carrier-msg').text("Need Carrier.");
 			}
 			else{
 
@@ -1038,8 +1047,8 @@ $('.table-remove-cont').click(function () {
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
 
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
@@ -1062,9 +1071,9 @@ $('.table-remove-cont').click(function () {
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
 			$('.container-size-msg').text('');
-			$('.vessel-msg').text('');
+			$('.vessel-vessel-msg').text('');
 			$('.truckplate-msg').text('');
-			$('.truckname-msg').text('');
+			$('.carrier-msg').text('');
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
