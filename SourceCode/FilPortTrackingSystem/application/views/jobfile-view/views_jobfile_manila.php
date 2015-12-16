@@ -90,8 +90,11 @@
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          
+
 								          <th > No. </th>
+
 								          <th > Update </th>
+
 								          <th >Jobfile Number</th>
 
 								          <th >Color Selectivity</th>
@@ -99,9 +102,6 @@
 								          <th >Shipper</th>
 
 								          <th >Consignee</th>
-								          <th >Number of Cartons</th>
-
-								          <th >Container Size</th>
 
 								          <th >Description of Goods</th>
 
@@ -113,27 +113,11 @@
 
 								          <th >Container No.</th>
 
-								          <th >Origin</th>
-
-								          <th >Estimated Time of Departure</th>
-
-								          <th >Estimated Time of Arrival</th>
-
-								          <th>Actual Verting Time of Vessel and Discharge</th>
-
-								          <th >Actual Time of Arrival</th>
-
 								          <th >Letter of Credit No. from Bank</th>
-
-								          <th >Start of Demorage</th>
-
-								          <th >Start Storage</th>
 
 								          <th >Registry</th>
 
 								          <th >Vessel / Voyage no.</th>
-
-								          <th>Carrier</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
@@ -155,21 +139,7 @@
 
 								          <th >Reference Entry No.</th>
 
-								          
-
 								          <th >Date Paid (Date&Time)</th>
-
-								          <th >Date Cleared BOC</th>
-
-								          <th >Target Delivery Date</th>
-
-								          <th >Plate No. / Truckers Name</th>
-
-								          <th >Gate In at Port</th>
-
-								          <th >Gate Out at Port</th>
-
-								          <th >Actual Delivery Warehouse</th>
 
 								          <th >Status Reports</th>
 
@@ -192,9 +162,6 @@
 								          <td><?php echo $row->ShipperName; ?></td>
 
 								          <td><?php echo $row->ConsigneeName; ?></td>
-								          <td><?php echo $row->NoOfCartons; ?></td>
-
-								          <td><?php echo $row->ContainerSize; ?></td>
 
 								          <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 
@@ -206,27 +173,11 @@
 
 								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
 
-								          <td><?php echo $row->Origin; ?></td>
-
-								          <td><?php echo $row->EstDepartureTime; ?></td>
-
-								          <td><?php echo $row->EstArrivalTime; ?></td>
-
-								          <td> <!-- Actual Verting Time of Vessel and Discharge --></td>
-
-								          <td><?php echo $row->ActualArrivalTime; ?></td>
-
 								          <td><?php echo $row->LetterCreditFromBank; ?></td>
-
-								          <td><?php echo $row->StartOfDemorage; ?></td>
-
-								          <td><?php echo $row->StartOfStorage; ?></td>
 
 								          <td><?php echo $row->Registry; ?></td>
 
 								          <td><?php echo $row->VSL_NO; ?></td>
-
-								          <td><!-- Carrier --></td>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
@@ -249,18 +200,6 @@
 								          <td><?php echo $row->RefEntryNo; ?></td>
 
 								          <td><?php echo $row->DatePaid; ?></td>
-
-								          <td><?php echo $row->DateBOCCleared; ?></td>
-
-								          <td><?php echo $row->TargetDeliveryDate; ?></td>
-
-								          <td><?php echo $row->PlateNo_Trucker; ?></td>
-
-								          <td><?php echo $row->GateInAtPort; ?></td>
-
-								          <td><?php echo $row->GateOutAtPort; ?></td>
-
-								          <td><?php echo $row->ActualDeliveryAtWarehouse; ?></td>
 
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								      

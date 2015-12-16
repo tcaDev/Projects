@@ -99,7 +99,7 @@
 
 								<div class="form-group">
 								  <label for="mbl">Master Bill of Landing No2.:</label>
-								  <input type="text" class="form-control input-sm text-uppercase mbl2" name="mbl2" placeholder="optional" id="mbl2">
+								  <input type="text" class="form-control input-sm mbl2" name="mbl2" placeholder="Optional" id="mbl2">
 								</div>
 
 								<div class="form-group">
@@ -955,23 +955,18 @@ $(document).ready(function(){
 
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
-    	$(this).closest("tr").remove();
     	var del = $(this).closest('tr').children('td:eq(0)').text();
+
+      	$("#tableAddTruck-mnla .containers-prod").find("option[value="+ del +"]").remove();
+
+    	$(this).closest("tr").remove();
+    	
     	/*$(".containers-prod option[value='1']").remove();*/
 
-    	$('#tableAddTruck-mnla .containers-prod').each(function(){
-  		  if (this.value == del) {
-      		 $("#tableAddTruck-mnla .containers-prod' option[value="+del +"").remove();
-    		}
-});
-
-   /* 	var a = $(this).closest('tr').children('td:eq(0)').text();
-    	$(".containers-prod option[value="+a+"]").remove();
-*/
-
-  
+  		  
 
 	});
+
 	$('#tableAddTruck-mnla').on('click', '.deleteButton', function() {
 
     	$(this).closest("tr").remove();
@@ -979,13 +974,31 @@ $(document).ready(function(){
 	});
 });
 	$(document).ready(function(){
+
+			var testme=false;
+				function isExist(strd){
+
+				var table = $("#tableAddContainer-mnla table tbody");
+
+				    testme=false;
+				 	  table.find('tr').each(function(){
+					    if($('td:nth(0)',$(this)).html()===strd) {
+					       testme=true;            
+					        }   
+					     })
+				    return testme;
+				}
+
 		$(".btn-Add-Container-Data-mnla").click(function(){
 
 			var compare = $('#tableAddContainer-mnla .containerss').val();
-		/*	alert(compare);*/
+			
 
-
-			if($('#tableAddContainer-mnla .containerss').val() == "")
+			if(isExist($('#tableAddContainer-mnla .containerss').val()))
+			{	
+				$('.container-msg').text("Container Number Already Exists.");
+			}
+			else if($('#tableAddContainer-mnla .containerss').val() == "")
 			{
 				$('.container-msg').text("Need Container Number.");
 			}
@@ -1027,7 +1040,7 @@ $(document).ready(function(){
 	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
 	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
-	                     $('.containers-prod').append('<option>' + $(".containerss").val() + '</option>');
+	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
 			}
 

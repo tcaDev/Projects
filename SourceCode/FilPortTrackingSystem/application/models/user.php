@@ -534,7 +534,7 @@ Class User extends CI_Model
 
 
 function get_jobfile_manila(){
-    $query = $this->db->query("select * from vw_MLAJobFile where MonitoringTypeId = 1 ");
+    $query = $this->db->query("select * from vw_JobFile");
     return $query->result();
   }
 
