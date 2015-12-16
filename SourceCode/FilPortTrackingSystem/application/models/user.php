@@ -203,7 +203,7 @@ Class User extends CI_Model
   }
        function dropdown_hauler(){
     $this->db->select('*');
-    $this ->db -> from('Hauler');
+    $this ->db -> from('HaulerOrTruck');
     $query=$this->db->get();
     return $query->result();
   }
@@ -527,21 +527,21 @@ Class User extends CI_Model
     return $query->result();
   }
 
-  function get_vessel(){
+  /*function get_vessel(){
     $query = $this->db->query("select * from vw_shipper_vessel order by ShipperName asc");
     return $query->result();
   }
-
+*/
 
 function get_jobfile_manila(){
     $query = $this->db->query("select * from vw_JobFile");
     return $query->result();
   }
 
-  function get_jobfile_outport(){
+ /* function get_jobfile_outport(){
     $query = $this->db->query("select * from vw_MLAJobFile where MonitoringTypeId = 2");
     return $query->result();
-  }
+  }*/
 
 
 

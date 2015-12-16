@@ -114,8 +114,6 @@
 
 								          <th >Registry</th>
 
-								          <th>Carrier</th>
-
 								          <th >Vessel / Voyage no.</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
@@ -156,7 +154,7 @@
 							    			if($pick==0){
 									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
 									        }else{
-									        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">'.$row->StatusName.'</td>';
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; color: white;">'.$row->StatusName.'</td>';
 									        }
 
 				        				?>
@@ -187,8 +185,6 @@
 								          <td><?php echo $row->LetterCreditFromBank; ?></td>
 
 								          <td><?php echo $row->Registry; ?></td>
-
-								          <td><?php echo $row->CarrierName; ?></td>
 
 								          <td><?php echo $row->VSL_NO; ?></td>
 								        

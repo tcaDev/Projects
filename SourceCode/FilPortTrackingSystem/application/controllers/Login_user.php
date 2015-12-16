@@ -148,7 +148,7 @@ class Login_user extends CI_Controller {
 		  	/*Jobfile manila*/
 		  	$data['manila']    = $this->User->get_jobfile_manila();
 
-		  	$data['outport']    = $this->User->get_jobfile_outport();
+		  	$data['outport']    = $this->User->get_jobfile_manila();
 
 
 			$this->load->view('header/header',$data);
@@ -208,7 +208,7 @@ class Login_user extends CI_Controller {
 		    $data['consignee'] = $this->User->get_consignee();
 		    $data['broker'] = $this->User->get_broker();
 		    $data['shipper'] = $this->User->get_shipper();
-		    $data['vessel'] = $this->User->get_vessel();
+		    /*$data['vessel'] = $this->User->get_vessel();*/
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('reports/reports_page' , $data);
