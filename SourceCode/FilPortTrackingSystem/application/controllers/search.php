@@ -1,3 +1,4 @@
+
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -516,7 +517,7 @@ if(isset($_SESSION['success'])){
 		echo '      <table class="table table-bordered">
 					    <thead>
 					      <tr>
-					      	<th>Broker ID</th>
+				
 					        <th>Full Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -558,7 +559,7 @@ if(isset($_SESSION['success'])){
 					    
 					     echo'
 					      <tr>
-					      	<td>'.$row->BrokerId.'</td>
+					      	<td class="hidden">'.$row->BrokerId.'</td>
 					        <td>'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.'</td>
 					        <td>'.$row->HouseBuildingNoStreet.'</td>
 					        <td>'.$row->BarangarOrVillage.'</td>
@@ -647,7 +648,7 @@ function search_shipper(){
     	echo '      <table class="table table-bordered">
 					    <thead>
 					      <tr>
-					    	<th>Shipper ID</th>
+
 					        <th>Shipper Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -686,7 +687,7 @@ function search_shipper(){
 					         	}
 
 					  echo  '<tr>
-					  	    <td>'.$row->ShipperId.'</td>
+					  	    <td class="hidden">'.$row->ShipperId.'</td>
 					  	    <td>'.$row->ShipperName.'</td>
 					  	    <td>'.$row->HouseBuildingNoStreet.'</td>
 					  	    <td>'.$row->BarangarOrVillage.'</td>
@@ -889,7 +890,7 @@ function search_vessel(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->ShipperVesselId.'</td>
+							        <td class="hidden">'.$row->ShipperVesselId.'</td>
 							        <td>'.$row->Vesselname.'</td>
 							        <td>'.$row->VesselNo.'</td>
 							        <td>'.$stat .'</td>
@@ -1120,7 +1121,6 @@ $this->message();
 	echo '<table class="table table-bordered">
 		    <thead>
 		      <tr>
-		      	<th>Forwarder ID</th>
 		        <th>Forwarder Name</th>
 		        <th>Status</th>
 		        <th colspan="2">Action</th>
@@ -1151,7 +1151,7 @@ $this->message();
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->ForwarderWarehouseId.'</td>
+							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
 							        <td>'.$row->ForwarderWarehouseName.'</td>
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
