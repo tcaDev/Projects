@@ -17,8 +17,8 @@
   var total_vessel         =  "<?php echo $vessel_total; ?>";
   var content_hauler       = "<?php echo base_url('Search/search_hauler')?>";
   var total_hauler         =  "<?php echo $hauler_total;  ?>";
-  var content_forward      = "<?php echo base_url('Search/search_forward')?>";
-  var total_forward        =  "<?php echo $forward_total; ?>";
+/*  var content_forward      = "<?php echo base_url('Search/search_forward')?>";
+  var total_forward        =  "<?php echo $forward_total; ?>";*/
   var content_legend       = "<?php echo base_url('Search/search_legend')?>";
   var total_legend         =  "<?php echo $legend_total; ?>";
 
@@ -182,7 +182,7 @@
 
 				
 
-			$(document).ready(function() {
+	/*		$(document).ready(function() {
 				    $(".forwardpage").load(content_forward);  //initial page number to load
 				    $(".pagination_forward").bootpag({
 				        total:total_forward, // total number of pages
@@ -211,7 +211,7 @@
 				    	
 				    });
 			
-			});
+			});*/
 
 
 
@@ -258,9 +258,12 @@
 				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines / Carrier</a></li>
-				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
-				    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
+
+				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines/Carrried</a></li>
+				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers/Truck Name</a></li>
+
+
+				    <li class="hidden"><a data-toggle="tab" href=".forward"		id="form_forward">Forwarder</a></li>
 				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
 			
 		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
