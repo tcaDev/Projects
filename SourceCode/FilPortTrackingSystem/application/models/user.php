@@ -539,6 +539,12 @@ function get_carrier(){
     return $query->result();
   }
 
+
+function get_products(){
+    $query = $this->db->query("select * from Products");
+    return $query->result();
+  }
+
 function get_jobfile_manila(){
     $query = $this->db->query("select * from vw_JobFile");
     return $query->result();

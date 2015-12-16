@@ -246,7 +246,13 @@
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;font-size: 20px;">*</i>
-								<input type="text" class="form-control input-sm prodname" name="prodname">
+								<select class="form-control input-sm prodname" name="prodname">
+									<?php foreach($products as $row){ ?>
+											 <option value="<?php echo $row->ProductId?>">
+											 <?php echo $row->ProductName;?>
+											 </option>
+											<?php }?> 
+								</select> 
 								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
@@ -301,8 +307,8 @@
 						    <table class="table" style="width: 1000px;" border="1">
 							    <thead>
 							    	 <tr>
+							    	 	<th class="hidden">Product Value</th>
 								        <th>Product Name</th>
-								       <!--  <th>Purchase Order Number</th> -->
 								        <th>Container</th>
 								        <th>Date Cleared BOC</th>
 								        <th class="hidden">Origin Value</th>
@@ -1113,7 +1119,7 @@ $('.table-remove-cont').click(function () {
 			{	
 				$('.cont-size-msg').text("The Product is already in this Container");
 			}
-			else if($('#tableAddTruck-mnla .prodname').val() == "")
+			else if($('#tableAddTruck-mnla .prodname').val() == "0")
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
@@ -1125,15 +1131,15 @@ $('.table-remove-cont').click(function () {
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
-			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
-			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val()).hide();
+			 	$('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".prodname option:selected").text());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".dt_boc").val());
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
+			       	$('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');

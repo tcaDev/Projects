@@ -152,6 +152,8 @@ class Login_user extends CI_Controller {
 
 		  	$data['carrier'] = $this->User->get_carrier();
 
+		  	$data['products'] = $this->User->get_products();
+
 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
