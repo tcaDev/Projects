@@ -9,7 +9,7 @@
 			  <li class="active"><a href="#tab_a" data-toggle="pill">Consignee</a></li>
 			  <li><a href="#tab_b" data-toggle="pill">Broker</a></li>
 			  <li><a href="#tab_c" data-toggle="pill">Shipper</a></li>
-			  <li><a href="#tab_d" data-toggle="pill">Vessel</a></li>
+			  <li><a href="#tab_d" data-toggle="pill">Shipping Lines/Carrier</a></li>
 			</ul>
 		</div>
 </div>
@@ -211,8 +211,8 @@
 			        		<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table3" >
 								<thead style="background-color:#D2D2D2; border: 1px solid black;">
 									<tr>
-										<th style="border: 1px solid gray;">Shipper Name</th>
-										<th style="border: 1px solid gray;">Vessel Name</th>
+										<th style="border: 1px solid gray;">Shipping Lines Name</th>
+										<th style="border: 1px solid gray;">Carrier Name</th>
 									</tr>
 								</thead>	
 								<tbody>	
