@@ -21,7 +21,7 @@ class Job extends CI_Controller {
 
 
     if($shipper==NULL){
-          echo    '<center><span style="color:red">No Shipping Lines / Carrier in this Shipper. </span></center>';
+          echo    '<center><span style="color:red">No Vessels in this shipper. </span></center>';
     }else{
      
 		        echo'<select name="vessel" id="vess" class="myvessel form-control ">';				            				       
@@ -341,13 +341,11 @@ function jobfile_add2(){
      $query = $this->db->query("select ProductName from Products where ProductName='$product_name'
                                  and Origin_CountryId='$origin_id' 
                                  and Origin_City='$origin_cty' limit 1");  
-     $query2= $this->db->query("select `CBV`.`ContainerByVesselId` from  
-                                  ContainerByVessel as CBV where `CBV`.`ContainerNo` ='$con_id'
-                                  and `CBV`.`VesselByJobFileId`='$VesselByJobFile' limit 1");
+     $query2= $this->db->query("select `CBV`.`CBV.ContainerByVesselId ` from  
+                                ContainerByVessel as CBV where `CBV`.`ContainerNo` =$con_id 
+                                and `CBV`.`VesselByJobFileId`=`$VesselByJobFile` ");
      if(($query->num_rows() ==1 ) || ($query2->num_rows()==1)){
-      return;
-     }
-     else{
+     }else{
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
              $this->db->query($addproducts,

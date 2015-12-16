@@ -342,13 +342,13 @@
 				  				<input type="text" name="veselid" class="veseltext hidden">
 							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
 								<div class="vesel" ></div>
-									
+									<i class="vessel-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
 								<label>Vessel</label> <i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
-								<i class="vessel-msg" style="color:red;"></i>
+								<i class="vessel-vessel-msg" style="color:red;"></i>
 							</div>
 
 						
@@ -358,15 +358,15 @@
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Plate No.</label>
+								<label>Trucker Plate No.</label><i style="color:red;font-size: 20px;">*</i>
 								<input type="text" name="trckplte" class="form-control input-sm plate" />
-							
+								<i class="truckplate-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Name</label>
+								<label>Trucker Name</label><i style="color:red;font-size: 20px;">*</i>
 								<input type="text" name="trckname" class="form-control input-sm truckname" />
-								
+								<i class="truckname-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
@@ -753,9 +753,9 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel option:selected').val() == "")
+			else if($('.colsel').val() == "")
 			{
-				$('.colsel-msg').text("Need Color Stages");
+				$('.colsel-msg').text("Need Color Selectivity");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
@@ -1017,18 +1017,15 @@ $(document).ready(function(){
 				}
 
 				var testme2=false;
-				function isExist2(prod,cont){
+				function isExist2(strd2){
 
 				var table2 = $("#tableAddTruck-mnla table tbody");
 
 				    testme2=false;
 				 	  table2.find('tr').each(function(){
-
-				 	  	if($('td:nth(1)',$(this)).html()===cont){
-					    if($('td:nth(0)',$(this)).html()===prod){
+					    if($('td:nth(1)',$(this)).html()===strd2) {
 					       testme2=true;            
-					        } 
-					        }  
+					        }   
 					     })
 				    return testme2;
 				}
@@ -1054,28 +1051,35 @@ $(document).ready(function(){
 			{
 				$('.vessel-msg').text("Need Vessel.");
 			}
+			else if($('#tableAddContainer-mnla .plate').val() == "")
+			{
+				$('.truckplate-msg').text("Need Truck Plate No.");
+			}
+			else if($('#tableAddContainer-mnla .truckname').val() == "")
+			{
+				$('.truckname-msg').text("Need Truck Name");
 			}else{
 
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
-	       		  $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".plate").val());
-	       		   $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname").val());
-	       		    $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-dept").val());
-	       		     $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-arr").val());
-	       		      $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".act-arr").val());
-	       		       $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".storage").val());
-	      		        $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".demorage").val());
-	      		         $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".lodging").val());
-	      		          $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".trgtdeldt").val());
-	       		           $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
-	       		            $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
-	        	             $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
-	        		          $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
+	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
@@ -1116,13 +1120,9 @@ $(document).ready(function(){
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
 
-			var cont = $('#tableAddTruck-mnla .containers-prod option:selected').val();
-			var prod = $('#tableAddTruck-mnla .prodname').val();
-
-
-			if(isExist2(prod,cont))
+			if(isExist2($('#tableAddTruck-mnla .containers-prod option:selected').val()))
 			{	
-				$('.cont-size-msg').text("The Product is already in this Container.");
+				$('.cont-size-msg').text("Container Number already have Product.");
 			}
 			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
@@ -1136,14 +1136,15 @@ $(document).ready(function(){
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-			$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
 			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
-			  $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
-			   $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
-			       $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');
@@ -1160,7 +1161,7 @@ $(document).ready(function(){
 			});
 		
 
-		/*$(".btn-Add-Product-Alert-mnla").click(function(){
+		$(".btn-Add-Product-Alert-mnla").click(function(){
 		    	  var table = $("#tableAddTruck-mnla table tbody");
 
 				    table.find('tr').each(function (i) {
@@ -1173,7 +1174,7 @@ $(document).ready(function(){
 				              + '\nVessel: ' + product
 				              + '\nCartons: ' + Quantity);
 				    });
-		    });*/
+		    });
 		       
 
 		  
@@ -1313,8 +1314,6 @@ $(document).ready(function(){
 						
 						if(c!=ct+1){				
 						insert_container(ct,c);
-						}else{
-							return;
 						}
 				     
 

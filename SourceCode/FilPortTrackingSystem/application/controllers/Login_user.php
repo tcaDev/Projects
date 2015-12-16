@@ -725,7 +725,7 @@ function select_country(){
 
 
   
-			echo	  '<table class="table table-bordered table_consignee">
+			echo	  '<table class="table table-bordered table_consignee" id="table_consignee"> 
 					    <thead>
 					      <tr>
 					      	<th>Consignee ID</th>
@@ -848,7 +848,15 @@ function select_country(){
  <script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
  
  <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
-   
+   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+			<script>
+	$(document).ready(function() 
+    { 
+        $("#table_consignee").tablesorter(); 
+    } 
+); 
+
+</script> 
 
 
 
