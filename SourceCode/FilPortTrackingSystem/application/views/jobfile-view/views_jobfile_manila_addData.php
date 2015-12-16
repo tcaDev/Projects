@@ -1188,6 +1188,7 @@ $(document).ready(function(){
        var status         =  $('#status').val();
        var entryno        =  $('#entryno').val();
        var purch_order_no =  $('#purch_order_no').val();
+       var color          =  $('.colsel').val();
 
      /*  alert(purch_order_no);*/
 
@@ -1202,16 +1203,7 @@ $(document).ready(function(){
 		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
 		table.find('tr').each(function (count1) {
 			  var c = count1+1;
-			  /*alert(ct + " " + c);*/
-		if(ct==c){
-			 	  				 $.alert({
-								        title: 'Alert!',
-								        content: 'Data has been inserted!',
-								        confirm: function(){
-								         }
-								    });
-			 	  			 setTimeout(function () { location.reload(true); }, 5000);
-		}
+
 				        var $tds = $(this).find('td'),
 				            containerId 	= $tds.eq(0).text(),
 				            vesselid    	= $tds.eq(2).text();
@@ -1284,13 +1276,16 @@ $(document).ready(function(){
 			  			    status		   :status,
 			  			    dt_boc 		   :dt_boc,
 			  			    entryno		   :entryno,
-			  			    purch_order_no :purch_order_no
+			  			    purch_order_no :purch_order_no,
+			  			    color          :color
 
 			  		}
 				});
-
-
-				insert_container();
+						
+						if(c!=ct+1){				
+						insert_container(ct,c);
+						}
+				     
 
 
 		});
@@ -1303,17 +1298,16 @@ $(document).ready(function(){
 </script>
 
 <script>
-	function insert_container(){
+	function insert_container(ct,c){
 				       //for the 4th proc insert start
 		             //description of goods
+	var table2 	  = $("#tableAddTruck-mnla table tbody");
+	var ct2  = $("#tableAddTruck-mnla table tbody tr").length;         
+	table2.find('tr').each(function (i) {
+	    var c2 = i+1;
 
-	    	     var table2 	  = $("#tableAddTruck-mnla table tbody");
-	    	     var total_goods  = $("#tableAddTruck-mnla table tbody tr").length;
-   
-				table2.find('tr').each(function (i) {
-
-				    if(total_goods!=i){
-				    	
+	if(c2!=ct2+1){
+ 			    	
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
@@ -1322,10 +1316,10 @@ $(document).ready(function(){
 						     origin_id     = $tds.eq(2).text();  //origin_id
 					         origin_cty    = $tds.eq(4).text();
 
-					      
+				 	      
 
 					       /*  	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
-*/
+*/						
 					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
@@ -1339,23 +1333,27 @@ $(document).ready(function(){
 				  			                  /* status		   :status*/
 				  			                  /* dt_boc 		   :dt_boc*/
 				  			  	   		 }
-						              });
-		  	/*					.done(function(data) {
+						              })
+										.done(function(data) {
+			  								if(ct2==c2){
+				  								if(ct==c){
+						  							 $.alert({
+									        		title: 'Alert!',
+									        		content: 'Data has been inserted!',
+									        		confirm: function(){
+									        	    }
+									   			   });
+						  					
+												}
+									   		}
+						    		    })
+						    		    .fail(function(data) {
+				  						   console.log(data);
+						    		    });
+	}					    		    
 
-		   		 	  				 $.alert({
-								        title: 'Inserting Datus!',
-								        content: 'Data been inserted!',
-								        confirm: function(){
-
-								         }
-								    });
-						        });*/
-
-
-		  			
-		  			 }
-				});
+			});
     			//for the 4th proc insert end
-    }
+ }
 </script>
 
