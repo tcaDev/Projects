@@ -63,9 +63,8 @@ class Update extends CI_Controller {
 		$status = 	$this->input->post('status');
 		
 		    $query= $this->db->query("Select * from 
-		    	ShipperVessel where Vesselname = '$name' 
-		    	and ShipperVesselId=$id 
-		    	and VesselNo='$vesno' 
+		    	Carrier where CarrierName = '$name' 
+		    	and CarrierId=$id 
 		    	and IsActive='$status'
 		    	limit 1");
             
@@ -73,7 +72,7 @@ class Update extends CI_Controller {
              $this->session->failed= 'update_failed';
           } 
        else{  
-				$this->User->update_vessel($id,$name,$vesno,$status);
+				$this->User->update_vessel($id,$name,$status);
 				$this->session->success= 'update_success';
 		 }
 		redirect('Login_User/settings/#vessel');
@@ -183,8 +182,9 @@ class Update extends CI_Controller {
 	    $status = 	$this->input->post('status');
 
 
-   		 $query= $this->db->query("Select * from Hauler where
-     		  HaulerName='$name' and
+   		 $query= $this->db->query("Select * from HaulerOrTruck where
+     		  HaulerOrTruckNumber='$name'    and
+     		  HaulerOrTruckId='$id' and 
      		  IsActive  ='$status'
      		   limit 1");
     

@@ -655,7 +655,6 @@ function search_shipper(){
 					        <th>Town/City/Province</th>
 					         <th>Country</th>
 					        <th>Shipper Contacts</th>
-					        <th>Vessels</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -696,7 +695,6 @@ function search_shipper(){
 					  	    <td class="hidden">'.$row->CountryId.'</td>
 					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					       	 <td><button type="button" class="btn btn-info  get_vessels_of_shipp" data-toggle="modal" data-target="#modal_vessels">View</button></td> 
 					       	<td>'.$stat .'</td>
 						    <td  class="hidden">'. $mystat .'</td>  				   
 					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -860,7 +858,7 @@ function search_vessel(){
 					      <tr>
 					        <th>Shipping Lines ID</th>
 					        <th>Shipping Lines Name</th>
-					        <th>Shipping Lines No.</th>
+					        
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -871,7 +869,7 @@ function search_vessel(){
 					    foreach ($vessel as $row) {
 					    $i++;
 					    if($i==1){
-					    $cid= $row->ShipperVesselId;
+					    $cid= $row->CarrierId;
 					    }
 					    		$active= $row->IsActive;
 					      		if($active==1){ 
@@ -890,9 +888,8 @@ function search_vessel(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td class="hidden">'.$row->ShipperVesselId.'</td>
-							        <td>'.$row->Vesselname.'</td>
-							        <td>'.$row->VesselNo.'</td>
+							        <td>'.$row->CarrierId.'</td>
+							        <td>'.$row->CarrierName.'</td>      
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -950,7 +947,7 @@ function search_vessel(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var vessel    	  = $(this).closest('tr').children('td:eq(1)').text();
 			     var vesno    	  = $(this).closest('tr').children('td:eq(2)').text();
-			     var status    	  = $(this).closest('tr').children('td:eq(4)').text();
+			     var status    	  = $(this).closest('tr').children('td:eq(3)').text();
 			      $('.vessel_id').val(id);
 			      $('.vessel_name').val(vessel);
 			      $('.vesno').val(vesno);
@@ -994,7 +991,7 @@ $this->message();
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
  
-	$id = $this->input->post('hauler_id');
+	$id = $this->input->post('CarrierId');
 	   if(isset($id)){
 	        $haulers = $this->User->search_hauler($id);
 	   }else{
@@ -1015,7 +1012,7 @@ $this->message();
 					    foreach ($haulers as $row) {
 					    $i++;
 					    if($i==1){
-					    $cid= $row->HaulerId;
+					    $cid= $row->HaulerOrTruckId;
 					    }
 					    		$active= $row->IsActive;
 					      		if($active==1){ 
@@ -1034,8 +1031,8 @@ $this->message();
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->HaulerId.'</td>
-							        <td>'.$row->HaulerName.'</td>
+							        <td>'.$row->HaulerOrTruckId.'</td>
+							        <td>'.$row->HaulerOrTruckNumber.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>

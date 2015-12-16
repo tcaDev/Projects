@@ -258,7 +258,7 @@
 				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Vessel</a></li>
+				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines / Carrier</a></li>
 				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers</a></li>
 				    <li><a data-toggle="tab" href=".forward"					id="form_forward">Forwarder</a></li>
 				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>

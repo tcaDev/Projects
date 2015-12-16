@@ -1336,15 +1336,16 @@ $(document).ready(function(){
 	table2.find('tr').each(function (i) {
 	    var c2 = i+1;
 
-	if(c2!=ct2+1){
+	if(c2!=ct2){
  			    	
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
 						   /*  prod_orderno  = $tds.eq(1).text();*/  //origin_id
 						     con_id        = $tds.eq(1).text(), //change to  container 
-						     origin_id     = $tds.eq(2).text();  //origin_id
-					         origin_cty    = $tds.eq(4).text();
+						     dt_boc        = $tds.eq(2).text(); 
+						     origin_id     = $tds.eq(3).text();  //origin_id
+					         origin_cty    = $tds.eq(5).text();
 
 				 	      
 
@@ -1357,6 +1358,7 @@ $(document).ready(function(){
 				  			  	   			   product_name    :product_name,
 				  			                   con_id 	       :con_id,   //change to container
 				  			                  /* prod_orderno    :prod_orderno,*/
+				  			                   dt_boc          :dt_boc,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
 				  			                  /* max 			   :maxid
@@ -1373,7 +1375,7 @@ $(document).ready(function(){
 									        		confirm: function(){
 									        	    }
 									   			   });
-						  					
+						  							location.reload();
 												}
 									   		}
 						    		    })

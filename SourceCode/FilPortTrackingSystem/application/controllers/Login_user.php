@@ -290,14 +290,15 @@ class Login_user extends CI_Controller {
 		//total page of shipper end
 
 		 //total page of shipper start
-	 	$this->db->from('ShipperVessel');
+	 /*	$this->db->from('ShipperVessel');*/
+	 	$this->db->from('Carrier');
 		$total_shipper= $this->db->count_all_results();
 		$page = ceil($total_shipper/$item_per_page);
 		$data['vessel_total'] = $page;
 		//total page of shipper end
 
 	    //total page of haulers start
-	 	$this->db->from('Hauler');
+	 	$this->db->from('HaulerOrTruck');
 		$total_hauler= $this->db->count_all_results();
 		$page = ceil($total_hauler/$item_per_page);
 		$data['hauler_total'] = $page;
@@ -306,10 +307,10 @@ class Login_user extends CI_Controller {
 
 
 	    //total page of forward start
-	 	$this->db->from('ForwarderWarehouse');
+	/* 	$this->db->from('ForwarderWarehouse');
 		$total_forward= $this->db->count_all_results();
 		$page = ceil($total_forward/$item_per_page);
-		$data['forward_total'] = $page;
+		$data['forward_total'] = $page;*/
 		//total page of forward end
 
 		//total page of legend start
@@ -715,7 +716,7 @@ function select_country(){
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
 
-   $id       =  $this->input->post('consignee_id');
+   $id   =  $this->input->post('consignee_id');
    if(isset($id)){
    	$clients = $this->User->search_consignee($id);
    }else{

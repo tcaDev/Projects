@@ -73,16 +73,15 @@ Class User extends CI_Model
       
 
   }
-    function update_vessel($id,$name,$vesno,$status){
+    function update_vessel($id,$name,$status){
         $status =  (int) $status;
         $data = array(
-        'Vesselname'    => $name,
-        'VesselNo'      => $vesno,
+        'CarrierName'    => $name,
         'IsActive'      => $status
 
         );
-          $this->db->where('ShipperVesselId', $id);
-          $this->db->update('ShipperVessel', $data);
+          $this->db->where('CarrierId', $id);
+          $this->db->update('Carrier', $data);
     
   }
 
@@ -239,8 +238,9 @@ Class User extends CI_Model
   }
     function settings_vessel(){
     $this->db->select('*');
-    $this -> db -> from('ShipperVessel');
-    $this ->db->order_by('Vesselname');
+  /*  $this -> db -> from('ShipperVessel');*/
+    $this -> db -> from('Carrier');
+    $this ->db->order_by('CarrierName');
     $this->db->limit(10);
     $query=$this->db->get();
     return $query->result();
@@ -346,17 +346,17 @@ Class User extends CI_Model
    return $query->result();
   }
       function search_vessel($search_vessel){
-   $query = $this->db->query("select * from ShipperVessel WHERE Vesselname LIKE '%$search_vessel%' order by ShipperVesselId  ");
+   $query = $this->db->query("select * from Carrier WHERE CarrierName LIKE '%$search_vessel%' order by CarrierId  ");
    return $query->result();
   }
      function search_hauler($search_hauler){
-   $query = $this->db->query("select * from Hauler WHERE HaulerName LIKE '%$search_hauler%' order by HaulerId  ");
+   $query = $this->db->query("select * from HaulerOrTruck WHERE HaulerOrTruckId LIKE '%$search_hauler%' order by HaulerOrTruckId  ");
    return $query->result();
   }
-     function search_forward($search_forward){
+/*     function search_forward($search_forward){
    $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseId  ");
    return $query->result();
-  }
+  }*/
     function search_legend($search_status){
    $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusId  ");
    return $query->result();
@@ -383,11 +383,11 @@ Class User extends CI_Model
   }
     function findlimit_vessel($page_position,$item_per_page)
   {
-   return $this->db->get('ShipperVessel',$page_position, $item_per_page)->result();
+   return $this->db->get('Carrier',$page_position, $item_per_page)->result();
   }
   function findlimit_hauler($page_position,$item_per_page)
   {
-   return $this->db->get('Hauler',$page_position, $item_per_page)->result();
+   return $this->db->get('HaulerOrTruck',$page_position, $item_per_page)->result();
   }
   function findlimit_forward($page_position,$item_per_page)
   {
@@ -548,14 +548,14 @@ function get_jobfile_manila(){
  function update_hauler($id,$name,$status){
    $status =  (int) $status;
          $data = array(
-                'HaulerName' => $name,
+                'HaulerOrTruckNumber' => $name,
                 'IsActive'   => $status
                 );
 
-          $this->db->where('HaulerId', $id);
-          $this->db->update('Hauler', $data); 
+          $this->db->where('HaulerOrTruckId', $id);
+          $this->db->update('HaulerOrTruck', $data); 
   }
-   function update_forward($id,$name,$status){
+/*   function update_forward($id,$name,$status){
        $status =  (int) $status;
          $data = array(
                 'ForwarderWarehouseName' => $name,
@@ -564,7 +564,7 @@ function get_jobfile_manila(){
 
           $this->db->where('ForwarderWarehouseId', $id);
           $this->db->update('ForwarderWarehouse', $data); 
-  }
+  }*/
   function update_legend($legend_id,$legend_status,$description,$legend_color,$status,$back_ground){
            $status =  (int) $status;
          $data = array(
