@@ -1,6 +1,3 @@
-<head>
-		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
-</head>
 
 <div class="row">
 		<div class="container-fluid"> 
