@@ -5,10 +5,10 @@ Class Jobdata extends CI_Model
 {
 
 	//getting vessel data base on shipperid
-	function get_vessel($id){
+	function get_shippingline($id){
 
-	$query = $this->db->query("Select ShipperVesselId,Vesselname from ShipperVessel
-	where ShipperId=$id  ");
+	$query = $this->db->query("Select CarrierId,Carriername from Carrier
+	where CarrierId=$id  ");
 	return $query->result();
 
 	}
