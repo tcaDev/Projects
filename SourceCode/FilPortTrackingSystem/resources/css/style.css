@@ -729,7 +729,7 @@ th{
     position: absolute;
     color: #fff;
     padding: 10px;
-    padding-top: 9%;
+    padding-top: 15%;
     top: 24.3%;
     left: 4%;
     width: 18%;
@@ -763,24 +763,14 @@ th{
 .gl-container{
 
     position: absolute;
-
     padding: 10px;
-
-    top: 34.3%;
-
+    top: 24.3%;
     left: 26%;
-
     width: 71%;
-
-    height: 63%;
-
+    height: 73%;
     border: 1px solid #d4d4d4;
-
     background-color: rgba(255, 255, 255, 0.4);
-
     overflow: auto;
-
-    overflow-x: hidden;
 
 }
 
