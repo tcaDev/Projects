@@ -64,7 +64,7 @@
 
 				           	<div class="form-group">
 								<label>Color Selectivity</label> <i style="color:red;font-size: 20px;">*</i>
-									<select name="colors" class="form-control colsel-outport input-sm" >
+									<select name="colors" class="form-control colsel input-sm" >
 									  	<option value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->IsBackground;
@@ -679,7 +679,7 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel-outport').val() == "")
+			else if($('.colsel').val() == "")
 			{
 				$('.colsel-msg').text("Need Color Selectivity");
 			}
@@ -726,7 +726,7 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel-outport').val() == "")
+			else if($('.colsel').val() == "")
 			{
 				$('.colsel-msg').text("Need Color Selectivity");
 			}
@@ -815,7 +815,7 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.colsel-outport').val() == "")
+			else if($('.colsel').val() == "")
 			{
 				$('.colsel-msg').text("Need Color Selectivity");
 			}
