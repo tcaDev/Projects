@@ -916,7 +916,7 @@ $('.table-remove-cont').click(function () {
 
 <script>
 //for  getting the vessel based on shipper
-$(document).ready(function(){
+/*$(document).ready(function(){
 	 $(' #shipper').change(function(){
 		
  var shipids= $(this).val();
@@ -933,7 +933,7 @@ $(document).ready(function(){
 		  		});
 
 	});
-});
+});*/
 </script>
 
 
