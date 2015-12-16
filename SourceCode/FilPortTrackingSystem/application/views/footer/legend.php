@@ -1,5 +1,5 @@
   <fieldset >
-    <legend align="left">Legend :</legend>
+    <legend align="left">Legend For Color Stages:</legend>
 			<div style="overflow-x:auto;">
 				<div class="container-fluid">
 					<div class="row">
