@@ -338,8 +338,8 @@
 							</div>
 
 							<div class="form-group">
-								<input type="text" name="veselid" class="veselid hidden">
-				  				<input type="text" name="veselid" class="veseltext hidden">
+								<input type="text" name="veselid" class="veselid ">
+				  				<input type="text" name="veselid" class="veseltext ">
 							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
 								<div class="vesel" ></div>
 									<i class="vessel-msg" style="color:red;"></i>
