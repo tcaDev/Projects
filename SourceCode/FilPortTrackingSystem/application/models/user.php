@@ -197,7 +197,7 @@ Class User extends CI_Model
     return $query->result();
   }
      function dropdown_colors(){
-    $this->db->select('StatusId,StatusName,ColorCode');
+    $this->db->select('StatusId,StatusName,ColorCode,IsActive,IsBackground');
     $this ->db -> from('Status');
     $query=$this->db->get();
     return $query->result();

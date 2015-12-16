@@ -97,7 +97,7 @@
 
 								          <th >Jobfile Number</th>
 
-								          <th >Color Selectivity</th>
+								          <th >Color Stages</th>
 
 								          <th >Shipper</th>
 
@@ -139,6 +139,8 @@
 
 								          <th >Reference Entry No.</th>
 
+								          <th>Color Selectivity</th>
+
 								          <th >Date Paid (Date&Time)</th>
 
 								          <th >Status Reports</th>
@@ -148,6 +150,14 @@
 				        <tbody>
 				        				<?php $i= 0; foreach ($manila as $row) {
 				        					$i++;
+
+				        					$pick =$row->IsBackground;
+							    			if($pick==0){
+									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+									        }else{
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">'.$row->StatusName.'</td>';
+									        }
+
 				        				?>
 				            <tr>
 								         <td class="list_goods hidden"><?php echo $row->ContainerByVesselId;?>   </td>
@@ -157,7 +167,7 @@
 
 								          <td><?php echo $row->JobFileId; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
-								          <td><?php echo $row->StatusName; ?></td>
+								          <?php echo $pick1 ;?>
 
 								          <td><?php echo $row->ShipperName; ?></td>
 
@@ -198,6 +208,8 @@
 								          <td><?php echo $row->DateSentFinalAssessment; ?></td>
 
 								          <td><?php echo $row->RefEntryNo; ?></td>
+
+								          <td>Color Selectivity</td>
 
 								          <td><?php echo $row->DatePaid; ?></td>
 

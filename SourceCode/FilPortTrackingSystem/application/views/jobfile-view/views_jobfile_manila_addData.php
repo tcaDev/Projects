@@ -63,15 +63,15 @@
 				           	
 
 				           	<div class="form-group">
-								<label>Color Selectivity</label> <i style="color:red;font-size: 20px;">*</i>
+								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
 									  	<option value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
-										   $status = $row->IsBackground;
-										   if($status==1){?> 
-										   			<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
+										   $status = $row->StatusId;
+										   if($status==0){?> 
+										   	<option  data-color='<?php echo $row->ColorCode;?>' style="color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">					
 									 <?php }else{?>
-									    			<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>" value="<?php echo $row->StatusId ?>">
+									    	<option data-color='<?php echo $row->ColorCode;?>'style="background-color:<?php echo $row->ColorCode;?>; color:white;" value="<?php echo $row->StatusId ?>">
 									    <?php }?>
 									    <?php echo $row->StatusName; ?>
 									    </option> 
@@ -655,9 +655,9 @@
   var status = $(this).val();
   var color = $('.colsel option:selected').attr('data-color');
     if(status==1){
-    	$('.colsel:first').css({ 'color': 'red','background-color':'white' });
+    	$('.colsel').css({ 'color': 'red','background-color':'white' });
     }else{
-     $('.colsel:first').css({'background-color': color,'color': 'white'});
+     $('.colsel').css({'background-color': color,'color': 'white'});
   	}
  });
 
@@ -989,6 +989,20 @@ $(document).ready(function(){
 				    return testme;
 				}
 
+				var testme2=false;
+				function isExist2(strd2){
+
+				var table2 = $("#tableAddTruck-mnla table tbody");
+
+				    testme2=false;
+				 	  table2.find('tr').each(function(){
+					    if($('td:nth(1)',$(this)).html()===strd2) {
+					       testme2=true;            
+					        }   
+					     })
+				    return testme2;
+				}
+
 		$(".btn-Add-Container-Data-mnla").click(function(){
 
 			var compare = $('#tableAddContainer-mnla .containerss').val();
@@ -1042,7 +1056,13 @@ $(document).ready(function(){
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
-			}
+	        $('.container-msg').text('');
+			$('.container-msg').text('');
+			$('.container-size-msg').text('');
+			$('.vessel-msg').text('');
+			$('.truckplate-msg').text('');
+			$('.truckname-msg').text('');
+
 
 			$('#tableAddContainer-mnla .containerss').val('');
 			$('#tableAddContainer-mnla .containerss-size').val('');
@@ -1060,22 +1080,27 @@ $(document).ready(function(){
 			$('#tableAddContainer-mnla .gtinport').val('');
 			$('#tableAddContainer-mnla .gtoutport').val('');
 			$('#tableAddContainer-mnla .act-del-whse').val('');
+			}
 
+		
+
+
+			
 });
 
 	
-	
+		
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
 
-			if($('#tableAddTruck-mnla .prodname').val() == "")
+			if(isExist2($('#tableAddTruck-mnla .containers-prod option:selected').val()))
+			{	
+				$('.cont-size-msg').text("Container Number already have Product.");
+			}
+			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
-/*			else if($('#tableAddTruck-mnla .PON').val() == "")
-			{
-				$('.pon-msg').text("Need Purchase Order Number.");
-			}*/
 			else if($('#tableAddTruck-mnla .containers-prod').val() == "")
 			{
 				$('.cont-size-msg').text("Need Container Size.");
@@ -1092,11 +1117,19 @@ $(document).ready(function(){
 			      $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin option:selected").text());
 			       $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origcity").val());
 			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
-		
-			}
+			
 			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');
 			$('#tableAddTruck-mnla .origincity').val('');
+
+			$('.cont-size-msg').text('');
+			$('.prodname-msg').text('');
+			$('.cont-size-msg').text('');
+			$('.origin-msg').text('');
+
+			}
+				
+
 			});
 		
 
