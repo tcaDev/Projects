@@ -364,9 +364,9 @@
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Name</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Trucker Name</label>
 								<input type="text" name="trckname" class="form-control input-sm truckname" />
-								<i class="truckname-msg" style="color:red;"></i>
+								
 							</div>
 
 							<div class="form-group">
@@ -1054,9 +1054,6 @@ $(document).ready(function(){
 			{
 				$('.vessel-msg').text("Need Vessel.");
 			}
-			else if($('#tableAddContainer-mnla .truckname').val() == "")
-			{
-				$('.truckname-msg').text("Need Truck Name");
 			}else{
 
 			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
@@ -1125,7 +1122,7 @@ $(document).ready(function(){
 
 			if(isExist2(prod,cont))
 			{	
-				$('.cont-size-msg').text("This Product is already in this Container.");
+				$('.cont-size-msg').text("The Product is already in this Container.");
 			}
 			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
@@ -1163,7 +1160,7 @@ $(document).ready(function(){
 			});
 		
 
-		$(".btn-Add-Product-Alert-mnla").click(function(){
+		/*$(".btn-Add-Product-Alert-mnla").click(function(){
 		    	  var table = $("#tableAddTruck-mnla table tbody");
 
 				    table.find('tr').each(function (i) {
@@ -1176,7 +1173,7 @@ $(document).ready(function(){
 				              + '\nVessel: ' + product
 				              + '\nCartons: ' + Quantity);
 				    });
-		    });
+		    });*/
 		       
 
 		  
