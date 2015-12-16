@@ -1,5 +1,5 @@
 
-		<style>
+<style>
 .mycolor{
 
 	 background-color: #66FF99 !important;
