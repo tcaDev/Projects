@@ -117,8 +117,8 @@ if(isset($_SESSION['success'])){
 					        <th>FirstName</th>
 					        <th>MiddleName</th>
 					        <th>LastName</th>
-					        <th>ContactNo1</th>
-					        <th>ContactNo2</th>
+					        <th>Contact Info.1</th>
+					        <th>Contact Info.2</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
@@ -139,8 +139,8 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="btn delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -269,8 +269,8 @@ if(isset($_SESSION['success'])){
 					        <th>FirstName</th>
 					        <th>MiddleName</th>
 					        <th>LastName</th>
-					        <th>ContactNo1</th>
-					        <th>ContactNo2</th>
+					        <th>Contact Info.1</th>
+					        <th>Contact Info.2</th>
 					        <th colspan="2">Action</th>
 					      </tr>
 					    </thead>
@@ -424,15 +424,15 @@ if(isset($_SESSION['success'])){
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.1</label>
-					               <input type="text" value="" minlength="7" maxlength="15" class="no_contact form-control"/>
+					            	<label>Contact Info.1</label>
+					               <input type="text" value=""  class="no_contact form-control"/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact No.2</label>
-					               <input type="text" value="" minlength="7" maxlength="15" class="no1_contact form-control"/>
+					            	<label>Info No.2</label>
+					               <input type="text" value="" class="no1_contact form-control"/>
 					            </div>
 					        </div>
 
@@ -522,8 +522,8 @@ if(isset($_SESSION['success'])){
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
 					         <th>Country</th>
-					        <th>Contact no1.</th>
-					        <th>Contact no2.</th>
+					        <th>Contact Info.1</th>
+					        <th>Contact Info.2</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
