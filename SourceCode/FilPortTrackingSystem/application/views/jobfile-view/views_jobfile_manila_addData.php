@@ -36,7 +36,7 @@
 				  				
 				           <div class="form-group">
 							 	 <label for="shipper">Shipper:</label> <i style="color:red;font-size: 20px;">*</i><span class"ship-check"></span>
-								  		<select name="shipper" id="shipper" class="form-control input-sm shipper">
+								  		<select name="shipper"  class="form-control input-sm shipper ">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
 							                <option value="<?php echo $row->ShipperId ?>">
@@ -914,27 +914,7 @@ $('.table-remove-cont').click(function () {
 
 
 
-<script>
-//for  getting the vessel based on shipper
-/*$(document).ready(function(){
-	 $(' #shipper').change(function(){
-		
- var shipids= $(this).val();
 
-			$.ajax({
-			  		method: "POST",
-					  url: "<?php echo base_url('Job/');?>",
-			  		 data: { ship_id:shipids}
-				})
-		  		.done(function(data) {
-		  		 $('div .vesel').html(data);	
-		  			
-		  		
-		  		});
-
-	});
-});*/
-</script>
 
 
 
