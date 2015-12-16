@@ -339,9 +339,12 @@ function jobfile_add2(){
               //for getting the last insert in P_VesselByJobFileId end
  if(($product_name!=NULL) || ($product_name!='')){
      $query = $this->db->query("select ProductName from Products where ProductName='$product_name'
-      and Origin_CountryId='$origin_id' 
-      and Origin_City='$origin_cty' limit 1");  
-     if($query->num_rows() ==1 ){
+                                 and Origin_CountryId='$origin_id' 
+                                 and Origin_City='$origin_cty' limit 1");  
+     $query2= $this->db->query("select `CBV`.`CBV.ContainerByVesselId ` from  
+                                ContainerByVessel as CBV where `CBV`.`ContainerNo` =$con_id 
+                                and `CBV`.`VesselByJobFileId`=`$VesselByJobFile` ");
+     if(($query->num_rows() ==1 ) || ($query2->num_rows()==1)){
      }else{
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
