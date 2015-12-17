@@ -29,13 +29,13 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:</label> <i style="color:red;font-size: 20px;">*</i> <span id="check_jobfiles"></span>
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
 				           <div class="form-group">
-							 	 <label for="shipper">Shipper:</label> <i style="color:red;font-size: 20px;">*</i><span class"ship-check"></span>
+							 	 <label for="shipper">Shipper:<i style="color:red;">*</i><span class"ship-check"></span></label> 
 								  		<select name="shipper"  class="form-control input-sm shipper ">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
@@ -48,7 +48,7 @@
 						      </div>
 
 						     <div class="form-group">
-								  <label for="consignee">Consignee:</label> <i style="color:red;font-size: 20px;">*</i>
+								  <label for="consignee">Consignee:<i style="color:red;">*</i></label> 
 								  		<select name="consignee" class="form-control input-sm consignee">
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
@@ -63,7 +63,7 @@
 				           	
 
 				           	<div class="form-group">
-								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
+								<label>Color Stages</label> <i style="color:red;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
 									  	<option value="0" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
@@ -88,7 +88,7 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;font-size: 20px;">*</i> -->
+								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;">*</i> -->
 								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
 								</div>
 
@@ -114,17 +114,6 @@
 						</div>
 
 					<div class="col-lg-4">
-
-								
-
-								<div class="form-group">
-				  				  
-								<!-- 	  <label for="vsl">Vessel / Voyage No.:</label>
-									  	<div class="vesel" >
-								  	
-								  		</div> -->
-								 </div>
-
 								 <div class="form-group">
 								  	<label for="dtClrd">Vessel Arrival Time</label>
 								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
@@ -213,7 +202,7 @@
 								</div>
 
 								<div class="form-group">
-								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;font-size: 20px;">*</i>
+								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;">*</i>
 								 	<input type="text" name="entryno" class="form-control input-sm reference" id="entryno">
 								 	<i class="reference-msg" style="color:red;"></i>
 								</div>
@@ -245,7 +234,7 @@
 
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Product Name</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Product Name</label><i style="color:red;">*</i>
 								<select class="form-control input-sm prodname" name="prodname">
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
@@ -257,13 +246,13 @@
 							</div>
 
 <!-- 						<div class="form-group">
-								<label>Purchase Order Number</label> <i style="color:red;font-size: 20px;">*</i>
+								<label>Purchase Order Number</label> <i style="color:red;">*</i>
 								<input type="text" class="form-control input-sm PON"  name="PON">
 								<i class="pon-msg" style="color:red;"></i>
 							</div>
  -->
 							<div class="form-group">
-								<label>Container Number</label> <i style="color:red;font-size: 20px;">*</i>
+								<label>Container Number</label> <i style="color:red;">*</i>
 								<select class="containers-prod form-control input-sm"> 
 
 								</select>
@@ -279,7 +268,7 @@
 
 				  		<div class="col-lg-6">
 					  		<div class="form-group ">
-									<label>Origin Country</label><i style="color:red;font-size: 20px;">*</i>
+									<label>Origin Country</label><i style="color:red;">*</i>
 										<select  class="form-control origin" name="countries">
 											<?php foreach($countries as $row){ ?>
 											 <option value="<?php echo $row->CountryId?>">
@@ -323,12 +312,12 @@
 
 		<!--container plate is no names yet -->
 				<!--CONTAINER WINDOW-->
-				  	<div id="tableAddContainer-mnla" class="hidden pill-container-mnla-add table-editable col-lg-12">
+				  	<div id="tableAddContainer-mnla" class="hidden pill-container-mnla-add table-editable ">
 
 				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Container Number</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Container Number</label><i style="color:red;">*</i>
 							     
 					        		<input type="text" class="containerss form-control input-sm">
 							<i class="container-msg" style="color:red;"></i>
@@ -336,7 +325,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Container Size</label><i style="color:red;font-size: 20px;">*</i>
+								<label>Container Size</label><i style="color:red;">*</i>
 							     
 					        		<input type="text" class="containerss-size form-control input-sm">
 								<i class="container-size-msg" style="color:red;"></i>
@@ -345,7 +334,7 @@
 
 							<div class="form-group">
 
-							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
+							<label>Shipping Lines/Carrier</label><i style="color:red;">*</i>
 								<select class="form-control carrier" name="countries">
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
@@ -357,7 +346,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Vessel</label> <i style="color:red;font-size: 20px;">*</i>
+								<label>Vessel</label> <i style="color:red;">*</i>
 								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
 								<i class="vessel-vessel-msg" style="color:red;"></i>
 							</div>
