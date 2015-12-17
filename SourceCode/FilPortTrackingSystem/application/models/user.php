@@ -333,12 +333,12 @@ Class User extends CI_Model
   
    $query = $this->db->query("select * from vw_consignee_full_info WHERE ConsigneeName LIKE '%$search%'  or HouseBuildingNoOrStreet like '%$search%'   
     or BarangayOrVillage like  '%$search%' or TownOrCityProvince  like  '%$search%'  or Country like '%$search%' 
-    or OfficeNumber like '%$search%'  order by ConsigneeId  ");
+    or OfficeNumber like '%$search%'  order by ConsigneeName  ");
    return $query->result();
   }
   function search_broker($search_broker){
    $query = $this->db->query("select * from vw_broker_full_info WHERE FirstName LIKE '%$search_broker%' or 
-   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by BrokerId  ");
+   MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by FirstName AND MiddleName AND LastName  ");
    return $query->result();
   }
     function search_shipper($search_shipper){
@@ -372,14 +372,17 @@ Class User extends CI_Model
  function findlimit($page_position,$item_per_page)
   {
    return $this->db->get('vw_consignee_full_info',$page_position, $item_per_page)->result();
+   $query = $this->db->query("select * from vw_consignee_full_info order by ConsigneeName ",$page_position, $item_per_page);
   }
    function findlimit_broker($page_position,$item_per_page)
   {
    return $this->db->get('vw_broker_full_info',$page_position, $item_per_page)->result();
+   $query = $this->db->query("select * from vw_broker_full_info order by FirstName ",$page_position, $item_per_page);
   }
   function findlimit_shipper($page_position,$item_per_page)
   {
    return $this->db->get('vw_shipper_full_info',$page_position, $item_per_page)->result();
+       $query = $this->db->query("select * from vw_shipper_full_info order by ShipperName ",$page_position, $item_per_page);
   }
     function findlimit_vessel($page_position,$item_per_page)
   {
