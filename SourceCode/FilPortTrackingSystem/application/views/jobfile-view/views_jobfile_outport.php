@@ -189,78 +189,82 @@
 
 				   <tbody>
 
-				     <?php $i= 0; foreach ($outport as $row) {
-				        					$i++;
-				        				?>
+				    
 				            <tr>
 								         
-					          <td><?php echo $i;?></td>
+					          <td></td>
+
 					          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
 
-					          <td><?php echo $row->JobFileId; ?><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+					          <td><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 
-					          <td><?php echo $row->StatusName; ?></td>
+					          <td></td>
 					          
-					          <td><?php echo $row->ShipperName; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->ConsigneeName; ?></td>
-					          <td><?php echo $row->NoOfCartons; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->ContainerSize; ?></td>
+					          <td></td>
+
+					          <td></td>
 
 					          <td><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 
-					          <td><?php echo $row->PurchaseOrderNo; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->HouseBillLadingNo; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->MasterBillLadingNo; ?></td>
+					          <td></td>
 
 					          <td><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
 
-					          <td><?php echo $row->Origin; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->EstDepartureTime; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->EstArrivalTime; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->ActualArrivalTime; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->LetterCreditFromBank; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->StartOfDemorage; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->StartOfStorage; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->Registry; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->VSL_NO; ?></td>
+					          <td></td>
 					        
-					          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateReceivedOfBL; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->Broker; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->RFPDueDate; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateSentPreAssessment; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateFileEntryToBOC; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateSentFinalAssessment; ?></td>
+					          <td>></td>
 
-					          <td><?php echo $row->RefEntryNo; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DatePaid; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->DateBOCCleared; ?></td>
+					          <td></td>
 
-					          <td><?php echo $row->TargetDeliveryDate; ?></td>
+					          <td></td>
+
+					          <td></td>
+
+					          <td></td>
 
 					          <td></td>
 
@@ -270,8 +274,7 @@
 					      
 					        </tr>
 
-					        <?php } ?>
-
+					  
 				    </tbody>
 
 				  </table>

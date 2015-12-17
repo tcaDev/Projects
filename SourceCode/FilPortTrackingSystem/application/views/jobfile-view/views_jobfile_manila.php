@@ -154,7 +154,7 @@
 							    			if($pick==0){
 									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
 									        }else{
-									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; color: white;">'.$row->StatusName.'</td>';
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
 									        }
 
 				        				?>

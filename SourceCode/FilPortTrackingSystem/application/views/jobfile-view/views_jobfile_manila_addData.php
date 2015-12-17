@@ -475,52 +475,52 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Lodgement Fee</label>
-								<input type="text" name="lodge" class="form-control input-sm" />
+								<input type="text" name="lodge" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>Container Deposit</label>
-								<input type="text" name="cont-deposit" class="form-control input-sm" />
+								<input type="text" name="cont-deposit" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>THC Charges</label>
-								<input type="text" name="thc-charges" class="form-control input-sm" />
+								<input type="text" name="thc-charges" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>Arrastre </label>
-								<input type="text" name="arrastre" class="form-control input-sm" />
+								<input type="text" name="arrastre" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>Wharfage</label>
-								<input type="text" name="wharfage" class="form-control input-sm" />
+								<input type="text" name="wharfage" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>Weighing</label>
-								<input type="text" name="weight" class="form-control input-sm" />
+								<input type="text" name="weight" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>DEL</label>
-								<input type="text" name="del" class="form-control input-sm" />
+								<input type="text" name="del" class="form-control input-sm num_only"  />
 							</div>
 
 							<div class="form-group">
 								<label>Dispatch Fee</label>
-								<input type="text" name="dispatch" class="form-control input-sm" />
+								<input type="text" name="dispatch" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 								<label>Storage</label>
-								<input type="text" name="storage" class="form-control input-sm" />
+								<input type="text" name="storage" class="form-control input-sm num_only" />
 							</div>
 
 							<div class="form-group">
 									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm" />
+									<input type="text" name="demurrage" class="form-control input-sm num_only" />
 								</div>
 
 
@@ -531,47 +531,47 @@
 							
 								<div class="form-group">
 									<label>Detention</label>
-									<input type="text" name="detention" class="form-control input-sm" />
+									<input type="text" name="detention" class="form-control input-sm num_only" />
 								</div>
 								
 								<div class="form-group">
 									<label>EIC</label>
-									<input type="text" name="EIC" class="form-control input-sm" />
+									<input type="text" name="EIC" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Application</label>
-									<input type="text" name="bai-app" class="form-control input-sm" />
+									<input type="text" name="bai-app" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Inspection</label>
-									<input type="text" name="bai-inspect" class="form-control input-sm" />
+									<input type="text" name="bai-inspect" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>SRA Application</label>
-									<input type="text" name="sra-app" class="form-control input-sm" />
+									<input type="text" name="sra-app" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>SRA Inspection</label>
-									<input type="text" name="sra-inspect" class="form-control input-sm" />
+									<input type="text" name="sra-inspect" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>Bad Cargo</label>
-									<input type="text" name="bad-cargo" class="form-control input-sm" />
+									<input type="text" name="bad-cargo" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>All Charges</label>
-									<input type="text" name="all-charges" class="form-control input-sm" />
+									<input type="text" name="all-charges" class="form-control input-sm num_only" />
 								</div>
 
 								<div class="form-group">
 									<label>Particular Charges</label>
-									<input type="text" name="part-charges" class="form-control input-sm" />
+									<input type="text" name="part-charges" class="form-control input-sm num_only" />
 								</div>
 						</div>
 					</div>
@@ -944,6 +944,18 @@ $('.table-remove-cont').click(function () {
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
                     $("#errmsg").html("Numbers Only").show().fadeOut("slow");
+                           return false;
+                }
+               });
+
+
+                $(".num_only").keypress(function (e) {
+                 //if the letter is not digit then display error and don't type anything
+                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    /*$("#errmsg").html("Numbers Only").show().fadeOut("slow");
+                           return false;*/
+                           alert('Numbers Only');
                            return false;
                 }
                });
