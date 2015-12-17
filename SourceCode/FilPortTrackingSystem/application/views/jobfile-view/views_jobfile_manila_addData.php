@@ -1450,7 +1450,12 @@ if(ct2==c2){
 
 						    		    })
 						    		    .fail(function(data) {
-				  						   console.log(data);
+				  						   			 $.alert({
+									        		title: 'Alert!',
+									        		content: 'inserting data failed!',
+									        		confirm: function(){
+									        	    }
+									   			   });
 						    	});
 	} 
 }    								

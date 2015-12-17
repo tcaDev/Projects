@@ -451,7 +451,8 @@ function jobfile_add2(){
                $table ='CarrierByJobFile';
                $id    ='CarrierByJobFileId';  
            $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
-              //for getting the last insert in P_VesselByJobFileId end
+
+            //for getting the last insert in P_VesselByJobFileId end
  if(($product_name!=NULL) || ($product_name!='')){
      $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
      $query2= $this->db->query("select `CBV`.`ContainerByCarrierId` from  
@@ -459,6 +460,9 @@ function jobfile_add2(){
                                 and `CBV`.`ContainerByCarrierId`='$VesselByJobFile' ");
      if(($query->num_rows() ==1 ) && ($query2->num_rows()==1)){
      }else{
+             if(($VesselByJobFile==NULL)||($VesselByJobFile=='')){
+             $VesselByJobFile=1;
+             }
                 //4th proc
              $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
              $this->db->query($addproducts,
