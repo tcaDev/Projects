@@ -17,35 +17,199 @@ class Search extends CI_Controller {
        }
 
 		function index(){
-			$search = $this->input->get('search');
-			$data['result']=$this->User->search_global($search);
+				$search = $this->input->get('search');
+			$search_Type = $this->input->get('searchType');
+			$search_From= $this->input->get('searchFrom');
+			$displayOutput;
+			$displayCount;
+			//echo " From " . $search_From;
+			
+			$data['result']=$this->User->search_global($search,$search_Type,$search_From);
 			$searchme= $data['result'];
-
+			/*var_dump($searchme);
+			exit;*/
+			//echo "teanasdflajkqwer";
 			if(isset($search)){
-
-							echo '<table class="table ">
-							<tr>
-								<td>JobFileId</td>
-								<td>Broker</td>
-								<td>Consignee</td>
+				if(count($searchme) > 0){
+					$displayCount = count($searchme) . " result(s) Found";
+					$displayOutput = '<table class="table table-striped">';
+					if($search_Type == "JobfileID"){
+					$displayOutput .= '<tr>
+								<th>Carrier Name </th>
+								<th>Shipper </th>
+								<th>Consignee</th>
+								<th>House Bill Lading Number </th>
+								<th>Master Bill Lading Number </th>
+								<th>Letter Credit From Bank </th>
+								<th>Date Sent Final Assessment</th>
+								<th>Purchase Order Number</th>
+								<th>Date File Entry to BOC</th>
+								<th>Registry</th>
+								<th>Date Received Notice From Clients</th>
+								<th>Date Received of BL</th>
+								<th>Date Received of Other Documents</th>
+								<th>Broker</th>
+								<th>Date Request Budget to GL</th>
+								<th>RFP Due Date</th>
+								<th>Date Sent Pre Assessment</th>
+								<th>Reference Entry Number</th>
+								<th>Color Selectivity Name</th>
+								<th>Status Name</th>
+								<th>Date Paid</th>
 							</tr>
 						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+								$displayOutput .=  '<td>' .$row->CarrierName . '</td>';
+								$displayOutput .=  '<td>' .$row->ShipperName . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->HouseBillLadingNo . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->MasterBillLadingNo . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->LetterCreditFromBank . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateSentFinalAssessment . '</td>';
+					        	$displayOutput .=  '<td>' .$row->PurchaseOrderNo . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateFileEntryToBOC . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->Registry . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateReceivedNoticeFromClients . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateReceivedOfBL . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateReceivedOfOtherDocs . '</td>';
+					   			$displayOutput .=  '<td>' .$row->Broker . '</td>';
+					   			$displayOutput .=  '<td>' .$row->DateRequestBudgetToGL . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->RFPDueDate . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->DateSentPreAssessment . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->RefEntryNo . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ColorSelectivityName . '</td>';
+					 	    	if($row->IsBackground == 1){
+					 	    		$displayOutput .=  '<td style="background-color:' . $row->ColorCode . ';color:white">' . $row->StatusName . '</td>';
+					 	    	}else{
+									$displayOutput .=  '<td style="color:' . $row->ColorCode . ';background-color:white">' . $row->StatusName . '</td>';
+					 	    	}
+					 	    	$displayOutput .=  '<td>' .$row->DatePaid . '</td>';
 
-			
-					foreach ($searchme as $row) {
-
-					   echo '<td>' . $row->JobFileId . '</td>';
-					   echo '<td>' .$row->Consignee . '</td>';
-					   echo '<td>' .$row->FirstName." ".$row->FirstName." ".$row->LastName . '</td>';
-
+								$displayOutput .=  '</tr>';	
+						}
+						
 					}
-					  echo '</tr>';
-					echo '</table>';
+					if($search_Type == "ConsigneeName"){
+							$displayOutput .=  '<tr>
+								<th>Consignee Name</th>
+								<th>House Building No/Street</th>
+								<th>Barangay/Village</th>
+								<th>Town/City Or Province</th>
+								<th>Country ID</th>
+								<th>Office Number</th>
+								<th>Date Added</th>
+								<th>IsActive</th>
+								<th>Country</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoOrStreet . '</td>';
+					   			$displayOutput .=  '<td>' . $row->BarangayOrVillage . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->TownOrCityProvince . '</td>';
+					 	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->OfficeNumber . '</td>';
+					 	    	$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->Country . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "HaulerOrTruck"){
+							$displayOutput .=  '<tr>
+								<th>Hauler/Truck</th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->HaulerOrTruck . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "ShipperName" && $search_From == "vw_shipper_full_info"){
+							$displayOutput .=  '<tr>
+								<th>Shipper Name</th>
+								<th>Date Added</th>
+								<th>House Building No/Street</th>
+								<th>Barangay/Village</th>
+								<th>Town/City Or Province</th>
+								<th>Country ID</th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ShipperName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
+					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
+					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
+					   			$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "CarrierName"){
+							$displayOutput .=  '<tr>
+								<th>Carrier Name</th>
+								<th>Is Active</th>
+												</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->CarrierName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}	
+					}		
+					if($search_From == "vw_broker_full_info"){
+							$displayOutput .=  '<tr>			
+								<th>Full Name Name</th>
+								<th>House Building/Street Number</th>
+								<th>Barangay / Village</th>
+								<th>Town/City/Province</th>
+								<th>Country ID</th>
+								<th>Contact Number 1</th>
+								<th>Contact Number 2 </th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->LastName . ', ' . $row->FirstName . ' ' . $row->MiddleName . '</td>';
+						    	$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
+					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
+					   	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ContactNo1 . '</td>';
+					   			$displayOutput .=  '<td>' . $row->ContactNo2 . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}	
+					}			
+						$displayOutput .=  '</table>';
+				}else{
+						$displayOutput =  "No Result(s) Found";
+						$displayCount = "0 Result(s) Found";
+				}
+					
 			}else{
-
-					echo "NO result";
-
+					$displayOutput .=  "NO result(s) Found";
+					$displayCount = "0 Result(s) Found";
 			}
+			
+			$response = array(
+				array(
+						"Display" => $displayOutput,
+						"OutputCount" => $displayCount
+					)
+				);
+
+			echo json_encode($response);
 		}
 
 function message(){
