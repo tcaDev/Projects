@@ -184,7 +184,7 @@ function vessel(){
   $drop = $this->User->dropdown_shipper();
 
  echo '			<div class="vessels">
- 					<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#vessels">ADD VESSEL</button>
+ 					<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#vessels">ADD CARRIER</button>
 
 
 				<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
@@ -194,18 +194,13 @@ function vessel(){
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">ADD NEW VESSEL</h4>
+				        <h4 class="modal-title">ADD NEW CARRIER</h4>
 				      </div>
 				      <div class="modal-body">
 						<form action="'.base_url('Add_user/add_vessel/').'" method="post">
 							<div class="">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="vessels" class="form-control" placeholder="Vessel Name" required/>
-					            </div>
-					        </div>
-					        <div class="">
-					            <div class="form-group col-md-12">
-					                <input type="text" name="vesno" class="form-control" placeholder="Vessel No." required/>
+					                <input type="text" name="vessels" class="form-control" placeholder="Shipping Lines/Carrier" required/>
 					            </div>
 					        </div>
 					        ';?>
@@ -530,7 +525,40 @@ echo '
 </div>';
 }
 
+function product(){
+	echo	'<div class="prod tab-pane">
+				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#product">ADD PRODUCTS</button>
 
+					<div class="products consig-posbox modal fade" id="product" role="dialog">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">ADD NEW PRODUCTS</h4>
+					      </div>
+					      <div class="modal-body">
+
+							<form action=" '.base_url('Add_user/add_product/').'" method="post">
+								<div class=" col-md-12">
+						            <div class="form-group ">
+						                <input type="text" name="product_name"class="form-control " placeholder="Product Name" required/>
+						            </div>
+						        </div>
+						 
+						        <div class="">
+						        	<div class="form-group col-md-12">
+						            	<button type="submit" class="pull-right btn btn-default">Submit</button>
+						            </div>	
+						        </div>
+				   	 		</form>
+				   	 		</div>
+				   	 		<div class="modal-footer">
+				
+					      </div>
+					    </div>
+					</div>	
+				</div>';
+}
 
 
 }

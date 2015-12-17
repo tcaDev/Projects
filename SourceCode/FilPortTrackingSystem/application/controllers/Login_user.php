@@ -308,6 +308,13 @@ class Login_user extends CI_Controller {
 		$data['hauler_total'] = $page;
 		//total page of haulers end
 
+	    //total page of prduct start
+	 	$this->db->from('Products');
+		$total_product= $this->db->count_all_results();
+		$page = ceil($total_product/$item_per_page);
+		$data['product_total'] = $page;
+		//total page of product end
+
 
 
 	    //total page of forward start
@@ -733,8 +740,7 @@ function select_country(){
 			echo	  '<table class="table table-bordered table_consignee" id="table_consignee"> 
 					    <thead>
 					      <tr>
-					      	<th>Consignee ID</th>
-					        <th>Consignee Name</th>
+					        <th>Consignee Name<span class="glyphicon glyphicon-sort"></span></th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
@@ -776,7 +782,7 @@ function select_country(){
 					         	$number = $row->OfficeNumber;
 	
 					   echo     '<tr style="cursor:pointer;">
-					    		    <td>'. $row->ConsigneeId .'</td>
+					    		    <td class="hidden">'. $row->ConsigneeId .'</td>
 							        <td>'. $row->ConsigneeName .'</td>
 							      	<td>'. $row->HouseBuildingNoOrStreet .'</td>
 							        <td>'. $row->BarangayOrVillage .'</td>  
@@ -862,25 +868,9 @@ function select_country(){
 ); 
 
 </script> 
-
-
-
-
-
 	<?php	
-
-
-
 	}
-
-
-
-
-
-
-
    //for pagination  end
-
 }
 
 

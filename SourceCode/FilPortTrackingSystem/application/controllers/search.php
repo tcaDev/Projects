@@ -17,7 +17,7 @@ class Search extends CI_Controller {
        }
 
 		function index(){
-				$search = $this->input->get('search');
+			$search = $this->input->get('search');
 			$search_Type = $this->input->get('searchType');
 			$search_From= $this->input->get('searchFrom');
 			$displayOutput;
@@ -1514,64 +1514,166 @@ $this->message();
 	}
 
 	function vessel_shipper(){
-
 	$id=$this->input->post('id');
    	$info = $this->User->vessel_shipper($id);
+   	    echo '<div class="mycontent" >  	
+    			<div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Vessels Under Shipper</h4>
+		        </div>
+		        <div class="modal-body">
+				<table class="table  table-bordered">
+			    <thead>
+			      <tr>
+			        <th>Vessels</th>
+			        <th>Plate No.</th>		  
+			      </tr>
+			    </thead>
+			    <tbody>';
+			    if($info==null){
+			    	echo '<tr>
+			    		 <center><td style="color:red">No Contacts Yet </td></center>
+			    		</tr>
+			    	';
+			    }
+			    $i=0;
+			    foreach ($info as $row) {
+			    	$i++;
+			    	      echo     '<tr style="cursor:pointer;" class="values_content">
+					        <td style="text-align:left;">'.$row->Vesselname.'</td>
+					        <td style="text-align:left;">'.$row->VesselNo.'</td>
 
-   	
-   	
-   	    echo '	    <div class="mycontent" >  	
-   	    			<div class="modal-dialog">
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Vessels Under Shipper</h4>
-				        </div>
-				        <div class="modal-body">
-		        		
-						<table class="table  table-bordered">
-					    <thead>
-					      <tr>
-					        <th>Vessels</th>
-					        <th>Plate No.</th>		  
-					      </tr>
-					    </thead>
-					    <tbody>';
-					    if($info==null){
-					    	echo '<tr>
-					    		 <center><td style="color:red">No Contacts Yet </td></center>
-					    		</tr>
-					    	';
-					    }
-					    $i=0;
-					    foreach ($info as $row) {
-					    	$i++;
-					    	      echo     '<tr style="cursor:pointer;" class="values_content">
-							        <td style="text-align:left;">'.$row->Vesselname.'</td>
-							        <td style="text-align:left;">'.$row->VesselNo.'</td>
-
-					     		 </tr>';
-					    } ?>
-					     </tbody>
-					  </table>
-					  
-
-					    <?php
-					echo   '
-			   	 		
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        </div>
-				      </div> 
-				   </div>        
-				 </div>';
-
-				 
+			     		 </tr>';
+			    } ?>
+			     </tbody>
+			  </table>
+		<?php
+			echo   '
+	   	 		
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div> 
+		   </div>        
+		 </div>';
+	}
 
 
 
+function search_product(){
+
+	$this->message();
+	   $item_per_page=10;
+		//Get page number from Ajax POST
+		if(isset($_POST["page"])){
+			$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+			if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+		}else{
+			$page_number = 1; //if there's no page number, set it to 1
+		}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
+	$id = $this->input->post('ProdId');
+	   if(isset($id)){
+	        $product = $this->User->search_product($id);
+	   }else{
+	   	 $product  =  $this->User->findlimit_product($item_per_page,$page_position);	
+	   } 	
+	echo '<table class="table table-bordered">
+		    <thead>
+		      <tr>
+		      	<th>Product Id</th>
+		        <th>Product Name</th>
+		        <th colspan="2">Action</th>
+		      </tr>
+		    </thead>
+		  <tbody>' ?>
+		    <?php 
+			    foreach ($product as $row) {
+			    
+			    // if($i==1){
+			    // $cid= $row->ProductId;
+			    // }
+			    // 		$active= $row->IsActive;
+			    //   		if($active==1){ 
+			    //   		  $stat = 'activated';
+			    //   		  $mystat = '1';
+			    //   		}else{
+			    //   		  $stat = 'deactivated';
+			    //   		  $mystat= '0';
+			    //   		}
+			    //   		if($stat=='activated')
+			    //   		{
+			    //   			$stats = 'deactivated';
+			    //   			$mystats = '0';	
+			    //   		}else{
+			    //   			$stats = 'activated';
+			    //   			$mystats = '1';
+			    //      	}
+			    echo  '<tr>
+					        <td>'.$row->ProductId.'</td>
+					        <td>'.$row->ProductName.'</td>
+					         <td><button type="button" class="btn update_products" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					       
+			    	  </tr>';}
+			?>
+    </tbody>
+</table>
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+
+	<script>
+		 $('.delete_products').click(function(){
+		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+		      $.confirm({
+		        title: 'Delete the information?',
+		        content: 'You have 6 seconds to make a choice',
+		        autoClose: 'cancel|6000',
+		        confirmButton: 'Yes',
+		        confirmButtonClass: 'btn-info',
+		        cancelButton: 'No',
+		        confirm: function () {            
+		            $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_products", 
+		            	{ 
+		            	  id:delete_id
+		            	})
+					  .done(function( data ) {
+					    $.alert({
+							    title: 'Alert!',
+							    content: 'Data has been deleted!',
+							    confirm: function(){
+							    }
+							});
+					    location.hash="prod";
+					    location.reload();
+					  });
+		        },
+		        cancel: function () {
+		           /* alert('Vacation cancelled!');*/
+		        }
+		    });
+			});
+	 	 $('.update_products').click(function(){
+			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
+			     var products   	  = $(this).closest('tr').children('td:eq(1)').text();
+			     // var status   	  = $(this).closest('tr').children('td:eq(3)').text();
+			      $('.prod_id').val(id);
+			      $('.prod_name').val(products);
+
+			     //  if(status==1){
+			     //  $('.activate').prop('checked', true);
+			  	  // }else{
+			  	  // 	  $('.deactivate').prop('checked', true);
+			  	  // }
+			 });
+	</script>
+	<?php
 	}
 
 

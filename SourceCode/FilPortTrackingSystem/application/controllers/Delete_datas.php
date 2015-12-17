@@ -43,6 +43,10 @@ class Delete_datas extends CI_Controller {
  	 $id = $this->input->post('id');
  	 $this->db->delete('Status', array('StatusId' => $id));
  }
+function del_prod(){
+ 	 $id = $this->input->post('id');
+ 	 $this->db->delete('Status', array('StatusId' => $id));
+ }
   function del_container(){
  	 $id = $this->input->post('id');
  	 $this->db->delete('Container', array('ContainerId' => $id));

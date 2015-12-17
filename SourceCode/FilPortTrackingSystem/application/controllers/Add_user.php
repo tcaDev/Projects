@@ -387,6 +387,23 @@ class Add_user extends CI_Controller {
 
      }
 
+    function add_product(){
+             $name = $this->input->post('product_name');
+                $data = array(
+                  'ProductName' => $name
+                );
+
+          $query= $this->db->query("Select * from Products where ProductName = '$name' limit 1");
+          if($query->num_rows() ==1){
+             $this->session->failed = 'failed';
+          }else{
+                $this->db->insert('Products ', $data);
+                $this->session->success = 'success';  
+          }
+             redirect('Login_user/settings/#product');
+
+     }
+
 
     function add_forward(){
              $name = $this->input->post('forward');

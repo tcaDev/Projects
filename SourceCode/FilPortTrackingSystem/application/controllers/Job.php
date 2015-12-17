@@ -109,7 +109,7 @@ class Job extends CI_Controller {
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
     }else{
          echo "<div style='width:100%; overflow-x:auto; '> 
-              <table class='table-bordered table table-striped table-hover table-condensed' style='width: 700px;'>
+              <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
                    <th>Product Name</th>
@@ -217,7 +217,7 @@ class Job extends CI_Controller {
     }else{
          echo "
          <div style='width:100%; overflow-x:auto; '> 
-         <table class='table-bordered table table-striped table-hover table-condensed' style='width: 3000px;'>
+         <table class='table-bordered table table-striped table-hover table-condensed' >
               <tr>
                    <th>No.</th>
                     <th>Container No</th>

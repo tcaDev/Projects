@@ -20,7 +20,6 @@ class Update extends CI_Controller {
 			$Address   = $this->input->post('Addr');
 			$stat      = $this->input->post('stat');
 			$this->User->update_cosignee($id,$Consignee,$Address,$stat);
-
 		}
 
 	function update_consignee(){
@@ -266,13 +265,28 @@ class Update extends CI_Controller {
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#container');
-
 	}
 
 
+    function update_products(){
+		$id 	= 	$this->input->post('prod_id');
+		$name 	= 	$this->input->post('prod_name');
 
 
+   		 $query= $this->db->query("Select * from Products where
+     		  ProductName='$name'    and
+     		  ProductId='$id'
+     		   limit 1");
+    
+          if($query->num_rows() ==1){
+             $this->session->failed= 'update_failed';
+          }else{  
+			     $this->User->update_products($id,$name);
+			     $this->session->success= 'update_success';    
+		       }
+		        redirect('Login_User/settings/#product');
 
+	}
 
 }
 
