@@ -223,7 +223,6 @@ $('.add_consignee_contact').click(function(){
                                // });
                          
 
- //});*/
 
 
 
@@ -318,6 +317,20 @@ $('.add_consignee_contact').click(function(){
 		      		   $('#search').addClass('hauler_tab');
 		      		     //for searching code end
 		       }
+
+		       	if(location.hash=="#product"){
+		      		  $('#form_product').trigger('click');
+
+		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/product/",function(data){
+		  					$('#mycontent').html(data);
+					   });
+
+		      		   location.hash='';
+		      		      //for searching code start
+		      		   $('#search').removeClass('consignee_tab');
+		      		   $('#search').addClass('product_tab');
+		      		     //for searching code end
+		       }
 		        if(location.hash=="#forward"){
 		      		  $('#form_forward').trigger('click');
 
@@ -386,7 +399,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
-
+	    $('#search').removeClass('product_tab');
  
 
 		  $.get(link + "/View_forms/",function(data){
@@ -403,6 +416,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 	
 
 	  	  $.get(link + "/View_forms/broker/",function(data){
@@ -419,6 +433,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 
 	  	  $.get(link + "/View_forms/vessel/",function(data){
 		  	$('#mycontent').html(data);
@@ -434,6 +449,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 
 	  	 $.get(link + "/View_forms/shipper/",function(data){
 		  	$('#mycontent').html(data);
@@ -451,6 +467,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 
 	     	 $.get(link + "/View_forms/hauler/",function(data){
 		  	$('#mycontent').html(data);
@@ -469,6 +486,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').addClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 
 	     	 $.get(link + "/View_forms/forward/",function(data){
 		  	$('#mycontent').html(data);
@@ -488,6 +506,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').addClass('legend_tab');
 	    $('#search').removeClass('container_tab');
+	    $('#search').removeClass('product_tab');
 
 
 	     	 $.get(link + "/View_forms/legend/",function(data){
@@ -506,13 +525,31 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('forward_tab');
 	    $('#search').removeClass('legend_tab');
 	    $('#search').addClass('container_tab');
-
+	    $('#search').removeClass('product_tab');
 
 	     	 $.get(link + "/View_forms/container/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
 	 });    
+
+	$('#form_product').click(function(){
+          
+	   	$('#search').removeClass('consignee_tab');
+	  	$('#search').removeClass('broker_tab');
+	    $('#search').removeClass('shipper_tab');
+	    $('#search').removeClass('vessel_tab');
+	    $('#search').removeClass('hauler_tab');
+	    $('#search').removeClass('forward_tab');
+	    $('#search').removeClass('legend_tab');
+	    $('#search').removeClass('container_tab');
+	    $('#search').addClass('product_tab');
+
+	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/product/",function(data){
+		  	$('#mycontent').html(data);
+		  		
+		  });
+	 });    	
 
 
 
@@ -565,8 +602,14 @@ $('.container_tab').keydown(function(e){
 									}
 });
 
+$('.product_tab').keydown(function(e){
+								    if (e.keyCode == 13) {
+								    	search();								    
+									}
+});
 
 var link = 'http://localhost/FilPortTrackingSystem';
+
 
 function search(){
  var consignee =  $('.consignee_tab').val();
@@ -577,6 +620,7 @@ function search(){
  var forward =  $('.forward_tab').val();
  var legend =  $('.legend_tab').val();
  var container =  $('.container_tab').val();
+ var product =  $('.product_tab').val();
 
  if(consignee!=undefined){
      search_consignee(consignee);
@@ -594,11 +638,13 @@ function search(){
   	search_legend(legend);
   }else if (container!=undefined){
   	search_container(container);
+  }else if (product!=undefined){
+  	search_product(product);
   }
 
 
   else{
-  	alert('There is a porblem please reload the page');
+  	alert('There is a problem please reload the page');
   }
 }
 
@@ -719,6 +765,23 @@ function search_container(container){
 					})
 					  .done(function(data) {
 					   $('.containerpage').html(data);
+
+					      
+					  }); 
+
+
+}
+
+function search_product(product){
+
+
+ 		    $.ajax({
+					  method: "POST",
+					  url: "http://localhost/FilPortTrackingSystem/Search/search_product/",
+					  data: { prod_id:product}
+					})
+					  .done(function(data) {
+					   $('.prodpage').html(data);
 
 					      
 					  }); 
