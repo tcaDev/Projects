@@ -255,11 +255,11 @@
 				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines/Carrier</a></li>
-				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers/Truck Name</a></li>
+				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Line/Carrier</a></li>
+				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Hauler/Trucker</a></li>
 				    <li class="hidden"><a data-toggle="tab" href=".forward"		id="form_forward">Forwarder</a></li>
 				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
-				    <li><a data-toggle="tab" href=".prod"				    	id="form_product">Products</a></li>
+				    <li><a data-toggle="tab" href=".prod"				    	id="form_product">Product</a></li>
 			
 		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 				  </ul>
@@ -890,8 +890,16 @@
 	          	  <input type="hidden" name="hauler_id"      class="hauler_id" />
 				<div class="row">
 		            <div class="form-group col-lg-12">
-		            	<label>Hauler Name</label>
+		            	<label>Hauler /Trucker</label>
 		               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
+		            </div>
+		            <div class="form-group col-lg-12">
+		            	<label>Address</label>
+		               <input type="text"   name="hauler_address"  class="hauler_address form-control" required/>
+		            </div>
+		            <div class="form-group col-lg-12">
+		            	<label>TIN</label>
+		               <input type="text"   name="hauler_tin" maxlength="15" class="hauler_tin form-control" required/>
 		            </div>
 		        </div>
 		        <div class="col-lg-12">
