@@ -21,6 +21,8 @@
   var total_forward        =  "<?php echo $forward_total; ?>";*/
   var content_legend       = "<?php echo base_url('Search/search_legend')?>";
   var total_legend         =  "<?php echo $legend_total; ?>";
+  var content_product       = "<?php echo base_url('Search/search_product')?>";
+  var total_product         =  "<?php echo $product_total; ?>";
 
  </script>
 
@@ -181,40 +183,6 @@
 			});
 
 				
-
-	/*		$(document).ready(function() {
-				    $(".forwardpage").load(content_forward);  //initial page number to load
-				    $(".pagination_forward").bootpag({
-				        total:total_forward, // total number of pages
-				        page: 1, //initial page
-				        maxVisible: 5, //maximum visible links
-					    leaps: true,
-					    firstLastUse: true,
-					    first: 'First',
-					    last: 'Last',
-					    prev: 'Previous',
-					    next: 'Next',
-					    wrapClass: 'pagination',
-					    activeClass: 'active',
-					    disabledClass: 'disabled',
-					    nextClass: 'next',
-					    prevClass: 'prev',
-					    lastClass: 'last',
-					    firstClass: 'first'
-				    }).on("page", function(e, num){
-				        e.preventDefault();
-				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				        $(".forwardpage").load(content_forward, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
-				    });
-			
-			});*/
-
-
-
 			$(document).ready(function() {
 				    $(".legendpage").load(content_legend);  //initial page number to load
 				    $(".pagination_legend").bootpag({
@@ -247,8 +215,37 @@
 			});
 
 
-				
-				
+			$(document).ready(function() {
+				    $(".prodpage").load(content_product);  //initial page number to load
+				    $(".pagination_prod").bootpag({
+				        total:total_product, // total number of pages
+				        page: 1, //initial page
+				        maxVisible: 5, //maximum visible links
+					    leaps: true,
+					    firstLastUse: true,
+					    first: 'First',
+					    last: 'Last',
+					    prev: 'Previous',
+					    next: 'Next',
+					    wrapClass: 'pagination',
+					    activeClass: 'active',
+					    disabledClass: 'disabled',
+					    nextClass: 'next',
+					    prevClass: 'prev',
+					    lastClass: 'last',
+					    firstClass: 'first'
+				    }).on("page", function(e, num){
+				        e.preventDefault();
+				        location.hash=num;
+				       // $(".loading-div").show(); //show loading element
+				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $(".prodpage").load(content_product, {'page':num});
+				        //$(".loading-div").hide(); //show loading element
+				    	
+				    });
+			
+			});
+
 		</script>
 	     <!--For  pagination end -->
 
@@ -258,13 +255,11 @@
 				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-
-				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines/Carrried</a></li>
+				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Lines/Carrier</a></li>
 				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Haulers/Truck Name</a></li>
-
-
 				    <li class="hidden"><a data-toggle="tab" href=".forward"		id="form_forward">Forwarder</a></li>
 				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
+				    <li><a data-toggle="tab" href=".prod"				    	id="form_product">Products</a></li>
 			
 		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 				  </ul>
@@ -325,6 +320,12 @@
 			    </div>
 			       <!--FOr legend data view  end--> 
 
+			    <!--FOr Products data view  start--> 
+			    <div  class="prod tab-pane fade">
+			      <div class="pagination_prod pull-right"> </div>
+			 	  <div class="prodpage"> </div>
+			    </div>
+			       <!--FOr Products data view  end--> 
 
 
 		        <!--FOr shipper data view  start--> 
@@ -574,21 +575,15 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Vessel Information</h4>
+				          <h4 class="modal-title">Shipping Lines/ Carrier Information</h4>
 				        </div>
 				        <div class="modal-body">
 				       <?php echo form_open('Update/update_vessel/');?>
 				          	  <input type="hidden" name="ves_id"      class="vessel_id" />
 							<div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Vessel Name</label>
+					            	<label>Shipping Lines/ Carrier</label>
 					               <input type="text"   name="ves_name"  class="vessel_name form-control" required/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Vessel No./Plate No.</label>
-					               <input type="text"   name="vesno"  class="vesno form-control" required/>
 					            </div>
 					        </div>
 					        <div class="col-lg-12">
@@ -797,293 +792,317 @@
 				</div>
 		</div>
 
-				  <!-- Modal FOr shippercontacts-->
-				  <div class="modal fade" id="modal_shippercontacts" role="dialog">
-				  </div>
+	<!-- Modal FOr shippercontacts-->
+	  <div class="modal fade" id="modal_shippercontacts" role="dialog">
+	  </div>
 
-				  	  <!-- Modal FOr vessels under shippers-->
-				  <div class="modal fade" id="modal_vessels" role="dialog">
-				  </div>
+	  	  <!-- Modal FOr vessels under shippers-->
+	  <div class="modal fade" id="modal_vessels" role="dialog">
+	  </div>
 
-			<!-- Modal FOr add_shippercontacts-->
-			<div class="modal fade" id="modal_add_shippercontacts" role="dialog">
-				  <div class="modal-dialog">
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Add Shipper Contacts</h4>
-				        </div>
-				        <div class="modal-body">
-		       		<?php echo form_open('Add_user/add_shippercon');?>
-				            <input type="hidden" name="shipper_id" value="" class="shipper_id form-control"/>
-							
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>First Name</label>
-					               <input type="text" name="fname_contact" value="" class="fname_contact form-control" required/>
-					            </div>
-					        </div>
-
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Middle Name</label>
-					               <input type="text" name="mname_contact" value="" class="mname_contact form-control"/>
-					            </div>
-					        </div>
-
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Last Name</label>
-					               <input type="text" name="lname_contact" value="" class="lname_contact form-control" required/>
-					            </div>
-					        </div>
-
-					         <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.1</label>
-					               <input type="text" name="no_contact1" value="" class="no_contact form-control" required/>
-					            </div>
-					        </div>
-
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.2</label>
-					               <input type="text" name="no_contact2"  value="" class="no1_contact form-control"/>
-					            </div>
-					        </div>
-
-					        <div class="col-lg-12">
-					        	<label>Status: </label>
-						        <div class="radio">
-								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
-								</div>
-								 <div class="radio">
-								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
-								 </div>
-					        </div>
-
+	<!-- Modal FOr add_shippercontacts-->
+	<div class="modal fade" id="modal_add_shippercontacts" role="dialog">
+		  <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Add Shipper Contacts</h4>
+		        </div>
+		        <div class="modal-body">
+       		<?php echo form_open('Add_user/add_shippercon');?>
+		            <input type="hidden" name="shipper_id" value="" class="shipper_id form-control"/>
 					
-					        <div class="row">
-					        	<div class="modal-footer form-group col-lg-12">
-					        		<button type="submit" class="btn btn-default">Submit</button>
-					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
-					            </div>	
-					        </div>
-			   	 	<?php echo form_close();?>
-				        </div>
-				        <div class="">
-				          
-				        </div>
-				      </div>      
-				 </div>'
-			</div>
+					<div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>First Name</label>
+			               <input type="text" name="fname_contact" value="" class="fname_contact form-control" required/>
+			            </div>
+			        </div>
+
+			        <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Middle Name</label>
+			               <input type="text" name="mname_contact" value="" class="mname_contact form-control"/>
+			            </div>
+			        </div>
+
+			        <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Last Name</label>
+			               <input type="text" name="lname_contact" value="" class="lname_contact form-control" required/>
+			            </div>
+			        </div>
+
+			         <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Contact Info.1</label>
+			               <input type="text" name="no_contact1" value="" class="no_contact form-control" required/>
+			            </div>
+			        </div>
+
+			        <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Contact Info.2</label>
+			               <input type="text" name="no_contact2"  value="" class="no1_contact form-control"/>
+			            </div>
+			        </div>
+
+			        <div class="col-lg-12">
+			        	<label>Status: </label>
+				        <div class="radio">
+						  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+						</div>
+						 <div class="radio">
+						   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+						 </div>
+			        </div>
+
+			
+			        <div class="row">
+			        	<div class="modal-footer form-group col-lg-12">
+			        		<button type="submit" class="btn btn-default">Submit</button>
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+			            </div>	
+			        </div>
+	   	 	<?php echo form_close();?>
+		        </div>
+		        <div class="">
+		        </div>
+		      </div>      
+		 </div>'
+	</div>
 
 
 
-			<!--Modal for updating haulers -->
-			  		
-				  <div class="modal fade" id="modal_update_hauler" role="dialog">
-				    <div class="modal-dialog">
-				    
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Hauler Information</h4>
-				        </div>
-				        <div class="modal-body">
-				       <?php echo form_open('Update/update_hauler/');?>
-				          	  <input type="hidden" name="hauler_id"      class="hauler_id" />
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Hauler Name</label>
-					               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
-					            </div>
+	<!--Modal for updating haulers -->
+  		
+	  <div class="modal fade" id="modal_update_hauler" role="dialog">
+	    <div class="modal-dialog">
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Hauler Information</h4>
+	        </div>
+	        <div class="modal-body">
+	       <?php echo form_open('Update/update_hauler/');?>
+	          	  <input type="hidden" name="hauler_id"      class="hauler_id" />
+				<div class="row">
+		            <div class="form-group col-lg-12">
+		            	<label>Hauler Name</label>
+		               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
+		            </div>
+		        </div>
+		        <div class="col-lg-12">
+		        	<label>Status: </label>
+			        <div class="radio">
+					  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+					</div>
+					 <div class="radio">
+					   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+					 </div>
+		        </div>
+		        <div class="row">
+		        	<div class="modal-footer form-group col-lg-12">
+		        		<button type="submit" class="btn btn-default">Submit</button>
+		        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+		            </div>	
+		        </div>
+		 <?php echo form_close();?>
+	        </div>
+	        <div class="">
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+		<div class="modal fade" id="modal_update_forward" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Forward Information</h4>
+		        </div>
+		        <div class="modal-body">
+		       <?php echo form_open('Update/update_forward/');?>
+		          	  <input type="hidden" name="forward_id"      class="forward_ids" />
+					<div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Forwarder Warehouse Name</label>
+			               <input type="text"   name="forward_name"  class="forward_names form-control" required/>
+			            </div>
+			        </div>
+			        <div class="col-lg-12">
+			        	<label>Status: </label>
+				        <div class="radio">
+						  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+						</div>
+						 <div class="radio">
+						   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+						 </div>
+			        </div>
+			        <div class="row">
+			        	<div class="modal-footer form-group col-lg-12">
+			        		<button type="submit" class="btn btn-default">Submit</button>
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+			            </div>	
+			        </div>
+			 	<?php echo form_close();?>
+		        </div>
+		        <div class="">
+		        </div>
+		      </div>
+		    </div>
+	    </div>
+
+
+	    <div class="modal fade" id="modal_update_legend" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Legend Information</h4>
+		        </div>
+		        <div class="modal-body">
+		       		<?php echo form_open('Update/update_legend/');?>
+		          	<input type="hidden" name="legend_id"      class="legend_id" />
+					<div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Status Name</label>
+			               <input type="text"   name="name"  class="legend_status form-control" required/>
+			            </div>
+			        </div>
+			        <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Description Name</label>
+			               <input type="text"   name="legend_descrip"  class="legend_descrip form-control" required/>
+			            </div>
+			        </div>
+			        <div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Choose Color</label>
+			               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
+			                <label class="radio-inline">
+						      <input type="radio"  name="legend_bacg" class="legend_bacg" value="0">Font
+						    </label>
+						    <label class="radio-inline">
+						      <input type="radio"  name="legend_bacg" class="legend_bacg" value="1">Background
+						    </label>
+			            </div>
+			        </div>
+			        <div class="col-lg-12">
+			        	<label>Status: </label>
+				        <div class="radio">
+						  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+						</div>
+						 <div class="radio">
+						   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+						 </div>
+			        </div>
+			        <div class="row">
+			        	<div class="modal-footer form-group col-lg-12">
+			        		<button type="submit" class="btn btn-default">Submit</button>
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+			            </div>	
+			        </div>
+			 <?php echo form_close();?>
+		        </div>
+		     
+		        <div class="">
+		        </div>
+		      </div>
+		    </div>
+	    </div>
+
+
+		<!--Modal for updating products -->
+		<div class="modal fade" id="modal_update_products" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Products Information</h4>
+		        </div>
+		        <div class="modal-body">
+		       <?php echo form_open('Update/update_products/');?>
+		          	  <input type="hidden" name="prod_id"      class="prod_id" />
+					<div class="row">
+			            <div class="form-group col-lg-12">
+			            	<label>Products Name</label>
+			               <input type="text"   name="prod_name"  class="prod_name form-control" required/>
+			            </div>
+			        </div>
+			        <!-- <div class="col-lg-12">
+			        	<label>Status: </label>
+				        <div class="radio">
+						  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
+						</div>
+						 <div class="radio">
+						   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
+						 </div>
+			        </div> -->
+			        <div class="row">
+			        	<div class="modal-footer form-group col-lg-12">
+			        		<button type="submit" class="btn btn-default">Submit</button>
+			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+			            </div>	
+			        </div>
+			 <?php echo form_close();?>
+		        </div>
+		        <div class="">
+		        </div>
+		      </div>
+		    </div>
+		</div>
+
+		<div class="modal fade" id="modal_update_container" role="dialog">
+					    <div class="modal-dialog">
+					    
+					      <!-- Modal content-->
+					      <div class="modal-content">
+					        <div class="modal-header">
+					          <button type="button" class="close" data-dismiss="modal">&times;</button>
+					          <h4 class="modal-title">Container Information</h4>
 					        </div>
-					        <div class="col-lg-12">
-					        	<label>Status: </label>
-						        <div class="radio">
-								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
-								</div>
-								 <div class="radio">
-								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
-								 </div>
+					        <div class="modal-body">
+					       		<?php echo form_open('Update/update_container/');?>
+					          	<input type="hidden" name="container_id"      class="container_id" />
+								<div class="row">
+						            <div class="form-group col-lg-12">
+						            	<label>Container No.</label>
+						               <input type="text"   name="con"  class="con form-control" required/>
+						            </div>
+						        </div>
+						        <div class="row">
+						            <div class="form-group col-lg-12">
+						            	<label>Container Description</label>
+						               <input type="text"  name="con_descrip"  class="con_descrip form-control" required/>
+						            </div>
+						        </div>
+						        <div class="row">
+						            <div class="form-group col-lg-12">
+						            	<label>Container Size</label>
+						               <input type="text" name="con_size"  class="con_size form-control" required/>
+						            
+						            </div>
+						        </div>
+						        <div class="row">
+						        	<div class="modal-footer form-group col-lg-12">
+						        		<button type="submit" class="btn btn-default">Submit</button>
+						        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+						            </div>	
+						        </div>
+						 	<?php echo form_close();?>
 					        </div>
-	
-					  
-					        <div class="row">
-					        	<div class="modal-footer form-group col-lg-12">
-					        		<button type="submit" class="btn btn-default">Submit</button>
-					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
-					            </div>	
-					        </div>
-					 <?php echo form_close();?>
-				        </div>
-				     
-				        <div class="">
-				          
-				        </div>
+					     
+					        <div class="">
 				      </div>
-				      
-				    </div>
-				  </div>
-
-
-				<div class="modal fade" id="modal_update_forward" role="dialog">
-				    <div class="modal-dialog">
-				    
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Forward Information</h4>
-				        </div>
-				        <div class="modal-body">
-				       <?php echo form_open('Update/update_forward/');?>
-				          	  <input type="hidden" name="forward_id"      class="forward_ids" />
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Forwarder Warehouse Name</label>
-					               <input type="text"   name="forward_name"  class="forward_names form-control" required/>
-					            </div>
-					        </div>
-					        <div class="col-lg-12">
-					        	<label>Status: </label>
-						        <div class="radio">
-								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
-								</div>
-								 <div class="radio">
-								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
-								 </div>
-					        </div>
-	
-	
-					  
-					        <div class="row">
-					        	<div class="modal-footer form-group col-lg-12">
-					        		<button type="submit" class="btn btn-default">Submit</button>
-					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
-					            </div>	
-					        </div>
-					 <?php echo form_close();?>
-				        </div>
-				     
-				        <div class="">
-				          
-				        </div>
-				      </div>
-				      
-				    </div>
-			    </div>
-
-			    <div class="modal fade" id="modal_update_legend" role="dialog">
-				    <div class="modal-dialog">
-				    
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Legend Information</h4>
-				        </div>
-				        <div class="modal-body">
-				       <?php echo form_open('Update/update_legend/');?>
-				          	  <input type="hidden" name="legend_id"      class="legend_id" />
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Status Name</label>
-					               <input type="text"   name="name"  class="legend_status form-control" required/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Description Name</label>
-					               <input type="text"   name="legend_descrip"  class="legend_descrip form-control" required/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Choose Color</label>
-					               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
-					                <label class="radio-inline">
-								      <input type="radio"  name="legend_bacg" class="legend_bacg" value="0">Font
-								    </label>
-								    <label class="radio-inline">
-								      <input type="radio"  name="legend_bacg" class="legend_bacg" value="1">Background
-								    </label>
-					            </div>
-					        </div>
-					        <div class="col-lg-12">
-					        	<label>Status: </label>
-						        <div class="radio">
-								  <label><input type="radio" name="status" class="activate  " value="1">activated</label>
-								</div>
-								 <div class="radio">
-								   <label><input type="radio"name="status" class="deactivate " value="0">deactivated</label>
-								 </div>
-					        </div>
-					        <div class="row">
-					        	<div class="modal-footer form-group col-lg-12">
-					        		<button type="submit" class="btn btn-default">Submit</button>
-					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
-					            </div>	
-					        </div>
-					 <?php echo form_close();?>
-				        </div>
-				     
-				        <div class="">
-				          
-				        </div>
-				      </div>
-				      
-				    </div>
-			    </div>
-
-
-
-			   <div class="modal fade" id="modal_update_container" role="dialog">
-				    <div class="modal-dialog">
-				    
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Container Information</h4>
-				        </div>
-				        <div class="modal-body">
-				       <?php echo form_open('Update/update_container/');?>
-				          	  <input type="hidden" name="container_id"      class="container_id" />
-							<div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Container No.</label>
-					               <input type="text"   name="con"  class="con form-control" required/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Container Description</label>
-					               <input type="text"  name="con_descrip"  class="con_descrip form-control" required/>
-					            </div>
-					        </div>
-					        <div class="row">
-					            <div class="form-group col-lg-12">
-					            	<label>Container Size</label>
-					               <input type="text" name="con_size"  class="con_size form-control" required/>
-					            
-					            </div>
-					        </div>
-	
-					  
-					        <div class="row">
-					        	<div class="modal-footer form-group col-lg-12">
-					        		<button type="submit" class="btn btn-default">Submit</button>
-					        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
-					            </div>	
-					        </div>
-					 <?php echo form_close();?>
-				        </div>
-				     
-				        <div class="">
-
-				        </div>
-				      </div>
+			      </div>
+			  </div>
+		</div>
