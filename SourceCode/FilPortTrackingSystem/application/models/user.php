@@ -366,6 +366,11 @@ Class User extends CI_Model
    $query = $this->db->query("select * from HaulerOrTruck WHERE HaulerOrTruckId LIKE '%$search_hauler%' order by HaulerOrTruckId  ");
    return $query->result();
   }
+
+   function search_product($search_product){
+   $query = $this->db->query("select * from Products WHERE ProductId LIKE '%$search_product%' order by ProductId  ");
+   return $query->result();
+  }
 /*     function search_forward($search_forward){
    $query = $this->db->query("select * from ForwarderWarehouse WHERE ForwarderWarehouseName LIKE '%$search_forward%' order by ForwarderWarehouseId  ");
    return $query->result();
@@ -408,6 +413,10 @@ Class User extends CI_Model
   function findlimit_hauler($page_position,$item_per_page)
   {
    return $this->db->get('HaulerOrTruck',$page_position, $item_per_page)->result();
+  }
+  function findlimit_product($page_position,$item_per_page)
+  {
+   return $this->db->get('Products',$page_position, $item_per_page)->result();
   }
   function findlimit_forward($page_position,$item_per_page)
   {

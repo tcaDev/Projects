@@ -120,13 +120,30 @@ class Search extends CI_Controller {
 					if($search_Type == "HaulerOrTruck"){
 							$displayOutput .=  '<tr>
 								<th>Hauler/Truck</th>
+								<th>Address</th>
+								<th>TIN</th>
 								<th>Is Active</th>
 							</tr>
 						<tr>';
 						foreach ($searchme as $row) {
 								$displayOutput .=  '<tr>';
 					 	    	$displayOutput .=  '<td>' .$row->HaulerOrTruck . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->Address . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->TIN . '</td>';
 					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "Products"){
+							$displayOutput .=  '<tr>
+								<th>Product ID</th>
+								<th>Product Name</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ProductId. '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ProductName. '</td>';
 								$displayOutput .=  '</tr>';	
 						}			
 					}

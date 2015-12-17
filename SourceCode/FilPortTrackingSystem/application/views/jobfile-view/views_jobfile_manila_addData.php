@@ -29,7 +29,7 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> <input type="hidden" class="msg-jobfile" />
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
@@ -125,17 +125,17 @@
 								 </div>
 
 								<div class="form-group">
-								  <label for="dtRcvd">Date Recieved Arrival Notice From Client / SLINE:</label>
+								  <label for="dtRcvd">Date Received Arrival Notice From Client / SLINE:</label>
 								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm dtRcvd" >
 								</div>
 
 								<div class="form-group">
-								  <label for="dtPckup">Date Pick-up / Recieved O-BL:</label>
+								  <label for="dtPckup">Date Pick-up / Received O-BL:</label>
 								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm dt_pickup_obl" >
 								</div>
 
 								<div class="form-group">
-								  <label for="dtPckRcv">Date Pick-up / Recieved Other Document :</label>
+								  <label for="dtPckRcv">Date Pick-up / Received Other Document :</label>
 								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm dt_pickup_docs" >
 								 </div>
 								 	
@@ -706,10 +706,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
-			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -756,10 +752,6 @@
 			if($('.required-fields .jobfiles').val() == "")
 			{
 				$('.jobfile-msg').text("Need Jobfile");
-			}
-			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
-			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
@@ -850,10 +842,6 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
-			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
-			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -869,6 +857,10 @@
 			else if($('.reference').val() == "")
 			{
 				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else if($('#check_jobfiles').text() == "Jobfile already exists")
+			{
+				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
 			}
 			else{i++;}
 

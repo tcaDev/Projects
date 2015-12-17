@@ -102,7 +102,7 @@
 
 								          <th >Description of Goods</th>
 
-								          <th >PI / PO No.</th>
+								          <th >PI/PO No.</th>
 
 								          <th >House Bill of Lading No.</th>
 
@@ -114,13 +114,13 @@
 
 								          <th >Registry</th>
 
-								          <th>SHipping Lines / Carrier</th>
+								          <th>Shipping Lines/Carrier</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
-								          <th >Date Pick-up / Recieved O-BL</th>
+								          <th >Date Pick-up/Received O-BL</th>
 
-								          <th >Date Pick-up / Recieved other Documents</th>
+								          <th >Date Pick-up/Received other Documents</th>
 
 								          <th >Broker</th>
 
@@ -208,7 +208,7 @@
 
 								          <td><?php echo $row->RefEntryNo; ?></td>
 
-								          <td><?php echo $row->ColorSelectivityName; ?></td>
+								          <td>Color Selectivity</td>
 
 								          <td><?php echo $row->DatePaid; ?></td>
 

@@ -229,7 +229,7 @@ class Job extends CI_Controller {
                     <th>Actual Arrival Time</th>
                     <th>Start Of Storage</th>
                     <th>Lodging</th>
-                    <th>Hauler/Truck Number</th>
+                    <th>Hauler/Trucker</th>
                     <th>Target Delivery Date</th>
                     <th>Gate In At Port</th>
                     <th>Gate Out At Port</th>
