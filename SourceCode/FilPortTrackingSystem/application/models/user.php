@@ -379,6 +379,10 @@ Class User extends CI_Model
    return $query->result();
   }
 
+      function search_product($search_container){
+   $query = $this->db->query("select * from Products WHERE ProductsName LIKE '%$search_container%' order by ProductId  ");
+   return $query->result();
+  }
   //for searching end
 
 //for pagimation start
@@ -578,10 +582,12 @@ function get_jobfile_manila(){
 
 
 
- function update_hauler($id,$name,$status){
+ function update_hauler($id,$name,$add,$tin,$status){
    $status =  (int) $status;
          $data = array(
-                'HaulerOrTruckNumber' => $name,
+                'HaulerOrTruck' => $name,
+                'Address' => $add,
+                'TIN' => $tin,
                 'IsActive'   => $status
                 );
 
