@@ -112,7 +112,7 @@
 
 	 	var searchString = $('#txtGlobalSearch').val();
 	 	if(searchString == "" || searchString == null){
-	 		disable_filter();
+	 		//disable_filter();
 	 	}else{
 	 		enable_filter();
 	 	}

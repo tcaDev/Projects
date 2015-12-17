@@ -92,7 +92,7 @@ class Job extends CI_Controller {
           JobFile where JobFileId='$jobfile' limit 1");
             
           if($query->num_rows() ==1){
-            echo  "Jobfile is already exists";     
+            echo  "Jobfile already exists";     
           }else{
              echo "Jobfile is available"; 
           }

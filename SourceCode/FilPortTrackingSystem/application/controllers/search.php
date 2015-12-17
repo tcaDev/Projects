@@ -1196,7 +1196,7 @@ $this->message();
 					         	}
 					    echo  '<tr>
 							        <td>'.$row->HaulerOrTruckId.'</td>
-							        <td>'.$row->HaulerOrTruckNumber.'</td>
+							        <td>'.$row->HaulerOrTruck.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>

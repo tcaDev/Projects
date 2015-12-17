@@ -29,7 +29,7 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> <input type="hidden" class="msg-jobfile" />
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
@@ -706,6 +706,10 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
+			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
+			{
+				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
+			}
 			else if($('.required-fields .shipper').val() == "")
 			{
 				$('.shipper-msg').text("Need Shipper");
@@ -752,6 +756,10 @@
 			if($('.required-fields .jobfiles').val() == "")
 			{
 				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
+			{
+				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
@@ -841,6 +849,10 @@
 			 if($('.required-fields .jobfiles').val() == "")
 			{
 				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
+			{
+				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
