@@ -178,11 +178,14 @@ class Update extends CI_Controller {
     function update_hauler(){
 		$id 	= 	$this->input->post('hauler_id');
 		$name 	= 	$this->input->post('hauler_name');
+		$add 	= 	$this->input->post('hauler_address');
+		$tin 	= 	$this->input->post('hauler_tin');
 	    $status = 	$this->input->post('status');
 
 
    		 $query= $this->db->query("Select * from HaulerOrTruck where
-     		  HaulerOrTruckNumber='$name'    and
+     		  HaulerOrTruck='$name' and Address='$add' and
+     		  TIN='$tin' and
      		  HaulerOrTruckId='$id' and 
      		  IsActive  ='$status'
      		   limit 1");
@@ -190,7 +193,7 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_hauler($id,$name,$status);
+			     $this->User->update_hauler($id,$name,$add,$tin,$status);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#hauler');

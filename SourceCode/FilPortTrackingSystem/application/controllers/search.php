@@ -132,7 +132,7 @@ class Search extends CI_Controller {
 					}
 					if($search_Type == "ShipperName" && $search_From == "vw_shipper_full_info"){
 							$displayOutput .=  '<tr>
-								<th>Shipper Name</th>
+								<th>Shipper Name <span class="glyphicon glyphicon-sort"></span></th>
 								<th>Date Added</th>
 								<th>House Building No/Street</th>
 								<th>Barangay/Village</th>
@@ -168,7 +168,7 @@ class Search extends CI_Controller {
 					}		
 					if($search_From == "vw_broker_full_info"){
 							$displayOutput .=  '<tr>			
-								<th>Full Name Name</th>
+								<th>Full Name</th>
 								<th>House Building/Street Number</th>
 								<th>Barangay / Village</th>
 								<th>Town/City/Province</th>
@@ -279,9 +279,9 @@ if(isset($_SESSION['success'])){
 						<table class="table table-bordered table_consignee">
 					    <thead>
 					      <tr>
-					        <th>FirstName</th>
-					        <th>MiddleName</th>
-					        <th>LastName</th>
+					        <th>First Name</th>
+					        <th>Middle Name</th>
+					        <th>Last Name</th>
 					        <th>Contact Info.1</th>
 					        <th>Contact Info.2</th>
 					        <th colspan="2">Action</th>
@@ -682,7 +682,7 @@ if(isset($_SESSION['success'])){
 					    <thead>
 					      <tr>
 				
-					        <th>Full Name<span class="glyphicon glyphicon-sort"></span></th>
+					        <th>Full Name <span class="glyphicon glyphicon-sort"></span></th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
@@ -1166,6 +1166,8 @@ $this->message();
 		      <tr>
 		      	<th>Hauler ID</th>
 		        <th>Hauler/Truck Name</th>
+		        <th>Address</th>
+		        <th>TIN</th>
 		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
@@ -1197,6 +1199,8 @@ $this->message();
 					    echo  '<tr>
 							        <td>'.$row->HaulerOrTruckId.'</td>
 							        <td>'.$row->HaulerOrTruck.'</td>
+							        <td>'.$row->Address.'</td>
+							        <td>'.$row->TIN.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>

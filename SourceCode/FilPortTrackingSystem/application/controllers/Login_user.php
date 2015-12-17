@@ -740,7 +740,7 @@ function select_country(){
 			echo	  '<table class="table table-bordered table_consignee" id="table_consignee"> 
 					    <thead>
 					      <tr>
-					        <th>Consignee Name<span class="glyphicon glyphicon-sort"></span></th>
+					        <th>Consignee Name <span class="glyphicon glyphicon-sort"></span></th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>

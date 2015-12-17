@@ -372,11 +372,15 @@ class Add_user extends CI_Controller {
 
      function add_hauler(){
              $name = $this->input->post('hauler_name');
+             $add = $this->input->post('hauler_address');
+             $tin = $this->input->post('hauler_tin');
                 $data = array(
-                  'HaulerName' => $name
+                  'HaulerOrTruck' => $name,
+                  'Address' => $add,
+                  'TIN' => $tin
                 );
 
-          $query= $this->db->query("Select * from Hauler where HaulerName = '$name' limit 1");
+          $query= $this->db->query("Select * from HaulerOrTruck where HaulerOrTruck = '$name' and Address = '$add' and TIN = '$tin' limit 1");
           if($query->num_rows() ==1){
              $this->session->failed = 'failed';
           }else{

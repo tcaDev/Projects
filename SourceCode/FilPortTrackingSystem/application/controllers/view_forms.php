@@ -252,6 +252,16 @@ function hauler(){
 						                <input type="text" name="hauler_name"class="form-control " placeholder="Hauler Name" required/>
 						            </div>
 						        </div>
+						        <div class=" col-md-12">
+						            <div class="form-group ">
+						                <input type="text" name="hauler_address"class="form-control " placeholder="Hauler Address" required/>
+						            </div>
+						        </div>
+						        <div class=" col-md-12">
+						            <div class="form-group ">
+						                <input type="text" name="hauler_tin"class="form-control "  maxlength="15" placeholder="Hauler TIN" required/>
+						            </div>
+						        </div>
 						 
 						        <div class="">
 						        	<div class="form-group col-md-12">
