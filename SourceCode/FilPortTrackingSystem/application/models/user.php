@@ -27,14 +27,16 @@ Class User extends CI_Model
    return $query->result();
   }
 
-  function search_global($search){
+ function search_global($search,$search_Type,$search_from){
    $this -> db -> select('*');
-   $this -> db -> from('search_global');
-   $this -> db -> like('JobFileId', $search);
+   $this -> db -> from($search_from);
+   $this -> db -> like($search_Type, $search);
    $this->db->limit(10);
    $query = $this -> db -> get();
    return $query->result();
   }
+
+
 
   function clients(){
    $this -> db -> select('*');
