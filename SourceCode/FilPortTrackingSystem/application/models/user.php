@@ -172,6 +172,17 @@ Class User extends CI_Model
     
   }
 
+    function update_products($id,$name){
+        $status =  (int) $status;
+        $data = array(
+        'ProductName'    => $name
+
+        );
+          $this->db->where('ProductId', $id);
+          $this->db->update('Products', $data);
+    
+  }
+
 
   function dropdown_shipper(){
     $this->db->select('ShipperName,ShipperId');
@@ -406,6 +417,11 @@ Class User extends CI_Model
   {
    return $this->db->get('Container',$page_position, $item_per_page)->result();
   }
+ function findlimit_product($page_position,$item_per_page)
+  {
+   return $this->db->get('Products',$page_position, $item_per_page)->result();
+  }
+
 
   
 
