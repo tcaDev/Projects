@@ -113,6 +113,9 @@ class Job extends CI_Controller {
               <tr>
                    <th>No.</th>
                    <th>Product Name</th>
+                   <th>Origin</th>
+                   <th>Date BOC Cleared</th>
+                  <th>Container No.</th>
               </tr>";
 
           $i=0;
@@ -121,6 +124,79 @@ class Job extends CI_Controller {
              echo "<tr>";
              echo "<td> ".$i." </td>";
              echo "<td class='row'>".$row->ProductName."</td>";
+             echo "<td class='row'>".$row->ORIGIN."</td>";
+             echo "<td class='row'>".$row->DateBOCCLeared ."</td>";
+             echo "<td class='row'>".$row->ContainerNo ."</td>";
+             echo "</tr>";
+         }
+
+         echo "</table>
+              </div>";
+    }
+
+
+
+    }
+
+      function running_charges(){
+      $charge =  $this->input->post('id');   
+      $charges  = $this->Jobdata->get_charges($charge);
+
+     
+            
+    if($charges==NULL){
+          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
+    }else{
+         echo "<div style='width:100%; overflow-x:auto; '> 
+              <table class='table-bordered table table-striped table-hover table-condensed' style='width: 700px;'>
+              <tr>
+                   <th>No.</th>
+                   <th>Lodgement Fee</th>
+                   <th>Container Deposit</th>
+                   <th>THC Charges</th>
+                   <th>Arrastre.</th>
+                   <th>Weighing</th>
+                   <th>Container Deposit</th>
+                   <th>DEL</th>
+                   <th>Dispatch Fee</th>
+                   <th>Storage</th>
+                   <th>Demorage</th>
+                   <th>Detention</th>
+                   <th>EIC</th>
+                   <th>BAI Application</th>
+                   <th>BAI Inspection</th>
+                   <th>SRA Application</th>
+                   <th>SRA Inspection</th>
+                   <th>Bad Cargo</th>
+                   <th>All Charges</th>
+                   <th>Particular Charges</th>
+              </tr>";
+
+          $i=0;
+         foreach($charges as $row){
+          $i++;
+             echo "<tr>";
+             echo "<td> ".$i." </td>";
+             echo "<td class='row'>".$row->LodgementFee."</td>";
+             echo "<td class='row'>".$row->ContainerDeposit."</td>";
+             echo "<td class='row'>".$row->THCCharges ."</td>";
+             echo "<td class='row'>".$row->Arrastre ."</td>";
+             echo "<td class='row'>".$row->Wharfage."</td>";
+             echo "<td class='row'>".$row->Weighing."</td>";
+             echo "<td class='row'>".$row->DEL."</td>";
+             echo "<td class='row'>".$row->DispatchFee ."</td>";
+             echo "<td class='row'>".$row->Storage."</td>";
+
+             echo "<td class='row'>".$row->Demorage."</td>";
+             echo "<td class='row'>".$row->Detention."</td>";
+             echo "<td class='row'>".$row->EIC ."</td>";
+             echo "<td class='row'>".$row->BAIApplication."</td>";
+             echo "<td class='row'>".$row->BAIInspection."</td>";
+             echo "<td class='row'>".$row->SRAApplication."</td>";
+             echo "<td class='row'>".$row->SRAInspection ."</td>";
+             echo "<td class='row'>".$row->BadCargo."</td>";
+             echo "<td class='row'>".$row->AllCharges."</td>";
+             echo "<td class='row'>".$row->ParticularCharges."</td>";
              echo "</tr>";
          }
 
@@ -144,19 +220,22 @@ class Job extends CI_Controller {
          <table class='table-bordered table table-striped table-hover table-condensed' style='width: 3000px;'>
               <tr>
                    <th>No.</th>
-                   <th>No Of Cartons</th>
-                    <th>Trucker PlateNo Time</th>
+                    <th>Container No</th>
+                    <th>Container Size</th>
+                    <th>No Of Cartons</th>
                     <th>Trucker Name</th>
                     <th>Estimated Departure Time</th>
                     <th>Estimated Arrival Time</th>
                     <th>Actual Arrival Time</th>
                     <th>Start Of Storage</th>
                     <th>Lodging</th>
+                    <th>Hauler/Truck Number</th>
                     <th>Target Delivery Date</th>
                     <th>Gate In At Port</th>
                     <th>Gate Out At Port</th>
                     <th>Actual Delivery At Warehouse</th>
                     <th>Start Of Demorage</th>
+                    <th>Pull Out Date At Port</th>
 
               </tr>";
 
@@ -165,19 +244,22 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
+             echo "<td class='row'>".$row->ContainerNo."</td>";
+             echo "<td class='row'>".$row->ContainerSize."</td>";
              echo "<td class='row'>".$row->NoOfCartons."</td>";
-             echo "<td class='row'>".$row->TruckerPlateNo."</td>";
              echo "<td class='row'>".$row->TruckerName."</td>";
              echo "<td class='row'>".$row->EstDepartureTime."</td>";
              echo "<td class='row'>".$row->EstArrivalTime."</td>";
              echo "<td class='row'>".$row->ActualArrivalTime."</td>";
              echo "<td class='row'>".$row->StartOfStorage."</td>";
              echo "<td class='row'>".$row->Lodging."</td>";
+             echo "<td class='row'>".$row->HaulerOrTruck."</td>";
              echo "<td class='row'>".$row->TargetDeliveryDate."</td>";
              echo "<td class='row'>".$row->GateInAtPort."</td>";
              echo "<td class='row'>".$row->GateOutAtPort."</td>";
              echo "<td class='row'>".$row->ActualDeliveryAtWarehouse."</td>";
              echo "<td class='row'>".$row->StartOfDemorage."</td>";
+             echo "<td class='row'>".$row->PullOutDateAtPort."</td>";
 
 
              echo "</tr>";
@@ -328,14 +410,13 @@ class Job extends CI_Controller {
 
 
              //3rd proc
-             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
                   'P_ContainerSize'         => 100,
                   'P_CarrierByJobFileId'     =>$VesselByJobFile,    // last inserted id from VesselByJobFIle table
                   'P_NoOfCartons'           => $cartons,
-                  'P_TruckerPlateNo'        => $plateno,
                   'P_TruckerName'           => $truckername,
                   'P_EstDepartureTime'      => $edt,
                   'P_EstArrivalTime'        => $eat,
@@ -374,7 +455,7 @@ function jobfile_add2(){
  if(($product_name!=NULL) || ($product_name!='')){
      $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
      $query2= $this->db->query("select `CBV`.`ContainerByCarrierId` from  
-                                ContainerByCarrier as CBV where `CBV`.`ContainerNo` =$con_id 
+                                ContainerByCarrier as CBV where `CBV`.`ContainerNo` = $con_id 
                                 and `CBV`.`ContainerByCarrierId`='$VesselByJobFile' ");
      if(($query->num_rows() ==1 ) && ($query2->num_rows()==1)){
      }else{
@@ -392,6 +473,90 @@ function jobfile_add2(){
              ));
           } 
   }      
+ }
+
+ function jobfile_add_charges(){
+   $jbfl              =  $this->input->post('jbfl');
+   $lodge             =  $this->input->post('lodge');
+   $cont_deposit      =  $this->input->post('cont_deposit');
+   $thc_charges       =  $this->input->post('thc_charges');   
+   $wharfage          =  $this->input->post('wharfage');
+   $arrastre          =  $this->input->post('arrastre');
+   $weight            =  $this->input->post('weight');
+
+   $del               =  $this->input->post('del');
+   $dispatch          =  $this->input->post('dispatch');
+   $storage           =  $this->input->post('storage');   
+   $demurrage         =  $this->input->post('demurrage');
+   $detention         =  $this->input->post('detention');
+   $eic               =  $this->input->post('eic');
+
+   $bai_app           =  $this->input->post('bai_app');
+   $bai_inspect       =  $this->input->post('bai_inspect');
+   $sra_app           =  $this->input->post('sra_app');   
+   $sra_inspect       =  $this->input->post('sra_inspect');
+   $bad_cargo         =  $this->input->post('bad_cargo');
+   $all_charges       =  $this->input->post('all_charges');
+   $part_charges      =  $this->input->post('part_charges');
+
+
+  //stop inserting data in jobfile to avoid duplication
+  $query= $this->db->query("Select * from JobFile where
+        JobFileId='$job' limit 1");
+if($query->num_rows() ==1){
+}else{  
+        $data = array(
+               'JobFileId'        => $jbfl,
+               'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges
+        );
+
+          $this->db->insert('RunningCharges',$data); 
+
+                $data = array(
+               'JobFileId'        => $jbfl,
+               'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges
+        );
+
+          $this->db->insert('RunningChargesHistory',$data); 
+      }
+
+
  }
 
 

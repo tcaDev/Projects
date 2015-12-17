@@ -30,7 +30,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
-								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onchange="search_jobfile(this)">
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -475,52 +475,52 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Lodgement Fee</label>
-								<input type="text" name="lodge" class="form-control input-sm num_only" />
+								<input type="text" name="lodge" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Container Deposit</label>
-								<input type="text" name="cont-deposit" class="form-control input-sm num_only" />
+								<input type="text" name="cont-deposit" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>THC Charges</label>
-								<input type="text" name="thc-charges" class="form-control input-sm num_only" />
+								<input type="text" name="thc-charges" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Arrastre </label>
-								<input type="text" name="arrastre" class="form-control input-sm num_only" />
+								<input type="text" name="arrastre" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Wharfage</label>
-								<input type="text" name="wharfage" class="form-control input-sm num_only" />
+								<input type="text" name="wharfage" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Weighing</label>
-								<input type="text" name="weight" class="form-control input-sm num_only" />
+								<input type="text" name="weight" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>DEL</label>
-								<input type="text" name="del" class="form-control input-sm num_only"  />
+								<input type="text" name="del" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Dispatch Fee</label>
-								<input type="text" name="dispatch" class="form-control input-sm num_only" />
+								<input type="text" name="dispatch" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 								<label>Storage</label>
-								<input type="text" name="storage" class="form-control input-sm num_only" />
+								<input type="text" name="storage" class="form-control input-sm" />
 							</div>
 
 							<div class="form-group">
 									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm num_only" />
+									<input type="text" name="demurrage" class="form-control input-sm" />
 								</div>
 
 
@@ -531,47 +531,47 @@
 							
 								<div class="form-group">
 									<label>Detention</label>
-									<input type="text" name="detention" class="form-control input-sm num_only" />
+									<input type="text" name="detention" class="form-control input-sm" />
 								</div>
 								
 								<div class="form-group">
 									<label>EIC</label>
-									<input type="text" name="EIC" class="form-control input-sm num_only" />
+									<input type="text" name="EIC" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Application</label>
-									<input type="text" name="bai-app" class="form-control input-sm num_only" />
+									<input type="text" name="bai-app" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Inspection</label>
-									<input type="text" name="bai-inspect" class="form-control input-sm num_only" />
+									<input type="text" name="bai-inspect" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>SRA Application</label>
-									<input type="text" name="sra-app" class="form-control input-sm num_only" />
+									<input type="text" name="sra-app" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>SRA Inspection</label>
-									<input type="text" name="sra-inspect" class="form-control input-sm num_only" />
+									<input type="text" name="sra-inspect" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>Bad Cargo</label>
-									<input type="text" name="bad-cargo" class="form-control input-sm num_only" />
+									<input type="text" name="bad-cargo" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>All Charges</label>
-									<input type="text" name="all-charges" class="form-control input-sm num_only" />
+									<input type="text" name="all-charges" class="form-control input-sm" />
 								</div>
 
 								<div class="form-group">
 									<label>Particular Charges</label>
-									<input type="text" name="part-charges" class="form-control input-sm num_only" />
+									<input type="text" name="part-charges" class="form-control input-sm" />
 								</div>
 						</div>
 					</div>
@@ -1327,6 +1327,65 @@ $('.table-remove-cont').click(function () {
 
 		});
 
+
+         //for running charges
+       var lodge 		  =  $('#lodge').val();
+ 	   var cont_deposit   =  $('#cont-deposit').val();
+       var thc_charges    =  $('#thc-charges').val();
+       var arrastre       =  $('#arrastre').val();
+       var wharfage 	  =  $('#wharfage').val();
+       var weight         =  $('#weight').val();
+	   var del       	  =  $('#del').val();
+       var dispatch  	  =  $('#dispatch').val();
+       var storage 	 	  =  $('#storage').val();
+       var demurrage      =  $('#demurrage').val();
+	   var detention      =  $('#detention').val();
+       var eic  	  	  =  $('#EIC').val();
+       var bai_app 	 	  =  $('#bai-app').val();
+       var bai_inspect    =  $('#bai-inspect').val();
+	   var sra_app        =  $('#sra-app').val();
+       var sra_inspect    =  $('#sra-inspect').val();
+       var bad_cargo 	  =  $('#bad-cargo').val();
+       var all_charges    =  $('#all-charges').val();
+	   var part_charges   =  $('#part-charges').val();
+
+
+    $.ajax({
+		           method: "POST",
+	 		   url: "<?php echo base_url('Job/jobfile_add_charges');?>",
+			  	   data: {
+			  	   	           jbfl   		:jbfl,
+			  	   			   lodge        :lodge,
+			                   cont_deposit :cont_deposit,   
+			                   thc_charges  :thc_charges,
+			                   wharfage     :wharfage,
+			                   arrastre     :arrastre,
+			                   weight	    :weight,
+			                   del			:del,
+			                   dispatch     :dispatch,
+			                   storage      :storage,
+			                   demurrage    :demurrage,
+			                   detention    :detention,
+			                   eic          :eic,
+			                   bai_app      :bai_app,
+			                   bai_inspect  :bai_inspect,
+			                   sra_app      :sra_app,
+			                   sra_inspect  :sra_inspect,
+			                   bad_cargo    :bad_cargo,
+			                   all_charges  :all_charges,
+			                   part_charges :part_charges
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Alert!',
+				        		content: 'Running Charges has been inserted!',
+				        		confirm: function(){
+				        	    }
+				   			   });
+	    		    })
+
+  
 	
 	});
 
@@ -1357,11 +1416,13 @@ if(ct2==c2){
 						     dt_boc        = $tds.eq(3).text(); 
 						     origin_id     = $tds.eq(4).text();  //origin_id
 					         origin_cty    = $tds.eq(6).text();
-					    
 
-					         alert("prodid:" +prodid + " product_name" + product_name +
+					         /*alert(con_id);*/
+
+
+					   /*      alert("prodid:" +prodid + " product_name" + product_name +
 					         " con_id" + con_id + " dt_boc:" + dt_boc + " origin_id" +
-					          "origin_cty" + origin_cty);
+					          "origin_cty" + origin_cty);*/
 
 					            $.ajax({
 				  		           method: "POST",
@@ -1379,8 +1440,6 @@ if(ct2==c2){
 				  			  	   		 }
 						              })
 										.done(function(data) {
-											  if(ct2==c2){
-				  								if(ct==c){
 						  							 $.alert({
 									        		title: 'Alert!',
 									        		content: 'Data has been inserted!',
@@ -1388,13 +1447,11 @@ if(ct2==c2){
 									        	    }
 									   			   });
 						  							location.reload();
-												}
-											  }
+
 						    		    })
 						    		    .fail(function(data) {
-						    		    	alert('Data error');
-				  						   location.reload();
-						    			});
+				  						   console.log(data);
+						    	});
 	} 
 }    								
 

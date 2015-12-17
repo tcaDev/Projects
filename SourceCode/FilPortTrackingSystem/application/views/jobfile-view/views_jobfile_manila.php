@@ -213,7 +213,7 @@
 								          <td><?php echo $row->DatePaid; ?></td>
 
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
-								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								      
 								        </tr>
 
@@ -321,7 +321,7 @@
 				          <h4 class="modal-title">Running Charges</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class=""> </div>
+				            <div class="list_charges"> </div>
 
 				        </div>
 				        <div class="modal-footer">
@@ -344,7 +344,8 @@ $(document).ready(function(){
 
 	//for getting the product goods
  $('.view_goods').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(0)').text();
+ 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 		
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_goods');?>",
@@ -358,8 +359,8 @@ $(document).ready(function(){
 
 
   $('.view_containers').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(1)').text();
- 	
+ 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_containers');?>",
@@ -370,6 +371,23 @@ $(document).ready(function(){
 				  				$('.list_conts').html(data);
 					});
  });
+
+ $('.runchar').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 	/* alert(ids);*/
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/running_charges');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_charges').html(data);
+					});
+ });
+
+
+  
 
 
 });

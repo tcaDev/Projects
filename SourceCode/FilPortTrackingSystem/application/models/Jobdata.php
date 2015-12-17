@@ -24,19 +24,28 @@ function getLastInserted($table, $id) {
 
  function get_goods($products){
     $this->  db ->select('*');
-    $this -> db -> from('Products');
-    $this -> db ->where('ContainerByVesselId', $products);
+    $this -> db -> from('vw_Products');
+    $this -> db ->where('JobFileId', $products);
     $query=$this->db->get();
     return $query->result();
  }
 
  function get_containers($id){
  	$this->  db ->select('*');
-    $this -> db -> from('ContainerByVessel');
-    $this -> db ->where('VesselByJobFileId', $id);
+    $this -> db -> from('vw_Containers');
+    $this -> db ->where('JobFileId', $id);
     $query=$this->db->get();
     return $query->result();
  }
+ function get_charges($id){
+ 	$this->  db ->select('*');
+    $this -> db -> from('RunningCharges');
+    $this -> db ->where('JobFileId', $id);
+    $query=$this->db->get();
+    return $query->result();
+ }
+
+
 
 
 
