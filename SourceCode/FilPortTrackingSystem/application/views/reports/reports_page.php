@@ -9,7 +9,7 @@
 			  <li class="active"><a href="#tab_a" data-toggle="pill">Consignee</a></li>
 			  <li><a href="#tab_b" data-toggle="pill">Broker</a></li>
 			  <li><a href="#tab_c" data-toggle="pill">Shipper</a></li>
-			  <li><a href="#tab_d" data-toggle="pill">Vessel</a></li>
+			  <!-- <li><a href="#tab_d" data-toggle="pill">Vessel</a></li> -->
 			</ul>
 		</div>
 </div>
