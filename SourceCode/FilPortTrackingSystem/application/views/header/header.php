@@ -110,12 +110,12 @@
 	 		window.location.href="<?php echo base_url('Login_user/account/');?>";
 	 	});
 
-	 	var searchString = $('#txtGlobalSearch').val();
-	 	if(searchString == "" || searchString == null){
-	 		//disable_filter();
-	 	}else{
-	 		enable_filter();
-	 	}
+	 	// var searchString = $('#txtGlobalSearch').val();
+	 	// if(searchString == "" || searchString == null){
+	 	// 	disable_filter();
+	 	// }else{
+	 	// 	enable_filter();
+	 	// }
 	 });
 	</script>
 
