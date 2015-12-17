@@ -2,7 +2,7 @@
 
 
 			
-
+var link = 'http://localhost/FilPortTrackingSystem';
 	 	//for updating the values in pop up start
 
 
@@ -32,7 +32,7 @@
 
 			 		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Update/update_broker/",
+					  url:  link +"/Update/update_broker/",
 					  data: { brokerid:ids,
 					  		  fname:fnames,
 					  		  mname:mnames,
@@ -65,7 +65,7 @@
 
 			 		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Update/update_vessel/",
+					  url: link + "/Update/update_vessel/",
 					  data: { ves_id:id,
 					  		  ves_name:vessel
 					  		  	  		  
@@ -84,7 +84,7 @@
 		  var  name  =   $('.shipper_name').val();
 			 		$.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Update/update_shipper/",
+					  url: link + "/Update/update_shipper/",
 					  data: { ship_id:id,
 					  		  ship_name:name
 					  		  	  		  
@@ -108,7 +108,7 @@
 
 						$.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/consigneecon/",
+					  url: link + "/Search/consigneecon/",
 					  data: { cons:consignee_id}
 					})
 					  .done(function(data) {
@@ -135,7 +135,7 @@ $('.add_consignee_contact').click(function(){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/", 
+                                        $.post( link + "/Delete_datas/", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -167,7 +167,7 @@ $('.add_consignee_contact').click(function(){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_vessel", 
+                                        $.post( link + "/Delete_datas/del_vessel", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -201,7 +201,7 @@ $('.add_consignee_contact').click(function(){
                                     cancelButton: 'No',
                                     confirm: function () {            
                                    
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_shipper/", 
+                                        $.post( link + "/Delete_datas/del_shipper/", 
                                         	{ 
                                         	  id:delete_id
                                         	})
@@ -234,7 +234,7 @@ $('.add_consignee_contact').click(function(){
 
 						$.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/shippercon/",
+					  url: link + "/Search/shippercon/",
 					  data: { cons:con}
 					})
 					  .done(function(data) {
@@ -248,7 +248,7 @@ $('.add_consignee_contact').click(function(){
 
 						$.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/add_shippercontacts/",
+					  url: link + "/Search/add_shippercontacts/",
 					  data: { shipper_id:con}
 					})
 					  .done(function(data) {
@@ -262,10 +262,13 @@ $('.add_consignee_contact').click(function(){
 		<!--//for autoclick of shipper tab based on the hash -->
 
 		$(document).ready(function(){
+
+			var link = 'http://localhost/FilPortTrackingSystem';
+
 		       if(location.hash=="#shipper"){
 		      		  $('#form_shipper').trigger('click');
 
-		      		   	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
+		      		   	 $.get(link + "/View_forms/shipper/",function(data){
 		  					$('#mycontent').html(data);
 		 				 });
 
@@ -279,7 +282,7 @@ $('.add_consignee_contact').click(function(){
 		       if(location.hash=="#broker"){
 		      		  $('#form_broker').trigger('click');
 
-		     		   $.get("http://localhost/FilPortTrackingSystem/View_forms/broker/",function(data){
+		     		   $.get(link + "/View_forms/broker/",function(data){
 		 			    	$('#mycontent').html(data);
 		 		    	});
 
@@ -292,7 +295,7 @@ $('.add_consignee_contact').click(function(){
 		         if(location.hash=="#vessel"){
 		      		  $('#form_vessel').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/vessel/",function(data){
+		      		    $.get(link + "/View_forms/vessel/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -305,7 +308,7 @@ $('.add_consignee_contact').click(function(){
 		         if(location.hash=="#hauler"){
 		      		  $('#form_haulers').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/hauler/",function(data){
+		      		    $.get(link + "/View_forms/hauler/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -318,7 +321,7 @@ $('.add_consignee_contact').click(function(){
 		        if(location.hash=="#forward"){
 		      		  $('#form_forward').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/forward/",function(data){
+		      		    $.get(link + "/View_forms/forward/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -332,7 +335,7 @@ $('.add_consignee_contact').click(function(){
 		         if(location.hash=="#legend"){
 		      		  $('#form_legend').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/legend/",function(data){
+		      		    $.get(link + "/View_forms/legend/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -346,7 +349,7 @@ $('.add_consignee_contact').click(function(){
 		         if(location.hash=="#container"){
 		      		  $('#form_container').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/container/",function(data){
+		      		    $.get(link + "/View_forms/container/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -367,6 +370,10 @@ $('.add_consignee_contact').click(function(){
 
 
    $(document).ready(function(){
+
+
+   	var link = 'http://localhost/FilPortTrackingSystem';
+
    //consignee
 
 	  $('#form_consignee').click(function(){
@@ -382,7 +389,7 @@ $('.add_consignee_contact').click(function(){
 
  
 
-		  $.get("http://localhost/FilPortTrackingSystem/View_forms/",function(data){
+		  $.get(link + "/View_forms/",function(data){
 		  	$('#mycontent').html(data);
 		  });
 	  });
@@ -398,7 +405,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('container_tab');
 	
 
-	  	  $.get("http://localhost/FilPortTrackingSystem/View_forms/broker/",function(data){
+	  	  $.get(link + "/View_forms/broker/",function(data){
 		  	$('#mycontent').html(data);
 		  });	
 	  });
@@ -413,7 +420,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
 
-	  	  $.get("http://localhost/FilPortTrackingSystem/View_forms/vessel/",function(data){
+	  	  $.get(link + "/View_forms/vessel/",function(data){
 		  	$('#mycontent').html(data);
 		  });
 	  });
@@ -428,7 +435,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
 
-	  	 $.get("http://localhost/FilPortTrackingSystem/View_forms/shipper/",function(data){
+	  	 $.get(link + "/View_forms/shipper/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -445,7 +452,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
 
-	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/hauler/",function(data){
+	     	 $.get(link + "/View_forms/hauler/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -463,7 +470,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('legend_tab');
 	    $('#search').removeClass('container_tab');
 
-	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/forward/",function(data){
+	     	 $.get(link + "/View_forms/forward/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -483,7 +490,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('container_tab');
 
 
-	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/legend/",function(data){
+	     	 $.get(link + "/View_forms/legend/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -501,7 +508,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').addClass('container_tab');
 
 
-	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/container/",function(data){
+	     	 $.get(link + "/View_forms/container/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -559,7 +566,7 @@ $('.container_tab').keydown(function(e){
 });
 
 
-
+var link = 'http://localhost/FilPortTrackingSystem';
 
 function search(){
  var consignee =  $('.consignee_tab').val();
@@ -599,7 +606,7 @@ function search_consignee(consignee){
 
 		 		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Login_user/consignee_content/",
+					  url: link + "/Login_user/consignee_content/",
 					  data: { consignee_id:consignee}
 					})
 					  .done(function(data) {
@@ -612,7 +619,7 @@ function search_broker(broker){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_broker/",
+					  url: link + "/Search/search_broker/",
 					  data: { broker_id:broker}
 					})
 					  .done(function(data) {
@@ -626,7 +633,7 @@ function search_shipper(shipper){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_shipper/",
+					  url: link + "/Search/search_shipper/",
 					  data: { shipper_id:shipper}
 					})
 					  .done(function(data) {
@@ -641,7 +648,7 @@ function search_vessel(vessel){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_vessel/",
+					  url: link + "/Search/search_vessel/",
 					  data: { vessel_id:vessel}
 					})
 					  .done(function(data) {
@@ -658,7 +665,7 @@ function search_hauler(hauler){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_hauler/",
+					  url: link + "/Search/search_hauler/",
 					  data: { hauler_id:hauler}
 					})
 					  .done(function(data) {
@@ -675,7 +682,7 @@ function search_forward(forward){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_forward/",
+					  url: link + "/Search/search_forward/",
 					  data: { forward_id:forward}
 					})
 					  .done(function(data) {
@@ -691,7 +698,7 @@ function search_legend(legend){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_legend/",
+					  url: link + "/Search/search_legend/",
 					  data: { legend_id:legend}
 					})
 					  .done(function(data) {
@@ -707,7 +714,7 @@ function search_container(container){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_container/",
+					  url: link + "/Search/search_container/",
 					  data: { container_id:container}
 					})
 					  .done(function(data) {
