@@ -18,215 +18,34 @@ class Search extends CI_Controller {
 
 		function index(){
 			$search = $this->input->get('search');
-			$search_Type = $this->input->get('searchType');
-			$search_From= $this->input->get('searchFrom');
-			$displayOutput;
-			$displayCount;
-			//echo " From " . $search_From;
-			
-			$data['result']=$this->User->search_global($search,$search_Type,$search_From);
+			$data['result']=$this->User->search_global($search);
 			$searchme= $data['result'];
-			/*var_dump($searchme);
-			exit;*/
-			//echo "teanasdflajkqwer";
+
 			if(isset($search)){
-				if(count($searchme) > 0){
-					$displayCount = count($searchme) . " result(s) Found";
-					$displayOutput = '<table class="table table-striped">';
-					if($search_Type == "JobfileID"){
-					$displayOutput .= '<tr>
-								<th>Carrier Name </th>
-								<th>Shipper </th>
-								<th>Consignee</th>
-								<th>House Bill Lading Number </th>
-								<th>Master Bill Lading Number </th>
-								<th>Letter Credit From Bank </th>
-								<th>Date Sent Final Assessment</th>
-								<th>Purchase Order Number</th>
-								<th>Date File Entry to BOC</th>
-								<th>Registry</th>
-								<th>Date Received Notice From Clients</th>
-								<th>Date Received of BL</th>
-								<th>Date Received of Other Documents</th>
-								<th>Broker</th>
-								<th>Date Request Budget to GL</th>
-								<th>RFP Due Date</th>
-								<th>Date Sent Pre Assessment</th>
-								<th>Reference Entry Number</th>
-								<th>Color Selectivity Name</th>
-								<th>Status Name</th>
-								<th>Date Paid</th>
-							</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-								$displayOutput .=  '<td>' .$row->CarrierName . '</td>';
-								$displayOutput .=  '<td>' .$row->ShipperName . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->HouseBillLadingNo . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->MasterBillLadingNo . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->LetterCreditFromBank . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateSentFinalAssessment . '</td>';
-					        	$displayOutput .=  '<td>' .$row->PurchaseOrderNo . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateFileEntryToBOC . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->Registry . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateReceivedNoticeFromClients . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateReceivedOfBL . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateReceivedOfOtherDocs . '</td>';
-					   			$displayOutput .=  '<td>' .$row->Broker . '</td>';
-					   			$displayOutput .=  '<td>' .$row->DateRequestBudgetToGL . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->RFPDueDate . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->DateSentPreAssessment . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->RefEntryNo . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->ColorSelectivityName . '</td>';
-					 	    	if($row->IsBackground == 1){
-					 	    		$displayOutput .=  '<td style="background-color:' . $row->ColorCode . ';color:white">' . $row->StatusName . '</td>';
-					 	    	}else{
-									$displayOutput .=  '<td style="color:' . $row->ColorCode . ';background-color:white">' . $row->StatusName . '</td>';
-					 	    	}
-					 	    	$displayOutput .=  '<td>' .$row->DatePaid . '</td>';
 
-								$displayOutput .=  '</tr>';	
-						}
-						
-					}
-					if($search_Type == "ConsigneeName"){
-							$displayOutput .=  '<tr>
-								<th>Consignee Name</th>
-								<th>House Building No/Street</th>
-								<th>Barangay/Village</th>
-								<th>Town/City Or Province</th>
-								<th>Country ID</th>
-								<th>Office Number</th>
-								<th>Date Added</th>
-								<th>IsActive</th>
-								<th>Country</th>
+							echo '<table class="table ">
+							<tr>
+								<td>JobFileId</td>
+								<td>Broker</td>
+								<td>Consignee</td>
 							</tr>
 						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
-					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoOrStreet . '</td>';
-					   			$displayOutput .=  '<td>' . $row->BarangayOrVillage . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->TownOrCityProvince . '</td>';
-					 	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->OfficeNumber . '</td>';
-					 	    	$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->Country . '</td>';
-								$displayOutput .=  '</tr>';	
-						}			
-					}
-					if($search_Type == "HaulerOrTruck"){
-							$displayOutput .=  '<tr>
-								<th>Hauler/Truck</th>
-								<th>Address</th>
-								<th>TIN</th>
-								<th>Is Active</th>
-							</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->HaulerOrTruck . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->Address . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->TIN . '</td>';
-					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
-								$displayOutput .=  '</tr>';	
-						}			
-					}
-					if($search_Type == "Products"){
-							$displayOutput .=  '<tr>
-								<th>Product ID</th>
-								<th>Product Name</th>
-							</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->ProductId. '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->ProductName. '</td>';
-								$displayOutput .=  '</tr>';	
-						}			
-					}
-					if($search_Type == "ShipperName" && $search_From == "vw_shipper_full_info"){
-							$displayOutput .=  '<tr>
-								<th>Shipper Name <span class="glyphicon glyphicon-sort"></span></th>
-								<th>Date Added</th>
-								<th>House Building No/Street</th>
-								<th>Barangay/Village</th>
-								<th>Town/City Or Province</th>
-								<th>Country ID</th>
-								<th>Is Active</th>
-							</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->ShipperName . '</td>';
-					   			$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
-					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
-					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
-					   			$displayOutput .=  '<td>' . $row->CountryId . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
-								$displayOutput .=  '</tr>';	
-						}			
-					}
-					if($search_Type == "CarrierName"){
-							$displayOutput .=  '<tr>
-								<th>Carrier Name</th>
-								<th>Is Active</th>
-												</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->CarrierName . '</td>';
-					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
-								$displayOutput .=  '</tr>';	
-						}	
-					}		
-					if($search_From == "vw_broker_full_info"){
-							$displayOutput .=  '<tr>			
-								<th>Full Name</th>
-								<th>House Building/Street Number</th>
-								<th>Barangay / Village</th>
-								<th>Town/City/Province</th>
-								<th>Country ID</th>
-								<th>Contact Number 1</th>
-								<th>Contact Number 2 </th>
-								<th>Is Active</th>
-							</tr>
-						<tr>';
-						foreach ($searchme as $row) {
-								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->LastName . ', ' . $row->FirstName . ' ' . $row->MiddleName . '</td>';
-						    	$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
-					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
-					   	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
-					 	    	$displayOutput .=  '<td>' .$row->ContactNo1 . '</td>';
-					   			$displayOutput .=  '<td>' . $row->ContactNo2 . '</td>';
-					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
-								$displayOutput .=  '</tr>';	
-						}	
-					}			
-						$displayOutput .=  '</table>';
-				}else{
-						$displayOutput =  "No Result(s) Found";
-						$displayCount = "0 Result(s) Found";
-				}
-					
-			}else{
-					$displayOutput .=  "NO result(s) Found";
-					$displayCount = "0 Result(s) Found";
-			}
+
 			
-			$response = array(
-				array(
-						"Display" => $displayOutput,
-						"OutputCount" => $displayCount
-					)
-				);
+					foreach ($searchme as $row) {
 
-			echo json_encode($response);
+					   echo '<td>' . $row->JobFileId . '</td>';
+					   echo '<td>' .$row->Consignee . '</td>';
+					   echo '<td>' .$row->FirstName." ".$row->FirstName." ".$row->LastName . '</td>';
+
+					}
+					  echo '</tr>';
+					echo '</table>';
+			}else{
+
+					echo "NO result";
+
+			}
 		}
 
 function message(){
@@ -296,9 +115,9 @@ if(isset($_SESSION['success'])){
 						<table class="table table-bordered table_consignee">
 					    <thead>
 					      <tr>
-					        <th>First Name</th>
-					        <th>Middle Name</th>
-					        <th>Last Name</th>
+					        <th>FirstName</th>
+					        <th>MiddleName</th>
+					        <th>LastName</th>
 					        <th>Contact Info.1</th>
 					        <th>Contact Info.2</th>
 					        <th colspan="2">Action</th>
@@ -321,8 +140,8 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="btn update_contacts_consignee btn-default" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="btn delete_contacts_consignee btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="btn delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -474,8 +293,8 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="update_contacts btn btn-default" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="delete_contacts btn btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="delete_contacts"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -699,7 +518,7 @@ if(isset($_SESSION['success'])){
 					    <thead>
 					      <tr>
 				
-					        <th>Full Name <span class="glyphicon glyphicon-sort"></span></th>
+					        <th>Full Name<span class="glyphicon glyphicon-sort"></span></th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
@@ -754,7 +573,7 @@ if(isset($_SESSION['success'])){
 						    <td class="hidden">'.$row->FirstName.' </td>
 						    <td class="hidden">'.$row->MiddleName.' </td>
 						    <td class="hidden">'.$row->LastName.' </td>		
-					         <td><button type="button" class="btn get_broker_datas btn-default" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        
 					      
 					      </tr>';}
@@ -878,7 +697,7 @@ function search_shipper(){
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					       	<td>'.$stat .'</td>
 						    <td  class="hidden">'. $mystat .'</td>  				   
-					        <td><button type="button" class="btn get__shipper_datas btn-default" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					      
 					      </tr>';}
 
@@ -1073,7 +892,7 @@ function search_vessel(){
 							        <td>'.$row->CarrierName.'</td>      
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_vessels btn-default" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
 
@@ -1183,8 +1002,6 @@ $this->message();
 		      <tr>
 		      	<th>Hauler ID</th>
 		        <th>Hauler/Truck Name</th>
-		        <th>Address</th>
-		        <th>TIN</th>
 		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
@@ -1216,11 +1033,9 @@ $this->message();
 					    echo  '<tr>
 							        <td>'.$row->HaulerOrTruckId.'</td>
 							        <td>'.$row->HaulerOrTruck.'</td>
-							        <td>'.$row->Address.'</td>
-							        <td>'.$row->TIN.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_hauler btn-default" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							       
 					    	  </tr>';}
 
@@ -1337,7 +1152,7 @@ $this->message();
 							        <td>'.$row->ForwarderWarehouseName.'</td>
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_forwards btn-default" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
 
@@ -1468,7 +1283,7 @@ $this->message();
 				        '.$pick1.'
 				         <td>'.$stat .'</td>
 						 <td  class="hidden">'. $mystat .'</td> 
-				         <td><button type="button" class="btn update_legend btn-default" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
     </tbody>
@@ -1535,166 +1350,64 @@ $this->message();
 	}
 
 	function vessel_shipper(){
+
 	$id=$this->input->post('id');
    	$info = $this->User->vessel_shipper($id);
-   	    echo '<div class="mycontent" >  	
-    			<div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Vessels Under Shipper</h4>
-		        </div>
-		        <div class="modal-body">
-				<table class="table  table-bordered">
-			    <thead>
-			      <tr>
-			        <th>Vessels</th>
-			        <th>Plate No.</th>		  
-			      </tr>
-			    </thead>
-			    <tbody>';
-			    if($info==null){
-			    	echo '<tr>
-			    		 <center><td style="color:red">No Contacts Yet </td></center>
-			    		</tr>
-			    	';
-			    }
-			    $i=0;
-			    foreach ($info as $row) {
-			    	$i++;
-			    	      echo     '<tr style="cursor:pointer;" class="values_content">
-					        <td style="text-align:left;">'.$row->Vesselname.'</td>
-					        <td style="text-align:left;">'.$row->VesselNo.'</td>
 
-			     		 </tr>';
-			    } ?>
-			     </tbody>
-			  </table>
-		<?php
-			echo   '
-	   	 		
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		      </div> 
-		   </div>        
-		 </div>';
-	}
+   	
+   	
+   	    echo '	    <div class="mycontent" >  	
+   	    			<div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Vessels Under Shipper</h4>
+				        </div>
+				        <div class="modal-body">
+		        		
+						<table class="table  table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Vessels</th>
+					        <th>Plate No.</th>		  
+					      </tr>
+					    </thead>
+					    <tbody>';
+					    if($info==null){
+					    	echo '<tr>
+					    		 <center><td style="color:red">No Contacts Yet </td></center>
+					    		</tr>
+					    	';
+					    }
+					    $i=0;
+					    foreach ($info as $row) {
+					    	$i++;
+					    	      echo     '<tr style="cursor:pointer;" class="values_content">
+							        <td style="text-align:left;">'.$row->Vesselname.'</td>
+							        <td style="text-align:left;">'.$row->VesselNo.'</td>
+
+					     		 </tr>';
+					    } ?>
+					     </tbody>
+					  </table>
+					  
+
+					    <?php
+					echo   '
+			   	 		
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div> 
+				   </div>        
+				 </div>';
+
+				 
 
 
 
-function search_product(){
-
-	$this->message();
-	   $item_per_page=10;
-		//Get page number from Ajax POST
-		if(isset($_POST["page"])){
-			$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
-			if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
-		}else{
-			$page_number = 1; //if there's no page number, set it to 1
-		}
-	
-	//get starting position to fetch the records
-	$page_position = (($page_number-1) * $item_per_page);
- 
-	$id = $this->input->post('ProdId');
-	   if(isset($id)){
-	        $product = $this->User->search_product($id);
-	   }else{
-	   	 $product  =  $this->User->findlimit_product($item_per_page,$page_position);	
-	   } 	
-	echo '<table class="table table-bordered">
-		    <thead>
-		      <tr>
-		      	<th>Product Id</th>
-		        <th>Product Name</th>
-		        <th colspan="2">Action</th>
-		      </tr>
-		    </thead>
-		  <tbody>' ?>
-		    <?php 
-			    foreach ($product as $row) {
-			    
-			    // if($i==1){
-			    // $cid= $row->ProductId;
-			    // }
-			    // 		$active= $row->IsActive;
-			    //   		if($active==1){ 
-			    //   		  $stat = 'activated';
-			    //   		  $mystat = '1';
-			    //   		}else{
-			    //   		  $stat = 'deactivated';
-			    //   		  $mystat= '0';
-			    //   		}
-			    //   		if($stat=='activated')
-			    //   		{
-			    //   			$stats = 'deactivated';
-			    //   			$mystats = '0';	
-			    //   		}else{
-			    //   			$stats = 'activated';
-			    //   			$mystats = '1';
-			    //      	}
-			    echo  '<tr>
-					        <td>'.$row->ProductId.'</td>
-					        <td>'.$row->ProductName.'</td>
-					         <td><button type="button" class="btn update_products btn-default" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					       
-			    	  </tr>';}
-			?>
-    </tbody>
-</table>
-
- <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
-
-	<script>
-		 $('.delete_products').click(function(){
-		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-		      $.confirm({
-		        title: 'Delete the information?',
-		        content: 'You have 6 seconds to make a choice',
-		        autoClose: 'cancel|6000',
-		        confirmButton: 'Yes',
-		        confirmButtonClass: 'btn-info',
-		        cancelButton: 'No',
-		        confirm: function () {            
-		            $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_products", 
-		            	{ 
-		            	  id:delete_id
-		            	})
-					  .done(function( data ) {
-					    $.alert({
-							    title: 'Alert!',
-							    content: 'Data has been deleted!',
-							    confirm: function(){
-							    }
-							});
-					    location.hash="prod";
-					    location.reload();
-					  });
-		        },
-		        cancel: function () {
-		           /* alert('Vacation cancelled!');*/
-		        }
-		    });
-			});
-	 	 $('.update_products').click(function(){
-			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
-			     var products   	  = $(this).closest('tr').children('td:eq(1)').text();
-			     // var status   	  = $(this).closest('tr').children('td:eq(3)').text();
-			      $('.prod_id').val(id);
-			      $('.prod_name').val(products);
-
-			     //  if(status==1){
-			     //  $('.activate').prop('checked', true);
-			  	  // }else{
-			  	  // 	  $('.deactivate').prop('checked', true);
-			  	  // }
-			 });
-	</script>
-	<?php
 	}
 
 
