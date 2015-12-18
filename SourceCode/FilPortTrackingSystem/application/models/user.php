@@ -384,10 +384,7 @@ Class User extends CI_Model
    return $query->result();
   }
 
-      function search_product($search_container){
-   $query = $this->db->query("select * from Products WHERE ProductsName LIKE '%$search_container%' order by ProductId  ");
-   return $query->result();
-  }
+
   //for searching end
 
 //for pagimation start
@@ -429,10 +426,6 @@ Class User extends CI_Model
    function findlimit_container($page_position,$item_per_page)
   {
    return $this->db->get('Container',$page_position, $item_per_page)->result();
-  }
- function findlimit_product($page_position,$item_per_page)
-  {
-   return $this->db->get('Products',$page_position, $item_per_page)->result();
   }
 
 

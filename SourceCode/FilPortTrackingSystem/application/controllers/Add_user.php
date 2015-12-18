@@ -106,7 +106,7 @@ class Add_user extends CI_Controller {
 
                                         
                              ));
-                                 /* $this->success_register();*/
+                                  $this->success_register();
                                 }
 
                  
@@ -245,26 +245,21 @@ class Add_user extends CI_Controller {
      }
 
 
-    function add_vessel(){
-              $vessels = $this->input->post('vessels');
-              $shipper = $this->input->post('shipper');
-              $vesno = $this->input->post('vesno');
+    function add_carrier(){
+              $carrier = $this->input->post('carrier');
               
 
-                  $query= $this->db->query("Select * from ShipperVessel where Vesselname = '$vessels' and 
-                   ShipperId='$shipper' limit 1");
+                  $query= $this->db->query("Select * from Carrier where CarrierName = '$carrier' limit 1");
             
             if($query->num_rows() ==1){
              $this->session->failed = 'failed';
 
             }else{
                $data = array(
-                  'Vesselname' => $vessels,
-                  'ShipperId' => $shipper,
-                  'VesselNo' => $vesno
+                  'CarrierName' => $carrier
                   );
 
-            $this->db->insert('ShipperVessel', $data); 
+            $this->db->insert('Carrier', $data); 
              $this->session->success = 'success';    
           }
           redirect('Login_user/settings/#vessel');

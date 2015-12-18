@@ -196,40 +196,21 @@ function vessel(){
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				        <h4 class="modal-title">ADD NEW CARRIER</h4>
 				      </div>
-				      <div class="modal-body">
-						<form action="'.base_url('Add_user/add_vessel/').'" method="post">
-							<div class="">
+				      <div class="modal-body" >
+						<form action="'.base_url('Add_user/add_carrier/').'" method="post">
 					            <div class="form-group col-md-12">
-					                <input type="text" name="vessels" class="form-control" placeholder="Shipping Lines/Carrier" required/>
+					                <input type="text" name="carrier" class="form-control" placeholder="Shipping Line/Carrier" required/>
 					            </div>
-					        </div>
-					        ';?>
-					        
-				   
+					  
 
-					        <div class="">
-					            <div class="form-group  col-md-12 myselect">
-					            	<label style="margin-left: 10px;"> Shipper : </label>
-					               <select name="shipper" class="form-control">
-					            	<?php  foreach($drop as $row){  ?> 
-					                <option value="<?php echo $row->ShipperId ?>">
-					                <?php echo $row->ShipperName ?>
-					                </option> 
-					             <?php }?>
-					               </select>
-					            </div>
-					        </div>
-	
-						 
-		  <?php   echo'     <div class="">
-					        	<div class="form-group col-md-12">
-					            	<button type="submit" class="pull-right btn btn-default">Submit</button>
-					            </div>	
-					        </div>
+						       <div class="footer-modal">
+						       		<hr>
+						           <button type="submit" class="btn btn-default">Submit</button>
+						       </div>
 			   	 		</form>
-						<div class="modal-footer">
-				      </div>	
-					</div>	
+			   	 	  </div>
+				    </div>	
+				   </div>	
 				</div>';
 }
 

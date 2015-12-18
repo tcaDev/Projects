@@ -321,8 +321,8 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="btn delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							        <td><button class="btn update_contacts_consignee btn-default" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="btn delete_contacts_consignee btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -474,8 +474,8 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.$row->LastName.'</td>       
 							        <td contenteditable="true">'.$row->ContactNo1.'</td>
 							        <td contenteditable="true">'. $row->ContactNo2. '</td>
-							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="delete_contacts"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							        <td><button class="update_contacts btn btn-default" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+							  			<button class="delete_contacts btn btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -754,7 +754,7 @@ if(isset($_SESSION['success'])){
 						    <td class="hidden">'.$row->FirstName.' </td>
 						    <td class="hidden">'.$row->MiddleName.' </td>
 						    <td class="hidden">'.$row->LastName.' </td>		
-					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					         <td><button type="button" class="btn get_broker_datas btn-default" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        
 					      
 					      </tr>';}
@@ -878,7 +878,7 @@ function search_shipper(){
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
 					       	<td>'.$stat .'</td>
 						    <td  class="hidden">'. $mystat .'</td>  				   
-					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td><button type="button" class="btn get__shipper_datas btn-default" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					      
 					      </tr>';}
 
@@ -1073,7 +1073,7 @@ function search_vessel(){
 							        <td>'.$row->CarrierName.'</td>      
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_vessels btn-default" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
 
@@ -1220,7 +1220,7 @@ $this->message();
 							        <td>'.$row->TIN.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_hauler btn-default" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							       
 					    	  </tr>';}
 
@@ -1337,7 +1337,7 @@ $this->message();
 							        <td>'.$row->ForwarderWarehouseName.'</td>
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							         <td><button type="button" class="btn update_forwards btn-default" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}
 
@@ -1468,7 +1468,7 @@ $this->message();
 				        '.$pick1.'
 				         <td>'.$stat .'</td>
 						 <td  class="hidden">'. $mystat .'</td> 
-				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+				         <td><button type="button" class="btn update_legend btn-default" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
     </tbody>
@@ -1640,7 +1640,7 @@ function search_product(){
 			    echo  '<tr>
 					        <td>'.$row->ProductId.'</td>
 					        <td>'.$row->ProductName.'</td>
-					         <td><button type="button" class="btn update_products" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					         <td><button type="button" class="btn update_products btn-default" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					       
 			    	  </tr>';}
 			?>
