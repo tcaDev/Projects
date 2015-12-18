@@ -131,7 +131,7 @@
 
 				          <th>Description of Goods</th>
 
-				          <th>House Bill of Lading No.</th>
+				          <th>House Airway Bill </th>
 
 				          <th>Master Bill of Landing No.</th>
 

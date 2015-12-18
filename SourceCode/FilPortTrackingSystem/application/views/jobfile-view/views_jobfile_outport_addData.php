@@ -60,17 +60,17 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Lading No.:</label>
+								  <label for="hbl">House Bill Lading No. :</label>
 								  <input type="text" class="form-control input-sm" name="hbl" id="hbl">
 								</div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Lading No1.:</label>
+								  <label for="mbl">Master Bill of Lading No 1.:</label>
 								  <input type="text" class="form-control input-sm" name="mbl" id="mbl">
 								 </div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Lading No2.:</label>
+								  <label for="mbl">Master Bill of Lading No 2.:</label>
 								  <input type="text" class="form-control input-sm text-uppercase" name="mbl2" placeholder="optional" id="mbl2">
 								</div>
 
@@ -307,7 +307,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Start of Demorage</label>
+								<label>Start of Demurrage </label>
 								<input type="datetime-local" name="strtdmrage" class="form-control input-sm demorage-outport" />
 							</div>
 
@@ -355,7 +355,7 @@
 								        <th>Estimated Arrival Time</th>
 								        <th>Actual Arrival Time</th>
 								        <th>Start of Storage</th>
-								        <th>Start of Demorage</th>
+								        <th>Start of Demurrage </th>
 								        <th>Lodging</th>
 								        <th class="">Hauler value</th> 
 								        <th>Hauler</th>

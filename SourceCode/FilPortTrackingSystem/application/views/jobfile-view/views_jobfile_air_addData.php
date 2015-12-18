@@ -41,13 +41,13 @@
 						  <label for="pipo">PI / PO No.:</label>
 						  <input type="text" class="form-control input-sm" id="pipo">
 
-						  <label for="hbl">House Bill of Landding No.:</label>
+						  <label for="hbl">House Airway Bill:</label>
 						  <input type="text" class="form-control input-sm" id="hbl">
 
-						  <label for="mbl">Master Bill of Landing No1.:</label>
+						  <label for="mbl">Master Bill of Lading No1.:</label>
 						  <input type="text" class="form-control input-sm" id="mbl">
 
-						  <label for="mbl">Master Bill of Landing No2.:</label>
+						  <label for="mbl">Master Bill of Lading No2.:</label>
 						  <input type="text" class="form-control input-sm text-uppercase" placeholder="optional" id="mbl2">
 
 						  <label for="origin">Origin:</label>

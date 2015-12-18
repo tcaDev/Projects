@@ -88,17 +88,17 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;">*</i> -->
+								  <label for="hbl">House Bill of Lading No.:</label><!-- <i style="color:red;">*</i> -->
 								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
 								</div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Landing No1.:</label>
+								  <label for="mbl">Master Bill of Lading No 1.:</label>
 								  <input type="text" class="form-control input-sm mbl" name="mbl" id="mbl">
 								 </div>
 
 								<div class="form-group">
-								  <label for="mbl">Master Bill of Landing No2.:</label>
+								  <label for="mbl">Master Bill of Lading No 2.:</label>
 								  <input type="text" class="form-control input-sm mbl2" name="mbl2" placeholder="Optional" id="mbl2">
 								</div>
 
@@ -334,7 +334,7 @@
 
 							<div class="form-group">
 
-							<label>Shipping Lines/Carrier</label><i style="color:red;">*</i>
+							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
 								<select class="form-control carrier" name="countries">
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
@@ -400,7 +400,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Start of Demorage</label>
+								<label>Start of Demurrage </label>
 								<input type="datetime-local" name="strtdmrage" class="form-control input-sm demorage" />
 							</div>
 
@@ -455,7 +455,7 @@
 						        <th>Estimated Arrival Time</th>
 						        <th>Actual Arrival Time</th>
 						        <th>Start of Storage</th>
-						        <th>Start of Demorage</th>
+						        <th>Start of Demurrage </th>
 						        <th>Lodging</th>
 						        <!-- <th>Hauler</th> -->
 						        <th>Target Delivery Date</th>

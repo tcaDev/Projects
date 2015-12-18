@@ -6,11 +6,11 @@
 
 		  <ul class="nav nav-tabs">
 
-		    <li id="manila" class="active"><a role="button">MANILA</a></li>
+		    <li id="manila" class="active"><a role="button">SEA FREIGHT MANILA</a></li>
 
-		    <li id="outport"><a role="button">OUTPORT</a></li>
+		    <li id="outport"><a role="button">SEA FREIGHT OUTPORT</a></li>
 
-		    <li id="air"><a role="button">AIR</a></li>
+		    <li id="air"><a role="button">AIR FREIGHT</a></li>
 
 		  </ul>
 

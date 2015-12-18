@@ -114,7 +114,7 @@
 
 								          <th >Registry</th>
 
-								          <th>Shipping Lines/Carrier</th>
+								          <th>Shipping Line/Carrier</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
