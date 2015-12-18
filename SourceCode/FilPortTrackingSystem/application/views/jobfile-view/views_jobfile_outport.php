@@ -21,11 +21,7 @@
 						<!-- Update -->
 
 					<!-- Trigger the modal with a button -->
-
-					 
-
-
-					  <!-- Modal -->
+			  <!-- Modal -->
 
 					   <div class="modal fade" id="myModal-2-1" role="dialog">
 
