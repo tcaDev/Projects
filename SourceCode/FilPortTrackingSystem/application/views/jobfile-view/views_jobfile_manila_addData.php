@@ -63,8 +63,7 @@
 				           	
 
 				           	<div class="form-group">
-								<label>Color Stages</label> <i style="color:red;">*</i>
-									<select name="colors" class="form-control colsel input-sm" >
+								<label>Color Stages</label> 									<select name="colors" class="form-control colsel input-sm" >
 									  	<option value="0" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusId;
@@ -77,7 +76,7 @@
 									    </option> 
 									 	<?php }?>
 									</select>
-									<i class="colsel-msg" style="color:red;"></i>
+									
 							</div>
 
 				           </div>
@@ -88,8 +87,10 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Lading No.:</label><!-- <i style="color:red;">*</i> -->
+
+								  <label for="hbl">House Bill of Lading No.:</label><i style="color:red;">*</i>
 								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
+								  <i class="colsel-msg" style="color:red;"></i>
 								</div>
 
 								<div class="form-group">
@@ -252,18 +253,15 @@
 							</div>
  -->
 							<div class="form-group">
-								<label>Container Number</label> <i style="color:red;">*</i>
+								<label>Container Number</label>
 								<select class="containers-prod form-control input-sm"> 
 
 								</select>
-								<i class="cont-size-msg" style="color:red;"></i>
+								
 		
 							</div>
 
-							<div class="form-group">
-								  	<label for="dtClrd">Date Cleared BOC:</label>
-								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
-								</div>
+							
 				  		</div>
 
 				  		<div class="col-lg-6">
@@ -299,7 +297,6 @@
 							    	 	<th class="hidden">Product Value</th>
 								        <th>Product Name</th>
 								        <th>Container</th>
-								        <th>Date Cleared BOC</th>
 								        <th class="hidden">Origin Value</th>
 								        <th>Origin Country ID</th>
 								        <th>Origin City</th>
@@ -317,18 +314,18 @@
 				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Container Number</label><i style="color:red;">*</i>
+								<label>Container Number</label>
 							     
 					        		<input type="text" class="containerss form-control input-sm">
-							<i class="container-msg" style="color:red;"></i>
+							
 					        	
 							</div>
 
 							<div class="form-group">
-								<label>Container Size</label><i style="color:red;">*</i>
+								<label>Container Size</label>
 							     
 					        		<input type="text" class="containerss-size form-control input-sm">
-								<i class="container-size-msg" style="color:red;"></i>
+								
 					        	
 							</div>
 
@@ -346,9 +343,9 @@
 							</div>
 
 							<div class="form-group">
-								<label>Vessel</label> <i style="color:red;">*</i>
+								<label>Vessel</label> 
 								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
-								<i class="vessel-vessel-msg" style="color:red;"></i>
+							
 							</div>
 
 						
@@ -380,6 +377,10 @@
 							</div>
 
 							
+							<div class="form-group">
+								<label>Actual Arrival Time</label>
+								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
+							</div>
 
 					  	</div>
 					  	
@@ -389,10 +390,7 @@
 
 					  	<div class="col-lg-6">
 
-					  		<div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
-							</div>
+					  		
 
 					  		<div class="form-group">
 								<label>Start of Storage</label>
@@ -434,6 +432,11 @@
 								<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse" />
 							</div>
 
+							<div class="form-group">
+								  	<label for="dtClrd">Date Cleared BOC:</label>
+								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
+							</div>
+
 							<button type="button" class="btn-Add-Container-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
 					  		<i class="table-msg" style="color:red;"></i>
 
@@ -462,6 +465,7 @@
 						        <th>Gate In at Port</th>
 						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
+						        <th>Date Cleared BOC</th>
 						        <th></th>
 						      </tr>
 					      </thead>
@@ -564,15 +568,12 @@
 									<input type="text" name="bad-cargo" class="form-control input-sm" />
 								</div>
 
-								<div class="form-group">
-									<label>All Charges</label>
-									<input type="text" name="all-charges" class="form-control input-sm" />
+								<div style="text-align:right;">
+									<button type="button" class="btn btn-primary "><span class=" fa fa-th-list fa-fw"></span> Particular Charges</button>
+									<button type="button" class="btn btn-primary "><span class=" fa fa-th-list fa-fw"></span> All Charges</button>	
 								</div>
+								
 
-								<div class="form-group">
-									<label>Particular Charges</label>
-									<input type="text" name="part-charges" class="form-control input-sm" />
-								</div>
 						</div>
 					</div>
 				</div>
@@ -714,9 +715,9 @@
 			{
 				$('.consignee-msg').text("Need Consignee");
 			}
-			else if($('.colsel').val() == "0")
+			else if($('.hbl').val() == '')
 			{
-				$('.colsel-msg').text("Need Color Stages");
+				$('.colsel-msg').text("Need House Bill of Lading No.");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -761,9 +762,9 @@
 			{
 				$('.consignee-msg').text("Need Consignee");
 			}
-			else if($('.colsel').val() == "0")
+			else if($('.hbl').val() == '')
 			{
-				$('.colsel-msg').text("Need Color Stages");
+				$('.colsel-msg').text("Need House Bill of Lading No.");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -850,9 +851,9 @@
 			{
 				$('.consignee-msg').text("Need Consignee");
 			}
-			else if($('.colsel option:selected').val() == "0")
+			else if($('.hbl').val() == '')
 			{
-				$('.colsel-msg').text("Need Color Stages");
+				$('.colsel-msg').text("Need House Bill of Lading No.");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -1023,25 +1024,13 @@ $('.table-remove-cont').click(function () {
 			{	
 				$('.container-msg').text("Container Number Already Exists.");
 			}
-			else if($('#tableAddContainer-mnla .containerss').val() == "")
-			{
-				$('.container-msg').text("Need Container Number.");
-			}
-			else if($('#tableAddContainer-mnla .containerss-size').val() == "")
-			{
-				$('.container-size-msg').text("Need Container Size.");
-			}
-			else if($('#tableAddContainer-mnla .vessel').val() == "")
-			{
-				$('.vessel-vessel-msg').text("Need Vessel.");
-			}
 			else if($('#tableAddContainer-mnla .carrier').val() == "0")
 			{
-				$('.carrier-msg').text("Need Carrier.");
+				$('.carrier-msg').text("Need Shipping Line/Carrier.");
 			}
 			else{
 
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
@@ -1062,7 +1051,9 @@ $('.table-remove-cont').click(function () {
 	                  $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
 	                   $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
 	                    $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
+
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
@@ -1090,6 +1081,7 @@ $('.table-remove-cont').click(function () {
 			$('#tableAddContainer-mnla .gtinport').val('');
 			$('#tableAddContainer-mnla .gtoutport').val('');
 			$('#tableAddContainer-mnla .act-del-whse').val('');
+			$('#tableAddContainer-mnla .dt_boc').val('');
 			}
 
 		
@@ -1127,23 +1119,18 @@ $('.table-remove-cont').click(function () {
 			{
 				$('.prodname-msg').text("Need Product Name.");
 			}
-			else if($('#tableAddTruck-mnla .containers-prod').val() == "")
-			{
-				$('.cont-size-msg').text("Need Container Size.");
-			}
 			else if($('#tableAddTruck-mnla .origin').val() == "")
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>');
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
 				$('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val()).hide();
 			 	$('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".prodname option:selected").text());
 			    $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".dt_boc").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
-			       	$('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
+			       	$('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			
 			$('#tableAddTruck-mnla .PON').val('');
