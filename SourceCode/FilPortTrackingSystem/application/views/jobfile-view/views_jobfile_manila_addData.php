@@ -12,6 +12,7 @@
 			    <li id="btn-jobfile-mnla-add" class="active"><a role="button">Jobfile</a></li>
 			    <li id="btn-container-mnla-add"><a role="button">Container</a></li>
 			    <li id="btn-truck-mnla-add"><a role="button">Description of Goods</a></li>
+			    <li id="btn-vessel-mnla-add"><a role="button">Vessel</a></li>
 			    <li id="btn-charges-mnla-add"><a role="button">Running Charges</a></li>
 			  </ul>
     	<hr>
@@ -115,15 +116,7 @@
 						</div>
 
 					<div class="col-lg-4">
-								 <div class="form-group">
-								  	<label for="dtClrd">Vessel Arrival Time</label>
-								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
-								 </div>
-
-								<div class="form-group">	 
-								    <label for="dtClrd">Vessel Discharge Time</label>
-								 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
-								 </div>
+								
 
 								<div class="form-group">
 								  <label for="dtRcvd">Date Received Arrival Notice From Client / SLINE:</label>
@@ -342,11 +335,7 @@
 									<i class="carrier-msg" style="color:red;"></i>
 							</div>
 
-							<div class="form-group">
-								<label>Vessel</label> 
-								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
 							
-							</div>
 
 						
 							<div class="form-group">
@@ -450,7 +439,6 @@
 						      	<th>Container Size</th>
 						      	<th class="hidden">Vessel Value</th>
 						        <th>Shipping Lines / Carrier</th>
-						        <th>Vessel</th>
 						        <th>Number of Cartons</th>
 						        <th>Trucker Plate No.</th>
 						        <th>Trucker Name</th>
@@ -474,6 +462,51 @@
 
 
 					</div>
+
+
+					<div id="tableAddVessel-mnla" class="hidden pill-vessel-mnla-add table-editable col-lg-12">
+						
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>Vessel/Voyage #</label> 
+								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
+							</div>
+
+							 <div class="form-group">
+								  	<label for="dtClrd">Actual Verting Time of Vessel</label>
+								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
+								 </div>
+
+							
+						</div>
+
+						<div class="col-lg-6">
+
+							<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
+							 </div>
+
+							<button type="button" class="btn-Add-Vessel-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Vessel</button>
+						</div>
+					
+
+						<div style="width: 100%; overflow-x: auto;">
+						    <table class="table" style="width: 1000px;" border="1">
+
+							    <thead>
+							    	 <tr>
+								        <th>Vessel/Voyage #</th>
+								        <th>Actual Verting Time of Vessel</th>
+								        <th>Discharge Time of Vessel</th>
+								        <th></th>
+							      	</tr>
+							    </thead>
+						    </table>
+						</div>
+
+					</div>
+
 					<div class="hidden pill-charges-mnla-add table-editable col-lg-12">
 						
 						<div class="col-lg-6">
@@ -591,92 +624,6 @@
   </div>
 
 
-
-
-<!-- Form Restriction -->
-
-<script>
-	
-	/*$(document).ready(function(){
-		 $('.btn-Next').attr('disabled', 'disabled');
-		 $('#btn-container-mnla-add').attr('disabled', 'disabled');
-
-		 $('.required-fields .jobfiles').click(function() {
-		        if($('.required-fields .shipper').val() == "")
-				{
-					$('.btn-Next').attr('disabled', 'disabled');
-					$('#btn-container-mnla-add').attr('disabled', 'disabled');
-				}else if($('.required-fields .consignee').val() =="")
-				{
-					$('.btn-Next').attr('disabled', 'disabled');
-					$('#btn-container-mnla-add').attr('disabled', 'disabled');
-				}else if($(this).val() == ""){
-					$('.btn-Next').attr('disabled', 'disabled');
-					$('#btn-container-mnla-add').attr('disabled', 'disabled');
-				}
-				else if($('#check_jobfiles').text() == "Jobfile is already exists")
-				{
-					$('.btn-Next').attr('disabled', 'disabled');
-					$('#btn-container-mnla-add').attr('disabled', 'disabled');
-				}else
-				{
-					$('.btn-Next').removeAttr('disabled');
-				}
-	    });
-
-						$('.required-fields .shipper').click(function(){
-							if($('.required-fields .jobfiles').val() == "")
-							{
-								$('.btn-Next').attr('disabled', 'disabled');
-								$('#btn-container-mnla-add').attr('disabled', 'disabled');
-							}else if($('.required-fields .consignee').val() =="")
-							{
-								$('.btn-Next').attr('disabled', 'disabled');
-								$('#btn-container-mnla-add').attr('disabled', 'disabled');
-							}else if($(this).val() == ""){
-								$('.btn-Next').attr('disabled', 'disabled');
-								$('#btn-container-mnla-add').attr('disabled', 'disabled');
-							}
-							else if($('#check_jobfiles').text() == "Jobfile is already exists")
-							{
-								$('.btn-Next').attr('disabled', 'disabled');
-								$('#btn-container-mnla-add').attr('disabled', 'disabled');
-							}else
-							{
-								$('.btn-Next').removeAttr('disabled');
-							}
-						});
-
-
-													$('.required-fields .consignee').click(function(){
-														if($('.required-fields .jobfiles').val() == "")
-														{
-															$('.btn-Next').attr('disabled', 'disabled');
-															$('#btn-container-mnla-add').attr('disabled', 'disabled');
-
-														}else if($('.required-fields .shipper').val() =="")
-														{
-															$('.btn-Next').attr('disabled', 'disabled');
-															$('#btn-container-mnla-add').attr('disabled', 'disabled');
-														}else if($(this).val() == ""){
-															$('.btn-Next').attr('disabled', 'disabled');
-															$('#btn-container-mnla-add').attr('disabled', 'disabled');
-														}
-														else if($('#check_jobfiles').text() == "Jobfile is already exists")
-														{
-															$('.btn-Next').attr('disabled', 'disabled');
-															$('#btn-container-mnla-add').attr('disabled', 'disabled');
-														}else
-														{
-															$('.btn-Next').removeAttr('disabled');
-														}
-													});
-
-
-
-	});*/
-</script>
-
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
 	$('.colsel').change(function(){
@@ -729,8 +676,10 @@
 			$('#btn-jobfile-mnla-add').removeClass('active');
 			$('#btn-truck-mnla-add').removeClass('active');
 			$('#btn-charges-mnla-add').removeClass('active');
+			$('#btn-vessel-mnla-add').removeClass('active');
 
 			$('.pill-jobfile-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').addClass('hidden');
 			$('.pill-truck-mnla-add').addClass('hidden');
 			$('.pill-charges-mnla-add').addClass('hidden');
 			$('.pill-container-mnla-add').removeClass('hidden');
@@ -777,11 +726,13 @@
 					$('#btn-jobfile-mnla-add').removeClass('active');
 					$('#btn-container-mnla-add').removeClass('active');
 					$('#btn-charges-mnla-add').removeClass('active');
+					$('#btn-vessel-mnla-add').removeClass('active');
 
 					$('.pill-jobfile-mnla-add').addClass('hidden');
 					$('.pill-truck-mnla-add').removeClass('hidden');
 					$('.pill-charges-mnla-add').addClass('hidden');
 					$('.pill-container-mnla-add').addClass('hidden');
+					$('.pill-vessel-mnla-add').addClass('hidden');
 					$('.test_data').addClass('hidden');
 
 					$('.btn-Next').removeClass('hidden');
@@ -800,12 +751,14 @@
 			$('#btn-jobfile-mnla-add').removeClass('active');
 			$('#btn-container-mnla-add').removeClass('active');
 			$('#btn-truck-mnla-add').removeClass('active');
+			$('#btn-vessel-mnla-add').removeClass('active');
 			$('.test_data').removeClass('hidden');
 
 			$('.pill-jobfile-mnla-add').addClass('hidden');
 			$('.pill-truck-mnla-add').addClass('hidden');
 			$('.pill-charges-mnla-add').removeClass('hidden');
 			$('.pill-container-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').addClass('hidden');
 
 			$('.btn-Next').addClass('hidden');
 		});
@@ -819,11 +772,13 @@
 			$('#btn-charges-mnla-add').removeClass('active');
 			$('#btn-container-mnla-add').removeClass('active');
 			$('#btn-truck-mnla-add').removeClass('active');
+			$('#btn-vessel-mnla-add').removeClass('active');
 
 			$('.pill-jobfile-mnla-add').removeClass('hidden');
 			$('.pill-truck-mnla-add').addClass('hidden');
 			$('.pill-charges-mnla-add').addClass('hidden');
 			$('.pill-container-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').addClass('hidden');
 			$('.test_data').addClass('hidden');
 
 			$('.btn-Next').removeClass('hidden');
@@ -876,51 +831,60 @@
 			}else if(i==3){
 				$("#btn-charges-mnla-add").click();
 			}
+			else if(i==4){
+				$("#btn-vessel-mnla-add").click();
+			}
+
+		});
+
+
+		$('#btn-vessel-mnla-add').on('click',function(){
+			
+			if($('.required-fields .jobfiles').val() == "")
+			{
+				$('.jobfile-msg').text("Need Jobfile");
+			}
+			else if($('.required-fields .shipper').val() == "")
+			{
+				$('.shipper-msg').text("Need Shipper");
+			}
+			else if($('.required-fields .consignee').val() == "")
+			{
+				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.hbl').val() == '')
+			{
+				$('.colsel-msg').text("Need House Bill of Lading No.");
+			}
+			else if($('.reference').val() == "")
+			{
+				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else{
+
+			$(this).addClass('active');
+			$('#btn-jobfile-mnla-add').removeClass('active');
+			$('#btn-truck-mnla-add').removeClass('active');
+			$('#btn-charges-mnla-add').removeClass('active');
+			$('#btn-container-mnla-add').removeClass('active');
+
+
+			$('.pill-jobfile-mnla-add').addClass('hidden');
+			$('.pill-truck-mnla-add').addClass('hidden');
+			$('.pill-charges-mnla-add').addClass('hidden');
+			$('.pill-container-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').removeClass('hidden');
+
+			$('.test_data').addClass('hidden');
+
+			$('.btn-Next').removeClass('hidden');
+				i=4;}
 
 		});
 
 });
 
-
 </script>
-
-
-<script>
-/*
------------------------------
-Truck Table Adding row table  : agrc(12/8/15)
------------------------------
-*/
-
-var truck= $('.tableAddTruck');
-
-$('.table-add-truck').click(function () {
-  var $clone = truck.find('tr.hide').clone(true).removeClass('hide table-line');
-  truck.find('table').append($clone);
-});
-
-
-</script>
-
-<script>
-/*
------------------------------
-Container Table Adding row table  : agrc(12/8/15)
------------------------------
-*/
-
-
-$('.table-remove-cont').click(function () {
-  $(this).parents('tr:last').remove();
-});
-
-</script>
-
-
-
-
-
-
 
 
 <script>
@@ -996,6 +960,12 @@ $('.table-remove-cont').click(function () {
     	$(this).closest("tr").remove();
 
 	});
+
+		$('#tableAddVessel-mnla').on('click', '.deleteButton', function() {
+
+    	$(this).closest("tr").remove();
+
+	});
 });
 	$(document).ready(function(){
 
@@ -1030,44 +1000,40 @@ $('.table-remove-cont').click(function () {
 			}
 			else{
 
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_boc").val());
 
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname").val());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-dept").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
-
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
 			$('.container-size-msg').text('');
-			$('.vessel-vessel-msg').text('');
 			$('.truckplate-msg').text('');
 			$('.carrier-msg').text('');
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
 			$('#tableAddContainer-mnla .containerss-size').val('');
-			$('#tableAddContainer-mnla .vessel').val('');
 			$('#tableAddContainer-mnla .plate').val('');
 			$('#tableAddContainer-mnla .truckname').val('');
 			$('#tableAddContainer-mnla .cartons').val('');
@@ -1144,6 +1110,20 @@ $('.table-remove-cont').click(function () {
 				
 
 			});
+
+
+	$(".btn-Add-Vessel-Data-mnla").click(function(){
+		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td></tr>');
+		$('#tableAddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel").val());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(2)').html($(".vat").val());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(3)').html($(".vdt").val());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(4)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+
+		$('#tableAddVessel-mnla .vessel').val('');
+		$('#tableAddVessel-mnla .vat').val('');
+		$('#tableAddVessel-mnla .vdt').val('');
+
+	});
 		
 
 		$(".btn-Add-Product-Alert-mnla").click(function(){

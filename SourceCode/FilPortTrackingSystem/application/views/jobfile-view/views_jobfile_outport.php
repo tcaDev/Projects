@@ -107,15 +107,13 @@
 
 					          <th >Jobfile Number</th>
 
-					          <th >Color Selectivity</th>
+					          <th >Color Stages</th>
 
 					          <th >Shipper</th>
 
 					          <th >Consignee</th>
 
 					          <th >Number of Cartons</th>
-
-					          <th >Container Size</th>
 
 					          <th >Description of Goods</th>
 
@@ -129,29 +127,15 @@
 
 					          <th >Letter of Credit No. from Bank</th>
 
-					          <th >Origin</th>
-
-					          <th >Estimated Time of Departure</th>
-
-					          <th >Estimated Time of Arrival</th>
-
-					          <th >Actual Time of Arrival</th>
-
-					          <th >Start of Demorage</th>
-
-					          <th >Start Storage</th>
-
 					          <th >Registry</th>
 
-					          <th >Vessel / Voyage no.</th>
-
-					          <th>Carrier</th>
+					          <th>Shipping Line/Carrier</th>
 
 					          <th >Date Recieved Arrival Notice from Client/s</th>
 
-					          <th >Date Pick-up / Recieved O-BL</th>
+					          <th >Date Pick-up/Recieved O-BL</th>
 
-					          <th >Date Pick-up / Recieved other Documents</th>
+					          <th >Date Pick-up/Received other Documents</th>
 
 					          <th >Broker</th>
 
@@ -169,8 +153,6 @@
 
 					          <th >Date Paid (Date&Time)</th>
 
-					          <th >Date Cleared BOC</th>
-
 					          <th >Target Delivery Date</th>
 
 					          <th>Actual P-Out Date of Container</th>
@@ -187,6 +169,7 @@
 
 				    
 				            <tr>
+
 								         
 					          <td></td>
 
@@ -196,8 +179,6 @@
 
 					          <td></td>
 					          
-					          <td></td>
-
 					          <td></td>
 
 					          <td></td>
@@ -233,22 +214,6 @@
 					          <td></td>
 					        
 					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td>></td>
 
 					          <td></td>
 

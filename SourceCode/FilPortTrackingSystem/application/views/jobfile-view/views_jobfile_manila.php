@@ -159,8 +159,8 @@
 
 				        				?>
 				            <tr>
-								         <td class="list_goods hidden"><?php echo $row->ContainerByVesselId;?>   </td>
-								         <td class="list_containers hidden "><?php echo $row->VesselByJobFileId;?>   </td>
+								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
+								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
 								          <td><?php echo $i;?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 
