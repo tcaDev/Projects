@@ -1,34 +1,4 @@
-
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-	<?php $this->load->view('header/header'); ?>
-
-	
-
-</head>
-
-
-
-<body>
-
-	<div class="container container-case">
-
-
-
-	<!-- Header -->
-
-		<?php $this->load->view('header/views_header'); ?>
-
-	<!-- End HEader -->
-
-
-
-		<div class="cont-ship">
+	<div class="cont-ship">
 
 			<h5>Shipper : Harvey Fresh</h5>
 
@@ -146,11 +116,6 @@
 
 		</div>
 
-	</div>
-
-</body>
-
-</html>
 
 
 

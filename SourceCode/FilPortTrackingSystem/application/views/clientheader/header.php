@@ -103,7 +103,7 @@
 
 	 $(document).ready(function(){
 	 	$('.home-btn').click(function(){
-	 		window.location.href="<?php echo base_url('Login_user/menu/');?>";
+	 		window.location.href="<?php echo base_url('Login_user/clientmenu/');?>";
 	 	});
 	
 	 	$('.img-user').click(function(){
