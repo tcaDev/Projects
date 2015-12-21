@@ -321,27 +321,10 @@ class Job extends CI_Controller {
    
  
 
-  //for sp_AddVesselByJobFile   2nd proc
-   $vessel          =  $this->input->post('vesselid');
-   $cartons         =  $this->input->post('cartons_no');
-   $vat             =$this->input->post('vat');
-   $vdt             =$this->input->post('vdt');
 
 
- //for sp_AddContainerByVessel   3rd proc
-   $container       =  $this->input->post('containerId');
-   $plateno         =  $this->input->post('trucker_plate');
-   $truckername     =  $this->input->post('trucker_name');
-   $edt             =  $this->input->post('edt');
-   $eat             =  $this->input->post('eat');
-   $aat             =  $this->input->post('aat');
-   $start_storage   =  $this->input->post('start_storage');
-   $start_demorage  =  $this->input->post('start_demorage');
-   $lodging         =  $this->input->post('lodging');
-   $tdt             =  $this->input->post('tdt');
-   $gip             =  $this->input->post('gip');
-   $gop             =  $this->input->post('gop');
-   $adw             =  $this->input->post('adw');
+
+
 
 
 
@@ -382,25 +365,30 @@ class Job extends CI_Controller {
                              'P_DateReceivedNoticeFromForwarder'       =>NULL,
                              'P_UserId'                                => $userid 
                           ));
-
-                                    //2nd proc
-                    $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?)";
-                    $this->db->query($add_vessel,
-                     array(
-                      'P_JobFileId'           => $job,
-                      'P_Carrier'             => $vessel,
-                      'P_ArrivalTime'         => $vat,
-                      'P_DischargeTime'       => $vdt,
-                      'P_UserId'              => $userid
-                    ));
-
             }
-   
+     
 
-                //
-      
+   }
+   function add_description(){
+      //for sp_AddVesselByJobFile   2nd proc
+   $job             =  $this->input->post('jbfl');
+   $vessel          =  $this->input->post('vesselid');
+   $cartons         =  $this->input->post('cartons_no');
+   $vat             =  $this->input->post('vat');
+   $vdt             =  $this->input->post('vdt');
 
-          
+      //2nd proc
+   $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?)";
+    $this->db->query($add_vessel,
+    array(
+                   'P_JobFileId'           => $job,
+                   'P_Carrier'             => $vessel,
+                   'P_ArrivalTime'         => $vat,
+                   'P_DischargeTime'       => $vdt,
+                   'P_UserId'              => $userid
+          ));             
+   }
+  function add_container (){
 
            //for getting the last insert in P_VesselByJobFileId start
                $table ='CarrierByJobFile';
@@ -409,12 +397,28 @@ class Job extends CI_Controller {
               //for getting the last insert in P_VesselByJobFileId end
 
 
+ //for sp_AddContainerByVessel   3rd proc
+   $container       =  $this->input->post('containerId');
+   $plateno         =  $this->input->post('trucker_plate');
+   $consize         =  $this->input->post('consize');
+   $truckername     =  $this->input->post('trucker_name');
+   $trucker_id      =  $this->input->post('trucker_id');
+   $edt             =  $this->input->post('edt');
+   $eat             =  $this->input->post('eat');
+   $aat             =  $this->input->post('aat');
+   $start_storage   =  $this->input->post('start_storage');
+   $start_demorage  =  $this->input->post('start_demorage');
+   $lodging         =  $this->input->post('lodging');
+   $tdt             =  $this->input->post('tdt');
+   $gip             =  $this->input->post('gip');
+   $gop             =  $this->input->post('gop');
+   $adw             =  $this->input->post('adw');
              //3rd proc
              $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
-                  'P_ContainerSize'         => 100,
+                  'P_ContainerSize'         => $consize,
                   'P_CarrierByJobFileId'     =>$VesselByJobFile,    // last inserted id from VesselByJobFIle table
                   'P_NoOfCartons'           => $cartons,
                   'P_TruckerName'           => $truckername,
@@ -423,7 +427,7 @@ class Job extends CI_Controller {
                   'P_ActualArrivalTime'     => $aat,
                   'P_StartOfStorage'        => $start_storage,
                   'P_Lodging'               => $lodging,  
-                  'P_HaulerOrTruckId'       => NULL,      //
+                  'P_HaulerOrTruckId'       => $trucker_id,      //
                   'P_TargetDeliveryDate'    => $tdt,
                   'P_GateInAtPort'          => $gip,
                   'P_GateOutAtPort'         => $gop,
@@ -433,8 +437,11 @@ class Job extends CI_Controller {
                   'P_UserId'                    =>$userid 
 
              ));
-   }
-function jobfile_add2(){
+
+
+
+  }
+function add_products(){
   $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
       //for sp_AddProducts   4th proc
@@ -443,7 +450,7 @@ function jobfile_add2(){
    $con_id               =  $this->input->post('con_id');   
    $origin_id            =  $this->input->post('origin_id');
    $origin_cty           =  $this->input->post('origin_cty');
-   $dt_boc               =  $this->input->post('dt_boc');
+/*   $dt_boc               =  $this->input->post('dt_boc');*/
    
    
   
@@ -464,13 +471,13 @@ function jobfile_add2(){
              $VesselByJobFile=1;
              }
                 //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?,?)";
+             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
                   'P_ProductId'           => $prodid, //la pa value  
                   'P_ContainerId'         => $con_id,
                   'P_VesselByJobFileId'   => $VesselByJobFile,
-                  'P_DateBOCCLeared'      => $dt_boc,
+                  /*'P_DateBOCCLeared'      => $dt_boc,*/
                   'P_Origin_CountryId'    => $origin_id,
                   'P_Origin_City'         => $origin_cty,
                   'P_UserId'              => $userid

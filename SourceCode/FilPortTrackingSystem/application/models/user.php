@@ -211,12 +211,14 @@ Class User extends CI_Model
      function dropdown_colors(){
     $this->db->select('StatusId,StatusName,ColorCode,IsActive,IsBackground');
     $this ->db -> from('Status');
+    $this->db->where('IsActive', 1);
     $query=$this->db->get();
     return $query->result();
   }
        function dropdown_hauler(){
     $this->db->select('*');
     $this ->db -> from('HaulerOrTruck');
+    $this->db->where('IsActive', 1);
     $query=$this->db->get();
     return $query->result();
   }

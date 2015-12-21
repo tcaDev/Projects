@@ -343,15 +343,21 @@
 								<input type="text" step="1" class="form-control input-sm cartons" id="cartons" name="numofcartons">
 							</div>
 
-							<div class="form-group">
-								<label>Trucker Plate No.</label>
-								<input type="text" name="trckplte" class="form-control input-sm plate" />
-								
+				
+						    <div class="form-group">
+								<label>Hauler/Truck Name</label>
+								<select class="form-control trckname" >
+										<?php foreach($hauler_data as $row){ ?>
+											 <option value="<?php echo $row->HaulerOrTruckId?>">
+											 <?php echo $row->HaulerOrTruck;?>
+											 </option>
+											<?php }?> 
+								</select>
 							</div>
 
 							<div class="form-group">
-								<label>Trucker Name</label>
-								<input type="text" name="trckname" class="form-control input-sm truckname" />
+								<label>Trucker Plate No.</label>
+								<input type="text" name="trckplte" class="form-control input-sm plate" />
 								
 							</div>
 
@@ -1000,30 +1006,37 @@
 			}
 			else{
 
-			$('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-dept").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_boc").val());
-
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname").val()).hide();
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".truckname option:selected").text());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".act-del-whse").val());
+	                       $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_boc").val());
+	                 
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(21)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
+
+
+
+
 
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
@@ -1200,24 +1213,29 @@
 		table.find('tr').each(function (count1) {
 			  var c = count1+1;
 
+
 				        var $tds = $(this).find('td'),
-				            containerId 	= $tds.eq(0).text(),
-				            vesselid    	= $tds.eq(2).text();
-				          	cartons_no  	= $tds.eq(4).text(); 
-				        	trucker_plate   = $tds.eq(5).text(); 
+				         	containerId 	= $tds.eq(0).text(),
+				            consize 	   	= $tds.eq(1).text();
+				            vesselid    	= $tds.eq(4).text();
+				          	cartons_no  	= $tds.eq(5).text(); 
+				        	trucker_plate   = $tds.eq(6).text(); 
+				            trucker_name 	= $tds.eq(7).text();
+				            edt    	        = $tds.eq(9).text();
+				           	eat  			= $tds.eq(10).text(); 
+				          	aat  		   	= $tds.eq(11).text(); 
+				          	start_storage   = $tds.eq(12).text(); 
+				            start_demorage 	= $tds.eq(13).text(),
+				            lodging    	    = $tds.eq(14).text();
+				        	tdt  			= $tds.eq(15).text(); 
+				        	gip  		   	= $tds.eq(16).text();
+				         	gop  		   	= $tds.eq(17).text(); 
+				         	adw             = $tds.eq(18).text(); 
 
-				            trucker_name 	= $tds.eq(6).text(),
-				            edt    	        = $tds.eq(7).text();
-				           	eat  			= $tds.eq(8).text(); 
-				          	aat  		   	= $tds.eq(9).text(); 
-				          	start_storage   = $tds.eq(10).text(); 
-
-				            start_demorage 	= $tds.eq(11).text(),
-				            lodging    	    = $tds.eq(12).text();
-				        	tdt  			= $tds.eq(13).text(); 
-				        	gip  		   	= $tds.eq(14).text();
-				         	gop  		   	= $tds.eq(15).text(); 
-				         	adw             = $tds.eq(16).text(); 
+				        alert("containerId" + containerId+ " consize" + consize + " vesselid" + vesselid + " cartons_no" +cartons_no +
+				         " trucker_plate"+trucker_plate+" trucker_name" + trucker_name + " edt" + edt + " eat" + eat +
+				         " aat" + aat + " start_storage" +start_storage + " lodging" +lodging + " tdt" + tdt + " gip"+ gip+
+				         " adw " + adw);
 
 				    
 		  		$.ajax({
@@ -1240,12 +1258,7 @@
 			  			    gip            :gip,
 			  			    gop            :gop,
 			  			    adw            :adw,
-			  			   // from description goods tab
-			  			   /* product_name   :product_name,
-			  			    color_id 	   :color_id,
-			  			    prod_order_no  :prod_order_no,
-			  			    origin_id	   :origin_id,
-			  			    origin_cty	   :origin_cty,*/
+
 
 
 			  			    //from jobfile tab
@@ -1282,18 +1295,6 @@
 					if(c<=ct){
 						 insert_container(ct,c);
 					}
-		/*			var b = 1;		
-					while (b < ct) {
-    					
-    					if(b<=c){
-    					
-    					}else{
-    						break;
-    					}	
-    				b++;	
-					}*/
-											
-
 
 
 		});

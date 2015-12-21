@@ -145,9 +145,10 @@ class Login_user extends CI_Controller {
 		  /*  $data['container_data']   = $this->User->dropdown_container();*/
 		    $data['consignee_data'] = $this->User->dropdown_consignee();
 		    $data['broker_data']    = $this->User->dropdown_broker();
-		    $data['color_data']    = $this->User->dropdown_colors();
+		    $data['color_data']     = $this->User->dropdown_colors();
 		    $data['hauler_data']    = $this->User->dropdown_hauler();
-		    $data['countries']   =  $this->User->countries();
+
+		    $data['countries']      =  $this->User->countries();
 		    // drop down in add data form in jofile end
 
 
@@ -157,11 +158,8 @@ class Login_user extends CI_Controller {
 
 		  	/*Jobfile manila*/
 		  	$data['manila']    = $this->User->get_jobfile_manila();
-
 		  	$data['outport']    = $this->User->get_jobfile_manila();
-
 		  	$data['carrier'] = $this->User->get_carrier();
-
 		  	$data['products'] = $this->User->get_products();
 
 
