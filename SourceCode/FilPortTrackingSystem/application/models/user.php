@@ -532,7 +532,7 @@ Class User extends CI_Model
   */
 
   function get_status(){
-   $query = $this->db->query("select * from Status ");
+   $query = $this->db->query("select * from Status where IsActive=1 ");
     return $query->result();
   }
 
