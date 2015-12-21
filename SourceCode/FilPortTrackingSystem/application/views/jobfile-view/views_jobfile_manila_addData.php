@@ -1006,31 +1006,29 @@
 			}
 			else{
 
-	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
-	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname").val()).hide();
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".truckname option:selected").text());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-dept").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".act-del-whse").val());
-	                       $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_boc").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val()).hide();
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname option:selected").text());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
+	                       $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
 	                 
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(21)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
