@@ -110,19 +110,12 @@ th{
 .clientmenu-container{
 
     position: absolute;
-
     top: 33%;
-
-    left: 10%;
-
+    left: 20%;
     margin-top: -50px;
-
     margin-left: -50px;
-
-    width: 85%;
-
+    width: 83%;
     height: auto;
-
     padding: 20px;
 
 }
@@ -161,23 +154,14 @@ th{
 .cont-ship{
 
     position: absolute;
-
-    top: 25%;
-
+    top: 17%;
     left: 4%;
-
     width: 25%;
-
     height: 70%;
-
     border: 1px solid #0166bc;
-
     background-color: rgba(0, 140, 221, 0.4);
-
     overflow: auto;
-
     overflow-x: hidden;
-
 }
 
 
@@ -195,11 +179,8 @@ th{
 
 
 .cont-div{
-
     width: 100%;
-
-    height: 8%;
-
+    /* height: 8%; */
     background-color: #fff;
 
 }
@@ -222,15 +203,10 @@ th{
 .cont-num{
 
     margin-top: -15px;
-
     margin-left: 10%;
-
     text-align: center;
-
     width: 80%;
-
-    height: 8%;
-
+    /* height: 8%; */
     background-color: #fff;
 
 }
@@ -270,23 +246,14 @@ th{
 .cont-info{
 
     position: absolute;
-
     padding-left: 20%;
-
-    top: 25%;
-
+    top: 17%;
     left: 30%;
-
-    width: 67%;
-
+    width: 65%;
     height: 6%;
-
     border: 1px solid #0166bc;
-
     background-color: rgba(0, 140, 221, 0.6);
-
     border-radius: 10px;
-
 }
 
 .tools-bar{
@@ -302,7 +269,7 @@ th{
 
 .info-pos{
 
-    top: 48%;
+    top: 40%;
 
 }
 
@@ -311,25 +278,15 @@ th{
 .info-posbox{
 
     position: absolute;
-
     padding-left: 2%;
-
     padding-right: 10%;
-
-    top: 54.4%;
-
+    top: 46.4%;
     left: 30%;
-
-    width: 67%;
-
+    width: 65%;
     height: 40.5%;
-
     border: 1px solid #828383;
-
     background-color: rgba(220, 220, 220, 0.6);
-
     overflow: scroll;
-
     overflow-x: hidden;
 
 }
@@ -349,23 +306,14 @@ th{
 .cont-infobox{
 
     position: absolute;
-
     padding-left: 2%;
-
     padding-right: 10%;
-
-    top: 31.3%;
-
+    top: 23.3%;
     left: 30%;
-
-    width: 67%;
-
+    width: 65%;
     height: 16%;
-
     border: 1px solid #828383;
-
     background-color: rgba(220, 220, 220, 0.6);
-
 }
 
 
@@ -563,7 +511,7 @@ th{
 .con-list{
 
     position: absolute;
-    top: 20%;
+    top: 23%;
     left: 6%;
     width: 89%;
     height: 76%;
