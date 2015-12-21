@@ -10,9 +10,9 @@
     	<div class="container-fluid">
     		 <ul class="nav nav-pills">
 			    <li id="btn-jobfile-mnla-add" class="active"><a role="button">Jobfile</a></li>
+			     <li id="btn-vessel-mnla-add"><a role="button">Vessel</a></li>
 			    <li id="btn-container-mnla-add"><a role="button">Container</a></li>
 			    <li id="btn-truck-mnla-add"><a role="button">Description of Goods</a></li>
-			    <li id="btn-vessel-mnla-add"><a role="button">Vessel</a></li>
 			    <li id="btn-charges-mnla-add"><a role="button">Running Charges</a></li>
 			  </ul>
     	<hr>
@@ -692,7 +692,7 @@
 			$('.test_data').addClass('hidden');
 
 			$('.btn-Next').removeClass('hidden');
-				i=1;}
+				i=2;}
 
 
 			
@@ -743,7 +743,7 @@
 
 					$('.btn-Next').removeClass('hidden');
 
-					i=2;
+					i=3;
 				
 			};
 		});
@@ -830,14 +830,14 @@
 				   
 
 			/*Next Page*/
-			if(i==1){
+			if(i==2){
 				$("#btn-container-mnla-add").click();
-			}else if(i==2){
-				$("#btn-truck-mnla-add").click();
 			}else if(i==3){
+				$("#btn-truck-mnla-add").click();
+			}else if(i==4){
 				$("#btn-charges-mnla-add").click();
 			}
-			else if(i==4){
+			else if(i==1){
 				$("#btn-vessel-mnla-add").click();
 			}
 
@@ -884,7 +884,7 @@
 			$('.test_data').addClass('hidden');
 
 			$('.btn-Next').removeClass('hidden');
-				i=4;}
+				i=1;}
 
 		});
 
