@@ -109,8 +109,18 @@ class Login_user extends CI_Controller {
 	{
 		 //check if the user is already login
 		if($this->session->userdata('logged_in')){
-			$data['tab'] = "Main Menu";
+		  	$data['tab'] = "Main Menu";
+		  	$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 	$data['img'] = $session_data['img'];
+
+			$this->load->view('clientheader/header',$data);
 			$this->load->view('client_menu/views_clientmenu' , $data);
+
 		}else{
 			 $this->login();
 		}
@@ -226,11 +236,27 @@ class Login_user extends CI_Controller {
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "DOCUMENTS";
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		    $data['img'] = $session_data['img'];
+
+		    /* get status*/
+		    $data['consignee'] = $this->User->get_consignee();
+		    $data['broker'] = $this->User->get_broker();
+		    $data['shipper'] = $this->User->get_shipper();
+		    /*$data['vessel'] = $this->User->get_vessel();*/
+		 
+			$this->load->view('clientheader/header',$data);
 			$this->load->view('clientreports/report_client' , $data);
 		}else{
 			$this->login();
 		}
 	}
+
 
 	 function account()
 	{		
@@ -400,15 +426,23 @@ class Login_user extends CI_Controller {
 
 	function tracking()
 	{
-		//check if the user is already login
-		 if($this->session->userdata('logged_in')){	
-			$data['tab'] = "Tracking Summary";
+		 //check if the user is already login
+		if($this->session->userdata('logged_in')){
+		  	$data['tab'] = "Tracking Summary";
+		  	$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		 	$data['img'] = $session_data['img'];
+
+			$this->load->view('clientheader/header',$data);
 			$this->load->view('tracking/tracking_page' , $data);
 		}else{
-			$this->login();
+			 $this->login();
 		}
 	}
-
 	function dashboard()
 	{
 		//check if the user is already login
