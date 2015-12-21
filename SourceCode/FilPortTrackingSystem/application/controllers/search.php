@@ -39,8 +39,130 @@ class Search extends CI_Controller {
 					   echo '<td>' .$row->FirstName." ".$row->FirstName." ".$row->LastName . '</td>';
 
 					}
-					  echo '</tr>';
-					echo '</table>';
+					if($search_Type == "ConsigneeName"){
+							$displayOutput .=  '<tr>
+								<th>Consignee Name</th>
+								<th>House Building No/Street</th>
+								<th>Barangay/Village</th>
+								<th>Town/City Or Province</th>
+								<th>Country ID</th>
+								<th>Office Number</th>
+								<th>Date Added</th>
+								<th>IsActive</th>
+								<th>Country</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoOrStreet . '</td>';
+					   			$displayOutput .=  '<td>' . $row->BarangayOrVillage . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->TownOrCityProvince . '</td>';
+					 	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->OfficeNumber . '</td>';
+					 	    	$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->Country . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "HaulerOrTruck"){
+							$displayOutput .=  '<tr>
+								<th>Hauler/Truck</th>
+								<th>Address</th>
+								<th>TIN</th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->HaulerOrTruck . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->Address . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->TIN . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "Products"){
+							$displayOutput .=  '<tr>
+								<th>Product ID</th>
+								<th>Product Name</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ProductId. '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ProductName. '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "ShipperName" && $search_From == "vw_shipper_full_info"){
+							$displayOutput .=  '<tr>
+								<th>Shipper Name <span class="glyphicon glyphicon-sort"></span></th>
+								<th>Date Added</th>
+								<th>House Building No/Street</th>
+								<th>Barangay/Village</th>
+								<th>Town/City Or Province</th>
+								<th>Country ID</th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->ShipperName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
+					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
+					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
+					   			$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}			
+					}
+					if($search_Type == "CarrierName"){
+							$displayOutput .=  '<tr>
+								<th>Carrier Name</th>
+								<th>Is Active</th>
+												</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->CarrierName . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}	
+					}		
+					if($search_From == "vw_broker_full_info"){
+							$displayOutput .=  '<tr>			
+								<th>Full Name</th>
+								<th>House Building/Street Number</th>
+								<th>Barangay / Village</th>
+								<th>Town/City/Province</th>
+								<th>Country ID</th>
+								<th>Contact Number 1</th>
+								<th>Contact Number 2 </th>
+								<th>Is Active</th>
+							</tr>
+						<tr>';
+						foreach ($searchme as $row) {
+								$displayOutput .=  '<tr>';
+					 	    	$displayOutput .=  '<td>' .$row->LastName . ', ' . $row->FirstName . ' ' . $row->MiddleName . '</td>';
+						    	$displayOutput .=  '<td>' . $row->HouseBuildingNoStreet . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->BarangarOrVillage . '</td>';
+					   			$displayOutput .=  '<td>' . $row->TownOrCityProvince . '</td>';
+					   	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->ContactNo1 . '</td>';
+					   			$displayOutput .=  '<td>' . $row->ContactNo2 . '</td>';
+					   			$displayOutput .=  '<td>' . $row->IsActive . '</td>';
+								$displayOutput .=  '</tr>';	
+						}	
+					}			
+						$displayOutput .=  '</table>';
+				}else{
+						$displayOutput =  "No Result(s) Found";
+						$displayCount = "0 Result(s) Found";
+				}
+					
 			}else{
 
 					echo "NO result";
