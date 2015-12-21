@@ -29,7 +29,7 @@ $countries=$this->User->countries();
 						      </div>
 						      <div class="modal-body">
 					        
-								<form action="'.base_url('add_user/add_client/').'" method="post">
+								<form action="'.base_url('Add_user/add_client/').'" method="post">
 									<div class="">
 							            <div class="form-group col-md-12">
 							                <input type="text" name="cname"class="form-control" placeholder="Client Name" required/>

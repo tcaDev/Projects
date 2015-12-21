@@ -860,6 +860,7 @@ function select_country(){
  
  <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
    <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
 <script>
 	$(document).ready(function() { 
         $("#table_consignee").tablesorter();}); 

@@ -275,20 +275,15 @@ if(isset($_SESSION['success'])){
 			   	 		
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-default close" data-dismiss="modal">Close</button>
 				        </div>
 				      </div> 
 				   </div>        
 				 </div>'
 
 				 ;?>
-
-		
-				
 		<script>
 		$('.update_contacts_consignee').click(function(){
-
-   
 					var cid    = $(this).closest('tr').children('td:eq(0)').text();
 					var fname    = $(this).closest('tr').children('td:eq(2)').text();
 					var mname    = $(this).closest('tr').children('td:eq(3)').text();
@@ -324,7 +319,6 @@ if(isset($_SESSION['success'])){
 			  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
 
 
-        
                                   $.confirm({
                                     title: 'Delete the information?',
                                     content: 'You have 6 seconds to make a choice',
@@ -333,7 +327,9 @@ if(isset($_SESSION['success'])){
                                     confirmButtonClass: 'btn-info',
                                     cancelButton: 'No',
                                     confirm: function () {            
-               
+               						
+						
+									
 
 
                                         $.post( "<?php echo base_url('Delete_datas/del_consignee_con');?>", 
@@ -341,14 +337,14 @@ if(isset($_SESSION['success'])){
                                         	  id:delete_id
                                         	})
 										  .done(function( data ) {
-										
+	
 										    $.alert({
 													    title: 'Alert!',
 													    content: 'Data has been deleted!',
 													    confirm: function(){
-					  									   $('#modal_shippercontacts').html(data); 
-		   												  $('#modal_shippercontacts').click();	
-													   
+					  									   /*$('#modal_shippercontacts').html(data); */
+		   												 $('.close').click();	
+		   												
 													   }
 													});
 										    
@@ -359,16 +355,9 @@ if(isset($_SESSION['success'])){
                                     }
                                 });
 		});
-		
-
-
 		 </script>
-
-
    <?php 
    }
-
-
    function shippercon(){
 
    	$cons=$this->input->post('cons');
@@ -427,7 +416,7 @@ if(isset($_SESSION['success'])){
 						echo'
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-default close" data-dismiss="modal">Close</button>
 				        </div>
 				      </div> 
 				   </div>        
@@ -471,6 +460,8 @@ if(isset($_SESSION['success'])){
 		});
 		$('.delete_contacts').click(function(){
 			  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
+
+
                                   $.confirm({
                                     title: 'Delete the information?',
                                     content: 'You have 6 seconds to make a choice',
@@ -479,22 +470,27 @@ if(isset($_SESSION['success'])){
                                     confirmButtonClass: 'btn-info',
                                     cancelButton: 'No',
                                     confirm: function () {            
-               
+               						
+						
+									
+
+
                                         $.post( "<?php echo base_url('Delete_datas/del_shipper_con');?>", 
                                         	{ 
                                         	  id:delete_id
                                         	})
 										  .done(function( data ) {
-										
+	
 										    $.alert({
 													    title: 'Alert!',
 													    content: 'Data has been deleted!',
 													    confirm: function(){
-					  									   $('#modal_shippercontacts').html(data); 
-		   												  $('#modal_shippercontacts').click();	
-													   
+					  									   /*$('#modal_shippercontacts').html(data); */
+		   												 $('.close').click();	
+		   												
 													   }
 													});
+										    
 										  });
                                     },
                                     cancel: function () {
@@ -502,15 +498,13 @@ if(isset($_SESSION['success'])){
                                     }
                                 });
 		});
-		
-
-
 		 </script>
 
 
    <?php 
    }
 
+//no longer in use 
    function add_shippercontacts(){
     $id=$this->input->post('shipper_id');
 
@@ -636,7 +630,7 @@ if(isset($_SESSION['success'])){
 
 
   
-		echo '      <table class="table fixed_headers table-bordered">
+		echo '      <table class="table fixed_headers table-bordered" id="table_broker">
 					    <thead>
 					      <tr>
 				
@@ -707,41 +701,12 @@ if(isset($_SESSION['success'])){
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 <script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
-	<script>
- $('.delete_broker').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-        
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_broker/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="broker";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
- });
-	</script>
+   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script>
+	$(document).ready(function() { 
+        $("#table_broker").tablesorter();}); 
+</script>
 
 <?php
 	}
@@ -767,7 +732,7 @@ function search_shipper(){
    }else{
    	 $shipper  =  $this->User->findlimit_shipper($item_per_page,$page_position);	
    } 	
-    	echo '      <table class="table table-bordered">
+    	echo '      <table class="table table-bordered" id="table_shipper">
 					    <thead>
 					      <tr>
 
@@ -831,6 +796,13 @@ function search_shipper(){
 
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+ <script>
+	$(document).ready(function() { 
+        $("#table_shipper").tablesorter();}); 
+ </script>
+	
 				<script>
 
 					
@@ -868,7 +840,7 @@ function search_shipper(){
 			     if(id!=0){
 			  	  	$.ajax({
 						  method: "POST",
-					 	  url:"http://localhost/FilPortTrackingSystem/Login_user/select_country",
+					 	  url:"<?php echo base_url('Login_user/select_country');?>",
 					  	  data: { countryid:id,
 					  		  conname:country 	  		  
 					  		}
@@ -883,48 +855,14 @@ function search_shipper(){
 			 	
 			 });
 
-		 $('.delete_shipper').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-   
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_shipper/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="shipper";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
-                         
-
- });		 
+		 
 
 	$('.contac').click(function(){
 			var con    = $(this).closest('tr').children('td:eq(0)').text();
 
 						$.ajax({
 					  method: "POST",
-					  url:"http://localhost/FilPortTrackingSystem/search/shippercon/",
+					  url:"<?php echo base_url('Search/shippercon/');?>",
 					  data: { cons:con}
 					})
 					  .done(function(data) {
@@ -937,7 +875,7 @@ function search_shipper(){
 	  var id    = $(this).closest('tr').children('td:eq(0)').text();
 	 	  $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/search/vessel_shipper/",
+					  url: "<?php echo base_url('Search/vessel_shipper');?>",
 					  data: { id:id}
 					})
 					  .done(function(data) {
@@ -1028,42 +966,6 @@ function search_vessel(){
 			<script>
 
 
- $('.delete_vessel').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-   
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( "http://localhost/FilPortTrackingSystem/Delete_datas/del_vessel", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="vessel";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
- });
-
-		
-
 	 	 $('.update_vessels').click(function(){
 
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
@@ -1078,18 +980,9 @@ function search_vessel(){
 			  	  }else{
 			  	  	  $('.deactivate').prop('checked', true);
 			  	  }
-
-	
 		
 			 });
-		
-
-
 			</script>
-
-
-
-
 	<?php
 	}
 
@@ -1124,6 +1017,8 @@ $this->message();
 		      <tr>
 		      	<th>Hauler ID</th>
 		        <th>Hauler/Truck Name</th>
+		         <th>Address</th>
+		         <th>Tin</th>
 		        <th>Status</th>
 		        <th colspan="2">Action</th>
 		      </tr>
@@ -1155,6 +1050,8 @@ $this->message();
 					    echo  '<tr>
 							        <td>'.$row->HaulerOrTruckId.'</td>
 							        <td>'.$row->HaulerOrTruck.'</td>
+							        <td>'.$row->TIN.'</td>
+							        <td>'.$row->Address.'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -1168,42 +1065,17 @@ $this->message();
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
 	<script>
-		 $('.delete_haulers').click(function(){
-		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-		      $.confirm({
-		        title: 'Delete the information?',
-		        content: 'You have 6 seconds to make a choice',
-		        autoClose: 'cancel|6000',
-		        confirmButton: 'Yes',
-		        confirmButtonClass: 'btn-info',
-		        cancelButton: 'No',
-		        confirm: function () {            
-		            $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_haulers", 
-		            	{ 
-		            	  id:delete_id
-		            	})
-					  .done(function( data ) {
-					    $.alert({
-							    title: 'Alert!',
-							    content: 'Data has been deleted!',
-							    confirm: function(){
-							    }
-							});
-					    location.hash="hauler";
-					    location.reload();
-					  });
-		        },
-		        cancel: function () {
-		           /* alert('Vacation cancelled!');*/
-		        }
-		    });
-			});
 	 	 $('.update_hauler').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var haulers   	  = $(this).closest('tr').children('td:eq(1)').text();
-			     var status   	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var tin 		  = $(this).closest('tr').children('td:eq(2)').text();
+			     var address   	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var status   	  = $(this).closest('tr').children('td:eq(5)').text();
 			      $('.hauler_id').val(id);
 			      $('.hauler_name').val(haulers);
+			      $('.hauler_address').val(address);
+			      $('.hauler_tin').val(tin);
+
 
 			      if(status==1){
 			      $('.activate').prop('checked', true);
@@ -1286,36 +1158,6 @@ $this->message();
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
 	<script>
-		 $('.delete_forward').click(function(){
-		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-		      $.confirm({
-		        title: 'Delete the information?',
-		        content: 'You have 6 seconds to make a choice',
-		        autoClose: 'cancel|6000',
-		        confirmButton: 'Yes',
-		        confirmButtonClass: 'btn-info',
-		        cancelButton: 'No',
-		        confirm: function () {            
-		            $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_forward", 
-		            	{ 
-		            	  id:delete_id
-		            	})
-					  .done(function( data ) {
-					    $.alert({
-							    title: 'Alert!',
-							    content: 'Data has been deleted!',
-							    confirm: function(){
-							    }
-							});
-					    location.hash="forward";
-					    location.reload();
-					  });
-		        },
-		        cancel: function () {
-		           /* alert('Vacation cancelled!');*/
-		        }
-		    });
-			});
 	 	 $('.update_forwards').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var forward   	  = $(this).closest('tr').children('td:eq(1)').text();
@@ -1414,36 +1256,6 @@ $this->message();
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
 	<script>
-		 $('.delete_legend').click(function(){
-		  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-		      $.confirm({
-		        title: 'Delete the information?',
-		        content: 'You have 6 seconds to make a choice',
-		        autoClose: 'cancel|6000',
-		        confirmButton: 'Yes',
-		        confirmButtonClass: 'btn-info',
-		        cancelButton: 'No',
-		        confirm: function () {            
-		            $.post("http://localhost/FilPortTrackingSystem/Delete_datas/del_legend", 
-		            	{ 
-		            	  id:delete_id
-		            	})
-					  .done(function( data ) {
-					    $.alert({
-							    title: 'Alert!',
-							    content: 'Data has been deleted!',
-							    confirm: function(){
-							    }
-							});
-					    location.hash="legend";
-					    location.reload();
-					  });
-		        },
-		        cancel: function () {
-		           /* alert('Vacation cancelled!');*/
-		        }
-		    });
-			});
 	 	 $('.update_legend').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var status   	  = $(this).closest('tr').children('td:eq(1)').text();
@@ -1530,6 +1342,100 @@ $this->message();
 
 
 
+	}
+
+function search_product(){
+
+    $this->message();
+
+   $item_per_page=10;
+	//Get page number from Ajax POST
+	if(isset($_POST["page"])){
+		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
+		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
+	 }else{
+		$page_number = 1; //if there's no page number, set it to 1
+	}
+	
+	//get starting position to fetch the records
+	$page_position = (($page_number-1) * $item_per_page);
+ 
+	$id = $this->input->post('product_id');
+   if(isset($id)){
+           $vessel = $this->User->search_product($id);
+   }else{
+   	 $vessel  =  $this->User->findlimit_product($item_per_page,$page_position);	
+   } 	
+
+
+	  echo '	      <table class="table table-bordered">
+					    <thead>
+					      <tr>
+					        <th>Product ID</th>
+					        <th>Product Name</th>
+					        <th>Status</th>
+					        <th colspan="2">Action</th>
+					      </tr>
+					    </thead>
+					    <tbody>' ?>
+					    <?php 
+					    $i=0;
+					    foreach ($vessel as $row) {
+					    $i++;
+					    if($i==1){
+					    $cid= $row->ProductId;
+					    }
+					    		$active= $row->IsActive;
+					      		if($active==1){ 
+					      		  $stat = 'activated';
+					      		  $mystat = '1';
+					      		}else{
+					      		  $stat = 'deactivated';
+					      		  $mystat= '0';
+					      		}
+					      		if($stat=='activated')
+					      		{
+					      			$stats = 'deactivated';
+					      			$mystats = '0';	
+					      		}else{
+					      			$stats = 'activated';
+					      			$mystats = '1';
+					         	}
+					    echo  '<tr>
+							        <td>'.$row->ProductId.'</td>
+							        <td>'.$row->ProductName.'</td>      
+							        <td>'.$stat .'</td>
+						    		<td  class="hidden">'. $mystat .'</td>  
+							         <td><button type="button" class="btn update_product" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        
+					    	  </tr>';}
+
+?>
+					    </tbody>
+					  </table>
+
+
+
+ <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+			<script>
+
+
+	 	 $('.update_product').click(function(){
+
+			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
+			     var product      = $(this).closest('tr').children('td:eq(1)').text();
+			     var status    	  = $(this).closest('tr').children('td:eq(3)').text();
+			      $('.prod_id').val(id);
+			      $('.prod_name').val(product);
+			      if(status==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	  $('.deactivate').prop('checked', true);
+			  	  }
+		
+			 });
+			</script>
+	<?php
 	}
 
 

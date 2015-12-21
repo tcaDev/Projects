@@ -290,30 +290,6 @@ class Add_user extends CI_Controller {
 
               $this->db->insert('Shipper', $data);
 
-              //inset to shippercontact table
-        /*       $fname = $this->input->post('fname');
-               $mname = $this->input->post('mname');
-               $lname = $this->input->post('lname');
-               $c1 = $this->input->post('con1');
-               $c2 = $this->input->post('con2');
-
-           
-               $count = $this->User->select_shipperid();
-                 foreach($count as $row){
-                $count = $row->ShipperId;
-                } 
-                $sid= $count;
-
-                     $data = array(
-                    'FirstName' => $fname,
-                    'MiddleName' => $mname,
-                    'LastName' => $lname,
-                    'ContactNo1'   => $c1,
-                    'ContactNo2'   => $c2,
-                    'ShipperId'    => $sid
-                  );
-
-              $this->db->insert('ShipperContacts', $data);*/
               $this->session->success = 'success';   
       }
               redirect('Login_user/settings/#shipper');
@@ -375,11 +351,12 @@ class Add_user extends CI_Controller {
                   'TIN' => $tin
                 );
 
-          $query= $this->db->query("Select * from HaulerOrTruck where HaulerOrTruck = '$name' and Address = '$add' and TIN = '$tin' limit 1");
+          $query= $this->db->query("Select * from HaulerOrTruck where HaulerOrTruck = '$name' and 
+            Address = '$add' and TIN = '$tin' limit 1");
           if($query->num_rows() ==1){
              $this->session->failed = 'failed';
           }else{
-                $this->db->insert('Hauler', $data);
+                $this->db->insert('HaulerOrTruck', $data);
                 $this->session->success = 'success';  
           }
              redirect('Login_user/settings/#hauler');
@@ -571,26 +548,7 @@ class Add_user extends CI_Controller {
     }
   }
 
- /* function update_password(){
 
-    if(!isset($_POST['email'], $_POST['email_hash']) || $_POST['email_hash'] !== sha1($_POST['email'] . $_POST['email_code'])){
-       die("Error updating your Password")
-    }
-
-    $this->form_validation->set_rules('email_hash','Email Hash', 'trim|required');
-    $this->form_validation->set_rules('email','Email', 'trim|required|valid_email|xss_clean');
-    $this->form_validation->set_rules('pass','Password', 'trim|required|min_length[6]|max_length[50]|matches[newpass]|xss_clean');
-    $this->form_validation->set_rules('newpass','New Password', 'trim|required|min_length[6]|max_length[50]|xss_clean');
-
-
-    if($this->form_validation->run() == FALSE){
-        $data['tab'] = "Forgot Password";
-         $this->load->view('forgotpass/update_password' , $data);
-    }else{
-      //success
-      $result = $this->User->update_password();
-    }
-  }*/
 
 
 

@@ -172,10 +172,10 @@ Class User extends CI_Model
     
   }
 
-    function update_products($id,$name){
-        $status =  (int) $status;
+    function update_products($id,$name,$status){
         $data = array(
-        'ProductName'    => $name
+        'ProductName'    => $name,
+        'IsActive'       => $status
 
         );
           $this->db->where('ProductId', $id);

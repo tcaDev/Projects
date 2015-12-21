@@ -1,8 +1,8 @@
+ var link = 'http://localhost/FilPortTrackingSystem';
+
+
  $(document).ready(function(){	
 
-
-			
-var link = 'http://localhost/FilPortTrackingSystem';
 	 	//for updating the values in pop up start
 
 
@@ -123,146 +123,10 @@ $('.add_consignee_contact').click(function(){
 		});
 
 
- $('.delete_consignee').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-               
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( link + "/Delete_datas/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){												    
-													    }
-													});
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                    }
-                                });
-                         
- });
-/* $('.delete_vessel').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-   
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( link + "/Delete_datas/del_vessel", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="vessel";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                               //     }
-                               // });
-// });*/
-
-/* $('.delete_shipper').click(function(){
-  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-   
-                                  $.confirm({
-                                    title: 'Delete the information?',
-                                    content: 'You have 6 seconds to make a choice',
-                                    autoClose: 'cancel|6000',
-                                    confirmButton: 'Yes',
-                                    confirmButtonClass: 'btn-info',
-                                    cancelButton: 'No',
-                                    confirm: function () {            
-                                   
-                                        $.post( link + "/Delete_datas/del_shipper/", 
-                                        	{ 
-                                        	  id:delete_id
-                                        	})
-										  .done(function( data ) {
-										    $.alert({
-													    title: 'Alert!',
-													    content: 'Data has been deleted!',
-													    confirm: function(){
-													    
-													    }
-													});
-										    location.hash="shipper";
-										    location.reload();
-										  });
-                                    },
-                                    cancel: function () {
-                                       /* alert('Vacation cancelled!');*/
-                                //    }
-                               // });
-                         
-
-
-
-
-
- 	// for shipper tab  functions start
-/*		$('.contac').click(function(){
-			var con    = $(this).closest('tr').children('td:eq(0)').text();
-
-						$.ajax({
-					  method: "POST",
-					  url: link + "/Search/shippercon/",
-					  data: { cons:con}
-					})
-					  .done(function(data) {
-					   $('#modal_shippercontacts').html(data);
-					  });
-
-		});*/
-/*
-			$('.add_contact').click(function(){
-			var con    = $(this).closest('tr').children('td:eq(0)').text();
-
-						$.ajax({
-					  method: "POST",
-					  url: link + "/Search/add_shippercontacts/",
-					  data: { shipper_id:con}
-					})
-					  .done(function(data) {
-					   $('#modal_add_shippercontacts').html(data);
-					  });
-
-		});*/
-    	// for shipper tab  functions start
-
 
 		<!--//for autoclick of shipper tab based on the hash -->
 
 		$(document).ready(function(){
-
-			var link = 'http://localhost/FilPortTrackingSystem';
 
 		       if(location.hash=="#shipper"){
 		      		  $('#form_shipper').trigger('click');
@@ -321,7 +185,7 @@ $('.add_consignee_contact').click(function(){
 		       	if(location.hash=="#product"){
 		      		  $('#form_product').trigger('click');
 
-		      		    $.get("http://localhost/FilPortTrackingSystem/View_forms/product/",function(data){
+		      		    $.get(link +"/View_forms/product/",function(data){
 		  					$('#mycontent').html(data);
 					   });
 
@@ -383,9 +247,6 @@ $('.add_consignee_contact').click(function(){
 
 
    $(document).ready(function(){
-
-
-   	var link = 'http://localhost/FilPortTrackingSystem';
 
    //consignee
 
@@ -545,7 +406,7 @@ $('.add_consignee_contact').click(function(){
 	    $('#search').removeClass('container_tab');
 	    $('#search').addClass('product_tab');
 
-	     	 $.get("http://localhost/FilPortTrackingSystem/View_forms/product/",function(data){
+	     	 $.get(link + "/View_forms/product/",function(data){
 		  	$('#mycontent').html(data);
 		  		
 		  });
@@ -777,7 +638,7 @@ function search_product(product){
 
  		    $.ajax({
 					  method: "POST",
-					  url: "http://localhost/FilPortTrackingSystem/Search/search_product/",
+					  url:link + "/Search/search_product/",
 					  data: { prod_id:product}
 					})
 					  .done(function(data) {

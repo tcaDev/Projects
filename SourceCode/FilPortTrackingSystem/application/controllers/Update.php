@@ -274,17 +274,20 @@ class Update extends CI_Controller {
     function update_products(){
 		$id 	= 	$this->input->post('prod_id');
 		$name 	= 	$this->input->post('prod_name');
+		$status = 	$this->input->post('status');
+		$status = (int) $status;
 
 
    		 $query= $this->db->query("Select * from Products where
      		  ProductName='$name'    and
-     		  ProductId='$id'
+     		  ProductId='$id' and 
+     		  IsActive = $status
      		   limit 1");
     
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_products($id,$name);
+			     $this->User->update_products($id,$name,$status);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_User/settings/#product');
