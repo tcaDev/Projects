@@ -322,18 +322,7 @@
 					        	
 							</div>
 
-							<div class="form-group">
-
-							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
-								<select class="form-control carrier" name="countries">
-										<?php foreach($carrier as $row){ ?>
-											 <option value="<?php echo $row->CarrierId?>">
-											 <?php echo $row->CarrierName;?>
-											 </option>
-											<?php }?> 
-								</select>
-									<i class="carrier-msg" style="color:red;"></i>
-							</div>
+							
 
 							
 
@@ -443,8 +432,7 @@
 						      <tr>
 						      	<th>Container Number</th>
 						      	<th>Container Size</th>
-						      	<th class="hidden">Vessel Value</th>
-						        <th>Shipping Lines / Carrier</th>
+						      	
 						        <th>Number of Cartons</th>
 						        <th>Trucker Plate No.</th>
 						        <th>Trucker Name</th>
@@ -493,6 +481,19 @@
 							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
 							 </div>
 
+							 <div class="form-group">
+
+							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
+								<select class="form-control carrier" name="countries">
+										<?php foreach($carrier as $row){ ?>
+											 <option value="<?php echo $row->CarrierId?>">
+											 <?php echo $row->CarrierName;?>
+											 </option>
+											<?php }?> 
+								</select>
+									<i class="carrier-msg" style="color:red;"></i>
+							</div>
+
 							<button type="button" class="btn-Add-Vessel-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Vessel</button>
 						</div>
 					
@@ -505,6 +506,8 @@
 								        <th>Vessel/Voyage #</th>
 								        <th>Actual Verting Time of Vessel</th>
 								        <th>Discharge Time of Vessel</th>
+								        <th class="hidden">Vessel Value</th>
+						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>
 							      	</tr>
 							    </thead>
@@ -1000,35 +1003,31 @@
 			{	
 				$('.container-msg').text("Container Number Already Exists.");
 			}
-			else if($('#tableAddContainer-mnla .carrier').val() == "0")
-			{
-				$('.carrier-msg').text("Need Shipping Line/Carrier.");
-			}
+			
 			else{
 
-	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname").val()).hide();
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname option:selected").text());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-dept").val());
-	            $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse").val());
-	                       $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
+	       
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".cartons").val());
+	         $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".plate").val());
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".truckname").val()).hide();
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".truckname option:selected").text());
+	           $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".est-dept").val());
+	            $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-arr").val());
+	             $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".act-arr").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".act-del-whse").val());
+	                       $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".dt_boc").val());
 	                 
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
@@ -1124,16 +1123,25 @@
 
 
 	$(".btn-Add-Vessel-Data-mnla").click(function(){
-		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td></tr>');
+
+		if($('#tableAddContainer-mnla .carrier').val() == "0")
+			{
+				$('.carrier-msg').text("Need Shipping Line/Carrier.");
+			}else{
+
+		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		$('#tableAddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(2)').html($(".vat").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(3)').html($(".vdt").val());
-		$('#tableAddVessel-mnla table tr:last td:nth-child(4)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		$('#tableAddVessel-mnla table tr:last td:nth-child(4)').html($(".carrier").val()).hide();
+	    $('#tableAddVessel-mnla table tr:last td:nth-child(5)').html($(".carrier option:selected").text());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 		$('#tableAddVessel-mnla .vessel').val('');
 		$('#tableAddVessel-mnla .vat').val('');
 		$('#tableAddVessel-mnla .vdt').val('');
 
+		}
 	});
 		
 
