@@ -163,11 +163,6 @@ class Search extends CI_Controller {
 						$displayCount = "0 Result(s) Found";
 				}
 					
-			}else{
-
-					echo "NO result";
-
-			}
 		}
 
 function message(){
