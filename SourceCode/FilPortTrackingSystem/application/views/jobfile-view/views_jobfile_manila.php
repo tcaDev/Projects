@@ -114,7 +114,6 @@
 
 								          <th >Registry</th>
 
-								          <th>Shipping Line/Carrier</th>
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
@@ -168,7 +167,7 @@
 
 								          <?php echo $pick1 ;?>
 
-								          <td><?php echo $row->ShipperName; ?></td>
+								           <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
 
 								          <td><?php echo $row->ConsigneeName; ?></td>
 
@@ -185,8 +184,6 @@
 								          <td><?php echo $row->LetterCreditFromBank; ?></td>
 
 								          <td><?php echo $row->Registry; ?></td>
-
-								          <td><?php echo $row->CarrierName; ?></td>
 								        
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
 
@@ -228,6 +225,32 @@
 		  	</div>
 		</div>
 
+
+				<!--pop up for viewvessels start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewvessels" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Vessels</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_vessels"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
 
 		<!--pop up for goods start -->
 			<div class="container">
@@ -343,8 +366,25 @@ $(document).ready(function(){
 
 
 	//for getting the product goods
+ $('.view_vessels').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_vessels');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_vessels').html(data);
+					});
+ });
+
+
+
+
  $('.view_goods').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  		
 	 		  $.ajax({
 				  		method: "POST",
@@ -359,7 +399,7 @@ $(document).ready(function(){
 
 
   $('.view_containers').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",
@@ -373,7 +413,7 @@ $(document).ready(function(){
  });
 
  $('.runchar').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",

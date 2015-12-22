@@ -335,7 +335,7 @@
 				
 						    <div class="form-group">
 								<label>Hauler/Truck Name</label>
-								<select class="form-control trckname" >
+								<select class="form-control truckname" >
 										<?php foreach($hauler_data as $row){ ?>
 											 <option value="<?php echo $row->HaulerOrTruckId?>">
 											 <?php echo $row->HaulerOrTruck;?>
@@ -365,6 +365,16 @@
 								<label>Actual Arrival Time</label>
 								<input type="datetime-local" name="act-arr" class="form-control input-sm act-arr" />
 							</div>
+
+							<div class="form-group">
+								<label>Vessel/Voyage #</label>
+								<select class="containers-vessel form-control input-sm"> 
+
+								</select>
+								
+		
+							</div>
+
 
 					  	</div>
 					  	
@@ -439,6 +449,7 @@
 						        <th>Estimated Departure Time</th>
 						        <th>Estimated Arrival Time</th>
 						        <th>Actual Arrival Time</th>
+						        <th>Vessel/Voyage #</th>
 						        <th>Start of Storage</th>
 						        <th>Start of Demurrage </th>
 						        <th>Lodging</th>
@@ -521,52 +532,52 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Lodgement Fee</label>
-								<input type="text" name="lodge" class="form-control input-sm" />
+								<input type="text" name="lodge" class="form-control input-sm" id="lodge"/>
 							</div>
 
 							<div class="form-group">
 								<label>Container Deposit</label>
-								<input type="text" name="cont-deposit" class="form-control input-sm" />
+								<input type="text" name="cont-deposit" class="form-control input-sm" id="cont-deposit"/>
 							</div>
 
 							<div class="form-group">
 								<label>THC Charges</label>
-								<input type="text" name="thc-charges" class="form-control input-sm" />
+								<input type="text" name="thc-charges" class="form-control input-sm" id="thc-charges" />
 							</div>
 
 							<div class="form-group">
 								<label>Arrastre </label>
-								<input type="text" name="arrastre" class="form-control input-sm" />
+								<input type="text" name="arrastre" class="form-control input-sm" id="arrastre" />
 							</div>
 
 							<div class="form-group">
 								<label>Wharfage</label>
-								<input type="text" name="wharfage" class="form-control input-sm" />
+								<input type="text" name="wharfage" class="form-control input-sm" id="wharfage" />
 							</div>
 
 							<div class="form-group">
 								<label>Weighing</label>
-								<input type="text" name="weight" class="form-control input-sm" />
+								<input type="text" name="weight" class="form-control input-sm" id="weight"/>
 							</div>
 
 							<div class="form-group">
 								<label>DEL</label>
-								<input type="text" name="del" class="form-control input-sm" />
+								<input type="text" name="del" class="form-control input-sm" id="del"/>
 							</div>
 
 							<div class="form-group">
 								<label>Dispatch Fee</label>
-								<input type="text" name="dispatch" class="form-control input-sm" />
+								<input type="text" name="dispatch" class="form-control input-sm" id="dispatch" />
 							</div>
 
 							<div class="form-group">
 								<label>Storage</label>
-								<input type="text" name="storage" class="form-control input-sm" />
+								<input type="text" name="storage" class="form-control input-sm" id="storage"/>
 							</div>
 
 							<div class="form-group">
 									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm" />
+									<input type="text" name="demurrage" class="form-control input-sm" id="demurrage" />
 								</div>
 
 
@@ -577,37 +588,37 @@
 							
 								<div class="form-group">
 									<label>Detention</label>
-									<input type="text" name="detention" class="form-control input-sm" />
+									<input type="text" name="detention" class="form-control input-sm"  id="detention"/>
 								</div>
 								
 								<div class="form-group">
 									<label>EIC</label>
-									<input type="text" name="EIC" class="form-control input-sm" />
+									<input type="text" name="EIC" class="form-control input-sm" id="EIC" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Application</label>
-									<input type="text" name="bai-app" class="form-control input-sm" />
+									<input type="text" name="bai-app" class="form-control input-sm" id="bai-app" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Inspection</label>
-									<input type="text" name="bai-inspect" class="form-control input-sm" />
+									<input type="text" name="bai-inspect" class="form-control input-sm" id="bai-inspect"/>
 								</div>
 
 								<div class="form-group">
 									<label>SRA Application</label>
-									<input type="text" name="sra-app" class="form-control input-sm" />
+									<input type="text" name="sra-app" class="form-control input-sm" id="sra-app"/>
 								</div>
 
 								<div class="form-group">
 									<label>SRA Inspection</label>
-									<input type="text" name="sra-inspect" class="form-control input-sm" />
+									<input type="text" name="sra-inspect" class="form-control input-sm" id="sra-inspect"/>
 								</div>
 
 								<div class="form-group">
 									<label>Bad Cargo</label>
-									<input type="text" name="bad-cargo" class="form-control input-sm" />
+									<input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo"/>
 								</div>
 
 								<div style="text-align:right;">
@@ -626,8 +637,8 @@
     <div class="footer-modal" >
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
-      <button type="button" class="btn btn-danger btn-Next">Next</button>
-      <button type="submit" class="hidden btn btn-danger test_data container_insert" >Save</button>
+      <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
+      <button type="button" class="hidden btn btn-danger test_data save_charges" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -680,6 +691,7 @@
 				$('.reference-msg').text("Need Reference Entry No.");
 			}
 			else{
+				
 
 			$(this).addClass('active');
 			$('#btn-jobfile-mnla-add').removeClass('active');
@@ -834,13 +846,18 @@
 
 			/*Next Page*/
 			if(i==2){
+				  insert_vessel();
 				$("#btn-container-mnla-add").click();
 			}else if(i==3){
+			 		ins_contain();
 				$("#btn-truck-mnla-add").click();
 			}else if(i==4){
+
+				ins_description();
 				$("#btn-charges-mnla-add").click();
 			}
 			else if(i==1){
+    				insert_job();
 				$("#btn-vessel-mnla-add").click();
 			}
 
@@ -913,6 +930,28 @@
 
 </script>
 
+<script>
+//for  getting the vessel based on shipper
+/*$(document).ready(function(){
+
+		
+ var jobfile= $('.jobfiles').val();
+
+			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/carrierjobfile');?>",
+			  		 data: {jbfl-vessel:jobfile}
+				})
+		  		.done(function(data) {
+		  		 $('.containers-vessel').html(data);	
+		  			
+		  		
+		  		});
+
+
+});*/
+</script>
+
 
 <script type="text/javascript">        
             $(document).ready(function () {
@@ -972,6 +1011,11 @@
 
 		$('#tableAddVessel-mnla').on('click', '.deleteButton', function() {
 
+		var del = $(this).closest('tr').children('td:eq(0)').text();
+
+      	$("#tableAddContainer-mnla .containers-vessel").find("option[value="+ del +"]").remove();
+
+
     	$(this).closest("tr").remove();
 
 	});
@@ -1006,7 +1050,7 @@
 			
 			else{
 
-	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
@@ -1018,16 +1062,17 @@
 	           $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".est-dept").val());
 	            $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".est-arr").val());
 	             $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".act-arr").val());
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".demorage").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".trgtdeldt").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".act-del-whse").val());
-	                       $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".dt_boc").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".containers-vessel").val());
+	              $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".storage").val());
+	               $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".demorage").val());
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".trgtdeldt").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
+	                       $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_boc").val());
 	                 
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
@@ -1045,7 +1090,6 @@
 			$('#tableAddContainer-mnla .containerss').val('');
 			$('#tableAddContainer-mnla .containerss-size').val('');
 			$('#tableAddContainer-mnla .plate').val('');
-			$('#tableAddContainer-mnla .truckname').val('');
 			$('#tableAddContainer-mnla .cartons').val('');
 			$('#tableAddContainer-mnla .est-dept').val('');
 			$('#tableAddContainer-mnla .est-arr').val('');
@@ -1137,6 +1181,8 @@
 	    $('#tableAddVessel-mnla table tr:last td:nth-child(5)').html($(".carrier option:selected").text());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
+		$('.containers-vessel').append('<option value='+ $(".vessel").val() +'>' + $(".vessel").val() + '</option>');
+
 		$('#tableAddVessel-mnla .vessel').val('');
 		$('#tableAddVessel-mnla .vat').val('');
 		$('#tableAddVessel-mnla .vdt').val('');
@@ -1166,15 +1212,12 @@
 		});
 </script>
 
-<script>
-	
 
-</script>
 
 
 <script>
-	//for testing of multiple insert of containers
-	$(".container_insert").click(function(){    
+
+function contents(){
        var jbfl       = $('.jobfiles').val();
        var shipper 	  = $('.shipper').val();
        var consignee  = $('.consignee').val();
@@ -1204,66 +1247,48 @@
 	   var vessels        =  $('.vessels').val();
        var color_select   =  $('#color-select').val();
 
-     /*  alert(purch_order_no);*/
+}
+function insert_job(){
 
-       
+	       var jbfl       = $('.jobfiles').val();
+       var shipper 	  = $('.shipper').val();
+       var consignee  = $('.consignee').val();
+       var mbl 		  = $('.mbl').val();
+       var mbl2 	  = $('.mbl2').val();
+       var hbl 	 	  = $('.hbl').val(); 
+       var bank       = $('.bank').val();
+       var registry   = $('.registry').val(); 
+       var vat 		  = $('.vat').val();
+       var vdt        = $('.vdt').val();
+       var dtRcvd     = $('.dtRcvd').val();
+       var dt_pickup_obl  = $('.dt_pickup_obl').val();  
+ 	   var dt_pickup_docs = $('.dt_pickup_docs').val();  
+       var broker         =  $('.broker').val();
+       var dt_req_budget  =  $('#dtReq').val();
+       var ref_due_dt     =  $('#rfp').val();
+       var dtSent  		  =  $('#dtSent-preassess').val();
+ 	   var dtFile  		  =  $('#dtFile').val();
+ 	   var dtfinal_assess =  $('#dtfinal-assess').val();
+ 	   var dt_paid        =  $('#dt_paid').val();
+ 	   var dtfinal_assess =  $('#dtfinal-assess').val();
+ 	   var dt_boc         =  $('#dt_boc').val();
+       var status         =  $('#status').val();
+       var entryno        =  $('#entryno').val();
+       var purch_order_no =  $('#purch_order_no').val();
+       var color          =  $('.colsel').val();
+	   var vessels        =  $('.vessels').val();
+       var color_select   =  $('#color-select').val();
 
-       
-
-       
-
-       //for containers table
-       			  	
-		    	  var table = $("#tableAddContainer-mnla table tbody");
-		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
-		table.find('tr').each(function (count1) {
-			  var c = count1+1;
 
 
-				        var $tds = $(this).find('td'),
-				         	containerId 	= $tds.eq(0).text(),
-				            consize 	   	= $tds.eq(1).text();
-				            vesselid    	= $tds.eq(4).text();
-				          	cartons_no  	= $tds.eq(5).text(); 
-				        	trucker_plate   = $tds.eq(6).text(); 
-				            trucker_name 	= $tds.eq(7).text();
-				            edt    	        = $tds.eq(9).text();
-				           	eat  			= $tds.eq(10).text(); 
-				          	aat  		   	= $tds.eq(11).text(); 
-				          	start_storage   = $tds.eq(12).text(); 
-				            start_demorage 	= $tds.eq(13).text(),
-				            lodging    	    = $tds.eq(14).text();
-				        	tdt  			= $tds.eq(15).text(); 
-				        	gip  		   	= $tds.eq(16).text();
-				         	gop  		   	= $tds.eq(17).text(); 
-				         	adw             = $tds.eq(18).text(); 
 
-				        alert("containerId" + containerId+ " consize" + consize + " vesselid" + vesselid + " cartons_no" +cartons_no +
-				         " trucker_plate"+trucker_plate+" trucker_name" + trucker_name + " edt" + edt + " eat" + eat +
-				         " aat" + aat + " start_storage" +start_storage + " lodging" +lodging + " tdt" + tdt + " gip"+ gip+
-				         " adw " + adw);
 
-				    
-		  		$.ajax({
+
+        		  		$.ajax({
 			  		method: "POST",
 					  url: "<?php echo base_url('Job/jobfile_add');?>",
 			  		data: {
-			  				//from container tab
-			  			    containerId    :containerId,
-			  			    vesselid       :vesselid, 
-			  			    cartons_no	   :cartons_no,
-			  			    trucker_plate  :trucker_plate,
-			  			    trucker_name   :trucker_name,
-			  			    edt            :edt,
-			  			    eat            :eat,
-			  			    aat            :aat,
-			  			    start_storage  :start_storage,
-			  			    start_demorage :start_demorage,
-			  			    lodging        :lodging,
-			  			    tdt            :tdt,
-			  			    gip            :gip,
-			  			    gop            :gop,
-			  			    adw            :adw,
+
 
 
 
@@ -1296,17 +1321,192 @@
 			  			    color_select   :color_select
 
 			  		}
-				});	
-					
-					if(c<=ct){
-						 insert_container(ct,c);
-					}
+				})
+			    .done(function(data) {
+	  							 $.alert({
+				        		title: 'Alert!',
+				        		content: data,
+				        		confirm: function(){
+				        	    }
+				   			   });
+	    		    })
+			     .fail(function(data) {
+	  							 $.alert({
+				        		title: 'Error!',
+				        		content: 'Failed to add!',
+				        		confirm: function(){
+				        			location.reload();
+				        	    }
+				   			   });
+	    		    });
 
 
-		});
 
 
-         //for running charges
+
+
+ }
+ function insert_vessel(){
+ 	  var jbfl       = $('.jobfiles').val();
+       var table = $("#tableAddVessel-mnla table tbody");
+		table.find('tr').each(function (count1) {
+			var $tds = $(this).find('td'),
+			vessel 	= $tds.eq(0).text(),
+		    vat 	= $tds.eq(1).text();
+		    vdt    	= $tds.eq(2).text();
+		    lines   = $tds.eq(3).text();
+		    t =       $tds.eq(4).text();
+
+/*
+		    alert("vessel=" + vessel + " vat=" +vat + " vdt="+vdt +
+		    " lines="+lines +"t=" +t);*/
+
+
+
+
+		           		  		$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/vessel');?>",
+			  		data: {
+			  				//from container tab
+
+
+			  			    //from jobfile tab
+			  			    jbfl           :jbfl,
+			  			    vessel 		   :vessel,
+			  			    vdt		       :vdt,
+			  			    vat            :vat,
+			  			    lines		   :lines
+		
+			  		}
+				})
+			    .done(function(data) {
+	  							 $.alert({
+				        		title: 'Alert!',
+				        		content: 'New Vessel is added!',
+				        		confirm: function(){
+				        	    }
+				   			   });
+	    		    });
+		  
+
+
+	   });
+		    
+
+
+ }
+
+function ins_contain(){
+
+	
+       			  	
+		    	  var table = $("#tableAddContainer-mnla table tbody");
+		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
+		    table.find('tr').each(function (count1) {
+			  var c = count1+1;
+
+
+
+
+				        var $tds = $(this).find('td'),
+				         	containerId 	= $tds.eq(0).text(),
+				            consize 	   	= $tds.eq(1).text();
+				          	cartons_no  	= $tds.eq(2).text(); 
+				        	trucker_plate   = $tds.eq(3).text(); 
+				            trucker_id   	= $tds.eq(4).text();
+				            trucker_name   	= $tds.eq(5).text();
+				            edt    	        = $tds.eq(6).text();
+				           	eat  			= $tds.eq(7).text(); 
+				          	aat  		   	= $tds.eq(8).text(); 
+				          	start_storage   = $tds.eq(9).text(); 
+				            start_demorage 	= $tds.eq(10).text(),
+				            lodging    	    = $tds.eq(11).text();
+				        	tdt  			= $tds.eq(12).text(); 
+				        	gip  		   	= $tds.eq(13).text();
+				         	gop  		   	= $tds.eq(14).text(); 
+				         	adw             = $tds.eq(15).text(); 
+				         	dtboc           = $tds.eq(16).text();
+
+
+		$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/container');?>",
+			  		data: {
+			  				//from container tab
+			  			    containerId    :containerId,
+			  			    consize  	   :consize, 
+			  			    cartons_no	   :cartons_no,
+			  			    trucker_plate  :trucker_plate,
+			  			    trucker_name   :trucker_name,
+			  			    trucker_id		:trucker_id,
+			  			    edt            :edt,
+			  			    eat            :eat,
+			  			    aat            :aat,
+			  			    start_storage  :start_storage,
+			  			    start_demorage :start_demorage,
+			  			    lodging        :lodging,
+			  			    tdt            :tdt,
+			  			    gip            :gip,
+			  			    gop            :gop,
+			  			    adw            :adw,
+			  			    dtboc		   :dtboc
+			  		
+			  		}
+				})
+			    .done(function(data) {
+	  							 $.alert({
+				        		title: 'Alert!',
+				        		content: 'New container is added!',
+				        		confirm: function(){
+				        	    }
+				   			   });
+	    		    });
+
+		     });
+
+
+}
+
+function ins_description(){
+			    	   var table= $("#tableAddTruck-mnla table tbody");
+		 			   table.find('tr').each(function (count1) {
+
+				          var $tds		   = $(this).find('td'),
+						     product_name  = $tds.eq(0).text(),
+						     prod_orderno  = $tds.eq(1).text();  //origin_id
+						     con_id        = $tds.eq(2).text(), //change to  container 
+						     origin_id     = $tds.eq(3).text();  //origin_id
+					         origin_cty    = $tds.eq(5).text();
+
+		$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/comodity');?>",
+			  		data: {
+			  				//from comodity tab
+			  			    product_name   :product_name,
+			  			    prod_orderno   :prod_orderno, 
+			  			    con_id	   	   :con_id,
+			  			    origin_id      :origin_id,
+			  			    origin_cty     :origin_cty
+
+		
+			  		}
+				})
+			    .done(function(data) {
+	  						alert('new comodity added');
+	    		    });
+
+    });
+
+
+}
+
+
+
+$('.save_charges').click(function(){
+	        //for running charges
+	   var jbfl       = $('.jobfiles').val();
        var lodge 		  =  $('#lodge').val();
  	   var cont_deposit   =  $('#cont-deposit').val();
        var thc_charges    =  $('#thc-charges').val();
@@ -1327,7 +1527,7 @@
        var all_charges    =  $('#all-charges').val();
 	   var part_charges   =  $('#part-charges').val();
 
-
+	 /*  alert(lodge);*/
     $.ajax({
 		           method: "POST",
 	 		   url: "<?php echo base_url('Job/jobfile_add_charges');?>",
@@ -1363,83 +1563,13 @@
 				   			   });
 	    		    })
 
-  
-	
-	});
+});  
 
-	
+
+
+ 
   
 </script>
 
-<script>
-	function insert_container(ct,c){
 
-
-				       //for the 4th proc insert start
-		             //description of goods
-	var table2 	  = $("#tableAddTruck-mnla table tbody");
-	var ct2  = $("#tableAddTruck-mnla table tbody tr").length;         
-	table2.find('tr').each(function (i) {
-	    var c2 = i+1;
-if(ct2==c2){
-	if(ct==c){
- 			    	
-				       //unset the maxid
-				        var $tds		   = $(this).find('td'),
-
-				       	 	 prodid        = $tds.eq(0).text(),
-						     product_name  = $tds.eq(1).text(),
-						   /*  prod_orderno  = $tds.eq(1).text();*/  //origin_id
-						     con_id        = $tds.eq(2).text(), //change to  container 
-						     dt_boc        = $tds.eq(3).text(); 
-						     origin_id     = $tds.eq(4).text();  //origin_id
-					         origin_cty    = $tds.eq(6).text();
-
-					         /*alert(con_id);*/
-
-
-					   /*      alert("prodid:" +prodid + " product_name" + product_name +
-					         " con_id" + con_id + " dt_boc:" + dt_boc + " origin_id" +
-					          "origin_cty" + origin_cty);*/
-
-					            $.ajax({
-				  		           method: "POST",
-						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
-				  			  	   data: {
-				  			  	   			   product_name    :product_name,
-				  			                   con_id 	       :con_id,   
-				  			                   prodid          :prodid,
-				  			                   dt_boc          :dt_boc,
-				  			                   origin_id	   :origin_id,
-				  			                   origin_cty	   :origin_cty
-				  			                  /* max 			   :maxid
-				  			                  /* status		   :status*/
-				  			                  /* dt_boc 		   :dt_boc*/
-				  			  	   		 }
-						              })
-										.done(function(data) {
-						  							 $.alert({
-									        		title: 'Alert!',
-									        		content: 'Data has been inserted!',
-									        		confirm: function(){
-									        	    }
-									   			   });
-						  							location.reload();
-
-						    		    })
-						    		    .fail(function(data) {
-				  						   			 $.alert({
-									        		title: 'Alert!',
-									        		content: 'inserting data failed!',
-									        		confirm: function(){
-									        	    }
-									   			   });
-						    	});
-	} 
-}    								
-
-			});
-//for the 4th proc insert end
-}
-</script>
 

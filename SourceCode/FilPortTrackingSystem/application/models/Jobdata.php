@@ -22,10 +22,17 @@ function getLastInserted($table, $id) {
  }
 
 
+function get_vessels($JobFile){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_CarrierByJobFile');
+    $this -> db ->where('JobFileNo', $JobFile);
+    $query=$this->db->get();
+    return $query->result();
+}
  function get_goods($products){
     $this->  db ->select('*');
     $this -> db -> from('vw_Products');
-    $this -> db ->where('JobFileId', $products);
+    $this -> db ->where('JobFileNo', $products);
     $query=$this->db->get();
     return $query->result();
  }
@@ -33,14 +40,22 @@ function getLastInserted($table, $id) {
  function get_containers($id){
  	$this->  db ->select('*');
     $this -> db -> from('vw_Containers');
-    $this -> db ->where('JobFileId', $id);
+    $this -> db ->where('JobFileNo', $id);
     $query=$this->db->get();
     return $query->result();
  }
  function get_charges($id){
  	$this->  db ->select('*');
     $this -> db -> from('RunningCharges');
-    $this -> db ->where('JobFileId', $id);
+    $this -> db ->where('JobFileNo', $id);
+    $query=$this->db->get();
+    return $query->result();
+ }
+
+  function select_jobfile($job){
+ 	$this->  db ->select('*');
+    $this -> db -> from('JobFile');
+    $this -> db ->where('JobFileNo', $job);
     $query=$this->db->get();
     return $query->result();
  }

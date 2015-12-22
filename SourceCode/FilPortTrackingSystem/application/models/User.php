@@ -447,6 +447,12 @@ Class User extends CI_Model
 
   }
 
+  function carrierbyjobfile($jobfile){
+     $query = $this->db->query("select * from CarrierByJobFile where JobFileId = '$jobfile' ");
+   return $query->result();
+
+  }
+
   /*
   --------------------------------------------
     Upload Photo
