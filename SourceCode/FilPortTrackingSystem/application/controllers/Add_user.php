@@ -194,8 +194,8 @@ class Add_user extends CI_Controller {
                   'TownOrCityProvince'=>$city,
                   'CountryId'=>$country,
                   'OfficeNumber' => $ofnum,
-                  'DateAdded'   => date('Y-m-d'),
-                  'IsActive'    =>0
+                  'DateAdded'   => date('Y-m-d')
+                  /*'IsActive'    =>0*/
                   );
 
             $this->db->insert('Consignee', $data);
@@ -234,8 +234,8 @@ class Add_user extends CI_Controller {
                   'TownOrCityProvince'    => $city,
                   'CountryId'             => $country,
                   'ContactNo1'             => $c1,
-                  'ContactNo2'             => $c2,
-                  'IsActive'              =>0
+                  'ContactNo2'             => $c2
+                  /*'IsActive'              =>0*/
                   );
 
             $this->db->insert('Broker', $data);

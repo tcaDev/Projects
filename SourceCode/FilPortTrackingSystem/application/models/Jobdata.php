@@ -21,7 +21,13 @@ function getLastInserted($table, $id) {
 	return $row[$id];
  }
 
-
+function get_chargess($charges){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_RunningCharges');
+    $this -> db ->where('JobFileNo', $charges);
+    $query=$this->db->get();
+    return $query->result();
+}
 function get_vessels($JobFile){
     $this->  db ->select('*');
     $this -> db -> from('vw_CarrierByJobFile');

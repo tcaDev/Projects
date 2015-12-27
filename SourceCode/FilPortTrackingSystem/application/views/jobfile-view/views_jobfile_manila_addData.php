@@ -1559,6 +1559,7 @@ $('.save_charges').click(function(){
 				        		title: 'Alert!',
 				        		content: 'Running Charges has been inserted!',
 				        		confirm: function(){
+				        			location.reload();
 				        	    }
 				   			   });
 	    		    })

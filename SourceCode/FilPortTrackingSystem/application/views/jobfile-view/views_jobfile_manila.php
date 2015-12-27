@@ -210,7 +210,7 @@
 								          <td><?php echo $row->DatePaid; ?></td>
 
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
-								          <td><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								      
 								        </tr>
 
@@ -380,6 +380,19 @@ $(document).ready(function(){
 					});
  });
 
+ $('.view_charges').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_charges');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_charges').html(data);
+					});
+ })
 
 
 
