@@ -87,7 +87,7 @@
 			  	  if(cid!=0){
 			  	  	$.ajax({
 						  method: "POST",
-					 	  url: "http://yago/FilPortTrackingSystem/Login_user/select_country",
+					 	  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
 					  	  data: { countryid:cid,
 					  		  conname:Country 	  		  
 					  		}

@@ -1,4 +1,4 @@
- var link = 'http://yago/FilPortTrackingSystem';
+ var link = 'http://localhost/FilPortTrackingSystem';
 
 
  $(document).ready(function(){	
