@@ -91,53 +91,54 @@
 								          <th > No. </th>
 
 								          <th > Update </th>
-
+										 
 								          <th >Jobfile Number</th>
 
 								          <th >Color Stages</th>
 
-								          <th >Shipper</th>
-
-								          <th >Consignee</th>
-
-								          <th >Description of Goods</th>
-
-								          <th >PI/PO No.</th>
-
-								          <th >House Bill of Lading No.</th>
-
-								          <th >Master Bill of Lading No.</th>
+								          <th> Shipper </th>
+										   
+										  <th >Consignee</th>
 
 								          <th >Container No.</th>
 
-								          <th >Letter of Credit No. from Bank</th>
+								          <th >Description of Goods</th>
+
+ 										  <th >PI/PO No.</th>
+
+ 										   <th >House Bill of Lading No.</th>
+
+								          <th >Master Bill of Lading No.</th>
+
+								          <th >Letter of Credit No. from Bank</th> 
 
 								          <th >Registry</th>
 
+								          <th >Vessel/Voyage</th> 
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
 								          <th >Date Pick-up/Received O-BL</th>
+         								 
+         								  <th >Date Pick-up/Received other Documents</th>
+							   	
+							   		      <th >Broker</th>
 
-								          <th >Date Pick-up/Received other Documents</th>
+							   		      <th >Date Request Budget to GL</th>
 
-								          <th >Broker</th>
+										  <th >Reference Due Date</th>
 
-								          <th >Date Request Budget to GL</th>
+										  <th >Date Sent Pre-Assess</th>
 
-								          <th >Reference Due Date</th>
+										  <th >Date File Entry to BOC</th>
 
-								          <th >Date Sent Pre-Assess</th>
+										  <th >Date Sent Final Assess</th>
 
-								          <th >Date File Entry to BOC</th>
+										  <th >Reference Entry No.</th>
 
-								          <th >Date Sent Final Assess</th>
+										  <th>Color Selectivity</th>
 
-								          <th >Reference Entry No.</th>
-
-								          <th>Color Selectivity</th>
-
-								          <th >Date Paid (Date&Time)</th>
+ 									      <th >Date Paid (Date&Time)</th>
 
 								          <th >Status Reports</th>
 
@@ -162,56 +163,32 @@
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
 								          <td><?php echo $i;?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
-
 								          <td><?php echo $row->JobFileNo; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
-
-								          <?php echo $pick1 ;?>
-
-								           <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
-
+								           <?php echo $pick1 ;?>
+								          <td><?php echo $row->ShipperName; ?></td>
 								          <td><?php echo $row->ConsigneeName; ?></td>
-
-								          <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
-
-								          <td><?php echo $row->PurchaseOrderNo; ?></td>
-
-								          <td><?php echo $row->HouseBillLadingNo; ?></td>
-
+								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button></td>
+										  <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
+										  <td><?php echo $row->PurchaseOrderNo; ?></td>
+ 										  <td><?php echo $row->HouseBillLadingNo; ?></td>
 								          <td><?php echo $row->MasterBillLadingNo; ?></td>
-
-								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
-
-								          <td><?php echo $row->LetterCreditFromBank; ?></td>
-
-								          <td><?php echo $row->Registry; ?></td>
-								        
+										  <td><?php echo $row->LetterCreditFromBank; ?></td>
+ 									      <td><?php echo $row->Registry; ?></td>
+										  <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
 								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
-
 								          <td><?php echo $row->DateReceivedOfBL; ?></td>
-
 								          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
-
-								          <td><?php echo $row->Broker; ?></td>
-
+ 										  <td><?php echo $row->Broker; ?></td>
 								          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
-
 								          <td><?php echo $row->RFPDueDate; ?></td>
-
-								          <td><?php echo $row->DateSentPreAssessment; ?></td>
-
+   							              <td><?php echo $row->DateSentPreAssessment; ?></td>
 								          <td><?php echo $row->DateFileEntryToBOC; ?></td>
-
 								          <td><?php echo $row->DateSentFinalAssessment; ?></td>
-
 								          <td><?php echo $row->RefEntryNo; ?></td>
-
 								          <td><?php echo $row->ColorSelectivityName; ?></td>
-
 								          <td><?php echo $row->DatePaid; ?></td>
-
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
-								      
 								        </tr>
 
 								        <?php } ?>

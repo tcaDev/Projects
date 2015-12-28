@@ -621,11 +621,11 @@
 									<label>Bad Cargo</label>
 									<input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo"/>
 								</div>
-
+<!-- 
 								<div style="text-align:right;">
 									<button type="button" class="btn btn-primary "><span class=" fa fa-th-list fa-fw"></span> Particular Charges</button>
 									<button type="button" class="btn btn-primary "><span class=" fa fa-th-list fa-fw"></span> All Charges</button>	
-								</div>
+								</div> -->
 								
 
 						</div>
