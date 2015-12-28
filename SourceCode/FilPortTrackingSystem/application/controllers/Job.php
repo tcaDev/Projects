@@ -654,7 +654,7 @@ $userid = $session_data['uid'];
 
 
              //3rd proc
-             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+/*             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
              $this->db->query($containerbyvessel,
               array(       
                   'P_ContainerNo'           =>$container,
@@ -677,7 +677,62 @@ $userid = $session_data['uid'];
                   'P_PullOutDateAtPort'         =>NULL,
                   'P_UserId'                    =>$userid 
 
-             ));
+             ));*/
+  $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+      $data = array(
+               'ContainerNo'             => $container,
+               'ContainerSize'           => $consize,
+               'CarrierByJobFileId'      => $VesselByJobFile,
+               'NoOfCartons'             => $cartons_no,
+               'TruckerName'             => $trucker_name,
+               'EstDepartureTime'        => $edt,
+               'EstArrivalTime'          => $eat,
+               'ActualArrivalTime'       => $aat,
+               'StartOfStorage'          => $start_storage,
+               'Lodging'                 => $lodging,
+               'DateBOCCleared'          => $dtboc,
+               'HaulerOrTruckId'         => $trucker_id,
+               'TargetDeliveryDate'      => $tdt,
+               'GateInAtPort'            => $gip,
+               'GateOutAtPort'           => $gop,
+               'ActualDeliveryAtWarehouse'  =>$adw,
+               'StartOfDemorage'            =>$start_demorage,
+               'PullOutDateAtPort'          =>NULL
+
+
+               
+        );
+
+  $lastid = $this->db->insert('ContainerByCarrier',$data); 
+
+        $data = array(
+               'ContainerByCarrierId'    => $lastid,
+               'ContainerNo'             => $container,
+               'ContainerSize'           => $consize,
+               'CarrierByJobFileId'      => $VesselByJobFile,
+               'NoOfCartons'             => $cartons_no,
+               'TruckerName'             => $trucker_name,
+               'EstDepartureTime'        => $edt,
+               'EstArrivalTime'          => $eat,
+               'ActualArrivalTime'       => $aat,
+               'StartOfStorage'          => $start_storage,
+               'Lodging'                 => $lodging,
+               'DateBOCCleared'          => $dtboc,
+               'HaulerOrTruckId'         => $trucker_id,
+               'TargetDeliveryDate'      => $tdt,
+               'GateInAtPort'            => $gip,
+               'GateOutAtPort'           => $gop,
+               'ActualDeliveryAtWarehouse'  =>$adw,
+               'StartOfDemorage'            =>$start_demorage,
+               'PullOutDateAtPort'          =>NULL,
+               'UpdatedBy_UserId'           =>$userid
+               
+        );
+
+  $lastid2 = $this->db->insert('ContainerByCarrierHistory',$data); 
+   $this->session->lastid2 = $lastid2;
+
 }
 
 function comodity(){
@@ -724,11 +779,11 @@ function comodity(){
   //}   
 
 
-
+  $carrier = $this->session->lastid2;
 
  $data = array(
                'ProductId'             => $product_name,
-               'ContainerByCarrierId'  => $CarrierByJobFile,
+               'ContainerByCarrierId'  => $carrier,
                'Origin_CountryId'      => $origin_id,
                'Origin_City'           => $origin_cty
         );
@@ -738,14 +793,14 @@ function comodity(){
    $data2 = array(
                'ProductsByContainerId'    => $lastid,
                'ProductId'                => $product_name,
-               'ContainerByCarrierId'     => $CarrierByJobFile,
+               'ContainerByCarrierId'     => $carrier,
                'Origin_CountryId'         => $origin_id,
                'Origin_City'              => $origin_cty,
                'UpdatedBy_UserId'         => $userid
         );
 
   $this->db->insert('ProductsByContainerHistory',$data2); 
-
+ $this->session->unset_userdata('lastid2');
  }
 
  function jobfile_add_charges(){
