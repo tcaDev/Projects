@@ -1444,7 +1444,9 @@ function insert_job(){
  function insert_vessel(){
  	  var jbfl       = $('.jobfiles').val();
        var table = $("#tableAddVessel-mnla table tbody");
-		table.find('tr').each(function (count1) {
+         var t3 = $("#tableAddVessel-mnla table tbody tr").length;
+		     table.find('tr').each(function (count1) {
+	     var c3 = count1+1;
 			var $tds = $(this).find('td'),
 			vessel 	= $tds.eq(0).text(),
 		    vat 	= $tds.eq(1).text();
@@ -1476,12 +1478,14 @@ function insert_job(){
 			  		}
 				})
 			    .done(function(data) {
+			    	       if(t3==c3){
 	  							 $.alert({
 				        		title: 'Alert!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
 				        	    }
 				   			   });
+	  					    }
 	    		    });
 		  
 
@@ -1497,7 +1501,7 @@ function ins_contain(add_comodity){
 	
        			  	
 		    	  var table = $("#tableAddContainer-mnla table tbody");
-		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
+		    	  var ct    = $("#tableAddContainer-mnla table tbody tr").length;
 		    table.find('tr').each(function (count1) {
 			  var c = count1+1;
 
@@ -1549,24 +1553,27 @@ function ins_contain(add_comodity){
 			  		
 			  		}
 				})
-				 .done(function() {			
-			        if(add_comodity!=1){ 	
+				 .done(function() {	
+				 	  if(add_comodity==1){
+			           	var container="container";
+			    		 if(c<=ct){
+			    		 ins_description(c,ct,container);
+				        }
+			          }		
+			        if(add_comodity!=1){ 
+			            if(c==ct){	
 			    	 	  	 $.alert({
 				        		title: 'Alert!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
 				        	    }
 				   			  }); 
+			    	 	}
 			        }
 	    		  });
 
 
-			    if(add_comodity==1){
-			    	var container="container";
-			    	if(c<=ct){
-			    	ins_description(c,ct,container);
-				    }
-			    }
+
 
 		     });
 
@@ -1574,8 +1581,8 @@ function ins_contain(add_comodity){
 }
 
 function ins_description(c,ct,container){
-			    	   var table= $("#tableAddTruck-mnla table tbody");
-			    	   var ct2 = $("#tableAddContainer-mnla table tbody tr").length;
+			    	   var table = $("#tableAddTruck-mnla table tbody");
+			    	   var ct2   = $("#tableAddTruck-mnla table tbody tr").length;
 
  table.find('tr').each(function (count1) {		 			   var c2 = count1+1;
    if(c==ct){
@@ -1607,12 +1614,15 @@ function ins_description(c,ct,container){
 			    	          }else{
 			    	          	var message = "New Comodity is added!";
 			    	          }
-	  						  $.alert({
-				        		title: 'Alert!',
-				        		content: message,
-				        		confirm: function(){
-				        	    }
-				   			  });
+			    	           if(c==ct){
+								if(c2=ct2){
+			  						  $.alert({
+						        		title: 'Alert!',
+						        		content: message,
+						        		confirm: function(){
+						        	    }
+						   			  });
+						   	   }}
 	    		    });
 	}
   }		    
