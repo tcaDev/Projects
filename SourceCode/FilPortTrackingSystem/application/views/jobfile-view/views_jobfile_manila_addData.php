@@ -250,7 +250,7 @@
 								<select class="containers-prod form-control input-sm"> 
 
 								</select>
-								
+									<i class="cont-size-msg" style="color:red;"></i>
 		
 							</div>
 
@@ -850,7 +850,7 @@
 			if(i==2){
 				  insert_vessel();
 				/*$("#btn-container-mnla-add").click();*/
-				$('btn-container-mnla-add').addClass('active');
+				$('#btn-container-mnla-add').addClass('active');
 				$('#btn-jobfile-mnla-add').removeClass('active');
 				$('#btn-truck-mnla-add').removeClass('active');
 				$('#btn-charges-mnla-add').removeClass('active');
