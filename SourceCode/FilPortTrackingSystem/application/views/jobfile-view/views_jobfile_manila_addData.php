@@ -475,6 +475,7 @@
 							<div class="form-group">
 								<label>Vessel/Voyage #</label> 
 								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
+								<i class="vessel-msg" style="color:red;"></i>
 							</div>
 
 							 <div class="form-group">
@@ -1250,10 +1251,15 @@
 
 	$(".btn-Add-Vessel-Data-mnla").click(function(){
 
-		if($('#tableAddContainer-mnla .carrier').val() == "0")
+		if($('#tableAddVessel-mnla .carrier').val() == "0")
 			{
 				$('.carrier-msg').text("Need Shipping Line/Carrier.");
-			}else{
+			}
+		else if($('#tableAddVessel-mnla .vessel').val() == "")
+			{
+				$('.vessel-msg').text("Need Vessel");
+			}
+		else{
 
 		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		$('#tableAddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel").val());
@@ -1264,6 +1270,9 @@
 		$('#tableAddVessel-mnla table tr:last td:nth-child(6)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 		$('.containers-vessel').append('<option value='+ $(".vessel").val() +'>' + $(".vessel").val() + '</option>');
+
+		$('.vessel-msg').text("");
+		$('.carrier-msg').text("");
 
 		$('#tableAddVessel-mnla .vessel').val('');
 		$('#tableAddVessel-mnla .vat').val('');
