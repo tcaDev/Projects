@@ -205,7 +205,7 @@
 
 								          <td><?php echo $row->RefEntryNo; ?></td>
 
-								          <td>Color Selectivity</td>
+								          <td><?php echo $row->ColorSelectivityName; ?></td>
 
 								          <td><?php echo $row->DatePaid; ?></td>
 
