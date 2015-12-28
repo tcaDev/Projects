@@ -469,7 +469,7 @@ $('.product_tab').keydown(function(e){
 									}
 });
 
-var link = 'http://yago/FilPortTrackingSystem';
+var link = 'http://localhost/FilPortTrackingSystem';
 
 
 function search(){
