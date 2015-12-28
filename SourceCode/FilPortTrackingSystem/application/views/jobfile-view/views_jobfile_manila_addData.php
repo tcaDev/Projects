@@ -785,7 +785,8 @@
 		* Show Jobfile
 		*/
 
-		/*$('#btn-jobfile-mnla-add').on('click',function(){
+		if(i==0){
+			$('#btn-jobfile-mnla-add').on('click',function(){
 			$(this).addClass('active');
 			$('#btn-charges-mnla-add').removeClass('active');
 			$('#btn-container-mnla-add').removeClass('active');
@@ -802,8 +803,12 @@
 			$('.btn-Next').removeClass('hidden');
 
 			i=0;
-		});*/
+		});
 
+		}else{
+			$('#btn-jobfile-mnla-add').click(false);
+		}
+		
 		/*
 		* Next Button
 		*/
@@ -1158,10 +1163,6 @@
 	                     $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
-
-
-
-
 
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
