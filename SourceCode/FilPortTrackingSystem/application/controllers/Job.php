@@ -80,6 +80,18 @@ class Job extends CI_Controller {
     <?php }}
 
 
+    function check_jobfile(){
+     $jobfile =  $this->input->post('jobfiles');
+      $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
+            
+          if($query->num_rows() ==1){ 
+            echo  "Jobfile already exists";     
+          }else{
+             echo "Jobfile is available"; 
+          }
+
+    }
+
     function carrierjobfile(){
 
        $jobfile =  $this->input->post('jbfl_vessel');
@@ -111,18 +123,8 @@ class Job extends CI_Controller {
       
     }
 
-    function  check_jobfile(){
-     $jobfile =  $this->input->post('jobfile');
-      $query= $this->db->query("Select * from 
-          JobFile where JobFileId='$jobfile' limit 1");
-            
-          if($query->num_rows() ==1){
-            echo  "Jobfile already exists";     
-          }else{
-             echo "Jobfile is available"; 
-          }
+    
 
-    }
     function get_charges(){
       $charges =  $this->input->post('id');   
       $charge  = $this->Jobdata->get_chargess($charges);
