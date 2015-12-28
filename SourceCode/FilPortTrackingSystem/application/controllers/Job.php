@@ -7,30 +7,30 @@ class Job extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
-           	$this->load->model('Jobdata');
+            $this->load->model('Jobdata');
        }
 
   // for jobfile 
   // getting the vessel data 
   //adding a data in form 
      function index(){
-	
-		 $data =	$this->input->post('ship_id');
+  
+     $data =  $this->input->post('ship_id');
     if(isset($data)){
-		 $shipper = $this->Jobdata->get_vessel($data);
+     $shipper = $this->Jobdata->get_vessel($data);
 
 
     if($shipper==NULL){
           echo    '<center><span style="color:red">No Vessels in this shipper. </span></center>';
     }else{
      
-		        echo'<select name="vessel" id="vess" class="myvessel form-control ">';				            				       
-		        foreach ($shipper as $row){
-		          	echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
-		        }
+            echo'<select name="vessel" id="vess" class="myvessel form-control ">';                                   
+            foreach ($shipper as $row){
+                echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
+            }
           }
 
-		  echo '</select>';
+      echo '</select>';
 
 
       ?>
@@ -694,9 +694,9 @@ function comodity(){
    
   
     //for getting the last insert in P_VesselByJobFileId start
-               $table ='CarrierByJobFile';
-               $id    ='CarrierByJobFileId';  
-           $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
+               $table ='ContainerByCarrier';
+               $id    ='ContainerByCarrierId';  
+           $CarrierByJobFile = $this->Jobdata->getLastInserted($table,$id);
 
             //for getting the last insert in P_VesselByJobFileId end
 /* if(($product_name!=NULL) || ($product_name!='')){
@@ -710,19 +710,42 @@ function comodity(){
              $VesselByJobFile=1;
              }*/
                 //4th proc
-             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?)";
+/*             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?)";
              $this->db->query($addproducts,
               array(
                   'P_ProductId'           => $product_name, //la pa value  
                   'P_ContainerId'         => $con_id,
                   'P_CarrierByJobFileId'   => $VesselByJobFile,
-                /*  'P_DateBOCCLeared'      => $dt_boc,*/
                   'P_Origin_CountryId'    => $origin_id,
                   'P_Origin_City'         => $origin_cty,
                   'P_UserId'              => $userid
-             ));
+             ));*/
     //     } 
-  //}      
+  //}   
+
+
+
+
+ $data = array(
+               'ProductId'             => $product_name,
+               'ContainerByCarrierId'  => $CarrierByJobFile,
+               'Origin_CountryId'      => $origin_id,
+               'Origin_City'           => $origin_cty
+        );
+
+  $lastid = $this->db->insert('ProductsByContainer',$data); 
+
+   $data2 = array(
+               'ProductsByContainerId'    => $lastid,
+               'ProductId'                => $product_name,
+               'ContainerByCarrierId'     => $CarrierByJobFile,
+               'Origin_CountryId'         => $origin_id,
+               'Origin_City'              => $origin_cty,
+               'UpdatedBy_UserId'         => $userid
+        );
+
+  $this->db->insert('ProductsByContainerHistory',$data2); 
+
  }
 
  function jobfile_add_charges(){

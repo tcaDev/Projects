@@ -849,11 +849,23 @@
 				  insert_vessel();
 				$("#btn-container-mnla-add").click();
 			}else if(i==3){
-			 		ins_contain();
-				$("#btn-truck-mnla-add").click();
+			    $.confirm({
+   						  title: 'Please Choose!',
+  						  content: 'Do you want to add a comodity?',
+ 					      confirm: function(){
+  					        	$("#btn-truck-mnla-add").click(); 
+  					  },
+  						  cancel: function(){
+  						  	 ins_contain();
+    				    	$("#btn-charges-mnla-add").click();
+   						 }
+				});
+			 		
+			
 			}else if(i==4){
-
-				ins_description();
+			    var add_comodity=1;
+  		        ins_contain(add_comodity);
+				/*ins_description();*/
 				$("#btn-charges-mnla-add").click();
 			}
 			else if(i==1){
@@ -1332,10 +1344,11 @@ function insert_job(){
 	    		    })
 			     .fail(function(data) {
 	  							 $.alert({
+	  							backgroundDismiss: false,
 				        		title: 'Error!',
-				        		content: 'Failed to add!',
+				        		content: 'Jobfile already exists!',
 				        		confirm: function(){
-				        			location.reload();
+				        			$('#btn-jobfile-mnla-add').click();
 				        	    }
 				   			   });
 	    		    });
@@ -1397,7 +1410,7 @@ function insert_job(){
 
  }
 
-function ins_contain(){
+function ins_contain(add_comodity){
 
 	
        			  	
@@ -1454,24 +1467,38 @@ function ins_contain(){
 			  		
 			  		}
 				})
-			    .done(function(data) {
-	  							 $.alert({
+				 .done(function() {
+							 data_success();
+	    		    });
+
+			    if(add_comodity==1){
+			    	var container="container";
+			    	if(c<=ct){
+			    	ins_description(c,ct,container);
+				    }
+			    }
+			    if(add_comodity!=1){
+			    	 function data_success(){
+			    	 	  	 $.alert({
 				        		title: 'Alert!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
 				        	    }
-				   			   });
-	    		    });
-
+				   			  });
+			    	 }
+			    }
 		     });
 
 
 }
 
-function ins_description(){
+function ins_description(c,ct,container){
 			    	   var table= $("#tableAddTruck-mnla table tbody");
-		 			   table.find('tr').each(function (count1) {
+			    	   var ct2 = $("#tableAddContainer-mnla table tbody tr").length;
 
+ table.find('tr').each(function (count1) {		 			   var c2 = count1+1;
+   if(c==ct){
+	if(c2=ct2){
 				          var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
 						     prod_orderno  = $tds.eq(1).text();  //origin_id
@@ -1479,7 +1506,7 @@ function ins_description(){
 						     origin_id     = $tds.eq(3).text();  //origin_id
 					         origin_cty    = $tds.eq(5).text();
 
-		$.ajax({
+	        	$.ajax({
 			  		method: "POST",
 					  url: "<?php echo base_url('Job/comodity');?>",
 			  		data: {
@@ -1494,10 +1521,21 @@ function ins_description(){
 			  		}
 				})
 			    .done(function(data) {
-	  						alert('new comodity added');
+			    	          if(container!=''){
+			    	          	var message = "New Comodity and container is added!";
+			    	          }else{
+			    	          	var message = "New Comodity is added!";
+			    	          }
+	  						  $.alert({
+				        		title: 'Alert!',
+				        		content: message,
+				        		confirm: function(){
+				        	    }
+				   			  });
 	    		    });
-
-    });
+	}
+  }		    
+});
 
 
 }

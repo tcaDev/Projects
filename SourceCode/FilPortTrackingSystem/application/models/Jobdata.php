@@ -66,7 +66,11 @@ function get_vessels($JobFile){
     return $query->result();
  }
 
-
+function comodity($comodity){
+  $this->db->insert('ProductsByContainer',$comodity); 
+     $insert_id = $this->db->insert_id();
+     return  $insert_id;
+}
 
 
 
