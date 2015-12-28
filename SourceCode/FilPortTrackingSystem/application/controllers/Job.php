@@ -81,7 +81,7 @@ class Job extends CI_Controller {
 
 
     function check_jobfile(){
-     $jobfile =  $this->input->post('jobfiles');
+     $jobfile =  $this->input->post('jobfile');
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
             
           if($query->num_rows() ==1){ 
