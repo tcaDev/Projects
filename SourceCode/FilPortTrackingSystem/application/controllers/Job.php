@@ -785,7 +785,7 @@ function comodity(){
 
  $data = array(
                'ProductId'             => $product_name,
-               'ContainerByCarrierId'  => $carrier,
+               'ContainerByCarrierId'  => $CarrierByJobFile,
                'Origin_CountryId'      => $origin_id,
                'Origin_City'           => $origin_cty
         );
@@ -795,7 +795,7 @@ function comodity(){
    $data2 = array(
                'ProductsByContainerId'    => $lastid,
                'ProductId'                => $product_name,
-               'ContainerByCarrierId'     => $carrier,
+               'ContainerByCarrierId'     => $CarrierByJobFile,
                'Origin_CountryId'         => $origin_id,
                'Origin_City'              => $origin_cty,
                'UpdatedBy_UserId'         => $userid

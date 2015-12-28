@@ -31,7 +31,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
-								 <input type="text" onkeyup="search_jobfiles(this)" class="form-control input-sm jobfiles"  name="jbfl" id="jbfl" >
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -657,20 +657,6 @@
   	}
  });
 
-	function search_jobfiles(jobfiles){
-	   jobfiles = jobfiles.value;
-	
-	   			$.ajax({
-				  		method: "POST",
-						  url: "<?php echo base_url('Job/check_jobfile');?>",
-				  		data: {jobfiles : jobfiles}
-				})
-				.done(function(data) {
-			   		 	   $('#check_jobfiles').html(data);
-					});
-
-	 }
-
 </script>
 
 
@@ -857,6 +843,8 @@
 			}
 			else{i++;}
 
+			
+				   
 
 			/*Next Page*/
 			if(i==2){
@@ -1014,7 +1002,21 @@
 
 
 <script>
+ function search_jobfile(jobfile){
+   jobfile = jobfile.value; 
 
+   alert(jobfile);
+
+   			$.ajax({
+			  		method: "POST",
+					  url: "<?php echo base_url('Job/check_jobfile');?>",
+			  		data: { jobfile:jobfile}
+			})
+			.done(function(data) {
+		   		 	   $('#check_jobfiles').html(data);
+				});
+
+ }
 
 </script>
 
@@ -1428,7 +1430,6 @@ function insert_job(){
 				        		title: 'Error!',
 				        		content: 'Jobfile already exists!',
 				        		confirm: function(){
-				        			i=0;
 				        			$('#btn-jobfile-mnla-add').click();
 				        	    }
 				   			   });
@@ -1548,9 +1549,17 @@ function ins_contain(add_comodity){
 			  		
 			  		}
 				})
-				 .done(function() {
-							 data_success();
-	    		    });
+				 .done(function() {			
+			        if(add_comodity!=1){ 	
+			    	 	  	 $.alert({
+				        		title: 'Alert!',
+				        		content: 'New container is added!',
+				        		confirm: function(){
+				        	    }
+				   			  }); 
+			        }
+	    		  });
+
 
 			    if(add_comodity==1){
 			    	var container="container";
@@ -1558,16 +1567,7 @@ function ins_contain(add_comodity){
 			    	ins_description(c,ct,container);
 				    }
 			    }
-			    if(add_comodity!=1){
-			    	 function data_success(){
-			    	 	  	 $.alert({
-				        		title: 'Alert!',
-				        		content: 'New container is added!',
-				        		confirm: function(){
-				        	    }
-				   			  });
-			    	 }
-			    }
+
 		     });
 
 
