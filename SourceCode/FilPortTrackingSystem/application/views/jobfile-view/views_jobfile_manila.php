@@ -338,7 +338,7 @@
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
-				      <div class="modal-content">
+				      <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Running Charges</h4>
@@ -347,7 +347,8 @@
 				            <div class="list_charges"> </div>
 
 				        </div>
-				        <div class="modal-footer">
+				        <div class="footer-modal">
+				        <hr>
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
