@@ -729,8 +729,16 @@ foreach($job as $row){
  $vdt           =  $this->input->post('vdt');
 
  $vat = explode(" ", $vat);
+
+/*
+  Mamili ka nlng sa dalwa Bossxxsx(This) or
+*/
  $vat_date = $vat[0];
  $vat_time = $vat[1];
+
+ /*
+    This
+ */
 
 $date = date('Y-m-d',strtotime($vat));
 $time = date('H:i:s',strtotime($vat));
