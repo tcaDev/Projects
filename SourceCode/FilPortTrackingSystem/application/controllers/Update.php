@@ -58,7 +58,8 @@ class Update extends CI_Controller {
 	function update_vessel(){
 		$id 	= 	$this->input->post('ves_id');
 		$name 	= 	$this->input->post('ves_name');
-		$vesno 	= 	$this->input->post('vesno');
+		$address_carrier = 	$this->input->post('address_carrier');
+		$number_carrier = $this->input->post('number_carrier');
 		$status = 	$this->input->post('status');
 		
 		    $query= $this->db->query("Select * from 
@@ -71,7 +72,7 @@ class Update extends CI_Controller {
              $this->session->failed= 'update_failed';
           } 
        else{  
-				$this->User->update_vessel($id,$name,$status);
+				$this->User->update_vessel($id,$name,$address_carrier,$number_carrier,$status);
 				$this->session->success= 'update_success';
 		 }
 		redirect('Login_User/settings/#vessel');

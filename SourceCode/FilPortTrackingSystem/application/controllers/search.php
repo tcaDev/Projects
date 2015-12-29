@@ -913,7 +913,8 @@ function search_vessel(){
 					      <tr>
 					        <th>Shipping Lines ID</th>
 					        <th>Shipping Lines Name</th>
-					        
+					        <th>Address</th>
+					        <th>Office Number</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -944,7 +945,9 @@ function search_vessel(){
 					         	}
 					    echo  '<tr>
 							        <td>'.$row->CarrierId.'</td>
-							        <td>'.$row->CarrierName.'</td>      
+							        <td>'.$row->CarrierName.'</td>    
+							        <td></td>
+							        <td></td>  
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>

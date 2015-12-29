@@ -729,7 +729,15 @@ foreach($job as $row){
  $vdt           =  $this->input->post('vdt');
 
  $vat = explode(" ", $vat);
+ $vat_date = $vat[0];
+ $vat_time = $vat[1];
+
+$date = date('Y-m-d',strtotime($vat));
+$time = date('H:i:s',strtotime($vat));
+
  $vdt = explode(" ", $vdt);
+ $vdt_date = $vdt[0];
+ $vdt_time = $vdt[1];
 
 
         //2nd proc
@@ -769,19 +777,52 @@ function container(){
    $tdt = $this->input->post('tdt');
 
  $vat = explode(" ", $edt);
+ $vat_date = $vat[0];
+ $vat_time = $vat[1];
+
+
  $vdt = explode(" ", $eat);
+$vdt_date = $vdt[0];
+$vdt_time = $vdt[1];
+
  $vat = explode(" ", $aat);
+ $vat_date = $vat[0];
+ $vat_time = $vat[1];
+
+
  $eat = explode(" ", $eat);
+ $eat_date = $eat[0];
+ $eat_time = $eat[1];
 
  $gip  = explode(" ", $gip);
+ $gip_date = $gip[0];
+ $gip_time = $gip[1];
+
  $gop = explode(" ", $gop);
+ $gop_date = $gop[0];
+ $gop_time = $gop[1];
+
  $dtboc = explode(" ", $dtboc);
+ $dtboc_date = $dtboc[0];
+ $dtboc_time = $dtboc[1];
+
  $tdt = explode(" ", $tdt);
+ $tdt_date = $tdt[0];
+ $tdt_time = $tdt[1];
 
  
   $start_storage = explode(" ", $start_storage);
+  $storage_date = $start_storage[0];
+ $storage_time = $start_storage[1];
+
+
  $start_demorage = explode(" ", $start_demorage);
+$demorage_date = $start_demorage[0];
+ $demorage_time = $start_demorage[1];
+
  $adw = explode(" ", $adw);
+ $adw_date = $adw[0];
+ $adw_time = $vadw[1];
 
  
 

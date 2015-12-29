@@ -198,8 +198,15 @@ function vessel(){
 				      </div>
 				      <div class="modal-body" >
 						<form action="'.base_url('Add_user/add_carrier/').'" method="post">
+
 					            <div class="form-group col-md-12">
 					                <input type="text" name="carrier" class="form-control" placeholder="Shipping Line/Carrier" required/>
+					            </div>
+					             <div class="form-group col-md-12">
+					                <input type="text" name="address-carrier" class="form-control" placeholder="Address" required/>
+					            </div>
+					             <div class="form-group col-md-12">
+					                <input type="text" name="num-carrier" class="form-control" placeholder="Office Number" required/>
 					            </div>
 					  
 

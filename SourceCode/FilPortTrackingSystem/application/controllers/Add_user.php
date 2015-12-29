@@ -247,6 +247,8 @@ class Add_user extends CI_Controller {
 
     function add_carrier(){
               $carrier = $this->input->post('carrier');
+              $address_carrier = $this->input->post('address-carrier');
+              $num_carrier = $this->input->post('num-carrier');
               
 
                   $query= $this->db->query("Select * from Carrier where CarrierName = '$carrier' limit 1");
@@ -256,7 +258,9 @@ class Add_user extends CI_Controller {
 
             }else{
                $data = array(
-                  'CarrierName' => $carrier
+                  'CarrierName' => $carrier,
+                  /*'Address' => $add_carrier,
+                  'OfficeNumber' => $num_carrier*/
                   );
 
             $this->db->insert('Carrier', $data); 
