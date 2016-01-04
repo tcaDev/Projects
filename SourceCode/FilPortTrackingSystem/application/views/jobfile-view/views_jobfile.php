@@ -6,47 +6,40 @@
 
 		  <ul class="nav nav-tabs">
 
-		    <li id="manila" class="active"><a role="button">SEA FREIGHT MANILA</a></li>
+		    <li class="active"><a data-toggle="tab" href="#manila">SEA FREIGHT MANILA</a></li>
 
-		    <li id="outport"><a role="button">SEA FREIGHT OUTPORT</a></li>
+		    <li><a data-toggle="tab" href="#outport">SEA FREIGHT OUTPORT</a></li>
 
-		    <li id="air"><a role="button">AIR FREIGHT</a></li>
+		    <li><a data-toggle="tab" href="#air">AIR FREIGHT</a></li>
 
 		  </ul>
 
-
-
 		  	<!-- Manila -->
 
-		  <div class="table-mnla col-lg-12 col-md-12 col-sm-12 table-content">
+		  	<div class="tab-content">
+		  	
+		  		<div id="manila" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
 
-		  	<?php $this->load->view('jobfile-view/views_jobfile_manila'); ?>
+				  	<?php $this->load->view('jobfile-view/views_jobfile_manila'); ?>
 
-		  </div>
+			  </div>
 
-		
+			  	<!-- Outport -->
 
-		  	<!-- Outport -->
+			  <div id="outport" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
 
-		  <div class="hidden table-outport col-lg-12 col-md-12 col-sm-12 table-content">
+			  	<?php $this->load->view('jobfile-view/views_jobfile_outport'); ?>
 
-		  	<?php $this->load->view('jobfile-view/views_jobfile_outport'); ?>
+			  </div>
 
-		  </div>
+			  	<!-- Air -->
 
+			  <div id="air" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
 
+			  	<?php $this->load->view('jobfile-view/views_jobfile_air'); ?>
 
-		  	<!-- Air -->
-
-		  <div class="hidden table-air col-lg-12 col-md-12 col-sm-12 table-content">
-
-		  	<?php $this->load->view('jobfile-view/views_jobfile_air'); ?>
-
-		  </div>
-
-
-
-
+			  </div>
+		  	</div>
 		</div>
 
 		<!-- Legend -->
@@ -58,81 +51,9 @@
 			</div>
 
 			<!-- End Legend -->
-<hr>
+		<hr>
 </div>
 
-
-			
-
-
-
-
-
-	<script>
-
-	$(document).ready(function(){
-
-		$("#manila").on('click',function(){
-
-			$(".table-outport").addClass('hidden');
-
-			$(".table-air").addClass('hidden');
-
-			$(".table-mnla").removeClass('hidden');
-
-			$("#manila").addClass('active');
-
-			$("#outport").removeClass('active');
-
-			$("#air").removeClass('active');
-
-
-
-		});
-
-
-
-		$("#outport").on('click',function(){
-
-
-
-			$(".table-outport").removeClass('hidden');
-
-			$(".table-air").addClass('hidden');
-
-			$(".table-mnla").addClass('hidden');
-
-			$("#manila").removeClass('active');
-
-			$("#outport").addClass('active');
-
-			$("#air").removeClass('active');
-
-		});
-
-
-
-		$("#air").on('click',function(){
-
-			$(".table-outport").addClass('hidden');
-
-			$(".table-air").removeClass('hidden');
-
-			$(".table-mnla").addClass('hidden');
-
-			$("#manila").removeClass('active');
-
-			$("#outport").removeClass('active');
-
-			$("#air").addClass('active');
-
-		});
-
-	});
-
-
-
-	</script>
 
 </body>
 
