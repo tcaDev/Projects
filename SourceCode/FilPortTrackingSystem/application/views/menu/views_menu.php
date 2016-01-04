@@ -15,11 +15,9 @@
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-files-o img-jobfile"></span>
 								</div>
-
 								<div class="col-lg-8 col-md-8 col-sm-8">
 									<span class="job-file">Job File</span>
 								</div>
-								
 							</div>							
 						</div>
 
@@ -63,7 +61,7 @@
 						<!-- Global Search -->
 					<!-- 	<a style="display:block" href="<?php //echo base_url('Login_user/search')?>"> -->
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-gbl card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-gbl card__front " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-globe img-jobfile"></span>
@@ -76,13 +74,12 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-gbl card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-gbl card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Global Search Description</span>
+									<span class="job-file">Global Search Description </span>
 								</div>
-								
+
 							</div>							
 						</div>
 					</div>
@@ -94,7 +91,7 @@
 						<!-- Report -->
 					<!-- 	<a style="display:block" href="<?php //echo base_url('Login_user/reports')?>"> -->
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-report card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-report card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-line-chart img-jobfile"></span>
@@ -107,7 +104,7 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-report card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-report card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
@@ -123,7 +120,7 @@
 
 					<!-- 	<a style="display:block" href="<?php //echo base_url('Login_user/dashboard')?>"> -->
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-pie-chart img-jobfile"></span>
@@ -136,7 +133,7 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
@@ -151,9 +148,9 @@
 						<!-- Help -->
 						<!-- <a style="display:block" href="<?php //echo base_url('Login_user/help')?>"> -->
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-								<div class="col-lg-4 col-md-4 col-sm-4">
+								<div class="col-lg-4 col-md-4 col-sm-4 imgDisabled">
 									<span class="fa fa-question img-jobfile"></span>
 								</div>
 
@@ -164,7 +161,7 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
@@ -190,6 +187,11 @@
 	<!-- End Footer -->
 	</div>
 </body>
+<script type="text/javascript">
+	$(".imgDisabled").on("click",function(){
+	alert('Sorry for the Inconvenience! But this Page is currently under Construction');
+});
+</script>
 </html>
 
 
