@@ -189,7 +189,7 @@
 </body>
 <script type="text/javascript">
 	$(".imgDisabled").on("click",function(){
-	alert('Sorry for the Inconvenience! But this Page is currently under Construction');
+	alert('Sorry for the Inconvenience!. This Page is currently under Construction');
 });
 </script>
 </html>

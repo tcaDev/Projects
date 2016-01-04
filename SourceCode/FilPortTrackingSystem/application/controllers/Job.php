@@ -603,7 +603,7 @@ class Job extends CI_Controller {
              echo "<td class='row'>".$row->DateSentFinalAssessment."</td>";
              echo "<td class='row'>".$row->RefEntryNo."</td>";
              echo "<td class='row'>".$row->DatePaid."</td>";
-             
+
              echo "</tr>";
          }
 
@@ -676,7 +676,7 @@ class Job extends CI_Controller {
  
     //stop inserting data in jobfile to avoid duplication
      $query= $this->db->query("Select * from JobFile where
-          JobFileId='$job' limit 1");
+          JobFileNo='$job' limit 1");
       if($query->num_rows() ==1){
         echo "JobFile is already exists";
        }else{

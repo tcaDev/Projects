@@ -467,7 +467,7 @@ function legend(){
 
 echo '			
 	<div class="forwards tab-pane">
-		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#forward">ADD Legend</button>
+		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
 
 		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
 			  <div class="modal-dialog">
@@ -525,7 +525,7 @@ echo '
 
 function product(){
 	echo	'<div class="prod tab-pane">
-				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#product">ADD PRODUCTS</button>
+				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
 
 					<div class="products consig-posbox modal fade" id="product" role="dialog">
 					  <div class="modal-dialog">
