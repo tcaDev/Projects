@@ -815,7 +815,7 @@ function select_country(){
 	
 					   echo     '<tr style="cursor:pointer;">
 					    		    <td class="hidden">'. $row->ConsigneeId .'</td>
-							        <td>'. $row->ConsigneeName .'</td>
+							        <td>'.  stripslashes($row->ConsigneeName).'</td>
 							      	<td>'. $row->HouseBuildingNoOrStreet .'</td>
 							        <td>'. $row->BarangayOrVillage .'</td>  
 							        <td>'. $row->TownOrCityProvince .'</td> 

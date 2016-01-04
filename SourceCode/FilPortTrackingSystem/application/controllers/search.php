@@ -7,8 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Search extends CI_Controller {
 
-
-
    public function __construct()
 
        {
@@ -52,13 +50,14 @@ class Search extends CI_Controller {
 								<th>Country</th>
 							</tr>
 						<tr>';
+
 						foreach ($searchme as $row) {
 								$displayOutput .=  '<tr>';
-					 	    	$displayOutput .=  '<td>' .$row->ConsigneeName . '</td>';
-					   			$displayOutput .=  '<td>' . $row->HouseBuildingNoOrStreet . '</td>';
-					   			$displayOutput .=  '<td>' . $row->BarangayOrVillage . '</td>';
+					 	    	$displayOutput .=  '<td>' . $row->ConsigneeName. '</td>';
+					   			$displayOutput .=  '<td>' .$row->HouseBuildingNoOrStreet . '</td>';
+					   			$displayOutput .=  '<td>' .$row->BarangayOrVillage . '</td>';
 					 	    	$displayOutput .=  '<td>' .$row->TownOrCityProvince . '</td>';
-					 	    	$displayOutput .=  '<td>' . $row->CountryId . '</td>';
+					 	    	$displayOutput .=  '<td>' .$row->CountryId . '</td>';
 					 	    	$displayOutput .=  '<td>' .$row->OfficeNumber . '</td>';
 					 	    	$displayOutput .=  '<td>' . $row->DateAdded . '</td>';
 					 	    	$displayOutput .=  '<td>' .$row->IsActive . '</td>';
@@ -250,13 +249,13 @@ if(isset($_SESSION['success'])){
 					    foreach ($info as $row) {
 					    	$i++;
 					    	      echo     '<tr style="cursor:pointer;" class="values_content">
-					    		    <td  class="hidden">'.$row->ConsigneeContactId.'</td>
+					    		    <td  class="hidden">'.stripslashes($row->ConsigneeContactId).'</td>
 					    		     <td  class="hidden">'.$i.'</td>
-							        <td contenteditable="true">'.$row->FirstName.'</td>
-							        <td contenteditable="true">'.$row->MiddleName.'</td>
-							        <td contenteditable="true">'.$row->LastName.'</td>       
-							        <td contenteditable="true">'.$row->ContactNo1.'</td>
-							        <td contenteditable="true">'. $row->ContactNo2. '</td>
+							        <td contenteditable="true">'.stripslashes($row->FirstName).'</td>
+							        <td contenteditable="true">'.stripslashes($row->MiddleName).'</td>
+							        <td contenteditable="true">'.stripslashes($row->LastName).'</td>       
+							        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
+							        <td contenteditable="true">'.stripslashes( $row->ContactNo2). '</td>
 							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
 							  			<button class="btn delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
@@ -392,13 +391,13 @@ if(isset($_SESSION['success'])){
 					    foreach ($info as $row) {
 					    	$i++;
 					    	      echo     '<tr style="cursor:pointer;" class="values_content">
-					    		    <td  class="hidden">'.$row->ShipperContactId.'</td>
+					    		    <td  class="hidden">'.stripslashes($row->ShipperContactId).'</td>
 					    		     <td  class="hidden">'.$i.'</td>
-							        <td contenteditable="true">'.$row->FirstName.'</td>
-							        <td contenteditable="true">'.$row->MiddleName.'</td>
-							        <td contenteditable="true">'.$row->LastName.'</td>       
-							        <td contenteditable="true">'.$row->ContactNo1.'</td>
-							        <td contenteditable="true">'. $row->ContactNo2. '</td>
+							        <td contenteditable="true">'.stripslashes($row->FirstName).'</td>
+							        <td contenteditable="true">'.stripslashes($row->MiddleName).'</td>
+							        <td contenteditable="true">'.stripslashes($row->LastName).'</td>       
+							        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
+							        <td contenteditable="true">'.stripslashes($row->ContactNo2). '</td>
 							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
 							  			<button class="delete_contacts"><span class="glyphicon glyphicon-trash"></span></button></td>						        
 					     		 </tr>';
@@ -671,13 +670,13 @@ if(isset($_SESSION['success'])){
 					     echo'
 					      <tr>
 					      	<td class="hidden">'.$row->BrokerId.'</td>
-					        <td>'.$row->FirstName.' '.$row->MiddleName.' '.$row->LastName.'</td>
-					        <td>'.$row->HouseBuildingNoStreet.'</td>
-					        <td>'.$row->BarangarOrVillage.'</td>
-					        <td>'.$row->TownOrCityProvince.'</td>
-					        <td>'.$row->Country.'</td>
-					        <td>'.$row->ContactNo1.'</td>
-					        <td>'.$row->ContactNo2.'</td>
+					        <td>'.stripslashes($row->FirstName.' '.$row->MiddleName.' '.$row->LastName).'</td>
+					        <td>'.stripslashes($row->HouseBuildingNoStreet).'</td>
+					        <td>'.stripslashes($row->BarangarOrVillage).'</td>
+					        <td>'.stripslashes($row->TownOrCityProvince).'</td>
+					        <td>'.stripslashes($row->Country).'</td>
+					        <td>'.stripslashes($row->ContactNo1).'</td>
+					        <td>'.stripslashes($row->ContactNo2).'</td>
 					        <td>'.$stat .'</td>
 						    <td  class="hidden">'. $mystat .'</td>
 						    <td  class="hidden">'. $row->CountryId .'</td>
@@ -768,12 +767,12 @@ function search_shipper(){
 					         	}
 
 					  echo  '<tr>
-					  	    <td class="hidden">'.$row->ShipperId.'</td>
-					  	    <td>'.$row->ShipperName.'</td>
-					  	    <td>'.$row->HouseBuildingNoStreet.'</td>
-					  	    <td>'.$row->BarangarOrVillage.'</td>
-					  	    <td>'.$row->TownOrCityProvince.'</td>
-					  	    <td>'.$row->Country.'</td>
+					  	    <td class="hidden">'.stripslashes($row->ShipperId).'</td>
+					  	    <td>'.stripslashes($row->ShipperName).'</td>
+					  	    <td>'.stripslashes($row->HouseBuildingNoStreet).'</td>
+					  	    <td>'.stripslashes($row->BarangarOrVillage).'</td>
+					  	    <td>'.stripslashes($row->TownOrCityProvince).'</td>
+					  	    <td>'.stripslashes($row->Country).'</td>
 					  	    <td class="hidden">'.$row->CountryId.'</td>
 					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   
 					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
@@ -822,8 +821,8 @@ function search_shipper(){
 
 			     $('.ship_id').val(id);
 			     $('.shipper_name').val(name);
-			     $('.hbno').val(id);
-			     $('.vilage').val(name);
+			     $('.hbno').val(hosno);
+			     $('.vilage').val(vil);
 			      $('.city').val(city);
 
 			      if(stat==1){
@@ -911,8 +910,8 @@ function search_vessel(){
 	  echo '	      <table class="table table-bordered">
 					    <thead>
 					      <tr>
-					        <th>Shipping Lines ID</th>
-					        <th>Shipping Lines Name</th>
+					        <th>Shipping Line ID</th>
+					        <th>Shipping Line Name</th>
 					        <th>Address</th>
 					        <th>Office Number</th>
 					        <th>Status</th>
@@ -944,10 +943,10 @@ function search_vessel(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->CarrierId.'</td>
-							        <td>'.$row->CarrierName.'</td>    
-							        <td></td>
-							        <td></td>  
+							        <td>'.stripslashes($row->CarrierId).'</td>
+							        <td>'.stripslashes($row->CarrierName).'</td>    
+							        <td>'.stripslashes($row->Address).'</td>
+							        <td>'.stripslashes($row->OfficeNo).'</td>  
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -962,18 +961,19 @@ function search_vessel(){
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
-
-
 	 	 $('.update_vessels').click(function(){
 
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var vessel    	  = $(this).closest('tr').children('td:eq(1)').text();
-			     var vesno    	  = $(this).closest('tr').children('td:eq(2)').text();
-			     var status    	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var ves_address  = $(this).closest('tr').children('td:eq(2)').text();
+    		     var ves_no    	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var status    	  = $(this).closest('tr').children('td:eq(4)').text();
 			      $('.vessel_id').val(id);
 			      $('.vessel_name').val(vessel);
-			      $('.vesno').val(vesno);
-			      if(status==1){
+			   //   $('.vesno').val(vesno);
+			      $('.address_carrier').val(ves_address);
+			      $('.number_carrier').val(ves_no);
+			      if(status=="activated"){
 			      $('.activate').prop('checked', true);
 			  	  }else{
 			  	  	  $('.deactivate').prop('checked', true);
@@ -1046,10 +1046,10 @@ $this->message();
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->HaulerOrTruckId.'</td>
-							        <td>'.$row->HaulerOrTruck.'</td>
-							        <td>'.$row->Address.'</td>
-							        <td>'.$row->TIN.'</td>
+							        <td>'.stripslashes($row->HaulerOrTruckId).'</td>
+							        <td>'.stripslashes($row->HaulerOrTruck).'</td>
+							        <td>'.stripslashes($row->Address).'</td>
+							        <td>'.stripslashes($row->TIN).'</td>
 							      	<td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -1066,14 +1066,13 @@ $this->message();
 	 	 $('.update_hauler').click(function(){
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var haulers   	  = $(this).closest('tr').children('td:eq(1)').text();
-			     var tin 		  = $(this).closest('tr').children('td:eq(2)').text();
-			     var address   	  = $(this).closest('tr').children('td:eq(3)').text();
+			     var tin 		  = $(this).closest('tr').children('td:eq(3)').text();
+			     var address   	  = $(this).closest('tr').children('td:eq(2)').text();
 			     var status   	  = $(this).closest('tr').children('td:eq(5)').text();
 			      $('.hauler_id').val(id);
 			      $('.hauler_name').val(haulers);
 			      $('.hauler_address').val(address);
 			      $('.hauler_tin').val(tin);
-
 
 			      if(status==1){
 			      $('.activate').prop('checked', true);
@@ -1140,8 +1139,8 @@ $this->message();
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td class="hidden">'.$row->ForwarderWarehouseId.'</td>
-							        <td>'.$row->ForwarderWarehouseName.'</td>
+							        <td class="hidden">'.stripslashes($row->ForwarderWarehouseId).'</td>
+							        <td>'.stripslashes($row->ForwarderWarehouseName).'</td>
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -1239,9 +1238,9 @@ $this->message();
 			    $cid= $row->StatusId;
 			    }
 			    echo '<tr>
-				        <td class="hidden">'.$row->StatusId.'</td>
-				        <td>'.$row->StatusName.'</td>
-				        <td>'.$row->Description.'</td>
+				        <td class="hidden">'.stripslashes($row->StatusId).'</td>
+				        <td>'.stripslashes($row->StatusName).'</td>
+				        <td>'.stripslashes($row->Description).'</td>
 				        '.$pick1.'
 				         <td>'.$stat .'</td>
 						 <td  class="hidden">'. $mystat .'</td> 
@@ -1316,8 +1315,8 @@ $this->message();
 					    foreach ($info as $row) {
 					    	$i++;
 					    	      echo     '<tr style="cursor:pointer;" class="values_content">
-							        <td style="text-align:left;">'.$row->Vesselname.'</td>
-							        <td style="text-align:left;">'.$row->VesselNo.'</td>
+							        <td style="text-align:left;">'.stripslashes($row->Vesselname).'</td>
+							        <td style="text-align:left;">'.stripslashes($row->VesselNo).'</td>
 
 					     		 </tr>';
 					    } ?>
@@ -1369,8 +1368,8 @@ function search_product(){
 	  echo '	      <table class="table table-bordered">
 					    <thead>
 					      <tr>
-					        <th>Product ID</th>
-					        <th>Product Name</th>
+					        <th>Commodity ID</th>
+					        <th>Commodity Name</th>
 					        <th>Status</th>
 					        <th colspan="2">Action</th>
 					      </tr>
@@ -1400,8 +1399,8 @@ function search_product(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.$row->ProductId.'</td>
-							        <td>'.$row->ProductName.'</td>      
+							        <td>'.stripslashes($row->ProductId).'</td>
+							        <td>'.stripslashes($row->ProductName).'</td>      
 							        <td>'.$stat .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_product" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>

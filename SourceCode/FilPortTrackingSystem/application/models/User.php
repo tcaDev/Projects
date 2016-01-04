@@ -75,16 +75,17 @@ Class User extends CI_Model
       
 
   }
-    function update_vessel($id,$name,$status){
+    function update_vessel($id,$name,$address_carrier,$number_carrier,$status){
         $status =  (int) $status;
         $data = array(
         'CarrierName'    => $name,
+        'Address' => $address_carrier,
+        'OfficeNo' => $number_carrier,
         'IsActive'      => $status
 
         );
           $this->db->where('CarrierId', $id);
           $this->db->update('Carrier', $data);
-    
   }
 
      /* function update_shipper($id,$name,$fname,$mname,$lname,$c1,$c2){

@@ -575,24 +575,24 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">Shipping Lines/ Carrier Information</h4>
+				          <h4 class="modal-title">Shipping Line/ Carrier Information</h4>
 				        </div>
 				        <div class="modal-body">
 				       <?php echo form_open('Update/update_vessel/');?>
 				          	  <input type="hidden" name="ves_id"      class="vessel_id" />
 							<div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Shipping Lines/ Carrier</label>
+					            	<label>Shipping Line/ Carrier</label>
 					               <input type="text"   name="ves_name"  class="vessel_name form-control" />
 					            </div>
 
 					            <div class="form-group col-lg-12">
 					            	<label>Address</label>
-					               <input type="text"   name="address_carrier"  class="vessel_name form-control" />
+					               <input type="text"   name="address_carrier"  class="address_carrier form-control" />
 					            </div>
 					            <div class="form-group col-lg-12">
 					            	<label>Office Number</label>
-					               <input type="text"   name="number_carrier"  class="vessel_name form-control" />
+					               <input type="text"   name="number_carrier"  class="number_carrier form-control" />
 					            </div>
 					        </div>
 					        <div class="col-lg-12">
@@ -1035,14 +1035,14 @@
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Products Information</h4>
+		          <h4 class="modal-title">Commodity Information</h4>
 		        </div>
 		        <div class="modal-body">
 		       <?php echo form_open('Update/update_products/');?>
 		          	  <input type="hidden" name="prod_id"      class="prod_id" />
 					<div class="row">
 			            <div class="form-group col-lg-12">
-			            	<label>Products Name</label>
+			            	<label>Commodity Name</label>
 			               <input type="text"   name="prod_name"  class="prod_name form-control" required/>
 			            </div>
 			        </div>

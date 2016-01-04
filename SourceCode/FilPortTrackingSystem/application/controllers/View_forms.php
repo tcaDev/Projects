@@ -532,14 +532,14 @@ function product(){
 					    <div class="modal-content">
 					      <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal">&times;</button>
-					        <h4 class="modal-title">ADD NEW PRODUCTS</h4>
+					        <h4 class="modal-title">ADD NEW COMMODITY</h4>
 					      </div>
 					      <div class="modal-body">
 
 							<form action=" '.base_url('Add_user/add_product/').'" method="post">
 								<div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="product_name"class="form-control " placeholder="Product Name" required/>
+						                <input type="text" name="product_name"class="form-control " placeholder="Commodity Name" required/>
 						            </div>
 						        </div>
 						 
