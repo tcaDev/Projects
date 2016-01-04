@@ -128,17 +128,7 @@
 
 										  <th >Reference Due Date</th>
 
-										  <th >Date Sent Pre-Assess</th>
-
-										  <th >Date File Entry to BOC</th>
-
-										  <th >Date Sent Final Assess</th>
-
-										  <th >Reference Entry No.</th>
-
 										  <th>Color Selectivity</th>
-
- 									      <th >Date Paid (Date&Time)</th>
 
 								          <th >Status Reports</th>
 
@@ -181,12 +171,7 @@
  										  <td><?php echo $row->Broker; ?></td>
 								          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
 								          <td><?php echo $row->RFPDueDate; ?></td>
-   							              <td><?php echo $row->DateSentPreAssessment; ?></td>
-								          <td><?php echo $row->DateFileEntryToBOC; ?></td>
-								          <td><?php echo $row->DateSentFinalAssessment; ?></td>
-								          <td><?php echo $row->RefEntryNo; ?></td>
 								          <td><?php echo $row->ColorSelectivityName; ?></td>
-								          <td><?php echo $row->DatePaid; ?></td>
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        </tr>

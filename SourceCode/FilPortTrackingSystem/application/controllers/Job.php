@@ -567,8 +567,13 @@ class Job extends CI_Controller {
                     <th>Gate In At Port</th>
                     <th>Gate Out At Port</th>
                     <th>Actual Delivery At Warehouse</th>
-                    <th>Start Of Demorage</th>
+                    <th>Start Of Demurrage</th>
                     <th>Pull Out Date At Port</th>
+                    <th>Date Sent Pre-Assessment</th>
+                    <th>Date File Entry to BOC</th>
+                    <th>Date Sent Final-Assessment</th>
+                    <th>Reference Entry No.</th>
+                    <th>Date Paid(Date&Time)</th>
 
               </tr>";
 
@@ -593,8 +598,12 @@ class Job extends CI_Controller {
              echo "<td class='row'>".$row->ActualDeliveryAtWarehouse."</td>";
              echo "<td class='row'>".$row->StartOfDemorage."</td>";
              echo "<td class='row'>".$row->PullOutDateAtPort."</td>";
-
-
+             echo "<td class='row'>".$row->DateSentPreAssessment."</td>";
+             echo "<td class='row'>".$row->DateFileEntryToBOC."</td>";
+             echo "<td class='row'>".$row->DateSentFinalAssessment."</td>";
+             echo "<td class='row'>".$row->RefEntryNo."</td>";
+             echo "<td class='row'>".$row->DatePaid."</td>";
+             
              echo "</tr>";
          }
 
@@ -741,7 +750,10 @@ foreach($job as $row){
  */
 
 $date = date('Y-m-d',strtotime($vat));
-$time = date('H:i:s',strtotime($vat));
+$time = date('h:i:s A',strtotime($vat));
+
+
+
 
  $vdt = explode(" ", $vdt);
  $vdt_date = $vdt[0];
