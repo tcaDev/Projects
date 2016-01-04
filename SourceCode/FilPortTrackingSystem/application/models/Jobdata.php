@@ -65,6 +65,18 @@ function get_vessels($JobFile){
     $query=$this->db->get();
     return $query->result();
  }
+ function select_carrier($vessel){
+    $query = $this->db->query("Select CarrierByJobFileId from CarrierByJobFile
+    where VesselVoyageNo='$vessel'  ORDER BY CarrierByJobFileId desc limit 1");
+    return $query->result();
+ }
+  function select_productcontainer($cont){
+    $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
+    where ContainerNo='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
+    return $query->result();
+ }
+
+ 
 
 function comodity($comodity){
   $this->db->insert('ProductsByContainer',$comodity); 
