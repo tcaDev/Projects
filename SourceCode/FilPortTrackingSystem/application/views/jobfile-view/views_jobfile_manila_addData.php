@@ -621,7 +621,7 @@
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
       <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
-      <button type="button" class="hidden btn btn-danger test_data save_charges" >Save</button>
+      <button type="button" class="hidden btn btn-danger test_data save_charge" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -1287,14 +1287,14 @@ function insert_jobfile(){
 			  		}
 				})
 			    .done(function(data) {
-			    	      /* if(t3==c3){*/
+			    	       if(t3==c3){
 	  							 $.alert({
 				        		title: 'Success!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
 				        	    }
 				   			   });
-	  					   // }
+	  					    }
 	    		    });
 		  
 
@@ -1448,7 +1448,7 @@ function ins_descriptions(c,ct,container){
 
 
 
-$('.save_charges').click(function(){
+$('.save_charge').click(function(){
 	        //for running charges
 	   var jbfl       = $('.jobfiles').val();
        var lodge 		  =  $('#lodge').val();
@@ -1474,7 +1474,7 @@ $('.save_charges').click(function(){
 	 /*  alert(lodge);*/
     $.ajax({
 		           method: "POST",
-	 		   url: "<?php echo base_url('Job/jobfile_add_charges');?>",
+	 		   url: "<?php echo base_url('Job/jobfile_add_charge');?>",
 			  	   data: {
 			  	   	           jbfl   		:jbfl,
 			  	   			   lodge        :lodge,

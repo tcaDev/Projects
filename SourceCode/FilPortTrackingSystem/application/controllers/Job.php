@@ -680,12 +680,12 @@ class Job extends CI_Controller {
    $dt_pickup_docs =  date_format($date3, 'Y-m-d H:i');
    }
     //stop inserting data in jobfile to avoid duplication
-/*     $chek= $this->db->query("Select * from JobFile where
+     $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
         echo "JobFile already exists";
        }else{
-         echo "new jobfile is added";*/
+         echo "new jobfile is added";
 
   
                           //first proc
@@ -813,7 +813,7 @@ class Job extends CI_Controller {
        
    
 
-          // }
+           }
    
    }
 function vessel(){
@@ -1269,9 +1269,12 @@ if($query->num_rows()==1) {
 
  }
 
- function jobfile_add_charges(){
+ function jobfile_add_charge(){
+   $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
  $jobfile       =  $this->input->post('jbfl');
  $job= $this->Jobdata->select_jobfile($jobfile);
+
 foreach($job as $row){
   $job =  $row->JobFileId;
  }
@@ -1330,7 +1333,7 @@ if($query->num_rows() ==1){
 
         $lastid =   $this->db->insert('RunningCharges',$data); 
 
-                $data = array(
+                $data2 = array(
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -1356,7 +1359,7 @@ if($query->num_rows() ==1){
                'UpdatedBy_UsrId'  => $userid
         );
 
-          $this->db->insert('RunningChargesHistory',$data); 
+          $this->db->insert('RunningChargesHistory',$data2); 
       }
 
 
