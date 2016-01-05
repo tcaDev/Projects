@@ -1069,9 +1069,28 @@
 			});
 
 
+	
+	var testme3=false;
+				function isExist3(strds){
+
+				var table3 = $("#tableAddVessel-mnla table tbody");
+
+				    testme3=false;
+				 	  table3.find('tr').each(function(){
+					    if($('td:nth(0)',$(this)).html()===strds) {
+					       testme3=true;            
+					        }   
+					     })
+				    return testme3;
+				}
+	
 	$(".btn-Add-Vessel-Data-mnla").click(function(){
 
-		if($('#tableAddVessel-mnla .carrier').val() == "0")
+		if(isExist3($('#tableAddVessel-mnla .vessel').val()))
+			{	
+				$('.vessel-msg').text("Vessel Already Exists.");
+			}
+		else if($('#tableAddVessel-mnla .carrier').val() == "0")
 			{
 				$('.carrier-msg').text("Need Shipping Line/Carrier.");
 			}
