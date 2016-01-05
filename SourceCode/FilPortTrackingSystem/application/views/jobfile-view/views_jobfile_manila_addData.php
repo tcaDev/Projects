@@ -754,7 +754,7 @@
 
 					    $.confirm({
 		   						  title: 'Please Choose!',
-		  						  content: 'Do you want to add a comodity?',
+		  						  content: 'Do you want to add a Commodity?',
 		 					      confirm: function(){
 		  					        	/*$("#btn-truck-mnla-add").click();*/ 
 		  					        	$('#btn-truck-mnla-add').addClass('active');
@@ -928,8 +928,6 @@
 		$('#tableAddVessel-mnla').on('click', '.deleteButton', function() {
 	    var del = $(this).closest('tr').children('td:eq(0)').text();
 	    $("#tableAddContainer-mnla .vessel_voyage").find("option[value="+ del +"]").remove();
-
-
     	$(this).closest("tr").remove();
 
 	});
@@ -1109,6 +1107,7 @@
 		else{
 
 		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		
 		$('#tableAddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(2)').html($(".edt").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(3)').html($(".eat").val());
@@ -1453,9 +1452,9 @@ function ins_descriptions(c,ct,container){
 				})
 			    .done(function(data) {
 			    	          if(container!=''){
-			    	          	var message = "New Comodity and container is added!";
+			    	          	var message = "New Commodity and Container added!";
 			    	          }else{
-			    	          	var message = "New Comodity is added!";
+			    	          	var message = "New Commodity is added!";
 			    	          }
 			    	           if(c==ct){	
 			    	             if(c2==ct2){
