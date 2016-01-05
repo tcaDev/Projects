@@ -1324,7 +1324,7 @@ function ins_contains(add_comodity){
 				          	cartons_no  	= $tds.eq(3).text(); 
 				        	trucker_plate   = $tds.eq(4).text(); 
 				            trucker_id   	= $tds.eq(5).text();
-				           /* trucker_name   	= $tds.eq(6).text();*/
+				            trucker_name   	= $tds.eq(6).text();
 				            ref_entry_no    = $tds.eq(7).text();
 				          	start_demorage  = $tds.eq(8).text(); 
 				            start_storage 	= $tds.eq(9).text();
@@ -1352,7 +1352,7 @@ function ins_contains(add_comodity){
 			  			    consize  	   :consize, 
 			  			    cartons_no	   :cartons_no,
 			  			    trucker_plate  :trucker_plate,
-			  			    /*trucker_name   :trucker_name,*/
+			  			    trucker_name   :trucker_name,
 			  			    trucker_id	   :trucker_id,
 			  			    ref_entry_no   :ref_entry_no,
 			  			    start_storage  :start_storage,

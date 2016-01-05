@@ -921,6 +921,7 @@ foreach($result as $row){
    $consize         =  $this->input->post('consize'); 
    $cartons_no      =  $this->input->post('cartons_no'); 
    $plateno         =  $this->input->post('trucker_plate');
+   $trucker_name    =  $this->input->post('trucker_name');
    $trucker_id      =  $this->input->post('trucker_id');
    $ref_entry_no    =  $this->input->post('ref_entry_no');
 
@@ -1040,6 +1041,7 @@ foreach($result as $row){
                'DateSentPreAssessment'   => $dt_pre_assess,
                'DateFileEntryToBOC'      => $dt_file_entry_boc,
                'DateBOCCleared'          => $dtboc,
+               'TruckerName'             => $trucker_name,
                'HaulerOrTruckId'         => $trucker_id,
                'TargetDeliveryDate'         => $tdt,     
                'GateInAtPort'               => $gip,
@@ -1066,6 +1068,7 @@ foreach($result as $row){
                'DateSentPreAssessment'   => $dt_pre_assess,
                'DateFileEntryToBOC'      => $dt_file_entry_boc,
                'DateBOCCleared'          => $dtboc,
+               'TruckerName'             =>  $trucker_name,
                'HaulerOrTruckId'         => $trucker_id,
                'TargetDeliveryDate'         => $tdt,     
                'GateInAtPort'               => $gip,
