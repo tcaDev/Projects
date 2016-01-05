@@ -571,13 +571,13 @@ Class User extends CI_Model
 
 
 function get_carrier(){
-    $query = $this->db->query("select * from Carrier");
+    $query = $this->db->query("select * from Carrier where IsActive");
     return $query->result();
   }
 
 
 function get_products(){
-    $query = $this->db->query("select * from Products");
+    $query = $this->db->query("select * from Products where IsActive");
     return $query->result();
   }
 

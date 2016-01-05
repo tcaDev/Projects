@@ -349,17 +349,26 @@ class Job extends CI_Controller {
               <tr>
                    <th>No.</th>
                    <th>Commodity</th>
-                   <th>Origin</th>
                   <th>Container No.</th>
               </tr>";
 
           $i=0;
          foreach($product as $row){
           $i++;
+          if($i==1){
+             if($row->ProductName==''){
+                echo "</table>";
+                echo    '<center><span style="color:red">No Goods Yet </span></center>';
+                break;
+              }
+          }else{
+              if($row->ProductName==''){
+                break;
+              }
+          }
              echo "<tr>";
              echo "<td> ".$i." </td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
-             echo "<td class='row'>".stripslashes($row->ORIGIN)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
              echo "</tr>";
          }
