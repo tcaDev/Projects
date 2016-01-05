@@ -621,7 +621,7 @@
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
       <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
-      <button type="button" class="hidden btn btn-danger test_data save_charge" >Save</button>
+      <button type="button" class="hidden btn btn-danger btn-save-mnla test_data save_charge" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel-mnla" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -644,6 +644,10 @@
 
   <script>
 	$(document).ready(function(){
+
+		$(".btn-save-mnla").click(function(){
+			$(this).attr('disabled','disabled');
+		});
 
 		$(".btn-cancel-mnla").click(function(){
 			location.reload();
