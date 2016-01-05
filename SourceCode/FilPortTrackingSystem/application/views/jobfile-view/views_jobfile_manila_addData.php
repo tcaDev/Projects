@@ -104,41 +104,43 @@
 								  <input type="text" class="form-control input-sm mbl2" name="mbl2" placeholder="Optional" id="mbl2">
 								</div>
 
-								<div class="form-group">
-								  <label for="bank">Letter of Credit No. from Bank:</label>
-								  <input type="text" class="form-control input-sm bank" name="bank" id="bank">
-								</div>
-
-								<div class="form-group">
-								  <label for="registry">Registry:</label>
-								  <input type="text" class="form-control input-sm registry" name="registry" id="registry">
-								</div>
-
-								<div class="form-group ">
-									<label>Origin Country</label><i style="color:red;">*</i>
-										<select  class="form-control origin" name="countries">
-											<?php foreach($countries as $row){ ?>
-											 <option value="<?php echo $row->CountryId?>">
-											 <?php echo $row->CountryName;?>
-											 </option>
-											<?php }?> 
-										</select>	
-
-										<i class="origin-msg" style="color:red;"></i>
-							   </div>
-
-							<div class="form-group">
-								<label>Origin City</label>
-								<input type="text" name="origcity" class="form-control input-sm origcity" />
-							</div>
-
-							
+								
 
 			
 
 						</div>
 
 					<div class="col-lg-4">
+
+						<div class="form-group">
+									  <label for="bank">Letter of Credit No. from Bank:</label>
+									  <input type="text" class="form-control input-sm bank" name="bank" id="bank">
+									</div>
+
+									<div class="form-group">
+									  <label for="registry">Registry:</label>
+									  <input type="text" class="form-control input-sm registry" name="registry" id="registry">
+									</div>
+
+									<div class="form-group ">
+										<label>Origin Country</label><i style="color:red;">*</i>
+											<select  class="form-control origin" name="countries">
+												<?php foreach($countries as $row){ ?>
+												 <option value="<?php echo $row->CountryId?>">
+												 <?php echo $row->CountryName;?>
+												 </option>
+												<?php }?> 
+											</select>	
+
+											<i class="origin-msg" style="color:red;"></i>
+								   </div>
+
+								<div class="form-group">
+									<label>Origin City</label>
+									<input type="text" name="origcity" class="form-control input-sm origcity" />
+								</div>
+
+							
 								
 
 								<div class="form-group">
@@ -156,8 +158,11 @@
 								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm dt_pickup_docs" >
 								 </div>
 								 	
+				  			</div>
 
-								 <div class="form-group">
+							<div class="col-lg-4" >
+
+							 <div class="form-group">
 									 <label for="broker">Broker:</label>
 							  			<select name="broker"id="Broker"class="form-control input-sm broker">
 							            	<?php  foreach($broker_data as $row){  ?> 
@@ -183,48 +188,10 @@
 									 <label for="rfp">Reference Due Date:</label>
 									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="ref_due_dt">
 								 </div>
-				  				
-
-
-
-								  <!--  <label for="" >Hauler</label>
-								   <select name="hauler" class="form-control">
-							  			<option> </option>
-						            	<?php  //foreach($hauler_data as $row){  ?> 
-						                <option value="<?php //echo $row->HaulerId ?>">
-						                <?php //echo $row->HaulerName ?>
-						                </option> 
-						             	<?php //}?>
-						            </select> -->
-
-				  			</div>
-
-							<div class="col-lg-4" >
 								 
 
 
-						<!-- 		 <div class="form-group">
-									 <label for="dtSent">Date Sent Pre-Assess:</label>
-									 <input type="date" name="dt_sent_preassed" class="form-control input-sm" id="dtSent-preassess">
-								</div> -->
-
-				<!-- 				<div class="form-group">
-									 <label for="dtFile">Date File Entry to BOC:</label>
-									 <input type="date" name="dt_file_entry_boc" class="form-control input-sm" id="dtFile">
-								</div> -->
-
-				<!-- 				<div class="form-group">
-								 	<label for="dtSent">Date Sent Final-Assess:</label>
-								 	<input type="date" name="dt_sent_finalassed" class="form-control input-sm" id="dtfinal-assess">
-								</div> -->
-
-<!-- 								<div class="form-group">
-								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;">*</i>
-								 	<input type="text" name="entryno" class="form-control input-sm reference" id="entryno">
-								 	<i class="reference-msg" style="color:red;"></i>
-								</div>
- -->
-								<div class="form-group">
+						<div class="form-group">
 									<label>Color Selectivity :</label>
 									<select name="color-select" id="color-select" class="form-control input-sm color-select">
 										<option value="1">YELLOW</option>
@@ -233,11 +200,6 @@
 									</select>
 								</div>
 
-					<!-- 		     <div class="form-group">
-								 	 <label for="dtPaid">Date Paid(Date& Time):</label>
-									  <input type="datetime-local" name="dt_paid" class="form-control input-sm " id="dt_paid">
-								 </div>
- -->
 								 <div class="form-group">
 								   <label for="status">Status Report:</label>
 								  	<textarea name="status" rows="5" class="form-control input-sm status" id="status"></textarea>
@@ -262,20 +224,7 @@
 								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
-<!-- 						<div class="form-group">
-								<label>Purchase Order Number</label> <i style="color:red;">*</i>
-								<input type="text" class="form-control input-sm PON"  name="PON">
-								<i class="pon-msg" style="color:red;"></i>
-							</div>
- -->
-							<div class="form-group">
-								<label>Container Number</label>
-								<select class="containers-prod form-control input-sm"> 
-
-								</select>
-									<i class="cont-size-msg" style="color:red;"></i>
-		
-							</div>
+						
 
 
 
@@ -283,12 +232,20 @@
 				  		</div>
 
 				  		<div class="col-lg-6">
-		                				<button type="button" class="btn-Add-Product-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
-				  			
+				  			<div class="form-group">
+								<label>Container Number</label>
+								<select class="containers-prod form-control input-sm"> 
+
+								</select>
+									<i class="cont-size-msg" style="color:red;"></i>
+		
+							</div>
+		                				<button type="button" class="btn-Add-Product-Data-mnla btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
+				  				<i class="tableGoods-msg" style="color:red;"></i>
 				  		</div>
 
 				  		<div style="width: 100%; overflow-x: auto;">
-						    <table class="table" style="width: 1000px;" border="1">
+						    <table class="table" style="width: 950px;" border="1">
 							    <thead>
 							    	 <tr>
 							    	 	<th class="hidden">Product Value</th>
@@ -434,8 +391,8 @@
 								  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc" id="dt_boc">
 							</div>
 
-							<button type="button" class="btn-Add-Container-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
-					  		<i class="table-msg" style="color:red;"></i>
+							<button type="button" class="btn-Add-Container-Data-mnla btn btn-primary pull-right" style="margin-bottom: 10px;"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
+					  		<i class="tableContainer-msg" style="color:red;"></i>
 
 					  	</div>
 
@@ -495,16 +452,18 @@
 								<input type="datetime-local" name="est-dept" class="form-control input-sm eat" />
 							 </div>
 
-						     <div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm aat" />
-							 </div>
+						 
 
 
 							
 						</div>
 
 						<div class="col-lg-6">
+
+						    <div class="form-group">
+								<label>Actual Arrival Time</label>
+								<input type="datetime-local" name="est-dept" class="form-control input-sm aat" />
+							 </div>
 
 							<div class="form-group">	 
 							    <label for="dtClrd">Discharge Time of Vessel</label>
@@ -524,7 +483,8 @@
 									<i class="carrier-msg" style="color:red;"></i>
 							</div>
 
-							<button type="button" class="btn-Add-Vessel-Data-mnla btn btn-primary pull-right"><span class=" fa fa-plus fa-fw"></span> Add Vessel</button>
+							<button type="button" class="btn-Add-Vessel-Data-mnla btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Vessel</button>
+							<i class="tableVessel-msg" style="color:red;"></i>
 						</div>
 					
 
@@ -596,16 +556,18 @@
 								<input type="text" name="storage" class="form-control input-sm" id="storage"/>
 							</div>
 
-							<div class="form-group">
-									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm" id="demurrage" />
-								</div>
+							
 
 
 						</div>
 							
 
 						<div class="col-lg-6">
+
+								<div class="form-group">
+									<label>Demurrage</label>
+									<input type="text" name="demurrage" class="form-control input-sm" id="demurrage" />
+								</div>
 							
 								<div class="form-group">
 									<label>Detention</label>
@@ -749,7 +711,14 @@
 
 			/*Next Page*/
 			if(i==2){
+
+				if($("#tableAddVessel-mnla table tbody tr td").length == 0){
+					$('.tableVessel-msg').text("Can't Proceed Need Vessel");
+					i=1;
+				}else{
 				  insert_vessel();
+				
+				
 				/*$("#btn-container-mnla-add").click();*/
 				$('#btn-container-mnla-add').addClass('active');
 				$('#btn-jobfile-mnla-add').removeClass('active');
@@ -765,50 +734,62 @@
 				$('.test_data').addClass('hidden');
 
 				$('.btn-Next').removeClass('hidden');
+				}
 
 			}else if(i==3){
-			    $.confirm({
-   						  title: 'Please Choose!',
-  						  content: 'Do you want to add a comodity?',
- 					      confirm: function(){
-  					        	/*$("#btn-truck-mnla-add").click();*/ 
-  					        	$('#btn-truck-mnla-add').addClass('active');
-								$('#btn-jobfile-mnla-add').removeClass('active');
-								$('#btn-container-mnla-add').removeClass('active');
-								$('#btn-charges-mnla-add').removeClass('active');
-								$('#btn-vessel-mnla-add').removeClass('active');
 
-								$('.pill-jobfile-mnla-add').addClass('hidden');
-								$('.pill-truck-mnla-add').removeClass('hidden');
-								$('.pill-charges-mnla-add').addClass('hidden');
-								$('.pill-container-mnla-add').addClass('hidden');
-								$('.pill-vessel-mnla-add').addClass('hidden');
-								$('.test_data').addClass('hidden');
+				if($("#tableAddContainer-mnla table tbody tr td").length == 0){
+					$('.tableContainer-msg').text("Can't Proceed Need Container");
+					i=2;
+				}else{
 
-								$('.btn-Next').removeClass('hidden'); 
-  					  },
-  						  cancel: function(){
-  						  	 ins_contain();
-    				    	/*$("#btn-charges-mnla-add").click();*/
-    				    	$('#btn-charges-mnla-add').addClass('active');
-							$('#btn-jobfile-mnla-add').removeClass('active');
-							$('#btn-container-mnla-add').removeClass('active');
-							$('#btn-truck-mnla-add').removeClass('active');
-							$('#btn-vessel-mnla-add').removeClass('active');
-							$('.test_data').removeClass('hidden');
+					    $.confirm({
+		   						  title: 'Please Choose!',
+		  						  content: 'Do you want to add a comodity?',
+		 					      confirm: function(){
+		  					        	/*$("#btn-truck-mnla-add").click();*/ 
+		  					        	$('#btn-truck-mnla-add').addClass('active');
+										$('#btn-jobfile-mnla-add').removeClass('active');
+										$('#btn-container-mnla-add').removeClass('active');
+										$('#btn-charges-mnla-add').removeClass('active');
+										$('#btn-vessel-mnla-add').removeClass('active');
 
-							$('.pill-jobfile-mnla-add').addClass('hidden');
-							$('.pill-truck-mnla-add').addClass('hidden');
-							$('.pill-charges-mnla-add').removeClass('hidden');
-							$('.pill-container-mnla-add').addClass('hidden');
-							$('.pill-vessel-mnla-add').addClass('hidden');
+										$('.pill-jobfile-mnla-add').addClass('hidden');
+										$('.pill-truck-mnla-add').removeClass('hidden');
+										$('.pill-charges-mnla-add').addClass('hidden');
+										$('.pill-container-mnla-add').addClass('hidden');
+										$('.pill-vessel-mnla-add').addClass('hidden');
+										$('.test_data').addClass('hidden');
 
-							$('.btn-Next').addClass('hidden');
-   						 }
-				});
-			 		
+										$('.btn-Next').removeClass('hidden'); 
+		  					  },
+		  						  cancel: function(){
+		  						  	 ins_contain();
+		    				    	/*$("#btn-charges-mnla-add").click();*/
+		    				    	$('#btn-charges-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-container-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-vessel-mnla-add').removeClass('active');
+									$('.test_data').removeClass('hidden');
+
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').removeClass('hidden');
+									$('.pill-container-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').addClass('hidden');
+
+									$('.btn-Next').addClass('hidden');
+		   						 }
+						});
+			 		}
 			
 			}else if(i==4){
+
+				if($("#tableAddTruck-mnla table tbody tr td").length == 0){
+					$('.tableGoods-msg').text("Can't Proceed Need Product");
+					i=3;
+				}else{
 			    var add_comodity=1;
   		        ins_contain(add_comodity);
 				/*ins_description();*/
@@ -827,9 +808,10 @@
 				$('.pill-vessel-mnla-add').addClass('hidden');
 
 				$('.btn-Next').addClass('hidden');
+				}
 			}
 			else if(i==1){
-    				insert_job();
+    				insert_jobfile();
 				/*$("#btn-vessel-mnla-add").click();*/
 
 				$('#btn-vessel-mnla-add').addClass('active');
@@ -979,38 +961,24 @@
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel_voyage option:selected").text());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".containerss-size").val());
-	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".cartons").val());
 	         $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".plate").val());
 	          $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".truckname").val()).hide();
 	           $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname option:selected").text());
-	           
 	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".ref_entry_no").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage").val());
-                     
-/*	            $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".est-arr").val());
-	             $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".act-arr").val());*/
-	      /*        $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".containers-vessel").val());*/
+	          $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage").val()); 
 	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
-
 	               $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".dt_paid").val());
 	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());
-
 	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_pre_assess").val());
-
 	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_final_assess").val());
 	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
 	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
 	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
-
 	                    		 $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".tdt").val());
 	                      		 $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".pul_out_port").val());
-
 	                    	 $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_file_entry_boc").val());
-	                      
 	                       $('#tableAddContainer-mnla table tr:last td:nth-child(21)').html($(".dt_boc").val());
-	             				
-
 	                     $('#tableAddContainer-mnla table tr:last td:nth-child(22)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
@@ -1020,6 +988,7 @@
 			$('.container-size-msg').text('');
 			$('.truckplate-msg').text('');
 			$('.carrier-msg').text('');
+			$('.tableContainer-msg').text("");
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
@@ -1091,6 +1060,7 @@
 
 			$('.cont-size-msg').text('');
 			$('.prodname-msg').text('');
+			$('.tableGoods-msg').text("");
 
 			}
 				
@@ -1128,6 +1098,7 @@
 
 		$('.vessel-msg').text("");
 		$('.carrier-msg').text("");
+		$('.tableVessel-msg').text("");
 
 		$('#tableAddVessel-mnla .vessel').val('');
 		$('#tableAddVessel-mnla .edt').val('');
@@ -1165,7 +1136,7 @@
 
 <script>
 
-function insert_job(){
+function insert_jobfile(){
 
 	   var jbfl       = $('.jobfiles').val();
        var shipper 	  = $('.shipper').val();
