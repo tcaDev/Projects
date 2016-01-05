@@ -530,14 +530,14 @@
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.1</label>
+					            	<label>Contact Number</label>
 					               <input type="text" name="no_contact1" value=""  class="no_contact form-control" required/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.2</label>
+					            	<label>Email Address</label>
 					               <input type="text" name="no_contact2"  value="" class="no1_contact form-control" />
 					            </div>
 					        </div>
@@ -766,13 +766,13 @@
 					       </div>
 					       <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.1</label>
+					            	<label>Contact Number</label>
 					               <input type="text"   name="c1" value="" class="broker_c1 form-control"/>
 					            </div>
 					       </div>
 					       <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.2</label>
+					            	<label>Email Address</label>
 					               <input type="text"   name="c2" value="" class="broker_c2 form-control"/>
 					            </div>
 					       </div>
@@ -845,14 +845,14 @@
 
 			         <div class="row">
 			            <div class="form-group col-lg-12">
-			            	<label>Contact Info.1</label>
+			            	<label>Contact Number</label>
 			               <input type="text" name="no_contact1" value="" class="no_contact form-control" required/>
 			            </div>
 			        </div>
 
 			        <div class="row">
 			            <div class="form-group col-lg-12">
-			            	<label>Contact Info.2</label>
+			            	<label>Email Address</label>
 			               <input type="text" name="no_contact2"  value="" class="no1_contact form-control"/>
 			            </div>
 			        </div>

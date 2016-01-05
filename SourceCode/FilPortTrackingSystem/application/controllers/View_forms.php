@@ -155,12 +155,12 @@ function broker(){
 					        </div>
 		<?php	echo'  <div class="">
 				            <div class="form-group col-md-12">
-				                <input type="text" name="c1" minlength="7" class="form-control" placeholder="Contact No1" required />
+				                <input type="text" name="c1" minlength="7" class="form-control" placeholder="Contact Number" required />
 				            </div>
 				        </div>
 				        <div class="">
 				            <div class="form-group col-md-12">
-				                <input type="text" name="c2" minlength="7" class="form-control" placeholder="Contact No2"  />
+				                <input type="text" name="c2" minlength="7" class="form-control" placeholder="Email Address"  />
 				            </div>
 				        </div>
 				 
@@ -358,13 +358,13 @@ echo'				<div class="shippers tab-pane">
 
 						        <div class=" col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con1" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.1" required/>
+						                <input type="text" name="con1" minlength="7" maxlength="15" class="form-control" placeholder="Contact Number" required/>
 						            </div>
 						        </div>
 
 						       	<div class="col-md-6">
 						            <div class="form-group ">
-						                <input type="text" name="con2" minlength="7" maxlength="15" class="form-control" placeholder="Contact no.2"/>
+						                <input type="text" name="con2" minlength="7" maxlength="15" class="form-control" placeholder="Email Address"/>
 						            </div>
 						        </div>
 					 

@@ -780,7 +780,7 @@ function select_country(){
 					         <th>OfficeNumber</th>
 					         <th>Contact Persons</th>
 					        <th>Status</th>
-					        <th colspan="2">Action</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>' ?>

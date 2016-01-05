@@ -113,7 +113,7 @@ class Job extends CI_Controller {
           echo'<select name="carrierbyjobfile" id="carrier" class="carrierbyjobfile form-control">';                                   
           
             foreach ($carrierbyjobfile as $row){
-                echo "<option value=".$row->CarrierByJobFilelId."> ".$row->VesselVoyageNo." </option>";
+                echo "<option value=".stripslashes($row->CarrierByJobFilelId)."> ". stripslashes($row->VesselVoyageNo)." </option>";
              }
         }
 
@@ -322,10 +322,10 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->VesselVoyageNo."</td>";
-             echo "<td class='row'>".$row->CarrierName."</td>";
-             echo "<td class='row'>".$row->ArrivalTime ."</td>";
-             echo "<td class='row'>".$row->DischargeTime ."</td>";
+             echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
+             echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
+             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+             echo "<td class='row'>".stripslashes($row->DischargeTime) ."</td>";
              echo "</tr>";
          }
 
@@ -358,9 +358,9 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->ProductName."</td>";
-             echo "<td class='row'>".$row->ORIGIN."</td>";
-             echo "<td class='row'>".$row->ContainerNo ."</td>";
+             echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
+             echo "<td class='row'>".stripslashes($row->ORIGIN)."</td>";
+             echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
              echo "</tr>";
          }
 
@@ -576,23 +576,23 @@ class Job extends CI_Controller {
          foreach($container as $row){
           $i++;
              echo "<tr>";
-             echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->ContainerNo."</td>";
-             echo "<td class='row'>".$row->ContainerSize."</td>";
-             echo "<td class='row'>".$row->NoOfCartons."</td>";
-             echo "<td class='row'>".$row->TruckerName."</td>";
-             echo "<td class='row'>".$row->EstDepartureTime."</td>";
-             echo "<td class='row'>".$row->EstArrivalTime."</td>";
-             echo "<td class='row'>".$row->ActualArrivalTime."</td>";
-             echo "<td class='row'>".$row->StartOfStorage."</td>";
-             echo "<td class='row'>".$row->Lodging."</td>";
-             echo "<td class='row'>".$row->HaulerOrTruck."</td>";
-             echo "<td class='row'>".$row->TargetDeliveryDate."</td>";
-             echo "<td class='row'>".$row->GateInAtPort."</td>";
-             echo "<td class='row'>".$row->GateOutAtPort."</td>";
-             echo "<td class='row'>".$row->ActualDeliveryAtWarehouse."</td>";
-             echo "<td class='row'>".$row->StartOfDemorage."</td>";
-             echo "<td class='row'>".$row->PullOutDateAtPort."</td>";
+             echo "<td> ".stripslashes($i)." </td>";
+             echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
+             echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
+             echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
+             echo "<td class='row'>".stripslashes($row->TruckerName)."</td>";
+             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";
+             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";
+             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+             echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
+             echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
+             echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
+             echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
+             echo "<td class='row'>".stripslashes($row->GateInAtPort)."</td>";
+             echo "<td class='row'>".stripslashes($row->GateOutAtPort)."</td>";
+             echo "<td class='row'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+             echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
+             echo "<td class='row'>".stripslashes($row->PullOutDateAtPort)."</td>";
 
 
              echo "</tr>";
@@ -683,7 +683,7 @@ class Job extends CI_Controller {
 /*     $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
-        echo "JobFile is already exists";
+        echo "JobFile already exists";
        }else{
          echo "new jobfile is added";*/
 

@@ -151,27 +151,27 @@
 				            <tr>
 								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
-								          <td><?php echo $i;?></td>
+								          <td><?php echo stripslashes($i);?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
-								          <td><?php echo $row->JobFileNo; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
-								          <td><?php echo $row->ShipperName; ?></td>
-								          <td><?php echo $row->ConsigneeName; ?></td>
+								          <td><?php echo stripslashes($row->ShipperName); ?></td>
+								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button></td>
 										  <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
-										  <td><?php echo $row->PurchaseOrderNo; ?></td>
- 										  <td><?php echo $row->HouseBillLadingNo; ?></td>
-								          <td><?php echo $row->MasterBillLadingNo; ?></td>
-										  <td><?php echo $row->LetterCreditFromBank; ?></td>
- 									      <td><?php echo $row->Registry; ?></td>
+										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
+ 										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
+								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
+										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
+ 									      <td><?php echo stripslashes($row->Registry); ?></td>
 										  <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
-								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
-								          <td><?php echo $row->DateReceivedOfBL; ?></td>
-								          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
- 										  <td><?php echo $row->Broker; ?></td>
-								          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
-								          <td><?php echo $row->RFPDueDate; ?></td>
-								          <td><?php echo $row->ColorSelectivityName; ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
+ 										  <td><?php echo stripslashes($row->Broker); ?></td>
+								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
+								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
+								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        </tr>

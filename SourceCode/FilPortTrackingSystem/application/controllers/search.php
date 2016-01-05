@@ -234,9 +234,9 @@ if(isset($_SESSION['success'])){
 					        <th>FirstName</th>
 					        <th>MiddleName</th>
 					        <th>LastName</th>
-					        <th>Contact Info.1</th>
-					        <th>Contact Info.2</th>
-					        <th colspan="2">Action</th>
+					        <th>Contact Number</th>
+					        <th>Email Address</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>';
@@ -375,9 +375,9 @@ if(isset($_SESSION['success'])){
 					        <th>FirstName</th>
 					        <th>MiddleName</th>
 					        <th>LastName</th>
-					        <th>Contact Info.1</th>
-					        <th>Contact Info.2</th>
-					        <th colspan="2">Action</th>
+					        <th>Contact Number</th>
+					        <th>Email Address</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>';
@@ -535,14 +535,14 @@ if(isset($_SESSION['success'])){
 
 					         <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Contact Info.1</label>
+					            	<label>Contact Number</label>
 					               <input type="text" value=""  class="no_contact form-control"/>
 					            </div>
 					        </div>
 
 					        <div class="row">
 					            <div class="form-group col-lg-12">
-					            	<label>Info No.2</label>
+					            	<label>Email Address</label>
 					               <input type="text" value="" class="no1_contact form-control"/>
 					            </div>
 					        </div>
@@ -633,10 +633,10 @@ if(isset($_SESSION['success'])){
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
 					         <th>Country</th>
-					        <th>Contact Info.1</th>
-					        <th>Contact Info.2</th>
+					        <th>Contact Number</th>
+					        <th>Email Address</th>
 					        <th>Status</th>
-					        <th colspan="2">Action</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>'; ?>
@@ -737,7 +737,7 @@ function search_shipper(){
 					         <th>Country</th>
 					        <th>Shipper Contacts</th>
 					        <th>Status</th>
-					        <th colspan="2">Action</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>';?>
@@ -915,7 +915,7 @@ function search_vessel(){
 					        <th>Address</th>
 					        <th>Office Number</th>
 					        <th>Status</th>
-					        <th colspan="2">Action</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>' ?>
@@ -1018,7 +1018,7 @@ $this->message();
 		         <th>Address</th>
 		         <th>Tin</th>
 		        <th>Status</th>
-		        <th colspan="2">Action</th>
+		        <th colspan="2">Update</th>
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
@@ -1111,7 +1111,7 @@ $this->message();
 		      <tr>
 		        <th>Forwarder Name</th>
 		        <th>Status</th>
-		        <th colspan="2">Action</th>
+		        <th colspan="2">Update</th>
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
@@ -1202,7 +1202,7 @@ $this->message();
 		        <th>Description Name</th>
 		        <th>Font/Background</th>
 		        <th>Status</th>
-		        <th colspan="2">Action</th>
+		        <th colspan="2">Update</th>
 		      </tr>
 		    </thead>
 		  <tbody>' ?>
@@ -1371,7 +1371,7 @@ function search_product(){
 					        <th>Commodity ID</th>
 					        <th>Commodity Name</th>
 					        <th>Status</th>
-					        <th colspan="2">Action</th>
+					        <th colspan="2">Update</th>
 					      </tr>
 					    </thead>
 					    <tbody>' ?>

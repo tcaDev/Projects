@@ -41,7 +41,7 @@
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
 							                <option value="<?php echo $row->ShipperId ?>">
-							                <?php echo $row->ShipperName ?>
+							                <?php echo stripslashes($row->ShipperName) ?>
 							                </option> 
 							             	<?php }?>
 						               	</select>
@@ -54,7 +54,7 @@
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
 							                <option value="<?php echo $row->ConsigneeId ?>">
-							                <?php echo $row->ConsigneeName ?>
+							                <?php echo stripslashes($row->ConsigneeName) ?>
 							                </option> 
 							             	<?php }?>
 							            </select>
@@ -167,7 +167,7 @@
 							  			<select name="broker"id="Broker"class="form-control input-sm broker">
 							            	<?php  foreach($broker_data as $row){  ?> 
 							                <option value="<?php echo $row->BrokerId ?>">
-							                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
+							                <?php echo stripslashes($row->FirstName) . " " . stripslashes($row->MiddleName) . " " . stripslashes($row->LastName); ?>
 							                </option> 
 							             	<?php }?>
 						               </select>
@@ -217,7 +217,7 @@
 								<select class="form-control input-sm prodname" name="prodname">
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
-											 <?php echo $row->ProductName;?>
+											 <?php echo stripslashes($row->ProductName);?>
 											 </option>
 											<?php }?> 
 								</select> 
@@ -293,7 +293,7 @@
 								<select class="form-control truckname" >
 										<?php foreach($hauler_data as $row){ ?>
 											 <option value="<?php echo $row->HaulerOrTruckId?>">
-											 <?php echo $row->HaulerOrTruck;?>
+											 <?php echo stripslashes($row->HaulerOrTruck);?>
 											 </option>
 											<?php }?> 
 								</select>
@@ -476,7 +476,7 @@
 								<select class="form-control carrier" name="countries">
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
-											 <?php echo $row->CarrierName;?>
+											 <?php echo stripslashes($row->CarrierName);?>
 											 </option>
 											<?php }?> 
 								</select>
