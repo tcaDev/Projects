@@ -18,7 +18,7 @@ echo form_open('form');*/
 
 $countries=$this->User->countries();
 	echo 	'<div class="consignees ">
-				<button type="button" class="col-md-12 con-info consig-pos "  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
+				<button type="button" class="con-info consig-pos btn_add_consignee"  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
 					<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog">
 						  <div class="modal-dialog">
 						    <!-- Modal content-->
@@ -32,25 +32,25 @@ $countries=$this->User->countries();
 								<form action="'.base_url('Add_user/add_client/').'" method="post">
 									<div class="">
 							            <div class="form-group col-md-12">
-							                <input type="text" name="cname"class="form-control" placeholder="Client Name" required/>
+							                <input type="text" name="cname"class="form-control clear_values_consignee" placeholder="Client Name" required/>
 							            </div>
 							        </div>
 							     	 <div class="">
 							            <div class="form-group col-lg-12">
 							            <!-- 	<label>HouseBuildingNo/Street</label> -->
-							               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control" required/>
+							               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control clear_values_consignee" required/>
 							          </div>
 							        </div>
 							         <div class="">
 							            <div class="form-group col-lg-12">
 							            	<!-- <label>Barangay/Village</label> -->
-							                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control" required />
+							                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control clear_values_consignee" required />
 							            </div>
 							        </div>
 							         <div class="">
 							            <div class="form-group col-lg-12">
 							            	<!-- <label>TownOrCityProvince</label> -->
-							                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control" required />
+							                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control clear_values_consignee" required />
 							            </div>
 							        </div>'?>
 
@@ -70,7 +70,7 @@ $countries=$this->User->countries();
 						        </div>
 		<?php	echo	 '<div class="">
 				            <div class="form-group col-md-12">
-				                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
+				                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control clear_values_consignee" placeholder="Office Number" required />
 				            </div>
 				        </div>
 				        <div class="">
@@ -91,7 +91,7 @@ $countries=$this->User->countries();
 function broker(){
  $countries=$this->User->countries();
 	echo	'<div class="brokers tab-pane">
-				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#broker">ADD BROKER</button>
+				<button type="button" class="con-info consig-pos btn_add_broker" data-toggle="modal" data-target="#broker">ADD BROKER</button>
 
 					<div class="brokers modal fade consig consig-posbox collapse posbox" id="broker">
 						<div class="modal-dialog">
@@ -105,36 +105,36 @@ function broker(){
 								<form action=" '.base_url('Add_user/add_broker/').'" method="post">
 								<div class=" col-md-8">
 						            <div class="form-group ">
-						                <input type="text" name="fname"class="form-control broker_fname" placeholder="First Name" required/>
+						                <input type="text" name="fname" class="form-control broker_fname clear_values_broker" placeholder="First Name" required/>
 						            </div>
 						        </div>
 						       	<div class="col-md-4">
 						            <div class="form-group ">
-						                <input type="text" name="mname"class="form-control broker_mname" placeholder="Middle Name"/>
+						                <input type="text" name="mname" class="form-control broker_mname clear_values_broker" placeholder="Middle Name"/>
 						            </div>
 						        </div>
 						    	<div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="lname"class="form-control broker_lname" placeholder="Last Name" required/>
+						                <input type="text" name="lname" class="form-control broker_lname clear_values_broker" placeholder="Last Name" required/>
 						            </div>
 						    	</div>
 
 						    <div class="">
 					            <div class="form-group col-lg-12">
 					            <!-- 	<label>HouseBuildingNo/Street</label> -->
-					             <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="broker_houseno form-control" required/>
+					             <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="broker_houseno form-control clear_values_broker" required/>
 					          </div>
 					        </div>
 					        <div class="">
 					            <div class="form-group col-lg-12">
 					            	<!-- <label>Barangay/Village</label> -->
-					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="broker_village form-control" required />
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="broker_village form-control clear_values_broker" required />
 					            </div>
 					        </div>
 					         <div class="">
 					            <div class="form-group col-lg-12">
 					            	<!-- <label>TownOrCityProvince</label> -->
-					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="broker_city form-control" required />
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="broker_city form-control clear_values_broker" required />
 					            </div>
 					         </div>'?>
 
@@ -155,12 +155,12 @@ function broker(){
 					        </div>
 		<?php	echo'  <div class="">
 				            <div class="form-group col-md-12">
-				                <input type="text" name="c1" minlength="7" class="form-control" placeholder="Contact Number" required />
+				                <input type="text" name="c1" minlength="7" class="form-control clear_values_broker" placeholder="Contact Number" required />
 				            </div>
 				        </div>
 				        <div class="">
 				            <div class="form-group col-md-12">
-				                <input type="text" name="c2" minlength="7" class="form-control" placeholder="Email Address"  />
+				                <input type="text" name="c2" minlength="7" class="form-control clear_values_broker" placeholder="Email Address"  />
 				            </div>
 				        </div>
 				 
@@ -184,7 +184,7 @@ function vessel(){
   $drop = $this->User->dropdown_shipper();
 
  echo '			<div class="vessels">
- 					<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#vessels">ADD CARRIER</button>
+ 					<button type="button" class="con-info consig-pos btn_add_vessel" data-toggle="modal" data-target="#vessels">ADD SHIPPING LINE/CARRIER</button>
 
 
 				<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
@@ -200,13 +200,13 @@ function vessel(){
 						<form action="'.base_url('Add_user/add_carrier/').'" method="post">
 
 					            <div class="form-group col-md-12">
-					                <input type="text" name="carrier" class="form-control" placeholder="Shipping Line/Carrier" required/>
+					                <input type="text" name="carrier" class="form-control  clear_values_vessel" placeholder="Shipping Line/Carrier" required/>
 					            </div>
 					             <div class="form-group col-md-12">
-					                <input type="text" name="address-carrier" class="form-control" placeholder="Address" required/>
+					                <input type="text" name="address-carrier" class="form-control clear_values_vessel" placeholder="Address" required/>
 					            </div>
 					             <div class="form-group col-md-12">
-					                <input type="text" name="num-carrier" class="form-control" placeholder="Office Number" required/>
+					                <input type="text" name="num-carrier" class="form-control clear_values_vessel" placeholder="Office Number" required/>
 					            </div>
 					  
 
@@ -223,7 +223,7 @@ function vessel(){
 
 function hauler(){
 	echo	'<div class="brokers tab-pane">
-				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#broker">ADD HAULER</button>
+				<button type="button" class="con-info consig-pos btn_add_hauler" data-toggle="modal" data-target="#broker">ADD HAULER/TRUCKER</button>
 
 					<div class="brokers consig-posbox modal fade" id="broker" role="dialog">
 					  <div class="modal-dialog">
@@ -237,17 +237,17 @@ function hauler(){
 							<form action=" '.base_url('Add_user/add_hauler/').'" method="post">
 								<div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="hauler_name"class="form-control " placeholder="Hauler Name" required/>
+						                <input type="text" name="hauler_name"class="form-control clear_values_hauler" placeholder="Hauler Name" required/>
 						            </div>
 						        </div>
 						        <div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="hauler_address"class="form-control " placeholder="Hauler Address" required/>
+						                <input type="text" name="hauler_address"class="form-control clear_values_hauler" placeholder="Hauler Address" required/>
 						            </div>
 						        </div>
 						        <div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="hauler_tin"class="form-control "  maxlength="15" placeholder="Hauler TIN" required/>
+						                <input type="text" name="hauler_tin"class="form-control clear_values_hauler"  maxlength="15" placeholder="Hauler TIN" required/>
 						            </div>
 						        </div>
 						 
@@ -269,7 +269,7 @@ function hauler(){
 function shipper(){
  $countries = $this->User->countries();
 echo'			<div class="shippers tab-pane">
-				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
+				<button type="button" class="con-info consig-pos btn_add_shipper" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
 
 					<div class="shippers collapse consig-posbox modal fade" id="shipper"  role="dialog">
 						  <div class="modal-dialog">
@@ -283,22 +283,22 @@ echo'			<div class="shippers tab-pane">
 							<form action="' .base_url('Add_user/add_shipper/').'" method="post">
 								<div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="shipper" class="form-control" placeholder="Shipper Name" required/>
+						                <input type="text" name="shipper" class="form-control clear_values_shipper" placeholder="Shipper Name" required/>
 						            </div>
 						        </div>
 						        <div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="hbno" class="form-control" placeholder="HouseBuildingNo/Street" required/>
+						                <input type="text" name="hbno" class="form-control clear_values_shipper" placeholder="HouseBuildingNo/Street" required/>
 						            </div>
 						        </div>
 						        <div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="vil" class="form-control" placeholder="Barangay/Village" required/>
+						                <input type="text" name="vil" class="form-control clear_values_shipper" placeholder="Barangay/Village" required/>
 						            </div>
 						        </div>
 						        <div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="city" class="form-control" placeholder="Town/City/Province" required/>
+						                <input type="text" name="city" class="form-control clear_values_shipper" placeholder="Town/City/Province" required/>
 						            </div>
 						        </div>
 						   	    <div class="">
@@ -382,7 +382,7 @@ function container(){
 
 echo '			
 	<div class="containers tab-pane">
-		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#container">ADD CONTAINERS</button>
+		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#container">ADD CONTAINERS</button>
 
 		   <div class="citys consig-posbox collapse modal fade" id="container" role="dialog">
 			  <div class="modal-dialog">
@@ -432,7 +432,7 @@ function forward(){
 
 echo '			
 	<div class="forwards tab-pane">
-		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#forward">ADD FOWARDER</button>
+		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#forward">ADD FOWARDER</button>
 
 		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
 		   	<div class="modal-dialog">
@@ -467,7 +467,7 @@ function legend(){
 
 echo '			
 	<div class="forwards tab-pane">
-		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
+		<button type="button" class="con-info consig-pos btn_add_legend" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
 
 		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
 			  <div class="modal-dialog">
@@ -484,13 +484,13 @@ echo '
 			
 			        <div class="">
 			            <div class="form-group col-md-12">
-			                <input type="text" name="legend" class="form-control" placeholder="Status Name" required />
+			                <input type="text" name="legend" class="form-control clear_values_legend" placeholder="Status Name" required />
 			            </div>
 			        </div>
 
 			        <div class="">
 			            <div class="form-group col-md-12">
-			                <input type="text" name="descrip" class="form-control" placeholder="Description Name" required />
+			                <input type="text" name="descrip" class="form-control clear_values_legend" placeholder="Description Name" required />
 			            </div>
 			        </div>
 
@@ -525,7 +525,7 @@ echo '
 
 function product(){
 	echo	'<div class="prod tab-pane">
-				<button type="button" class="col-md-12 col-lg-4 con-info consig-pos" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
+				<button type="button" class="con-info consig-pos btn_add_product" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
 
 					<div class="products consig-posbox modal fade" id="product" role="dialog">
 					  <div class="modal-dialog">
@@ -539,7 +539,7 @@ function product(){
 							<form action=" '.base_url('Add_user/add_product/').'" method="post">
 								<div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="product_name"class="form-control " placeholder="Commodity Name" required/>
+						                <input type="text" name="product_name"class="form-control clear_values_product" placeholder="Commodity Name" required/>
 						            </div>
 						        </div>
 						 

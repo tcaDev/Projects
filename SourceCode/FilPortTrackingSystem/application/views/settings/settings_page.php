@@ -24,11 +24,14 @@
   var content_product       = "<?php echo base_url('Search/search_product')?>";
   var total_product         =  "<?php echo $product_total; ?>";
 
+
+
  </script>
 
 		
 		<!--For  pagination start -->		
 		<script type="text/javascript">
+	
 				$(document).ready(function() {
 				    $(".consigneepage").load(content_consignee);  //initial page number to load
 				    $(".pagination_consignee").bootpag({
@@ -56,6 +59,9 @@
 				        $(".consigneepage").load(content_consignee, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
+				    });
+				    $('.btn_add_consignee').on('click',function(){
+				    	$('.clear_values_consignee').val('');
 				    });
 				});
 
@@ -87,8 +93,10 @@
 				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
-			
-			});
+				    $('.btn_add_broker').on('click',function(){
+				    	$('.clear_values_broker').val('');
+				    });
+				});
 
 			 $(document).ready(function() {
 				    $(".shipperpage").load(content_shipper);  //initial page number to load
@@ -116,6 +124,10 @@
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
 				        $(".shipperpage").load(content_shipper, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
+				    });
+
+				     $('.btn_add_shipper').on('click',function(){
+				    	$('.clear_values_shipper').val('');
 				    });
 			
 			});
@@ -148,6 +160,11 @@
 				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
+
+
+				     $('.btn_add_vessel').on('click',function(){
+				    	$('.clear_values_vessel').val('');
+				    });
 			
 			});
 			
@@ -178,6 +195,10 @@
 				        $(".haulerpage").load(content_hauler, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
+				    });
+
+				     $('.btn_add_hauler').on('click',function(){
+				    	$('.clear_values_hauler').val('');
 				    });
 			
 			});
@@ -211,6 +232,11 @@
 				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
+
+
+				     $('.btn_add_legend').on('click',function(){
+				    	$('.clear_values_legend').val('');
+				    });
 			
 			});
 
@@ -242,6 +268,10 @@
 				        $(".prodpage").load(content_product, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
+				    });
+
+				     $('.btn_add_product').on('click',function(){
+				    	$('.clear_values_product').val('');
 				    });
 			
 			});
@@ -340,7 +370,7 @@
 
 			<div class="" id="mycontent">
 				<div class="consignees ">
-				<button type="button" class="col-md-12 con-info consig-pos " data-toggle="modal" data-target="#consignee">ADD CONSIGNEE</button>
+				<button type="button" class="con-info consig-pos btn_add_consignee" data-toggle="modal" data-target="#consignee">ADD CONSIGNEE</button>
 
 					<div class="consignees collapse modal fade consig-posbox add_consignee" id="consignee">
 					  <div class="modal-dialog">
@@ -355,25 +385,25 @@
 						<form action="<?php echo base_url('Add_user/add_client/');?>" method="post">
 							<div class="">
 					            <div class="form-group col-lg-12">          	
-					                <input type="text" name="cname"class="form-control" placeholder="Client Name" required/>
+					                <input type="text" name="cname" class="cname form-control clear_values_consignee" placeholder="Client Name" required/>
 					            </div>
 					        </div>
 					      	  <div class="">
 					            <div class="form-group col-lg-12">
 					            <!-- 	<label>HouseBuildingNo/Street</label> -->
-					               <input type="text"   name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control"/>
+					               <input type="text" name="hbno" placeholder="HouseBuildingNo/Street" class="hbno form-control clear_values_consignee"/>
 					          </div>
 					        </div>
 					         <div class="">
 					            <div class="form-group col-lg-12">
 					            	<!-- <label>Barangay/Village</label> -->
-					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control" required />
+					                <input type="text" name="vilage"  placeholder="Barangay/Village" class="vilage form-control clear_values_consignee" required />
 					            </div>
 					        </div>
 					         <div class="">
 					            <div class="form-group col-lg-12">
 					            	<!-- <label>TownOrCityProvince</label> -->
-					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control" required />
+					                <input type="text" name="city"  placeholder="TownOrCityProvince" class="city form-control clear_values_consignee" required />
 					            </div>
 					        </div>
 					         <div class="">
@@ -392,7 +422,7 @@
 					        </div>
 					        <div class="">
 					            <div class="form-group col-lg-12">       	
-					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control" placeholder="Office Number" required />
+					                <input type="text" name="OfficeNumber" minlength="7" maxlength="15" class="form-control clear_values_consignee" placeholder="Office Number" required />
 					            </div>
 					        </div>
 					        <div class="">

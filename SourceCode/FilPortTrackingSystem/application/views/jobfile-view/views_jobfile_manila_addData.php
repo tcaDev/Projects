@@ -30,13 +30,13 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles" style="color:red;"></span></label> 
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="myjob(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
 				           <div class="form-group">
-							 	 <label for="shipper">Shipper:<i style="color:red;">*</i><span class"ship-check"></span></label> 
+							 	 <label for="shipper">Shipper:<i style="color:red;">*</i><span class"ship-check" style="color:red;"></span></label> 
 								  		<select name="shipper"  class="form-control input-sm shipper ">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
@@ -58,7 +58,7 @@
 							                </option> 
 							             	<?php }?>
 							            </select>
-							            <i class="consignee-msg" style="color:red;"></i>
+							            <i class="consignee-msg" style="color:red;" style="color:red;"></i>
 							   </div>
 								   	
 				           	

@@ -1373,7 +1373,7 @@ function search_product(){
 					    <thead>
 					      <tr>
 					        <th>Commodity ID</th>
-					        <th>Commodity Name</th>
+					        <th>Commodity</th>
 					        <th>Status</th>
 					        <th colspan="2">Update</th>
 					      </tr>
