@@ -716,7 +716,8 @@
 					$('.tableVessel-msg').text("Can't Proceed Need Vessel");
 					i=1;
 				}else{
-				  insert_vessel();
+
+				  insert_vessels();
 				
 				
 				/*$("#btn-container-mnla-add").click();*/
@@ -764,7 +765,7 @@
 										$('.btn-Next').removeClass('hidden'); 
 		  					  },
 		  						  cancel: function(){
-		  						  	 ins_contain();
+		  						  	 ins_contains();
 		    				    	/*$("#btn-charges-mnla-add").click();*/
 		    				    	$('#btn-charges-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
@@ -791,7 +792,7 @@
 					i=3;
 				}else{
 			    var add_comodity=1;
-  		        ins_contain(add_comodity);
+  		        ins_contains(add_comodity);
 				/*ins_description();*/
 				/*$("#btn-charges-mnla-add").click();*/
 				$('#btn-charges-mnla-add').addClass('active');
@@ -1171,7 +1172,7 @@ function insert_jobfile(){
        var origcity   =  $('.origcity').val();
 
      
-       alert(origin + " " + origcity);
+      
 
 
 
@@ -1244,7 +1245,9 @@ function insert_jobfile(){
 
 
  }
- function insert_vessel(){
+ function insert_vessels(){
+
+ 
  	  var jbfl   = $('.jobfiles').val();
        var table = $("#tableAddVessel-mnla table tbody");
          var t3  = $("#tableAddVessel-mnla table tbody tr").length;
@@ -1284,14 +1287,14 @@ function insert_jobfile(){
 			  		}
 				})
 			    .done(function(data) {
-			    	       if(t3==c3){
+			    	      /* if(t3==c3){*/
 	  							 $.alert({
 				        		title: 'Success!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
 				        	    }
 				   			   });
-	  					    }
+	  					   // }
 	    		    });
 		  
 
@@ -1302,7 +1305,7 @@ function insert_jobfile(){
 
  }
 
-function ins_contain(add_comodity){
+function ins_contains(add_comodity){
 
 	
        			  	
@@ -1372,7 +1375,7 @@ function ins_contain(add_comodity){
 				 	  if(add_comodity==1){
 			           	var container="container";
 			    		 if(c<=ct){
-			    		 ins_description(c,ct,container);
+			    		 ins_descriptions(c,ct,container);
 				        }
 			          }		
 			        if(add_comodity!=1){ 
@@ -1395,7 +1398,7 @@ function ins_contain(add_comodity){
 
 }
 
-function ins_description(c,ct,container){
+function ins_descriptions(c,ct,container){
 			    	   var table = $("#tableAddTruck-mnla table tbody");
 			    	   var ct2   = $("#tableAddTruck-mnla table tbody tr").length;
 
