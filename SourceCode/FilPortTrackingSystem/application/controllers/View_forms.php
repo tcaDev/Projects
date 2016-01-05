@@ -18,7 +18,7 @@ echo form_open('form');*/
 
 $countries=$this->User->countries();
 	echo 	'<div class="consignees ">
-				<button type="button" class="con-info consig-pos "  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
+				<button type="button" class="col-md-12 con-info consig-pos "  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
 					<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog">
 						  <div class="modal-dialog">
 						    <!-- Modal content-->
@@ -91,7 +91,7 @@ $countries=$this->User->countries();
 function broker(){
  $countries=$this->User->countries();
 	echo	'<div class="brokers tab-pane">
-				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#broker">ADD BROKER</button>
+				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#broker">ADD BROKER</button>
 
 					<div class="brokers modal fade consig consig-posbox collapse posbox" id="broker">
 						<div class="modal-dialog">
@@ -184,7 +184,7 @@ function vessel(){
   $drop = $this->User->dropdown_shipper();
 
  echo '			<div class="vessels">
- 					<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#vessels">ADD SHIPPING LINE/CARRIER</button>
+ 					<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#vessels">ADD CARRIER</button>
 
 
 				<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
@@ -223,7 +223,7 @@ function vessel(){
 
 function hauler(){
 	echo	'<div class="brokers tab-pane">
-				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#broker">ADD HAULER/TRUCKER</button>
+				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#broker">ADD HAULER</button>
 
 					<div class="brokers consig-posbox modal fade" id="broker" role="dialog">
 					  <div class="modal-dialog">
@@ -269,7 +269,7 @@ function hauler(){
 function shipper(){
  $countries = $this->User->countries();
 echo'			<div class="shippers tab-pane">
-				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
+				<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
 
 					<div class="shippers collapse consig-posbox modal fade" id="shipper"  role="dialog">
 						  <div class="modal-dialog">
@@ -382,7 +382,7 @@ function container(){
 
 echo '			
 	<div class="containers tab-pane">
-		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#container">ADD CONTAINERS</button>
+		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#container">ADD CONTAINERS</button>
 
 		   <div class="citys consig-posbox collapse modal fade" id="container" role="dialog">
 			  <div class="modal-dialog">
@@ -432,7 +432,7 @@ function forward(){
 
 echo '			
 	<div class="forwards tab-pane">
-		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#forward">ADD FOWARDER</button>
+		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#forward">ADD FOWARDER</button>
 
 		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
 		   	<div class="modal-dialog">
@@ -467,7 +467,7 @@ function legend(){
 
 echo '			
 	<div class="forwards tab-pane">
-		<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
+		<button type="button" class="col-md-12 con-info consig-pos" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
 
 		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
 			  <div class="modal-dialog">
@@ -525,7 +525,7 @@ echo '
 
 function product(){
 	echo	'<div class="prod tab-pane">
-				<button type="button" class="con-info consig-pos" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
+				<button type="button" class="col-md-12 col-lg-4 con-info consig-pos" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
 
 					<div class="products consig-posbox modal fade" id="product" role="dialog">
 					  <div class="modal-dialog">

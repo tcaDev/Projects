@@ -1201,6 +1201,7 @@ $this->message();
 		        <th>Status Name</th>
 		        <th>Description Name</th>
 		        <th>Font/Background</th>
+		        <th class="hidden">Color</th>
 		        <th>Status</th>
 		        <th colspan="2">Update</th>
 		      </tr>
@@ -1230,8 +1231,10 @@ $this->message();
     			$pick =$row->IsBackground;
     			if($pick==0){
 		        	$pick1= '<td style="color:'.$row->ColorCode.';"><strong>Font</strong></td>';
+		        	$pick2= '<td class="hidden">'.$row->ColorCode.'</td>';
 		        }else{
 		        	$pick1 ='<td style="background-color:'.$row->ColorCode.';">Background</td>';
+		        	$pick2= '<td class="hidden">'.$row->ColorCode.'</td>';
 		        }
 
 			    if($i==1){
@@ -1242,6 +1245,7 @@ $this->message();
 				        <td>'.stripslashes($row->StatusName).'</td>
 				        <td>'.stripslashes($row->Description).'</td>
 				        '.$pick1.'
+				        '.$pick2.'
 				         <td>'.$stat .'</td>
 						 <td  class="hidden">'. $mystat .'</td> 
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
@@ -1257,9 +1261,9 @@ $this->message();
 			     var id 		  = $(this).closest('tr').children('td:eq(0)').text();
 			     var status   	  = $(this).closest('tr').children('td:eq(1)').text();
 			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
-			     var color   	  = $(this).closest('tr').children('td:eq(3)').text();
-			     var bground   	  = $(this).closest('tr').children('td:eq(4)').text();
-			     var stat   	  = $(this).closest('tr').children('td:eq(5)').text();
+			     var color   	  = $(this).closest('tr').children('td:eq(4)').text();
+			     /*var bground   	  = $(this).closest('tr').children('td:eq()').text();*/
+			     var stat   	  = $(this).closest('tr').children('td:eq(6)').text();
 
 			     /*alert(status);*/
 
@@ -1271,9 +1275,9 @@ $this->message();
 			      $('.legend_backg').val(bground);
 
 			      if(stat==1){
-			      $('.activate').prop('checked', true);
+			      $('.activate').attr('checked', 'checked');
 			  	  }else{
-			  	  	  $('.deactivate').prop('checked', true);
+			  	  	  $('.deactivate').attr('checked', 'checked');
 			  	  }
 			 });
 	</script>

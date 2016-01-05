@@ -31,7 +31,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-outport"></span></label> 
-								 <input type="text" class="form-control input-sm jobfiles-outport" name="jbfl" id="jbfl" onkeyup="search_jobfiles(this)">
+								 <input type="text" class="form-control input-sm jobfiles-outport" name="jbfl" id="jbfl" onkeyup="search_jobfiless(this)">
 								 <i class="jobfile-msg-outport" style="color:red;"></i>
 				           </div>
 				  				
@@ -1022,7 +1022,7 @@
 
 
 <script>
- function search_jobfiles(jobfile){
+ function search_jobfiless(jobfile){
    jobfile = jobfile.value; 
 
    			$.ajax({
