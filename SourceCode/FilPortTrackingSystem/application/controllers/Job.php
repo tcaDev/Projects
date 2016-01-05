@@ -566,9 +566,6 @@ class Job extends CI_Controller {
                     <th>Container Size</th>
                     <th>No Of Cartons</th>
                     <th>Trucker Name</th>
-                    <th>Estimated Departure Time</th>
-                    <th>Estimated Arrival Time</th>
-                    <th>Actual Arrival Time</th>
                     <th>Start Of Storage</th>
                     <th>Lodging</th>
                     <th>Hauler/Trucker</th>
@@ -590,9 +587,9 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
              echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
              echo "<td class='row'>".stripslashes($row->TruckerName)."</td>";
-             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";
-             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";
-             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+/*             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";*/
+/*             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";*/
+/*             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";*/
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
