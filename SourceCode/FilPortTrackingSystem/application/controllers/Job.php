@@ -80,7 +80,7 @@ class Job extends CI_Controller {
     <?php }}
 
 
-    function check_jobfile(){
+    function check_jobfiless(){
      $jobfile =  $this->input->post('jobfile');
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
             
@@ -680,12 +680,12 @@ class Job extends CI_Controller {
    $dt_pickup_docs =  date_format($date3, 'Y-m-d H:i');
    }
     //stop inserting data in jobfile to avoid duplication
-     $chek= $this->db->query("Select * from JobFile where
+/*     $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
         echo "JobFile is already exists";
        }else{
-         echo "new jobfile is added";
+         echo "new jobfile is added";*/
 
   
                           //first proc
@@ -813,7 +813,7 @@ class Job extends CI_Controller {
        
    
 
-           }
+          // }
    
    }
 function vessel(){

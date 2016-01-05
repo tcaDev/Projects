@@ -31,7 +31,7 @@
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
 				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
-								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfiles(this)">
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="myjob(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -861,12 +861,12 @@
 
 
 <script>
- function search_jobfiles(jobfile){
+ function myjob(jobfile){
    jobfile = jobfile.value; 
 
    			$.ajax({
 			  		method: "POST",
-					  url: "<?php echo base_url('Job/check_jobfile');?>",
+					  url: "<?php echo base_url('Job/check_jobfiless');?>",
 			  		data: { jobfile:jobfile}
 			})
 			.done(function(data) {
@@ -1249,8 +1249,8 @@ function insert_job(){
 				})
 			    .done(function(data) {
 	  							 $.alert({
-				        		title: 'Alert!',
-				        		content: data,
+				        		title: 'Success!',
+				        		content: 'New JobFile is added!',
 				        		confirm: function(){
 				        	    }
 				   			   });
@@ -1315,7 +1315,7 @@ function insert_job(){
 			    .done(function(data) {
 			    	       if(t3==c3){
 	  							 $.alert({
-				        		title: 'Alert!',
+				        		title: 'Success!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
 				        	    }
@@ -1407,7 +1407,7 @@ function ins_contain(add_comodity){
 			        if(add_comodity!=1){ 
 			            if(c==ct){	
 			    	 	  	 $.alert({
-				        		title: 'Alert!',
+				        		title: 'Success!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
 				        	    }
@@ -1459,7 +1459,7 @@ function ins_description(c,ct,container){
 			    	           if(c==ct){	
 			    	             if(c2==ct2){
 			  						  $.alert({
-						        		title: 'Alert!',
+						        		title: 'Success!',
 						        		content: message,
 						        		confirm: function(){
 						        	    }
@@ -1526,8 +1526,8 @@ $('.save_charges').click(function(){
 	              })
 					.done(function(data) {
 	  							 $.alert({
-				        		title: 'Alert!',
-				        		content: 'Running Charges has been inserted!',
+				        		title: 'Success!',
+				        		content: 'Running Charges has been added!',
 				        		confirm: function(){
 				        			location.reload();
 				        	    }
