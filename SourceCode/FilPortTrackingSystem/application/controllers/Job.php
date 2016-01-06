@@ -486,63 +486,6 @@ class Job extends CI_Controller {
                           </div>
                         </div>';
                       }
-
-
-       /*  echo "<div style='width:100%; overflow-x:auto; '> 
-              <table class='table-bordered table table-striped table-hover table-condensed' style='width: 700px;'>
-              <tr>
-                   <th>No.</th>
-                   <th>Lodgement Fee</th>
-                   <th>Container Deposit</th>
-                   <th>THC Charges</th>
-                   <th>Arrastre.</th>
-                   <th>Weighing</th>
-                   <th>Container Deposit</th>
-                   <th>DEL</th>
-                   <th>Dispatch Fee</th>
-                   <th>Storage</th>
-                   <th>Demorage</th>
-                   <th>Detention</th>
-                   <th>EIC</th>
-                   <th>BAI Application</th>
-                   <th>BAI Inspection</th>
-                   <th>SRA Application</th>
-                   <th>SRA Inspection</th>
-                   <th>Bad Cargo</th>
-                   <th>All Charges</th>
-                   <th>Particular Charges</th>
-              </tr>";
-
-          $i=0;
-         foreach($charges as $row){
-          $i++;
-             echo "<tr>";
-             echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->LodgementFee."</td>";
-             echo "<td class='row'>".$row->ContainerDeposit."</td>";
-             echo "<td class='row'>".$row->THCCharges ."</td>";
-             echo "<td class='row'>".$row->Arrastre ."</td>";
-             echo "<td class='row'>".$row->Wharfage."</td>";
-             echo "<td class='row'>".$row->Weighing."</td>";
-             echo "<td class='row'>".$row->DEL."</td>";
-             echo "<td class='row'>".$row->DispatchFee ."</td>";
-             echo "<td class='row'>".$row->Storage."</td>";
-
-             echo "<td class='row'>".$row->Demorage."</td>";
-             echo "<td class='row'>".$row->Detention."</td>";
-             echo "<td class='row'>".$row->EIC ."</td>";
-             echo "<td class='row'>".$row->BAIApplication."</td>";
-             echo "<td class='row'>".$row->BAIInspection."</td>";
-             echo "<td class='row'>".$row->SRAApplication."</td>";
-             echo "<td class='row'>".$row->SRAInspection ."</td>";
-             echo "<td class='row'>".$row->BadCargo."</td>";
-             echo "<td class='row'>".$row->AllCharges."</td>";
-             echo "<td class='row'>".$row->ParticularCharges."</td>";
-             echo "</tr>";
-         }
-
-         echo "</table>
-              </div>";*/
     }
 
 
@@ -1012,10 +955,10 @@ foreach($job as $row){
 
 
   //stop inserting data in jobfile to avoid duplication
-  $query= $this->db->query("Select * from JobFile where
-        JobFileId='$job' limit 1");
+/*  $query= $this->db->query("Select * from JobFile where
+        JobFileId=$job limit 1");
 if($query->num_rows() ==1){
-}else{  
+}else{  */
         $data = array(
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -1070,7 +1013,7 @@ if($query->num_rows() ==1){
       }
    }
 
-}
+//}
 
 
 ?>

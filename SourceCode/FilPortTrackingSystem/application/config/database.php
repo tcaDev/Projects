@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'TopConnection.asia',
 	'username' => 'FilportAdmin',
 	'password' => 'TO_MP8^1N8(=',
-	'database' => 'FilportTrackingSystem',
+	'database' => 'dev_FilportTrackingSystem',
 /*	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
