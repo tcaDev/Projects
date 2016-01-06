@@ -130,7 +130,7 @@ class Job extends CI_Controller {
       $charge  = $this->Jobdata->get_chargess($charges);
 
     if($charge==NULL){
-          echo    '<center><span style="color:red">No Vessels Yet </span></center>';
+          echo    '<center><span style="color:red">No Record of Running Charges Found </span></center>';
     }else{
 
            foreach($charge as $row){
@@ -229,72 +229,7 @@ class Job extends CI_Controller {
                           </div>
                         </div>';
                       }
-         /*echo "<div style='width:100%; overflow-x:auto; '> 
-              <table class='table-bordered table table-striped table-hover table-condensed' '>
-              <tr>
-                   <th>No.</th>
-                   <th>Lodgement Fee</th>
-                   <th>Container Deposit</th>
-                   <th>THC Charges</th>
-                   <th>Arrastre</th>
 
-                   <th>Wharfage</th>
-                   <th>Weighing</th>
-                   <th>DEL</th>
-                   <th>Dispatch Fee</th>
-
-                   <th>Storage</th>
-                   <th>Demorage</th>
-                   <th>Detention</th>
-                   <th>EIC</th>
-
-                   <th>BAIApplication</th>
-                   <th>BAIInspection</th>
-                   <th>SRAApplication</th>
-                   <th>SRAInspection</th>
-
-                   <th>BadCargo</th>
-                   <th>AllCharges</th>
-                   <th>ParticularCharges</th>
-              </tr>";
-
-          $i=0;
-         foreach($charge as $row){
-          $i++;
-             echo "<tr>";
-             echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->LodgementFee."</td>";
-             echo "<td class='row'>".$row->ContainerDeposit."</td>";
-             echo "<td class='row'>".$row->THCCharges ."</td>";
-             echo "<td class='row'>".$row->Arrastre ."</td>";
-
-             echo "<td class='row'>".$row->Wharfage."</td>";
-             echo "<td class='row'>".$row->Weighing."</td>";
-             echo "<td class='row'>".$row->DEL ."</td>";
-             echo "<td class='row'>".$row->DispatchFee ."</td>";
-
-             echo "<td class='row'>".$row->Storage."</td>";
-             echo "<td class='row'>".$row->Demorage."</td>";
-             echo "<td class='row'>".$row->Detention ."</td>";
-             echo "<td class='row'>".$row->EIC ."</td>";
-
-             echo "<td class='row'>".$row->BAIApplication."</td>";
-             echo "<td class='row'>".$row->BAIInspection."</td>";
-             echo "<td class='row'>".$row->SRAApplication ."</td>";
-             echo "<td class='row'>".$row->SRAInspection ."</td>";
-
-             echo "<td class='row'>".$row->BadCargo."</td>";
-             echo "<td class='row'>".$row->AllCharges ."</td>";
-             echo "<td class='row'>".$row->ParticularCharges ."</td>";
-
-             
-
-             
-             echo "</tr>";
-         }
-
-         echo "</table>
-              </div>";*/
     }
     }
 
@@ -381,116 +316,7 @@ class Job extends CI_Controller {
 
     }
 
-      function running_charges(){
-      $charge =  $this->input->post('id');   
-      $charges  = $this->Jobdata->get_charges($charge);
 
-    if($charges==NULL){
-          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
-    }else{
-
-         foreach($charges as $row){
-                      echo '<div class="col-lg-12">
-                        
-                        <div class="col-lg-6">
-                          <div class="form-group">
-                            <label>Lodgement Fee</label>
-                              <input type="text" name="lodge" class="form-control input-sm" id="lodge" value="'.$row->LodgementFee.'" />
-                            </div>
-
-                            <div class="form-group">
-                              <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm" id="cont-deposit" value="'.$row->ContainerDeposit.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm" id="thc-charges" value="'.$row->THCCharges.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm" id="arrastre" value="'.$row->Arrastre.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm" id="wharfage" value="'.$row->Wharfage.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm" id="weight" value="'.$row->Weighing.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm" id="del" value="'.$row->DEL.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm" id="dispatch" value="'.$row->DispatchFee.'"/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm" id="storage" value="'.$row->Storage.'"/>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm" id="demurrage" value="'.$row->Demorage.'"/>
-                              </div>
-
-
-                          </div>
-                            
-
-                          <div class="col-lg-6">
-                            
-                              <div class="form-group">
-                                <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm"  id="detention" value="'.$row->Detention.'"/>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm" id="EIC" value="'.$row->EIC.'"/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm" id="bai-app" value="'.$row->BAIApplication.'"/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm" id="bai-inspect" value="'.$row->BAIInspection.'"/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm" id="sra-app" value="'.$row->SRAApplication.'"/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm" id="sra-inspect" value="'.$row->SRAInspection.'"/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo" value="'.$row->BadCargo.'"/>
-                              </div>
-                          </div>
-                        </div>';
-                      }
-    }
-
-
-
-    }
 
   function get_containers(){
    $containers =  $this->input->post('id'); 
@@ -785,55 +611,67 @@ foreach($result as $row){
    if($dt_paid!=''){
    $date1  = date_create($dt_paid);
    $dt_paid    =  date_format($date1, 'Y-m-d H:i');
-   }
+   }else{$dt_paid=NULL;}
+
    if($dt_pre_assess!=''){
    $date2  = date_create($dt_pre_assess);
    $dt_pre_assess    =  date_format($date2, 'Y-m-d H:i');
-   }
+   }else{$dt_pre_assess=NULL;}
+
    if($start_storage!=''){
    $date3        = date_create($start_storage);
    $start_storage    =  date_format($date3, 'Y-m-d H:i');
-   }
+   }else{$start_storage=NULL;}
+
    if($start_demorage!=''){
    $date4  = date_create($start_demorage);
    $start_demorage    =  date_format($date4, 'Y-m-d H:i');
-   }
+   }else{$start_demorage=NULL;}
+
    if($lodging!=''){
    $date5  = date_create($lodging);
    $lodging    =  date_format($date5, 'Y-m-d H:i');
-   }
+   }else{$lodging=NULL;}
+
    if($dt_file_entry_boc!=''){
    $date6  = date_create($dt_file_entry_boc);
    $dt_file_entry_boc    =  date_format($date6, 'Y-m-d H:i');
-   }
+   }else{$dt_file_entry_boc=NULL;}
+
    if($dt_final_assess!=''){
    $date7        = date_create($dt_final_assess);
    $dt_final_assess    =  date_format($date7, 'Y-m-d H:i');
-   }
+   }else{$dt_final_assess=NULL;}
+
    if($gip!=''){
    $date8  = date_create($gip);
    $gip    =  date_format($date8, 'Y-m-d H:i');
-   }
+   }else{$gip=NULL;}
+
    if($gop!=''){
    $date9  = date_create($gop);
    $gop    =  date_format($date9, 'Y-m-d H:i');
-   }
+   }else{$gop=NULL;}
+
    if($adw!=''){
    $date10  = date_create($adw);
    $adw    =  date_format($date10, 'Y-m-d H:i');
-   }
+   }else{$adw=NULL;}
+
    if($dtboc!=''){
    $date11  = date_create($dtboc);
    $dtboc    =  date_format($date11, 'Y-m-d H:i');
-   }
+   }else{$dtboc=NULL;}
+
    if($tdt!=''){
    $date12  = date_create($tdt);
    $tdt    =  date_format($date12, 'Y-m-d H:i');
-   }
+   }else{$tdt=NULL;}
+
    if($pul_out_port!=''){
    $date13  = date_create($pul_out_port);
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
-   }
+   }else{$pul_out_port=NULL;}
 
       $data = array(
                'ContainerNo'             => $container,
@@ -955,10 +793,10 @@ foreach($job as $row){
 
 
   //stop inserting data in jobfile to avoid duplication
-/*  $query= $this->db->query("Select * from JobFile where
+  $query= $this->db->query("Select * from JobFile where
         JobFileId=$job limit 1");
 if($query->num_rows() ==1){
-}else{  */
+}else{  
         $data = array(
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -1013,7 +851,7 @@ if($query->num_rows() ==1){
       }
    }
 
-//}
+}
 
 
 ?>

@@ -53,7 +53,7 @@ function get_vessels($JobFile){
  function get_charges($id){
  	$this->  db ->select('*');
     $this -> db -> from('RunningCharges');
-    $this -> db ->where('JobFileNo', $id);
+    $this -> db ->where('JobFileId', $id);
     $query=$this->db->get();
     return $query->result();
  }
