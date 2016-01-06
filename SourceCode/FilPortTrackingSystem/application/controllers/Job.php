@@ -401,7 +401,6 @@ class Job extends CI_Controller {
    $dt_req_budget   =$this->input->post('dt_req_budget');
    $ref_due_dt      =$this->input->post('ref_due_dt');
    $dt_boc          =$this->input->post('dt_boc');    
-   $status          =$this->input->post('status');  //status report in job tab has no insert in db  
    $purch_order_no  =$this->input->post('purch_order_no');  
    $color           =$this->input->post('color');  
    $color_select    =$this->input->post('color_select'); 
@@ -458,8 +457,7 @@ class Job extends CI_Controller {
                'ForwarderWarehouse'            => NULL,// la png ui
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder' =>NULL,
-               'status_report'                   =>$status
+               'DateReceivedNoticeFromForwarder' =>NULL
                
         );
 
@@ -495,7 +493,6 @@ class Job extends CI_Controller {
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
                'DateReceivedNoticeFromForwarder'  =>NULL,
-               'status_report'                    =>$status,
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
 
