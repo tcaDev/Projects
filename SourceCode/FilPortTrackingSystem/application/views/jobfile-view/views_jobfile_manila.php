@@ -114,7 +114,9 @@
 
 								          <th >Registry</th>
 
-								          <th >Vessel/Voyage</th> 
+								          <th >Vessel/Voyage</th>
+
+								          <th >Origin</th>  
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
@@ -165,6 +167,7 @@
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
 										  <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
+								           <td><?php echo stripslashes($row->Origin); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>

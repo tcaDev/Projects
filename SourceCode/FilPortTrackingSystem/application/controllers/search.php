@@ -907,7 +907,7 @@ function search_vessel(){
    } 	
 
 
-	  echo '	      <table class="table table-bordered">
+	  echo '	      <table class="table table-bordered" id = "table_vessel">
 					    <thead>
 					      <tr>
 					        <th>Shipping Line ID</th>
@@ -957,7 +957,13 @@ function search_vessel(){
 					    </tbody>
 					  </table>
 
-
+<script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+ <script>
+	$(document).ready(function() { 
+        $("#table_vessel").tablesorter();}); 
+ </script>
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
@@ -1010,7 +1016,7 @@ $this->message();
 	   }else{
 	   	 $haulers  =  $this->User->findlimit_hauler($item_per_page,$page_position);	
 	   } 	
-	echo '<table class="table table-bordered">
+	echo '<table class="table table-bordered" id ="table_hauler">
 		    <thead>
 		      <tr>
 		      	<th>Hauler ID</th>
@@ -1059,6 +1065,13 @@ $this->message();
 ?>
     </tbody>
 </table>
+<script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+ <script>
+	$(document).ready(function() { 
+        $("#table_hauler").tablesorter();}); 
+ </script>
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
@@ -1369,7 +1382,7 @@ function search_product(){
    } 	
 
 
-	  echo '	      <table class="table table-bordered">
+	  echo '	      <table class="table table-bordered" id ="table_product">
 					    <thead>
 					      <tr>
 					        <th>Commodity ID</th>
@@ -1414,7 +1427,13 @@ function search_product(){
 ?>
 					    </tbody>
 					  </table>
-
+  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+ <script>
+	$(document).ready(function() { 
+        $("#table_product").tablesorter();}); 
+ </script>
 
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	

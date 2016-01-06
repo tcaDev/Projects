@@ -130,7 +130,7 @@ class Job extends CI_Controller {
       $charge  = $this->Jobdata->get_chargess($charges);
 
     if($charge==NULL){
-          echo    '<center><span style="color:red">No Record of Running Charges Found </span></center>';
+          echo    '<center><span style="color:red">No Vessels Yet </span></center>';
     }else{
 
            foreach($charge as $row){
@@ -229,7 +229,72 @@ class Job extends CI_Controller {
                           </div>
                         </div>';
                       }
+         /*echo "<div style='width:100%; overflow-x:auto; '> 
+              <table class='table-bordered table table-striped table-hover table-condensed' '>
+              <tr>
+                   <th>No.</th>
+                   <th>Lodgement Fee</th>
+                   <th>Container Deposit</th>
+                   <th>THC Charges</th>
+                   <th>Arrastre</th>
 
+                   <th>Wharfage</th>
+                   <th>Weighing</th>
+                   <th>DEL</th>
+                   <th>Dispatch Fee</th>
+
+                   <th>Storage</th>
+                   <th>Demorage</th>
+                   <th>Detention</th>
+                   <th>EIC</th>
+
+                   <th>BAIApplication</th>
+                   <th>BAIInspection</th>
+                   <th>SRAApplication</th>
+                   <th>SRAInspection</th>
+
+                   <th>BadCargo</th>
+                   <th>AllCharges</th>
+                   <th>ParticularCharges</th>
+              </tr>";
+
+          $i=0;
+         foreach($charge as $row){
+          $i++;
+             echo "<tr>";
+             echo "<td> ".$i." </td>";
+             echo "<td class='row'>".$row->LodgementFee."</td>";
+             echo "<td class='row'>".$row->ContainerDeposit."</td>";
+             echo "<td class='row'>".$row->THCCharges ."</td>";
+             echo "<td class='row'>".$row->Arrastre ."</td>";
+
+             echo "<td class='row'>".$row->Wharfage."</td>";
+             echo "<td class='row'>".$row->Weighing."</td>";
+             echo "<td class='row'>".$row->DEL ."</td>";
+             echo "<td class='row'>".$row->DispatchFee ."</td>";
+
+             echo "<td class='row'>".$row->Storage."</td>";
+             echo "<td class='row'>".$row->Demorage."</td>";
+             echo "<td class='row'>".$row->Detention ."</td>";
+             echo "<td class='row'>".$row->EIC ."</td>";
+
+             echo "<td class='row'>".$row->BAIApplication."</td>";
+             echo "<td class='row'>".$row->BAIInspection."</td>";
+             echo "<td class='row'>".$row->SRAApplication ."</td>";
+             echo "<td class='row'>".$row->SRAInspection ."</td>";
+
+             echo "<td class='row'>".$row->BadCargo."</td>";
+             echo "<td class='row'>".$row->AllCharges ."</td>";
+             echo "<td class='row'>".$row->ParticularCharges ."</td>";
+
+             
+
+             
+             echo "</tr>";
+         }
+
+         echo "</table>
+              </div>";*/
     }
     }
 
@@ -316,7 +381,116 @@ class Job extends CI_Controller {
 
     }
 
+      function running_charges(){
+      $charge =  $this->input->post('id');   
+      $charges  = $this->Jobdata->get_charges($charge);
 
+    if($charges==NULL){
+          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
+    }else{
+
+         foreach($charges as $row){
+                      echo '<div class="col-lg-12">
+                        
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label>Lodgement Fee</label>
+                              <input type="text" name="lodge" class="form-control input-sm" id="lodge" value="'.$row->LodgementFee.'" />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Container Deposit</label>
+                              <input type="text" name="cont-deposit" class="form-control input-sm" id="cont-deposit" value="'.$row->ContainerDeposit.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>THC Charges</label>
+                              <input type="text" name="thc-charges" class="form-control input-sm" id="thc-charges" value="'.$row->THCCharges.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Arrastre </label>
+                              <input type="text" name="arrastre" class="form-control input-sm" id="arrastre" value="'.$row->Arrastre.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Wharfage</label>
+                              <input type="text" name="wharfage" class="form-control input-sm" id="wharfage" value="'.$row->Wharfage.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Weighing</label>
+                              <input type="text" name="weight" class="form-control input-sm" id="weight" value="'.$row->Weighing.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>DEL</label>
+                              <input type="text" name="del" class="form-control input-sm" id="del" value="'.$row->DEL.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Dispatch Fee</label>
+                              <input type="text" name="dispatch" class="form-control input-sm" id="dispatch" value="'.$row->DispatchFee.'"/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Storage</label>
+                              <input type="text" name="storage" class="form-control input-sm" id="storage" value="'.$row->Storage.'"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Demurrage</label>
+                                <input type="text" name="demurrage" class="form-control input-sm" id="demurrage" value="'.$row->Demorage.'"/>
+                              </div>
+
+
+                          </div>
+                            
+
+                          <div class="col-lg-6">
+                            
+                              <div class="form-group">
+                                <label>Detention</label>
+                                <input type="text" name="detention" class="form-control input-sm"  id="detention" value="'.$row->Detention.'"/>
+                              </div>
+                              
+                              <div class="form-group">
+                                <label>EIC</label>
+                                <input type="text" name="EIC" class="form-control input-sm" id="EIC" value="'.$row->EIC.'"/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>BAI Application</label>
+                                <input type="text" name="bai-app" class="form-control input-sm" id="bai-app" value="'.$row->BAIApplication.'"/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>BAI Inspection</label>
+                                <input type="text" name="bai-inspect" class="form-control input-sm" id="bai-inspect" value="'.$row->BAIInspection.'"/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>SRA Application</label>
+                                <input type="text" name="sra-app" class="form-control input-sm" id="sra-app" value="'.$row->SRAApplication.'"/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>SRA Inspection</label>
+                                <input type="text" name="sra-inspect" class="form-control input-sm" id="sra-inspect" value="'.$row->SRAInspection.'"/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>Bad Cargo</label>
+                                <input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo" value="'.$row->BadCargo.'"/>
+                              </div>
+                          </div>
+                        </div>';
+                      }
+    }
+
+
+
+    }
 
   function get_containers(){
    $containers =  $this->input->post('id'); 
@@ -385,27 +559,28 @@ class Job extends CI_Controller {
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
 
-   $monitoring_type =$this->input->post('monitoring_type');
-   $job             =$this->input->post('jbfl');
-   $consignee       =$this->input->post('consignee');
-   $shipper         =$this->input->post('shipper');
-   $mbl             =$this->input->post('mbl');
-   $mbl2            =$this->input->post('mbl2');   //no insert in db
-   $hbl             =$this->input->post('hbl');
-   $bank            =$this->input->post('bank');
-   $registry        =$this->input->post('registry');
-   $dtRcvd          =$this->input->post('dtRcvd');
-   $dt_pickup_obl   =$this->input->post('dt_pickup_obl');
-   $dt_pickup_docs  =$this->input->post('dt_pickup_docs');
-   $broker          =$this->input->post('broker');
-   $dt_req_budget   =$this->input->post('dt_req_budget');
-   $ref_due_dt      =$this->input->post('ref_due_dt');
-   $dt_boc          =$this->input->post('dt_boc');    
-   $purch_order_no  =$this->input->post('purch_order_no');  
-   $color           =$this->input->post('color');  
-   $color_select    =$this->input->post('color_select'); 
-   $origin           =$this->input->post('origin');  
-   $origcity    =$this->input->post('origcity');    
+   $monitoring_type =mysql_real_escape_string($this->input->post('monitoring_type'));
+   $job             =mysql_real_escape_string($this->input->post('jbfl'));
+   $consignee       =mysql_real_escape_string($this->input->post('consignee'));
+   $shipper         =mysql_real_escape_string($this->input->post('shipper'));
+   $mbl             =mysql_real_escape_string($this->input->post('mbl'));
+   $mbl2            =mysql_real_escape_string($this->input->post('mbl2'));   //no insert in db
+   $hbl             =mysql_real_escape_string($this->input->post('hbl'));
+   $bank            =mysql_real_escape_string($this->input->post('bank'));
+   $registry        =mysql_real_escape_string($this->input->post('registry'));
+   $dtRcvd          =mysql_real_escape_string($this->input->post('dtRcvd'));
+   $dt_pickup_obl   =mysql_real_escape_string($this->input->post('dt_pickup_obl'));
+   $dt_pickup_docs  =mysql_real_escape_string($this->input->post('dt_pickup_docs'));
+   $broker          =mysql_real_escape_string($this->input->post('broker'));
+   $dt_req_budget   =mysql_real_escape_string($this->input->post('dt_req_budget'));
+   $ref_due_dt      =mysql_real_escape_string($this->input->post('ref_due_dt'));
+   $dt_boc          =mysql_real_escape_string($this->input->post('dt_boc'));    
+   $status          =mysql_real_escape_string($this->input->post('status'));  //status report in job tab has no insert in db  
+   $purch_order_no  =mysql_real_escape_string($this->input->post('purch_order_no'));  
+   $color           =mysql_real_escape_string($this->input->post('color'));  
+   $color_select    =mysql_real_escape_string($this->input->post('color_select')); 
+   $origin           =mysql_real_escape_string($this->input->post('origin'));  
+   $origcity    =mysql_real_escape_string($this->input->post('origcity'));    
    
    if($dtRcvd!=''){
    $date1  = date_create($dtRcvd);
@@ -423,9 +598,9 @@ class Job extends CI_Controller {
      $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
-        echo "JobFile already exists";
+        echo "JobFile already Exists";
        }else{
-         echo "new jobfile is added";
+         echo "New Jobfile is Added";
 
 
       $session_data = $this->session->userdata('logged_in');
@@ -510,19 +685,19 @@ function vessel(){
   $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
    
-   $jobfile       =  $this->input->post('jbfl');
+   $jobfile       = $this->input->post('jbfl');
    $job           = $this->Jobdata->select_jobfile($jobfile);
  
 foreach($job as $row){
   $job =  $row->JobFileId;
  }
- $vessel        =  $this->input->post('vessel');
- $lines         =  $this->input->post('lines');
+ $vessel        =  mysql_real_escape_string($this->input->post('vessel'));
+ $lines         =  mysql_real_escape_string($this->input->post('lines'));
 
- $eat           =  $this->input->post('eat');
- $edt           =  $this->input->post('edt');
- $aat           =  $this->input->post('aat');
- $discharge     =  $this->input->post('vdt');
+ $eat           =  mysql_real_escape_string($this->input->post('eat'));
+ $edt           =  mysql_real_escape_string($this->input->post('edt'));
+ $aat           =  mysql_real_escape_string($this->input->post('aat'));
+ $discharge     =  mysql_real_escape_string($this->input->post('vdt'));
  
  
    if($eat!=''){
@@ -581,26 +756,26 @@ function container(){
 foreach($result as $row){
   $vessel_voyage =  $row->CarrierByJobFileId;
  }
-   $container       =  $this->input->post('containerId');
-   $consize         =  $this->input->post('consize'); 
-   $cartons_no      =  $this->input->post('cartons_no'); 
-   $plateno         =  $this->input->post('trucker_plate');
-   $trucker_name    =  $this->input->post('trucker_name');
-   $trucker_id      =  $this->input->post('trucker_id');
-   $ref_entry_no    =  $this->input->post('ref_entry_no');
-   $dt_paid         =  $this->input->post('dt_paid');
-   $dt_pre_assess   =  $this->input->post('dt_pre_assess');
-   $start_storage   =  $this->input->post('start_storage');
-   $start_demorage  =  $this->input->post('start_demorage');
-   $lodging         = $this->input->post('lodging');
-   $dt_file_entry_boc = $this->input->post('dt_file_entry_boc');
-   $dt_final_assess = $this->input->post('dt_final_assess');
-   $gip             = $this->input->post('gip');
-   $gop             = $this->input->post('gop');
-   $adw             =  $this->input->post('adw');
-   $dtboc           = $this->input->post('dtboc');
-   $tdt             =  $this->input->post('tdt');
-   $pul_out_port    = $this->input->post('pul_out_port');
+   $container       =  mysql_real_escape_string($this->input->post('containerId'));
+   $consize         =  mysql_real_escape_string($this->input->post('consize')); 
+   $cartons_no      =  mysql_real_escape_string($this->input->post('cartons_no')); 
+   $plateno         =  mysql_real_escape_string($this->input->post('trucker_plate'));
+   $trucker_name    =  mysql_real_escape_string($this->input->post('trucker_name'));
+   $trucker_id      =  mysql_real_escape_string($this->input->post('trucker_id'));
+   $ref_entry_no    =  mysql_real_escape_string($this->input->post('ref_entry_no'));
+   $dt_paid         =  mysql_real_escape_string($this->input->post('dt_paid'));
+   $dt_pre_assess   =  mysql_real_escape_string($this->input->post('dt_pre_assess'));
+   $start_storage   =  mysql_real_escape_string($this->input->post('start_storage'));
+   $start_demorage  =  mysql_real_escape_string($this->input->post('start_demorage'));
+   $lodging         = mysql_real_escape_string($this->input->post('lodging'));
+   $dt_file_entry_boc = mysql_real_escape_string($this->input->post('dt_file_entry_boc'));
+   $dt_final_assess = mysql_real_escape_string($this->input->post('dt_final_assess'));
+   $gip             = mysql_real_escape_string($this->input->post('gip'));
+   $gop             = mysql_real_escape_string($this->input->post('gop'));
+   $adw             =  mysql_real_escape_string($this->input->post('adw'));
+   $dtboc           = mysql_real_escape_string($this->input->post('dtboc'));
+   $tdt             =  mysql_real_escape_string($this->input->post('tdt'));
+   $pul_out_port    = mysql_real_escape_string($this->input->post('pul_out_port'));
 
 
 
@@ -608,67 +783,55 @@ foreach($result as $row){
    if($dt_paid!=''){
    $date1  = date_create($dt_paid);
    $dt_paid    =  date_format($date1, 'Y-m-d H:i');
-   }else{$dt_paid=NULL;}
-
+   }
    if($dt_pre_assess!=''){
    $date2  = date_create($dt_pre_assess);
    $dt_pre_assess    =  date_format($date2, 'Y-m-d H:i');
-   }else{$dt_pre_assess=NULL;}
-
+   }
    if($start_storage!=''){
    $date3        = date_create($start_storage);
    $start_storage    =  date_format($date3, 'Y-m-d H:i');
-   }else{$start_storage=NULL;}
-
+   }
    if($start_demorage!=''){
    $date4  = date_create($start_demorage);
    $start_demorage    =  date_format($date4, 'Y-m-d H:i');
-   }else{$start_demorage=NULL;}
-
+   }
    if($lodging!=''){
    $date5  = date_create($lodging);
    $lodging    =  date_format($date5, 'Y-m-d H:i');
-   }else{$lodging=NULL;}
-
+   }
    if($dt_file_entry_boc!=''){
    $date6  = date_create($dt_file_entry_boc);
    $dt_file_entry_boc    =  date_format($date6, 'Y-m-d H:i');
-   }else{$dt_file_entry_boc=NULL;}
-
+   }
    if($dt_final_assess!=''){
    $date7        = date_create($dt_final_assess);
    $dt_final_assess    =  date_format($date7, 'Y-m-d H:i');
-   }else{$dt_final_assess=NULL;}
-
+   }
    if($gip!=''){
    $date8  = date_create($gip);
    $gip    =  date_format($date8, 'Y-m-d H:i');
-   }else{$gip=NULL;}
-
+   }
    if($gop!=''){
    $date9  = date_create($gop);
    $gop    =  date_format($date9, 'Y-m-d H:i');
-   }else{$gop=NULL;}
-
+   }
    if($adw!=''){
    $date10  = date_create($adw);
    $adw    =  date_format($date10, 'Y-m-d H:i');
-   }else{$adw=NULL;}
-
+   }
    if($dtboc!=''){
    $date11  = date_create($dtboc);
    $dtboc    =  date_format($date11, 'Y-m-d H:i');
-   }else{$dtboc=NULL;}
-
+   }
    if($tdt!=''){
    $date12  = date_create($tdt);
    $tdt    =  date_format($date12, 'Y-m-d H:i');
-   }else{$tdt=NULL;}
-
+   }
    if($pul_out_port!=''){
    $date13  = date_create($pul_out_port);
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
-   }else{$pul_out_port=NULL;}
+   }
 
       $data = array(
                'ContainerNo'             => $container,
@@ -723,9 +886,9 @@ foreach($result as $row){
 function comodity(){
         $session_data = $this->session->userdata('logged_in');
          $userid = $session_data['uid'];
-         $prodid               =  $this->input->post('prod_orderno');
-         $product_name         =  $this->input->post('product_name');
-         $con_id               =  $this->input->post('con_id');   
+         $prodid               =  mysql_real_escape_string($this->input->post('prod_orderno'));
+         $product_name         =  mysql_real_escape_string($this->input->post('product_name'));
+         $con_id               =  mysql_real_escape_string($this->input->post('con_id'));   
             $result   = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
         $con_id =  $row->ContainerByCarrierId;
@@ -768,32 +931,32 @@ foreach($job as $row){
  }
 
 
-   $lodge             =  $this->input->post('lodge');
-   $cont_deposit      =  $this->input->post('cont_deposit');
-   $thc_charges       =  $this->input->post('thc_charges');   
-   $wharfage          =  $this->input->post('wharfage');
-   $arrastre          =  $this->input->post('arrastre');
-   $weight            =  $this->input->post('weight');
-   $del               =  $this->input->post('del');
-   $dispatch          =  $this->input->post('dispatch');
-   $storage           =  $this->input->post('storage');   
-   $demurrage         =  $this->input->post('demurrage');
-   $detention         =  $this->input->post('detention');
-   $eic               =  $this->input->post('eic');
-   $bai_app           =  $this->input->post('bai_app');
-   $bai_inspect       =  $this->input->post('bai_inspect');
-   $sra_app           =  $this->input->post('sra_app');   
-   $sra_inspect       =  $this->input->post('sra_inspect');
-   $bad_cargo         =  $this->input->post('bad_cargo');
-   $all_charges       =  $this->input->post('all_charges');
-   $part_charges      =  $this->input->post('part_charges');
+   $lodge             =  mysql_real_escape_string($this->input->post('lodge'));
+   $cont_deposit      =  mysql_real_escape_string($this->input->post('cont_deposit'));
+   $thc_charges       =  mysql_real_escape_string($this->input->post('thc_charges'));   
+   $wharfage          =  mysql_real_escape_string($this->input->post('wharfage'));
+   $arrastre          =  mysql_real_escape_string($this->input->post('arrastre'));
+   $weight            =  mysql_real_escape_string($this->input->post('weight'));
+   $del               =  mysql_real_escape_string($this->input->post('del'));
+   $dispatch          =  mysql_real_escape_string($this->input->post('dispatch'));
+   $storage           =  mysql_real_escape_string($this->input->post('storage'));   
+   $demurrage         =  mysql_real_escape_string($this->input->post('demurrage'));
+   $detention         =  mysql_real_escape_string($this->input->post('detention'));
+   $eic               =  mysql_real_escape_string($this->input->post('eic'));
+   $bai_app           =  mysql_real_escape_string($this->input->post('bai_app'));
+   $bai_inspect       =  mysql_real_escape_string($this->input->post('bai_inspect'));
+   $sra_app           =  mysql_real_escape_string($this->input->post('sra_app'));   
+   $sra_inspect       =  mysql_real_escape_string($this->input->post('sra_inspect'));
+   $bad_cargo         =  mysql_real_escape_string($this->input->post('bad_cargo'));
+   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
+   $part_charges      =  mysql_real_escape_string($this->input->post('part_charges'));
 
 
   //stop inserting data in jobfile to avoid duplication
-  $query= $this->db->query("Select * from JobFile where
+/*  $query= $this->db->query("Select * from JobFile where
         JobFileId=$job limit 1");
 if($query->num_rows() ==1){
-}else{  
+}else{  */
         $data = array(
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -848,7 +1011,7 @@ if($query->num_rows() ==1){
       }
    }
 
-}
+//}
 
 
 ?>
