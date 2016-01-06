@@ -110,6 +110,8 @@
 
 								          <th >Master Bill of Lading No.</th>
 
+								          <th >Master Bill of Lading No. 2</th>
+
 								          <th >Letter of Credit No. from Bank</th> 
 
 								          <th >Registry</th>
@@ -167,6 +169,7 @@
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
 								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
+								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
 										  <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
