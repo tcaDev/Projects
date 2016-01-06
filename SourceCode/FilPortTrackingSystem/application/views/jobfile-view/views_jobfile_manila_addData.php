@@ -273,6 +273,7 @@
 				  			<div class="form-group">
 								<label>Container Number</label>					     
 					        		<input type="text" class="containerss form-control input-sm">
+					        		<i class="container-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">

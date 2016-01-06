@@ -1129,7 +1129,7 @@
 	$(document).ready(function(){
 
 			var testme=false;
-				function isExist(strd){
+				function isExist_outport(strd){
 
 				var table = $("#tableAddContainer-outport table tbody");
 
@@ -1149,7 +1149,7 @@
 			var compare = $('#tableAddContainer-outport .containerss-outport').val();
 			
 
-			if(isExist($('#tableAddContainer-outport .containerss-outport').val()))
+			if(isExist_outport($('#tableAddContainer-outport .containerss-outport').val()))
 			{	
 				$('.container-msg-outport').text("Container Number Already Exists.");
 			}

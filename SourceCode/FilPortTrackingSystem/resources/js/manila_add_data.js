@@ -296,7 +296,7 @@
 	$(document).ready(function(){
 
 			var testme=false;
-				function isExist(strd){
+				function isExist_mnla(strd){
 
 				var table = $("#tableAddContainer-mnla table tbody");
 
@@ -316,16 +316,14 @@
 			var compare = $('#tableAddContainer-mnla .containerss').val();
 			
 
-			if(isExist($('#tableAddContainer-mnla .containerss').val()))
+			if(isExist_mnla($('#tableAddContainer-mnla .containerss').val()))
 			{	
 				$('.container-msg').text("Container Number Already Exists.");
 			}
-			
 			else{
 
 	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	       
-
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel_voyage option:selected").text());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".containerss-size").val());
@@ -457,14 +455,15 @@
 			{	
 				$('.vessel-msg').text("Vessel Already Exists.");
 			}
+			else if($('#tableAddVessel-mnla .vessel').val() == "")
+			{
+				$('.vessel-msg').text("Need Vessel");
+			}
 		else if($('#tableAddVessel-mnla .carrier').val() == "0")
 			{
 				$('.carrier-msg').text("Need Shipping Line/Carrier.");
 			}
-		else if($('#tableAddVessel-mnla .vessel').val() == "")
-			{
-				$('.vessel-msg').text("Need Vessel");
-			}
+		
 		else{
 
 		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
