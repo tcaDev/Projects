@@ -93,25 +93,7 @@
 					$('.tableVessel-msg').text("Can't Proceed Need Vessel");
 					i=1;
 				}else{
-
 				  insert_vessels();
-				
-				
-				/*$("#btn-container-mnla-add").click();*/
-				$('#btn-container-mnla-add').addClass('active');
-				$('#btn-jobfile-mnla-add').removeClass('active');
-				$('#btn-truck-mnla-add').removeClass('active');
-				$('#btn-charges-mnla-add').removeClass('active');
-				$('#btn-vessel-mnla-add').removeClass('active');
-
-				$('.pill-jobfile-mnla-add').addClass('hidden');
-				$('.pill-vessel-mnla-add').addClass('hidden');
-				$('.pill-truck-mnla-add').addClass('hidden');
-				$('.pill-charges-mnla-add').addClass('hidden');
-				$('.pill-container-mnla-add').removeClass('hidden');
-				$('.test_data').addClass('hidden');
-
-				$('.btn-Next').removeClass('hidden');
 				}
 
 			}else if(i==3){
@@ -122,6 +104,7 @@
 				}else{
 
 					    $.confirm({
+					    	      backgroundDismiss: false, 
 		   						  title: 'Please Choose!',
 		  						  content: 'Do you want to add a Commodity?',
 		 					      confirm: function(){
@@ -131,33 +114,16 @@
 										$('#btn-container-mnla-add').removeClass('active');
 										$('#btn-charges-mnla-add').removeClass('active');
 										$('#btn-vessel-mnla-add').removeClass('active');
-
 										$('.pill-jobfile-mnla-add').addClass('hidden');
 										$('.pill-truck-mnla-add').removeClass('hidden');
 										$('.pill-charges-mnla-add').addClass('hidden');
 										$('.pill-container-mnla-add').addClass('hidden');
 										$('.pill-vessel-mnla-add').addClass('hidden');
 										$('.test_data').addClass('hidden');
-
 										$('.btn-Next').removeClass('hidden'); 
 		  					  },
 		  						  cancel: function(){
 		  						  	 ins_contains();
-		    				    	/*$("#btn-charges-mnla-add").click();*/
-		    				    	$('#btn-charges-mnla-add').addClass('active');
-									$('#btn-jobfile-mnla-add').removeClass('active');
-									$('#btn-container-mnla-add').removeClass('active');
-									$('#btn-truck-mnla-add').removeClass('active');
-									$('#btn-vessel-mnla-add').removeClass('active');
-									$('.test_data').removeClass('hidden');
-
-									$('.pill-jobfile-mnla-add').addClass('hidden');
-									$('.pill-truck-mnla-add').addClass('hidden');
-									$('.pill-charges-mnla-add').removeClass('hidden');
-									$('.pill-container-mnla-add').addClass('hidden');
-									$('.pill-vessel-mnla-add').addClass('hidden');
-
-									$('.btn-Next').addClass('hidden');
 		   						 }
 						});
 			 		}
@@ -170,44 +136,15 @@
 				}else{
 			    var add_comodity=1;
   		        ins_contains(add_comodity);
-				/*ins_description();*/
-				/*$("#btn-charges-mnla-add").click();*/
-				$('#btn-charges-mnla-add').addClass('active');
-				$('#btn-jobfile-mnla-add').removeClass('active');
-				$('#btn-container-mnla-add').removeClass('active');
-				$('#btn-truck-mnla-add').removeClass('active');
-				$('#btn-vessel-mnla-add').removeClass('active');
-				$('.test_data').removeClass('hidden');
+	
 
-				$('.pill-jobfile-mnla-add').addClass('hidden');
-				$('.pill-truck-mnla-add').addClass('hidden');
-				$('.pill-charges-mnla-add').removeClass('hidden');
-				$('.pill-container-mnla-add').addClass('hidden');
-				$('.pill-vessel-mnla-add').addClass('hidden');
-
-				$('.btn-Next').addClass('hidden');
 				}
 			}
 			else if(i==1){
     				insert_jobfile();
 				/*$("#btn-vessel-mnla-add").click();*/
 
-				$('#btn-vessel-mnla-add').addClass('active');
-				$('#btn-jobfile-mnla-add').removeClass('active');
-				$('#btn-truck-mnla-add').removeClass('active');
-				$('#btn-charges-mnla-add').removeClass('active');
-				$('#btn-container-mnla-add').removeClass('active');
 
-
-				$('.pill-jobfile-mnla-add').addClass('hidden');
-				$('.pill-truck-mnla-add').addClass('hidden');
-				$('.pill-charges-mnla-add').addClass('hidden');
-				$('.pill-container-mnla-add').addClass('hidden');
-				$('.pill-vessel-mnla-add').removeClass('hidden');
-
-				$('.test_data').addClass('hidden');
-
-				$('.btn-Next').removeClass('hidden');
 			}
 
 		});
@@ -552,6 +489,14 @@ function insert_jobfile(){
         		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/jobfile_add/",
+/*					  beforeSend: function() {
+					  		$.alert({
+				        		title: 'Adding data!',
+				        		content: 'Loading...',
+				        		confirm: function(){
+				        	    }
+				   			});
+ 					  },*/
 			  		data: {
 
 
@@ -583,12 +528,25 @@ function insert_jobfile(){
 			  		}
 				})
 			    .done(function(data) {
-	  							 $.alert({
+	  						$.alert({
+	  							backgroundDismiss: false, 	
 				        		title: 'Success!',
 				        		content: 'New JobFile is added!',
 				        		confirm: function(){
+				        			$('#btn-vessel-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-charges-mnla-add').removeClass('active');
+									$('#btn-container-mnla-add').removeClass('active');
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').addClass('hidden');
+									$('.pill-container-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').removeClass('hidden');
+									$('.test_data').addClass('hidden');
+									$('.btn-Next').removeClass('hidden');
 				        	    }
-				   			   });
+				   			 });
 	    		    })
 			     .fail(function(data) {
 	  							 $.alert({
@@ -640,13 +598,26 @@ function insert_jobfile(){
 				})
 			    .done(function(data) {
 			    	       if(t3==c3){
-	  							 $.alert({
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
+				        			$('#btn-container-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-charges-mnla-add').removeClass('active');
+									$('#btn-vessel-mnla-add').removeClass('active');
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').addClass('hidden');
+									$('.pill-container-mnla-add').removeClass('hidden');
+									$('.test_data').addClass('hidden');
+									$('.btn-Next').removeClass('hidden');
 				        	    }
-				   			   });
-	  					    }
+				   			});
+	  					   }
 	    		    });		  
 	   });		    
  }
@@ -719,9 +690,22 @@ function ins_contains(add_comodity){
 			        if(add_comodity!=1){ 
 			            if(c==ct){	
 			    	 	  	 $.alert({
+			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
+				        		    $('#btn-charges-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-container-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-vessel-mnla-add').removeClass('active');
+									$('.test_data').removeClass('hidden');
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').removeClass('hidden');
+									$('.pill-container-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').addClass('hidden');
+									$('.btn-Next').addClass('hidden');
 				        	    }
 				   			  }); 
 			    	 	}
@@ -771,9 +755,22 @@ function ins_descriptions(c,ct,container){
 			    	           if(c==ct){	
 			    	             if(c2==ct2){
 			  						  $.alert({
+			  						  	backgroundDismiss: false, 	
 						        		title: 'Success!',
 						        		content: message,
 						        		confirm: function(){
+						        		    $('#btn-charges-mnla-add').addClass('active');
+											$('#btn-jobfile-mnla-add').removeClass('active');
+											$('#btn-container-mnla-add').removeClass('active');
+											$('#btn-truck-mnla-add').removeClass('active');
+											$('#btn-vessel-mnla-add').removeClass('active');
+											$('.test_data').removeClass('hidden');
+											$('.pill-jobfile-mnla-add').addClass('hidden');
+											$('.pill-truck-mnla-add').addClass('hidden');
+											$('.pill-charges-mnla-add').removeClass('hidden');
+											$('.pill-container-mnla-add').addClass('hidden');
+											$('.pill-vessel-mnla-add').addClass('hidden');
+											$('.btn-Next').addClass('hidden');
 						        	    }
 						   			  });
 						   	   } }
@@ -840,6 +837,18 @@ $('.save_charge').click(function(){
 				        		title: 'Success!',
 				        		content: 'Running Charges has been added!',
 				        		confirm: function(){
+				        		    $('#btn-charges-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-container-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-vessel-mnla-add').removeClass('active');
+									$('.test_data').removeClass('hidden');
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').removeClass('hidden');
+									$('.pill-container-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').addClass('hidden');
+									$('.btn-Next').addClass('hidden');
 				        			location.reload();
 				        	    }
 				   			   });
