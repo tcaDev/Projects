@@ -1,0 +1,132 @@
+ <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+        <div class="modal-header" style="background-color:#eee">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Commodity(s)</h4>
+        </div>
+	        <div class="modal-body">
+	        	<!-- Products PLATE WINDOW-->
+				  	<div id="table-AddProduct-mnla" class="product-mnla-add">
+
+				  		<div class="col-lg-6">
+
+				  			<div class="form-group hidden">
+								<label>JobFile</label>
+					        	<input type="text" class="jobfile-addProduct-mnla form-control input-sm">
+							</div>
+
+				  			<div class="form-group">
+								<label>Product Name</label><i style="color:red;">*</i>
+								<select class="form-control input-sm prodname-addProduct-mnila" name="prodname">
+									<?php foreach($products as $row){ ?>
+											 <option value="<?php echo $row->ProductId?>">
+											 <?php echo stripslashes($row->ProductName);?>
+											 </option>
+											<?php }?> 
+								</select> 
+								<i class="prodname-msg-addProduct-mnila" style="color:red;"></i>
+							</div>
+
+				  		</div>
+
+				  		<div class="col-lg-6">
+
+				  			<div class="form-group container-addProduct-manila-get">	
+		
+							</div>
+
+		                		<button type="button" class="btn-addProduct-mnila btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Product</button>
+				  				<i class="tableGoods-msg-addProduct-mnila" style="color:red;"></i>
+				  		</div>
+
+				  		<div style="width: 100%; overflow-x: auto;">
+						    <table class="table" style="width: 950px;" border="1">
+							    <thead>
+							    	 <tr>
+							    	 	<th class="hidden">Product Value</th>
+								        <th>Product Name</th>
+								        <th>Container</th>
+								        <th></th>
+							      	</tr>
+							    </thead>
+						    </table>
+						</div>
+					</div>
+	        </div>
+
+        <div class="modal-footer" >
+	       	 <button type="button" class="btn btn-danger">Save</button>
+	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+
+ <script>
+
+/*Click Button Container*/
+
+function click_vessel(){
+	var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+
+		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
+
+					$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_vessel_container');?>",
+				  		data: { jobfile:jobfile_mnla,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.vessel-addContainer-manila-get').html(data);
+					});
+}
+
+ /*Delete Row*/
+	  	$('#table-AddProduct-mnla').on('click', '.deleteButton', function() {
+	    	$(this).closest("tr").remove();
+		});
+
+ 			var check_product=false;
+				function isExist_productinCont(prod,cont){
+
+				var table_Product_mnila = $("#table-AddProduct-mnla table tbody");
+
+				    check_product=false;
+				 	  table_Product_mnila.find('tr').each(function(){
+				 	  	if($('td:nth(2)',$(this)).html()===cont) 
+					    if($('td:nth(0)',$(this)).html()===prod) {
+					       check_product=true;            
+					        }   
+					     })
+				    return check_product;
+				}
+
+		$(".btn-addProduct-mnila").click(function(){
+
+			var cont = $('#table-AddProduct-mnla .containers-prod-addProduct-mnila option:selected').val();
+			var prod = $('#table-AddProduct-mnla .prodname-addProduct-mnila option:selected').val();
+
+			if(isExist_productinCont(prod,cont))
+			{	
+				$('.cont-size-msg-addProduct-mnila').text("The Product is already in this Container");
+			}
+			else if($('#table-AddProduct-mnla .prodname-addProduct-mnila').val() == "")
+			{
+				$('.prodname-msg-addProduct-mnila').text("Need Product Name.");
+
+			}else{
+				$('#table-AddProduct-mnla table').append('<tr><td></td><td></td><td></td><td></td></tr>');
+				$('#table-AddProduct-mnla table tr:last td:nth-child(1)').html($(".prodname-addProduct-mnila").val()).hide();
+			 	$('#table-AddProduct-mnla table tr:last td:nth-child(2)').html($(".prodname-addProduct-mnila option:selected").text());
+			    $('#table-AddProduct-mnla table tr:last td:nth-child(3)').html($(".containers-prod-addProduct-mnila").val());
+	
+			    $('#table-AddProduct-mnla table tr:last td:nth-child(4)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+			
+			$('.cont-size-msg-addProduct-mnila').text('');
+			$('.prodname-msg-addProduct-mnila').text('');
+			$('.tableGoods-msg-addProduct-mnila').text("");
+
+			}
+				
+
+			});
+ </script>

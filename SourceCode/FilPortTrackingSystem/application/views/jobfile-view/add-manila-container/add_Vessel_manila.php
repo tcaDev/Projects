@@ -1,0 +1,156 @@
+ <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+        <div class="modal-header" style="background-color:#eee">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Vessel(s)</h4>
+        </div>
+	        <div class="modal-body">
+	           <!--Vessel WINDOW-->
+  				<div id="table-AddVessel-mnla" class="vessel-mnla-add">
+
+						<div class="col-lg-6">
+
+
+							<div class="form-group hidden">
+								<label>JobFile</label>
+					        	<input type="text" class="jobfile-addVessel-mnla form-control input-sm">
+							</div>
+
+							<div class="form-group">
+								<label>Vessel/Voyage #</label> 
+								<input type="text" class="form-control input-sm vessel-addVessel-mnila" id="vessel" name="vessel">
+								<i class="vessel-msg-addVessel-mnila" style="color:red;"></i>
+							</div>
+
+							 <div class="form-group">
+								  	<label for="dtClrd">Estimated Departure Time</label>
+								 	<input type="datetime-local" name="es_dep_time" class="form-control input-sm edt-addVessel-mnila">
+						     </div>
+
+						     <div class="form-group">
+								<label>Estimated Arrival Time</label>
+								<input type="datetime-local" name="est-dept" class="form-control input-sm eat-addVessel-mnila" />
+							 </div>
+
+						</div>
+
+						<div class="col-lg-6">
+
+						    <div class="form-group">
+								<label>Actual Arrival Time</label>
+								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-addVessel-mnila" />
+							 </div>
+
+							<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-addVessel-mnila">
+							 </div>
+
+							 <div class="form-group">
+
+							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
+								<select class="form-control carrier-addVessel-mnila" name="countries">
+									<option value="0" selected>Select Shipping Line/Carrier</option>
+										<?php foreach($carrier as $row){ ?>
+											 <option value="<?php echo $row->CarrierId?>">
+											 <?php echo stripslashes($row->CarrierName);?>
+											 </option>
+											<?php }?> 
+								</select>
+									<i class="carrier-msg-addVessel-mnila" style="color:red;"></i>
+							</div>
+
+							<button type="button" class="btn-addVessel-mnila btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Vessel</button>
+							<i class="tableVessel-msg-addVessel-mnila" style="color:red;"></i>
+						</div>
+					
+
+						<div style="width: 100%; overflow-x: auto;">
+						    <table class="table" style="width: 1300px;" border="1">
+							    <thead>
+							    	 <tr>
+								        <th>Vessel/Voyage #</th>
+								        <th>Estimated Departure Time</th>
+								        <th>Estimated Arrival Time</th>
+								        <th>Actual Arrival Time</th>
+								        <th>Discharge Time of Vessel</th>
+								        <th class="hidden">Vessel Value</th>
+						       			<th>Shipping Lines / Carrier</th>
+								        <th></th>
+							      	</tr>
+							    </thead>
+						    </table>
+						</div>
+
+					</div>
+	        </div>
+
+        <div class="modal-footer" >
+	       	 <button type="button" class="btn btn-danger">Save</button>
+	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+<script>
+
+
+
+/*Delete Row*/
+	  	$('#table-AddVessel-mnla').on('click', '.deleteButton', function() {
+	    	$(this).closest("tr").remove();
+		});
+
+	var check_vessel=false;
+				function isExist_vessel_mnila(vessel){
+
+				var table_vessel_mnila = $("#table-AddVessel-mnla table tbody");
+
+				    check_vessel=false;
+				 	  table_vessel_mnila.find('tr').each(function(){
+					    if($('td:nth(0)',$(this)).html()===vessel) {
+					       check_vessel=true;            
+					        }   
+					     })
+				    return check_vessel;
+				}
+	
+	$(".btn-addVessel-mnila").click(function(){
+
+		if(isExist_vessel_mnila($('#table-AddVessel-mnla .vessel-addVessel-mnila').val()))
+			{	
+				$('.vessel-msg-addVessel-mnila').text("Vessel Already Exists.");
+			}
+			else if($('#table-AddVessel-mnla .vessel-addVessel-mnila').val() == "")
+			{
+				$('.vessel-msg-addVessel-mnila').text("Need Vessel");
+			}
+		else if($('#table-AddVessel-mnla .carrier-addVessel-mnila').val() == "0")
+			{
+				$('.carrier-msg-addVessel-mnila').text("Need Shipping Line/Carrier.");
+			}
+		
+		else{
+
+		$('#table-AddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		
+		$('#table-AddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel-addVessel-mnila").val());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(2)').html($(".edt-addVessel-mnila").val());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(3)').html($(".eat-addVessel-mnila").val());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(4)').html($(".aat-addVessel-mnila").val());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(5)').html($(".vdt-addVessel-mnila").val());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(6)').html($(".carrier-addVessel-mnila").val()).hide();
+	    $('#table-AddVessel-mnla table tr:last td:nth-child(7)').html($(".carrier-addVessel-mnila option:selected").text());
+		$('#table-AddVessel-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+
+		$('.vessel-msg-addVessel-mnila').text("");
+		$('.carrier-msg-addVessel-mnila').text("");
+		$('.tableVessel-msg-addVessel-mnila').text("");
+
+		$('#table-AddVessel-mnla .vessel-addVessel-mnila').val('');
+		$('#table-AddVessel-mnla .edt-addVessel-mnila').val('');
+		$('#table-AddVessel-mnla .eat-addVessel-mnila').val('');
+		$('#table-AddVessel-mnla .aat-addVessel-mnila').val('');
+		$('#table-AddVessel-mnla .vdt-addVessel-mnila').val('');
+
+		}
+	});
+</script>

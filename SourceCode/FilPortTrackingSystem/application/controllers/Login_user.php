@@ -154,6 +154,8 @@ class Login_user extends CI_Controller {
 
 		    /* get status*/
 		    $data['status'] =     $this->User->get_status();
+
+		    $data['color_selectivity'] =     $this->User->color_selectivity();
 		  	
 
 		  	/*Jobfile manila*/

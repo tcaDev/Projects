@@ -83,7 +83,7 @@
 				
 
 			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
-				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:4300px;">
+				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          
@@ -165,14 +165,20 @@
 								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
 								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
-										  <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
+										  <td>
+										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Good(s)</button>
+										  		<button type="button" class="btn btn-Add-Product-mnla btn-success" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
 								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
 								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
-										  <td class="view_vessels"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel/s</button></td>
+										  <td>
+									  			<button type="button" class="btn btn-Goods btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
@@ -340,6 +346,30 @@
 				      	
 				    </div>
 				 </div>
+
+				 <!--Add Vessel when Adding New Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addVessel-mnla" role="dialog">
+				    <div class="modal-dialog" >
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-manila-container/add_Vessel_manila'); ?>
+				      	
+				    </div>
+				 </div>
+
+				 <!--Add Product when Adding New Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addProduct-mnla" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-manila-container/add_Product_manila'); ?>
+				      	
+				    </div>
+				 </div>
 				  
 			
 
@@ -445,9 +475,31 @@ $(document).ready(function(){
 				  		}
 					})
 			  		.done(function(data) {
-				  				$('.vessel-addContainer-manila').html(data);
+				  				$('.vessel-addContainer-manila-get').html(data);
 					});
 	 });
+
+	$(".btn-Add-Vessel-mnla").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+
+		$(".jobfile-addVessel-mnla").val(jobfile_mnla) ;
+	});
+
+	$(".btn-Add-Product-mnla").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+
+		$(".jobfile-addProduct-mnla").val(jobfile_mnla) ;
+
+				$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_container_product');?>",
+				  		data: { jobfile:jobfile_mnla,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.container-addProduct-manila-get').html(data);
+					});
+	});
 
 });
 

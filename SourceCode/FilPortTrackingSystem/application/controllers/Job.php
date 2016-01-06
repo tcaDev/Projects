@@ -126,16 +126,44 @@ class Job extends CI_Controller {
       
     }
 
+/*Get Vessel When adding New Container*/
     function get_vessel_container(){
       $vessel_mnila =  $this->input->post('jobfile');   
       $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila);
 
       if($vessel_mnila_container==NULL){
-        echo '<option></option>';
+        echo '<label>Vessel/Voyage #</label><br>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addVessel-mnla" ><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
       }else{
-        foreach ($vessel_mnila_container as $row) {
-            echo '<option>'.$row->VesselVoyageNo.'</option>';
-        }
+
+         echo '<label>Vessel/Voyage #</label>
+                <select class="vessel-addContainer-manila form-control input-sm">';
+          foreach ($vessel_mnila_container as $row) {
+              echo '<option>'.$row->VesselVoyageNo.'</option>';
+          }
+         echo '</select>';
+      }
+    }
+
+
+  /*Get Container When adding New Product*/
+    function get_container_product(){
+      $container_mnila =  $this->input->post('jobfile');   
+      $container_mnila_product = $this->Jobdata->get_container_product($container_mnila);
+
+      if($container_mnila_product==NULL){
+
+        echo '<label>Container Number</label><br>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-taget="#addContainer-mnla" onclick="click_vessel()" ><span class="fa fa-plus fa-fw"></span> Add Container</button>';
+      }else{
+
+         echo '<label>Container Number</label>
+                <select class="containers-prod-addProduct-mnila form-control input-sm">';
+          foreach ($container_mnila_product as $row) {
+              echo '<option>'.$row->ContainerNo.'</option>';
+          }
+         echo '</select>';
+         echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
       }
     }
 

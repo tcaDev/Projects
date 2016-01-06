@@ -302,6 +302,7 @@ Class User extends CI_Model
     }
 
 
+
     function select_shipperid(){
     $this ->db->select('*');
     $this ->db->from('Shipper');
@@ -444,6 +445,12 @@ Class User extends CI_Model
   }
     function countries(){
      $query = $this->db->query("select * from Countries   ");
+   return $query->result();
+
+  }
+
+   function color_selectivity(){
+     $query = $this->db->query("select * from ColorSelectivity   ");
    return $query->result();
 
   }

@@ -194,9 +194,11 @@
 						<div class="form-group">
 									<label>Color Selectivity :</label>
 									<select name="color-select" id="color-select" class="form-control input-sm color-select">
-										<option value="1">YELLOW</option>
-										<option value="2">RED</option>
-										<option value="3">GREEN</option>
+											<?php foreach($color_selectivity as $row){ ?>
+												 <option value="<?php echo $row->ColorSelectivityId?>">
+												 <?php echo $row->ColorSelectivityName;?>
+												 </option>
+												<?php }?> 
 									</select>
 								</div>
 
