@@ -270,8 +270,6 @@
 
     	var del = $(this).closest('tr').children('td:eq(1)').text();
 
-    	alert(del);
-
       	$("#tableAddTruck-mnla .containers-prod").find("option[value="+ del +"]").remove();
 
     	$(this).closest("tr").remove();
