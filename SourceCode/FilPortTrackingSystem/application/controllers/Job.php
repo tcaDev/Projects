@@ -1,8 +1,10 @@
 <?php
+
+date_default_timezone_set('Asia/Manila');
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Job extends CI_Controller {
-
 
      public function __construct()
        {
@@ -81,6 +83,7 @@ class Job extends CI_Controller {
 
 
     function check_jobfiless(){
+      //$dt = Date("Y/m/d H:i:s");
      $jobfile =  $this->input->post('jobfile');
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
             
@@ -628,7 +631,7 @@ class Job extends CI_Controller {
                'ColorSelectivityId'     => $color_select,
                'Registry'               => $registry,
                'LockedBy_UserId'        => $userid,
-               'DateCreated'            => date('Y-m-d H:i'),
+               'DateCreated'            => Date('Y-m-d H:i'),
                'Origin_CountryId'       => $origin, 
                'OriginCity'             => $origcity,   
                'HouseBillLadingNo'      => $hbl,
@@ -638,7 +641,7 @@ class Job extends CI_Controller {
                'DateReceivedNoticeFromClients' =>$dtRcvd,
                'DateReceivedOfBL'              =>$dt_pickup_obl,
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
-               'DateRequestBudgetToGL'         =>date('Y-m-d H:i'),
+               'DateRequestBudgetToGL'         =>Date('Y-m-d H:i'),
                'RFPDueDate'                    =>$ref_due_dt,
                'ForwarderWarehouse'            => NULL,// la png ui
                'FlightNo'                      =>NULL ,
