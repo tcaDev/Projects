@@ -560,6 +560,18 @@ class Job extends CI_Controller {
           $i=0;
          foreach($container as $row){
           $i++;
+             $container = $row->ContainerNo;
+            if($i==1){
+             if($container==''){
+               echo    '</table>';
+               echo    '<center><span style="color:red">No Containers Yet </span></center>';
+              break;
+             }
+            }
+           if($container==''){
+              break;
+             }
+
              echo "<tr>";
              echo "<td> ".stripslashes($i)." </td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
