@@ -515,47 +515,47 @@
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Lodgement Fee</label>
-								<input type="text" name="lodge" class="form-control input-sm" id="lodge"/>
+								<input type="decimal" name="lodge" class="form-control input-sm checkDec" id="lodge"/>
 							</div>
 
 							<div class="form-group">
 								<label>Container Deposit</label>
-								<input type="text" name="cont-deposit" class="form-control input-sm" id="cont-deposit"/>
+								<input type="text" name="cont-deposit" class="form-control input-sm checkDec" id="cont-deposit"/>
 							</div>
 
 							<div class="form-group">
 								<label>THC Charges</label>
-								<input type="text" name="thc-charges" class="form-control input-sm" id="thc-charges" />
+								<input type="text" name="thc-charges" class="form-control input-sm checkDec" id="thc-charges" />
 							</div>
 
 							<div class="form-group">
 								<label>Arrastre </label>
-								<input type="text" name="arrastre" class="form-control input-sm" id="arrastre" />
+								<input type="text" name="arrastre" class="form-control input-sm checkDec" id="arrastre" />
 							</div>
 
 							<div class="form-group">
 								<label>Wharfage</label>
-								<input type="text" name="wharfage" class="form-control input-sm" id="wharfage" />
+								<input type="text" name="wharfage" class="form-control input-sm checkDec" id="wharfage" />
 							</div>
 
 							<div class="form-group">
 								<label>Weighing</label>
-								<input type="text" name="weight" class="form-control input-sm" id="weight"/>
+								<input type="text" name="weight" class="form-control input-sm checkDec" id="weight"/>
 							</div>
 
 							<div class="form-group">
 								<label>DEL</label>
-								<input type="text" name="del" class="form-control input-sm" id="del"/>
+								<input type="text" name="del" class="form-control input-sm checkDec" id="del"/>
 							</div>
 
 							<div class="form-group">
 								<label>Dispatch Fee</label>
-								<input type="text" name="dispatch" class="form-control input-sm" id="dispatch" />
+								<input type="text" name="dispatch" class="form-control input-sm checkDec" id="dispatch" />
 							</div>
 
 							<div class="form-group">
 								<label>Storage</label>
-								<input type="text" name="storage" class="form-control input-sm" id="storage"/>
+								<input type="text" name="storage" class="form-control input-sm checkDec" id="storage"/>
 							</div>
 
 							
@@ -568,42 +568,42 @@
 
 								<div class="form-group">
 									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm" id="demurrage" />
+									<input type="text" name="demurrage" class="form-control input-sm checkDec" id="demurrage" />
 								</div>
 							
 								<div class="form-group">
 									<label>Detention</label>
-									<input type="text" name="detention" class="form-control input-sm"  id="detention"/>
+									<input type="text" name="detention" class="form-control input-sm checkDec"  id="detention"/>
 								</div>
 								
 								<div class="form-group">
 									<label>EIC</label>
-									<input type="text" name="EIC" class="form-control input-sm" id="EIC" />
+									<input type="text" name="EIC" class="form-control input-sm checkDec" id="EIC" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Application</label>
-									<input type="text" name="bai-app" class="form-control input-sm" id="bai-app" />
+									<input type="text" name="bai-app" class="form-control input-sm checkDec" id="bai-app" />
 								</div>
 
 								<div class="form-group">
 									<label>BAI Inspection</label>
-									<input type="text" name="bai-inspect" class="form-control input-sm" id="bai-inspect"/>
+									<input type="text" name="bai-inspect" class="form-control input-sm checkDec" id="bai-inspect"/>
 								</div>
 
 								<div class="form-group">
 									<label>SRA Application</label>
-									<input type="text" name="sra-app" class="form-control input-sm" id="sra-app"/>
+									<input type="text" name="sra-app" class="form-control input-sm checkDec" id="sra-app"/>
 								</div>
 
 								<div class="form-group">
 									<label>SRA Inspection</label>
-									<input type="text" name="sra-inspect" class="form-control input-sm" id="sra-inspect"/>
+									<input type="text" name="sra-inspect" class="form-control input-sm checkDec" id="sra-inspect"/>
 								</div>
 
 								<div class="form-group">
 									<label>Bad Cargo</label>
-									<input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo"/>
+									<input type="text" name="bad-cargo" class="form-control input-sm checkDec" id="bad-cargo"/>
 								</div>
 <!-- 
 								<div style="text-align:right;">
@@ -629,6 +629,21 @@
   </div>
 
 <script src="<?php echo base_url('resources/js/manila_add_data.js');?>"></script>
+<script>
+
+ $(document).ready(function(){
+ 		
+ 	$('.checkDec').on('change',function(){
+ 		var inp = $(this).val();
+ 		var holder = $(this).attr('id');
+ 		var n = inp.indexOf('.');
+ 		if(n < 0){
+ 			$('#' + holder).val(inp + '.00');
+ 		}
+ 	});
+});
+
+</script>
 
 
 
