@@ -57,6 +57,13 @@ function get_vessels($JobFile){
     $query=$this->db->get();
     return $query->result();
  }
+ function get_status($id){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_StatusReports');
+    $this -> db ->where('JobFileNo', $id);
+    $query=$this->db->get();
+    return $query->result(); 
+ }
 
   function select_jobfile($job){
  	$this->  db ->select('*');

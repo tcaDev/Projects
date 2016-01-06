@@ -259,7 +259,7 @@
 				          <h4 class="modal-title">Status Report</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class=""> </div>
+				            <div class="list_status"> </div>
 
 				        </div>
 				        <div class="modal-footer">
@@ -425,6 +425,24 @@ $(document).ready(function(){
 					});
  });
 
+ $('.reports').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
+ 	/* alert(ids);*/
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/status_report');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_status').html(data);
+					});
+ });
+
+
+
+
+
 	$(".btn-Add-Container-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
 
@@ -443,26 +461,10 @@ $(document).ready(function(){
 
 });
 
-</script>
-
-
-<script>
-//for getting the  data in update
-  
-  
-
 
 
 
 </script>
-
-
-
-
-
-
-
-
 
 		<!--end -->
 
@@ -498,39 +500,6 @@ $(document).ready(function(){
 	});
 
 
-/*
-*
-*Table
-*/
-// $('#scroller table').each(function(){
-//     var table = $(this),
-//         fixedCol = table.clone(true),
-//         fixedWidth = table.find('th').eq(0).width(),
-//         tablePos = table.position();
-    
-//     // Remove all but the first column from the cloned table
-//     fixedCol.find('th').not(':eq(0),:eq(1)').remove();
-//     fixedCol.find('tbody tr').each(function(){
-//         $(this).find('td').not(':eq(0),:eq(1)').remove();
-//     });
-    
-//     // Set positioning so that cloned table overlays
-//     // first column of original table
-//     fixedCol.addClass('fixedCol');
-//     fixedCol.css({
-//         left: tablePos.left,
-//         top: tablePos.top
-//     });
-   
-//     // Match column width with that of original table
-//     fixedCol.find('th,td').css('width',fixedWidth+'px');
-    
-//     $('#scroller').append(fixedCol);
-// });
-/*
-*
-*end Table
-*/
 
 
 	

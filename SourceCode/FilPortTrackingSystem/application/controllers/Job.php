@@ -505,6 +505,28 @@ class Job extends CI_Controller {
 
 
     }
+  function status_report(){
+    $status    =  $this->input->post('id');   
+    $charges   = $this->Jobdata->get_status($status);
+      echo "
+        <div style='width:100%; overflow-x:auto; '> 
+         <table class='table-bordered table table-striped table-hover table-condensed' >
+              <tr>
+                   <th>No.</th>
+                    <th>Status Description</th>
+              </tr>";
+      $i=0;
+      foreach ($charges as $row) {
+      $i++;
+       echo " <tr>
+                 <td>".$i."</td>;
+                 <td> ".$row->$StatusDescription."</td>
+              </tr>
+            ";
+      }
+       echo "</table>";
+
+   }
 
   function get_containers(){
    $containers =  $this->input->post('id'); 
