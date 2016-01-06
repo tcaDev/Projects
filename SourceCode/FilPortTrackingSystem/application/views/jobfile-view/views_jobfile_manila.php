@@ -410,19 +410,7 @@ $(document).ready(function(){
 					});
  });
 
- $('.runchar').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 	/* alert(ids);*/
-	 		  $.ajax({
-				  		method: "POST",
-						  url: "<?php echo base_url('Job/running_charges');?>",
-				  		data: { id:ids,
-				  		}
-					})
-			  		.done(function(data) {
-				  				$('.list_charges').html(data);
-					});
- });
+
 
  $('.reports').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
