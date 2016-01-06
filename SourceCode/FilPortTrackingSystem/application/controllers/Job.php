@@ -684,8 +684,17 @@ class Job extends CI_Controller {
 
           );
 
-      $lastid2 =   $this->db->insert('JobFileHistory',$data2); 
-               
+      $lastid2 =   $this->db->insert('JobFileHistory',$data2);
+        $job           = $this->Jobdata->select_jobfile($job);
+        foreach($job as $row){
+         $job =  $row->JobFileId;
+        }
+             $data3 = array(
+                     'StatusDescription' => $status,
+                     'JobFileId'         => $job,  
+                     'AddedBy_UserId'    => $userid
+                     );
+              $this->db->insert('HistoricalStatus',$data3);
        
    
 
