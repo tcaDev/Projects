@@ -517,10 +517,10 @@ class Job extends CI_Controller {
               </tr>";
       $i=0;
       foreach ($charges as $row) {
-      $i++;
+        $i++;
        echo " <tr>
                  <td>".$i."</td>;
-                 <td> ".$row->$StatusDescription."</td>
+                 <td> ".$row->StatusDescription."</td>
               </tr>
             ";
       }
