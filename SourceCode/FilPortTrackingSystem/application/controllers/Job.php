@@ -609,42 +609,14 @@ class Job extends CI_Controller {
     }
 
   }
-  function testing(){
-                          
-                 $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-             $this->db->query($containerbyvessel,
-              array(       
-                  'P_ContainerNo'           =>1,
-                  'P_ContainerSize'         => 1,
-                  'P_CarrierByJobFileId'    =>1,    // last inserted id from VesselByJobFIle table
-                  'P_NoOfCartons'           => 1,
-                  'P_TruckerName'           => 1,
-                  'P_EstDepartureTime'      => 1,
-                  'P_EstArrivalTime'        => 1,
-                  'P_ActualArrivalTime'     => 1,
-                  'P_StartOfStorage'        => 1,
-                  'P_Lodging'               => 1,  
-                  'P_DateBOCCleared'        =>1,
-                  'P_HaulerOrTruckId'       => NULL,      //
-                  'P_TargetDeliveryDate'    => NULL,
-                  'P_GateInAtPort'          => NULL,
-                  'P_GateOutAtPort'         => NULL,
-                  'P_ActualDeliveryAtWarehouse' =>NULL,
-                  'P_StartOfDemorage'           =>NULL,
-                  'P_PullOutDateAtPort'         =>NULL,
-                  'P_UserId'                    =>NULL 
 
-             ));
-  }
 
 //for testing function
   function jobfile_add(){
-/*  date_default_timezone_set('Asia/Singapore');*/
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
 
-
-  //for sp_CreateJobFile proc  1st proc
+   $monitoring_type =$this->input->post('monitoring_type');
    $job             =$this->input->post('jbfl');
    $consignee       =$this->input->post('consignee');
    $shipper         =$this->input->post('shipper');
@@ -659,17 +631,11 @@ class Job extends CI_Controller {
    $broker          =$this->input->post('broker');
    $dt_req_budget   =$this->input->post('dt_req_budget');
    $ref_due_dt      =$this->input->post('ref_due_dt');
-/*   $dtSent          =$this->input->post('dtSent');
-   $dtFile          =$this->input->post('dtFile');*/  
-/*   $dtfinal_assess  =$this->input->post('dtfinal_assess'); */ 
-/*   $dt_paid         =$this->input->post('dt_paid');*/
    $dt_boc          =$this->input->post('dt_boc');    
    $status          =$this->input->post('status');  //status report in job tab has no insert in db  
-/*   $entryno         =$this->input->post('entryno');*/
    $purch_order_no  =$this->input->post('purch_order_no');  
    $color           =$this->input->post('color');  
    $color_select    =$this->input->post('color_select'); 
-
    $origin           =$this->input->post('origin');  
    $origcity    =$this->input->post('origcity');    
    
@@ -692,53 +658,6 @@ class Job extends CI_Controller {
         echo "JobFile already exists";
        }else{
          echo "new jobfile is added";
-
-  
-                          //first proc
-                /* $add_jobfile = "CALL sp_CreateJobFile(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                    $this->db->query($add_jobfile,
-                      array(
-                             'P_JobFileNo'                             =>$job,           
-                             'P_ConsigneeId'                           =>$consignee,
-                             'P_BrokerID'                              =>$broker,
-                             'P_ShipperId'                             =>$shipper,
-                             'P_PurchaseOrderNo'                       =>$purch_order_no,
-                             'P_MonitoringTypeId'                      =>1,
-                             'P_StatusId'                              =>$color,
-                             'P_RefEntryNo'                            =>$entryno,
-                             'P_ColorSelectivityId'                    =>$color_select,
-                             'P_Registry'                              =>$registry,
-
-                             'P_Origin_CountryId'                      =>
-                             'P_OriginCity'                            =>
-
-
-                             'P_HouseBillLadingNo'                     =>$hbl,
-                             'P_MasterBillLadingNo'                    =>$mbl,
-                             'P_MasterBillLadingNo2'                   =>$mbl2
-                             'P_LetterCreditFromBank'                  =>$bank,
-
-
-                             'P_DateReceivedNoticeFromClients'         =>*/
-
-
-                            /* 'P_DateSentPreAssessment'                 =>$dtSent,                  
-                             'P_DateFileEntryToBOC'                    =>$dtFile,
-                             'P_DateSentFinalAssessment'               =>$dtfinal_assess,
-                             'P_DateReceivedNoticeFromClients'         =>$dtRcvd,
-                             'P_DateReceivedOfBL'                      =>$dt_pickup_obl,
-                            /* 'P_DateReceivedOfOtherDocs'               =>$dt_pickup_docs,*/
- /*                            'P_DateRequestBudgetToGL'                 =>$dt_req_budget,
-                             'P_RFPDueDate'                            =>$ref_due_dt,
-                             'P_ForwarderWarehouse'                    =>NULL, //dropdown from master data for air only
-                             'P_DatePaid'                              =>$dt_paid,
-                             'P_FlightNo'                              =>NULL,                    
-                             'P_AirCraftNo'                            =>NULL,
-                             'P_DateReceivedNoticeFromForwarder'       =>NULL,
-                             'P_UserId'                                => $userid 
-                          ));*/
-
-
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
       $data = array(
@@ -747,18 +666,15 @@ class Job extends CI_Controller {
                'BrokerId'               => $broker,
                'ShipperId'              => $shipper,
                'PurchaseOrderNo'        => $purch_order_no,
-               'MonitoringTypeId'       => 1,
+               'MonitoringTypeId'       => $monitoring_type,
                'IsLocked'               => 0,
-
                'StatusId'               => $color,
                'ColorSelectivityId'     => $color_select,
                'Registry'               => $registry,
-
                'LockedBy_UserId'        => $userid,
                'DateCreated'            => date('Y-m-d H:i'),
-               'Origin_CountryId'       => $origin,   //la pang ui  
-               'OriginCity'             => $origcity,   //la pnag ui    
-
+               'Origin_CountryId'       => $origin, 
+               'OriginCity'             => $origcity,   
                'HouseBillLadingNo'      => $hbl,
                'MasterBillLadingNo'     => $mbl,
                'MasterBillLadingNo2'           =>$mbl2,
@@ -772,13 +688,9 @@ class Job extends CI_Controller {
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
                'DateReceivedNoticeFromForwarder' =>NULL,
-               'status_report'                   =>$status
-               
+               'status_report'                   =>$status             
         );
-
-
       $lastid =   $this->db->insert('JobFile',$data); 
-
         $data2 = array(
                'JobFileId'              => $lastid,
                'JobFileNo'              => $job,
@@ -786,15 +698,15 @@ class Job extends CI_Controller {
                'BrokerId'               => $broker,
                'ShipperId'              => $shipper,
                'PurchaseOrderNo'        => $purch_order_no,
-               'MonitoringTypeId'      => 1,
-               'IsLocked'              => 0,
+               'MonitoringTypeId'       => $monitoring_type,
+               'IsLocked'               => 0,
                'StatusId'               => $color,
                'ColorSelectivityId'     => $color_select,
                'Registry'               => $registry,
                'LockedBy_UserId'        => $userid,
                'DateCreated'            => date('Y-m-d H:i:s'),
-               'Origin_CountryId'       => 1,   //la pang ui
-               'OriginCity'             => 'Laguna',   //la pnag ui 
+               'Origin_CountryId'       => $origin,
+               'OriginCity'             => $origcity,
                'HouseBillLadingNo'      => $hbl,
                'MasterBillLadingNo'     => $mbl,
                'MasterBillLadingNo2'           =>$mbl2,
@@ -811,21 +723,13 @@ class Job extends CI_Controller {
                'status_report'                    =>$status,
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
-
           );
-
-      $lastid2 =   $this->db->insert('JobFileHistory',$data2); 
-               
-       
-   
-
+      $lastid2 =   $this->db->insert('JobFileHistory',$data2);         
            }
-   
    }
 function vessel(){
-  $session_data = $this->session->userdata('logged_in');
-   $userid = $session_data['uid'];
-   
+   $session_data  = $this->session->userdata('logged_in');
+   $userid        = $session_data['uid'];
    $jobfile       =  $this->input->post('jbfl');
    $job           = $this->Jobdata->select_jobfile($jobfile);
  
@@ -839,7 +743,6 @@ foreach($job as $row){
  $edt           =  $this->input->post('edt');
  $aat           =  $this->input->post('aat');
  $discharge     =  $this->input->post('vdt');
- 
  
    if($eat!=''){
    $date1  = date_create($eat);
@@ -857,21 +760,6 @@ foreach($job as $row){
    $date4  = date_create($aat);
    $aat    =  date_format($date4, 'Y-m-d H:i');
    }
-
-        //2nd proc
-/*       $add_vessel ="CALL sp_AddCarrierByJobFile(?,?,?,?,?,?,?,?)";
-                    $this->db->query($add_vessel,
-                     array(
-                      'P_JobFileId'           =>1 ,
-                      'P_CarrierId'           =>1 ,
-                      'P_VesselVoyageNo'      =>1 ,
-                      'P_EstDepartureTime'    =>1,
-                      'P_EstArrivalTime'      =>1,
-                      'P_ActualArrivalTime'   =>1,
-/*                      'P_ArrivalTime'         => $vat[0],
-                      'P_DischargeTime'       => 1,
-                      'P_UserId'              => $userid
-                    ));*/
         $data = array(
                'JobFileId'           => $job,
                'CarrierId'           => $lines,
@@ -881,9 +769,7 @@ foreach($job as $row){
                'ActualArrivalTime'   => $aat,
                'DischargeTime'       => $discharge      
         );
-
   $lastid = $this->db->insert('CarrierByJobFile',$data); 
-
        $data2 = array(
                'CarrierByJobFileId'  => $lastid,
                'JobFileId'           => $job,
@@ -896,24 +782,19 @@ foreach($job as $row){
                'DateUpdated'         => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'    => $userid
         );
-
   $this->db->insert('CarrierByJobFileHistory',$data2); 
-                
-                
+                             
 }
 
 function container(){
   $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
- //for sp_AddContainerByVessel   3rd proc
    $vessel_voyage   =  $this->input->post('vessel_voyage');
    $result   = $this->Jobdata->select_carrier($vessel_voyage);
  
 foreach($result as $row){
   $vessel_voyage =  $row->CarrierByJobFileId;
  }
-
-
    $container       =  $this->input->post('containerId');
    $consize         =  $this->input->post('consize'); 
    $cartons_no      =  $this->input->post('cartons_no'); 
@@ -921,7 +802,6 @@ foreach($result as $row){
    $trucker_name    =  $this->input->post('trucker_name');
    $trucker_id      =  $this->input->post('trucker_id');
    $ref_entry_no    =  $this->input->post('ref_entry_no');
-
    $dt_paid         =  $this->input->post('dt_paid');
    $dt_pre_assess   =  $this->input->post('dt_pre_assess');
    $start_storage   =  $this->input->post('start_storage');
@@ -933,13 +813,8 @@ foreach($result as $row){
    $gop             = $this->input->post('gop');
    $adw             =  $this->input->post('adw');
    $dtboc           = $this->input->post('dtboc');
-
-
    $tdt             =  $this->input->post('tdt');
    $pul_out_port    = $this->input->post('pul_out_port');
-
-
-
 
    if($dt_paid!=''){
    $date1  = date_create($dt_paid);
@@ -957,7 +832,6 @@ foreach($result as $row){
    $date4  = date_create($start_demorage);
    $start_demorage    =  date_format($date4, 'Y-m-d H:i');
    }
-
    if($lodging!=''){
    $date5  = date_create($lodging);
    $lodging    =  date_format($date5, 'Y-m-d H:i');
@@ -995,36 +869,6 @@ foreach($result as $row){
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
    }
 
-
-       //for getting the last insert in P_VesselByJobFileId start
-/*               $table ='CarrierByJobFile';
-               $id    ='CarrierByJobFileId';  
-           $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);*/
-              //for getting the last insert in P_VesselByJobFileId end
-/*      $add_container ="CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                    $this->db->query($add_container,
-               array(
-                      'P_ContainerNo'          =>$container,
-                      'P_ContainerSize'        =>$consize,
-                      'P_CarrierByJobFileId'   =>$VesselByJobFile,
-                      'P_NoOfCartons'          =>$cartons_no,
-                      'P_TruckerName'          =>$truckername,
-                      'P_EstDepartureTime'     =>$edt[0],
-                      'P_EstArrivalTime'       =>$eat[0],
-                      'P_ActualArrivalTime'    =>$aat[0],
-                      'P_StartOfStorage'       =>$start_storage[0],
-                      'P_Lodging'              =>$lodging,
-                      'P_DateBOCCleared'       =>$dtboc[0],
-                      'P_HaulerOrTruckId'      =>$trucker_id,
-                      'P_TargetDeliveryDate'   =>$tdt[0],
-                      'P_GateInAtPort'         =>$gip[0],
-                      'P_GateOutAtPort'        =>$gop[0],
-                      'P_ActualDeliveryAtWarehouse' =>$adw[0],
-                      'P_StartOfDemorage'           =>$start_demorage[0],
-                      'P_PullOutDateAtPort'         =>null,
-                      'P_UserId'                    =>$userid
-                    ));*/
-
       $data = array(
                'ContainerNo'             => $container,
                'ContainerSize'           => $consize,
@@ -1045,12 +889,9 @@ foreach($result as $row){
                'GateOutAtPort'              => $gop,
                'ActualDeliveryAtWarehouse'  => $adw,
                'StartOfDemorage'            => $start_demorage,
-               'PullOutDateAtPort'          => $pul_out_port   
-               
+               'PullOutDateAtPort'          => $pul_out_port         
         );
-
   $lastid = $this->db->insert('ContainerByCarrier',$data); 
-
       $data2 = array(
                'ContainerByCarrierId'    => $lastid,
                'ContainerNo'             => $container,
@@ -1074,235 +915,66 @@ foreach($result as $row){
                'StartOfDemorage'            => $start_demorage,
                'PullOutDateAtPort'          => $pul_out_port,
                'DateUpdated'                => Date('Y-m-d H:i'),
-               'UpdatedBy_UserId'           => $userid
-               
+               'UpdatedBy_UserId'           => $userid      
         );
-
   $lastid = $this->db->insert('ContainerByCarrierHistory',$data2); 
-
-        
-
-
 }
-
-function carrier(){
-/*$session_data = $this->session->userdata('logged_in');
-$userid = $session_data['uid'];
-
-   $containerId    =  $this->input->post('containerId');
-   $consize        =  $this->input->post('consize');
-   $cartons_no     =  $this->input->post('cartons_no');
-
-   $trucker_plate    =  $this->input->post('trucker_plate');
-   $trucker_name        =  $this->input->post('trucker_name');
-   $edt     =  $this->input->post('edt');
-   $eat     =  $this->input->post('eat');
-   $aat     =  $this->input->post('aat');
-
-   $start_storage      =  $this->input->post('start_storage');
-   $start_demorage     =  $this->input->post('start_demorage');
-   $lodging            =  $this->input->post('lodging');
-
-
-   $tdt     =  $this->input->post('tdt');
-   $gip     =  $this->input->post('gip');
-   $gop     =  $this->input->post('gop');
-   $adw     =  $this->input->post('adw');
-   $dtboc   =  $this->input->post('dtboc');
-
-   $trucker_id            =  $this->input->post('trucker_id');
-*/
-             //for getting the last insert in P_VesselByJobFileId start
-      /*         $table ='CarrierByJobFile';
-               $id    ='CarrierByJobFileId';  
-           $VesselByJobFile = $this->Jobdata->getLastInserted($table,$id);
-              */
-              //for getting the last insert in P_VesselByJobFileId end
-
-
-             //3rd proc
-/*             $containerbyvessel = "CALL sp_AddContainerByCarrier(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-             $this->db->query($containerbyvessel,
-              array(       
-                  'P_ContainerNo'           =>$container,
-                  'P_ContainerSize'         => $consize,
-                  'P_CarrierByJobFileId'    =>$VesselByJobFile,    // last inserted id from VesselByJobFIle table
-                  'P_NoOfCartons'           => $cartons_no,
-                  'P_TruckerName'           => $trucker_name,
-                  'P_EstDepartureTime'      => $edt,
-                  'P_EstArrivalTime'        => $eat,
-                  'P_ActualArrivalTime'     => $aat,
-                  'P_StartOfStorage'        => $start_storage,
-                  'P_Lodging'               => $lodging,  
-                  'P_DateBOCCleared'        => $dtboc,
-                  'P_HaulerOrTruckId'       => $trucker_id,      //
-                  'P_TargetDeliveryDate'    => $tdt,
-                  'P_GateInAtPort'          => $gip,
-                  'P_GateOutAtPort'         => $gop,
-                  'P_ActualDeliveryAtWarehouse' =>$adw,
-                  'P_StartOfDemorage'           =>$start_demorage,
-                  'P_PullOutDateAtPort'         =>NULL,
-                  'P_UserId'                    =>$userid 
-
-             ));*/
-/*  $session_data = $this->session->userdata('logged_in');
-   $userid = $session_data['uid'];
-      $data = array(
-               'ContainerNo'             => $container,
-               'ContainerSize'           => $consize,
-               'CarrierByJobFileId'      => $VesselByJobFile,
-               'NoOfCartons'             => $cartons_no,
-               'TruckerName'             => $trucker_name,
-               'EstDepartureTime'        => $edt,
-               'EstArrivalTime'          => $eat,
-               'ActualArrivalTime'       => $aat,
-               'StartOfStorage'          => $start_storage,
-               'Lodging'                 => $lodging,
-               'DateBOCCleared'          => $dtboc,
-               'HaulerOrTruckId'         => $trucker_id,
-               'TargetDeliveryDate'      => $tdt,
-               'GateInAtPort'            => $gip,
-               'GateOutAtPort'           => $gop,
-               'ActualDeliveryAtWarehouse'  =>$adw,
-               'StartOfDemorage'            =>$start_demorage,
-               'PullOutDateAtPort'          =>NULL
-
-
-               
-        );
-
-  $lastid = $this->db->insert('ContainerByCarrier',$data); 
-
-        $data = array(
-               'ContainerByCarrierId'    => $lastid,
-               'ContainerNo'             => $container,
-               'ContainerSize'           => $consize,
-               'CarrierByJobFileId'      => $VesselByJobFile,
-               'NoOfCartons'             => $cartons_no,
-               'TruckerName'             => $trucker_name,
-               'EstDepartureTime'        => $edt,
-               'EstArrivalTime'          => $eat,
-               'ActualArrivalTime'       => $aat,
-               'StartOfStorage'          => $start_storage,
-               'Lodging'                 => $lodging,
-               'DateBOCCleared'          => $dtboc,
-               'HaulerOrTruckId'         => $trucker_id,
-               'TargetDeliveryDate'      => $tdt,
-               'GateInAtPort'            => $gip,
-               'GateOutAtPort'           => $gop,
-               'ActualDeliveryAtWarehouse'  =>$adw,
-               'StartOfDemorage'            =>$start_demorage,
-               'PullOutDateAtPort'          =>NULL,
-               'UpdatedBy_UserId'           =>$userid
-               
-        );
-
-  $lastid2 = $this->db->insert('ContainerByCarrierHistory',$data); 
-   $this->session->lastid2 = $lastid2;*/
-
-}
-
 function comodity(){
-  $session_data = $this->session->userdata('logged_in');
-   $userid = $session_data['uid'];
-      //for sp_AddProducts   4th proc
-   $prodid               =  $this->input->post('prod_orderno');
-   $product_name         =  $this->input->post('product_name');
-   $con_id               =  $this->input->post('con_id');   
+        $session_data = $this->session->userdata('logged_in');
+         $userid = $session_data['uid'];
+         $prodid               =  $this->input->post('prod_orderno');
+         $product_name         =  $this->input->post('product_name');
 
-      $result   = $this->Jobdata->select_productcontainer($con_id);
- foreach($result as $row){
-  $con_id =  $row->ContainerByCarrierId;
- }
-   
-  
-    //for getting the last insert in P_VesselByJobFileId start
-      /*         $table ='ContainerByCarrier';
-               $id    ='ContainerByCarrierId';  
-           $CarrierByJobFile = $this->Jobdata->getLastInserted($table,$id);*/
+        $con_id               =  $this->input->post('con_id');   
+        $result               = $this->Jobdata->select_productcontainer($con_id);
+       foreach($result as $row){
+        $con_id =  $row->ContainerByCarrierId;
+       }
 
-            //for getting the last insert in P_VesselByJobFileId end
-/* if(($product_name!=NULL) || ($product_name!='')){
-     $query = $this->db->query("select ProductName from Products where ProductName='$product_name' limit 1");  
-     $query2= $this->db->query("select `CBV`.`ContainerByCarrierId` from  
-                                ContainerByCarrier as CBV where `CBV`.`ContainerNo` = $con_id 
-                                and `CBV`.`ContainerByCarrierId`='$VesselByJobFile' ");
-  
-     if(($query->num_rows() ==1 ) && ($query2->num_rows()==1)){
-     }else{
-             if(($VesselByJobFile==NULL)||($VesselByJobFile=='')){
-             $VesselByJobFile=1;
-             }*/
-                //4th proc
-/*             $addproducts = "CALL sp_AddProducts(?,?,?,?,?,?)";
-             $this->db->query($addproducts,
-              array(
-                  'P_ProductId'           => $product_name, //la pa value  
-                  'P_ContainerId'         => $con_id,
-                  'P_CarrierByJobFileId'   => $VesselByJobFile,
-                  'P_Origin_CountryId'    => $origin_id,
-                  'P_Origin_City'         => $origin_cty,
-                  'P_UserId'              => $userid
-             ));*/
-    //     } 
-  //}   
-
-  if($product_name==''){
-   $product_name=1;
-  }
-  $carrier = $this->session->lastid2;
-   $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
-    and ContainerByCarrierId='$con_id' "); 
-if($query->num_rows()==1) {
-}else{
-
- $data = array(
-               'ProductId'             => $product_name,
-               'ContainerByCarrierId'  => $con_id,
-        );
-
- $lastid =  $this->db->insert('ProductsByContainer',$data); 
-
-
-   $data2 = array(
-               'ProductsByContainerId'    => $lastid,
-               'ProductId'                => $product_name,
-               'ContainerByCarrierId'     => $con_id,
-               'DateUpdated'              => Date('Y-m-d H:i'),
-               'UpdatedBy_UserId'         => $userid
-        );
-
-  $this->db->insert('ProductsByContainerHistory',$data2); 
-  $this->session->unset_userdata('lastid2');
-}
-
+        if($product_name==''){$product_name=1;}
+        $carrier = $this->session->lastid2;
+        $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
+                                    and ContainerByCarrierId='$con_id' "); 
+      if($query->num_rows()==1) {
+      }else{
+       $data = array(
+                     'ProductId'             => $product_name,
+                     'ContainerByCarrierId'  => $con_id,
+              );
+       $lastid =  $this->db->insert('ProductsByContainer',$data); 
+         $data2 = array(
+                     'ProductsByContainerId'    => $lastid,
+                     'ProductId'                => $product_name,
+                     'ContainerByCarrierId'     => $con_id,
+                     'DateUpdated'              => Date('Y-m-d H:i'),
+                     'UpdatedBy_UserId'         => $userid
+              );
+        $this->db->insert('ProductsByContainerHistory',$data2); 
+        $this->session->unset_userdata('lastid2');
+      }
  }
 
  function jobfile_add_charge(){
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
- $jobfile       =  $this->input->post('jbfl');
- $job= $this->Jobdata->select_jobfile($jobfile);
+   $jobfile       =  $this->input->post('jbfl');
+   $job= $this->Jobdata->select_jobfile($jobfile);
 
-foreach($job as $row){
-  $job =  $row->JobFileId;
- }
-
-
+   foreach($job as $row){
+    $job =  $row->JobFileId;
+   }
    $lodge             =  $this->input->post('lodge');
    $cont_deposit      =  $this->input->post('cont_deposit');
    $thc_charges       =  $this->input->post('thc_charges');   
    $wharfage          =  $this->input->post('wharfage');
    $arrastre          =  $this->input->post('arrastre');
    $weight            =  $this->input->post('weight');
-
    $del               =  $this->input->post('del');
    $dispatch          =  $this->input->post('dispatch');
    $storage           =  $this->input->post('storage');   
    $demurrage         =  $this->input->post('demurrage');
    $detention         =  $this->input->post('detention');
    $eic               =  $this->input->post('eic');
-
    $bai_app           =  $this->input->post('bai_app');
    $bai_inspect       =  $this->input->post('bai_inspect');
    $sra_app           =  $this->input->post('sra_app');   
@@ -1311,12 +983,11 @@ foreach($job as $row){
    $all_charges       =  $this->input->post('all_charges');
    $part_charges      =  $this->input->post('part_charges');
 
-
   //stop inserting data in jobfile to avoid duplication
-/*  $query= $this->db->query("Select * from JobFile where
+  $query= $this->db->query("Select * from JobFile where
         JobFileId='$job' limit 1");
 if($query->num_rows() ==1){
-}else{  */
+}else{  
         $data = array(
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -1339,9 +1010,7 @@ if($query->num_rows() ==1){
                'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges
         );
-
         $lastid =   $this->db->insert('RunningCharges',$data); 
-
                 $data2 = array(
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
@@ -1367,21 +1036,7 @@ if($query->num_rows() ==1){
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UsrId'  => $userid
         );
-
           $this->db->insert('RunningChargesHistory',$data2); 
-      }
-
-
- //}
-
-
-
-
-
-
-
-    
+      }    
 }
-
-
 ?>
