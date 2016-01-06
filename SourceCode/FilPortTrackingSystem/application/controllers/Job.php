@@ -444,7 +444,6 @@ class Job extends CI_Controller {
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
       echo "
-        <div style='width:100%; overflow-x:auto; '> 
          <table class='table-bordered table table-striped table-hover table-condensed' >
               <tr>
                    <th>No.</th>
