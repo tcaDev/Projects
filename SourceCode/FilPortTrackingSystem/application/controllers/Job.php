@@ -143,9 +143,9 @@ class Job extends CI_Controller {
       $charges =  $this->input->post('id');   
       $charge  = $this->Jobdata->get_chargess($charges);
 
-    if($charge==NULL){
-          echo    '<center><span style="color:red">No Vessels Yet </span></center>';
-    }else{
+/*    if($charge==NULL){
+          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
+    }else{*/
 
            foreach($charge as $row){
                       echo '<div class="col-lg-12">
@@ -243,73 +243,8 @@ class Job extends CI_Controller {
                           </div>
                         </div>';
                       }
-         /*echo "<div style='width:100%; overflow-x:auto; '> 
-              <table class='table-bordered table table-striped table-hover table-condensed' '>
-              <tr>
-                   <th>No.</th>
-                   <th>Lodgement Fee</th>
-                   <th>Container Deposit</th>
-                   <th>THC Charges</th>
-                   <th>Arrastre</th>
 
-                   <th>Wharfage</th>
-                   <th>Weighing</th>
-                   <th>DEL</th>
-                   <th>Dispatch Fee</th>
-
-                   <th>Storage</th>
-                   <th>Demorage</th>
-                   <th>Detention</th>
-                   <th>EIC</th>
-
-                   <th>BAIApplication</th>
-                   <th>BAIInspection</th>
-                   <th>SRAApplication</th>
-                   <th>SRAInspection</th>
-
-                   <th>BadCargo</th>
-                   <th>AllCharges</th>
-                   <th>ParticularCharges</th>
-              </tr>";
-
-          $i=0;
-         foreach($charge as $row){
-          $i++;
-             echo "<tr>";
-             echo "<td> ".$i." </td>";
-             echo "<td class='row'>".$row->LodgementFee."</td>";
-             echo "<td class='row'>".$row->ContainerDeposit."</td>";
-             echo "<td class='row'>".$row->THCCharges ."</td>";
-             echo "<td class='row'>".$row->Arrastre ."</td>";
-
-             echo "<td class='row'>".$row->Wharfage."</td>";
-             echo "<td class='row'>".$row->Weighing."</td>";
-             echo "<td class='row'>".$row->DEL ."</td>";
-             echo "<td class='row'>".$row->DispatchFee ."</td>";
-
-             echo "<td class='row'>".$row->Storage."</td>";
-             echo "<td class='row'>".$row->Demorage."</td>";
-             echo "<td class='row'>".$row->Detention ."</td>";
-             echo "<td class='row'>".$row->EIC ."</td>";
-
-             echo "<td class='row'>".$row->BAIApplication."</td>";
-             echo "<td class='row'>".$row->BAIInspection."</td>";
-             echo "<td class='row'>".$row->SRAApplication ."</td>";
-             echo "<td class='row'>".$row->SRAInspection ."</td>";
-
-             echo "<td class='row'>".$row->BadCargo."</td>";
-             echo "<td class='row'>".$row->AllCharges ."</td>";
-             echo "<td class='row'>".$row->ParticularCharges ."</td>";
-
-             
-
-             
-             echo "</tr>";
-         }
-
-         echo "</table>
-              </div>";*/
-    }
+   // }
     }
 
     function get_vessels(){
