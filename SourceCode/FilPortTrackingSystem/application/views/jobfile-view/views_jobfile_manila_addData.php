@@ -474,7 +474,7 @@
 
 							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
 								<select class="form-control carrier" name="countries">
-									<option value="0" disabled selected>-----------------</option>
+									<option value="0" selected>Selct Shipping Line/Carrier</option>
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
 											 <?php echo stripslashes($row->CarrierName);?>
