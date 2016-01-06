@@ -841,7 +841,7 @@ $('.save_charge').click(function(){
 				        		title: 'Success!',
 				        		content: 'Running Charges has been added!',
 				        		confirm: function(){
-				        			/*location.reload();*/
+				        			location.reload();
 				        	    }
 				   			   });
 	    		    })
