@@ -211,7 +211,7 @@
 
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -237,7 +237,7 @@
 
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -260,10 +260,9 @@
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_status"> </div>
-
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
 				        </div>
 				      </div>
 				      
@@ -290,7 +289,7 @@
 
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -317,7 +316,7 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      

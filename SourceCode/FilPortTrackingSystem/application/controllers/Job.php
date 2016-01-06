@@ -443,8 +443,7 @@ class Job extends CI_Controller {
   function status_report(){
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
-      echo "
-         <table class='table-bordered table table-striped table-hover table-condensed' >
+      echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
                    <th>No.</th>
                     <th>Status Description</th>
