@@ -658,6 +658,8 @@ class Job extends CI_Controller {
         echo "JobFile already exists";
        }else{
          echo "new jobfile is added";
+
+
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
       $data = array(
@@ -688,9 +690,13 @@ class Job extends CI_Controller {
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
                'DateReceivedNoticeFromForwarder' =>NULL,
-               'status_report'                   =>$status             
+               'status_report'                   =>$status
+               
         );
+
+
       $lastid =   $this->db->insert('JobFile',$data); 
+
         $data2 = array(
                'JobFileId'              => $lastid,
                'JobFileNo'              => $job,
@@ -723,13 +729,21 @@ class Job extends CI_Controller {
                'status_report'                    =>$status,
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
+
           );
-      $lastid2 =   $this->db->insert('JobFileHistory',$data2);         
+
+      $lastid2 =   $this->db->insert('JobFileHistory',$data2); 
+               
+       
+   
+
            }
+   
    }
 function vessel(){
-   $session_data  = $this->session->userdata('logged_in');
-   $userid        = $session_data['uid'];
+  $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+   
    $jobfile       =  $this->input->post('jbfl');
    $job           = $this->Jobdata->select_jobfile($jobfile);
  
@@ -743,6 +757,7 @@ foreach($job as $row){
  $edt           =  $this->input->post('edt');
  $aat           =  $this->input->post('aat');
  $discharge     =  $this->input->post('vdt');
+ 
  
    if($eat!=''){
    $date1  = date_create($eat);
@@ -760,6 +775,7 @@ foreach($job as $row){
    $date4  = date_create($aat);
    $aat    =  date_format($date4, 'Y-m-d H:i');
    }
+
         $data = array(
                'JobFileId'           => $job,
                'CarrierId'           => $lines,
@@ -769,7 +785,9 @@ foreach($job as $row){
                'ActualArrivalTime'   => $aat,
                'DischargeTime'       => $discharge      
         );
+
   $lastid = $this->db->insert('CarrierByJobFile',$data); 
+
        $data2 = array(
                'CarrierByJobFileId'  => $lastid,
                'JobFileId'           => $job,
@@ -782,8 +800,10 @@ foreach($job as $row){
                'DateUpdated'         => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'    => $userid
         );
+
   $this->db->insert('CarrierByJobFileHistory',$data2); 
-                             
+                
+                
 }
 
 function container(){
@@ -815,6 +835,9 @@ foreach($result as $row){
    $dtboc           = $this->input->post('dtboc');
    $tdt             =  $this->input->post('tdt');
    $pul_out_port    = $this->input->post('pul_out_port');
+
+
+
 
    if($dt_paid!=''){
    $date1  = date_create($dt_paid);
@@ -924,17 +947,18 @@ function comodity(){
          $userid = $session_data['uid'];
          $prodid               =  $this->input->post('prod_orderno');
          $product_name         =  $this->input->post('product_name');
-
-        $con_id               =  $this->input->post('con_id');   
-        $result               = $this->Jobdata->select_productcontainer($con_id);
+         $con_id               =  $this->input->post('con_id');   
+            $result   = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
         $con_id =  $row->ContainerByCarrierId;
        }
 
-        if($product_name==''){$product_name=1;}
+        if($product_name==''){
+         $product_name=1;
+        }
         $carrier = $this->session->lastid2;
-        $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
-                                    and ContainerByCarrierId='$con_id' "); 
+         $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
+          and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
       }else{
        $data = array(
@@ -952,6 +976,7 @@ function comodity(){
         $this->db->insert('ProductsByContainerHistory',$data2); 
         $this->session->unset_userdata('lastid2');
       }
+
  }
 
  function jobfile_add_charge(){
@@ -960,9 +985,11 @@ function comodity(){
    $jobfile       =  $this->input->post('jbfl');
    $job= $this->Jobdata->select_jobfile($jobfile);
 
-   foreach($job as $row){
-    $job =  $row->JobFileId;
-   }
+foreach($job as $row){
+  $job =  $row->JobFileId;
+ }
+
+
    $lodge             =  $this->input->post('lodge');
    $cont_deposit      =  $this->input->post('cont_deposit');
    $thc_charges       =  $this->input->post('thc_charges');   
@@ -982,6 +1009,7 @@ function comodity(){
    $bad_cargo         =  $this->input->post('bad_cargo');
    $all_charges       =  $this->input->post('all_charges');
    $part_charges      =  $this->input->post('part_charges');
+
 
   //stop inserting data in jobfile to avoid duplication
   $query= $this->db->query("Select * from JobFile where
@@ -1010,7 +1038,9 @@ if($query->num_rows() ==1){
                'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges
         );
+
         $lastid =   $this->db->insert('RunningCharges',$data); 
+
                 $data2 = array(
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
@@ -1037,6 +1067,10 @@ if($query->num_rows() ==1){
                'UpdatedBy_UsrId'  => $userid
         );
           $this->db->insert('RunningChargesHistory',$data2); 
-      }    
+      }
+   }
+
 }
+
+
 ?>

@@ -172,7 +172,7 @@
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
-								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        </tr>
 
