@@ -83,7 +83,7 @@
 				
 
 			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :635px; width:100%;">
-				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:7000px;">
+				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:4300px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          
@@ -159,7 +159,10 @@
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
-								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button></td>
+								          <td >
+								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          </td>
 										  <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
@@ -323,12 +326,29 @@
 				  
 			</div>
 
+
+			<!--Add Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addContainer-mnla" role="dialog">
+				    <div class="modal-dialog" >
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-manila-container/add_Container_manila'); ?>
+				      	
+				    </div>
+				 </div>
+				  
+			
+
  
 
 
 <script>
 $(document).ready(function(){
 
+
+    $('[data-toggle="tooltip"]').tooltip();   
 
 
 	//for getting the product goods
@@ -405,9 +425,21 @@ $(document).ready(function(){
 					});
  });
 
+	$(".btn-Add-Container-mnla").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
 
-  
+		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
 
+					$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/get_vessel_container');?>",
+				  		data: { jobfile:jobfile_mnla,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.vessel-addContainer-manila').html(data);
+					});
+	 });
 
 });
 
@@ -592,3 +624,6 @@ $('#select').change(function(){
 		<?php $this->load->view('jobfile-view/views_jobfiledata_manila'); ?>
     </div>
   </div>
+
+
+

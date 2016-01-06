@@ -85,9 +85,9 @@ class Job extends CI_Controller {
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
             
           if($query->num_rows() ==1){ 
-            echo  "Jobfile already exists";     
+            echo  "<i style='color:red;'>Jobfile already exists</i>";     
           }else{
-             echo "Jobfile is available"; 
+             echo "<i style='color:green;'>Jobfile is available</i>"; 
           }
 
     }
@@ -123,7 +123,18 @@ class Job extends CI_Controller {
       
     }
 
-    
+    function get_vessel_container(){
+      $vessel_mnila =  $this->input->post('jobfile');   
+      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila);
+
+      if($vessel_mnila_container==NULL){
+        echo '<option></option>';
+      }else{
+        foreach ($vessel_mnila_container as $row) {
+            echo '<option>'.$row->VesselVoyageNo.'</option>';
+        }
+      }
+    }
 
     function get_charges(){
       $charges =  $this->input->post('id');   
