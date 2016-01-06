@@ -268,7 +268,9 @@
 
     $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
 
-    	var del = $(this).closest('tr').children('td:eq(0)').text();
+    	var del = $(this).closest('tr').children('td:eq(1)').text();
+
+    	alert(del);
 
       	$("#tableAddTruck-mnla .containers-prod").find("option[value="+ del +"]").remove();
 
