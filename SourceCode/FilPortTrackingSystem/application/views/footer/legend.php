@@ -5,9 +5,9 @@
 					<div class="row">
 						<table>
 							<?php
-								foreach ($status as $row) {
-								$status = $row->IsBackground;
-								   if($status==0){	?>
+							foreach ($status as $row) {
+							$status = $row->IsBackground;
+						    if($status==0){	?>
 							<tr>
 							<td  colspan="4" style="color: <?php echo $row->ColorCode; ?>;border: 2px solid #fff;"><?php echo $row->StatusName; ?></td>
 							<?php }else{?>

@@ -215,7 +215,7 @@
 
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Product Name</label><i style="color:red;">*</i>
+								<label>Commodity Name</label><i style="color:red;">*</i>
 								<select class="form-control input-sm prodname" name="prodname">
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
@@ -251,7 +251,7 @@
 							    <thead>
 							    	 <tr>
 							    	 	<th class="hidden">Product Value</th>
-								        <th>Product Name</th>
+								        <th>Commodity Name</th>
 								        <th>Container</th>
 								        <th></th>
 							      	</tr>
@@ -641,6 +641,9 @@
  		var n = inp.indexOf('.');
  		if(n < 0){
  			$('#' + holder).val(inp + '.00');
+ 		}
+ 		if(inp.trim() == ""){
+ 			$('#' + holder).val('0.00');
  		}
  	});
 });

@@ -138,7 +138,7 @@ var suc;
 			
 			}else if(i==4){
 				if($("#tableAddTruck-mnla table tbody tr td").length == 0){
-					$('.tableGoods-msg').text("Can't Proceed Need Product");
+					$('.tableGoods-msg').text("Can't Proceed Need Commodity");
 					i=3;
 				}else{
 			    var add_comodity=1;
@@ -347,11 +347,11 @@ var suc;
 
 			if(isExist2(prod,cont))
 			{	
-				$('.cont-size-msg').text("The Product is already in this Container");
+				$('.cont-size-msg').text("The Commodity is already in this Container");
 			}
 			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
-				$('.prodname-msg').text("Need Product Name.");
+				$('.prodname-msg').text("Need Commodity Name.");
 			}else{
 				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td></td></tr>');
 				$('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val()).hide();
@@ -829,11 +829,31 @@ $('.save_charge').click(function(){
        var all_charges    =  $('#all-charges').val();
 	   var part_charges   =  $('#part-charges').val();
 
-	   /*var totalCharges = lodge + cont_deposit + thc_charges + arrastre + wharfage + weight + del + dispatch + storage + demurrage + detention + eic + bai_app + bai_inspect + sra_app + sra_inspect + bad_cargo + all_charges + part_charges;
-	   alert(totalCharges);
-		*/
-		
-    $.ajax({
+	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
+        var wVal = 0;
+		var len = totalCharges.length;
+		 for($x = 0 ; $x <= len ; $x++){
+		 	if(totalCharges[$x] == "" || totalCharges[$x] == 0 || totalCharges[$x] == null){
+		 		wVal = wVal+1;;
+		 	}
+		 	//alert(totalCharges[$x]);
+		 }
+		 if(wVal == 18){
+		 		$.confirm({
+		 			 title: 'Add Running Charges',
+		 			 content:'You have not Entered any Running Charges. Do you wish to Continue?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	location.reload();
+  					 },
+  					 cancel: function(){
+  					 	$('.btn-save-mnla').removeAttr('disabled');
+  					 }
+		 		});
+		 }else{
+		 	$.ajax({
 		           method: "POST",
 	 		       url: link + "/Job/jobfile_add_charge/",
 	 		       beforeSend: function() {
@@ -890,6 +910,9 @@ $('.save_charge').click(function(){
 				        	    }
 				   			   });
 	    		    })
+
+		 }
+	    
 
 });  
 
