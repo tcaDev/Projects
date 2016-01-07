@@ -23,8 +23,9 @@
 			</div>
 
   			<div class="form-group">
-				<label>Container Number</label>					     
-	        	<input type="text" class="container-addContainer-manila form-control input-sm"> <!-- onkeyup="check_Container_mnila(this) -->
+				<label>Container Number</label>	
+				<div class="check_exists_container"> </div>				     
+	        	<input type="text" class="container-addContainer-manila form-control input-sm" onkeyup="check_Container_mnilas(this.value)"> 
 	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
 			</div>
 
@@ -304,6 +305,23 @@
 
 
 <script>
+function check_Container_mnilas(container){
+	           	var jbfl = $('.jobfile-addContainer-mnla').val();
+     			var containerno = $('.container-addContainer-manila').val();
+   		
+   				 $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_availability/container_manila');?>",
+				  		data: { jbfl        :jbfl,
+				  			    containerno :containerno
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.check_exists_container').html(data);
+					});
+}
+
+
  $(document).on('click','.save_container',function(){
  	
  

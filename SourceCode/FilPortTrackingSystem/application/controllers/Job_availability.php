@@ -39,6 +39,18 @@ class Job_availability extends CI_Controller {
      
    }
 
+   function container_manila(){
+   	 	  $jobfile = stripslashes($this->input->post('jbfl'));
+   	      $container  = stripslashes($this->input->post('containerno'));
+
+   	       $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
+          if($query->num_rows() == 1){ 
+            echo  "<i style='color:red;'>Already exists</i>";     
+          }else{
+             echo "<i style='color:green;'>Available</i>"; 
+          }   	
+   }
+
 }
 
 
