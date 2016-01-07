@@ -54,20 +54,7 @@ class Job extends CI_Controller {
         
       });
 
-/*      $('.containerss').click(function(){
-          var id= $('.myvessel').val();
-          var text = $('.myvessel').find("option:selected").text();
-          $('.veselid').val(id);
-          $('.veseltext').val(text);
-        
-      });*/
- /*      $('#btn-container-mnla-add').click(function(){
-          var id= $('.myvessel:first').val();
-          var text = $('.myvessel:first').find("option:selected").text();
-          $('.veselid').val(id);
-          $('.veseltext').val(text);
-        
-      });*/
+
 
   document.addEventListener("DOMContentLoaded", function(event) { 
     $('.myvessel').click(function(){

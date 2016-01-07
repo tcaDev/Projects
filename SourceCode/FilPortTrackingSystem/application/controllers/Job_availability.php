@@ -54,19 +54,22 @@ class Job_availability extends CI_Controller {
    function commodity_check(){
    	   $jobfile = $this->input->post('jbfl');
 
-   	      $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' limit 1");
-          if($query->num_rows() != 1){ 
+   	      $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' and 
+   	      ProductName in ($) limit 1");
+          if($query->num_rows() == 0){ 
             echo  "<i style='color:red;'>No Products Available</i>";     
           }else{
-
-
      		$p = $this->Jobdata->get_goods($jobfile);
+     	    $compare_all = $this->Jobdata->all_goods();
             echo '<select>';
-                   $i=0;
-	               foreach ($p as $row){
-	                   $i++;
-                      echo "<option value=".stripslashes($row->ProductId)."> ".stripslashes($row->ProductName)."</option>";
-                    }
+            $i=0;
+
+	               	  foreach ($compare_all as $row_all) {	
+	               	  	if($p_all=$p_jobdata){
+                             	echo "<option value=".stripslashes($row_all->ProductId)."> ".stripslashes($row_all->ProductName)."</option>";
+
+	               	  }
+                   }
 
              echo '</select>';
           }

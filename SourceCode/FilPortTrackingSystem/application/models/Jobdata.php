@@ -103,6 +103,13 @@ function get_container_product($container_product){
     return $query->result();
 }
 
+ function all_goods(){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_Products');
+    $query=$this->db->get();
+    return $query->result();
+ }
+
 
 
 }

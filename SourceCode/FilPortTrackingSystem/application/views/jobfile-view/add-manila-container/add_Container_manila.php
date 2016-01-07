@@ -322,7 +322,7 @@ function check_Container_mnilas(container){
 
 
  $(document).on('click','.save_container',function(){
- 	
+ 	  
  
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
@@ -355,7 +355,7 @@ function check_Container_mnilas(container){
 
 		$.ajax({
 			  		method: "POST",
-					url: link + "/Job/container/",
+					url: "<?php echo base_url('Job/container');?>",
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,

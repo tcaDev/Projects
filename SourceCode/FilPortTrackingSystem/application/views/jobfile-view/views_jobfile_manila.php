@@ -544,8 +544,8 @@ $(document).ready(function(){
 			  		.done(function(data) {
 				  				$('.container-addProduct-manila-get').html(data);
 					});
-    alert(jobfile_mnla);
-			    	$.ajax({
+ 
+/*			    	$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability/commodity_check');?>",
 				  		data: { jbfl:jobfile_mnla
@@ -553,7 +553,7 @@ $(document).ready(function(){
 					})
 			  		.done(function(data) {
 				  				$('.get_my_products').html(data);
-					});
+					});*/
 	});
 
 	$(".btn-Add-Report-mnla").click(function(){

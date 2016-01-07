@@ -11,12 +11,20 @@
 
 				  			<div class="form-group ">
 								<label>JobFile</label>
-					        	<input type="text" class="jobfile-addProduct-mnla form-control input-sm" id="jbfl">
+					        	<input type="text" class="jobfile-addProduct-mnla form-control input-sm" id="jbfl" disabled>
 							</div>
 
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;">*</i>
 								<div class="get_my_products"> </div>
+								 <select class="prodname-addProduct-mnila">
+								  <?php foreach ($products as $row) {?>
+
+								 	  <?php echo "<option> ".stripslashes($row->ProductName)."</option>"; ?>
+	
+								 <?php }?>
+								 </select>
+
 								<i class="prodname-msg-addProduct-mnila" style="color:red;"></i>
 							</div>
 
@@ -156,7 +164,7 @@ function click_vessel(){
 
 			        	$.ajax({
 					  		method: "POST",
-							url: link + "/Job/comodity/",
+							url: "<?php echo base_url('Job/comodity');?>",
 					  		data: {
 					  				//from comodity tab
 					  			    product_name   :product_name,
