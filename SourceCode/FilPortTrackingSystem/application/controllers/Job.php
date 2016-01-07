@@ -1,6 +1,6 @@
 <?php
 
-date_default_timezone_set('Asia/Manila');
+
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -9,6 +9,7 @@ class Job extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
+            date_default_timezone_set('Asia/Manila');
             $this->load->model('Jobdata');
        }
 
@@ -139,7 +140,7 @@ class Job extends CI_Controller {
          echo '<label>Vessel/Voyage #</label>
                 <select class="vessel-addContainer-manila form-control input-sm">';
           foreach ($vessel_mnila_container as $row) {
-              echo '<option>'.$row->VesselVoyageNo.'</option>';
+              echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
           }
          echo '</select>';
       }
@@ -160,7 +161,9 @@ class Job extends CI_Controller {
          echo '<label>Container Number</label>
                 <select class="containers-prod-addProduct-mnila form-control input-sm">';
           foreach ($container_mnila_product as $row) {
-              echo '<option>'.$row->ContainerNo.'</option>';
+              $cont =$row->ContainerNo;
+
+              echo '<option class="remove_option">'.$row->ContainerNo.'</option>';
           }
          echo '</select>';
          echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
