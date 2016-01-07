@@ -114,7 +114,13 @@ function click_vessel(){
 			{
 				$('.prodname-msg-addProduct-mnila').text("Need Product Name.");
 
-			}else{
+			}
+			else if($('#table-AddProduct-mnla .containers-prod-addProduct-mnila').val() == "")
+			{
+				$('.cont-size-msg-addProduct-mnila').text("Need Container.");
+
+			}
+			else{
 				$('#table-AddProduct-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td></tr>');
 				$('#table-AddProduct-mnla table tr:last td:nth-child(1)').html($(".prodname-addProduct-mnila").val()).hide();
 			 	$('#table-AddProduct-mnla table tr:last td:nth-child(2)').html($(".prodname-addProduct-mnila option:selected").text());

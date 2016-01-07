@@ -135,6 +135,7 @@ class Job extends CI_Controller {
       if($vessel_mnila_container==NULL){
         echo '<label>Vessel/Voyage #</label><br>';
         echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" onclick="click_containers()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+
       }else{
 
          echo '<label>Vessel/Voyage #</label>
@@ -155,6 +156,8 @@ class Job extends CI_Controller {
       if($container_mnila_product==NULL){
         echo '<label>Container Number</label><br>';
         echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addContainer-mnla" onclick="click_vessel()"><span class="fa fa-plus fa-fw"></span> Add Container</button>';
+        echo '<input type="text" class="containers-prod-addProduct-mnila hidden form-control input-sm">';
+        echo ' <i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
       }else{
 
          echo '<label>Container Number</label>
