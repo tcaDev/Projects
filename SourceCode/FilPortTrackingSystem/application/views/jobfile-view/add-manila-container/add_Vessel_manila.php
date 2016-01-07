@@ -212,7 +212,7 @@ function check_vessel_avail(vess){
 				        		title: 'Success!',
 				        		content: 'New Vessel is added!',
 				        		confirm: function(){
-				        			$('.vessel-msg-addVessel-mnilas').remove();
+				        			$('.vessel-msg-addVessel-mnilas').empty();
 				        			$(".remove_tr" ).remove();
 				        	    }
 				   			});
