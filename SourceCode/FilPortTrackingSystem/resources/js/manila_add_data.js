@@ -11,6 +11,7 @@
   	}
  });
 
+var suc;
 
 	$(document).ready(function(){
 
@@ -22,6 +23,7 @@
 			location.reload();
 		});
 
+		
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
@@ -45,10 +47,12 @@
 			i=0;
 		});
 
-		}else{
+		}
+		else{
 			$('#btn-jobfile-mnla-add').click(false);
 		}
 		
+
 		/*
 		* Next Button
 		*/
@@ -83,6 +87,7 @@
 			}
 			else{i++;}
 
+
 			
 				   
 
@@ -93,20 +98,22 @@
 					$('.tableVessel-msg').text("Can't Proceed Need Vessel");
 					i=1;
 				}else{
+				  $('.btn-Next').attr('disabled','disabled');
 				  insert_vessels();
 				}
 
 			}else if(i==3){
-
 				if($("#tableAddContainer-mnla table tbody tr td").length == 0){
 					$('.tableContainer-msg').text("Can't Proceed Need Container");
 					i=2;
 				}else{
-
+						$('.btn-Next').attr('disabled','disabled');
 					    $.confirm({
 					    	      backgroundDismiss: false, 
-		   						  title: 'Please Choose!',
-		  						  content: 'Do you want to add a Commodity?',
+		   						  title: 'Add Container', 
+		   						  confirmButton: 'Yes',
+    							  cancelButton: 'No',
+		  						  content: 'Do you want to Add Commodity?',
 		 					      confirm: function(){
 		  					        	/*$("#btn-truck-mnla-add").click();*/ 
 		  					        	$('#btn-truck-mnla-add').addClass('active');
@@ -121,6 +128,7 @@
 										$('.pill-vessel-mnla-add').addClass('hidden');
 										$('.test_data').addClass('hidden');
 										$('.btn-Next').removeClass('hidden'); 
+										$('.btn-Next').removeAttr('disabled');
 		  					  },
 		  						  cancel: function(){
 		  						  	 ins_contains();
@@ -129,27 +137,22 @@
 			 		}
 			
 			}else if(i==4){
-
 				if($("#tableAddTruck-mnla table tbody tr td").length == 0){
 					$('.tableGoods-msg').text("Can't Proceed Need Product");
 					i=3;
 				}else{
 			    var add_comodity=1;
+			    $('.btn-Next').attr('disabled','disabled');
   		        ins_contains(add_comodity);
-	
-
 				}
 			}
 			else if(i==1){
-    				insert_jobfile();
+    			insert_jobfile();
+    			$(this).attr('disabled','disabled');
 				/*$("#btn-vessel-mnla-add").click();*/
-
-
 			}
 
 		});
-
-
 
 
 });
@@ -231,7 +234,6 @@
 	});
 });
 	$(document).ready(function(){
-
 			var testme=false;
 				function isExist_mnla(strd){
 
@@ -489,19 +491,16 @@ function insert_jobfile(){
         		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/jobfile_add/",
-/*					  beforeSend: function() {
-					  		$.alert({
-				        		title: 'Adding data!',
-				        		content: 'Loading...',
-				        		confirm: function(){
-				        	    }
+					beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Jobfile',
 				   			});
- 					  },*/
+ 					  },
 			  		data: {
-
-
-
-
 			  			    //from jobfile tab
 			  			    monitoring_type:monitoring_type,
 			  			    jbfl 		   :jbfl,
@@ -531,7 +530,7 @@ function insert_jobfile(){
 	  						$.alert({
 	  							backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content: 'New JobFile is added!',
+				        		content: 'New JobFile Added!',
 				        		confirm: function(){
 				        			$('#btn-vessel-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
@@ -545,6 +544,8 @@ function insert_jobfile(){
 									$('.pill-vessel-mnla-add').removeClass('hidden');
 									$('.test_data').addClass('hidden');
 									$('.btn-Next').removeClass('hidden');
+									$('.btn-Next').removeAttr('disabled');
+									dia.close();
 				        	    }
 				   			 });
 	    		    })
@@ -555,9 +556,9 @@ function insert_jobfile(){
 				        		content: 'There is a problem in adding data ,please try another data or reload the page!',
 				        		confirm: function(){
 									location.reload();
-
 				        	    }
 				   			   });
+	  							 suc = 0;
 	    		    });
 
 
@@ -567,12 +568,17 @@ function insert_jobfile(){
 
  }
  function insert_vessels(){
-
- 
- 	  var jbfl   = $('.jobfiles').val();
+ 				dia_vessels =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Vessel(s)',
+				   	});
+ 	   var jbfl   = $('.jobfiles').val();
        var table = $("#tableAddVessel-mnla table tbody");
          var t3  = $("#tableAddVessel-mnla table tbody tr").length;
-		     table.find('tr').each(function (count1) {
+		 table.find('tr').each(function (count1) {
 	     var c3 = count1+1;
 			var $tds = $(this).find('td'),
 			vessel 	= $tds.eq(0).text(),
@@ -581,8 +587,7 @@ function insert_jobfile(){
 		    aat     = $tds.eq(3).text();
 	        vdt    	= $tds.eq(4).text();
 		    lines   = $tds.eq(5).text();
-
-		         $.ajax({
+		       $.ajax({
 			  		method: "POST",
 					url: link + "/Job/vessel/",
 			  		data: {
@@ -601,7 +606,7 @@ function insert_jobfile(){
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
-				        		content: 'New Vessel is added!',
+				        		content: 'New Vessel Added!',
 				        		confirm: function(){
 				        			$('#btn-container-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
@@ -615,16 +620,34 @@ function insert_jobfile(){
 									$('.pill-container-mnla-add').removeClass('hidden');
 									$('.test_data').addClass('hidden');
 									$('.btn-Next').removeClass('hidden');
+									$('.btn-Next').removeAttr('disabled');
+									dia_vessels.close();
 				        	    }
 				   			});
-	  					   }
-	    		    });		  
+
+				     	  }
+	    	  });
+	
 	   });		    
  }
 
 function ins_contains(add_comodity){
-		    	  var table = $("#tableAddContainer-mnla table tbody");
-		    	  var ct    = $("#tableAddContainer-mnla table tbody tr").length;
+			var loadingText;
+			if(add_comodity == 1){
+				loadingText = "Currently Adding Container and Commodity";
+			}
+			else{
+				loadingText = "Currently Adding Container"
+			}
+			dia_containers = $.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: loadingText,
+				   			});
+		    var table = $("#tableAddContainer-mnla table tbody");
+		    var ct    = $("#tableAddContainer-mnla table tbody tr").length;
 		    table.find('tr').each(function (count1) {
 			  var c = count1+1;
 
@@ -651,7 +674,7 @@ function ins_contains(add_comodity){
 				         	dt_file_entry_boc = $tds.eq(19).text(); 
 				         	dtboc             = $tds.eq(20).text();
 
-		$.ajax({
+			$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
 			  		data: {
@@ -692,7 +715,7 @@ function ins_contains(add_comodity){
 			    	 	  	 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content: 'New container is added!',
+				        		content: 'New Container Added!',
 				        		confirm: function(){
 				        		    $('#btn-charges-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
@@ -706,29 +729,25 @@ function ins_contains(add_comodity){
 									$('.pill-container-mnla-add').addClass('hidden');
 									$('.pill-vessel-mnla-add').addClass('hidden');
 									$('.btn-Next').addClass('hidden');
+									$('.btn-Next').removeAttr('disabled');
+									dia_containers.close();
 				        	    }
 				   			  }); 
 			    	 	}
 			        }
 	    		  });
-
-
-
-
 		     });
-
-
 }
 
 function ins_descriptions(c,ct,container){
-			    	   var table = $("#tableAddTruck-mnla table tbody");
-			    	   var ct2   = $("#tableAddTruck-mnla table tbody tr").length;
-
- table.find('tr').each(function (count1) {		 			  
-  var c2 = count1+1;
+		        var table = $("#tableAddTruck-mnla table tbody");
+			    var ct2   = $("#tableAddTruck-mnla table tbody tr").length;
+			    	 
+ 				table.find('tr').each(function (count1) {		 			  
+  				var c2 = count1+1;
  
- if(c<=ct){
-   if(c2<=ct2){
+ 				if(c<=ct){	
+   				if(c2<=ct2){
 				          var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
 						     prod_orderno  = $tds.eq(1).text();  //origin_id
@@ -737,7 +756,7 @@ function ins_descriptions(c,ct,container){
 	        	$.ajax({
 			  		method: "POST",
 					url: link + "/Job/comodity/",
-			  		data: {
+					data: {
 			  				//from comodity tab
 			  			    product_name   :product_name,
 			  			    prod_orderno   :prod_orderno, 
@@ -748,9 +767,9 @@ function ins_descriptions(c,ct,container){
 				})
 			    .done(function(data) {
 			    	          if(container!=''){
-			    	          	var message = "New Commodity and Container added!";
+			    	          	var message = "New Commodity and Container Added!";
 			    	          }else{
-			    	          	var message = "New Commodity is added!";
+			    	          	var message = "New Commodity Added!";
 			    	          }
 			    	           if(c==ct){	
 			    	             if(c2==ct2){
@@ -771,12 +790,15 @@ function ins_descriptions(c,ct,container){
 											$('.pill-container-mnla-add').addClass('hidden');
 											$('.pill-vessel-mnla-add').addClass('hidden');
 											$('.btn-Next').addClass('hidden');
+											$('.btn-Next').removeAttr('disabled');
 						        	    }
 						   			  });
-						   	   } }
+						   		dia_containers.close();
+						   	   }
+						   	  }
 	    		    });
- }} 	    
-});
+				 }} 	    
+				});
 
 
 }
@@ -785,6 +807,7 @@ function ins_descriptions(c,ct,container){
 
 $('.save_charge').click(function(){
 	        //for running charges
+
 	   var jbfl       = $('.jobfiles').val();
        var lodge 		  =  $('#lodge').val();
  	   var cont_deposit   =  $('#cont-deposit').val();
@@ -806,9 +829,22 @@ $('.save_charge').click(function(){
        var all_charges    =  $('#all-charges').val();
 	   var part_charges   =  $('#part-charges').val();
 
+	   /*var totalCharges = lodge + cont_deposit + thc_charges + arrastre + wharfage + weight + del + dispatch + storage + demurrage + detention + eic + bai_app + bai_inspect + sra_app + sra_inspect + bad_cargo + all_charges + part_charges;
+	   alert(totalCharges);
+		*/
+		
     $.ajax({
 		           method: "POST",
 	 		       url: link + "/Job/jobfile_add_charge/",
+	 		       beforeSend: function() {
+					 	  dia_running_charges =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Running Charges',
+				   			});
+ 					  },
 			  	   data: {
 			  	   	           jbfl   		:jbfl,
 			  	   			   lodge        :lodge,
@@ -835,7 +871,7 @@ $('.save_charge').click(function(){
 					.done(function(data) {
 	  							 $.alert({
 				        		title: 'Success!',
-				        		content: 'Running Charges has been added!',
+				        		content: 'Running Charges Added!',
 				        		confirm: function(){
 				        		    $('#btn-charges-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
@@ -849,6 +885,7 @@ $('.save_charge').click(function(){
 									$('.pill-container-mnla-add').addClass('hidden');
 									$('.pill-vessel-mnla-add').addClass('hidden');
 									$('.btn-Next').addClass('hidden');
+									dia_running_charges.close();
 				        			location.reload();
 				        	    }
 				   			   });
