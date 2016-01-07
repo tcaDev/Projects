@@ -601,7 +601,21 @@ class Job extends CI_Controller {
    
 
            }
-   
+      
+
+      //for running charges insert
+        $data = array(
+               'JobFileId'        => $job,
+        );
+        $lastid =   $this->db->insert('RunningCharges',$data); 
+                $data2 = array(
+               'RunnningChargesId'=> $lastid,
+               'JobFileId'        => $job,
+               'DateUpdated'      => Date('Y-m-d H:i'),
+               'UpdatedBy_UsrId'  => $userid
+        );
+          $this->db->insert('RunningChargesHistory',$data2); 
+      //
    }
 function vessel(){
   $session_data = $this->session->userdata('logged_in');
@@ -875,10 +889,65 @@ foreach($job as $row){
 
 
   //stop inserting data in jobfile to avoid duplication
-/*  $query= $this->db->query("Select * from JobFile where
-        JobFileId=$job limit 1");
+  $query= $this->db->query("Select * from vw_RunningCharges where
+        JobFileId=100 limit 1");
 if($query->num_rows() ==1){
-}else{  */
+
+
+      $update_charges = array(
+              'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges
+            );
+
+$this->db->where('JobFileId', $job);
+$this->db->update('RunningCharges', $update_charges);
+
+
+             $update_charges_history = array(
+               'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges,
+               'DateUpdated'      => Date('Y-m-d H:i'),
+               'UpdatedBy_UsrId'  => $userid
+            );
+
+$this->db->where('JobFileId', $job);
+$this->db->update('RunningChargesHistory', $update_charges_history);
+
+}/*else{  
         $data = array(
                'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
@@ -930,10 +999,10 @@ if($query->num_rows() ==1){
                'UpdatedBy_UsrId'  => $userid
         );
           $this->db->insert('RunningChargesHistory',$data2); 
-      }
+      }*/
    }
 
-//}
+}
 
 
 ?>

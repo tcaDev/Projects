@@ -16,6 +16,7 @@
 
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;">*</i>
+								<div class="get_my_products"> </div>
 								<select class="form-control input-sm prodname-addProduct-mnila" name="prodname">
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
@@ -54,7 +55,7 @@
 	        </div>
 
         <div class="modal-footer" >
-	       	 <button type="button" class="btn btn-danger">Save</button>
+	       	 <button type="button" class="btn btn-danger submit_vessel">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -65,11 +66,11 @@
 /*Click Button Container*/
 
 function click_vessel(){
+	var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
 
-	var jobfile_mnla =  $(".btn-Add-Container-mnla").closest('tr').children('td:eq(2)').text();
+		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
 
-		$(".jobfile-addContainer-mnla").val(jobfile_mnla);
-				$.ajax({
+					$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessel_container');?>",
 				  		data: { jobfile:jobfile_mnla,
@@ -81,7 +82,7 @@ function click_vessel(){
 }
 
  /*Delete Row*/
-	  	$(document).on('click', '#table-AddProduct-mnla .deleteButton', function() {
+	  	$('#table-AddProduct-mnla').on('click', '.deleteButton', function() {
 	    	$(this).closest("tr").remove();
 		});
 
@@ -100,7 +101,7 @@ function click_vessel(){
 				    return check_product;
 				}
 
-		$(document).on('click','.btn-addProduct-mnila',function(){
+		$(".btn-addProduct-mnila").click(function(){
 
 			var cont = $('#table-AddProduct-mnla .containers-prod-addProduct-mnila option:selected').val();
 			var prod = $('#table-AddProduct-mnla .prodname-addProduct-mnila option:selected').val();
@@ -114,7 +115,7 @@ function click_vessel(){
 				$('.prodname-msg-addProduct-mnila').text("Need Product Name.");
 
 			}else{
-				$('#table-AddProduct-mnla table').append('<tr><td></td><td></td><td></td><td></td></tr>');
+				$('#table-AddProduct-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td></tr>');
 				$('#table-AddProduct-mnla table tr:last td:nth-child(1)').html($(".prodname-addProduct-mnila").val()).hide();
 			 	$('#table-AddProduct-mnla table tr:last td:nth-child(2)').html($(".prodname-addProduct-mnila option:selected").text());
 			    $('#table-AddProduct-mnla table tr:last td:nth-child(3)').html($(".containers-prod-addProduct-mnila").val());
@@ -130,3 +131,59 @@ function click_vessel(){
 
 			});
  </script>
+
+
+ <script>
+
+ $('.submit_vessel').click(function(){
+
+
+					    	   var table = $("#table-AddProduct-mnla table tbody");
+					    	   var ct2   = $("#table-AddProduct-mnla table tbody tr").length;
+
+		 table.find('tr').each(function (count1) {		 			  
+		  var c2 = count1+1;
+		 
+
+		   if(c2<=ct2){
+						          var $tds		   = $(this).find('td'),
+								     product_name  = $tds.eq(0).text(),
+								     prod_orderno  = $tds.eq(1).text();  //origin_id
+								     con_id        = $tds.eq(2).text(), //change to  container 
+
+			        	$.ajax({
+					  		method: "POST",
+							url: link + "/Job/comodity/",
+					  		data: {
+					  				//from comodity tab
+					  			    product_name   :product_name,
+					  			    prod_orderno   :prod_orderno, 
+					  			    con_id	   	   :con_id
+
+				
+					  		}
+						})
+					    .done(function(data) {
+
+					    	             if(c2==ct2){
+					  						  $.alert({
+					  						  	backgroundDismiss: false, 	
+								        		title: 'Success!',
+								        		content: 'New Commodity is added!',
+								        		confirm: function(){
+								        		/*$('.vessel-msg-addVessel-mnilas').empty();*/
+						        		    	$(".remove_tr" ).remove();
+								        	    }
+								   			  });
+								   	   }
+			    		    });
+		 }	    
+		});
+ });
+ </script>
+
+
+
+
+
+
