@@ -187,7 +187,10 @@
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
-								          <td><button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td>
+								          		<button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          		<button type="button" class="btn btn-Add-Report-mnla btn-success" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          </td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        </tr>
 
@@ -338,7 +341,7 @@
 			<!--Add Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addContainer-mnla" role="dialog">
+				  <div class="modal fade" id="addContainer-mnla" tabindex="-1" data-replace="true" style="display: none;">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -350,7 +353,7 @@
 				 <!--Add Vessel when Adding New vessel  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addVessel-mnla" role="dialog">
+				  <div class="modal fade" id="addVessel-mnla" tabindex="-1" data-replace="true" style="display: none;">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -362,11 +365,23 @@
 				 <!--Add Product when Adding New Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addProduct-mnla" role="dialog">
+				  <div class="modal fade" id="addProduct-mnla" tabindex="-1" data-replace="true"  style="display: none;">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
 				      	<?php $this->load->view('jobfile-view/add-manila-container/add_Product_manila'); ?>
+				      	
+				    </div>
+				 </div>
+
+				  <!--Add Product when Adding New Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addReport-mnla" tabindex="-1" data-replace="true"  style="display: none;">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-manila-container/add_Report_manila'); ?>
 				      	
 				    </div>
 				 </div>
@@ -378,6 +393,38 @@
 
 <script>
 $(document).ready(function(){
+
+/*Remove Data From Modal When Close*/
+
+	/*add New Vessel Modal*/
+	 var myBackup_vessel = $('#addVessel-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal', '.modal',function() {
+        $('#addVessel-mnla').modal('hide').remove();
+        var myClone_vessel = myBackup_vessel.clone();
+        $('body').append(myClone_vessel);
+    });
+
+    /*add New Container Modal*/
+	 var myBackup_container = $('#addContainer-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal', '.modal',function() {
+        $('#addContainer-mnla').modal('hide').remove();
+        var myClone_container = myBackup_container.clone();
+        $('body').append(myClone_container);
+    });
+
+    /*add New Product Modal*/
+	 var myBackup_product = $('#addProduct-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal', '.modal',function() {
+        $('#addProduct-mnla').modal('hide').remove();
+        var myClone_product = myBackup_product.clone();
+        $('body').append(myClone_product);
+    });
 
 
     $('[data-toggle="tooltip"]').tooltip();   
@@ -498,6 +545,11 @@ $(document).ready(function(){
 			  		.done(function(data) {
 				  				$('.container-addProduct-manila-get').html(data);
 					});
+	});
+
+	$(".btn-Add-Report-mnla").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+		$(".jobfile-addReport-mnla").val(jobfile_mnla) ;
 	});
 
 });

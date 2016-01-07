@@ -1,10 +1,13 @@
- <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+ <div class="modal-content" style="width:180%;right:40%;padding: 10px; ">
         <div class="modal-header" style="background-color:#eee">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add New Container(s)</h4>
         </div>
 	        <div class="modal-body">
 	           <!--CONTAINER WINDOW-->
+
+
+	           <div style="height: 600px;overflow-y: auto;">
   	<div id="table-AddContainer-mnla" class="container-mnla-add ">
 
 	  	<div class="col-lg-6">
@@ -144,6 +147,7 @@
 	    <table class="table" style="width: 3000px;" border="1">
 	      <thead>
 		      <tr>
+		      	<th class="hidden">Value Vessel</th>
 		        <th>Vessel/Voyage #</th> 
 		      	<th>Container Number</th>
 		      	<th>Container Size</th>      	
@@ -171,6 +175,7 @@
 	</div>
 
 
+	</div>
 	</div>
 	        </div>
         <div class="modal-footer">
@@ -204,7 +209,7 @@
 	   });
 
  /*Delete Row*/
-	  	$('#table-AddContainer-mnla').on('click', '.deleteButton', function() {
+	  	$(document).on('click', '#table-AddContainer-mnla .deleteButton', function() {
 	    	$(this).closest("tr").remove();
 
 		});
@@ -217,7 +222,7 @@
 
 				    check=false;
 				 	  table.find('tr').each(function(){
-					    if($('td:nth(0)',$(this)).html()===container) {
+					    if($('td:nth(2)',$(this)).html()===container) {
 					       check=true;            
 					        }   
 					     })
@@ -228,7 +233,7 @@
 
 				
 
-		$(".btn-addContainer-manila").click(function(){
+		$(document).on('click', '.btn-addContainer-manila', function(){
 
 		
 			if(isExist_cont($('#table-AddContainer-mnla .container-addContainer-manila').val()))
@@ -241,30 +246,31 @@
 			}
 			else{
 
-	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").text());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".container-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(3)').html($(".container-size-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(4)').html($(".cartons-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(5)').html($(".plate-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(6)').html($(".truckname-addContainer-manila").val()).hide();
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname-addContainer-manila option:selected").text());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(8)').html($(".ref_entry_no-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage-addContainer-manila").val()); 
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(10)').html($(".storage-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(11)').html($(".dt_paid-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_pre_assess-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_final_assess-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(18)').html($(".tdt-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(19)').html($(".pull_out_port-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_file_entry_boc-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(21)').html($(".dt_boc-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(22)').html("<button type='button' class='btn btn-danger deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").val()).hide();
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".vessel-addContainer-manila option:selected").text());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(3)').html($(".container-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(4)').html($(".container-size-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(6)').html($(".plate-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname-addContainer-manila").val()).hide();
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname-addContainer-manila option:selected").text());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(9)').html($(".ref_entry_no-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(10)').html($(".demorage-addContainer-manila").val()); 
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(11)').html($(".storage-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(12)').html($(".dt_paid-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_pre_assess-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(15)').html($(".dt_final_assess-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(19)').html($(".tdt-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(20)').html($(".pull_out_port-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(21)').html($(".dt_file_entry_boc-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(22)').html($(".dt_boc-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(23)').html("<button type='button' class='btn btn-danger deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 	        $('.container-msg-addContainer-manila').text('');
 

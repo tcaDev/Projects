@@ -15,14 +15,28 @@ class Job_availability extends CI_Controller {
    function index(){
    	  $jobfile = stripslashes($this->input->post('jbfl'));
    	  $vessel  = stripslashes($this->input->post('vessel'));
+      $exist_vessel  = stripslashes($this->input->post('exist_vessel'));
 
-      $query= $this->db->query("Select * from vw_CarrierByJobFile where JobFileNo ='$jobfile' and VesselVoyageNo='$vessel' limit 1");
+
+
+      if($vessel == ""){
+        echo  "<i></i>";
+      }else if($exist_vessel == 'true' ){
+        echo "<i style='color:red;'>Already exists</i>";  
+      }
+      else if($exist_vessel == 'false' ){
+         echo "<i style='color:green;'>Available</i>"; 
+      }
+      else{
+         $query= $this->db->query("Select * from vw_CarrierByJobFile where JobFileNo ='$jobfile' and VesselVoyageNo='$vessel' limit 1");
             
-          if($query->num_rows() ==1){ 
+          if($query->num_rows() == 1){ 
             echo  "<i style='color:red;'>Already exists</i>";     
           }else{
              echo "<i style='color:green;'>Available</i>"; 
           }
+      }
+     
    }
 
 }

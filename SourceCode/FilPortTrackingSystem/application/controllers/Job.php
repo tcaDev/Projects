@@ -134,7 +134,7 @@ class Job extends CI_Controller {
 
       if($vessel_mnila_container==NULL){
         echo '<label>Vessel/Voyage #</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addVessel-mnla" ><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" ><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
       }else{
 
          echo '<label>Vessel/Voyage #</label>
@@ -153,9 +153,8 @@ class Job extends CI_Controller {
       $container_mnila_product = $this->Jobdata->get_container_product($container_mnila);
 
       if($container_mnila_product==NULL){
-
         echo '<label>Container Number</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-taget="#addContainer-mnla" onclick="click_vessel()" ><span class="fa fa-plus fa-fw"></span> Add Container</button>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addContainer-mnla" onclick="click_vessel()"><span class="fa fa-plus fa-fw"></span> Add Container</button>';
       }else{
 
          echo '<label>Container Number</label>

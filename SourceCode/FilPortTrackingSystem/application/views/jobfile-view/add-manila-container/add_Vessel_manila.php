@@ -17,9 +17,9 @@
 
 							<div class="form-group">
 								<label>Vessel/Voyage #</label> 
-								<div class="vessel-msg-addVessel-mnilas"> </div>
+								<span class="vessel-msg-addVessel-mnilas"> </span>
 								<input type="text" class="form-control input-sm vessel-addVessel-mnila" id="vessel" name="vessel" onkeyup="check_vessel_avail(this.value)">
-								 
+								 <i class="vessel-msg-addVessel-mnila" style="color:red;"></i>
 							</div>
 
 							 <div class="form-group">
@@ -96,7 +96,7 @@
 
 
 /*Delete Row*/
-	  	$('#table-AddVessel-mnla').on('click', '.deleteButton', function() {
+	  	$(document).on('click', '#table-AddVessel-mnla .deleteButton', function() {
 	    	$(this).closest("tr").remove();
 		});
 
@@ -114,11 +114,16 @@
 				    return check_vessel;
 				}
 	
-	$(".btn-addVessel-mnila").click(function(){
+	$(document).on('click','.btn-addVessel-mnila', function(){
 
 		if(isExist_vessel_mnila($('#table-AddVessel-mnla .vessel-addVessel-mnila').val()))
 			{	
-				$('.vessel-msg-addVessel-mnila').text("Vessel Already Exists.");
+				$('.vessel-msg-addVessel-mnila').text("Place another Vessel.");
+				$('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text("");
+			}
+			else if($('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text() == "Already exists")
+			{
+				$('.vessel-msg-addVessel-mnila').text("Place another Vessel");
 			}
 			else if($('#table-AddVessel-mnla .vessel-addVessel-mnila').val() == "")
 			{
@@ -145,6 +150,7 @@
 		$('.vessel-msg-addVessel-mnila').text("");
 		$('.carrier-msg-addVessel-mnila').text("");
 		$('.tableVessel-msg-addVessel-mnila').text("");
+		$('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text("");
 
 		$('#table-AddVessel-mnla .vessel-addVessel-mnila').val('');
 		$('#table-AddVessel-mnla .edt-addVessel-mnila').val('');
@@ -162,16 +168,20 @@
 <script>
 function check_vessel_avail(vess){
    			var jbfl = $('.jobfile-addVessel-mnla').val();
-	 		  $.ajax({
+   			var exist_vessel = isExist_vessel_mnila($('#table-AddVessel-mnla .vessel-addVessel-mnila').val());
+   		
+   				 $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability');?>",
 				  		data: { jbfl   :jbfl,
-				  			    vessel :vess 
+				  			    vessel :vess,
+				  			    exist_vessel: exist_vessel
 				  		}
 					})
 			  		.done(function(data) {
 				  				$('.vessel-msg-addVessel-mnilas').html(data);
 					});
+   			
 }
 
  $('.save_vessel').click(function(){
