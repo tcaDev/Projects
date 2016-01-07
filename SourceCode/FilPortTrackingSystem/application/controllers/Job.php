@@ -833,11 +833,11 @@ function comodity(){
         if($product_name==''){
          $product_name=1;
         }
-        $carrier = $this->session->lastid2;
+/*        $carrier = $this->session->lastid2;
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
-      }else{
+      }else{*/
        $data = array(
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id,
@@ -852,7 +852,7 @@ function comodity(){
               );
         $this->db->insert('ProductsByContainerHistory',$data2); 
         $this->session->unset_userdata('lastid2');
-      }
+     // }
 
  }
 

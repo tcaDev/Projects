@@ -201,6 +201,7 @@ function check_vessel_avail(vess){
 	        vdt    	= $tds.eq(4).text();
 		    lines   = $tds.eq(5).text();
 
+	
 		         $.ajax({
 			  		method: "POST",
 					url: link + "/Job/vessel/",

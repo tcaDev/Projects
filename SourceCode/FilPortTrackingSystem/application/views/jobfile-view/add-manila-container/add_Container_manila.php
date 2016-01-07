@@ -246,7 +246,7 @@
 			}
 			else{
 
-	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").val()).hide();
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".vessel-addContainer-manila option:selected").text());
@@ -306,7 +306,7 @@
 
 <script>
  $(document).on('click','.save_container',function(){
- 	alert('aaaa');
+ 	
  
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
@@ -319,8 +319,8 @@
 				            consize 	   	= $tds.eq(2).text();
 				          	cartons_no  	= $tds.eq(3).text(); 
 				        	trucker_plate   = $tds.eq(4).text(); 
-				            trucker_id   	= $tds.eq(5).text();
-				            trucker_name   	= $tds.eq(6).text();
+				            trucker_name   	= $tds.eq(5).text();
+				            trucker_id   	= $tds.eq(6).text();
 				            ref_entry_no    = $tds.eq(7).text();
 				          	start_demorage  = $tds.eq(8).text(); 
 				            start_storage 	= $tds.eq(9).text();
@@ -335,6 +335,7 @@
 				         	pul_out_port    = $tds.eq(18).text();  
 				         	dt_file_entry_boc = $tds.eq(19).text(); 
 				         	dtboc             = $tds.eq(20).text();
+
 
 		$.ajax({
 			  		method: "POST",
@@ -372,7 +373,7 @@
 				        		title: 'Success!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
-
+				        			$(".remove_tr" ).remove();	
 				        	    }
 				   			  }); 
 			    	 	}
