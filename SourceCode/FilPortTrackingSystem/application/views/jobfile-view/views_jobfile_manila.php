@@ -341,7 +341,7 @@
 			<!--Add Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addContainer-mnla" tabindex="-1" data-replace="true" style="display: none;">
+				  <div class="modal fade" id="addContainer-mnla" tabindex="-1" data-replace="true">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -353,7 +353,7 @@
 				 <!--Add Vessel when Adding New vessel  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addVessel-mnla" tabindex="-1" data-replace="true" style="display: none;">
+				  <div class="modal fade" id="addVessel-mnla" tabindex="-1" data-replace="true">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -365,7 +365,7 @@
 				 <!--Add Product when Adding New Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addProduct-mnla" tabindex="-1" data-replace="true"  style="display: none;">
+				  <div class="modal fade" id="addProduct-mnla" tabindex="-1" data-replace="true" >
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -400,7 +400,7 @@ $(document).ready(function(){
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
     
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal', '.modal',function() {
+    $('body').on('hidden.bs.modal','#addVessel-mnla',function() {
         $('#addVessel-mnla').modal('hide').remove();
         var myClone_vessel = myBackup_vessel.clone();
         $('body').append(myClone_vessel);
@@ -410,7 +410,7 @@ $(document).ready(function(){
 	 var myBackup_container = $('#addContainer-mnla').clone();
     
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal', '.modal',function() {
+    $('body').on('hidden.bs.modal','#addContainer-mnla', function() {
         $('#addContainer-mnla').modal('hide').remove();
         var myClone_container = myBackup_container.clone();
         $('body').append(myClone_container);
@@ -420,11 +420,11 @@ $(document).ready(function(){
 	 var myBackup_product = $('#addProduct-mnla').clone();
     
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal', '.modal',function() {
+    $('body').on('hidden.bs.modal','#addProduct-mnla ',function() {
         $('#addProduct-mnla').modal('hide').remove();
         var myClone_product = myBackup_product.clone();
         $('body').append(myClone_product);
-    });
+    });	
 
 
     $('[data-toggle="tooltip"]').tooltip();   
