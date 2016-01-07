@@ -134,7 +134,7 @@ class Job extends CI_Controller {
 
       if($vessel_mnila_container==NULL){
         echo '<label>Vessel/Voyage #</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" ><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" onclick="click_containers()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
       }else{
 
          echo '<label>Vessel/Voyage #</label>

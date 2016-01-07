@@ -188,15 +188,14 @@
 
 
 <script>
+
+ function click_containers(){
+ 	var jobfile_mnla =  $('.btn-Add-Vessel-mnla').closest('tr').children('td:eq(2)').text();
+		$(".jobfile-addVessel-mnla").val(jobfile_mnla);
+		
+}
+	
 	$(document).ready(function(){
-
-
-/*Button Close*/
-/*	$(".btn-close").click(function(){
-		location.reload();
-	});*/
-
-
 /*Number Only*/
 	  //called when key is pressed in textbox
 	  $("#cartons-addContainer-manila").keypress(function (e) {
