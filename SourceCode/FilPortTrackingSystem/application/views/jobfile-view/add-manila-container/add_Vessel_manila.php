@@ -10,15 +10,16 @@
 						<div class="col-lg-6">
 
 
-							<div class="form-group hidden">
+							<div class="form-group ">
 								<label>JobFile</label>
-					        	<input type="text" class="jobfile-addVessel-mnla form-control input-sm">
+					        	<input type="text" class="jobfile-addVessel-mnla form-control input-sm"disabled>
 							</div>
 
 							<div class="form-group">
 								<label>Vessel/Voyage #</label> 
-								<input type="text" class="form-control input-sm vessel-addVessel-mnila" id="vessel" name="vessel">
-								<i class="vessel-msg-addVessel-mnila" style="color:red;"></i>
+								<div class="vessel-msg-addVessel-mnilas"> </div>
+								<input type="text" class="form-control input-sm vessel-addVessel-mnila" id="vessel" name="vessel" onkeyup="check_vessel_avail(this.value)">
+								 
 							</div>
 
 							 <div class="form-group">
@@ -85,8 +86,8 @@
 	        </div>
 
         <div class="modal-footer" >
-	       	 <button type="button" class="btn btn-danger">Save</button>
-	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+	       	 <button type="button " class="btn btn-danger save_vessel">Save</button>
+	         <button type="button" class="btn btn-default btn-close-vessels" data-dismiss="modal">Close</button>
         </div>
       </div>
 
@@ -130,7 +131,7 @@
 		
 		else{
 
-		$('#table-AddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		$('#table-AddVessel-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		
 		$('#table-AddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel-addVessel-mnila").val());
 		$('#table-AddVessel-mnla table tr:last td:nth-child(2)').html($(".edt-addVessel-mnila").val());
@@ -154,3 +155,71 @@
 		}
 	});
 </script>
+
+
+
+
+<script>
+function check_vessel_avail(vess){
+   			var jbfl = $('.jobfile-addVessel-mnla').val();
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_availability');?>",
+				  		data: { jbfl   :jbfl,
+				  			    vessel :vess 
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.vessel-msg-addVessel-mnilas').html(data);
+					});
+}
+
+ $('.save_vessel').click(function(){
+ 	var jbfl = $('.jobfile-addVessel-mnla').val();
+
+
+		//for adding vessel
+            var table = $("#table-AddVessel-mnla table tbody");
+            var t3    = $("#table-AddVessel-mnla table tbody tr").length;
+		    table.find('tr').each(function (count1) {
+	        var c3   = count1+1;
+			var $tds = $(this).find('td'),
+			vessel   = $tds.eq(0).text(),
+		    edt 	= $tds.eq(1).text();
+		    eat     = $tds.eq(2).text();
+		    aat     = $tds.eq(3).text();
+	        vdt    	= $tds.eq(4).text();
+		    lines   = $tds.eq(5).text();
+
+		         $.ajax({
+			  		method: "POST",
+					url: link + "/Job/vessel/",
+			  		data: {
+			  			    //from jobfile tab
+			  			    jbfl           :jbfl,
+			  			    vessel 		   :vessel,
+			  			    vdt		       :vdt,
+			  			    edt            :edt,
+			  		        eat            :eat,
+			  		        aat            :aat,
+			  			    lines		   :lines
+			  		}
+				})
+			    .done(function(data) {
+			    	       if(t3==c3){
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content: 'New Vessel is added!',
+				        		confirm: function(){
+				        			$('.vessel-msg-addVessel-mnilas').remove();
+				        			$(".remove_tr" ).remove();
+				        	    }
+				   			});
+	  					   }
+	    		    });		  
+	   });	
+		//end
+});
+</script>
+

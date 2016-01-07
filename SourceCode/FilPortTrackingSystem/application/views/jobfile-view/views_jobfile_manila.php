@@ -347,7 +347,7 @@
 				    </div>
 				 </div>
 
-				 <!--Add Vessel when Adding New Container  -->
+				 <!--Add Vessel when Adding New vessel  -->
 			
 				  <!-- Modal -->
 				  <div class="modal fade" id="addVessel-mnla" role="dialog">
@@ -481,7 +481,6 @@ $(document).ready(function(){
 
 	$(".btn-Add-Vessel-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-
 		$(".jobfile-addVessel-mnla").val(jobfile_mnla) ;
 	});
 
@@ -635,6 +634,14 @@ $('#select').change(function(){
 		<?php $this->load->view('jobfile-view/views_jobfiledata_manila'); ?>
     </div>
   </div>
+
+
+
+
+
+
+
+
 
 
 

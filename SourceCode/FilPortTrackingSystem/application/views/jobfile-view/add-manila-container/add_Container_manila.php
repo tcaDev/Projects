@@ -9,9 +9,9 @@
 
 	  	<div class="col-lg-6">
 
-	  		<div class="form-group hidden">
+	  		<div class="form-group ">
 				<label>JobFile</label>
-	        	<input type="text" class="jobfile-addContainer-mnla form-control input-sm">
+	        	<input type="text" class="jobfile-addContainer-mnla form-control input-sm" disabled>
 			</div>
 
 
@@ -174,7 +174,7 @@
 	</div>
 	        </div>
         <div class="modal-footer">
-	       	 <button type="button" class="btn btn-danger">Save</button>
+	       	 <button type="button" class="btn btn-danger save_container">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -187,9 +187,9 @@
 
 
 /*Button Close*/
-	$(".btn-close").click(function(){
+/*	$(".btn-close").click(function(){
 		location.reload();
-	});
+	});*/
 
 
 /*Number Only*/
@@ -294,5 +294,87 @@
 			
 		});
 	});
+
+</script>
+
+
+<script>
+ $('.save_container').click(function(){
+ 
+		    	  var table = $("#table-AddContainer-mnla table tbody");
+		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
+		    table.find('tr').each(function (count1) {
+			  var c = count1+1;
+
+				        var $tds = $(this).find('td'),
+				            vessel_voyage 	= $tds.eq(0).text(),
+				         	containerId 	= $tds.eq(1).text(),
+				            consize 	   	= $tds.eq(2).text();
+				          	cartons_no  	= $tds.eq(3).text(); 
+				        	trucker_plate   = $tds.eq(4).text(); 
+				            trucker_id   	= $tds.eq(5).text();
+				            trucker_name   	= $tds.eq(6).text();
+				            ref_entry_no    = $tds.eq(7).text();
+				          	start_demorage  = $tds.eq(8).text(); 
+				            start_storage 	= $tds.eq(9).text();
+				            dt_paid		    = $tds.eq(10).text();
+				            lodging    	    = $tds.eq(11).text();
+				            dt_pre_assess   = $tds.eq(12).text(); 
+				        	dt_final_assess = $tds.eq(13).text(); 
+				        	gip  		   	= $tds.eq(14).text();
+				         	gop  		   	= $tds.eq(15).text(); 
+				         	adw             = $tds.eq(16).text(); 
+				         	tdt    		    = $tds.eq(17).text(); 
+				         	pul_out_port    = $tds.eq(18).text();  
+				         	dt_file_entry_boc = $tds.eq(19).text(); 
+				         	dtboc             = $tds.eq(20).text();
+
+		$.ajax({
+			  		method: "POST",
+					url: link + "/Job/container/",
+			  		data: {
+			  				//from container tab
+			  				vessel_voyage  :vessel_voyage,
+			  			    containerId    :containerId,
+			  			    consize  	   :consize, 
+			  			    cartons_no	   :cartons_no,
+			  			    trucker_plate  :trucker_plate,
+			  			    trucker_name   :trucker_name,
+			  			    trucker_id	   :trucker_id,
+			  			    ref_entry_no   :ref_entry_no,
+			  			    start_storage  :start_storage,
+			  			    start_demorage :start_demorage,
+			  			    dt_paid        :dt_paid,
+			  			    lodging        :lodging,				
+			  			    dt_pre_assess  :dt_pre_assess,
+			  			    dt_file_entry_boc :dt_file_entry_boc,
+			  			    dt_final_assess:dt_final_assess,
+			  			    gip            :gip,
+			  			    gop            :gop,
+			  			    adw            :adw,
+			  			    dtboc		   :dtboc,
+			  			    tdt            :tdt,
+			  			    pul_out_port   :pul_out_port
+			  		
+			  		}
+				})
+				 .done(function() {		
+			            if(c==ct){	
+			    	 	  	 $.alert({
+			    	 	  	 	backgroundDismiss: false, 	
+				        		title: 'Success!',
+				        		content: 'New container is added!',
+				        		confirm: function(){
+
+				        	    }
+				   			  }); 
+			    	 	}
+	    		  });
+
+
+
+
+		     });	
+});
 
 </script>
