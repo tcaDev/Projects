@@ -52,7 +52,7 @@
 							input.oninput = _onInputEvent;
 						});
 						Arr.forEach.call(selects, function(select) {
-		         select.onchange  = _onSelectEvent;
+		        		 select.onchange  = _onSelectEvent;
 						});
 					}
 				};

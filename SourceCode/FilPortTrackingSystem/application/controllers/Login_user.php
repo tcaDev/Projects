@@ -139,7 +139,7 @@ class Login_user extends CI_Controller {
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
 
-		    // drop down in add data form in jofile start
+		    // drop down in add data form in jobfile start
 		    $data['shipper_data']   = $this->User->dropdown_shipper();
 		    $data['vessel_data']   = $this->User->settings_vessel();
 		  /*  $data['container_data']   = $this->User->dropdown_container();*/
@@ -397,6 +397,8 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+
+		    $data['manila'] = $this->User->get_jobfile_manila();
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('global/global_page' , $data);
@@ -861,11 +863,11 @@ function select_country(){
   if(isset($_SESSION['failed'])){
   	$failed = $_SESSION['failed'];
   	if($failed=='failed'){
-  	 $message = 'Failed to add, because the data  is already exists!';
+  	 $message = 'Failed to add, because the data already exists!';
   	
   	}
     if($failed=='update_failed'){
-  	$message = 'Failed to update, because the data  is already exists!';
+  	$message = 'Failed to update, because the data already exists!';
   }
 
   

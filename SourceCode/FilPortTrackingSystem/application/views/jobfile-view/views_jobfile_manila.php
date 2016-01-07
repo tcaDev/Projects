@@ -86,7 +86,6 @@
 				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
-								          
 
 								          <th > No. </th>
 

@@ -4,9 +4,8 @@
 			<h1>Search</h1>
 		</div>
 		<div class="input-group col-lg-12">
-
-            <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/>
-
+            <!-- <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/> -->
+            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" onkeyup="search()" >
         </div>
 
 	<h4>Type:</h4>
@@ -29,85 +28,125 @@
 
 	<div class="gl-container">
 		<p id="lblResultDetails"> </p>
-	 <span id="result"></span>
+	 <span id="result">
+	 	<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;" id="tbl-global-search">
+				        <thead>
+				             <tr style="cursor:w-resize ;">
+
+								          <th > JobfileNumber </th>
+
+								          <th >Color Stages</th>
+
+								          <th > Consignee </th>
+										 
+								         <th > Shipper </th>
+
+								          <th> Status Report </th>
+										   
+							  </tr>
+				          </thead>
+				          <tbody>
+				        				<?php $i= 0; foreach ($manila as $row) {
+				        					$i++;
+
+				        					$pick =$row->IsBackground;
+							    			if($pick==0){
+									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+									        }else{
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+									        }
+
+				        				?>
+				            <tr id="<?php echo $row->JobFileNo; ?>" class="tableRow">		
+				            			  <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+								          <?php echo $pick1 ;?>
+								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
+								          <td><?php echo stripslashes($row->ShipperName); ?></td>
+								          <td>
+								          		<button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          </td>
+								       	 <?php } ?>
+							</tr>
+				        </tbody>
+		</table>
+	 </span>
 	 	
 	 </div>
+	 <div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="view-jobfile-profile" role="dialog">
+				    <div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <div id="title" style="font-size:24px;font-family:Century Gothic;">
+				          	<b>Jobfile Number : <a id="jfNo"> </a> </b>
+				          </div>
+				        </div>
+				        <div class="modal-body">
+				        	<div id="body" style="font-size:13px;font-family:Century Gothic;">
+				        	<table class="table table-hover table-striped">
+				        		<tr>
+				        			<td>
+				        				Consignee <span class="pull-right">:</span>
+				        			</td>
+				        			<td>
+										<span class="pull-left"><a class="consignee"> </a></span>
+				        			</td>
+				        		</tr>
+				        		<tr>
+				        			<td>
+				        				 Shipper <span class="pull-right">:</span>
+				        			<td>
+										<span class="pull-left"><a class="shipper"> </a></span>
+				        			</td>
+				        		</tr>
+				        		<tr>
+				        			<td>
+				        				 Color Stage <span class="pull-right">:</span>
+				        			<td class="color">
+										<span class="pull-left"><a class="color-stages"> </a></span>
+				        			</td>
+				        		</tr>
+				        	</table><br>
+				        	 
+				        	 <h4 style="padding-left: 50px;"> Status Reports </h4>
+				            
+				             <table>
+				             	<tr>
+				             		<td>
+				             			<h5 style="padding-left: 65px;"> Status Reports </h5>
+				             		</td>
+				             	</tr>
+				             </table>
+
+				        	</div>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
 </body>
 </html>
 
 <script>
-var filter;
-var filter_Type;
-var search_name;
-var search_from;
-			function disable_filter(){
-				document.getElementById("cboType").disabled = true;
-			}
 
-			function enable_filter(){
-				document.getElementById("cboType").disabled = false;
-			}
-			function getFilters(){
-					$('#lblResultDetails').html("<p></p>");
-					filter = $('#cboType :selected').text();
-					if(filter == "JobFile"){
-						filter_Type = "JobfileID";
-						search_from = "vw_JobFile"
-					}else if(filter == "Consignee"){
-						filter_Type = "ConsigneeName";
-						search_from = "vw_consignee_full_info";
-					}else if(filter == "Hauler/Truck"){
-						filter_Type = "HaulerOrTruck";
-						search_from = "HaulerOrTruck";
-					}else if(filter == "Shipper"){
-						filter_Type = "ShipperName";
-						search_from = "vw_shipper_full_info";
-					}else if(filter == "Carrier"){
-						filter_Type = "CarrierName";
-						search_from = "Carrier";
-					}else if(filter == "Broker"){
-						filter_Type = "CONCAT(FirstName,' ',MiddleName,' ',LastName)";
-						search_from = "vw_broker_full_info";
-					}
-			}
+				
+			$('.tableRow').on('dblclick',function(){
+				//alert($(this).attr('id'));
+				$('#jfNo').html($(this).attr('id'));
+				$('.consignee').html($(this).closest('tr').children('td:eq(2)').text());
+				$('.shipper').html($(this).closest('tr').children('td:eq(3)').text());
+				var color = $(this).closest('tr').children('td:eq(1)').attr('style');
+				$('.color').attr('style',color);
+				$('.color-stages').html($(this).closest('tr').children('td:eq(1)').text());
+				$('#view-jobfile-profile').modal('show');
 
-			function searchItem(){
-				$('table').remove();
-				//alert(search_from + "  " + filter_Type + " " + search_name);
-				$.ajax({
-						type: "GET",
-						url: "<?php echo base_url('search');?>",
-						data: {
-			 				search:search_name,
-							searchType:filter_Type,
-							searchFrom:search_from 
-							  },
-						success: function(res)
-							  {
-								var displayDetails = JSON.parse(res);	
-								$( "#result" ).html(displayDetails[0].Display);
-								$('#lblResultDetails').html("<p>" + displayDetails[0].OutputCount + "</p>");
-							 }
-				});			
-			}
-
-			$('#cboType').on('change',function(){
-					getFilters();
-					searchItem();
 			});
-
-			function search(searchme) {
-				if(searchme.length==0){
-							$('table').remove();
-							$('#lblResultDetails').html("<p></p>");
-							disable_filter();				
-							return;
-					}else{
-						enable_filter();
-						getFilters();
-						search_name = searchme;
-						searchItem();
-					}
-			}
 
 	</script>
