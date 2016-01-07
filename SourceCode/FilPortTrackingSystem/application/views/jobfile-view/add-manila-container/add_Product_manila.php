@@ -9,21 +9,14 @@
 
 				  		<div class="col-lg-6">
 
-				  			<div class="form-group hidden">
+				  			<div class="form-group ">
 								<label>JobFile</label>
-					        	<input type="text" class="jobfile-addProduct-mnla form-control input-sm">
+					        	<input type="text" class="jobfile-addProduct-mnla form-control input-sm" id="jbfl">
 							</div>
 
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;">*</i>
 								<div class="get_my_products"> </div>
-								<select class="form-control input-sm prodname-addProduct-mnila" name="prodname">
-									<?php foreach($products as $row){ ?>
-											 <option value="<?php echo $row->ProductId?>">
-											 <?php echo stripslashes($row->ProductName);?>
-											 </option>
-											<?php }?> 
-								</select> 
 								<i class="prodname-msg-addProduct-mnila" style="color:red;"></i>
 							</div>
 
@@ -140,6 +133,10 @@ function click_vessel(){
 
 
  <script>
+
+
+
+
 
  $(document).on('click','.submit_vessel',function(){
 

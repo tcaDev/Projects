@@ -43,7 +43,7 @@ class Job_availability extends CI_Controller {
    	 	  $jobfile = stripslashes($this->input->post('jbfl'));
    	      $container  = stripslashes($this->input->post('containerno'));
 
-   	       $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
+   	       $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
           if($query->num_rows() == 1){ 
             echo  "<i style='color:red;'>Already exists</i>";     
           }else{
@@ -51,7 +51,27 @@ class Job_availability extends CI_Controller {
           }   	
    }
 
+   function commodity_check(){
+   	   $jobfile = $this->input->post('jbfl');
+
+   	      $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' limit 1");
+          if($query->num_rows() != 1){ 
+            echo  "<i style='color:red;'>No Products Available</i>";     
+          }else{
+
+
+     		$p = $this->Jobdata->get_goods($jobfile);
+            echo '<select>';
+                   $i=0;
+	               foreach ($p as $row){
+	                   $i++;
+                      echo "<option value=".stripslashes($row->ProductId)."> ".stripslashes($row->ProductName)."</option>";
+                    }
+
+             echo '</select>';
+          }
+
+    }
+
 }
-
-
 ?>

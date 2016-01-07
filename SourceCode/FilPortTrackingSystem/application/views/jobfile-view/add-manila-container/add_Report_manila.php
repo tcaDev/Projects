@@ -58,7 +58,7 @@ $(document).on('click','.btn-addReport-mnila',function(){
 				$('.report-msg-addReport-mnila').text("Need Status.");
 
 			}else{
-				$('#table-AddReport-mnla table').append('<tr><td></td><td></td></tr>');
+				$('#table-AddReport-mnla table').append('<tr class="remove_tr"><td></td><td></td></tr>');
 				$('#table-AddReport-mnla table tr:last td:nth-child(1)').html($(".report-mnila").val());
 			    $('#table-AddReport-mnla table tr:last td:nth-child(2)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
@@ -70,4 +70,44 @@ $(document).on('click','.btn-addReport-mnila',function(){
 				
 
 			});
+</script>
+
+
+<script>
+$('.save_report').click(function(){
+
+
+	        var jbfl = $('.jobfile-addReport-mnla').val();
+            var table = $("#table-AddReport-mnla table tbody");
+            var t4    = $("#table-AddReport-mnla table tbody tr").length;
+
+		    table.find('tr').each(function (count1) {
+	          var c4   = count1+1;
+			  var $tds = $(this).find('td'),
+			  save_report   = $tds.eq(0).text();
+
+		           $.ajax({
+			  		    method: "POST",
+			  		    url: "<?php echo base_url('Job/add_report');?>",
+			  	        data: {
+			  			    jbfl           :jbfl,
+			  			    save_report    :save_report,
+			  	    	}
+			    	})
+			        .done(function(data) {
+			    	       if(t4==c4){
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content: 'New Report is added!',
+				        		confirm: function(){
+				        			$(".remove_tr" ).remove();
+				        	    }
+				   			});
+	  					   }
+	    		    });		  
+	        });	
+});
+
+
 </script>

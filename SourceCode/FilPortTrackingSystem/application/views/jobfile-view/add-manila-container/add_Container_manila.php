@@ -189,7 +189,6 @@
 
 
 <script>
-
  function click_containers(){
  	var jobfile_mnla =  $('.btn-Add-Vessel-mnla').closest('tr').children('td:eq(2)').text();
 		$(".jobfile-addVessel-mnla").val(jobfile_mnla);

@@ -161,7 +161,7 @@
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
-								          <td >
+								          <td>
 								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
 								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
@@ -539,11 +539,21 @@ $(document).ready(function(){
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_container_product');?>",
-				  		data: { jobfile:jobfile_mnla,
+				  		data: { jobfile:jobfile_mnla
 				  		}
 					})
 			  		.done(function(data) {
 				  				$('.container-addProduct-manila-get').html(data);
+					});
+    alert(jobfile_mnla);
+			    	$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_availability/commodity_check');?>",
+				  		data: { jbfl:jobfile_mnla
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.get_my_products').html(data);
 					});
 	});
 

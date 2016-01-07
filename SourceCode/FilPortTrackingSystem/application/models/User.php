@@ -589,7 +589,7 @@ function get_products(){
   }
 
 function get_jobfile_manila(){
-    $query = $this->db->query("select * from vw_JobFile");
+    $query = $this->db->query("select * from vw_JobFile limit 10");
     return $query->result();
   }
 

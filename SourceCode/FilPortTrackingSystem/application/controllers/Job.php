@@ -376,17 +376,14 @@ class Job extends CI_Controller {
       foreach ($charges as $row) {
         $i++;
          $description = $row->StatusDescription;
-         if($i==1){
-          if($description==''){
-             echo    '</table>';
-             echo    '<center><span style="color:red">No Status Yet </span></center>';
-             break;
-          }
-         } 
-         if($description==''){
-             break;
-         }
-       echo " <tr>
+/*         if($description==''){
+         ?>
+          <script>
+           $('.remove_tr').remove();
+          </script>
+         <?php 
+         }*/
+       echo " <tr class='remove_tr'>
                  <td>".$i."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
@@ -593,16 +590,17 @@ class Job extends CI_Controller {
         foreach($job as $row){
          $job =  $row->JobFileId;
         }
+          if($status!=''){
              $data3 = array(
                      'StatusDescription' => $status,
                      'JobFileId'         => $job,  
                      'AddedBy_UserId'    => $userid
                      );
               $this->db->insert('HistoricalStatus',$data3);
-       
+          }
    
 
-           }
+    }
       
 
       //for running charges insert
@@ -948,60 +946,26 @@ $this->db->update('RunningCharges', $update_charges);
 
 $this->db->where('JobFileId', $job);
 $this->db->update('RunningChargesHistory', $update_charges_history);
+}
+   }
 
-}/*else{  
-        $data = array(
-               'JobFileId'        => $job,
-               'LodgementFee'     => $lodge,
-               'ContainerDeposit' => $cont_deposit,
-               'THCCharges'       => $thc_charges,
-               'Arrastre'         => $arrastre,
-               'Wharfage'         => $wharfage,
-               'Weighing'         => $weight,
-               'DEL'              => $del,
-               'DispatchFee'      => $dispatch,
-               'Storage'          => $storage,
-               'Demorage'         => $demurrage,
-               'Detention'        => $detention,
-               'EIC'              => $eic,
-               'BAIApplication'   => $bai_app,
-               'BAIInspection'    => $bai_inspect,
-               'SRAApplication'   => $sra_app,
-               'SRAInspection'    => $sra_inspect,
-               'BadCargo'         => $bad_cargo,
-               'AllCharges'       => $all_charges,
-               'ParticularCharges'=> $part_charges
-        );
-
-        $lastid =   $this->db->insert('RunningCharges',$data); 
-
-                $data2 = array(
-               'RunnningChargesId'=> $lastid,
-               'JobFileId'        => $job,
-               'LodgementFee'     => $lodge,
-               'ContainerDeposit' => $cont_deposit,
-               'THCCharges'       => $thc_charges,
-               'Arrastre'         => $arrastre,
-               'Wharfage'         => $wharfage,
-               'Weighing'         => $weight,
-               'DEL'              => $del,
-               'DispatchFee'      => $dispatch,
-               'Storage'          => $storage,
-               'Demorage'         => $demurrage,
-               'Detention'        => $detention,
-               'EIC'              => $eic,
-               'BAIApplication'   => $bai_app,
-               'BAIInspection'    => $bai_inspect,
-               'SRAApplication'   => $sra_app,
-               'SRAInspection'    => $sra_inspect,
-               'BadCargo'         => $bad_cargo,
-               'AllCharges'       => $all_charges,
-               'ParticularCharges'=> $part_charges,
-               'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UsrId'  => $userid
-        );
-          $this->db->insert('RunningChargesHistory',$data2); 
-      }*/
+   function add_report(){
+     $session_data      = $this->session->userdata('logged_in');
+     $userid            = $session_data['uid'];
+     $jobfile           = mysql_real_escape_string($this->input->post('jbfl'));
+     $save_report       = mysql_real_escape_string($this->input->post('save_report'));
+     
+        $job= $this->Jobdata->select_jobfile($jobfile);
+        foreach($job as $row){
+          $job =  $row->JobFileId;
+          }
+             $data = array(
+                     'StatusDescription'        => $save_report,
+                     'JobFileId'                => $job,
+                     'DateAdded'                => Date('Y-m-d H:i'),
+                     'AddedBy_UserId'           => $userid
+              );
+        $this->db->insert('HistoricalStatus',$data); 
    }
 
 }
