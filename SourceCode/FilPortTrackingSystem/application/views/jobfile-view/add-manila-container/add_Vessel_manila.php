@@ -184,7 +184,7 @@ function check_vessel_avail(vess){
    			
 }
 
- $('.save_vessel').click(function(){
+ $(document).on('click', '.save_vessel',function(){
  	var jbfl = $('.jobfile-addVessel-mnla').val();
 
 

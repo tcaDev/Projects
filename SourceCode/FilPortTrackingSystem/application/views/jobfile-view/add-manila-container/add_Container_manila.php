@@ -24,7 +24,7 @@
 
   			<div class="form-group">
 				<label>Container Number</label>					     
-	        	<input type="text" class="container-addContainer-manila form-control input-sm" onkeyup="check_Container_mnila(this)">
+	        	<input type="text" class="container-addContainer-manila form-control input-sm"> <!-- onkeyup="check_Container_mnila(this) -->
 	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
 			</div>
 
@@ -305,7 +305,8 @@
 
 
 <script>
- $('.save_container').click(function(){
+ $(document).on('click','.save_container',function(){
+ 	alert('aaaa');
  
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;

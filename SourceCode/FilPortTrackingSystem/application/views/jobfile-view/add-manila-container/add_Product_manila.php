@@ -135,7 +135,7 @@ function click_vessel(){
 
  <script>
 
- $('.submit_vessel').click(function(){
+ $(document).on('click','.submit_vessel',function(){
 
 
 					    	   var table = $("#table-AddProduct-mnla table tbody");
