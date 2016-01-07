@@ -66,7 +66,7 @@
 /*Click Button Container*/
 
 function click_vessel(){
-	var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+	var jobfile_mnla =  $(".btn-Add-Container-mnla").closest('tr').children('td:eq(2)').text();
 
 		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
 
@@ -82,7 +82,7 @@ function click_vessel(){
 }
 
  /*Delete Row*/
-	  	$('#table-AddProduct-mnla').on('click', '.deleteButton', function() {
+	  	$(document).on('click', '#table-AddProduct-mnla .deleteButton', function() {
 	    	$(this).closest("tr").remove();
 		});
 
@@ -101,7 +101,7 @@ function click_vessel(){
 				    return check_product;
 				}
 
-		$(".btn-addProduct-mnila").click(function(){
+		$(document).on('click' ,'.btn-addProduct-mnila',function(){
 
 			var cont = $('#table-AddProduct-mnla .containers-prod-addProduct-mnila option:selected').val();
 			var prod = $('#table-AddProduct-mnla .prodname-addProduct-mnila option:selected').val();
