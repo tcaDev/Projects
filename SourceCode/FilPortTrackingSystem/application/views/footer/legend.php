@@ -3,7 +3,7 @@
 			<div style="overflow-x:auto;">
 				<div class="container-fluid">
 					<div class="row">
-						<table style="font-size: 83%;">
+						<table>
 							<?php
 								foreach ($status as $row) {
 								$status = $row->IsBackground;
