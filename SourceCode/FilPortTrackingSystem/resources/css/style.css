@@ -40,15 +40,15 @@ th{
 }
 
 .jobfile-cont{
-    width: 80%;
     height: 635px;
 }
 
 .legends{
     position: absolute;
-    top: 200px;
-    left: 80%;
+    top: 75%;
+    /* left: 80%; */
     margin-right: 10px;
+    width: 98%;
 }
 
 
@@ -154,12 +154,12 @@ th{
 .cont-ship{
 
     position: absolute;
-    top: 17%;
+    top: 20%;
     left: 4%;
     width: 25%;
-    height: 70%;
+    height: 20%;
     border: 1px solid #0166bc;
-    background-color: rgba(0, 140, 221, 0.4);
+    background-color: rgba(0, 140, 221, 1);
     overflow: auto;
     overflow-x: hidden;
 }
