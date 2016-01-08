@@ -105,9 +105,9 @@
 									  <input type="text" class="form-control input-sm registry-update" name="registry" id="registry">
 									</div>
 
-									<div class="form-group ">
+									<div class="form-group origin-update">
 										<label>Origin Country</label><i style="color:red;">*</i>
-											<select  class="form-control origin-update" name="countries">
+											<select  class="form-control" name="countries">
 												<?php foreach($countries as $row){ ?>
 												 <option value="<?php echo $row->CountryId?>">
 												 <?php echo $row->CountryName;?>

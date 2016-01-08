@@ -788,20 +788,10 @@ $(".btn-Vessel").click(function(){
 						  		}
 							})
 					  		.done(function(data) {
-					  			alert(data);
 						  			$(".origin-update select").val(data);
 							});
 
-							$.ajax({
-						  		method: "POST",
-								  url: "<?php echo base_url('Job/get_country_name');?>",
-						  		data: { jobfile:jobfileNo
-						  		}
-							})
-					  		.done(function(data) {
-					  				
-						  			$(".origcity-update").val(data);
-							});
+							
 
 
 			     var color_stages  = $(this).closest('tr').children('td:eq(3)').text();
@@ -861,7 +851,15 @@ $(".btn-Vessel").click(function(){
 				    return this.text == color_selectivity; 
 				}).attr('selected', 'selected');
 
-
+			      $.ajax({
+						  		method: "POST",
+								  url: "<?php echo base_url('Job/get_country_name');?>",
+						  		data: { jobfile:jobfileNo
+						  		}
+							})
+					  		.done(function(data) {
+						  			$(".origcity-update").val(data);
+							});
 			     
 
 			 }); 
