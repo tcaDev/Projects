@@ -20,6 +20,8 @@ class Search extends CI_Controller {
 			$searchme= $data['result'];
 		}
 
+		
+
 function message(){
 
 //for message popup when update  adding data is success/failed start			      		
@@ -212,9 +214,6 @@ if(isset($_SESSION['success'])){
 
    	$cons=$this->input->post('cons');
    	$info = $this->User->shippercons($cons);
-
-   	
-   	
    	    echo '	    <div class="mycontent" >  	
    	    			<div class="modal-dialog">
 				      <!-- Modal content-->

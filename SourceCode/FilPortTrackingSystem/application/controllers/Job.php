@@ -316,7 +316,7 @@ class Job extends CI_Controller {
      
             
     if($vessels==NULL){
-          echo    '<center><span style="color:red">No Vessels Yet </span></center>';
+     echo    '<center><span style="color:red">No Vessels Yet </span></center>';
     }else{
          echo "<div style='width:100%; overflow-x:auto;'> 
               <table class='table-bordered table table-striped table-hover table-condensed' '>
@@ -386,8 +386,45 @@ class Job extends CI_Controller {
          echo "</table>
               </div>";
     }
+   }
 
+   function global_get_products(){
+      $products =  $this->input->post('id');   
+      $product  = $this->Jobdata->get_goods($products);
+            
+    if($product==NULL){
+         echo    '<center><span style="color:red">No Commodities Yet </span></center>';
+    }else{
+         echo "<table id='tbl-commodities' class='table table-striped tableOverFlow'>
+              <tr>
+                   <th>No.</th>
+                   <th>Commodity</th>
+                   <th>Container No.</th>
+              </tr>";
+
+          $i=0;
+         foreach($product as $row){
+          $i++;
+          if($i==1){
+             if($row->ProductName==''){
+                echo "</table>";
+                echo    '<center><span style="color:red">No Goods Yet </span></center>';
+                break;
+              }
+          }else{
+              if($row->ProductName==''){
+                break;
+              }
+          }
+             echo "<tr>";
+             echo "<td class='loadReports tdOverFlow'>".$i." </td>";
+             echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
+             echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
+             echo "</tr>";
+         }
+         echo "</table>";
     }
+   }
 
     function get_goods(){
       $products =  $this->input->post('id');   
@@ -433,12 +470,11 @@ class Job extends CI_Controller {
               </div>";
     }
 
-
-
     }
 
 
   function status_report(){
+                          
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
@@ -464,8 +500,40 @@ class Job extends CI_Controller {
             ";
       }
        echo "</table>";
-
    }
+
+   function global_status_report(){
+    $status    =  $this->input->post('id');   
+    $charges   = $this->Jobdata->get_status($status);
+      echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
+              <tr>
+                    <th>No.</th>
+                    <th>Status Description</th>
+              </tr>";
+      $i=0;
+      foreach ($charges as $row) {
+        $i++;
+       $description = $row->StatusDescription;
+      /* $nDesc =  str_replace("\\n","<br>",$description);
+       $dispDesc = stripslashes($nDesc);*/
+       echo " <tr>
+                 <td class='loadReports tdOverFlow' id='loadReports'>".$i."</td>
+                 <td class='loadReports tdOverFlow' id='loadReports'>". $description ."</td>
+              </tr>
+            ";
+      }
+       echo "</table>";
+   }
+
+   function get_legend_desc(){
+      $color_legend = $this->input->post('colors');
+              $data = $this->Jobdata->get_legend_description($color_legend);
+      $desc = "";
+      foreach ($data as $row){
+        $desc = stripslashes($row->Description);       
+      }
+      echo $desc;
+    }
 
   function get_containers(){
    $containers =  $this->input->post('id'); 

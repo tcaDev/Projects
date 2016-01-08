@@ -593,6 +593,11 @@ function get_jobfile_manila(){
     return $query->result();
   }
 
+  function get_jobfile_manila_global(){
+    $query = $this->db->query("select * from vw_JobFile");
+    return $query->result();
+  }
+
  /* function get_jobfile_outport(){
     $query = $this->db->query("select * from vw_MLAJobFile where MonitoringTypeId = 2");
     return $query->result();

@@ -398,7 +398,7 @@ class Login_user extends CI_Controller {
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
 
-		    $data['manila'] = $this->User->get_jobfile_manila();
+		    $data['manila'] = $this->User->get_jobfile_manila_global();
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('global/global_page' , $data);

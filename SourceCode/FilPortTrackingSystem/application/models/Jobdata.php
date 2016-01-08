@@ -12,7 +12,10 @@ Class Jobdata extends CI_Model
 	return $query->result();
 
 	}
-
+ function get_legend_description($color){
+   $query = $this->db->query("select Description from Status WHERE StatusName='$color' LIMIT 1");
+   return $query->result();
+ }
 	//get the last inserted id
 function getLastInserted($table, $id) {
 	$this->db->select_max($id);
