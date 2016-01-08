@@ -679,6 +679,8 @@ function ins_contains(add_comodity){
 				         	pul_out_port    = $tds.eq(18).text();  
 				         	dt_file_entry_boc = $tds.eq(19).text(); 
 				         	dtboc             = $tds.eq(20).text();
+
+				         	alert(trucker_id);
   	
 			$.ajax({
 			  		method: "POST",

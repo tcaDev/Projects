@@ -23,7 +23,7 @@
 
   			<div class="form-group">
 				<label>Container Number</label>	
-				<span class="check_exists_container"></span>				     
+				<div class="check_exists_container"> </div>				     
 	        	<input type="text" class="container-addContainer-manila form-control input-sm" onkeyup="check_Container_mnilas(this.value)"> 
 	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
 			</div>
@@ -153,6 +153,7 @@
 		      	<th>Container Size</th>      	
 		        <th>Number of Cartons</th>
 		        <th>Trucker Plate No.</th>
+		        <th class="hidden">Value Truck</th>
 		        <th>Trucker Name</th>
 		        <th>Referrence Entry Number</th>
 		        <th>Start of Demurrage </th>
@@ -233,15 +234,10 @@
 			{	
 				$('.container-msg-addContainer-manila').text("Container Number Already Exists.");
 			}
-			else if($('#table-AddContainer-mnla .check_exists_container i').text() == "Already exists")
-			{
-				$('.container-msg-addContainer-manila').text("Place another Container Number.");
-			}
 			else if($('#table-AddContainer-mnla .container-addContainer-manila').val() == "")
 			{
 				$('.container-msg-addContainer-manila').text("Need Container Number.");
 			}
-			
 			else{
 
 	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
@@ -252,7 +248,7 @@
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(4)').html($(".container-size-addContainer-manila").val());
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(5)').html($(".cartons-addContainer-manila").val());
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(6)').html($(".plate-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname-addContainer-manila").val()).hide();
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname-addContainer-manila option:selected").val()).hide();
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(8)').html($(".truckname-addContainer-manila option:selected").text());
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(9)').html($(".ref_entry_no-addContainer-manila").val());
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(10)').html($(".demorage-addContainer-manila").val()); 
@@ -273,9 +269,6 @@
 	        $('.container-msg-addContainer-manila').text('');
 
 			$('.tableContainer-msg-addContainer-manila').text("");
-
-			$("#table-AddContainer-mnla .truckname-addContainer-manila option:eq(0)").attr("selected","selected");
-			$("#table-AddContainer-mnla .vessel-addContainer-manila option:eq(0)").attr("selected","selected");
 
 			$('#table-AddContainer-mnla .container-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .container-size-addContainer-manila').val('');
@@ -343,8 +336,8 @@ function check_Container_mnilas(container){
 				            consize 	   	= $tds.eq(3).text();
 				          	cartons_no  	= $tds.eq(4).text(); 
 				        	trucker_plate   = $tds.eq(5).text(); 
-				            trucker_name   	= $tds.eq(6).text();
-				            trucker_id   	= $tds.eq(7).text();
+				            trucker_name   	= $tds.eq(7).text();
+				            trucker_id   	= $tds.eq(6).text();
 				            ref_entry_no    = $tds.eq(8).text();
 				          	start_demorage  = $tds.eq(9).text(); 
 				            start_storage 	= $tds.eq(10).text();
@@ -360,7 +353,7 @@ function check_Container_mnilas(container){
 				         	dt_file_entry_boc = $tds.eq(20).text(); 
 				         	dtboc             = $tds.eq(21).text();
 
-				        						
+				        alert(trucker_id);  						
 		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
@@ -387,6 +380,8 @@ function check_Container_mnilas(container){
 			  			    dtboc		   :dtboc,
 			  			    tdt            :tdt,
 			  			    pul_out_port   :pul_out_port
+
+
 			  		
 			  		}
 				})
