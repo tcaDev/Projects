@@ -31,7 +31,7 @@
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-1-1" role="dialog">
+					  <div class="modal fade" id="myModal-1-1" data-backdrop="static" data-keyboard="false" role="dialog">
 
 					    <div class="modal-dialog">
 
@@ -59,7 +59,7 @@
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-1-2" role="dialog">
+					  <div class="modal fade" id="myModal-1-2" data-backdrop="static" data-keyboard="false" role="dialog">
 
 					    <div class="modal-dialog">
 
@@ -119,6 +119,7 @@
 
 								          <th >Origin</th>  
 
+								          	<th> value date received Arrival notice</th>
 								          <th >Date Received Arrival Notice from Client/s</th>
 
 								          <th >Date Pick-up/Received O-BL</th>
@@ -150,6 +151,12 @@
 									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
 									        }
 
+									        if($row->DateReceivedNoticeFromClients == "0000-00-00"){
+								                $DateReceivedNoticeFromClients = $row->DateReceivedNoticeFromClients;
+								             }else{
+								                 $DateReceivedNoticeFromClients = strftime('%Y-%m-%d', strtotime($row->DateReceivedNoticeFromClients));
+								             }
+
 				        				?>
 				            <tr>
 								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
@@ -179,6 +186,7 @@
 									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
+								           	<td><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
@@ -208,7 +216,7 @@
 				<!--pop up for viewvessels start -->
 			<div class="container">
 				  <!-- Modal -->
-				  <div class="modal fade" id="viewvessels" role="dialog">
+				  <div class="modal fade" id="viewvessels" data-backdrop="static" data-keyboard="false" role="dialog">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -235,7 +243,7 @@
 		<!--pop up for goods start -->
 			<div class="container">
 				  <!-- Modal -->
-				  <div class="modal fade" id="viewgoods" role="dialog">
+				  <div class="modal fade" id="viewgoods"  data-backdrop="static" data-keyboard="false"role="dialog">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -262,7 +270,7 @@
 				<!--pop up for Status Report -->
 			<div class="container">
 				  <!-- Modal -->
-				  <div class="modal fade" id="statrepo" role="dialog">
+				  <div class="modal fade" id="statrepo" data-backdrop="static" data-keyboard="false" role="dialog">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -288,7 +296,7 @@
 		<!--pop up for containers start -->
 			<div class="container">
 				  <!-- Modal -->
-				  <div class="modal fade" id="viewcontainers" role="dialog">
+				  <div class="modal fade" id="viewcontainers" data-backdrop="static" data-keyboard="false" role="dialog">
 				    <div class="modal-dialog" style="width: 65%;">
 				    
 				      <!-- Modal content-->
@@ -316,7 +324,7 @@
 			<!--pop up for Running Charges start -->
 			<div class="container">
 				  <!-- Modal -->
-				  <div class="modal fade" id="runchar" role="dialog">
+				  <div class="modal fade" id="runchar" data-backdrop="static" data-keyboard="false" role="dialog">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -345,7 +353,7 @@
 			<!--Add Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addContainer-mnla" tabindex="-1" data-replace="true">
+				  <div class="modal fade" id="addContainer-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -357,7 +365,7 @@
 				 <!--Add Vessel when Adding New vessel  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addVessel-mnla" tabindex="-1" data-replace="true">
+				  <div class="modal fade" id="addVessel-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
@@ -369,7 +377,7 @@
 				 <!--Add Product when Adding New Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addProduct-mnla" tabindex="-1" data-replace="true" >
+				  <div class="modal fade" id="addProduct-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -381,7 +389,7 @@
 				  <!--Add Product when Adding New Container  -->
 			
 				  <!-- Modal -->
-				  <div class="modal fade" id="addReport-mnla" tabindex="-1" data-replace="true"  style="display: none;">
+				  <div class="modal fade" id="addReport-mnla" tabindex="-1" data-replace="true"  style="display: none;" data-backdrop="static" data-keyboard="false">
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
@@ -395,7 +403,7 @@
 
 			<!--Update Container  -->
 					  <!-- Modal -->
-					  <div class="modal fade" id="updateContainer-mnla" tabindex="-1" data-replace="true">
+					  <div class="modal fade" id="updateContainer-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 					    <div class="modal-dialog" >
 					    
 					      <!-- Modal content-->
@@ -406,7 +414,7 @@
 
 			<!--Update product  -->
 					  <!-- Modal -->
-					  <div class="modal fade" id="updateProduct-mnla" tabindex="-1" data-replace="true">
+					  <div class="modal fade" id="updateProduct-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 					    <div class="modal-dialog" >
 					    
 					      <!-- Modal content-->
@@ -418,7 +426,7 @@
 
 			<!--Update Vessel  -->
 					  <!-- Modal -->
-					  <div class="modal fade" id="updateVessel-mnla" tabindex="-1" data-replace="true">
+					  <div class="modal fade" id="updateVessel-mnla" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 					    <div class="modal-dialog" >
 					    
 					      <!-- Modal content-->

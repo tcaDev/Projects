@@ -692,9 +692,9 @@ class Job extends CI_Controller {
 /*             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";*/
 /*             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";*/
 /*             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";*/
-                echo "<td class='row'>".stripslashes($StartOfStorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
-                echo "<td class='row '>".stripslashes($Lodging)."</td>";
+                echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
                 echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
