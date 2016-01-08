@@ -240,7 +240,7 @@
 			}
 			else{
 
-	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").val()).hide();
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".vessel-addContainer-manila option:selected").text());
