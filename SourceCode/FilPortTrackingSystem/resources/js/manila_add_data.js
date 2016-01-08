@@ -680,7 +680,7 @@ function ins_contains(add_comodity){
 				         	dt_file_entry_boc = $tds.eq(19).text(); 
 				         	dtboc             = $tds.eq(20).text();
 
-				         	alert(trucker_id);
+				         	/*alert(trucker_id);*/
   	
 			$.ajax({
 			  		method: "POST",
@@ -714,7 +714,7 @@ function ins_contains(add_comodity){
 				 .done(function() {	
 				 	  if(add_comodity==1){
 			           	var container="container";
-			    		 if(c!=ct){
+			    		 if(c<=ct){
 			    		 ins_descriptions(c,ct,container);
 				        }
 			          }		
@@ -779,7 +779,7 @@ function ins_descriptions(c,ct,container){
 			    	          }else{
 			    	          	var message = "New Commodity Added!";
 			    	          }
-			    	         /*  if(c==ct){*/	
+			    	           if(c==ct){	
 			    	             if(c2==ct2){
 			  						  $.alert({
 			  						  	backgroundDismiss: false, 	
@@ -803,7 +803,7 @@ function ins_descriptions(c,ct,container){
 						   			  });
 						   		dia_containers.close();
 						   	   }
-						   	 // }
+						   	  }
 	    		    });
 				 }
 				 //} 	    

@@ -317,14 +317,8 @@ function check_Container_mnilas(container){
 
 
  $(document).on('click','.save_container',function(){
- 				dia_containers = $.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: "Adding New Container(s)",
-				 });
  	
+ 
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
 		    table.find('tr').each(function (count1) {
@@ -353,10 +347,19 @@ function check_Container_mnilas(container){
 				         	dt_file_entry_boc = $tds.eq(20).text(); 
 				         	dtboc             = $tds.eq(21).text();
 
-				        alert(trucker_id);  						
+				      /*  alert(trucker_id); */ 						
 		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
+/*					  beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding container',
+				   			});
+ 					  },*/
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,
@@ -390,11 +393,10 @@ function check_Container_mnilas(container){
 			    	 	  	 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content: 'New container Added!',
+				        		content: 'New container is added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
-				        			dia_containers.close();
-				        			location.reload();
+				        			/*dia.close();*/
 				        	    }
 				   			  }); 
 			    	 	}
