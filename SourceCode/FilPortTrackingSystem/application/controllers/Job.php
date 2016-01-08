@@ -556,9 +556,9 @@ class Job extends CI_Controller {
                     <th>Container No</th>
                     <th>Container Size</th>
                     <th>No Of Cartons</th>
-                    <th class=''>Value storage</th>
+                    <th class='hidden'>Value storage</th>
                     <th>Start Of Storage</th>
-                     <th class=''>Value lodging</th>
+                     <th class='hidden'>Value lodging</th>
                     <th>Lodging</th>
                     <th>Hauler/Trucker</th>
                     <th class='hidden'>Value tdd</th>
