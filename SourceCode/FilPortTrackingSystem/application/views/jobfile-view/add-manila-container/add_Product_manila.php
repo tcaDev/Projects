@@ -165,6 +165,15 @@ function click_vessel(){
 			        	$.ajax({
 					  		method: "POST",
 							url: "<?php echo base_url('Job/comodity');?>",
+				            beforeSend: function() {
+					 	       dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding product',
+				   			   });
+ 					       },
 					  		data: {
 					  				//from comodity tab
 					  			    product_name   :product_name,
@@ -184,6 +193,7 @@ function click_vessel(){
 								        		confirm: function(){
 								        		/*$('.vessel-msg-addVessel-mnilas').empty();*/
 						        		    	$(".remove_tr" ).remove();
+						        		    	dia.close();
 								        	    }
 								   			  });
 								   	   }

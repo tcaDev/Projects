@@ -582,10 +582,18 @@ $(".btn-Goods").click(function(){
 				  				$('.container-addProduct-manila-get').html(data);
 					});
  
+
+ 						//get only the record that is already record
+
+ 						var values = $.map($('.prodname-addProduct-mnila option'), function(e) { return e.value; });
+					// as a comma separated string
+					/*$('#values').text("values are: " + values.join(','));*/
+					var  products = values.join(',');
 /*			    	$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability/commodity_check');?>",
-				  		data: { jbfl:jobfile_mnla
+				  		data: { jbfl:jobfile_mnla,
+				  			    products:products
 				  		}
 					})
 			  		.done(function(data) {

@@ -202,6 +202,15 @@
 						$.ajax({
 					  		method: "POST",
 							  url: "<?php echo base_url('Job/get_update_vessel_container');?>",
+							 beforeSend: function() {
+					 	       dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently updating container',
+				   		    	});
+ 					        },
 					  		data: { jobfile:jobfile_mnla,
 					  		}
 						})

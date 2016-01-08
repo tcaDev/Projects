@@ -350,6 +350,15 @@ function check_Container_mnilas(container){
 		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
+					  beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding container',
+				   			});
+ 					  },
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,
@@ -383,7 +392,8 @@ function check_Container_mnilas(container){
 				        		title: 'Success!',
 				        		content: 'New container is added!',
 				        		confirm: function(){
-				        			$(".remove_tr" ).remove();	
+				        			$(".remove_tr" ).remove();
+				        			dia.close();
 				        	    }
 				   			  }); 
 			    	 	}

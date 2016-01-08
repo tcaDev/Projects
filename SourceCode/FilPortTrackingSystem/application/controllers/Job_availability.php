@@ -19,7 +19,7 @@ class Job_availability extends CI_Controller {
 
 
 
-      if($vessel == ""){
+/*      if($vessel == ""){
         echo  "<i></i>";
       }else if($exist_vessel == 'true' ){
         echo "<i style='color:red;'>Already exists</i>";  
@@ -27,7 +27,7 @@ class Job_availability extends CI_Controller {
       else if($exist_vessel == 'false' ){
          echo "<i style='color:green;'>Available</i>"; 
       }
-      else{
+      else{*/
          $query= $this->db->query("Select * from vw_CarrierByJobFile where JobFileNo ='$jobfile' and VesselVoyageNo='$vessel' limit 1");
             
           if($query->num_rows() == 1){ 
@@ -35,14 +35,22 @@ class Job_availability extends CI_Controller {
           }else{
              echo "<i style='color:green;'>Available</i>"; 
           }
-      }
+
+                   $query= $this->db->query("Select * from vw_CarrierByJobFile where JobFileNo ='$jobfile' and VesselVoyageNo='$vessel' and CarrierName='$exist_vessel' limit 1");
+            
+          if($query->num_rows() == 1){ 
+            echo  "<i style='color:red;'>Carrier and Vessel are Already exists</i>";     
+          }else{
+             /*echo "<i style='color:green;'>Available</i>"; */
+          }
+      //}
    }
 
    function container_manila(){
    	 	  $jobfile = stripslashes($this->input->post('jbfl'));
    	      $container  = stripslashes($this->input->post('containerno'));
 
-   	       $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
+   	       $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
           if($query->num_rows() == 1){ 
             echo  "<i style='color:red;'>Already exists</i>";     
           }else{
@@ -52,28 +60,26 @@ class Job_availability extends CI_Controller {
 
    function commodity_check(){
    	   $jobfile = $this->input->post('jbfl');
+   	   $products = $this->input->post('products');
 
-   	      $query= $this->db->query("Select * from vw_Products where JobFileNo ='$jobfile' and 
-   	      ProductName in ($) limit 1");
-          if($query->num_rows() == 0){ 
-            echo  "<i style='color:red;'>No Products Available</i>";     
-          }else{
-     		$p = $this->Jobdata->get_goods($jobfile);
-     	    $compare_all = $this->Jobdata->all_goods();
-            echo '<select>';
-            $i=0;
+   	   if($products!=''){
+	       $products = explode(',', $products);
+	       $pro =  json_encode($products);
+	       $finals = substr($pro, 1,-1);
+	       echo $replace_single_quotes = str_replace('"',"'",$finals);
+       }else{
+       	$replace_single_quotes='No products';
+       }
+     /*  $res = $this->Jobdata->compare_products($jobfile,$replace_single_quotes);
+*/   
+  /*       $res = $this->eli($replace_single_quotes);
+     	var_dump($res);*/
 
-	               	  foreach ($compare_all as $row_all) {	
-	               	  	if($p_all=$p_jobdata){
-                             	echo "<option value=".stripslashes($row_all->ProductId)."> ".stripslashes($row_all->ProductName)."</option>";
-
-	               	  }
-                   }
-
-             echo '</select>';
-          }
-
-    }
 
 }
-?>
+/*  function eli(){
+  	
+
+  }*/
+}
+?>   

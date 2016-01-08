@@ -89,6 +89,15 @@ $('.save_report').click(function(){
 		           $.ajax({
 			  		    method: "POST",
 			  		    url: "<?php echo base_url('Job/add_report');?>",
+			  		   beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding report',
+				   			});
+ 					    },
 			  	        data: {
 			  			    jbfl           :jbfl,
 			  			    save_report    :save_report,
@@ -102,6 +111,7 @@ $('.save_report').click(function(){
 				        		content: 'New Report is added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
+				        			dia.close();
 				        	    }
 				   			});
 	  					   }

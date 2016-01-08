@@ -1046,7 +1046,7 @@ foreach($job as $row){
 
   //stop inserting data in jobfile to avoid duplication
   $query= $this->db->query("Select * from vw_RunningCharges where
-        JobFileId=100 limit 1");
+        JobFileId='$job' limit 1");
 if($query->num_rows() ==1){
 
 

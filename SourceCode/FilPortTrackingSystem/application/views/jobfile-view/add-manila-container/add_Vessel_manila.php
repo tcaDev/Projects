@@ -183,6 +183,9 @@ function check_vessel_avail(vess){
 					});
    			
 }
+/*$('.carrier-addVessel-mnila').change(function(){
+   var $(".carrier-addVessel-mnila option:selected").text();
+});*/
 
  $(document).on('click', '.save_vessel',function(){
  	var jbfl = $('.jobfile-addVessel-mnla').val();
@@ -205,6 +208,15 @@ function check_vessel_avail(vess){
 		         $.ajax({
 			  		method: "POST",
 					url: link + "/Job/vessel/",
+					  beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding vessel',
+				   			});
+ 					  },
 			  		data: {
 			  			    //from jobfile tab
 			  			    jbfl           :jbfl,
@@ -225,6 +237,7 @@ function check_vessel_avail(vess){
 				        		confirm: function(){
 				        			$('.vessel-msg-addVessel-mnilas').empty();
 				        			$(".remove_tr" ).remove();
+				        			dia.close();
 				        	    }
 				   			});
 	  					   }

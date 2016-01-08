@@ -110,6 +110,15 @@ function get_container_product($container_product){
     return $query->result();
  }
 
+  function compare_products($jobfile,$finals){
+    $query = $this->db->query("select * from Products where
+       ProductName not in ('Kopiko Blanca Hanger 24x10x30G') ");
+/*      if($query->num_rows() ==0){
+            $query = $this->db->query("Select * from Products");
+      } */
+    return $query->result(); 
+ }
+
 
 
 }
