@@ -44,11 +44,11 @@ th{
 }
 
 .legends{
-    position: absolute;
-    top: 75%;
+   /* position: absolute;*/
+    /*top: 75%;*/
     /* left: 80%; */
     margin-right: 10px;
-    width: 98%;
+    width: 100%;
 }
 
 

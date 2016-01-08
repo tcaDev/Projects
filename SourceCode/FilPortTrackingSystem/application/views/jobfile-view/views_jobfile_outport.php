@@ -95,152 +95,307 @@
 
 			<div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
 
-				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:7000px;">
+				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
 				      <thead>
 
-					        <tr style="cursor:w-resize">
+					  		<tr style="cursor:w-resize ;">
 
-					          <th > No. </th>
+								          <th > No. </th>
 
-					          <th > Update </th>
+								          <th > Update </th>
+										 
+								          <th >Jobfile Number</th>
 
-					          <th >Jobfile Number</th>
+								          <th >Color Stages</th>
 
-					          <th >Color Stages</th>
+								          <th> Shipper </th>
+										   
+										  <th >Consignee</th>
 
-					          <th >Shipper</th>
+								          <th >Container No.</th>
 
-					          <th >Consignee</th>
+								          <th >Description of Goods</th>
 
-					          <th >Number of Cartons</th>
+ 										  <th >PI/PO No.</th>
 
-					          <th >Description of Goods</th>
+ 										   <th >House Bill of Lading No.</th>
 
-					          <th >PI / PO No.</th>
+								          <th >Master Bill of Lading No.</th>
 
-					          <th >House Bill of Lading No.</th>
+								          <th >Master Bill of Lading No. 2</th>
 
-					          <th >Master Bill of Lading No.</th>
+								          <th >Letter of Credit No. from Bank</th> 
 
-					          <th >Container No.</th>
+								          <th >Registry</th>
 
-					          <th >Letter of Credit No. from Bank</th>
+								          <th >Vessel/Voyage</th>
 
-					          <th >Registry</th>
+								          <th >Origin</th>  
 
-					          <th>Shipping Line/Carrier</th>
+								          <th class="hidden"> value date received Arrival notice</th>
 
-					          <th >Date Recieved Arrival Notice from Client/s</th>
+								          <th >Date Received Arrival Notice from Client/s</th>
 
-					          <th >Date Pick-up/Recieved O-BL</th>
+								          <th class="hidden"> value date pick up received 0-BL</th>
 
-					          <th >Date Pick-up/Received other Documents</th>
+								          <th >Date Pick-up/Received O-BL</th>
 
-					          <th >Broker</th>
+								          <th class="hidden"> value date pick up other docs</th>
+         								 
+         								  <th >Date Pick-up/Received other Documents</th>
+							   	
+							   		      <th >Broker</th>
 
-					          <th >Date Request Budget to GL</th>
+							   		      <th class="hidden"> value date req budget</th>
 
-					          <th >Reference Due Date</th>
+							   		      <th >Date Request Budget to GL</th>
 
-					          <th >Date Sent Pre-Assess</th>
+							   		      <th class="hidden"> value ref due date</th>
 
-					          <th >Date File Entry to BOC</th>
+										  <th >Reference Due Date</th>
 
-					          <th >Date Sent Final Assess</th>
+										  <th>Color Selectivity</th>
 
-					          <th >Referrence Entry No.</th>
+								          <th >Status Reports</th>
 
-					          <th >Date Paid (Date&Time)</th>
+								          <th >Running Charges</th>
 
-					          <th >Target Delivery Date</th>
-
-					          <th>Actual P-Out Date of Container</th>
-
-					          <th >Actual Date Received Container to  Warehouse</th>
-
-					          <th>Haulers</th>
-
-					          <th >Status Reports</th>
-					   </tr>
+								      </tr>
 				   </thead>
 
 				   <tbody>
+									<?php $i= 0; foreach ($outport as $row) {
+				        					$i++;
 
-				    
+				        					$pick =$row->IsBackground;
+							    			if($pick==0){
+									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+									        }else{
+									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+									        }
+
+									        if($row->DateReceivedNoticeFromClients == "0000-00-00"){
+								                $DateReceivedNoticeFromClients = $row->DateReceivedNoticeFromClients;
+								             }else{
+								                 $DateReceivedNoticeFromClients = strftime('%Y-%m-%d', strtotime($row->DateReceivedNoticeFromClients));
+								             }
+
+								             if($row->DateReceivedOfBL == "0000-00-00"){
+								                $DateReceivedOfBL = $row->DateReceivedOfBL;
+								             }else{
+								                 $DateReceivedOfBL = strftime('%Y-%m-%d', strtotime($row->DateReceivedOfBL));
+								             }
+
+								             if($row->DateReceivedOfOtherDocs == "0000-00-00"){
+								                $DateReceivedOfOtherDocs = $row->DateReceivedOfBL;
+								             }else{
+								                 $DateReceivedOfOtherDocs = strftime('%Y-%m-%d', strtotime($row->DateReceivedOfOtherDocs));
+								             }
+
+								              if($row->DateRequestBudgetToGL == "0000-00-00"){
+								                $DateRequestBudgetToGL = $row->DateRequestBudgetToGL;
+								             }else{
+								                 $DateRequestBudgetToGL = strftime('%Y-%m-%d', strtotime($row->DateRequestBudgetToGL));
+								             }
+
+								              if($row->RFPDueDate == "0000-00-00"){
+								                $RFPDueDate = $row->RFPDueDate;
+								             }else{
+								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
+								             }
+
+
+				        				?>
 				            <tr>
+								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
+								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
+								          <td><?php echo stripslashes($i);?></td>
+								          <td><button type="button" class="btn btn-Update-outport btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+								           <?php echo $pick1 ;?>
+								          <td><?php echo stripslashes($row->ShipperName); ?></td>
+								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
+								          <td>
+								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          		<button type="button" class="btn btn-Add-Container-outport btn-success" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          </td>
+										  <td>
+										  		<button type="button" class="btn btn-Goods-outport btn-info view_goods-outport" data-toggle="modal" data-target="#viewgoods-outport"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+										  		<button type="button" class="btn btn-Add-Product-outport btn-success" data-toggle="modal" data-target="#addProduct-outport"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
+										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
+ 										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
+								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
+								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
+										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
+ 									      <td><?php echo stripslashes($row->Registry); ?></td>
+										  <td>
+									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
+								           <td><?php echo stripslashes($row->Origin); ?></td>
+								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
+								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfBL) ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
+								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfOtherDocs) ?></td>
+								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
+ 										  <td><?php echo stripslashes($row->Broker); ?></td>
+ 										  	<td class="hidden"><?php echo stripcslashes($DateRequestBudgetToGL) ?></td>
+								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
+								           	<td class="hidden"><?php echo stripcslashes($RFPDueDate) ?></td>
+								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
+								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
+								          <td>
+								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          		<button type="button" class="btn btn-Add-Report-outport btn-success" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          </td>
+								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								        </tr>
 
-								         
-					          <td></td>
-
-					          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg"></span></button></td>
-
-					          <td><button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
-
-					          <td></td>
-					          
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-					        
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td></td>
-
-					          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
-					      
-					        </tr>
-
-					  
-				    </tbody>
-
+								        <?php } ?>
+				        </tbody>
 				  </table>
 
 			  </div>
 
 		  	</div>
 		 </div>
+
+
+<!--pop up for viewvessels start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewvessels-outport" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content" style="width:180%;right:40%;padding: 10px; ">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Vessels</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_vessels"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update_vessel hidden">
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+		<!--pop up for goods start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewgoods-outport"  data-backdrop="static" data-keyboard="false"role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Commodity</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_products"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update_product hidden">
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+				<!--pop up for Status Report -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="statrepo-outport" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Status Report</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_status"> </div>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>	
+
+
+		<!--pop up for containers start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewcontainers-outport" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog" style="width: 65%;">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Containers</h4>
+				        </div>
+				        <div class="modal-body">
+				        	<div style='overflow-x:auto;'>	
+				            	<div class="list_conts"> </div>
+				            </div>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update hidden">
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+			<!--pop up for Running Charges start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="runchar-outport" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Running Charges</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_charges"> </div>
+
+				        </div>
+				        <div class="footer-modal">
+				        <hr>
+				        	<button type="button " class="btn btn-danger ">Save</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>

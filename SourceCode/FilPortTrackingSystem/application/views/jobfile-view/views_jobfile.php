@@ -42,16 +42,20 @@
 		  	</div>
 		</div>
 
+		<hr>
+
 		<!-- Legend -->
 
-			<div class=" legends">
+			<div class="legends">
 
 				<?php $this->load->view('footer/legend'); ?>
 
 			</div>
 
 			<!-- End Legend -->
+
 		<hr>
+		
 </div>
 
 

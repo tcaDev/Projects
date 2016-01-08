@@ -1,23 +1,41 @@
   <fieldset >
     <legend align="left">Legend For Color Stages:</legend>
-			<div style="overflow-x:auto;">
+			<div class="legend-body-font" style="overflow-x:auto;font-size: 100%;line-height: 1.6875;">
 				<div class="container-fluid">
 					<div class="row">
-						<table>
+						<div class="col-lg-12 col-md-12 col-sm-12">
+								
 							<?php
 							foreach ($status as $row) {
 							$status = $row->IsBackground;
 						    if($status==0){	?>
-							<tr>
-							<td  colspan="4" style="color: <?php echo $row->ColorCode; ?>;border: 2px solid #fff;"><?php echo $row->StatusName; ?></td>
-							<?php }else{?>
-							<td  colspan="4" style="background-color: <?php echo $row->ColorCode; ?>;border: 2px solid #fff;"><?php echo $row->StatusName; ?></td>
-							<?php }?>
-								<td style="padding-left:5px; text-align: left;border: 1px solid #fff;"><?php echo $row->Description; ?></td>
-							</tr>
+							    <div>
+							    	<div class="col-lg-1 col-md-1 col-sm-1" style="color:<?php echo $row->ColorCode; ?>;">
+										<span><?php echo $row->StatusName; ?></span>
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-5 " >
+										<p><?php echo $row->Description; ?></p>
+									</div>
+							    </div>
+									
+									<?php }else{?>
+								<div>
+									<div class="col-lg-1 col-md-1 col-sm-1" style="background-color: <?php echo $row->ColorCode; ?>;">
+										<span><?php echo $row->StatusName; ?></span>
+									</div>
+
+									<div class="col-lg-5 col-md-5 col-sm-5 " >
+										<p><?php echo $row->Description; ?></p>
+									</div>	
+								</div>
+																	
+								<?php }?>
+									
 							<?php } ?>
-						</table>
+						
+						</div>
 					</div>
 				</div>
 			</div>
   </fieldset>
+

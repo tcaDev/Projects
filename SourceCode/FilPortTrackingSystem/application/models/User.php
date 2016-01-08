@@ -589,12 +589,12 @@ function get_products(){
   }
 
 function get_jobfile_manila(){
-    $query = $this->db->query("select * from vw_JobFile limit 10");
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='1' limit 10");
     return $query->result();
   }
 
-  function jobfile_manila($jobfile){
-    $query = $this->db->query("select * from JobFile where JobFileNo = '$jobfile' limit 1");
+function get_jobfile_outport(){
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='2' limit 10");
     return $query->result();
   }
 
