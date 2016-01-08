@@ -566,8 +566,11 @@ function insert_jobfile(){
 
 
 
+
  }
+
  function insert_vessels(){
+
  				dia_vessels =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
@@ -673,7 +676,7 @@ function ins_contains(add_comodity){
 				         	pul_out_port    = $tds.eq(18).text();  
 				         	dt_file_entry_boc = $tds.eq(19).text(); 
 				         	dtboc             = $tds.eq(20).text();
-
+  	
 			$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
@@ -706,7 +709,7 @@ function ins_contains(add_comodity){
 				 .done(function() {	
 				 	  if(add_comodity==1){
 			           	var container="container";
-			    		 if(c<=ct){
+			    		 if(c!=ct){
 			    		 ins_descriptions(c,ct,container);
 				        }
 			          }		
@@ -746,7 +749,7 @@ function ins_descriptions(c,ct,container){
  				table.find('tr').each(function (count1) {		 			  
   				var c2 = count1+1;
  
- 				if(c<=ct){	
+ 	/*			if(c<=ct){	*/
    				if(c2<=ct2){
 				          var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
@@ -771,7 +774,7 @@ function ins_descriptions(c,ct,container){
 			    	          }else{
 			    	          	var message = "New Commodity Added!";
 			    	          }
-			    	           if(c==ct){	
+			    	         /*  if(c==ct){*/	
 			    	             if(c2==ct2){
 			  						  $.alert({
 			  						  	backgroundDismiss: false, 	
@@ -795,9 +798,10 @@ function ins_descriptions(c,ct,container){
 						   			  });
 						   		dia_containers.close();
 						   	   }
-						   	  }
+						   	 // }
 	    		    });
-				 }} 	    
+				 }
+				 //} 	    
 				});
 
 

@@ -268,7 +268,7 @@
 					  	<div class="col-lg-6">
 					  	   	<div class="form-group">
 								<label>Vessel/Voyage #</label>
-								<select class="vessel_voyage form-control input-sm"> 
+								<select class="vessel_voyage form-control input-sm "> 
 								</select>
 							</div>
 
@@ -440,8 +440,8 @@
 						
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>Vessel/Voyage #</label> 
-								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
+								<label>Vessel/Voyage #</label><span class="first-vessel-msg-addVessel-mnilas"></span> 
+								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel"> <!-- onkeyup="check_vessel_avail_first(this.value)" -->
 								<i class="vessel-msg" style="color:red;"></i>
 							</div>
 

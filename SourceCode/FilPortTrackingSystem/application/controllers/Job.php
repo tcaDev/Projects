@@ -925,6 +925,8 @@ foreach($result as $row){
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
    }
 
+  
+
       $data = array(
                'ContainerNo'             => $container,
                'ContainerSize'           => $consize,

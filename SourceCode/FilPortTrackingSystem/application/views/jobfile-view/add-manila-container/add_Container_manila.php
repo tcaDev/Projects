@@ -325,28 +325,28 @@ function check_Container_mnilas(container){
 
 				        var $tds = $(this).find('td'),
 				            vessel_voyage 	= $tds.eq(0).text(),
-				         	containerId 	= $tds.eq(1).text(),
-				            consize 	   	= $tds.eq(2).text();
-				          	cartons_no  	= $tds.eq(3).text(); 
-				        	trucker_plate   = $tds.eq(4).text(); 
-				            trucker_name   	= $tds.eq(5).text();
-				            trucker_id   	= $tds.eq(6).text();
-				            ref_entry_no    = $tds.eq(7).text();
-				          	start_demorage  = $tds.eq(8).text(); 
-				            start_storage 	= $tds.eq(9).text();
-				            dt_paid		    = $tds.eq(10).text();
-				            lodging    	    = $tds.eq(11).text();
-				            dt_pre_assess   = $tds.eq(12).text(); 
-				        	dt_final_assess = $tds.eq(13).text(); 
-				        	gip  		   	= $tds.eq(14).text();
-				         	gop  		   	= $tds.eq(15).text(); 
-				         	adw             = $tds.eq(16).text(); 
-				         	tdt    		    = $tds.eq(17).text(); 
-				         	pul_out_port    = $tds.eq(18).text();  
-				         	dt_file_entry_boc = $tds.eq(19).text(); 
-				         	dtboc             = $tds.eq(20).text();
+				         	containerId 	= $tds.eq(2).text(),
+				            consize 	   	= $tds.eq(3).text();
+				          	cartons_no  	= $tds.eq(4).text(); 
+				        	trucker_plate   = $tds.eq(5).text(); 
+				            trucker_name   	= $tds.eq(6).text();
+				            trucker_id   	= $tds.eq(7).text();
+				            ref_entry_no    = $tds.eq(8).text();
+				          	start_demorage  = $tds.eq(9).text(); 
+				            start_storage 	= $tds.eq(10).text();
+				            dt_paid		    = $tds.eq(11).text();
+				            lodging    	    = $tds.eq(12).text();
+				            dt_pre_assess   = $tds.eq(13).text(); 
+				        	dt_final_assess = $tds.eq(14).text(); 
+				        	gip  		   	= $tds.eq(15).text();
+				         	gop  		   	= $tds.eq(16).text(); 
+				         	adw             = $tds.eq(17).text(); 
+				         	tdt    		    = $tds.eq(18).text(); 
+				         	pul_out_port    = $tds.eq(19).text();  
+				         	dt_file_entry_boc = $tds.eq(20).text(); 
+				         	dtboc             = $tds.eq(21).text();
 
-
+				      						
 		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
