@@ -197,7 +197,7 @@ function check_vessel_avail(vess){
 				 	  	    closeIcon: false,
 			        		title: 'Please wait!',
 			        		backgroundDismiss: false,
-			        		content: 'Currently Adding vessel',
+			        		content: 'Currently Adding Vessel',
 			   			});
 
  	var jbfl = $('.jobfile-addVessel-mnla').val();
@@ -236,11 +236,12 @@ function check_vessel_avail(vess){
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
-				        		content: 'New Vessel is added!',
+				        		content: 'New Vessel Added!',
 				        		confirm: function(){
 				        			$('.vessel-msg-addVessel-mnilas').empty();
 				        			$(".remove_tr" ).remove();
 				        			dia.close();
+				        			location.reload();
 				        	    }
 				   			});
 	  					   }

@@ -505,7 +505,8 @@ class Job extends CI_Controller {
    function global_status_report(){
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
-      echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
+    if(count($charges)){
+       echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
               <tr>
                     <th>No.</th>
                     <th>Status Description</th>
@@ -514,8 +515,6 @@ class Job extends CI_Controller {
       foreach ($charges as $row) {
         $i++;
        $description = $row->StatusDescription;
-      /* $nDesc =  str_replace("\\n","<br>",$description);
-       $dispDesc = stripslashes($nDesc);*/
        echo " <tr>
                  <td class='loadReports tdOverFlow' id='loadReports'>".$i."</td>
                  <td class='loadReports tdOverFlow' id='loadReports'>". $description ."</td>
@@ -523,6 +522,10 @@ class Job extends CI_Controller {
             ";
       }
        echo "</table>";
+    }else{
+      echo '<center><span style="color:red">No Record of Status Report </span></center>';
+    }
+     
    }
 
    function get_legend_desc(){

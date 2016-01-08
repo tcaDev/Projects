@@ -76,12 +76,12 @@ $(document).on('click','.btn-addReport-mnila',function(){
 <script>
 $('.save_reports').click(function(){
 
-					 	  dias =	$.dialog({
+					 	  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,
-				        		content: 'Currently Adding report',
+				        		content: 'Currently Adding Report',
 				   			});
  			
 
@@ -103,15 +103,15 @@ $('.save_reports').click(function(){
 			  	    	}
 			    	})
 			        .done(function(data) {
-			        	dias.close();
 			    	       if(t4==c4){
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
-				        		content: 'New Report is added!',
+				        		content: 'New Report Added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
-				        			
+				        			dia.close();
+				        			location.reload();
 				        	    }
 				   			});
 	  					   }

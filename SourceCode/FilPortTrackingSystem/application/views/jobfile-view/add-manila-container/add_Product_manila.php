@@ -156,7 +156,7 @@ function click_vessel(){
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,
-				        		content: 'Currently Adding product',
+				        		content: 'Currently Adding Commodity',
 				   			});
 
 					    	   var table = $("#table-AddProduct-mnla table tbody");
@@ -188,16 +188,16 @@ function click_vessel(){
 					  		}
 						})
 					    .done(function(data) {
-
 					    	             if(c2==ct2){
 					  						  $.alert({
 					  						  	backgroundDismiss: false, 	
 								        		title: 'Success!',
-								        		content: 'New Commodity is added!',
+								        		content: 'New Commodity Added!',
 								        		confirm: function(){
 								        
 						        		    	$(".remove_tr" ).remove();
 						        		    	dia.close();
+						        		    	location.reload();
 								        	    }
 								   			  });
 								   	   }
