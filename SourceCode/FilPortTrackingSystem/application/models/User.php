@@ -593,6 +593,11 @@ function get_jobfile_manila(){
     return $query->result();
   }
 
+  function jobfile_manila($jobfile){
+    $query = $this->db->query("select * from JobFile where JobFileNo = '$jobfile' limit 1");
+    return $query->result();
+  }
+
   function get_jobfile_manila_global(){
     $query = $this->db->query("select * from vw_JobFile");
     return $query->result();

@@ -86,6 +86,7 @@ function get_vessels($JobFile){
     return $query->result();
  }
 
+
  
 
 function comodity($comodity){
@@ -105,6 +106,11 @@ function get_container_product($container_product){
             where JobFileNo='$container_product' ");
     return $query->result();
 }
+
+function get_countryID_manila($jobfile){
+    $query = $this->db->query("Select Origin_CountryId,OriginCity from JobFile where JobFileNo ='$jobfile'");
+    return $query->result();
+  }
 
  function all_goods(){
     $this->  db ->select('*');

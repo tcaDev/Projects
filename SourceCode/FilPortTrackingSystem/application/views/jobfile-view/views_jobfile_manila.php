@@ -119,16 +119,25 @@
 
 								          <th >Origin</th>  
 
-								          	<th> value date received Arrival notice</th>
+								          <th class="hidden"> value date received Arrival notice</th>
+
 								          <th >Date Received Arrival Notice from Client/s</th>
 
+								          <th class="hidden"> value date pick up received 0-BL</th>
+
 								          <th >Date Pick-up/Received O-BL</th>
+
+								          <th class="hidden"> value date pick up other docs</th>
          								 
          								  <th >Date Pick-up/Received other Documents</th>
 							   	
 							   		      <th >Broker</th>
 
+							   		      <th class="hidden"> value date req budget</th>
+
 							   		      <th >Date Request Budget to GL</th>
+
+							   		      <th class="hidden"> value ref due date</th>
 
 										  <th >Reference Due Date</th>
 
@@ -156,6 +165,31 @@
 								             }else{
 								                 $DateReceivedNoticeFromClients = strftime('%Y-%m-%d', strtotime($row->DateReceivedNoticeFromClients));
 								             }
+
+								             if($row->DateReceivedOfBL == "0000-00-00"){
+								                $DateReceivedOfBL = $row->DateReceivedOfBL;
+								             }else{
+								                 $DateReceivedOfBL = strftime('%Y-%m-%d', strtotime($row->DateReceivedOfBL));
+								             }
+
+								             if($row->DateReceivedOfOtherDocs == "0000-00-00"){
+								                $DateReceivedOfOtherDocs = $row->DateReceivedOfBL;
+								             }else{
+								                 $DateReceivedOfOtherDocs = strftime('%Y-%m-%d', strtotime($row->DateReceivedOfOtherDocs));
+								             }
+
+								              if($row->DateRequestBudgetToGL == "0000-00-00"){
+								                $DateRequestBudgetToGL = $row->DateRequestBudgetToGL;
+								             }else{
+								                 $DateRequestBudgetToGL = strftime('%Y-%m-%d', strtotime($row->DateRequestBudgetToGL));
+								             }
+
+								              if($row->RFPDueDate == "0000-00-00"){
+								                $RFPDueDate = $row->RFPDueDate;
+								             }else{
+								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
+								             }
+
 
 				        				?>
 				            <tr>
@@ -186,12 +220,16 @@
 									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
-								           	<td><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
+								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
+								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfBL) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
+								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfOtherDocs) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
  										  <td><?php echo stripslashes($row->Broker); ?></td>
+ 										  	<td class="hidden"><?php echo stripcslashes($DateRequestBudgetToGL) ?></td>
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
+								           	<td class="hidden"><?php echo stripcslashes($RFPDueDate) ?></td>
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
@@ -738,53 +776,94 @@ $(".btn-Vessel").click(function(){
 		$("th").css("vertical-align","middle");
 
 
-	 $('.btn-Update').click(function(){
-			     var jobfileid      = $(this).closest('tr').children('td:eq(4)').text();
-			     var ShipperName    = $(this).closest('tr').children('td:eq(5)').text();
-			     var ConsigneeName  = $(this).closest('tr').children('td:eq(6)').text();
-			     var NoOfCartons    = $(this).closest('tr').children('td:eq(7)').text();
-   				 var ContainerSize  = $(this).closest('tr').children('td:eq(8)').text();
-			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(10)').text();
+	 $(document).on('click','.btn-Update',function(){
+
+
+			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
+
+					      $.ajax({
+						  		method: "POST",
+								  url: "<?php echo base_url('Job/get_country');?>",
+						  		data: { jobfile:jobfileNo
+						  		}
+							})
+					  		.done(function(data) {
+					  			alert(data);
+						  			$(".origin-update select").val(data);
+							});
+
+							$.ajax({
+						  		method: "POST",
+								  url: "<?php echo base_url('Job/get_country_name');?>",
+						  		data: { jobfile:jobfileNo
+						  		}
+							})
+					  		.done(function(data) {
+					  				
+						  			$(".origcity-update").val(data);
+							});
+
+
+			     var color_stages  = $(this).closest('tr').children('td:eq(3)').text();
+			     var ShipperName    = $(this).closest('tr').children('td:eq(4)').text();
+
+			     var ConsigneeName  = $(this).closest('tr').children('td:eq(5)').text();
+			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(8)').text();
 					
-				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(11)').text();
-			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(12)').text();
-			     var Origin                 = $(this).closest('tr').children('td:eq(14)').text();
-				
-			     var EstDepartureTime      = $(this).closest('tr').children('td:eq(15)').text();
-			     var EstArrivalTime        = $(this).closest('tr').children('td:eq(16)').text();
-			     var ActualArrivalTime     = $(this).closest('tr').children('td:eq(17)').text();
-	
-			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(18)').text();
-			     var StartOfDemorage        = $(this).closest('tr').children('td:eq(19)').text();
-			     var StartOfStorage         = $(this).closest('tr').children('td:eq(20)').text();
-				
-			     var Registry      = $(this).closest('tr').children('td:eq(21)').text();
-			     var VSL_NO        = $(this).closest('tr').children('td:eq(22)').text();
-			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(23)').text();
+				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(9)').text();
+			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(10)').text();
+				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(11)').text();
+			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(12)').text();
 		
+			     var registry   = $(this).closest('tr').children('td:eq(13)').text();
 
-			     DateReceivedOfBL  		  = $(this).closest('tr').children('td:eq(24)').text();
-			     DateReceivedOfOtherDocs  = $(this).closest('tr').children('td:eq(25)').text();
-			     Broker  				  = $(this).closest('tr').children('td:eq(26)').text();
-			     DateRequestBudgetToGL    = $(this).closest('tr').children('td:eq(27)').text();
-			     RFPDueDate 			  = $(this).closest('tr').children('td:eq(28)').text();
-			     DateSentPreAssessment    = $(this).closest('tr').children('td:eq(29)').text();
-			     DateFileEntryToBOC       = $(this).closest('tr').children('td:eq(30)').text();
-			     DateSentFinalAssessment  = $(this).closest('tr').children('td:eq(31)').text();
-			     RefEntryNo 			  = $(this).closest('tr').children('td:eq(32)').text();
+			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(16)').text();
+			     var date_rcvd_bl     = $(this).closest('tr').children('td:eq(18)').text();
+			     var date_rcvd_other_docs    = $(this).closest('tr').children('td:eq(20)').text();
+			     var broker    = $(this).closest('tr').children('td:eq(22)').text();
+			     var date_req_budget    = $(this).closest('tr').children('td:eq(23)').text();
+			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
+			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
 
-			      $('#jbfl').val(jobfileid);
-			    /*  $('#shipper').val(ShipperName);
-			      $('#consignee').val(ConsigneeName);
-			      $('#jbfl').val(NoOfCartons);*/
-			       /*$('#pipo').val(jobfileid);*/  //wala one to many ata to
-			       $('#mbl').val(MasterBillLadingNo);
-			       
+			     $('.jobfiles-update').val(jobfileNo);
 
+			     $(".shipper-update option").filter(function() {
+				    return this.text == ShipperName; 
+				}).attr('selected', 'selected');
 
-			      
+			     $(".consignee-update option").filter(function() {
+				    return this.text == ConsigneeName; 
+				}).attr('selected', 'selected');
+
+			      $(".colsel-update option").filter(function() {
+				    return this.text == color_stages; 
+				}).attr('selected', 'selected');
+
+			      $('.hbl-update').val(HouseBillLadingNo);
+			      $('.mbl-update').val(MasterBillLadingNo);
+			      $('.mbl2-update').val(MasterBillLadingNo2);
+			      $('.bank-update').val(LetterCreditFromBank);
+			      $('.registry-update').val(registry);
+
+			      $('.dtRcvd-update').val(DateReceivedNoticeFromClients);
+			      $('.dt_pickup_obl-update').val(date_rcvd_bl);
+			      $('.dt_pickup_docs-update').val(date_rcvd_other_docs);
+
+			      $(".broker-update option").filter(function() {
+				    return this.text == broker; 
+				}).attr('selected', 'selected');
+
+			      $('.purch_order_no_update').val(PurchaseOrderNo);
+			      $('.dt-req-update').val(date_req_budget);
+			      $('.rfp-update').val(rfpduedate);
+
+			      $(".color-select-update option").filter(function() {
+				    return this.text == color_selectivity; 
+				}).attr('selected', 'selected');
+
 
 			     
+
 			 }); 
 
 

@@ -70,6 +70,29 @@ class Job extends CI_Controller {
     <?php }}
 
 
+
+
+  function get_country(){
+      $jobfile =  $this->input->post('jobfile');
+
+      $country = $this->Jobdata->get_countryID_manila($jobfile);
+        foreach ($country as $row) {
+          echo $row->Origin_CountryId;
+        }
+  
+  }
+
+  function get_country_name(){
+      $jobfile =  $this->input->post('jobfile');
+      
+      $country = $this->Jobdata->get_countryID_manila($jobfile);
+        foreach ($country as $row) {
+          echo $row->OriginCity;
+        }
+  
+  }
+
+
     function check_jobfiless(){
       //$dt = Date("Y/m/d H:i:s");
      $jobfile =  $this->input->post('jobfile');
