@@ -122,17 +122,21 @@ function click_vessel(){
 
 			}
 			else{
+
 				$('#table-AddProduct-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td></tr>');
 				$('#table-AddProduct-mnla table tr:last td:nth-child(1)').html($(".prodname-addProduct-mnila").val()).hide();
 			 	$('#table-AddProduct-mnla table tr:last td:nth-child(2)').html($(".prodname-addProduct-mnila option:selected").text());
 			    $('#table-AddProduct-mnla table tr:last td:nth-child(3)').html($(".containers-prod-addProduct-mnila").val());
-	
+
 			    $('#table-AddProduct-mnla table tr:last td:nth-child(4)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			$('.cont-size-msg-addProduct-mnila').text('');
 			$('.prodname-msg-addProduct-mnila').text('');
 			$('.tableGoods-msg-addProduct-mnila').text("");
 
+
+				$("#table-AddProduct-mnla .prodname-addProduct-mnila option:eq(0)").attr("selected","selected");
+				$("#table-AddProduct-mnla .containers-prod-addProduct-mnila option:eq(0)").attr("selected","selected");
 			}
 				
 

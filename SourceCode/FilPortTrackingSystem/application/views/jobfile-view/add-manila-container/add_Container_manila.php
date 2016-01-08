@@ -23,7 +23,7 @@
 
   			<div class="form-group">
 				<label>Container Number</label>	
-				<div class="check_exists_container"> </div>				     
+				<span class="check_exists_container"></span>				     
 	        	<input type="text" class="container-addContainer-manila form-control input-sm" onkeyup="check_Container_mnilas(this.value)"> 
 	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
 			</div>
@@ -233,10 +233,15 @@
 			{	
 				$('.container-msg-addContainer-manila').text("Container Number Already Exists.");
 			}
+			else if($('#table-AddContainer-mnla .check_exists_container i').text() == "Already exists")
+			{
+				$('.container-msg-addContainer-manila').text("Place another Container Number.");
+			}
 			else if($('#table-AddContainer-mnla .container-addContainer-manila').val() == "")
 			{
 				$('.container-msg-addContainer-manila').text("Need Container Number.");
 			}
+			
 			else{
 
 	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
@@ -268,6 +273,9 @@
 	        $('.container-msg-addContainer-manila').text('');
 
 			$('.tableContainer-msg-addContainer-manila').text("");
+
+			$("#table-AddContainer-mnla .truckname-addContainer-manila option:eq(0)").attr("selected","selected");
+			$("#table-AddContainer-mnla .vessel-addContainer-manila option:eq(0)").attr("selected","selected");
 
 			$('#table-AddContainer-mnla .container-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .container-size-addContainer-manila').val('');

@@ -318,27 +318,68 @@ class Job extends CI_Controller {
     if($vessels==NULL){
           echo    '<center><span style="color:red">No Vessels Yet </span></center>';
     }else{
-         echo "<div style='width:100%; overflow-x:auto; '> 
+         echo "<div style='width:100%; overflow-x:auto;'> 
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
                    <th>Update</th>
                    <th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
-                   <th>Arrival Time</th>
+                   <th class='hidden'>value Actual Arrival Time</th>
+                   <th>Actual Arrival Time</th>
+                   <th class='hidden'>value DischargeTime</th>
                    <th>Discharge Time</th>
+                   <th class='hidden'>value EstDepartureTime</th>
+                   <th>Estimated Departure Time</th>
+                   <th class='hidden'>value EstArrivalTime</th>
+                   <th>Estimated Arrival Time</th>
+                   <th class='hidden'>Value Carrier</th>
               </tr>";
 
           $i=0;
          foreach($vessels as $row){
           $i++;
+
+
+             if($row->ActualArrivalTime == "0000-00-00 00:00:00"){
+                $ActualArrivalTime = $row->ActualArrivalTime;
+             }else{
+                 $ActualArrivalTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ActualArrivalTime));
+             }
+
+             if($row->DischargeTime == "0000-00-00 00:00:00"){
+                $DischargeTime = $row->DischargeTime;
+             }else{
+                 $DischargeTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DischargeTime));
+             }
+
+             if($row->EstDepartureTime == "0000-00-00 00:00:00"){
+                $EstDepartureTime = $row->EstDepartureTime;
+             }else{
+                 $EstDepartureTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstDepartureTime));
+             }
+
+             if($row->EstArrivalTime == "0000-00-00 00:00:00"){
+                $EstArrivalTime = $row->EstArrivalTime;
+             }else{
+                 $EstArrivalTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstArrivalTime));
+             }
+
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-vessel' data-toggle='modal' href='#updateVessel-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
+                echo "<td class='row hidden'>".stripslashes($ActualArrivalTime)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DischargeTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->DischargeTime) ."</td>";
+                echo "<td class='row hidden'>".stripslashes($EstDepartureTime) ."</td>";
+             echo "<td class='row'>".stripslashes($row->EstDepartureTime) ."</td>";
+                echo "<td class='row hidden'>".stripslashes($EstArrivalTime) ."</td>";
+             echo "<td class='row'>".stripslashes($row->EstArrivalTime) ."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->CarrierByJobFileId) ."</td>";
+             
              echo "</tr>";
          }
 

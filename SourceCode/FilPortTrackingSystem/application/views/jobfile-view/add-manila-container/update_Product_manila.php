@@ -52,7 +52,10 @@ $(document).ready(function(){
 	$(document).on('click','.btn-update-product',function(){
 
 		
-		var jobfile_mnla = $(".jobfile-updateProduct-mnla").val();
+		var jobfile_mnla = $(".jobfile_mnila_update_product").val();
+
+		$(".jobfile-updateProduct-mnla").val(jobfile_mnla);
+		
 
 		 var product_value = $(this).closest('tr').children('td:eq(2)').text();
 		 var product= $(this).closest('tr').children('td:eq(3)').text();

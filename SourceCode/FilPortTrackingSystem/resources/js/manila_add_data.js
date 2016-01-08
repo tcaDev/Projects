@@ -296,6 +296,7 @@ var suc;
 			$('.tableContainer-msg').text("");
 
 
+
 			$('#tableAddContainer-mnla .containerss').val('');
 			$('#tableAddContainer-mnla .containerss-size').val('');
 			$('#tableAddContainer-mnla .plate').val('');
@@ -425,6 +426,8 @@ var suc;
 		$('.vessel-msg').text("");
 		$('.carrier-msg').text("");
 		$('.tableVessel-msg').text("");
+
+		$("#tableAddVessel-mnla  .carrier option:eq(0)").attr("selected","selected");
 
 		$('#tableAddVessel-mnla .vessel').val('');
 		$('#tableAddVessel-mnla .edt').val('');

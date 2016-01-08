@@ -121,7 +121,7 @@
 				$('.vessel-msg-addVessel-mnila').text("Place another Vessel.");
 				$('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text("");
 			}
-			else if($('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text() == "Already exists")
+			else if($('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas i').text() == "Already exists")
 			{
 				$('.vessel-msg-addVessel-mnila').text("Place another Vessel");
 			}
@@ -151,6 +151,8 @@
 		$('.carrier-msg-addVessel-mnila').text("");
 		$('.tableVessel-msg-addVessel-mnila').text("");
 		$('#table-AddVessel-mnla .vessel-msg-addVessel-mnilas').text("");
+
+		$("#table-AddVessel-mnla .carrier-addVessel-mnila option:eq(0)").attr("selected","selected");
 
 		$('#table-AddVessel-mnla .vessel-addVessel-mnila').val('');
 		$('#table-AddVessel-mnla .edt-addVessel-mnila').val('');

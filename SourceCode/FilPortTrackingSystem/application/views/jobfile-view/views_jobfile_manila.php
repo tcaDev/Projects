@@ -212,7 +212,7 @@
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
-				      <div class="modal-content">
+				      <div class="modal-content" style="width:180%;right:40%;padding: 10px; ">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Vessels</h4>
@@ -223,6 +223,7 @@
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update_vessel hidden">
 				        </div>
 				      </div>
 				      
@@ -249,6 +250,7 @@
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update_product hidden">
 				        </div>
 				      </div>
 				      
@@ -401,7 +403,7 @@
 					    </div>
 					 </div>
 
-			<!--Update Container  -->
+			<!--Update product  -->
 					  <!-- Modal -->
 					  <div class="modal fade" id="updateProduct-mnla" tabindex="-1" data-replace="true">
 					    <div class="modal-dialog" >
@@ -411,13 +413,35 @@
 					      	
 					    </div>
 					 </div>
+
+
+			<!--Update Vessel  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateVessel-mnla" tabindex="-1" data-replace="true">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-manila-container/update_Vessel_manila'); ?>
+					      	
+					    </div>
+					 </div>
  
 
 
 <script>
 $(document).ready(function(){
 
-/*Remove Data From Modal When Close*/
+/*Refresh Modal When Close*/
+
+	// /*add New jobfile*/
+	//  var myBackup_jobfile = $('#myModal-1-2').clone();
+    
+ //    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+ //    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
+ //        $('#myModal-1-1').modal('hide').remove();
+ //        var myClone_jobfile = myBackup_jobfile.clone();
+ //        $('body').append(myClone_jobfile);
+ //    });
 
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
@@ -447,6 +471,49 @@ $(document).ready(function(){
         $('#addProduct-mnla').modal('hide').remove();
         var myClone_product = myBackup_product.clone();
         $('body').append(myClone_product);
+    });	
+
+    /*add New Report Modal*/
+	 var myBackup_report = $('#addReport-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addReport-mnla',function() {
+        $('#addReport-mnla').modal('hide').remove();
+        var myClone_report = myBackup_report.clone();
+        $('body').append(myClone_report);
+    });
+
+
+/*Update Reset Data Modal*/
+
+    /*Update Container*/
+	 var myBackup_update_container = $('#updateContainer-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#updateContainer-mnla ',function() {
+        $('#updateContainer-mnla').modal('hide').remove();
+        var myClone_update_container = myBackup_update_container.clone();
+        $('body').append(myClone_update_container);
+    });	
+
+    /*Update Product Modal*/
+	 var myBackup_product_update = $('#updateProduct-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#updateProduct-mnla ',function() {
+        $('#updateProduct-mnla').modal('hide').remove();
+        var myClone_product_update = myBackup_product_update.clone();
+        $('body').append(myClone_product_update);
+    });	
+
+     /*Update Vessel Modal*/
+	 var myBackup_vessel_update = $('#updateVessel-mnla').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#updateVessel-mnla ',function() {
+        $('#updateVessel-mnla').modal('hide').remove();
+        var myClone_vessel_update = myBackup_vessel_update.clone();
+        $('body').append(myClone_vessel_update);
     });	
 
 
@@ -540,7 +607,13 @@ $(".btn-Container").click(function(){
 /*Get Jobfile No for Updating Product*/
 $(".btn-Goods").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-		$(".jobfile-updateProduct-mnla").val(jobfile_mnla) ;
+		$(".jobfile_mnila_update_product").val(jobfile_mnla) ;
+});
+
+/*Get Jobfile No for Updating Vessel*/
+$(".btn-Vessel").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+		$(".jobfile_mnila_update_vessel").val(jobfile_mnla) ;
 });
 
 
