@@ -259,6 +259,10 @@ var suc;
 			{	
 				$('.container-msg').text("Container Number Already Exists.");
 			}
+			else if($('#tableAddContainer-mnla .containerss').val() == ""){
+
+				$('.container-msg').text("Need Container Number.");
+			}
 			else{
 
 	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');

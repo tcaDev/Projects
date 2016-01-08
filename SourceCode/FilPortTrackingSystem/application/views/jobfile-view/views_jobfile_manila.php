@@ -331,6 +331,7 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
+				        	<button type="button " class="btn btn-danger ">Save</button>
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
