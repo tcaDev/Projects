@@ -36,7 +36,6 @@ class Job_availability extends CI_Controller {
              echo "<i style='color:green;'>Available</i>"; 
           }
       }
-     
    }
 
    function container_manila(){

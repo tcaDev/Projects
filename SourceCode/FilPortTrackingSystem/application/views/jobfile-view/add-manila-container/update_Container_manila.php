@@ -14,8 +14,11 @@
 	        	<input type="text" class="jobfile-updateContainer-mnla form-control input-sm" disabled>
 			</div>
 
-	  	   <div class="form-group vessel-updateContainer-manila-get">
+	  	   <div class="form-group ">
+	  	   		<label>Vessel/Voyage #</label>
+            	    <select class="vessel-updateContainer-manila-get form-control input-sm">
 
+            	    </select>
 			</div>
 
   			<div class="form-group">
@@ -152,62 +155,63 @@
 
 				$(document).on('click','.btn-update-container',function(){
 
-					var jobfile_mnla =  $('.jobfile_mnila_update').val();
+					 var jobfile_mnla =  $('.jobfile_mnila_update').val();
+					 var vessel = $(this).closest('tr').children('td:eq(2)').text();
+					 var containerNo = $(this).closest('tr').children('td:eq(3)').text();
+					 var containerSize = $(this).closest('tr').children('td:eq(4)').text();
+					 var NoofCartons = $(this).closest('tr').children('td:eq(5)').text();
+					 var startofstorage = $(this).closest('tr').children('td:eq(6)').text();
+					 var lodging = $(this).closest('tr').children('td:eq(8)').text();
+					 var hauler = $(this).closest('tr').children('td:eq(10)').text();
+					 var taget_date = $(this).closest('tr').children('td:eq(11)').text();
+					 var gate_in = $(this).closest('tr').children('td:eq(13)').text();
+					 var gate_out = $(this).closest('tr').children('td:eq(15)').text();
+					 var actual_delivery = $(this).closest('tr').children('td:eq(17)').text();
+					 var startofdemorage = $(this).closest('tr').children('td:eq(19)').text();
+					 var pull_out = $(this).closest('tr').children('td:eq(21)').text();
+					 var date_boc_cleared = $(this).closest('tr').children('td:eq(23)').text();
+					 var date_file_entry = $(this).closest('tr').children('td:eq(25)').text();
+					 var date_pre_assess = $(this).closest('tr').children('td:eq(27)').text();
+					 var date_paid = $(this).closest('tr').children('td:eq(29)').text();
+					 var date_final_assess = $(this).closest('tr').children('td:eq(31)').text();
+					 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
+
+					 $('.container-updateContainer-manila').val(containerNo);
+					 $('.container-size-updateContainer-manila').val(containerSize);
+					 $('.cartons-updateContainer-manila').val(NoofCartons);
+					 $('.truckname-updateContainer-manila').prepend("<option value='' selected>"+hauler+"</option>");
+						/*Not in Database*/$('.plate-updateContainer-manila').val();
+					 $('.ref_entry_no-updateContainer-manila').val(refEntryNo);
+					 $('.dt_paid-updateContainer-manila').val(date_paid);
+					 $('.dt_pre_assess-updateContainer-manila').val(date_pre_assess);
+					 $('.dt_final_assess-updateContainer-manila').val(date_final_assess);
+					 $('.storage-updateContainer-manila').val(startofstorage);
+					 $('.demorage-updateContainer-manila').val(startofdemorage);
+					 $('.lodging-updateContainer-manila').val(lodging);
+					 $('.gtinport-updateContainer-manila').val(gate_in);
+					 $('.gtoutport-updateContainer-manila').val(gate_out);
+					 $('.act-del-whse-updateContainer-manila').val(actual_delivery);
+					 $('.tdt-updateContainer-manila').val(taget_date);
+					 $('.pull_out_port-updateContainer-manila').val(pull_out);
+					 $('.dt_file_entry_boc-updateContainer-manila').val(date_file_entry);
+					 $('.dt_boc-updateContainer-manila').val(date_boc_cleared);
 
 					
 					$(".jobfile-updateContainer-mnla").val(jobfile_mnla);
 
 						$.ajax({
 					  		method: "POST",
-							  url: "<?php echo base_url('Job/get_vessel_container');?>",
+							  url: "<?php echo base_url('Job/get_update_vessel_container');?>",
 					  		data: { jobfile:jobfile_mnla,
 					  		}
 						})
 				  		.done(function(data) {
 					  				$('.vessel-updateContainer-manila-get').html(data);
+					  				$('.vessel-updateContainer-manila-get').prepend("<option value='' selected>"+vessel+"</option>");
 						});
 
 
-				 var vessel = $(this).closest('tr').children('td:eq(2)').text();
-				 var containerNo = $(this).closest('tr').children('td:eq(3)').text();
-				 var containerSize = $(this).closest('tr').children('td:eq(4)').text();
-				 var NoofCartons = $(this).closest('tr').children('td:eq(5)').text();
-				 var startofstorage = $(this).closest('tr').children('td:eq(6)').text();
-				 var lodging = $(this).closest('tr').children('td:eq(8)').text();
-				 var hauler = $(this).closest('tr').children('td:eq(10)').text();
-				 var taget_date = $(this).closest('tr').children('td:eq(11)').text();
-				 var gate_in = $(this).closest('tr').children('td:eq(13)').text();
-				 var gate_out = $(this).closest('tr').children('td:eq(15)').text();
-				 var actual_delivery = $(this).closest('tr').children('td:eq(17)').text();
-				 var startofdemorage = $(this).closest('tr').children('td:eq(19)').text();
-				 var pull_out = $(this).closest('tr').children('td:eq(21)').text();
-				 var date_boc_cleared = $(this).closest('tr').children('td:eq(23)').text();
-				 var date_file_entry = $(this).closest('tr').children('td:eq(25)').text();
-				 var date_pre_assess = $(this).closest('tr').children('td:eq(27)').text();
-				 var date_paid = $(this).closest('tr').children('td:eq(29)').text();
-				 var date_final_assess = $(this).closest('tr').children('td:eq(31)').text();
-				 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
-
-				 $('.vessel-updateContainer-manila-get').prepend("<option value='' selected='selected'>"+vessel+"</option>");
-				 $('.container-updateContainer-manila').val(containerNo);
-				 $('.container-size-updateContainer-manila').val(containerSize);
-				 $('.cartons-updateContainer-manila').val(NoofCartons);
-				 $('.truckname-updateContainer-manila').prepend("<option value='' selected='selected'>"+hauler+"</option>");
-					/*Not in Database*/$('.plate-updateContainer-manila').val();
-				 $('.ref_entry_no-updateContainer-manila').val(refEntryNo);
-				 $('.dt_paid-updateContainer-manila').val(date_paid);
-				 $('.dt_pre_assess-updateContainer-manila').val(date_pre_assess);
-				 $('.dt_final_assess-updateContainer-manila').val(date_final_assess);
-				 $('.storage-updateContainer-manila').val(startofstorage);
-				 $('.demorage-updateContainer-manila').val(startofdemorage);
-				 $('.lodging-updateContainer-manila').val(lodging);
-				 $('.gtinport-updateContainer-manila').val(gate_in);
-				 $('.gtoutport-updateContainer-manila').val(gate_out);
-				 $('.act-del-whse-updateContainer-manila').val(actual_delivery);
-				 $('.tdt-updateContainer-manila').val(taget_date);
-				 $('.pull_out_port-updateContainer-manila').val(pull_out);
-				 $('.dt_file_entry_boc-updateContainer-manila').val(date_file_entry);
-				 $('.dt_boc-updateContainer-manila').val(date_boc_cleared);
+				
 			});
 		});
 

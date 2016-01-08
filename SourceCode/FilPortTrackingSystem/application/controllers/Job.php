@@ -134,6 +134,25 @@ class Job extends CI_Controller {
       }
     }
 
+    /*Get Vessel When Updating Container*/
+    function get_update_vessel_container(){
+      $vessel_mnila =  $this->input->post('jobfile');   
+      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila);
+
+      if($vessel_mnila_container==NULL){
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" onclick="click_containers()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+
+      }else{
+
+         /*echo '<label>Vessel/Voyage #</label>
+                <select class="vessel-addContainer-manila form-control input-sm">';*/
+          foreach ($vessel_mnila_container as $row) {
+              echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
+          }
+     /*    echo '</select>';*/
+      }
+    }
+
 
   /*Get Container When adding New Product*/
     function get_container_product(){
@@ -156,6 +175,29 @@ class Job extends CI_Controller {
           }
          echo '</select>';
          echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
+      }
+    }
+
+  /*Get Container When Updating Product*/
+    function get_updated_container_product(){
+      $container_mnila =  $this->input->post('jobfile');   
+      $container_mnila_product = $this->Jobdata->get_container_product($container_mnila);
+
+      if($container_mnila_product==NULL){
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addContainer-mnla" onclick="click_vessel()"><span class="fa fa-plus fa-fw"></span> Add Container</button>';
+        echo '<input type="text" class="containers-prod-addProduct-mnila hidden form-control input-sm">';
+        echo ' <i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
+      }else{
+
+         /*echo '<label>Container Number</label>
+                <select class="containers-prod-addProduct-mnila form-control input-sm">';*/
+          foreach ($container_mnila_product as $row) {
+              $cont =$row->ContainerNo;
+
+              echo '<option class="remove_option">'.$row->ContainerNo.'</option>';
+          }
+        /* echo '</select>';
+         echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';*/
       }
     }
 
@@ -310,8 +352,6 @@ class Job extends CI_Controller {
       $products =  $this->input->post('id');   
       $product  = $this->Jobdata->get_goods($products);
 
-     
-            
     if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
     }else{
@@ -320,6 +360,7 @@ class Job extends CI_Controller {
               <tr>
                    <th>No.</th>
                    <th>Update</th>
+                   <th class='hidden'>Commodity Id</th>
                    <th>Commodity</th>
                   <th>Container No.</th>
               </tr>";
@@ -340,7 +381,8 @@ class Job extends CI_Controller {
           }
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-product' data-toggle='modal' href='#updateProduct-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
              echo "</tr>";

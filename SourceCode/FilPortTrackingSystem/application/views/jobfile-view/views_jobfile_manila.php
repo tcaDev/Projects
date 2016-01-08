@@ -165,7 +165,7 @@
 								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 										  <td>
-										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Good(s)</button>
+										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
 										  		<button type="button" class="btn btn-Add-Product-mnla btn-success" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
@@ -175,7 +175,7 @@
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
 										  <td>
-									  			<button type="button" class="btn btn-Goods btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
 									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
@@ -241,7 +241,7 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title">List of Products</h4>
+				          <h4 class="modal-title">List of Commodity</h4>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_products"> </div>
@@ -390,13 +390,24 @@
 			
 <!-- Update Modals -->
 
-			<!--Add Container  -->
+			<!--Update Container  -->
 					  <!-- Modal -->
 					  <div class="modal fade" id="updateContainer-mnla" tabindex="-1" data-replace="true">
 					    <div class="modal-dialog" >
 					    
 					      <!-- Modal content-->
 					      	<?php $this->load->view('jobfile-view/add-manila-container/update_Container_manila'); ?>
+					      	
+					    </div>
+					 </div>
+
+			<!--Update Container  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateProduct-mnla" tabindex="-1" data-replace="true">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-manila-container/update_Product_manila'); ?>
 					      	
 					    </div>
 					 </div>
@@ -520,10 +531,20 @@ $(document).ready(function(){
 
 
 
+/*Get Jobfile No for Updating Container*/
 $(".btn-Container").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
 		$(".jobfile_mnila_update").val(jobfile_mnla) ;
 	});
+
+/*Get Jobfile No for Updating Product*/
+$(".btn-Goods").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+		$(".jobfile-updateProduct-mnla").val(jobfile_mnla) ;
+});
+
+
+
 
 	$(".btn-Add-Container-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
@@ -677,7 +698,7 @@ $(".btn-Container").click(function(){
 			 }); 
 
 
-	
+
 });
 
 
