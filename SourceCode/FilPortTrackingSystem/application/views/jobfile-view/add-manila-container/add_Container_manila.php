@@ -17,7 +17,6 @@
 	        	<input type="text" class="jobfile-addContainer-mnla form-control input-sm" disabled>
 			</div>
 
-
 	  	   	<div class="form-group vessel-addContainer-manila-get">
 
 			</div>
@@ -190,15 +189,14 @@
 
 <script>
  function click_containers(){
- 	var jobfile_mnla =  $('.btn-Add-Vessel-mnla').closest('tr').children('td:eq(2)').text();
+ 	var jobfile_mnla =  $('.jobfile-addContainer-mnla').val();
 		$(".jobfile-addVessel-mnla").val(jobfile_mnla);
-		
 }
 	
 	$(document).ready(function(){
 /*Number Only*/
 	  //called when key is pressed in textbox
-	  $("#cartons-addContainer-manila").keypress(function (e) {
+	  $(document).on('keypress','#cartons-addContainer-manila',function (e) {
 	     //if the letter is not digit then display error and don't type anything
 	     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 	        //display error message
@@ -228,10 +226,6 @@
 				    return check;
 				}
 
-
-
-				
-
 		$(document).on('click', '.btn-addContainer-manila', function(){
 
 		
@@ -245,7 +239,7 @@
 			}
 			else{
 
-	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#table-AddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").val()).hide();
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".vessel-addContainer-manila option:selected").text());
@@ -322,7 +316,7 @@ function check_Container_mnilas(container){
 
 
  $(document).on('click','.save_container',function(){
- 	  
+ 	
  
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
@@ -355,7 +349,7 @@ function check_Container_mnilas(container){
 
 		$.ajax({
 			  		method: "POST",
-					url: "<?php echo base_url('Job/container');?>",
+					url: link + "/Job/container/",
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,

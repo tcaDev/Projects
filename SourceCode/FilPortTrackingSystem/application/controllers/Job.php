@@ -280,6 +280,7 @@ class Job extends CI_Controller {
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
+                   <th>Update</th>
                    <th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
                    <th>Arrival Time</th>
@@ -291,6 +292,7 @@ class Job extends CI_Controller {
           $i++;
              echo "<tr>";
              echo "<td> ".$i." </td>";
+             echo "<td><button type='button' class='btn btn-default'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
@@ -317,6 +319,7 @@ class Job extends CI_Controller {
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
+                   <th>Update</th>
                    <th>Commodity</th>
                   <th>Container No.</th>
               </tr>";
@@ -337,6 +340,7 @@ class Job extends CI_Controller {
           }
              echo "<tr>";
              echo "<td> ".$i." </td>";
+             echo "<td><button type='button' class='btn btn-default'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
              echo "</tr>";
@@ -389,22 +393,44 @@ class Job extends CI_Controller {
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
     }else{
          echo "
-         <div style='width:100%; overflow-x:auto; '> 
+         <div style='width:4000px;'> 
          <table class='table-bordered table table-striped table-hover table-condensed' >
               <tr>
-                   <th>No.</th>
+                    <th>No.</th>
+                    <th>Update</th>
+                    <th>Vessel/Voyage No.</th>
                     <th>Container No</th>
                     <th>Container Size</th>
                     <th>No Of Cartons</th>
+                    <th class=''>Value storage</th>
                     <th>Start Of Storage</th>
+                     <th class=''>Value lodging</th>
                     <th>Lodging</th>
                     <th>Hauler/Trucker</th>
+                    <th class='hidden'>Value tdd</th>
                     <th>Target Delivery Date</th>
+                    <th class='hidden'>Value GateInAtPort</th>
                     <th>Gate In At Port</th>
+                    <th class='hidden'>Value GateOutAtPort</th>
                     <th>Gate Out At Port</th>
+                    <th class='hidden'>Value ActualDeliveryAtWarehouse</th>
                     <th>Actual Delivery At Warehouse</th>
-                    <th>Start Of Demorage</th>
+                    <th class='hidden'>Value StartOfDemorage</th>
+                    <th>Start Of Demurrage</th>
+                    <th class='hidden'>Value PullOutDateAtPort</th>
                     <th>Pull Out Date At Port</th>
+                    <th class='hidden'>Value DateBOCCleared</th>
+                    <th>Date BOC Cleared</th>
+                    <th class='hidden'>Value DateFileEntryToBOC</th>
+                    <th>Date File Entry to BOC</th>
+                    <th class='hidden'>Value DateSentPreAssessment</th>
+                    <th>Date Sent Pre Assessment</th>
+                    <th class='hidden'>Value DatePaid</th>
+                    <th>Date Paid</th>
+                    <th class='hidden'>Value DateSentFinalAssessment</th>
+                    <th>Date Sent Final Assessment</th>
+                    <th>Reference Entry No.</th>
+                   
 
               </tr>";
 
@@ -423,8 +449,88 @@ class Job extends CI_Controller {
               break;
              }
 
+             if($row->StartOfStorage == "0000-00-00 00:00:00"){
+                $StartOfStorage = $row->StartOfStorage;
+             }else{
+                 $StartOfStorage = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->StartOfStorage));
+             }
+            
+             if($row->Lodging == "0000-00-00 00:00:00"){
+                $Lodging = $row->Lodging;
+             }else{
+                $Lodging = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->Lodging));
+             }
+
+             if($row->TargetDeliveryDate == "0000-00-00 00:00:00"){
+                $TargetDeliveryDate = $row->TargetDeliveryDate;
+             }else{
+                $TargetDeliveryDate = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->TargetDeliveryDate));
+             }
+
+             if($row->GateInAtPort == "0000-00-00 00:00:00"){
+                $GateInAtPort = $row->GateInAtPort;
+             }else{
+                $GateInAtPort = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->GateInAtPort));
+             }
+
+             if($row->GateOutAtPort == "0000-00-00 00:00:00"){
+                $GateOutAtPort = $row->GateOutAtPort;
+             }else{
+                $GateOutAtPort = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->GateOutAtPort));
+             }
+
+             if($row->ActualDeliveryAtWarehouse == "0000-00-00 00:00:00"){
+                $ActualDeliveryAtWarehouse = $row->ActualDeliveryAtWarehouse;
+             }else{
+                $ActualDeliveryAtWarehouse = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ActualDeliveryAtWarehouse));
+             }
+
+             if($row->StartOfDemorage == "0000-00-00 00:00:00"){
+                $StartOfDemorage = $row->StartOfDemorage;
+             }else{
+                $StartOfDemorage = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->StartOfDemorage));
+             }
+
+             if($row->PullOutDateAtPort == "0000-00-00 00:00:00"){
+                $PullOutDateAtPort = $row->PullOutDateAtPort;
+             }else{
+                $PullOutDateAtPort = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->PullOutDateAtPort));
+             }
+
+             if($row->DateBOCCleared == "0000-00-00 00:00:00"){
+                $DateBOCCleared = $row->DateBOCCleared;
+             }else{
+                $DateBOCCleared = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateBOCCleared));
+             }
+
+              if($row->DateFileEntryToBOC == "0000-00-00 00:00:00"){
+                $DateFileEntryToBOC = $row->DateFileEntryToBOC;
+             }else{
+                $DateFileEntryToBOC = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateFileEntryToBOC));
+             }
+
+              if($row->DateSentPreAssessment == "0000-00-00 00:00:00"){
+                $DateSentPreAssessment = $row->DateSentPreAssessment;
+             }else{
+                $DateSentPreAssessment = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateSentPreAssessment));
+             }
+
+              if($row->DatePaid == "0000-00-00 00:00:00"){
+                $DatePaid = $row->DatePaid;
+             }else{
+                $DatePaid = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DatePaid));
+             }
+
+              if($row->DateSentFinalAssessment == "0000-00-00 00:00:00"){
+                $DateSentFinalAssessment = $row->DateSentFinalAssessment;
+             }else{
+                $DateSentFinalAssessment = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateSentFinalAssessment));
+             }
+             
              echo "<tr>";
              echo "<td> ".stripslashes($i)." </td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-container' data-toggle='modal' href='#updateContainer-mnla' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
              echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
@@ -432,15 +538,36 @@ class Job extends CI_Controller {
 /*             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";*/
 /*             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";*/
 /*             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";*/
+                echo "<td class='row'>".stripslashes($StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
+                echo "<td class='row '>".stripslashes($Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
+                echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
              echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
+                echo "<td class='row hidden'>".stripslashes($GateInAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->GateInAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($GateOutAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->GateOutAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($ActualDeliveryAtWarehouse)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+                echo "<td class='row hidden'>".stripslashes($StartOfDemorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($PullOutDateAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->PullOutDateAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateBOCCleared)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateBOCCleared)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateFileEntryToBOC)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateFileEntryToBOC)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateSentPreAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateSentPreAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DatePaid)."</td>";
+             echo "<td class='row'>".stripslashes($row->DatePaid)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateSentFinalAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
+             
+
 
 
              echo "</tr>";

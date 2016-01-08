@@ -17,7 +17,7 @@
 				  			<div class="form-group">
 								<label>Product Name</label><i style="color:red;">*</i>
 								<div class="get_my_products"> </div>
-								 <select class="prodname-addProduct-mnila">
+								 <select class="prodname-addProduct-mnila form-control input-sm">
 								  <?php foreach ($products as $row) {?>
 
 								 	  <?php echo "<option> ".stripslashes($row->ProductName)."</option>"; ?>
@@ -67,7 +67,7 @@
 /*Click Button Container*/
 
 function click_vessel(){
-	var jobfile_mnla =  $(".btn-Add-Container-mnla").closest('tr').children('td:eq(2)').text();
+	var jobfile_mnla =  $(".jobfile-addProduct-mnla").val();
 
 		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
 

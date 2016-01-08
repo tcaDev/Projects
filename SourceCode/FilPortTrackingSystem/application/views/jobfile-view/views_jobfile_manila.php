@@ -296,11 +296,13 @@
 				          <h4 class="modal-title">List of Containers</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_conts"> </div>
-
+				        	<div style='overflow-x:auto;'>	
+				            	<div class="list_conts"> </div>
+				            </div>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_mnila_update hidden">
 				        </div>
 				      </div>
 				      
@@ -386,7 +388,18 @@
 				 </div>
 				  
 			
+<!-- Update Modals -->
 
+			<!--Add Container  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateContainer-mnla" tabindex="-1" data-replace="true">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-manila-container/update_Container_manila'); ?>
+					      	
+					    </div>
+					 </div>
  
 
 
@@ -507,7 +520,10 @@ $(document).ready(function(){
 
 
 
-
+$(".btn-Container").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+		$(".jobfile_mnila_update").val(jobfile_mnla) ;
+	});
 
 	$(".btn-Add-Container-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
@@ -659,6 +675,9 @@ $(document).ready(function(){
 
 			     
 			 }); 
+
+
+	
 });
 
 
