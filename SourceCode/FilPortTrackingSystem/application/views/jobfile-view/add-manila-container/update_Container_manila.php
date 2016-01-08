@@ -138,13 +138,18 @@
 				  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc-updateContainer-manila">
 			</div>
 
+			<div class="form-group hidden">
+				  	<label for="dtClrd">ID:</label>
+				  	<input type="text" class="form-control input-sm carrier_jobfile_manila-update-container">
+			</div>
+
 	  	</div>
 
 	</div>
 	</div>
 	        </div>
 	<div class="modal-footer">
-	   	 <button type="button" class="btn btn-danger save_container">Save</button>
+	   	 <button type="button" class="btn btn-danger update_container">Save</button>
 	     <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
 	</div>
 </div>
@@ -175,11 +180,15 @@
 					 var date_paid = $(this).closest('tr').children('td:eq(29)').text();
 					 var date_final_assess = $(this).closest('tr').children('td:eq(31)').text();
 					 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
-
+					 var value_vessel = $(this).closest('tr').children('td:eq(34)').text();
+    
+                       alert(hauler);
 					 $('.container-updateContainer-manila').val(containerNo);
 					 $('.container-size-updateContainer-manila').val(containerSize);
 					 $('.cartons-updateContainer-manila').val(NoofCartons);
-					 $('.truckname-updateContainer-manila').prepend("<option value='' selected>"+hauler+"</option>");
+					  $(".truckname-updateContainer-manila option").filter(function() {
+						    return this.text == hauler; 
+						}).attr('selected', 'selected');
 						/*Not in Database*/$('.plate-updateContainer-manila').val();
 					 $('.ref_entry_no-updateContainer-manila').val(refEntryNo);
 					 $('.dt_paid-updateContainer-manila').val(date_paid);
@@ -195,7 +204,7 @@
 					 $('.pull_out_port-updateContainer-manila').val(pull_out);
 					 $('.dt_file_entry_boc-updateContainer-manila').val(date_file_entry);
 					 $('.dt_boc-updateContainer-manila').val(date_boc_cleared);
-
+					 $('.carrier_jobfile_manila-update-container').val(value_vessel);
 					
 					$(".jobfile-updateContainer-mnla").val(jobfile_mnla);
 
@@ -203,16 +212,96 @@
 					  		method: "POST",
 							url: "<?php echo base_url('Job/get_update_vessel_container');?>",
 					  		data: { jobfile:jobfile_mnla,
+					  			    vessel:vessel
 					  		}
 						})
 				  		.done(function(data) {
+				  			/* alert(data);*/
 					  				$('.vessel-updateContainer-manila-get').html(data);
-					  				$('.vessel-updateContainer-manila-get').prepend("<option value='' selected>"+vessel+"</option>");
+					  				$('.vessel-updateContainer-manila-get').prepend("<option value='"+value_vessel+"' selected>"+vessel+"</option>");
 						});
 
 
 				
 			});
-		});
 
+
+
+
+
+ 				//get the value in container popup
+ 					
+
+ 				//
+
+ 				
+ 					$(document).on('click','.update_container',function(){
+
+ 						var vesid 		     =$('.vessel-updateContainer-manila-get').val();
+ 						var containerno 	 =$('.container-updateContainer-manila').val();
+ 						var	carrierbyjobfile =$('.carrier_jobfile_manila-update-container').val();
+                        var	contno           =$('.container-size-updateContainer-manila').val();    
+                        var	cartons          =$('.cartons-updateContainer-manila').val();  
+     					var	truckid          =$('.truckname-updateContainer-manila').val();
+     					var	truckername      =$('.plate-updateContainer-manila').val();	
+     					var	refentry         =$('.ref_entry_no-updateContainer-manila').val(); 
+     					var	dtpaid           =$('.dt_paid-updateContainer-manila').val();  
+     					var	dt_pre_assess    =$('.dt_pre_assess-updateContainer-manila').val();
+     				    var	dt_final_assess  =$('.dt_final_assess-updateContainer-manila').val();
+     					var	storage          =$('.storage-updateContainer-manila').val(); 
+     				    var	demorage         =$('.demorage-updateContainer-manila').val(); 
+     					var	lodging          =$('.lodging-updateContainer-manila').val();  
+     					var	gip              =$('.gtinport-updateContainer-manila').val(); 
+     					var	gop              =$('.gtoutport-updateContainer-manila').val(); 
+     					var	adw              =$('.act-del-whse-updateContainer-manila').val();
+     					var	tdt              =$('.tdt-updateContainer-manila').val();
+     					var	pull_out_date    =$('.pull_out_port-updateContainer-manila').val();
+     					var	dt_final_entry_boc    =$('.dt_file_entry_boc-updateContainer-manila').val(); 
+     					var	dt_boc           =$('.dt_boc-updateContainer-manila').val(); 
+     					
+ 
+ 						$.ajax({
+					  		method: "POST",
+							url: "<?php echo base_url('Job_manila_update/container');?>",
+					  		data: { carrierbyjobfile:carrierbyjobfile,
+					  			    vesid:vesid,
+					  			    containerno:containerno,
+					  			    contno:contno,
+					  			    cartons:cartons,
+					  			    truckid:truckid,
+					  			    truckername:truckername,
+					  			    refentry:refentry,
+					  			    dtpaid:dtpaid,
+					  			    dt_pre_assess:dt_pre_assess,
+					  			    dt_final_assess:dt_final_assess,
+					  			    storage:storage,
+					  			    demorage:demorage,
+					  			    lodging:lodging,
+					  			    gip:gip,
+					  			    gop:gop,
+					  			    adw:adw,
+					  			    tdt:tdt,
+					  			    pull_out_date:pull_out_date,
+					  			    dt_final_entry_boc:dt_final_entry_boc,
+					  			    dt_boc:dt_boc
+					  		}
+						})
+				  		.done(function(data) {
+				  			 $.alert({
+			    	 	  	 	backgroundDismiss: false, 	
+				        		title: 'Success!',
+				        		content:'Container is updated!',
+				        		confirm: function(){
+				        			 $('#updateContainer-mnla').modal('hide');
+				        			 $('#viewcontainers').modal('hide');
+				        	    }
+				   			  }); 
+						});
+ 					});
+
+ 				
+		 });
+
+   
 </script>
+

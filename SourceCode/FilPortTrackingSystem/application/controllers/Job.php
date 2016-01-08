@@ -139,8 +139,9 @@ class Job extends CI_Controller {
 
 /*Get Vessel When adding New Container*/
     function get_vessel_container(){
-      $vessel_mnila =  $this->input->post('jobfile');   
-      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila);
+      $vessel_mnila =  $this->input->post('jobfile');
+      $vessel =  $this->input->post('vessel'); 
+      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila,$vessel);
 
       if($vessel_mnila_container==NULL){
         echo '<label>Vessel/Voyage #</label><br>';
@@ -159,20 +160,16 @@ class Job extends CI_Controller {
 
     /*Get Vessel When Updating Container*/
     function get_update_vessel_container(){
-      $vessel_mnila =  $this->input->post('jobfile');   
-      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila);
+      $vessel_mnila =  $this->input->post('jobfile'); 
+      $vessel       =  $this->input->post('vessel');    
+      $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila,$vessel);
 
       if($vessel_mnila_container==NULL){
         echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" onclick="click_containers()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
-
       }else{
-
-         /*echo '<label>Vessel/Voyage #</label>
-                <select class="vessel-addContainer-manila form-control input-sm">';*/
           foreach ($vessel_mnila_container as $row) {
               echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
           }
-     /*    echo '</select>';*/
       }
     }
 
@@ -607,6 +604,7 @@ class Job extends CI_Controller {
                     <th class='hidden'>Value DateSentFinalAssessment</th>
                     <th>Date Sent Final Assessment</th>
                     <th>Reference Entry No.</th>
+                    <th class='hidden'>value ID vessel</th>
                    
 
               </tr>";
@@ -743,6 +741,7 @@ class Job extends CI_Controller {
                 echo "<td class='row hidden'>".stripslashes($DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
+              echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
              
 
 

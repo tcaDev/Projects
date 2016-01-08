@@ -95,9 +95,9 @@ function comodity($comodity){
      return  $insert_id;
 }
 
-function get_vessel_container($vessel_container){
+function get_vessel_container($vessel_container,$vessel){
      $query = $this->db->query("Select VesselVoyageNo,CarrierByJobFileId from vw_CarrierByJobFile
-            where JobFileNo='$vessel_container' ");
+            where JobFileNo='$vessel_container' and VesselVoyageNo !='$vessel' ");
     return $query->result();
 }
 
