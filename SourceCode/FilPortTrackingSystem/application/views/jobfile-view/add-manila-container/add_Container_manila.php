@@ -354,11 +354,11 @@ function check_Container_mnilas(container){
 				         	dt_file_entry_boc = $tds.eq(20).text(); 
 				         	dtboc             = $tds.eq(21).text();
 
-				      						
+				        						
 		$.ajax({
 			  		method: "POST",
 					url: link + "/Job/container/",
-					  beforeSend: function() {
+/*					  beforeSend: function() {
 					 	  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
@@ -366,7 +366,7 @@ function check_Container_mnilas(container){
 				        		backgroundDismiss: false,
 				        		content: 'Currently Adding container',
 				   			});
- 					  },
+ 					  },*/
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,
@@ -401,7 +401,7 @@ function check_Container_mnilas(container){
 				        		content: 'New container is added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
-				        			dia.close();
+				        			/*dia.close();*/
 				        	    }
 				   			  }); 
 			    	 	}

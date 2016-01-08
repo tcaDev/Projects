@@ -101,7 +101,7 @@ function get_vessel_container($vessel_container){
 }
 
 function get_container_product($container_product){
-     $query = $this->db->query("Select ContainerNo from vw_Containers
+     $query = $this->db->query("Select ContainerByCarrierId,ContainerNo from vw_Containers
             where JobFileNo='$container_product' ");
     return $query->result();
 }

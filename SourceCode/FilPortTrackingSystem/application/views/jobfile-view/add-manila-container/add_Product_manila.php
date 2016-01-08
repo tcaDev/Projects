@@ -20,7 +20,7 @@
 								 <select class="prodname-addProduct-mnila form-control input-sm">
 								  <?php foreach ($products as $row) {?>
 
-								 	  <?php echo "<option> ".stripslashes($row->ProductName)."</option>"; ?>
+								 	  <?php echo "<option value=".stripslashes($row->ProductId)."> ".stripslashes($row->ProductName)."</option>"; ?>
 	
 								 <?php }?>
 								 </select>
@@ -151,7 +151,13 @@ function click_vessel(){
 
 
  $(document).on('click','.submit_vessel',function(){
-
+					 	   dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding product',
+				   			});
 
 					    	   var table = $("#table-AddProduct-mnla table tbody");
 					    	   var ct2   = $("#table-AddProduct-mnla table tbody tr").length;
@@ -160,24 +166,18 @@ function click_vessel(){
 		  var c2 = count1+1;
 		 
 
-		   if(c2<=ct2){
+	
 						          var $tds		   = $(this).find('td'),
 								     product_name  = $tds.eq(0).text(),
 								     prod_orderno  = $tds.eq(1).text();  //origin_id
 								     con_id        = $tds.eq(2).text(), //change to  container 
 
+
+								 
+
 			        	$.ajax({
 					  		method: "POST",
 							url: "<?php echo base_url('Job/comodity');?>",
-				            beforeSend: function() {
-					 	       dia =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Adding product',
-				   			   });
- 					       },
 					  		data: {
 					  				//from comodity tab
 					  			    product_name   :product_name,
@@ -195,14 +195,14 @@ function click_vessel(){
 								        		title: 'Success!',
 								        		content: 'New Commodity is added!',
 								        		confirm: function(){
-								        		/*$('.vessel-msg-addVessel-mnilas').empty();*/
+								        
 						        		    	$(".remove_tr" ).remove();
 						        		    	dia.close();
 								        	    }
 								   			  });
 								   	   }
 			    		    });
-		 }	    
+		 	    
 		});
  });
  </script>

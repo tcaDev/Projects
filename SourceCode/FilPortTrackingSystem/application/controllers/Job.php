@@ -171,7 +171,7 @@ class Job extends CI_Controller {
           foreach ($container_mnila_product as $row) {
               $cont =$row->ContainerNo;
 
-              echo '<option class="remove_option">'.$row->ContainerNo.'</option>';
+              echo '<option class="remove_option" value='.$row->ContainerByCarrierId.'>'.$row->ContainerNo.'</option>';
           }
          echo '</select>';
          echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
@@ -1034,7 +1034,7 @@ foreach($result as $row){
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
    }
 
-  
+
 
       $data = array(
                'ContainerNo'             => $container,
@@ -1092,24 +1092,24 @@ function comodity(){
          $prodid               =  mysql_real_escape_string($this->input->post('prod_orderno'));
          $product_name         =  mysql_real_escape_string($this->input->post('product_name'));
          $con_id               =  mysql_real_escape_string($this->input->post('con_id'));   
-            $result   = $this->Jobdata->select_productcontainer($con_id);
+           $result   = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
         $con_id =  $row->ContainerByCarrierId;
        }
-
+/*
         if($product_name==''){
          $product_name=1;
-        }
-/*        $carrier = $this->session->lastid2;
+        }*/
+
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
-      }else{*/
+      }else{
        $data = array(
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id,
               );
-       $lastid =  $this->db->insert('ProductsByContainer',$data); 
+      $lastid=$this->db->insert('ProductsByContainer',$data); 
          $data2 = array(
                      'ProductsByContainerId'    => $lastid,
                      'ProductId'                => $product_name,
@@ -1119,7 +1119,7 @@ function comodity(){
               );
         $this->db->insert('ProductsByContainerHistory',$data2); 
         $this->session->unset_userdata('lastid2');
-     // }
+      }
 
  }
 

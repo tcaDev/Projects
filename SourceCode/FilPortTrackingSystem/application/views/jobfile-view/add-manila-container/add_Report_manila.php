@@ -36,7 +36,7 @@
   				</div>
 	        </div>
         <div class="modal-footer" >
-	       	 <button type="button " class="btn btn-danger save_report">Save</button>
+	       	 <button type="button " class="btn btn-danger save_reports">Save</button>
 	         <button type="button" class="btn btn-default btn-close-vessels" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -74,8 +74,16 @@ $(document).on('click','.btn-addReport-mnila',function(){
 
 
 <script>
-$('.save_report').click(function(){
+$('.save_reports').click(function(){
 
+					 	  dias =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding report',
+				   			});
+ 			
 
 	        var jbfl = $('.jobfile-addReport-mnla').val();
             var table = $("#table-AddReport-mnla table tbody");
@@ -89,21 +97,13 @@ $('.save_report').click(function(){
 		           $.ajax({
 			  		    method: "POST",
 			  		    url: "<?php echo base_url('Job/add_report');?>",
-			  		   beforeSend: function() {
-					 	  dia =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Adding report',
-				   			});
- 					    },
 			  	        data: {
 			  			    jbfl           :jbfl,
 			  			    save_report    :save_report,
 			  	    	}
 			    	})
 			        .done(function(data) {
+			        	dias.close();
 			    	       if(t4==c4){
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
@@ -111,7 +111,7 @@ $('.save_report').click(function(){
 				        		content: 'New Report is added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
-				        			dia.close();
+				        			
 				        	    }
 				   			});
 	  					   }
