@@ -220,13 +220,15 @@ class Login_user extends CI_Controller {
 		    $data['img'] = $session_data['img'];
 
 		    /* get status*/
-		    $data['consignee'] = $this->User->get_consignee();
+		    /*$data['consignee'] = $this->User->get_consignee();
 		    $data['broker'] = $this->User->get_broker();
-		    $data['shipper'] = $this->User->get_shipper();
+		    $data['shipper'] = $this->User->get_shipper();*/
 		    /*$data['vessel'] = $this->User->get_vessel();*/
+		 	
+		 	 /*$data['manila'] = $this->User->get_jobfile_manila_global();*/
 		 
 			$this->load->view('header/header',$data);
-			$this->load->view('reports/reports_page' , $data);
+			$this->load->view('reports/reports_page');
 		}else{
 			$this->login();
 		}

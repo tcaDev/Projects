@@ -128,7 +128,10 @@ function get_countryID_manila($jobfile){
     return $query->result(); 
  }
 
-
+ function getJobFiles_Consignee($consigneeName){
+    $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'");
+    return $query->result();
+ }
 
 }
 

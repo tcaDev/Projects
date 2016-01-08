@@ -436,7 +436,7 @@ class Job extends CI_Controller {
                 break;
               }
           }
-             echo "<tr>";
+             echo "<tr class='tableRow'>";
              echo "<td class='loadReports tdOverFlow'>".$i." </td>";
              echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
@@ -444,6 +444,174 @@ class Job extends CI_Controller {
          }
          echo "</table>";
     }
+   }
+
+   function report_get_products(){
+     $products =  $this->input->post('id');   
+     $product  = $this->Jobdata->get_goods($products);
+            
+    if($product==NULL){
+         echo    '<center><span style="color:red">No Commodities Yet </span></center>';
+    }else{
+         echo "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;'>
+              <tr>
+                   <th style='border: 1px solid gray'><center>Container No.</center></th>
+                   <th style='border: 1px solid gray'><center>Commodity</center></th>
+              </tr>";
+
+          $i=0;
+         foreach($product as $row){
+          $i++;
+          if($i==1){
+             if($row->ProductName==''){
+                echo "</table>";
+                echo '<center><span style="color:red">No Goods Yet </span></center>';
+                break;
+              }
+          }else{
+              if($row->ProductName==''){
+                break;
+              }
+          }
+             echo "<tr class='tableRow'>";
+             echo "<td style='border: 1px solid gray'>".stripslashes($row->ContainerNo) ."</td>";
+             echo "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
+             echo "</tr>";
+         }
+         echo "</table>";
+    }
+   }
+
+   function report_get_running_charges(){
+     $charges =  $this->input->post('id');   
+     $charge  = $this->Jobdata->get_chargess($charges);
+
+           foreach($charge as $row){
+                      echo '
+                      <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Lodgement Fee : 
+                                <span class="pull-right">
+                                    '.$row->LodgementFee.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Demurrage : 
+                                <span class="pull-right">
+                                    '.$row->Demorage.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Container Deposit : 
+                                <span class="pull-right">
+                                   '.$row->ContainerDeposit.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Detention : 
+                                <span class="pull-right">
+                                    '.$row->Detention.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                THC Charges : 
+                                <span class="pull-right">
+                                   '.$row->THCCharges.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                EIC : 
+                                <span class="pull-right">
+                                    '.$row->EIC.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Arrastre : 
+                                <span class="pull-right">
+                                   '.$row->Arrastre.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                BAI Application : 
+                                <span class="pull-right">
+                                    '.$row->BAIApplication.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Wharfage : 
+                                <span class="pull-right">
+                                   '.$row->Wharfage.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                BAI Inspection : 
+                                <span class="pull-right">
+                                    '.$row->BAIInspection.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Weighing : 
+                                <span class="pull-right">
+                                   '.$row->Weighing.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                SRA Application : 
+                                <span class="pull-right">
+                                    '.$row->SRAApplication.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                DEL : 
+                                <span class="pull-right">
+                                   '.$row->DEL.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                SRAInspection : 
+                                <span class="pull-right">
+                                    '.$row->SRAInspection.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Dispatch Fee : 
+                                <span class="pull-right">
+                                   '.$row->DispatchFee.'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Bad Cargo : 
+                                <span class="pull-right">
+                                    '.$row->BadCargo.'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                Storage : 
+                                <span class="pull-right">
+                                   '.$row->Storage.'
+                                </span>
+                            </td>
+                          </tr>
+                      </table>';
+                      }
+
    }
 
     function get_goods(){
@@ -545,7 +713,6 @@ class Job extends CI_Controller {
     }else{
       echo '<center><span style="color:red">No Record of Status Report </span></center>';
     }
-     
    }
 
    function get_legend_desc(){
@@ -558,9 +725,99 @@ class Job extends CI_Controller {
       echo $desc;
     }
 
+  function get_consignee_status_report(){
+      $consignee_name    =  $this->input->post('consignee_name');   
+      $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name);
+      $ct = count($jobfiles);
+      if($ct > 0){
+      $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
+      $dispOutput .= '
+                    <thead>
+                          <th><center> JobfileNumber </center> </th>
+                          <th><center> Consignee </center></th>
+                          <th><center> Shipper </center></th>
+                          <th><center> Date Received of Other Documents </center></th>
+
+                    </thead>
+                  ';
+      foreach($jobfiles as $row){
+          $dispOutput .='
+                  <tbody>
+                    <tr class="tableRow">
+                          <td>'.$row->JobFileNo.'</td>
+                          <td>'.$row->ConsigneeName.'</td>
+                          <td>'.$row->ShipperName.'</td>
+                          <td>'.$row->DateReceivedOfOtherDocs.'</td>
+                    </tr>
+                  </tbody>
+          ';
+      }
+
+        $dispOutput .= '</table>';
+      }else{
+        $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
+      }
+
+      $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $ct . ') Data Match(es)</i>';
+
+      $output = array(
+        array(
+           "disp" => $dispOutput,
+           "result_count" => $dispCount
+          )
+        );
+
+      echo json_encode($output);
+  }
+
+  function get_containers_report(){
+   $containers =  $this->input->post('id'); 
+   $container  = $this->Jobdata->get_containers($containers);
+
+    if($container==NULL){
+          echo    '<center><span style="color:red">No Containers Yet </span></center>';
+    }else{
+         echo "
+         <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;'>
+              <tr>
+                    <th style='border: 1px solid gray'>Container Number</th>
+                    <th style='border: 1px solid gray'>Date File Entry to BOC</th>
+                    <th style='border: 1px solid gray'>Date Sent Pre Assessment</th>
+                    <th style='border: 1px solid gray'>Date Sent Final Assessment</th>
+                    <th style='border: 1px solid gray'>Date Paid</th>
+                    <th style='border: 1px solid gray'>Target Delivery Date</th>
+                    <th style='border: 1px solid gray'>Actual Delivery At Warehouse</th>
+              </tr>";
+
+          $i=0;
+         foreach($container as $row){
+          $i++;
+             $container = $row->ContainerNo;
+            if($i==1){
+             if($container==''){
+               echo    '</table>';
+               echo    '<center><span style="color:red">No Containers Yet </span></center>';
+              break;
+             }
+            }
+             echo "<tr>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentFinalAssessment)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DatePaid)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->TargetDeliveryDate)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+             echo "</tr>";
+         }
+         echo "</table>";
+    }
+
+  }
+
+
   function get_containers(){
    $containers =  $this->input->post('id'); 
-
    $container  = $this->Jobdata->get_containers($containers);
 
     if($container==NULL){
@@ -604,7 +861,6 @@ class Job extends CI_Controller {
                     <th class='hidden'>Value DateSentFinalAssessment</th>
                     <th>Date Sent Final Assessment</th>
                     <th>Reference Entry No.</th>
-                    <th class='hidden'>value ID vessel</th>
                    
 
               </tr>";
