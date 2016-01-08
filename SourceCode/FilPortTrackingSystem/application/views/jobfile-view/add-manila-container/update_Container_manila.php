@@ -188,8 +188,6 @@
 				 var date_final_assess = $(this).closest('tr').children('td:eq(31)').text();
 				 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
 
-				 alert(containerNo);
-
 				 $('.vessel-updateContainer-manila-get').prepend("<option value='' selected='selected'>"+vessel+"</option>");
 				 $('.container-updateContainer-manila').val(containerNo);
 				 $('.container-size-updateContainer-manila').val(containerSize);
