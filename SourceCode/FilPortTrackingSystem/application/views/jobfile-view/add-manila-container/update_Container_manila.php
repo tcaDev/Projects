@@ -182,7 +182,7 @@
 					 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
 					 var value_vessel = $(this).closest('tr').children('td:eq(34)').text();
     
-                       alert(hauler);
+                      
 					 $('.container-updateContainer-manila').val(containerNo);
 					 $('.container-size-updateContainer-manila').val(containerSize);
 					 $('.cartons-updateContainer-manila').val(NoofCartons);

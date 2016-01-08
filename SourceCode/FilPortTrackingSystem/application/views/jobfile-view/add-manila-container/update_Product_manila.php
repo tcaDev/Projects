@@ -61,8 +61,16 @@ $(document).ready(function(){
 		 var product= $(this).closest('tr').children('td:eq(3)').text();
 		 var container = $(this).closest('tr').children('td:eq(4)').text();
 
-		 $('.prodname-updateProduct-mnila').prepend("<option value='"+product_value+"' selected>"+product+"</option>");
+		 
 
+		 $(".prodname-updateProduct-mnila").filter(function() {
+		    return this.text == product; 
+		}).attr('selected', 'selected');
+
+
+		 $(".container-updateProduct-manila-get").filter(function() {
+		    return this.text == container; 
+		}).attr('selected', 'selected');
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_updated_container_product');?>",
@@ -71,7 +79,7 @@ $(document).ready(function(){
 					})
 			  		.done(function(data) {
 				  				$('.container-updateProduct-manila-get').html(data);
-								$('.container-updateProduct-manila-get').prepend("<option value='' selected>"+container+"</option>");
+								
 					});
 
 

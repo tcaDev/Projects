@@ -48,11 +48,11 @@
 							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-updateVessel-mnila">
 							 </div>
 
-							 <div class="form-group">
+							 <div class="form-group carrier-updateVessel-mnila">
 
 							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
-								<select class="form-control carrier-updateVessel-mnila" name="countries">
-									<option value="0" selected>Select Shipping Line/Carrier</option>
+								<select class="form-control " name="countries">
+									<option value="0">Select Shipping Line/Carrier</option>
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
 											 <?php echo stripslashes($row->CarrierName);?>
@@ -89,13 +89,18 @@ $(document).ready(function(){
 		 var est_arrival_time = $(this).closest('tr').children('td:eq(10)').text();
 		 var carrier_value = $(this).closest('tr').children('td:eq(12)').text();
 
+
+		 	alert(carrier_name);
 		 $('.vessel-updateVessel-mnila').val(vessel);
-		 $('.carrier-updateVessel-mnila').prepend("<option value='"+carrier_value+"' selected>"+carrier_name+"</option>");
+		 
 		 $('.edt-updateVessel-mnila').val(est_dept_time);
 		 $('.eat-updateVessel-mnila').val(est_arrival_time);
 		 $('.aat-updateVessel-mnila').val(act_arrival_time);
 		 $('.vdt-updateVessel-mnila').val(discharge_time);
 
+		  $(".carrier-updateVessel-mnila option").filter(function() {
+		    return this.text == carrier_name; 
+		}).attr('selected', 'selected');
 
 
 	});
