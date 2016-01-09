@@ -378,7 +378,7 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				        	<button type="button " class="btn btn-danger update_charges">Save</button>
+				        	<button type="button " class="btn btn-danger update-charges">Save</button>
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -395,12 +395,9 @@ $(document).ready(function(){
 var jbfl;
 	$(document).on('click','.runchar',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
-
 			jbfl = jobfile;
 	});
    $(document).on('click','.update_charges',function(){
-
-   	
      var lodge        = $('.lodge_update').val();
      var cont_deposit = $('.cont-deposit').val();
      var thc_charges  = $('.thc-charges').val();
@@ -419,10 +416,6 @@ var jbfl;
      var sra_inspect  = $('.sra-inspect').val();
      var bad_cargo    = $('.bad-cargo').val();
 
-     
-
-     
-     
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
@@ -463,21 +456,9 @@ var jbfl;
 				        		content: 'Running Charges Updated!',
 				        		confirm: function(){
 									dia_running_charges.close();
-				        		
 				        	    }
 				   			   });
 	    		    })
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-    
   });
    });
   

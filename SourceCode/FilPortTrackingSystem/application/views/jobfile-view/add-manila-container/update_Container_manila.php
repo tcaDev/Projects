@@ -62,20 +62,20 @@
 
 		   <div class="form-group">
 				<label>Referrence Entry Number</label>					     
-	        		<input type="date-time-local" class="ref_entry_no-updateContainer-manila form-control input-sm">
+	        		<input type="text" class="ref_entry_no-updateContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
 				<label>Date Paid</label>					     
-	        		<input type="datetime-local" class="dt_paid-updateContainer-manila form-control input-sm">
+	        		<input type="date" class="dt_paid-updateContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
 				<label>Date Sent PreAssessment</label>					     
-	        		<input type="datetime-local" class="dt_pre_assess-updateContainer-manila form-control input-sm">
+	        		<input type="date" class="dt_pre_assess-updateContainer-manila form-control input-sm">
 			</div>
 
 			<div class="form-group">
 				<label>Date Sent Final Assessment</label>
-				<input type="datetime-local" name="" class="form-control input-sm dt_final_assess-updateContainer-manila" />
+				<input type="date" name="" class="form-control input-sm dt_final_assess-updateContainer-manila" />
 			</div>
 
 
@@ -87,17 +87,17 @@
 
 	  		<div class="form-group">
 				<label>Start of Storage</label>
-				<input type="datetime-local" name="strtstrge" class="form-control input-sm storage-updateContainer-manila" />
+				<input type="date" name="strtstrge" class="form-control input-sm storage-updateContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Start of Demurrage </label>
-				<input type="datetime-local" name="strtdmrage" class="form-control input-sm demorage-updateContainer-manila" />
+				<input type="date" name="strtdmrage" class="form-control input-sm demorage-updateContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Lodging</label>
-				<input type="datetime-local" name="lodging" class="form-control input-sm lodging-updateContainer-manila" />
+				<input type="date" name="lodging" class="form-control input-sm lodging-updateContainer-manila" />
 			</div>
 
 			<!-- <div class="form-group">
@@ -107,38 +107,38 @@
 
 			<div class="form-group">
 				<label>Gate In at Port</label>
-				<input type="datetime-local" name="gtinport" class="form-control input-sm gtinport-updateContainer-manila" />
+				<input type="date" name="gtinport" class="form-control input-sm gtinport-updateContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Gate Out at Port</label>
-				<input type="datetime-local" name="gtoutport" class="form-control input-sm gtoutport-updateContainer-manila" />
+				<input type="date" name="gtoutport" class="form-control input-sm gtoutport-updateContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Actual Delivery at Warehouse</label>
-				<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-updateContainer-manila" />
+				<input type="date" name="act-del-whse" class="form-control input-sm act-del-whse-updateContainer-manila" />
 			</div>
 
 		    <div class="form-group">
 				<label>Target Delivery Date</label>
-				<input type="datetime-local" name="" class="form-control input-sm tdt-updateContainer-manila" />
+				<input type="date" name="" class="form-control input-sm tdt-updateContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Pull out Date at Port</label>
-				<input type="datetime-local" name="" class="form-control input-sm pull_out_port-updateContainer-manila" />
+				<input type="date" name="" class="form-control input-sm pull_out_port-updateContainer-manila" />
 			</div>
 
 
 		    <div class="form-group">
 				  	<label for="dtClrd">Date File Entry To BOC:</label>
-				  	<input type="datetime-local" name="dt_file_entry_boc" class="form-control input-sm dt_file_entry_boc-updateContainer-manila">
+				  	<input type="date" name="dt_file_entry_boc" class="form-control input-sm dt_file_entry_boc-updateContainer-manila">
 			</div>	
 
 			<div class="form-group">
 				  	<label for="dtClrd">Date Cleared BOC:</label>
-				  	<input type="datetime-local" name="dt_boc" class="form-control input-sm dt_boc-updateContainer-manila">
+				  	<input type="date" name="dt_boc" class="form-control input-sm dt_boc-updateContainer-manila">
 			</div>
 
 			<div class="form-group hidden">
