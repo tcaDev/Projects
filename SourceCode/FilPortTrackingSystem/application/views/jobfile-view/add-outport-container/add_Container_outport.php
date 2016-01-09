@@ -339,61 +339,54 @@ $(document).on('click','.save_container_outport',function(){
 
 				     						
 		$.ajax({
-			  		method: "POST",
-					url: "<?php echo base_url('Job/get_containers_outport');?>",
+                        method: "POST",
+                        url: "<?php echo base_url('Job/container');?>",
 /*					  beforeSend: function() {
-					 	  dia =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Adding container',
-				   			});
- 					  },*/
-			  		data: {
-			  				//from container tab
-			  			    vessel_voyage  :vessel_voyage,
-			  			    containerId    :containerId,
-			  			    consize  	   :consize, 
-			  			    cartons_no	   :cartons_no,
-			  			    trucker_plate  :trucker_plate,
-			  			    trucker_name   :trucker_name,
-			  			    trucker_id	   :trucker_id,
-			  			    ref_entry_no   :ref_entry_no,
-			  			    start_storage  :start_storage,
-			  			    start_demorage :start_demorage,
-			  			    dt_paid        :dt_paid,
-			  			    lodging        :lodging,				
-			  			    dt_pre_assess  :dt_pre_assess,
-			  			    dt_file_entry_boc :dt_file_entry_boc,
-			  			    dt_final_assess:dt_final_assess,
-			  			    adw            :adw,
-			  			    dtboc	   :dtboc,
-			  			    tdt            :tdt,
-                                                    dt_recvd_cont_whse:dt_recvd_cont_whse,
-			  			    pul_out_port   :pul_out_port
-
-
-			  		
-			  		}
-				})
-				 .done(function() {		
-			            if(c==ct){	
-			    	 	  	 $.alert({
-			    	 	  	 	backgroundDismiss: false, 	
-				        		title: 'Success!',
-				        		content: 'New container is added!',
-				        		confirm: function(){
-				        			$(".remove_tr" ).remove();
-				        			/*dia.close();*/
-				        	    }
-				   			  }); 
-			    	 	}
+                                  dia =	$.dialog({
+                                            icon: 'fa fa-spinner fa-spin',
+                                            closeIcon: false,
+                                        title: 'Please wait!',
+                                        backgroundDismiss: false,
+                                        content: 'Currently Adding container',
+                                        });
+                          },*/
+                        data: {
+                                        //from container tab
+                                    vessel_voyage  :vessel_voyage,
+                                    containerId    :containerId,
+                                    consize  	   :consize, 
+                                    cartons_no	   :cartons_no,
+                                    trucker_plate  :trucker_plate,
+                                    trucker_name   :trucker_name,
+                                    trucker_id	   :trucker_id,
+                                    ref_entry_no   :ref_entry_no,
+                                    start_storage  :start_storage,
+                                    start_demorage :start_demorage,
+                                    dt_paid        :dt_paid,
+                                    lodging        :lodging,				
+                                    dt_pre_assess  :dt_pre_assess,
+                                    dt_file_entry_boc :dt_file_entry_boc,
+                                    dt_final_assess:dt_final_assess,
+                                    adw            :adw,
+                                    dtboc	   :dtboc,
+                                    tdt            :tdt,
+                                    dt_recvd_cont_whse:dt_recvd_cont_whse,
+                                    pul_out_port   :pul_out_port
+                        }
+                    })
+                    .done(function() {		
+                                if(c==ct){	
+                                    $.alert({
+                                        backgroundDismiss: false, 	
+                                        title: 'Success!',
+                                        content: 'New container is added!',
+                                        confirm: function(){
+                                                $(".remove_tr" ).remove();
+                                                /*dia.close();*/
+                                            }
+                                  }); 
+                                }
 	    		  });
-
-
-
-
 		     });	
 });
 </script>

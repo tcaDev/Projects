@@ -150,8 +150,29 @@ class Job extends CI_Controller {
       }else{
 
          echo '<label>Vessel/Voyage #</label>
-                <select class="vessel-addContainer-manila form-control input-sm">';
+                <select class="vessel-addContainer-manila vessel-addContainer-outport form-control input-sm">';
           foreach ($vessel_mnila_container as $row) {
+              echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
+          }
+         echo '</select>';
+      }
+    }
+  
+    /*Get Vessel When adding New Container OUTPORT*/
+    function get_vessel_container_outport(){
+      $vessel_outport =  $this->input->post('jobfile');
+      $vessel =  $this->input->post('vessel'); 
+      $vessel_outport_container = $this->Jobdata->get_vessel_container($vessel_outport,$vessel);
+
+      if($vessel_outport_container==NULL){
+        echo '<label>Vessel/Voyage #</label><br>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-outport" onclick="click_containers_outport()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+
+      }else{
+
+         echo '<label>Vessel/Voyage #</label>
+                <select class="vessel-addContainer-outport vessel-addContainer-outport form-control input-sm">';
+          foreach ($vessel_outport_container as $row) {
               echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
           }
          echo '</select>';
@@ -1493,7 +1514,7 @@ foreach($result as $row){
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
    }
    if($dt_recvd_cont_whse!=''){
-   $date14  = date_create($pul_out_port);
+   $date14  = date_create($dt_recvd_cont_whse);
    $dt_recvd_cont_whse    =  date_format($date14, 'Y-m-d H:i');
    }
 

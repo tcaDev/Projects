@@ -508,7 +508,7 @@
 
                     $.ajax({
                             method: "POST",
-                              url: "<?php echo base_url('Job/get_vessel_container');?>",
+                              url: "<?php echo base_url('Job/get_vessel_container_outport');?>",
                             data: { jobfile:jobfile_mnla,
                             }
                     })
