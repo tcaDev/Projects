@@ -51,7 +51,7 @@ class Job_manila_update extends CI_Controller {
     function vessel(){
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
-    echo   $v             	   =	$this->input->post('Vessel');
+      $v             	     =	$this->input->post('Vessel');
       $est_dept_time         =	$this->input->post('est_dept_time');
       $est_arrival_time 	 =	$this->input->post('est_arrival_time');
       $act_arrival_time      =	$this->input->post('act_arrival_time');
@@ -128,6 +128,9 @@ class Job_manila_update extends CI_Controller {
         $this->db->where('JobFileId', $jb);
         $this->db->update('JobFile', $data);
 
+    $session_data = $this->session->userdata('logged_in');
+    $userid = $session_data['uid'];
+    
         $data2 = array(
           /*     'JobFileId'              => $lastid,*/
                'JobFileNo'              => $jbfl,
@@ -162,7 +165,7 @@ class Job_manila_update extends CI_Controller {
           );
 
               $this->db->where('JobFileId',$jb);
-       		 $this->db->update('JobFileHistory', $data);
+       		 $this->db->update('JobFileHistory', $data2);
       
     }
 

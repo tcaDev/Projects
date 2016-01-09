@@ -50,15 +50,25 @@ class Job_availability extends CI_Controller {
    }
 
    function container_manila(){
-   	 	  $jobfile = stripslashes($this->input->post('jbfl'));
-   	      $container  = stripslashes($this->input->post('containerno'));
+   	 	  $jobfile    = stripslashes($this->input->post('jbfl'));
+   	    $container  = stripslashes($this->input->post('containerno'));
+        $vessel_voyage  = stripslashes($this->input->post('vessel_voyage'));
 
+          $query2= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' and VesselVoyageNo='$vessel_voyage' limit 1");
    	       $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");
           if($query->num_rows() == 1){ 
             echo  "<i style='color:red;'>Already exists</i>";     
+          }elseif($query2->num_rows() == 1){
+            echo  "<i style='color:red;'>VesselVoyageNo and  Container Number
+            is already exists</i>"; 
           }else{
-             echo "<i style='color:green;'>Available</i>"; 
-          }   	
+            echo "<i style='color:green;'>Available</i>"; 
+          }
+             
+          
+           
+           
+             	
    }
 
    function commodity_check(){

@@ -1087,18 +1087,18 @@ class Job extends CI_Controller {
                'DateReceivedNoticeFromClients' =>$dtRcvd,
                'DateReceivedOfBL'              =>$dt_pickup_obl,
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
-               'DateRequestBudgetToGL'         =>Date('Y-m-d H:i'),
+               'DateRequestBudgetToGL'         =>$dt_req_budget,
                'RFPDueDate'                    =>$ref_due_dt,
-               'ForwarderWarehouse'            => NULL,// la png ui
+   /*            'ForwarderWarehouse'            => NULL,// la png ui
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder' =>NULL
+               'DateReceivedNoticeFromForwarder' =>NULL*/
                
         );
 
 
-      $lastid =   $this->db->insert('JobFile',$data); 
-
+          $this->db->insert('JobFile',$data); 
+       $lastid =  $this->db->insert_id();
         $data2 = array(
                'JobFileId'              => $lastid,
                'JobFileNo'              => $job,
@@ -1124,10 +1124,10 @@ class Job extends CI_Controller {
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
                'DateRequestBudgetToGL'         =>$dt_req_budget,
                'RFPDueDate'                    =>$ref_due_dt,
-               'ForwarderWarehouse'            => NULL,// la png ui
+      /*         'ForwarderWarehouse'            => NULL,// la png ui
                'FlightNo'                      =>NULL ,
                'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder'  =>NULL,
+               'DateReceivedNoticeFromForwarder'  =>NULL,*/
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
 
@@ -1155,7 +1155,8 @@ class Job extends CI_Controller {
         $data = array(
                'JobFileId'        => $job,
         );
-        $lastid =   $this->db->insert('RunningCharges',$data); 
+        $this->db->insert('RunningCharges',$data);
+         $lastid =  $this->db->insert_id(); 
                 $data2 = array(
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
@@ -1213,8 +1214,8 @@ foreach($job as $row){
                'DischargeTime'       => $discharge      
         );
 
-  $lastid = $this->db->insert('CarrierByJobFile',$data); 
-
+       $this->db->insert('CarrierByJobFile',$data); 
+        $lastid =  $this->db->insert_id();
        $data2 = array(
                'CarrierByJobFileId'  => $lastid,
                'JobFileId'           => $job,
@@ -1343,7 +1344,8 @@ foreach($result as $row){
                'StartOfDemorage'            => $start_demorage,
                'PullOutDateAtPort'          => $pul_out_port         
         );
-  $lastid = $this->db->insert('ContainerByCarrier',$data); 
+   $this->db->insert('ContainerByCarrier',$data);
+   $lastid =  $this->db->insert_id(); 
       $data2 = array(
                'ContainerByCarrierId'    => $lastid,
                'ContainerNo'             => $container,
@@ -1369,7 +1371,7 @@ foreach($result as $row){
                'DateUpdated'                => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'           => $userid      
         );
-  $lastid = $this->db->insert('ContainerByCarrierHistory',$data2); 
+   $this->db->insert('ContainerByCarrierHistory',$data2); 
 }
 function comodity(){
         $session_data = $this->session->userdata('logged_in');
@@ -1397,7 +1399,9 @@ function comodity(){
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id,
               );
-      $lastid=$this->db->insert('ProductsByContainer',$data); 
+      $this->db->insert('ProductsByContainer',$data); 
+      $lastid=$this->db->insert_id(); 
+
          $data2 = array(
                      'ProductsByContainerId'    => $lastid,
                      'ProductId'                => $product_name,

@@ -11,7 +11,8 @@ Class Update_jobfile extends CI_Model
 		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
 		$pull_out_date,$dt_final_entry_boc,$dt_boc,$userid)
   {
-
+     $session_data      = $this->session->userdata('logged_in');
+     $userid            = $session_data['uid'];
 
   	     $data = array(
         'ContainerNo'          => $containerno,
@@ -42,11 +43,11 @@ Class Update_jobfile extends CI_Model
           $this->db->update('ContainerByCarrier', $data);
 
 
-   /*   $data = array(
+      $data2 = array(
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
       /*  'CarrierByJobFileId'   =>$vesid,*/
-/*        'NoOfCartons'          =>$cartons,
+        'NoOfCartons'          =>$cartons,
         'RefEntryNo'           =>$refentry,
         'TruckerName'          => $truckername,
         'StartOfStorage'       => $storage,
@@ -64,16 +65,18 @@ Class Update_jobfile extends CI_Model
         'StartOfDemorage'			=> $demorage,
         'PullOutDateAtPort'			=> $pull_out_date,
         'DateUpdated'               => Date('Y-m-d H:i'),
-         'UpdatedBy_UserId'          =>$userid*/
+         'UpdatedBy_UserId'          =>$userid
 
 
-       // );
-        /*  $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
-          $this->db->update('ContainerByCarrierHistory', $data);*/
+        );
+          $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
+          $this->db->update('ContainerByCarrierHistory', $data2);
   }
 
   function vessel($v,$est_dept_time,$est_arrival_time,
       	$act_arrival_time,$discharge_time,$Carrierid,$cr){
+  	 $session_data      = $this->session->userdata('logged_in');
+     $userid            = $session_data['uid'];
 
          $data = array(
         'CarrierId'             => $cr,
@@ -88,7 +91,7 @@ Class Update_jobfile extends CI_Model
    	    $this->db->where('CarrierByJobFileId', $Carrierid);
         $this->db->update('CarrierByJobFile', $data);
 
-/*       $data = array(
+       $data2 = array(
         'CarrierId'             => $cr,
         'VesselVoyageNo'		=> $vessel,
         'DischargeTime'         => $discharge_time,
@@ -101,17 +104,31 @@ Class Update_jobfile extends CI_Model
        );
 
 
+
    	    $this->db->where('CarrierByJobFileId', $Carrierid);
-        $this->db->update('CarrierByJobFileHistory', $data);*/
+        $this->db->update('CarrierByJobFileHistory', $data2);
   }
 
   function product($prodconid,$prodid,$cbc){
+  	 $session_data      = $this->session->userdata('logged_in');
+     $userid            = $session_data['uid'];
+
   	    $data = array(
         'ProductId'				  => $prodid,
         'ContainerByCarrierId'    => $cbc,
        );
    	    $this->db->where('ProductsByContainerId', $prodconid);
         $this->db->update('ProductsByContainer', $data);
+
+       $data2 = array(
+        'ProductId'				  => $prodid,
+        'ContainerByCarrierId'    => $cbc,
+        'DateUpdated'			  => $Date('Y-m-d H:i'),
+        'UpdatedBy_UserId'		  => $userid
+
+       );
+   	    $this->db->where('ProductsByContainerId', $prodconid);
+        $this->db->update('ProductsByContainerHistory', $data2);
   }
 
 

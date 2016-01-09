@@ -180,7 +180,7 @@
 	</div>
 	        </div>
         <div class="modal-footer">
-	       	 <button type="button" class="btn btn-danger save_container">Save</button>
+	       	 <button type="button" class="btn btn-danger add_container">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -300,6 +300,8 @@
 
 <script>
 function check_Container_mnilas(container){
+	      
+	           var vessel_voyage = $('.vessel-addContainer-manila').val();
 	           	var jbfl = $('.jobfile-addContainer-mnla').val();
      			var containerno = $('.container-addContainer-manila').val();
    		
@@ -307,7 +309,8 @@ function check_Container_mnilas(container){
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability/container_manila');?>",
 				  		data: { jbfl        :jbfl,
-				  			    containerno :containerno
+				  			    containerno :containerno,
+				  			    vessel_voyage:vessel_voyage
 				  		}
 					})
 			  		.done(function(data) {
@@ -316,9 +319,8 @@ function check_Container_mnilas(container){
 }
 
 
- $(document).on('click','.save_container',function(){
- 	
- 
+ $(document).on('click','.add_container',function(){
+
 		    	  var table = $("#table-AddContainer-mnla table tbody");
 		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
 		    table.find('tr').each(function (count1) {
