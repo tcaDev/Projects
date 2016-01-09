@@ -219,7 +219,8 @@ function check_vessel_avail(vess){
 	
 		         $.ajax({
 			  		method: "POST",
-					url: link + "/Job/vessel/",
+					url: "<?php echo base_url('Job/vessel');?>",
+
 			  		data: {
 			  			    //from jobfile tab
 			  			    jbfl           :jbfl,

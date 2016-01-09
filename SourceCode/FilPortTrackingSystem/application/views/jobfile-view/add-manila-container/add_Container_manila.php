@@ -352,7 +352,7 @@ function check_Container_mnilas(container){
 				      /*  alert(trucker_id); */ 						
 		$.ajax({
 			  		method: "POST",
-					url: link + "/Job/container/",
+					 url: "<?php echo base_url('Job/container');?>",
 /*					  beforeSend: function() {
 					 	  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
