@@ -37,7 +37,8 @@
 						<div class="col-lg-6">
 
 						    <div class="form-group">
-								<label>Actual Arrival Time</label>
+                                                            <!--Actual Arrival Time -->
+								<label>Actual Verting Time</label>
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-addVessel-mnila" />
 							 </div>
 

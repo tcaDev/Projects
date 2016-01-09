@@ -817,7 +817,7 @@ class Job extends CI_Controller {
 
   }
 
-
+/*Get Container Mnila*/
   function get_containers(){
    $containers =  $this->input->post('id'); 
    $container  = $this->Jobdata->get_containers($containers);
@@ -967,10 +967,6 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
              echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
-           /*  echo "<td class='row'>".stripslashes($row->TruckerName)."</td>";*/
-/*             echo "<td class='row'>".stripslashes($row->EstDepartureTime)."</td>";*/
-/*             echo "<td class='row'>".stripslashes($row->EstArrivalTime)."</td>";*/
-/*             echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";*/
                 echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
                 echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
@@ -1000,10 +996,186 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
               echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
+            
+             echo "</tr>";
+         }
+
+         echo "</table>
+                </div>";
+    }
+
+  }
+  
+  /* get Container Outport*/
+  function get_containers_outport(){
+   $containers =  $this->input->post('id'); 
+   $container  = $this->Jobdata->get_containers($containers);
+
+    if($container==NULL){
+          echo    '<center><span style="color:red">No Containers Yet </span></center>';
+    }else{
+         echo "
+         <div style='width:4000px;'> 
+         <table class='table-bordered table table-striped table-hover table-condensed' >
+              <tr>
+                    <th>No.</th>
+                    <th>Update</th>
+                    <th>Vessel/Voyage No.</th>
+                    <th>Container No</th>
+                    <th>Container Size</th>
+                    <th>No Of Cartons</th>
+                        <th class='hidden'>Value storage</th>
+                    <th>Start Of Storage</th>
+                        <th class='hidden'>Value lodging</th>
+                    <th>Lodging</th>
+                    <th>Hauler/Trucker</th>
+                        <th class='hidden'>Value tdd</th>
+                    <th>Target Delivery Date</th>
+                        <th class='hidden'>Value ActualDeliveryAtWarehouse</th>
+                    <th>Actual Delivery At Warehouse</th>
+                        <th class='hidden'>Value StartOfDemorage</th>
+                    <th>Start Of Demurrage</th>
+                        <th class='hidden'>Value PullOutDateAtPort</th>
+                    <th>Pull Out Date At Port</th>
+                        <th class='hidden'>Value DateBOCCleared</th>
+                    <th>Date BOC Cleared</th>
+                        <th class='hidden'>Value DateFileEntryToBOC</th>
+                    <th>Date File Entry to BOC</th>
+                        <th class='hidden'>Value DateSentPreAssessment</th>
+                    <th>Date Sent Pre Assessment</th>
+                        <th class='hidden'>Value DatePaid</th>
+                    <th>Date Paid</th>
+                        <th class='hidden'>Value DateSentFinalAssessment</th>
+                    <th>Date Sent Final Assessment</th>
+                    <th>Reference Entry No.</th>
+                        <th class='hidden'>value date received container to warehouse</th>
+                    <th>Actual Date Received Container to Warehouse</th>
+                   
+
+              </tr>";
+
+          $i=0;
+         foreach($container as $row){
+          $i++;
+             $container = $row->ContainerNo;
+            if($i==1){
+             if($container==''){
+               echo    '</table>';
+               echo    '<center><span style="color:red">No Containers Yet </span></center>';
+              break;
+             }
+            }
+           if($container==''){
+              break;
+             }
+
+             if($row->StartOfStorage == "0000-00-00 00:00:00"){
+                $StartOfStorage = $row->StartOfStorage;
+             }else{
+                 $StartOfStorage = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->StartOfStorage));
+             }
+            
+             if($row->Lodging == "0000-00-00 00:00:00"){
+                $Lodging = $row->Lodging;
+             }else{
+                $Lodging = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->Lodging));
+             }
+
+             if($row->TargetDeliveryDate == "0000-00-00 00:00:00"){
+                $TargetDeliveryDate = $row->TargetDeliveryDate;
+             }else{
+                $TargetDeliveryDate = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->TargetDeliveryDate));
+             }
+
+             if($row->DateReceivedAtWhse == "0000-00-00 00:00:00"){
+                $DateReceivedAtWhse = $row->DateReceivedAtWhse;
+             }else{
+                $DateReceivedAtWhse = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateReceivedAtWhse));
+             }
+
+             if($row->ActualDeliveryAtWarehouse == "0000-00-00 00:00:00"){
+                $ActualDeliveryAtWarehouse = $row->ActualDeliveryAtWarehouse;
+             }else{
+                $ActualDeliveryAtWarehouse = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ActualDeliveryAtWarehouse));
+             }
+
+             if($row->StartOfDemorage == "0000-00-00 00:00:00"){
+                $StartOfDemorage = $row->StartOfDemorage;
+             }else{
+                $StartOfDemorage = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->StartOfDemorage));
+             }
+
+             if($row->PullOutDateAtPort == "0000-00-00 00:00:00"){
+                $PullOutDateAtPort = $row->PullOutDateAtPort;
+             }else{
+                $PullOutDateAtPort = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->PullOutDateAtPort));
+             }
+
+             if($row->DateBOCCleared == "0000-00-00 00:00:00"){
+                $DateBOCCleared = $row->DateBOCCleared;
+             }else{
+                $DateBOCCleared = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateBOCCleared));
+             }
+
+              if($row->DateFileEntryToBOC == "0000-00-00 00:00:00"){
+                $DateFileEntryToBOC = $row->DateFileEntryToBOC;
+             }else{
+                $DateFileEntryToBOC = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateFileEntryToBOC));
+             }
+
+              if($row->DateSentPreAssessment == "0000-00-00 00:00:00"){
+                $DateSentPreAssessment = $row->DateSentPreAssessment;
+             }else{
+                $DateSentPreAssessment = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateSentPreAssessment));
+             }
+
+              if($row->DatePaid == "0000-00-00 00:00:00"){
+                $DatePaid = $row->DatePaid;
+             }else{
+                $DatePaid = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DatePaid));
+             }
+
+              if($row->DateSentFinalAssessment == "0000-00-00 00:00:00"){
+                $DateSentFinalAssessment = $row->DateSentFinalAssessment;
+             }else{
+                $DateSentFinalAssessment = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DateSentFinalAssessment));
+             }
              
-
-
-
+             echo "<tr>";
+             echo "<td> ".stripslashes($i)." </td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-container' data-toggle='modal' href='#updateContainer-mnla' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
+             echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
+             echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
+             echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
+                echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
+             echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
+             echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
+             echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
+                echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
+             echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
+                echo "<td class='row hidden'>".stripslashes($ActualDeliveryAtWarehouse)."</td>";
+             echo "<td class='row'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+                echo "<td class='row hidden'>".stripslashes($StartOfDemorage)."</td>";
+             echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($PullOutDateAtPort)."</td>";
+             echo "<td class='row'>".stripslashes($row->PullOutDateAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateBOCCleared)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateBOCCleared)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateFileEntryToBOC)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateFileEntryToBOC)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateSentPreAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateSentPreAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DatePaid)."</td>";
+             echo "<td class='row'>".stripslashes($row->DatePaid)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateSentFinalAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
+             echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
+             echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
+                echo "<td class='row hidden'>".stripslashes($DateReceivedAtWhse)."</td>";
+             echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
+            
              echo "</tr>";
          }
 
@@ -1263,6 +1435,7 @@ foreach($result as $row){
    $dtboc           = mysql_real_escape_string($this->input->post('dtboc'));
    $tdt             =  mysql_real_escape_string($this->input->post('tdt'));
    $pul_out_port    = mysql_real_escape_string($this->input->post('pul_out_port'));
+   $dt_recvd_cont_whse = mysql_real_escape_string($this->input->post('dt_recvd_cont_whse'));
 
 
 
@@ -1319,6 +1492,10 @@ foreach($result as $row){
    $date13  = date_create($pul_out_port);
    $pul_out_port    =  date_format($date13, 'Y-m-d H:i');
    }
+   if($dt_recvd_cont_whse!=''){
+   $date14  = date_create($pul_out_port);
+   $dt_recvd_cont_whse    =  date_format($date14, 'Y-m-d H:i');
+   }
 
 
 
@@ -1342,7 +1519,8 @@ foreach($result as $row){
                'GateOutAtPort'              => $gop,
                'ActualDeliveryAtWarehouse'  => $adw,
                'StartOfDemorage'            => $start_demorage,
-               'PullOutDateAtPort'          => $pul_out_port         
+               'PullOutDateAtPort'          => $pul_out_port, 
+               'DateReceivedAtWhse'         =>$dt_recvd_cont_whse
         );
    $this->db->insert('ContainerByCarrier',$data);
    $lastid =  $this->db->insert_id(); 
@@ -1368,6 +1546,7 @@ foreach($result as $row){
                'ActualDeliveryAtWarehouse'  => $adw,
                'StartOfDemorage'            => $start_demorage,
                'PullOutDateAtPort'          => $pul_out_port,
+               'DateReceivedAtWhse'         => $dt_recvd_cont_whse,
                'DateUpdated'                => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'           => $userid      
         );

@@ -399,3 +399,123 @@
 				 </div>
 				  
 			</div>
+                        
+                <!--Add Container Outport -->
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="addContainer-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog" >
+
+                              <!-- Modal content-->
+                                <?php $this->load->view('jobfile-view/add-outport-container/add_Container_outport'); ?>
+
+                            </div>
+                         </div>
+                        
+    <script>
+    /*Refresh Modal When Close*/  
+    
+    /*Add New Container Modal*/
+	 var myBackup_container = $('#addContainer-outport').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addContainer-outport', function() {
+        $('#addContainer-outport').modal('hide').remove();
+        var myClone_container = myBackup_container.clone();
+        $('body').append(myClone_container);
+    });
+        
+        /*View Container */
+         $('.view_containers-outport').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 	/* alert(ids);*/
+	 		  $.ajax({
+                                    method: "POST",
+                                      url: "<?php echo base_url('Job/get_containers_outport');?>",
+                                    data: { id:jobfileno,
+                                    }
+                                })
+                                .done(function(data) {
+                                    $('.list_conts').html(data);
+                                });
+        });
+        
+        /*View Commodity */
+         $('.view_goods-ouport').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+	 		  $.ajax({
+                                    method: "POST",
+                                      url: "<?php echo base_url('Job/get_goods');?>",
+                                    data: { id:jobfileno,
+                                    }
+                                })
+                                .done(function(data) {
+                                    $('.list_products').html(data);
+                                });
+        });
+        
+        
+        /* View Vessel*/
+        $('.view_vessels-outport').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+	 		  $.ajax({
+                                    method: "POST",
+                                      url: "<?php echo base_url('Job/get_vessels');?>",
+                                    data: { id:jobfileno,
+                                    }
+                                })
+                                .done(function(data) {
+                                    $('.list_vessels').html(data);
+                                });
+        });
+        
+        /*View Charges*/
+        $('.view_charges-outport').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+	 		  $.ajax({
+                                    method: "POST",
+                                      url: "<?php echo base_url('Job/get_charges');?>",
+                                    data: { id:jobfileno,
+                                    }
+                                })
+                                .done(function(data) {
+                                    $('.list_charges').html(data);
+                                });
+        });
+        
+        /*View Reports*/
+        $('.reports-outport').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+	 		  $.ajax({
+                                        method: "POST",
+                                          url: "<?php echo base_url('Job/status_report');?>",
+                                        data: { id:jobfileno,
+                                        }
+                                    })
+                                    .done(function(data) {
+                                            $('.list_status').html(data);
+                                    });
+        });
+        
+        /*Add Container outport*/
+        $(".btn-Add-Container-outport").click(function(){
+		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
+
+		$(".jobfile-addContainer-outport").val(jobfile_mnla) ;
+
+                    $.ajax({
+                            method: "POST",
+                              url: "<?php echo base_url('Job/get_vessel_container');?>",
+                            data: { jobfile:jobfile_mnla,
+                            }
+                    })
+                    .done(function(data) {
+                            $('.vessel-addContainer-outport-get').html(data);
+                    });
+	 });
+        
+        
+    </script>

@@ -57,16 +57,16 @@
 				
 			</div>
 
-		   <div class="form-group">
-				<label>Referrence Entry Number</label>					     
-	        		<input type="date" class="ref_entry_no-addContainer-manila form-control input-sm">
+                        <div class="form-group">
+				<label>Reference Entry Number</label>					     
+	        		<input type="text" class="ref_entry_no-addContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
-				<label>Date Paid</label>					     
-	        		<input type="date" class="dt_paid-addContainer-manila form-control input-sm">
+				<label>Date Paid(Date & Time)</label>					     
+	        		<input type="datetime-local" class="dt_paid-addContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
-				<label>Date Sent PreAssessment</label>					     
+				<label>Date Sent Pre-Assessment</label>					     
 	        		<input type="date" class="dt_pre_assess-addContainer-manila form-control input-sm">
 			</div>
 
@@ -104,20 +104,20 @@
 
 			<div class="form-group">
 				<label>Gate In at Port</label>
-				<input type="date" name="gtinport" class="form-control input-sm gtinport-addContainer-manila" />
+				<input type="datetime-local" name="gtinport" class="form-control input-sm gtinport-addContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Gate Out at Port</label>
-				<input type="date" name="gtoutport" class="form-control input-sm gtoutport-addContainer-manila" />
+				<input type="datetime-local" name="gtoutport" class="form-control input-sm gtoutport-addContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Actual Delivery at Warehouse</label>
-				<input type="date" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-manila" />
+				<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-manila" />
 			</div>
 
-		    <div class="form-group">
+                        <div class="form-group">
 				<label>Target Delivery Date</label>
 				<input type="date" name="" class="form-control input-sm tdt-addContainer-manila" />
 			</div>
@@ -128,14 +128,14 @@
 			</div>
 
 
-		    <div class="form-group">
-				  	<label for="dtClrd">Date File Entry To BOC:</label>
-				  	<input type="date" name="dt_file_entry_boc" class="form-control input-sm dt_file_entry_boc-addContainer-manila">
+                        <div class="form-group">
+                                <label for="dtClrd">Date File Entry To BOC:</label>
+                                <input type="date" name="dt_file_entry_boc" class="form-control input-sm dt_file_entry_boc-addContainer-manila">
 			</div>	
 
 			<div class="form-group">
-				  	<label for="dtClrd">Date Cleared BOC:</label>
-				  	<input type="date" name="dt_boc" class="form-control input-sm dt_boc-addContainer-manila">
+                                <label for="dtClrd">Date Cleared BOC:</label>
+                                <input type="date" name="dt_boc" class="form-control input-sm dt_boc-addContainer-manila">
 			</div>
 
 			<button type="button" class="btn-addContainer-manila btn btn-primary pull-right" style="margin-bottom: 10px;"><span class=" fa fa-plus fa-fw"></span> Add Container</button>
