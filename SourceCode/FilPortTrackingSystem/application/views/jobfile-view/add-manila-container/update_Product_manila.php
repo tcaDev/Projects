@@ -27,7 +27,7 @@
 								<i class="prodname-msg-updateProduct-mnila" style="color:red;"></i>
 							</div>
 
-							<div class="form-group ">	
+							<div class="form-group container-updateProduct-manila-gets ">	
 								<label>Container Number</label>
                 					<select class="container-updateProduct-manila-get form-control input-sm">
 
@@ -65,8 +65,7 @@ $(document).ready(function(){
         var productsbycontainerid = $(this).closest('tr').children('td:eq(5)').text();
 
         prodconid= product_value;
-		prodid =  $('.container-updateProduct-manila-get option:selected').val();
-		cbc   =  cbc
+		prodid =  productsbycontainerid;
         
 		 $(".prodname-updateProduct-mnila option").filter(function() {
 		    return this.text == product; 
@@ -95,7 +94,8 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click','.update_comodity',function(){
-		  alert(prodid);
+		var   cbc = $('.container-updateProduct-manila-gets select option:selected').val();
+		  			
 		  				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_manila_update/product');?>",

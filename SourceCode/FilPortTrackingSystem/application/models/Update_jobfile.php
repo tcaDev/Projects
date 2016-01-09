@@ -110,7 +110,7 @@ Class Update_jobfile extends CI_Model
         'ProductId'				  => $prodid,
         'ContainerByCarrierId'    => $cbc,
        );
-   	    $this->db->where('ProductsByContainerId', $Carrierid);
+   	    $this->db->where('ProductsByContainerId', $prodconid);
         $this->db->update('ProductsByContainer', $data);
   }
 

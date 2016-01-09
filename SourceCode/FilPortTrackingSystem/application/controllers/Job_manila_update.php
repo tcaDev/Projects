@@ -178,7 +178,7 @@ class Job_manila_update extends CI_Controller {
     function product(){
       $prodconid   =	$this->input->post('prodconid');
       $prodid      =	$this->input->post('prodid');
-      $cbc 	       =	$this->input->post('cbc');
+      $cbc 	       =	$this->input->post('cbcid');
 
        $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$prodid'
           and ContainerByCarrierId='$cbc' "); 
@@ -186,7 +186,7 @@ class Job_manila_update extends CI_Controller {
       	echo "Not updated because the data is already exists";
       }else{
       	echo "Comodity is Updated";
-      /*$this->Update_jobfile->product($prodconid,$prodid,$cbc);*/
+      $this->Update_jobfile->product($prodconid,$prodid,$cbc);
   	  }
     }
 
