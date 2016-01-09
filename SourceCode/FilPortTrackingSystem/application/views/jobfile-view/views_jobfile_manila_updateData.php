@@ -16,8 +16,8 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-update"></span></label> 
-								 <input type="text" class="form-control input-sm jobfiles-update" name="jbfl" id="jbfl" onkeyup="myjob(this)">
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span class="check_jobfiles-update"></span></label> 
+								 <input type="text" class="form-control input-sm jobfiles-update" name="jbfl" id="jbfl" onkeyup="check_jobfile_avi(this.value)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
@@ -215,7 +215,21 @@
 
 
 <script>
-
+function check_jobfile_avi(jobfile){
+/*    var id = $('.monitoring_type_id').val(); 
+    alert(id);
+    		 	$.ajax({
+		           method: "GET",
+	 		       url: "<?php echo base_url('Job/check_jobfiless');?>",
+			  	   data: {
+			  	   			   jbid 		       :id,
+			  	   	           jobfile   		   :jobfile,
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.check_jobfiles-update').html(data);
+	    		    });*/
+}
 $(document).on('click','.update_jobfiles',function(){
  var jbfl 			=   $('.jobfiles-update').val();
  var jbid           =   $('.monitoring_type_id').val();

@@ -159,12 +159,14 @@ var suc;
 
 
  function myjob(jobfile){
-   jobfile = jobfile.value; 
+   jobfile = jobfile.value;
+   var mon = $('.monitoring_type').val();
 
    			$.ajax({
 			  		method: "POST",
 					url: link + "/Job/check_jobfiless/",
-			  		data: { jobfile:jobfile}
+			  		data: { jobfile:jobfile,
+			  		        mon    :mon}
 			})
 			.done(function(data) {
 		   		 	   $('#check_jobfiles').html(data);

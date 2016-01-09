@@ -95,13 +95,22 @@ class Job extends CI_Controller {
 
     function check_jobfiless(){
       //$dt = Date("Y/m/d H:i:s");
-     $jobfile =  $this->input->post('jobfile');
+      $jobfile =  $this->input->post('jobfile');
+      $jbid =  $this->input->post('jbid');
+      $mon =  $this->input->post('mon');
+      
+
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
-            
+      $query2 = $this->Jobdata->mon_type($mon);
+       foreach ($query2 as $row) {
+          $moni = $row->MonitoringTypeName;
+       }
+     /* $query2= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' and JobFileId='$jbid' limit 1");
+        */   
           if($query->num_rows() ==1){ 
-            echo  "<i style='color:red;'>Jobfile already exists</i>";     
+            echo  "<i style='color:red;'>Jobfile is already been used </i>";     
           }else{
-             echo "<i style='color:green;'>Jobfile is available</i>"; 
+             echo "<i style='color:green;'>Jobfile  is available</i>"; 
           }
 
     }

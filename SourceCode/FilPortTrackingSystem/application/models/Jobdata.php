@@ -133,6 +133,11 @@ function get_countryID_manila($jobfile){
     return $query->result();
  }
 
+ function mon_type($mon){
+      $query = $this->db->query("select MonitoringTypeName FROM MonitoringType where MonitoringTypeId='$mon'");
+    return $query->result();
+ }
+
 }
 
 
