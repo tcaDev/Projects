@@ -194,7 +194,7 @@ function click_vessel(){
 					  						  $.alert({
 					  						  	backgroundDismiss: false, 	
 								        		title: 'Success!',
-								        		content: 'New Commodity Added!',
+								        		content:data,
 								        		confirm: function(){
 								        
 						        		    	$(".remove_tr" ).remove();

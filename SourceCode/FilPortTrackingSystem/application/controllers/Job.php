@@ -1201,6 +1201,8 @@ foreach($job as $row){
    $aat    =  date_format($date4, 'Y-m-d H:i');
    }
 
+
+
         $data = array(
                'JobFileId'           => $job,
                'CarrierId'           => $lines,
@@ -1372,10 +1374,11 @@ foreach($result as $row){
 function comodity(){
         $session_data = $this->session->userdata('logged_in');
          $userid = $session_data['uid'];
-         $prodid               =  mysql_real_escape_string($this->input->post('prod_orderno'));
-         $product_name         =  mysql_real_escape_string($this->input->post('product_name'));
-         $con_id               =  mysql_real_escape_string($this->input->post('con_id'));   
-           $result   = $this->Jobdata->select_productcontainer($con_id);
+         $prodid               =  $this->input->post('prod_orderno');
+         $product_name         =  $this->input->post('product_name');
+         $con_id               =  $this->input->post('con_id'); 
+
+      $result              = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
         $con_id =  $row->ContainerByCarrierId;
        }
@@ -1387,7 +1390,9 @@ function comodity(){
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
+        echo "This record is already exist";
       }else{
+        echo "Commodity is Successfully added";
        $data = array(
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id,
