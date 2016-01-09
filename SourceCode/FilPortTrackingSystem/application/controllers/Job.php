@@ -629,7 +629,7 @@ class Job extends CI_Controller {
                    <th class='hidden'>Commodity Id</th>
                    <th>Commodity</th>
                   <th>Container No.</th>
-                  <th>ProductsByContainerId</th>
+                  <th class='hidden'>ProductsByContainerId</th>
               </tr>";
 
           $i=0;
@@ -652,7 +652,7 @@ class Job extends CI_Controller {
              echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
-             echo "<td class='row'>".stripslashes($row->ProductsByContainerId) ."</td>";
+             echo "<td class='row hidden'>".stripslashes($row->ProductsByContainerId) ."</td>";
              echo "</tr>";
          }
 
