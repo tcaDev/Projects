@@ -17,8 +17,10 @@ class Job_availability extends CI_Controller {
    	  $vessel  = stripslashes($this->input->post('vessel'));
       $exist_vessel  = stripslashes($this->input->post('exist_vessel'));
 
-
-
+   /*   if($vessel){
+        echo "<i style='color:green;'>This is your old vessel!</i>"; 
+      }else{
+*/
 /*      if($vessel == ""){
         echo  "<i></i>";
       }else if($exist_vessel == 'true' ){
@@ -43,6 +45,7 @@ class Job_availability extends CI_Controller {
           }else{
              /*echo "<i style='color:green;'>Available</i>"; */
           }
+      // }
       //}
    }
 

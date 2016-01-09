@@ -10,13 +10,14 @@ class Job_manila_update extends CI_Controller {
             parent::__construct();
             date_default_timezone_set('Asia/Manila');
             $this->load->model('Update_jobfile');
+            $this->load->model('Jobdata');      
        }
 
 
       function container(){
 
       $carrierbyjobfile  =	$this->input->post('carrierbyjobfile');
-      $vesid 			 =	$this->input->post('vesid');
+     /* $vesid 			 =	$this->input->post('vesid');*/
       $containerno 		 =	$this->input->post('containerno');
       $contno 			 =	$this->input->post('contno');
       $cartons 			 =	$this->input->post('cartons');
@@ -39,12 +40,162 @@ class Job_manila_update extends CI_Controller {
 
 
 	$this->Update_jobfile->jobfile_up(
-		$carrierbyjobfile,$vesid,$containerno,$contno,
+		$carrierbyjobfile,$containerno,$contno,
 		$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
 		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
 		$pull_out_date,$dt_final_entry_boc,$dt_boc);
   
       }
+
+
+    function vessel(){
+      $session_data = $this->session->userdata('logged_in');
+      $userid = $session_data['uid'];
+    echo   $v             	   =	$this->input->post('Vessel');
+      $est_dept_time         =	$this->input->post('est_dept_time');
+      $est_arrival_time 	 =	$this->input->post('est_arrival_time');
+      $act_arrival_time      =	$this->input->post('act_arrival_time');
+      $discharge_time 	     =	$this->input->post('discharge_time');
+      $Carrierid 			 =	$this->input->post('Carrierid');
+      $cr 					 =	$this->input->post('cr');
+
+
+
+      $this->Update_jobfile->vessel($v,$est_dept_time,$est_arrival_time,
+      	$act_arrival_time,$discharge_time,$Carrierid,$cr,$userid);
+
+    }
+
+    function jobfile_update(){
+      $session_data = $this->session->userdata('logged_in');
+      $userid = $session_data['uid'];
+
+      
+      $jb        =	$this->input->post('jbid');
+      $jbfl      =	$this->input->post('jbfl');
+      $shipper 	 =	$this->input->post('shipper');
+      $consignee =	$this->input->post('consignee');
+      $colsel 	 =	$this->input->post('colsel');
+      $hbfl      =	$this->input->post('hbfl');
+      $mbl 		 =	$this->input->post('mbl');
+      $mbl2      =	$this->input->post('mbl2');
+      $bank 	 =	$this->input->post('bank');
+      $reg       =	$this->input->post('reg');
+      $country 	 =	$this->input->post('country');
+      $city      =	$this->input->post('city');
+      $dtRcvd_arr_client 		 =	$this->input->post('dtRcvd_arr_client');
+      $dtPckup_obl       =	$this->input->post('dtPckup_obl');
+      $dt_pickup_docs 	 =	$this->input->post('dt_pickup_docs');
+      $broker            =	$this->input->post('broker');
+      $purch_order_no 	 =	$this->input->post('purch_order_no');
+      $dtReq_budge_gl    =	$this->input->post('dtReq_budge_gl');
+      $ref_due_dt 		 =	$this->input->post('ref_due_dt');
+      $color_selectivity =	$this->input->post('color_selectivity');
+
+  
+
+            $data = array(
+               'JobFileNo'              => $jbfl,
+               'ConsigneeId'            => $consignee,
+               'BrokerId'               => $broker,
+               'ShipperId'              => $shipper,
+               'PurchaseOrderNo'        => $purch_order_no,
+               'IsLocked'               => 1,
+               'StatusId'               => $colsel,
+               'ColorSelectivityId'     => $color_selectivity,
+               'Registry'               => $reg,
+               'LockedBy_UserId'        => $userid,
+/*               'DateCreated'            => Date('Y-m-d H:i'),*/
+               'Origin_CountryId'       => $country, 
+               'OriginCity'             => $city,   
+               'HouseBillLadingNo'      => $hbfl,
+               'MasterBillLadingNo'     => $mbl,
+               'MasterBillLadingNo2'           =>$mbl2,
+               'LetterCreditFromBank'          =>$bank,
+               'DateReceivedNoticeFromClients' =>$dtRcvd_arr_client,
+               'DateReceivedOfBL'              =>$dtPckup_obl,
+               'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
+               'DateRequestBudgetToGL'         =>$dtReq_budge_gl,
+               'RFPDueDate'                    =>$ref_due_dt,
+/*               'ForwarderWarehouse'            => NULL,// la png ui
+               'FlightNo'                      =>NULL ,
+               'AirCraftNo'                    =>NULL,
+               'DateReceivedNoticeFromForwarder' =>NULL*/
+               
+        );
+
+
+        $this->db->where('JobFileId', $jb);
+        $this->db->update('JobFile', $data);
+
+        $data2 = array(
+          /*     'JobFileId'              => $lastid,*/
+               'JobFileNo'              => $jbfl,
+               'ConsigneeId'            => $consignee,
+               'BrokerId'               => $broker,
+               'ShipperId'              => $shipper,
+               'PurchaseOrderNo'        => $purch_order_no,
+               'IsLocked'               => 1,
+               'StatusId'               => $colsel,
+               'ColorSelectivityId'     => $color_selectivity,
+               'Registry'               => $reg,
+               'LockedBy_UserId'        => $userid,
+/*               'DateCreated'            => Date('Y-m-d H:i'),*/
+               'Origin_CountryId'       => $country, 
+               'OriginCity'             => $city,   
+               'HouseBillLadingNo'      => $hbfl,
+               'MasterBillLadingNo'     => $mbl,
+               'MasterBillLadingNo2'           =>$mbl2,
+               'LetterCreditFromBank'          =>$bank,
+               'DateReceivedNoticeFromClients' =>$dtRcvd_arr_client,
+               'DateReceivedOfBL'              =>$dtPckup_obl,
+               'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
+               'DateRequestBudgetToGL'         =>$dtReq_budge_gl,
+               'RFPDueDate'                    =>$ref_due_dt,
+     /*          'ForwarderWarehouse'            => NULL,// la png ui
+               'FlightNo'                      =>NULL ,
+               'AirCraftNo'                    =>NULL,
+               'DateReceivedNoticeFromForwarder'  =>NULL,*/
+               'DateUpdated'                      => Date('Y-m-d H:i'),
+               'UpdatedBy_UserId'                 =>$userid
+
+          );
+
+              $this->db->where('JobFileId',$jb);
+       		 $this->db->update('JobFileHistory', $data);
+      
+    }
+
+
+    function select_jobfileid(){
+    	 $jbfl      =	$this->input->post('jbfl');
+    	        $job= $this->Jobdata->select_jobfile($jbfl);
+               foreach($job as $row)
+            echo   $jb =  $row->JobFileId;
+    }
+
+
+    function product(){
+      $prodconid   =	$this->input->post('prodconid');
+      $prodid      =	$this->input->post('prodid');
+      $cbc 	       =	$this->input->post('cbc');
+
+       $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$prodid'
+          and ContainerByCarrierId='$cbc' "); 
+      if($query->num_rows()==1) {
+      	echo "Not updated because the data is already exists";
+      }else{
+      	echo "Comodity is Updated";
+      /*$this->Update_jobfile->product($prodconid,$prodid,$cbc);*/
+  	  }
+    }
+
+
+
+
+
+
+
 
 }
 ?>

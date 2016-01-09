@@ -14,13 +14,16 @@
 	        	<input type="text" class="jobfile-updateContainer-mnla form-control input-sm" disabled>
 			</div>
 
-	  	   <div class="form-group ">
+	  	   <div class="form-group hidden">
 	  	   		<label>Vessel/Voyage #</label>
             	    <select class="vessel-updateContainer-manila-get form-control input-sm">
 
             	    </select>
 			</div>
-
+		   <div class="form-group">
+	  	   		<label>Vessel/Voyage #</label>
+  					<input type="text" class="ves form-control input-sm"disabled>	
+			</div>
   			<div class="form-group">
 				<label>Container Number</label>	
 				<div class="check_exists_containers"> </div>				     
@@ -205,6 +208,8 @@
 					 $('.dt_file_entry_boc-updateContainer-manila').val(date_file_entry);
 					 $('.dt_boc-updateContainer-manila').val(date_boc_cleared);
 					 $('.carrier_jobfile_manila-update-container').val(value_vessel);
+
+					 $('.ves').val(vessel);
 					
 					$(".jobfile-updateContainer-mnla").val(jobfile_mnla);
 
@@ -264,7 +269,7 @@
 					  		method: "POST",
 							url: "<?php echo base_url('Job_manila_update/container');?>",
 					  		data: { carrierbyjobfile:carrierbyjobfile,
-					  			    vesid:vesid,
+					  			    /*vesid:vesid,*/
 					  			    containerno:containerno,
 					  			    contno:contno,
 					  			    cartons:cartons,

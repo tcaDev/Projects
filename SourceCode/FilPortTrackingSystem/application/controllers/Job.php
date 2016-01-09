@@ -214,7 +214,7 @@ class Job extends CI_Controller {
           foreach ($container_mnila_product as $row) {
               $cont =$row->ContainerNo;
 
-              echo '<option class="remove_option">'.$row->ContainerNo.'</option>';
+              echo '<option class="remove_option " value="'.$row->ContainerByCarrierId.'">'.$row->ContainerNo.'</option>';
           }
         /* echo '</select>';
          echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';*/
@@ -235,47 +235,47 @@ class Job extends CI_Controller {
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Lodgement Fee</label>
-                              <input type="text" name="lodge" class="form-control input-sm" id="lodge" value="'.$row->LodgementFee.'"  />
+                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge" value="'.$row->LodgementFee.'"  />
                             </div>
 
                             <div class="form-group">
                               <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm" id="cont-deposit" value="'.$row->ContainerDeposit.'" />
+                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont-deposit" value="'.$row->ContainerDeposit.'" />
                             </div>
 
                             <div class="form-group">
                               <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm" id="thc-charges" value="'.$row->THCCharges.'" />
+                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc-charges" value="'.$row->THCCharges.'" />
                             </div>
 
                             <div class="form-group">
                               <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm" id="arrastre" value="'.$row->Arrastre.'" />
+                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre" value="'.$row->Arrastre.'" />
                             </div>
 
                             <div class="form-group">
                               <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm" id="wharfage" value="'.$row->Wharfage.'" />
+                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage" value="'.$row->Wharfage.'" />
                             </div>
 
                             <div class="form-group">
                               <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm" id="weight" value="'.$row->Weighing.'" />
+                              <input type="text" name="weight" class="form-control input-sm weight" id="weight" value="'.$row->Weighing.'" />
                             </div>
 
                             <div class="form-group">
                               <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm" id="del" value="'.$row->DEL.'" />
+                              <input type="text" name="del" class="form-control input-sm del" id="del" value="'.$row->DEL.'" />
                             </div>
 
                             <div class="form-group">
                               <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm" id="dispatch" value="'.$row->DispatchFee.'" />
+                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch" value="'.$row->DispatchFee.'" />
                             </div>
 
                             <div class="form-group">
                               <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm" id="storage" value="'.$row->Storage.'" />
+                              <input type="text" name="storage" class="form-control input-sm storage" id="storage" value="'.$row->Storage.'" />
                             </div>
 
                           </div>
@@ -285,42 +285,42 @@ class Job extends CI_Controller {
 
                             <div class="form-group">
                                 <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm" id="demurrage" value="'.$row->Demorage.'" />
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage" value="'.$row->Demorage.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm"  id="detention" value="'.$row->Detention.'" />
+                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention" value="'.$row->Detention.'" />
                               </div>
                         
                               <div class="form-group">
                                 <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm" id="EIC" value="'.$row->EIC.'" />
+                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC" value="'.$row->EIC.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm" id="bai-app" value="'.$row->BAIApplication.'" />
+                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai-app" value="'.$row->BAIApplication.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm" id="bai-inspect" value="'.$row->BAIInspection.'" />
+                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai-inspect" value="'.$row->BAIInspection.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm" id="sra-app" value="'.$row->SRAApplication.'" />
+                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra-app" value="'.$row->SRAApplication.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm" id="sra-inspect" value="'.$row->SRAInspection.'" />
+                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra-inspect" value="'.$row->SRAInspection.'" />
                               </div>
 
                               <div class="form-group">
                                 <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm" id="bad-cargo" value="'.$row->BadCargo.'" />
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad-cargo" value="'.$row->BadCargo.'" />
                               </div>
                           </div>
                         </div>';
@@ -629,6 +629,7 @@ class Job extends CI_Controller {
                    <th class='hidden'>Commodity Id</th>
                    <th>Commodity</th>
                   <th>Container No.</th>
+                  <th>ProductsByContainerId</th>
               </tr>";
 
           $i=0;
@@ -651,6 +652,7 @@ class Job extends CI_Controller {
              echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
+             echo "<td class='row'>".stripslashes($row->ProductsByContainerId) ."</td>";
              echo "</tr>";
          }
 
@@ -1432,14 +1434,14 @@ foreach($job as $row){
    $sra_app           =  mysql_real_escape_string($this->input->post('sra_app'));   
    $sra_inspect       =  mysql_real_escape_string($this->input->post('sra_inspect'));
    $bad_cargo         =  mysql_real_escape_string($this->input->post('bad_cargo'));
-   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
+/*   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
    $part_charges      =  mysql_real_escape_string($this->input->post('part_charges'));
-
+*/
 
   //stop inserting data in jobfile to avoid duplication
-  $query= $this->db->query("Select * from vw_RunningCharges where
+ /* $query= $this->db->query("Select * from vw_RunningCharges where
         JobFileId='$job' limit 1");
-if($query->num_rows() ==1){
+if($query->num_rows() ==1){*/
 
 
       $update_charges = array(
@@ -1459,9 +1461,9 @@ if($query->num_rows() ==1){
                'BAIInspection'    => $bai_inspect,
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
-               'BadCargo'         => $bad_cargo,
-               'AllCharges'       => $all_charges,
-               'ParticularCharges'=> $part_charges
+               'BadCargo'         => $bad_cargo
+            /*   'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges*/
             );
 
 $this->db->where('JobFileId', $job);
@@ -1486,15 +1488,15 @@ $this->db->update('RunningCharges', $update_charges);
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
-               'AllCharges'       => $all_charges,
-               'ParticularCharges'=> $part_charges,
+   /*            'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges,*/
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UsrId'  => $userid
             );
 
 $this->db->where('JobFileId', $job);
 $this->db->update('RunningChargesHistory', $update_charges_history);
-}
+//}
    }
 
    function add_report(){

@@ -11,6 +11,8 @@
 				
 				           <input type="hidden" value="1" name="monitoring_type" class="monitoring_type"/>
 
+				           <input type="hidden"  name="monitoring_type" class="monitoring_type_id"/>
+
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
@@ -107,7 +109,7 @@
 
 									<div class="form-group origin-update">
 										<label>Origin Country</label><i style="color:red;">*</i>
-											<select  class="form-control" name="countries">
+											<select  class="form-control country_update" name="countries">
 												<?php foreach($countries as $row){ ?>
 												 <option value="<?php echo $row->CountryId?>">
 												 <?php echo $row->CountryName;?>
@@ -188,10 +190,10 @@
 				  		</div>
 				  </div>
     </div>
-
+    <input type="hidden" class="jobid">
     <div class="footer-modal" >
     <hr>
-      <button type="submit" class="btn btn-danger btn-Save-update" >Save</button>
+      <button type="submit" class="btn btn-danger update_jobfiles" >Save</button>
       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
     </div>
   </div>
@@ -208,6 +210,91 @@
   	}
  });
 
+</script>
+
+
+
+<script>
+
+$(document).on('click','.update_jobfiles',function(){
+ var jbfl 			=   $('.jobfiles-update').val();
+ var jbid           =   $('.monitoring_type_id').val();
+ var shipper        =   $('.shipper-update').val();
+ var consignee 	    =   $('.consignee-update').val();
+ var colsel         =   $('.colsel-update').val();
+ var hbfl 			=   $('.hbl-update').val();
+ var mbl            =   $('.mbl-update').val();
+ var mbl2           =   $('.mbl2-update').val();
+ var bank 	        =   $('.bank-update').val();
+ var reg            =   $('.registry-update').val();
+ var country 	    =   $('.country_update').val();
+ var city 	    	=   $('.origcity-update').val();
+ var dtRcvd_arr_client   =   $('.dtRcvd-update').val();
+ var dtPckup_obl    =   $('.dt_pickup_obl-update').val();
+ var dt_pickup_docs =   $('.dt_pickup_docs-update').val();
+ var broker         =   $('.broker-update').val();
+ var purch_order_no =   $('.purch_order_no_update').val();
+ var dtReq_budge_gl =   $('.dt-req-update').val();
+ var ref_due_dt     =   $('.rfp-update').val();
+ var color_selectivity     =   $('.color-select-update').val();
+   
+ 
+
+		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job_manila_update/jobfile_update');?>",
+	 		       beforeSend: function() {
+					 	  dia_jobfile =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating Jobfile',
+				   			});
+ 					  },
+			  	   data: {
+			  	   			   jbid 		   :jbid,
+			  	   	           jbfl   		   :jbfl,
+			  	   			   shipper         :shipper,
+			                   consignee       :consignee,   
+			                   colsel  		   :colsel,
+			                   hbfl       	   :hbfl,
+			                   mbl     		   :mbl,
+			                   mbl2	           :mbl2,
+			                   bank		       :bank,
+			                   reg             :reg,
+			                   country         :country,
+			                   city            :city,
+			                   dtRcvd_arr_client    :dtRcvd_arr_client,
+			                   dtPckup_obl          :dtPckup_obl,
+			                   dt_pickup_docs       :dt_pickup_docs,
+			                   broker               :broker,
+			                   purch_order_no       :purch_order_no,
+			                   dtReq_budge_gl       :dtReq_budge_gl,
+			                   ref_due_dt           :ref_due_dt,
+			                   color_selectivity    :color_selectivity
+
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Success!',
+				        		content: 'Jobfile is Updated',
+				        		confirm: function(){
+									dia_jobfile.close();
+									location.reload();
+				        		
+				        	    }
+				   			   });
+	    		    })
+
+
+ 
+ 
+ 
+
+ 
+});
 </script>
 
 

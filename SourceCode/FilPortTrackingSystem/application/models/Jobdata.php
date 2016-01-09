@@ -69,7 +69,7 @@ function get_vessels($JobFile){
  }
 
   function select_jobfile($job){
- 	$this->  db ->select('*');
+ 	$this->  db ->select('JobFileId');
     $this -> db -> from('JobFile');
     $this -> db ->where('JobFileNo', $job);
     $query=$this->db->get();
@@ -102,7 +102,7 @@ function get_vessel_container($vessel_container,$vessel){
 }
 
 function get_container_product($container_product){
-     $query = $this->db->query("Select ContainerByCarrierId,ContainerNo from vw_Containers
+     $query = $this->db->query("Select ContainerNo,ContainerByCarrierId from vw_Containers
             where JobFileNo='$container_product' ");
     return $query->result();
 }

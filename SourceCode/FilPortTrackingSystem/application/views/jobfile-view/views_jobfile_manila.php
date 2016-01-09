@@ -237,6 +237,7 @@
 								          		<button type="button" class="btn btn-Add-Report-mnla btn-success" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 								        </tr>
 
 								        <?php } ?>
@@ -377,7 +378,7 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				        	<button type="button " class="btn btn-danger ">Save</button>
+				        	<button type="button " class="btn btn-danger update_charges">Save</button>
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -386,7 +387,101 @@
 				 </div>
 				  
 			</div>
+   
+   <script>
+   //for update charges
 
+$(document).ready(function(){
+var jbfl;
+	$(document).on('click','.runchar',function(){
+			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+
+			jbfl = jobfile;
+	});
+   $(document).on('click','.update_charges',function(){
+
+   	
+     var lodge        = $('.lodge_update').val();
+     var cont_deposit = $('.cont-deposit').val();
+     var thc_charges  = $('.thc-charges').val();
+     var arrastre     = $('.arrastre').val();
+     var wharfage     = $('.wharfage').val();
+     var weight       = $('.weight').val();
+     var del          = $('.del').val();
+     var dispatch     = $('.dispatch').val();
+     var storage      = $('.storage').val();
+     var demurrage    = $('.demurrage').val();
+     var detention    = $('.detention').val();
+     var eic 		  = $('.EIC').val();
+     var bai_app 	  = $('.bai-app').val();
+     var bai_inspect  = $('.bai-inspect').val();
+     var sra_app 	  = $('.sra-app').val();
+     var sra_inspect  = $('.sra-inspect').val();
+     var bad_cargo    = $('.bad-cargo').val();
+
+     
+
+     
+     
+		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
+	 		       beforeSend: function() {
+					 	  dia_running_charges =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating Running Charges',
+				   			});
+ 					  },
+			  	   data: {
+			  	   	           jbfl   		:jbfl,
+			  	   			   lodge        :lodge,
+			                   cont_deposit :cont_deposit,   
+			                   thc_charges  :thc_charges,
+			                   wharfage     :wharfage,
+			                   arrastre     :arrastre,
+			                   weight	    :weight,
+			                   del			:del,
+			                   dispatch     :dispatch,
+			                   storage      :storage,
+			                   demurrage    :demurrage,
+			                   detention    :detention,
+			                   eic          :eic,
+			                   bai_app      :bai_app,
+			                   bai_inspect  :bai_inspect,
+			                   sra_app      :sra_app,
+			                   sra_inspect  :sra_inspect,
+			                   bad_cargo    :bad_cargo
+
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Success!',
+				        		content: 'Running Charges Updated!',
+				        		confirm: function(){
+									dia_running_charges.close();
+				        		
+				        	    }
+				   			   });
+	    		    })
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
+  });
+   });
+  
+   </script>
 
 			<!--Add Container  -->
 			
@@ -780,8 +875,10 @@ $(".btn-Vessel").click(function(){
 
 
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
+			      var jobfileID  = $(this).closest('tr').children('td:eq(30)').text();
 
-					      $.ajax({
+			     /* alert(jobfileID);*/
+					      $.ajax({	
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country');?>",
 						  		data: { jobfile:jobfileNo
@@ -816,6 +913,8 @@ $(".btn-Vessel").click(function(){
 			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
 
 			     $('.jobfiles-update').val(jobfileNo);
+			     $('.monitoring_type_id').val(jobfileID);
+			     
 
 			     $(".shipper-update option").filter(function() {
 				    return this.text == ShipperName; 

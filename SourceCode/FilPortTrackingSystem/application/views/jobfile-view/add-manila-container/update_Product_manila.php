@@ -39,14 +39,16 @@
     </div>
 
 	<div class="modal-footer">
-	   	 <button type="button" class="btn btn-danger save_container">Save</button>
+	   	 <button type="button" class="btn btn-danger update_comodity">Save</button>
 	     <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
 	</div>
 </div>
 
 
 <script>
-
+var prodconid;
+var prodid;
+var cbc;
 $(document).ready(function(){
 
 	$(document).on('click','.btn-update-product',function(){
@@ -60,17 +62,19 @@ $(document).ready(function(){
 		 var product_value = $(this).closest('tr').children('td:eq(2)').text();
 		 var product= $(this).closest('tr').children('td:eq(3)').text();
 		 var container = $(this).closest('tr').children('td:eq(4)').text();
+        var productsbycontainerid = $(this).closest('tr').children('td:eq(5)').text();
 
-		 
-
-		 $(".prodname-updateProduct-mnila").filter(function() {
+        prodconid= product_value;
+		prodid =  $('.container-updateProduct-manila-get option:selected').val();
+		cbc   =  cbc
+        
+		 $(".prodname-updateProduct-mnila option").filter(function() {
 		    return this.text == product; 
 		}).attr('selected', 'selected');
 
+		
 
-		 $(".container-updateProduct-manila-get").filter(function() {
-		    return this.text == container; 
-		}).attr('selected', 'selected');
+
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_updated_container_product');?>",
@@ -79,12 +83,37 @@ $(document).ready(function(){
 					})
 			  		.done(function(data) {
 				  				$('.container-updateProduct-manila-get').html(data);
+				  				 $(".container-updateProduct-manila-get option").filter(function() {
+								    return this.text == container; 
+								}).attr('selected', 'selected');
 								
 					});
 
 
 		
 
+	});
+
+	$(document).on('click','.update_comodity',function(){
+		  alert(prodid);
+		  				$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_manila_update/product');?>",
+				  		data: { prodconid:prodconid,
+				  			     prodid  :prodid,
+				  			     cbcid   :cbc
+				  		}
+					})
+			  		.done(function(data) {
+				             $.alert({
+				        		title: 'Success!',
+				        		content: data,
+				        		confirm: function(){
+								
+				        	    }
+				   			   });
+								
+					});
 	});
 });
 	

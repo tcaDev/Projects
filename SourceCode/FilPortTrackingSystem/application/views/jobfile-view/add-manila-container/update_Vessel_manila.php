@@ -11,16 +11,19 @@
 
 						<div class="col-lg-6">
 
+					
 
 							<div class="form-group ">
 								<label>JobFile</label>
 					        	<input type="text" class="jobfile-updateVessel-mnla form-control input-sm"disabled>
 							</div>
 
+							
+
 							<div class="form-group">
-								<label>Vessel/Voyage #</label> 
+								<label>Vessel/Voyage #</label>
 								<span class="vessel-msg-updateVessel-mnilas"> </span>
-								<input type="text" class="form-control input-sm vessel-updateVessel-mnila" id="vessel" name="vessel" onkeyup="check_vessel_avail(this.value)">
+								<input type="text" class="form-control input-sm vessel-updateVessel-mnila" id="vessel" name="vessel" ><!-- onkeyup="check_vessel_avail_update(this.value)" -->
 								 <i class="vessel-msg-updateVessel-mnila" style="color:red;"></i>
 							</div>
 
@@ -51,7 +54,7 @@
 							 <div class="form-group carrier-updateVessel-mnila">
 
 							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
-								<select class="form-control " name="countries">
+								<select class="form-control shipping_lines " name="countries">
 									<option value="0">Select Shipping Line/Carrier</option>
 										<?php foreach($carrier as $row){ ?>
 											 <option value="<?php echo $row->CarrierId?>">
@@ -67,12 +70,29 @@
      </div>
 
 	<div class="modal-footer">
-	   	 <button type="button" class="btn btn-danger save_container">Save</button>
+	   	 <button type="button" class="btn btn-danger update_vessel">Save</button>
 	     <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
 	</div>
 </div>
 
 <script>
+var Carrierid;
+function check_vessel_avail_update(vess){
+   			var jbfl = $('.jobfile-updateVessel-mnla').val();
+   			var vessel = $(this).closest('tr').children('td:eq(2)').text();
+   	        
+   				 $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_availability');?>",
+				  		data: { jbfl   :jbfl,
+				  			    vessel :vess
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.vessel-msg-updateVessel-mnilas').html(data);
+					});
+   			
+}
 $(document).ready(function(){
 
 	$(document).on('click','.btn-update-vessel',function(){
@@ -88,15 +108,15 @@ $(document).ready(function(){
 		 var est_dept_time = $(this).closest('tr').children('td:eq(8)').text();
 		 var est_arrival_time = $(this).closest('tr').children('td:eq(10)').text();
 		 var carrier_value = $(this).closest('tr').children('td:eq(12)').text();
+		 Carrierid = carrier_value;
 
-
-		 	alert(carrier_name);
+		 	/*alert(carrier_name);*/
 		 $('.vessel-updateVessel-mnila').val(vessel);
-		 
 		 $('.edt-updateVessel-mnila').val(est_dept_time);
 		 $('.eat-updateVessel-mnila').val(est_arrival_time);
 		 $('.aat-updateVessel-mnila').val(act_arrival_time);
 		 $('.vdt-updateVessel-mnila').val(discharge_time);
+		
 
 		  $(".carrier-updateVessel-mnila option").filter(function() {
 		    return this.text == carrier_name; 
@@ -105,4 +125,44 @@ $(document).ready(function(){
 
 	});
 });
+
+     $(document).on('click','.update_vessel',function(){
+     	JobFileId  = $('.monitoring_type_id').val();
+        vessel 			  =   $('.vessel-updateVessel-mnila').val();
+		est_dept_time     =   $('.edt-updateVessel-mnila').val();
+		est_arrival_time  =   $('.eat-updateVessel-mnila').val();
+		act_arrival_time  =   $('.aat-updateVessel-mnila').val();
+		discharge_time    =   $('.vdt-updateVessel-mnila').val();
+        shipping_lines    =   $('.shipping_lines').val();
+       
+      		
+					$.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job_manila_update/vessel');?>",
+				  		data: { 
+				  			   /* JobFileId          :JobFileId,*/
+				  				Vessel             : vessel,
+				  			    est_dept_time      : est_dept_time,
+				  			    est_arrival_time   : est_arrival_time,
+				  			    act_arrival_time   : act_arrival_time,
+				  			    discharge_time     : discharge_time,
+				  			    Carrierid  		   : Carrierid,
+				  			    cr 				   : shipping_lines
+				  		}
+					})
+			  		.done(function(data) {
+				  			$.alert({
+			    	 	  	 	backgroundDismiss: false, 	
+				        		title: 'Success!',
+				        		content:'Vessel is updated!',
+				        		confirm: function(){
+				        			 $('#updateVessel-mnla').modal('hide');
+				        			 $('#viewvessels').modal('hide');
+				        	    }
+				   			  }); 
+								
+					});
+
+
+     });
 </script>
