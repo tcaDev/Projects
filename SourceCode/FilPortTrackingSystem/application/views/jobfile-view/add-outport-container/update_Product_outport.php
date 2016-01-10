@@ -7,29 +7,29 @@
     <div class="modal-body">
 
     	<!-- Products PLATE WINDOW-->
-				  	<div id="table-updateProduct-mnla" class="product-mnla-update">
+				  	<div id="table-updateProduct-outport" class="product-outport-update">
 
 				  			<div class="form-group">
 								<label>JobFile</label>
-					        	<input type="text" class="jobfile-updateProduct-mnla form-control input-sm" id="jbfl" disabled>
+					        	<input type="text" class="jobfile-updateProduct-outport form-control input-sm" id="jbfl" disabled>
 							</div>
 
 							<div class="form-group">
 								<label>Product Name</label><i style="color:red;">*</i>
 								<div class="get_my_products"></div>
-								 <select class="prodname-updateProduct-mnila form-control input-sm">
+								 <select class="prodname-updateProduct-outport form-control input-sm">
 								  <?php foreach ($products as $row) {?>
 
-								 	  <?php echo "<option value=".stripslashes($row->ProductId).">".$row->ProductName."</option>"; ?>
+								 	  <?php echo "<option value=".stripslashes($row->ProductId).">".stripslashes($row->ProductName)."</option>"; ?>
 	
 								 <?php }?>
 								 </select>
-								<i class="prodname-msg-updateProduct-mnila" style="color:red;"></i>
+								<i class="prodname-msg-updateProduct-outport" style="color:red;"></i>
 							</div>
 
-							<div class="form-group container-updateProduct-manila-gets ">	
+							<div class="form-group container-updateProduct-outport-gets ">	
 								<label>Container Number</label>
-                					<select class="container-updateProduct-manila-get form-control input-sm">
+                					<select class="container-updateProduct-outport-get form-control input-sm">
 
 
                 					</select>
@@ -39,24 +39,24 @@
     </div>
 
 	<div class="modal-footer">
-	   	 <button type="button" class="btn btn-danger update_comodity">Save</button>
+	   	 <button type="button" class="btn btn-danger update_comodity-outport">Save</button>
 	     <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
 	</div>
 </div>
 
 
 <script>
-var prodconid;
-var prodid;
-var cbc;
+var prodconid_outport;
+var prodid_outport;
+var cbc_outport;
 $(document).ready(function(){
 
-	$(document).on('click','.btn-update-product',function(){
+	$(document).on('click','.btn-update-product-outport',function(){
 
 		
-		var jobfile_mnla = $(".jobfile_mnila_update_product").val();
+		var jobfile_outport = $(".jobfile_outport_update_product").val();
 
-		$(".jobfile-updateProduct-mnla").val(jobfile_mnla);
+		$(".jobfile-updateProduct-outport").val(jobfile_outport);
 		
 
 		 var product_value = $(this).closest('tr').children('td:eq(2)').text();
@@ -64,25 +64,29 @@ $(document).ready(function(){
 		 var container = $(this).closest('tr').children('td:eq(4)').text();
         var productsbycontainerid = $(this).closest('tr').children('td:eq(5)').text();
 
-        prodconid= product_value;
-		prodid =  productsbycontainerid;
 
-		alert(product);
+        alert(product_value);
+        prodconid_outport= product_value;
+		prodid_outport =  productsbycontainerid;
+
+		alert(prodconid_outport);
         
-		 $(".prodname-updateProduct-mnila option").filter(function() {
+		 $(".prodname-updateProduct-outport option").filter(function() {
 		    return this.text == product; 
 		}).attr('selected', 'selected');
 
 		
+
+
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_updated_container_product');?>",
-				  		data: { jobfile:jobfile_mnla
+				  		data: { jobfile:jobfile_outport
 				  		}
 					})
 			  		.done(function(data) {
-				  				$('.container-updateProduct-manila-get').html(data);
-				  				 $(".container-updateProduct-manila-get option").filter(function() {
+				  				$('.container-updateProduct-outport-get').html(data);
+				  				 $(".container-updateProduct-outport-get option").filter(function() {
 								    return this.text == container; 
 								}).attr('selected', 'selected');
 								
@@ -93,8 +97,12 @@ $(document).ready(function(){
 
 	});
 
-	$(document).on('click','.update_comodity',function(){
-		var   cbc = $('.container-updateProduct-manila-gets select option:selected').val();
+	$(document).on('click','.update_comodity-outport',function(){
+		var   cbc_outport = $('.container-updateProduct-outport-gets select option:selected').val();
+
+		alert(prodconid_outport);
+		alert(cbc_outport);
+		alert(prodid_outport);
 		  			
 		  				$.ajax({
 				  		method: "POST",

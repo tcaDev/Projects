@@ -68,20 +68,26 @@
 /*Click Button Container*/
 
 function click_vessel(){
+	    
+	    
 	var jobfile_mnla =  $(".jobfile-addProduct-mnla").val();
+	var modal_ID= "#addVessel-mnla";
+	
+	$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
+	$(".jobfile-addVessel-mnla").val(jobfile_mnla) ;
 
-		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
-
-					$.ajax({
-				  		method: "POST",
-						  url: "<?php echo base_url('Job/get_vessel_container');?>",
-				  		data: { jobfile:jobfile_mnla,
-				  		}
-					})
-			  		.done(function(data) {
-				  				$('.vessel-addContainer-manila-get').html(data);
-					});
+		$.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_vessel_container');?>",
+	  		data: { jobfile:jobfile_mnla,
+	  				href:modal_ID
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.vessel-addContainer-manila-get').html(data);
+		});
 }
+
 
  /*Delete Row*/
 	  	$(document).on('click', '#table-AddProduct-mnla .deleteButton', function() {

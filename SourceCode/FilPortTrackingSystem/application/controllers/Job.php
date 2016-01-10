@@ -154,12 +154,13 @@ class Job extends CI_Controller {
 /*Get Vessel When adding New Container*/
     function get_vessel_container(){
       $vessel_mnila =  $this->input->post('jobfile');
+      $href_modal =  $this->input->post('href');
       $vessel =  $this->input->post('vessel'); 
       $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila,$vessel);
 
       if($vessel_mnila_container==NULL){
         echo '<label>Vessel/Voyage #</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-mnla" onclick="click_containers()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="'.$href_modal.'" ><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
 
       }else{
 
@@ -172,29 +173,8 @@ class Job extends CI_Controller {
       }
     }
   
-    /*Get Vessel When adding New Container OUTPORT*/
-    function get_vessel_container_outport(){
-      $vessel_outport =  $this->input->post('jobfile');
-      $vessel =  $this->input->post('vessel'); 
-      $vessel_outport_container = $this->Jobdata->get_vessel_container($vessel_outport,$vessel);
-
-      if($vessel_outport_container==NULL){
-        echo '<label>Vessel/Voyage #</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addVessel-outport" onclick="click_containers_outport()"><span class="fa fa-plus fa-fw"></span> Add Vessel</button>';
-
-      }else{
-
-         echo '<label>Vessel/Voyage #</label>
-                <select class="vessel-addContainer-outport vessel-addContainer-outport form-control input-sm">';
-          foreach ($vessel_outport_container as $row) {
-              echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
-          }
-         echo '</select>';
-      }
-    }
-
     /*Get Vessel When Updating Container*/
-    function get_update_vessel_container(){
+    /*function get_update_vessel_container(){
       $vessel_mnila =  $this->input->post('jobfile'); 
       $vessel       =  $this->input->post('vessel');    
       $vessel_mnila_container = $this->Jobdata->get_vessel_container($vessel_mnila,$vessel);
@@ -206,30 +186,30 @@ class Job extends CI_Controller {
               echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
           }
       }
-    }
-
+    }*/
 
   /*Get Container When adding New Product*/
     function get_container_product(){
       $container_mnila =  $this->input->post('jobfile');   
+      $href_modal =  $this->input->post('href');
+      $onclick =  $this->input->post('onclick');
       $container_mnila_product = $this->Jobdata->get_container_product($container_mnila);
 
       if($container_mnila_product==NULL){
         echo '<label>Container Number</label><br>';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#addContainer-mnla" onclick="click_vessel()"><span class="fa fa-plus fa-fw"></span> Add Container</button>';
-        echo '<input type="text" class="containers-prod-addProduct-mnila hidden form-control input-sm">';
+        echo '<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="'.$href_modal.'" onclick="'.$onclick.'()"><span class="fa fa-plus fa-fw"></span> Add Container</button>';
         echo ' <i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
       }else{
 
          echo '<label>Container Number</label>
-                <select class="containers-prod-addProduct-mnila form-control input-sm">';
+                <select class="containers-prod-addProduct-mnila containers-prod-addProduct-outport form-control input-sm">';
           foreach ($container_mnila_product as $row) {
               $cont =$row->ContainerNo;
 
               echo '<option class="remove_option" value='.$row->ContainerByCarrierId.'>'.$row->ContainerNo.'</option>';
           }
          echo '</select>';
-         echo '<i class="cont-size-msg-addProduct-mnila" style="color:red;"></i>';
+         echo '<i class="cont-size-msg-addProduct-mnila cont-size-msg-addProduct-outport" style="color:red;"></i>';
       }
     }
 
@@ -367,9 +347,9 @@ class Job extends CI_Controller {
     function get_vessels(){
       $vessel =  $this->input->post('id');   
       $vessels  = $this->Jobdata->get_vessels($vessel);
+      $button_update = $this->input->post('button_update');
+      $href =  $this->input->post('href');
 
-     
-            
     if($vessels==NULL){
      echo    '<center><span style="color:red">No Vessels Yet </span></center>';
     }else{
@@ -422,7 +402,7 @@ class Job extends CI_Controller {
 
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default btn-update-vessel' data-toggle='modal' href='#updateVessel-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
                 echo "<td class='row hidden'>".stripslashes($ActualArrivalTime)."</td>";
@@ -652,6 +632,8 @@ class Job extends CI_Controller {
     function get_goods(){
       $products =  $this->input->post('id');   
       $product  = $this->Jobdata->get_goods($products);
+      $button_update = $this->input->post('button_update');
+      $href =  $this->input->post('href');
 
     if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
@@ -683,7 +665,7 @@ class Job extends CI_Controller {
           }
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default btn-update-product' data-toggle='modal' href='#updateProduct-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateProduct-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
@@ -1178,7 +1160,7 @@ class Job extends CI_Controller {
              
              echo "<tr>";
              echo "<td> ".stripslashes($i)." </td>";
-             echo "<td><button type='button' class='btn btn-default btn-update-container' data-toggle='modal' href='#updateContainer-mnla' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-container-outport' data-toggle='modal' href='#updateContainer-outport' ><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
@@ -1471,8 +1453,6 @@ foreach($result as $row){
    $tdt             =  mysql_real_escape_string($this->input->post('tdt'));
    $pul_out_port    = mysql_real_escape_string($this->input->post('pul_out_port'));
    $dt_recvd_cont_whse = mysql_real_escape_string($this->input->post('dt_recvd_cont_whse'));
-
-
 
 
    if($dt_paid!=''){

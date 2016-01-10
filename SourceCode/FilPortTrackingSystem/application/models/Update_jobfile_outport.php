@@ -2,19 +2,20 @@
 
 <?php
 
-Class Update_jobfile extends CI_Model
+Class Update_jobfile_outport extends CI_Model
 {
   
-  function jobfile_up(
-		$carrierbyjobfile,$containerno,$contno,
-		$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
-		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
-		$pull_out_date,$dt_final_entry_boc,$dt_boc,$userid,$actual_dt_rcvd_cont_whse)
+
+  function jobfile_up_outport(
+    $carrierbyjobfile,$containerno,$contno,
+    $cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
+    $dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
+    $pull_out_date,$dt_final_entry_boc,$dt_boc,$userid,$actual_dt_rcvd_cont_whse)
   {
      $session_data      = $this->session->userdata('logged_in');
      $userid            = $session_data['uid'];
 
-  	     $data = array(
+         $data = array(
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
       /*  'CarrierByJobFileId'   =>$vesid,*/
@@ -23,18 +24,18 @@ Class Update_jobfile extends CI_Model
         'TruckerName'          => $truckername,
         'StartOfStorage'       => $storage,
         'Lodging'              => $lodging,
-        'DateBOCCleared'	   => $dt_boc, 
-        'HaulerOrTruckId'	   => $truckid,
+        'DateBOCCleared'     => $dt_boc, 
+        'HaulerOrTruckId'    => $truckid,
         'TargetDeliveryDate'   => $tdt,
         'DateSentFinalAssessment' => $dt_final_assess,
-        'DatePaid'				  => $dtpaid,
+        'DatePaid'          => $dtpaid,
         'DateSentPreAssessment'   => $dt_pre_assess,
         'DateFileEntryToBOC'      => $dt_final_entry_boc,
-        'GateInAtPort'			  => $gip,
-        'GateOutAtPort'			  => $gop,
+        'GateInAtPort'        => $gip,
+        'GateOutAtPort'       => $gop,
         'ActualDeliveryAtWarehouse' =>$adw,
-        'StartOfDemorage'			=> $demorage,
-        'PullOutDateAtPort'			=> $pull_out_date,
+        'StartOfDemorage'     => $demorage,
+        'PullOutDateAtPort'     => $pull_out_date,
         'DateReceivedAtWhse' =>$actual_dt_rcvd_cont_whse
 
 
@@ -52,18 +53,18 @@ Class Update_jobfile extends CI_Model
         'TruckerName'          => $truckername,
         'StartOfStorage'       => $storage,
         'Lodging'              => $lodging,
-        'DateBOCCleared'	   => $dt_boc, 
-        'HaulerOrTruckId'	   => $truckid,
+        'DateBOCCleared'     => $dt_boc, 
+        'HaulerOrTruckId'    => $truckid,
         'TargetDeliveryDate'   => $tdt,
         'DateSentFinalAssessment' => $dt_final_assess,
-        'DatePaid'				  => $dtpaid,
+        'DatePaid'          => $dtpaid,
         'DateSentPreAssessment'   => $dt_pre_assess,
         'DateFileEntryToBOC'      => $dt_final_entry_boc,
-        'GateInAtPort'			  => $gip,
-        'GateOutAtPort'			  => $gop,
+        'GateInAtPort'        => $gip,
+        'GateOutAtPort'       => $gop,
         'ActualDeliveryAtWarehouse' =>$adw,
-        'StartOfDemorage'			=> $demorage,
-        'PullOutDateAtPort'			=> $pull_out_date,
+        'StartOfDemorage'     => $demorage,
+        'PullOutDateAtPort'     => $pull_out_date,
         'DateReceivedAtWhse' =>$actual_dt_rcvd_cont_whse,
         'DateUpdated'               => Date('Y-m-d H:i'),
         'UpdatedBy_UserId'          =>$userid
@@ -73,6 +74,7 @@ Class Update_jobfile extends CI_Model
           $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
           $this->db->update('ContainerByCarrierHistory', $data2);
   }
+
 
   function vessel($v,$est_dept_time,$est_arrival_time,
       	$act_arrival_time,$discharge_time,$Carrierid,$cr){

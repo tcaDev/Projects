@@ -189,10 +189,6 @@
 
 
 <script>
- function click_containers(){
- 	var jobfile_mnla =  $('.jobfile-addContainer-mnla').val();
-		$(".jobfile-addVessel-mnla").val(jobfile_mnla);
-}
 	
 	$(document).ready(function(){
 /*Number Only*/
