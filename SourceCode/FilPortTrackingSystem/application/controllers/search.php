@@ -1314,5 +1314,14 @@ function search_product(){
 	}
 
 
+function get_jobfile_search(){
+	$montype  =  $this->input->get('montype');
+	$jobfile  =  $this->input->get('jobfile');
+
+	$data['manila'] =  $this->User->search_manila($montype,$jobfile);
+     
+    $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
+}
+
 }
 ?>

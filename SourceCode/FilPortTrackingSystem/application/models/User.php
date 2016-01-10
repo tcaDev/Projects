@@ -692,5 +692,11 @@ function get_jobfile_outport(){
       }
 
     }
+
+
+    function search_manila($montype,$jobfile){
+    $query = $this->db->query("Select * from vw_JobFile where MonitoringTypeId='$montype' and JobFileNo like '%$jobfile%' limit 10");
+    return $query->result();
+    }
 }
 ?>

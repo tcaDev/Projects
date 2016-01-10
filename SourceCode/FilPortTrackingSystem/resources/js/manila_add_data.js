@@ -567,7 +567,7 @@ function insert_jobfile(){
 				        		title: 'Error!',
 				        		content: 'There is a problem in adding data ,please try another data or reload the page!',
 				        		confirm: function(){
-									location.reload();
+									dia.close();
 				        	    }
 				   			   });
 	  							 suc = 0;
