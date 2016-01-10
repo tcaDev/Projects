@@ -268,6 +268,15 @@
  						$.ajax({
 					  		method: "POST",
 							url: "<?php echo base_url('Job_manila_update/container');?>",
+						beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating container',
+				   			});
+ 					     },
 					  		data: { carrierbyjobfile:carrierbyjobfile,
 					  			    /*vesid:vesid,*/
 					  			    containerno:containerno,
@@ -297,6 +306,7 @@
 				        		title: 'Success!',
 				        		content:'Container is updated!',
 				        		confirm: function(){
+				        			dia.close();
 				        			 $('#updateContainer-mnla').modal('hide');
 				        			 $('#viewcontainers').modal('hide');
 				        	    }

@@ -101,17 +101,22 @@ class Job extends CI_Controller {
       
 
       $query= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' limit 1");
-      $query2 = $this->Jobdata->mon_type($mon);
+      $query2 = $this->Jobdata->mon_type($jobfile);
        foreach ($query2 as $row) {
           $moni = $row->MonitoringTypeName;
        }
-     /* $query2= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' and JobFileId='$jbid' limit 1");
+   /*   $query2= $this->db->query("Select * from JobFile where JobFileNo ='$jobfile' and JobFileId='$jbid' limit 1");
         */   
-          if($query->num_rows() ==1){ 
-            echo  "<i style='color:red;'>Jobfile is already been used </i>";     
+
+      if($jobfile!=''){
+          if($query->num_rows() ==1){
+            if($moni!=''){
+                echo  "<i style='color:red;font-size:12px;'>Jobfile is already exists in ".$moni."</i>";     
+             }
           }else{
              echo "<i style='color:green;'>Jobfile  is available</i>"; 
           }
+       }
 
     }
 

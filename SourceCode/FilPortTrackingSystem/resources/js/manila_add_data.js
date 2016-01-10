@@ -160,7 +160,10 @@ var suc;
 
  function myjob(jobfile){
    jobfile = jobfile.value;
-   var mon = $('.monitoring_type').val();
+   if(jobfile==''){
+   	$('#check_jobfiles').empty();
+   }else{
+       var mon = $('.monitoring_type').val();
 
    			$.ajax({
 			  		method: "POST",
@@ -171,7 +174,7 @@ var suc;
 			.done(function(data) {
 		   		 	   $('#check_jobfiles').html(data);
 				});
-
+    }
  }
 
        
