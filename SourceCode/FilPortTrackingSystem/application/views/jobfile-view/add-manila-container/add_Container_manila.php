@@ -189,6 +189,10 @@
 
 
 <script>
+ function click_containers(){
+ 	var jobfile_mnla =  $('.jobfile-addContainer-mnla').val();
+		$(".jobfile-addVessel-mnla").val(jobfile_mnla);
+}
 	
 	$(document).ready(function(){
 /*Number Only*/
@@ -300,7 +304,17 @@ function check_Container_mnilas(container){
 	           var vessel_voyage = $('.vessel-addContainer-manila').val();
 	           	var jbfl = $('.jobfile-addContainer-mnla').val();
      			var containerno = $('.container-addContainer-manila').val();
-   		
+     			var ex = '.check_exists_container';
+
+   		 if((vessel_voyage='') && (jbfl=='') && (containerno=='')){
+   		 	
+   		 	 	var jbfl = $('.jobfile-updateContainer-mnla').val();
+   		 	 	var vessel_voyage = $('.vessel-updateContainer-manila-get').val(); 	
+   		 	 	var containerno = container;
+   		 	 	var ex = '.check_exists_container_update';
+   		 	 	
+   		 }
+   		 /*alert(vessel_voyage);*/
    				 $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability/container_manila');?>",
@@ -310,7 +324,7 @@ function check_Container_mnilas(container){
 				  		}
 					})
 			  		.done(function(data) {
-				  				$('.check_exists_container').html(data);
+				  				$(ex).html(data);
 					});
 }
 

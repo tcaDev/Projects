@@ -171,6 +171,14 @@ class Job extends CI_Controller {
           }
          echo '</select>';
       }
+      ?>
+       <script>
+       $('.check_exists_container_update').click(function(){
+        var ves = $('.vessel-addContainer-manila').val();
+         $('.veschek').val(ves);
+       });
+       </script>
+      <?php
     }
   
     /*Get Vessel When Updating Container*/

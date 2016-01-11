@@ -124,7 +124,7 @@ Class Update_jobfile extends CI_Model
        $data2 = array(
         'ProductId'				  => $prodid,
         'ContainerByCarrierId'    => $cbc,
-        'DateUpdated'			  => $Date('Y-m-d H:i'),
+        'DateUpdated'			  => Date('Y-m-d H:i'),
         'UpdatedBy_UserId'		  => $userid
 
        );

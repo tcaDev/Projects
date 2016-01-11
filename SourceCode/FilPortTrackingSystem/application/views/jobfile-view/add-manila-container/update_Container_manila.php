@@ -16,6 +16,7 @@
 
 	  	   <div class="form-group hidden">
 	  	   		<label>Vessel/Voyage #</label>
+	  	   		    <input type="text" class="veschek">
             	    <select class="vessel-updateContainer-manila-get form-control input-sm">
 
             	    </select>
@@ -26,9 +27,9 @@
 			</div>
   			<div class="form-group">
 				<label>Container Number</label>	
-				<div class="check_exists_containers"> </div>				     
-	        	<input type="text" class="container-updateContainer-manila form-control input-sm" onkeyup="check_Container_mnilas(this.value)"> 
-	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
+				<div class="check_exists_container_update"> </div>				     
+	        	<input type="text" class="container-updateContainer-manila form-control input-sm" > <!-- onkeyup="check_Container_mnilas(this.value)"
+ -->	        	<i class="container-msg-addContainer-manila" style="color:red;"></i>
 			</div>
 
 			<div class="form-group">

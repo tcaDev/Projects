@@ -37,18 +37,17 @@ class Job_manila_update extends CI_Controller {
       $pull_out_date     =	$this->input->post('pull_out_date');
       $dt_final_entry_boc=	$this->input->post('dt_final_entry_boc');
       $dt_boc 			 =	$this->input->post('dt_boc');
-      $actual_dt_rcvd_cont_whse  =  $this->input->post('actual_dt_rcvd_cont_whse');
 
 
 	$this->Update_jobfile->jobfile_up(
 		$carrierbyjobfile,$containerno,$contno,
 		$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
 		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
-		$pull_out_date,$dt_final_entry_boc,$dt_boc,$actual_dt_rcvd_cont_whse);
+		$pull_out_date,$dt_final_entry_boc,$dt_boc);
   
       }
 
-     
+
     function vessel(){
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
@@ -183,15 +182,19 @@ class Job_manila_update extends CI_Controller {
       $prodconid   =	$this->input->post('prodconid');
       $prodid      =	$this->input->post('prodid');
       $cbc 	       =	$this->input->post('cbcid');
+      $jbfl 	   =	$this->input->post('jbfl');
 
-       $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$prodid'
-          and ContainerByCarrierId='$cbc' "); 
+       $query = $this->db->query("select ProductId from vw_Products where ProductId='$prodid'
+          and ContainerByCarrierId='$cbc'
+          and JobFileNo='$jbfl' "); 
       if($query->num_rows()==1) {
       	echo "Not updated because the data is already exists";
       }else{
       	echo "Comodity is Updated";
       $this->Update_jobfile->product($prodconid,$prodid,$cbc);
   	  }
+
+
     }
 
 
