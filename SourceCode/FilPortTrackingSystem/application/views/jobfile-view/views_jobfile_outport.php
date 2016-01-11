@@ -428,7 +428,7 @@ var jbfl_outport;
 			$('#runchar-outport .sra-inspect').removeAttr('disabled');
 			$('#runchar-outport .bad-cargo').removeAttr('disabled');
 
-			$('update_charges-outport').removeAttr('disabled');
+			$('.update_charges-outport').removeAttr('disabled');
 	});
 
    $(document).on('click','.update_charges-outport',function(){

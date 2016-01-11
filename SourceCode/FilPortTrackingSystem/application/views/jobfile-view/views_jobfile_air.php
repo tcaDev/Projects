@@ -101,15 +101,10 @@
 
 
 
-			 <div class="col-lg-12 col-md-12 col-sm-12" style= "overflow-y:auto; height: 485px;">
-
-				    <table class="table table-striped table-hover  table-bordered" style="width: 7000px;">
-
-				      <thead>
-
-				        <tr style="cursor:w-resize">
-
-				          <th class="hidden"> ID </th>
+	 <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
+		    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
+		        <thead>
+		             <tr style="cursor:w-resize ;">
 
 				          <th> No. </th>
 
@@ -117,7 +112,7 @@
 
 				          <th>Jobfile Number</th>
 
-				          <th>Color Selectivity</th>
+				          <th>Color Stages</th>
 
 				          <th>Shipper</th>
 
@@ -127,19 +122,17 @@
 
 				          <th>Gross Weight (kg)</th>
 
+				          <th>Description of Goods</th>
+
 				          <th>WK/PI/PO No.</th>
 
-				          <th>Description of Goods</th>
+				          <th >Letter of Credit No. from Bank</th>
 
 				          <th>House Airway Bill </th>
 
-				          <th>Master Bill of Landing No.</th>
+				          <th>Master Bill of Airway No.</th>
 
-				          <th>Flight No.</th>
-
-				          <th>Air Craft</th>
-
-				          <th>Origin</th>
+				           <th>Origin</th>
 
 				          <th>Estimated Time of Departure</th>
 
@@ -147,7 +140,7 @@
 
 				          <th>Actual Time of Arrival</th>
 
-				          <th >Letter of Credit No. from Bank</th>
+				          <th>Flight No.</th>
 
 				          <th>Forwarder</th>
 
@@ -155,7 +148,7 @@
 
 				          <th>Date Recieved Arrival notice from Airline/Forwarder</th>
 
-						  <th>Date Recieved Arrival notice from Client</th>
+						  <th>Date Recieved Arrival Notice from Client</th>
 
 				          <th>Date Pick-up O-Hawb</th>
 
@@ -165,15 +158,17 @@
 
 				          <th>Date Request Budget to GL</th>
 
-				          <th>Referrence Due Date</th>
+				          <th>Reference Due Date</th>
 
 				          <th>Date Sent Pre-Assess</th>
 
-				          <th>Date final Assess</th>
+				          <th>Date Final Assess</th>
 
 				          <th>Reference Entry No.</th>
 
-				          <th>Date Paid (Date&Time)</th>
+				          <th>Color Selectivity</th>
+
+				          <th>Date Paid (Date & Time)</th>
 
 				          <th>Date Cleared BOC</th>
 

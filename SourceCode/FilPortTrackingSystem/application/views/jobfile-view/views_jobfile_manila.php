@@ -437,7 +437,7 @@ var jbfl;
 			$('#runchar .sra-inspect').removeAttr('disabled');
 			$('#runchar .bad-cargo').removeAttr('disabled');
 
-			$('update_charges-mnila').removeAttr('disabled');
+			$('.update_charges-mnila').removeAttr('disabled');
 	});
    $(document).on('click','.asd',function(){
 
