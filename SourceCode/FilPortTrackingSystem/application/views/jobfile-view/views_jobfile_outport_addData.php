@@ -605,17 +605,23 @@
       <button type="button" class="btn btn-danger btn-cancel" data-dismiss="modal">Cancel</button>
     </div>
   </div>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
 <script src="<?php echo base_url('resources/js/outport_add_data.js');?>"></script>
 <script>
  $(document).ready(function(){
  		
- 	$('.checkDec-outport').on('change',function(){
+ 	$(document).on('change',' .checkDec-outport',function(){
  		var inp = $(this).val();
  		var holder = $(this).attr('id');
+ 		var holders = inp.toString().split('.');
  		var n = inp.indexOf('.');
  		if(n < 0){
- 			$('#' + holder).val(inp + '.00');
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			$('#' + holder).val(holders.join('.'));
+ 		}else{
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[1] =  numeral("0." + holders[1]).format('.000');
+ 			$('#' + holder).val(holders.join(''));
  		}
  		if(inp.trim() == ""){
  			$('#' + holder).val('0.00');

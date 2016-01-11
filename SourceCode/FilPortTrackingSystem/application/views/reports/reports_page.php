@@ -62,7 +62,7 @@
 				        		   <span class="pull-left"> <b> Consignee  : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        		 	<a id="consignee"> </a> 
+				        		 	&nbsp;<a id="consignee"> </a> 
 				        		  </td>
 				        		</tr>
 				        		<tr >
@@ -70,7 +70,7 @@
 				        		  <span class="pull-left">	<b> Shipper   : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        		 	<a id="shipper"> </a>
+				        		 	&nbsp;<a id="shipper"> </a>
 				        		  </td>
 				        		</tr>
 				        		<tr>
@@ -78,7 +78,7 @@
 				        		  	 <span class="pull-left"><b>Date Received of other Documents  : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        			<a id="dtRecvdOtherDocs"> </a> 
+				        			&nbsp;<a id="dtRecvdOtherDocs"> </a> 
 				        		  </td>
 				        		</tr>
 				        	</table>
@@ -173,7 +173,7 @@
 				        		   <span class="pull-left"> <b> Consignee  : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        		 	<a id="print_consignee"> </a> 
+				        		 	&nbsp;<a id="print_consignee"> </a> 
 				        		  </td>
 				        		</tr>
 				        		<tr >
@@ -181,7 +181,7 @@
 				        		  <span class="pull-left">	<b> Shipper   : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        		 	<a id="print_shipper"> </a>
+				        		 	&nbsp;<a id="print_shipper"> </a>
 				        		  </td>
 				        		</tr>
 				        		<tr>
@@ -189,7 +189,7 @@
 				        		  	 <span class="pull-left"><b>Date Received of other Documents  : </b></span>
 				        		  </td>
 				        		  <td style="text-align:left;">
-				        			<a id="print_dtRecvdOtherDocs"> </a> 
+				        			&nbsp;<a id="print_dtRecvdOtherDocs"> </a> 
 				        		  </td>
 				        		</tr>
 				</table>

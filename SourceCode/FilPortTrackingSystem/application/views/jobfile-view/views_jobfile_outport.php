@@ -385,6 +385,24 @@
    //for update charges
 
 $(document).ready(function(){
+
+
+   $(document).on('click','.btn-Container-outport',function(){
+   		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   });
+    $(document).on('click','.btn-Goods-outport',function(){
+   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   });
+     $(document).on('click','.btn-Vessel-outport',function(){
+   		$('.list_vessels').html('<div class="list_vessels"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   });
+      $(document).on('click','.btn-StatusReport-outport',function(){
+   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   });
+       $(document).on('click','.runchar-outport',function(){
+   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   });
+
 var jbfl_outport;
 	$(document).on('click','.runchar-outport',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
@@ -476,6 +494,23 @@ var jbfl_outport;
 				   			   });
 	    		    })
   });
+ $(document).on('change',' .checkDec',function(){
+ 		var inp = $(this).val();
+ 		var holder = $(this).attr('id');
+ 		var holders = inp.toString().split('.');
+ 		var n = inp.indexOf('.');
+ 		if(n < 0){
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			$('#runchar-outport #' + holder).val(holders.join('.'));
+ 		}else{
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[1] =  numeral("0." + holders[1]).format('.000');
+ 			$('#runchar-outport #' + holder).val(holders.join(''));
+ 		}
+ 		if(inp.trim() == ""){
+ 			$('#runchar-outport #' + holder).val('0.00');
+ 		}
+ 	});
    });
   
    </script>

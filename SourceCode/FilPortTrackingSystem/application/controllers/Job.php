@@ -254,7 +254,6 @@ class Job extends CI_Controller {
 
            foreach($charge as $row){
                       echo '<div class="col-lg-12">
-                        
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Lodgement Fee</label>
@@ -514,13 +513,13 @@ class Job extends CI_Controller {
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Lodgement Fee : 
+                               <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.$row->LodgementFee.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                Demurrage : 
+                              <b>  Demurrage : </b>
                                 <span class="pull-right">
                                     '.$row->Demorage.'
                                 </span>
@@ -528,13 +527,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Container Deposit : 
+                              <b>  Container Deposit : </b>
                                 <span class="pull-right">
                                    '.$row->ContainerDeposit.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                Detention : 
+                               <b> Detention : </b>
                                 <span class="pull-right">
                                     '.$row->Detention.'
                                 </span>
@@ -542,13 +541,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                THC Charges : 
+                              <b>  THC Charges : </b>
                                 <span class="pull-right">
                                    '.$row->THCCharges.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                EIC : 
+                               <b> EIC : </b>
                                 <span class="pull-right">
                                     '.$row->EIC.'
                                 </span>
@@ -556,13 +555,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Arrastre : 
+                               <b> Arrastre : </b>
                                 <span class="pull-right">
                                    '.$row->Arrastre.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                BAI Application : 
+                              <b>  BAI Application : </b>
                                 <span class="pull-right">
                                     '.$row->BAIApplication.'
                                 </span>
@@ -570,13 +569,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Wharfage : 
+                              <b>  Wharfage : </b>
                                 <span class="pull-right">
                                    '.$row->Wharfage.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                BAI Inspection : 
+                              <b>  BAI Inspection :</b> 
                                 <span class="pull-right">
                                     '.$row->BAIInspection.'
                                 </span>
@@ -584,13 +583,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Weighing : 
+                              <b>  Weighing : </b>
                                 <span class="pull-right">
                                    '.$row->Weighing.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                SRA Application : 
+                              <b>  SRA Application : </b>
                                 <span class="pull-right">
                                     '.$row->SRAApplication.'
                                 </span>
@@ -598,13 +597,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                DEL : 
+                              <b>  DEL : </b>
                                 <span class="pull-right">
                                    '.$row->DEL.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                SRAInspection : 
+                              <b>  SRAInspection : </b>
                                 <span class="pull-right">
                                     '.$row->SRAInspection.'
                                 </span>
@@ -612,13 +611,13 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Dispatch Fee : 
+                              <b>  Dispatch Fee : </b>
                                 <span class="pull-right">
                                    '.$row->DispatchFee.'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                                Bad Cargo : 
+                               <b> Bad Cargo : </b>
                                 <span class="pull-right">
                                     '.$row->BadCargo.'
                                 </span>
@@ -626,7 +625,7 @@ class Job extends CI_Controller {
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                                Storage : 
+                              <b>  Storage : </b>
                                 <span class="pull-right">
                                    '.$row->Storage.'
                                 </span>
@@ -1596,9 +1595,9 @@ function comodity(){
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
-        echo "This record is already exist";
+        echo "This Record Already Exist";
       }else{
-        echo "Commodity is Successfully added";
+        echo "Commodity Successfully Added";
        $data = array(
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id,
