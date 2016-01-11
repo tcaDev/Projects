@@ -1628,7 +1628,7 @@ foreach($job as $row){
   $job =  $row->JobFileId;
  }
 
-
+   $check             =  mysql_real_escape_string($this->input->post('check'));
    $lodge             =  mysql_real_escape_string($this->input->post('lodge'));
    $cont_deposit      =  mysql_real_escape_string($this->input->post('cont_deposit'));
    $thc_charges       =  mysql_real_escape_string($this->input->post('thc_charges'));   
@@ -1655,7 +1655,7 @@ foreach($job as $row){
         JobFileId='$job' limit 1");
 if($query->num_rows() ==1){*/
 
-
+  
       $update_charges = array(
               'LodgementFee'     => $lodge,
                'ContainerDeposit' => $cont_deposit,
@@ -1683,6 +1683,7 @@ $this->db->update('RunningCharges', $update_charges);
 
 
              $update_charges_history = array(
+               'JobFileId'        => $job,
                'LodgementFee'     => $lodge,
                'ContainerDeposit' => $cont_deposit,
                'THCCharges'       => $thc_charges,
@@ -1700,14 +1701,11 @@ $this->db->update('RunningCharges', $update_charges);
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
-   /*            'AllCharges'       => $all_charges,
-               'ParticularCharges'=> $part_charges,*/
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UsrId'  => $userid
             );
 
-$this->db->where('JobFileId', $job);
-$this->db->update('RunningChargesHistory', $update_charges_history);
+$this->db->insert('RunningChargesHistory', $update_charges_history);
 //}
    }
 

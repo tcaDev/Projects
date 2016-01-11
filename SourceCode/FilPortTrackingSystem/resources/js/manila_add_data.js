@@ -888,6 +888,7 @@ $('.save_charge').click(function(){
 				   			});
  					  },
 			  	   data: {
+			  	   			   check        :1,
 			  	   	           jbfl   		:jbfl,
 			  	   			   lodge        :lodge,
 			                   cont_deposit :cont_deposit,   

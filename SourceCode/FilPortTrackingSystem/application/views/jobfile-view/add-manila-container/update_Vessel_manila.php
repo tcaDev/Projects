@@ -127,7 +127,7 @@ $(document).ready(function(){
 });
 
      $(document).on('click','.update_vessel',function(){
-     	JobFileId  = $('.monitoring_type_id').val();
+     	job     		  = $('.jobfile-updateVessel-mnla').val();
         vessel 			  =   $('.vessel-updateVessel-mnila').val();
 		est_dept_time     =   $('.edt-updateVessel-mnila').val();
 		est_arrival_time  =   $('.eat-updateVessel-mnila').val();
@@ -140,7 +140,7 @@ $(document).ready(function(){
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_manila_update/vessel');?>",
 				  		data: { 
-				  			   /* JobFileId          :JobFileId,*/
+				  			    job         	   :job,
 				  				Vessel             : vessel,
 				  			    est_dept_time      : est_dept_time,
 				  			    est_arrival_time   : est_arrival_time,
@@ -154,7 +154,7 @@ $(document).ready(function(){
 				  			$.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content:'Vessel is updated!',
+				        		content:data,
 				        		confirm: function(){
 				        			 $('#updateVessel-mnla').modal('hide');
 				        			 $('#viewvessels').modal('hide');

@@ -72,6 +72,8 @@ class Job_manila_update extends CI_Controller {
     function vessel(){
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
+      
+      $job                   =  $this->input->post('job');
       $v             	     =	$this->input->post('Vessel');
       $est_dept_time         =	$this->input->post('est_dept_time');
       $est_arrival_time 	 =	$this->input->post('est_arrival_time');
@@ -80,11 +82,14 @@ class Job_manila_update extends CI_Controller {
       $Carrierid 			 =	$this->input->post('Carrierid');
       $cr 					 =	$this->input->post('cr');
 
+        $job= $this->Jobdata->select_jobfile($job);
+            foreach($job as $row){
+                $jb =  $row->JobFileId;
+            }
 
-
-      $this->Update_jobfile->vessel($v,$est_dept_time,$est_arrival_time,
+       $this->Update_jobfile->vessel($jb,$v,$est_dept_time,$est_arrival_time,
       	$act_arrival_time,$discharge_time,$Carrierid,$cr,$userid);
-
+      echo "Vessel is Updated";
     }
 
     function jobfile_update(){
@@ -153,7 +158,7 @@ class Job_manila_update extends CI_Controller {
     $userid = $session_data['uid'];
     
         $data2 = array(
-          /*     'JobFileId'              => $lastid,*/
+               'JobFileId'              => $jb,
                'JobFileNo'              => $jbfl,
                'ConsigneeId'            => $consignee,
                'BrokerId'               => $broker,
@@ -164,7 +169,6 @@ class Job_manila_update extends CI_Controller {
                'ColorSelectivityId'     => $color_selectivity,
                'Registry'               => $reg,
                'LockedBy_UserId'        => $userid,
-/*               'DateCreated'            => Date('Y-m-d H:i'),*/
                'Origin_CountryId'       => $country, 
                'OriginCity'             => $city,   
                'HouseBillLadingNo'      => $hbfl,
@@ -176,17 +180,20 @@ class Job_manila_update extends CI_Controller {
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
                'DateRequestBudgetToGL'         =>$dtReq_budge_gl,
                'RFPDueDate'                    =>$ref_due_dt,
-     /*          'ForwarderWarehouse'            => NULL,// la png ui
-               'FlightNo'                      =>NULL ,
-               'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder'  =>NULL,*/
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
 
           );
 
-              $this->db->where('JobFileId',$jb);
-       		 $this->db->update('JobFileHistory', $data2);
+       		 $this->db->insert('JobFileHistory', $data2);
+
+          $data_lock1 = array('IsLocked' =>0);
+          $this->db->where('JobFileId',$jb);
+          $this->db->update('JobFile', $data_lock1);
+
+            $data_lock2 = array('IsLocked' =>0);
+          $this->db->where('JobFileId',$jb);
+          $this->db->update('JobFileHistory', $data_lock2);
       
     }
 
