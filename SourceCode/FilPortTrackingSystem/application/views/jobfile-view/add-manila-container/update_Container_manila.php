@@ -159,7 +159,7 @@
 </div>
 
 <script>
-
+var cbcid_manila;
 	$(document).ready(function(){
 
 				$(document).on('click','.btn-update-container',function(){
@@ -185,7 +185,10 @@
 					 var date_final_assess = $(this).closest('tr').children('td:eq(31)').text();
 					 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
 					 var value_vessel = $(this).closest('tr').children('td:eq(34)').text();
-    
+					  var containerbycarrierId = $(this).closest('tr').children('td:eq(35)').text();
+                     
+                      cbcid_manila=containerbycarrierId;
+
                       
 					 $('.container-updateContainer-manila').val(containerNo);
 					 $('.container-size-updateContainer-manila').val(containerSize);
@@ -265,6 +268,7 @@
      					var	dt_final_entry_boc    =$('.dt_file_entry_boc-updateContainer-manila').val(); 
      					var	dt_boc           =$('.dt_boc-updateContainer-manila').val(); 
      					
+     					
  
  						$.ajax({
 					  		method: "POST",
@@ -279,7 +283,7 @@
 				   			});
  					     },
 					  		data: { carrierbyjobfile:carrierbyjobfile,
-					  			    /*vesid:vesid,*/
+					  			    cbcid          :cbcid_manila,
 					  			    containerno:containerno,
 					  			    contno:contno,
 					  			    cartons:cartons,

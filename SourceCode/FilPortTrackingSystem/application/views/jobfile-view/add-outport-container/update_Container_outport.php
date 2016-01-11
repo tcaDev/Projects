@@ -151,7 +151,7 @@
 </div>
 
 <script>
-
+var cbcid_outport;
 	$(document).ready(function(){
 
 				$(document).on('click','.btn-update-container-outport',function(){
@@ -176,7 +176,9 @@
 					 var refEntryNo = $(this).closest('tr').children('td:eq(29)').text();
 					 var value_vessel = $(this).closest('tr').children('td:eq(30)').text();
 					 var actual_dt_rcvd_cont_whse = $(this).closest('tr').children('td:eq(31)').text();
-    
+    				 var containerbycarrierId = $(this).closest('tr').children('td:eq(33)').text();	
+                      cbcid_outport = containerbycarrierId;
+
                      $('.ves-outport').val(vessel);
 					 $(".jobfile-updateContainer-outport").val(jobfile_outport);
 
@@ -198,8 +200,6 @@
 					 $('.storage-updateContainer-outport').val(startofstorage);
 					 $('.demorage-updateContainer-outport').val(startofdemorage);
 					 $('.lodging-updateContainer-outport').val(lodging);
-					 $('.gtinport-updateContainer-outport').val(gate_in);
-					 $('.gtoutport-updateContainer-outport').val(gate_out);
 					 $('.act-del-whse-updateContainer-outport').val(actual_delivery);
 					 $('.tdt-updateContainer-outport').val(taget_date);
 					 $('.pull_out_port-updateContainer-outport').val(pull_out);
@@ -241,7 +241,7 @@
  				
  					$(document).on('click','.update_container-outport',function(){
 
-
+                     
  						var vesid_outport 		     =$('.vessel-updateContainer-outport-select').val();
  						var containerno_outport 	 =$('.container-updateContainer-outport').val();
  						var	carrierbyjobfile_outport =$('.carrier_jobfile_outport-update-container').val();
@@ -255,9 +255,7 @@
      				    var	dt_final_assess_outport  =$('.dt_final_assess-updateContainer-outport').val();
      					var	storage_outport          =$('.storage-updateContainer-outport').val(); 
      				    var	demorage_outport         =$('.demorage-updateContainer-outport').val(); 
-     					var	lodging_outport          =$('.lodging-updateContainer-outport').val();  
-     					var	gip_outport              =$('.gtinport-updateContainer-outport').val(); 
-     					var	gop_outport              =$('.gtoutport-updateContainer-outport').val(); 
+     					var	lodging_outport          =$('.lodging-updateContainer-outport').val(); 
      					var	adw_outport              =$('.act-del-whse-updateContainer-outport').val();
      					var	tdt_outport              =$('.tdt-updateContainer-outport').val();
      					var	pull_out_date_outport    =$('.pull_out_port-updateContainer-outport').val();
@@ -265,37 +263,36 @@
      					var	dt_boc_outport           =$('.dt_boc-updateContainer-outport').val(); 
      					var	actual_dt_rcvd_cont_whse_outport  =$('.act_dt_to_whse-updateContainer-outport').val(); 
 
-     					alert(carrierbyjobfile_outport);
  						$.ajax({
 					  		method: "POST",
 							url: "<?php echo base_url('Job_manila_update/container');?>",
-					  		data: { carrierbyjobfile:carrierbyjobfile_outport,
-					  			    /*vesid:vesid,*/
-					  			    containerno:containerno_outport,
-					  			    contno:contno_outport,
-					  			    cartons:cartons_outport,
-					  			    truckid:truckid_outport,
-					  			    truckername:truckername_outport,
-					  			    refentry:refentry_outport,
-					  			    dtpaid:dtpaid_outport,
-					  			    dt_pre_assess:dt_pre_assess_outport,
-					  			    dt_final_assess:dt_final_assess_outport,
-					  			    storage:storage_outport,
-					  			    demorage:demorage_outport,
-					  			    lodging:lodging_outport,
-					  			    adw:adw_outport,
-					  			    tdt:tdt_outport,
-					  			    pull_out_date:pull_out_date_outport,
-					  			    dt_final_entry_boc:dt_final_entry_boc_outport,
-					  			    dt_boc:dt_boc_outport,
-					  			    actual_dt_rcvd_cont_whse:actual_dt_rcvd_cont_whse_outport
+					  		data: { carrierbyjobfile         :carrierbyjobfile_outport,
+					  			    cbcid                    :cbcid_outport,
+					  			    containerno   			 :containerno_outport,
+					  			    contno       		     :contno_outport,
+					  			    cartons     		     :cartons_outport,
+					  			    truckid      			 :truckid_outport,
+					  			    truckername  		     :truckername_outport,
+					  			    refentry     			 :refentry_outport,
+					  			    dtpaid         		     :dtpaid_outport,
+					  			    dt_pre_assess            :dt_pre_assess_outport,
+					  			    dt_final_assess          :dt_final_assess_outport,
+					  			    storage                  :storage_outport,
+					  			    demorage                 :demorage_outport,
+					  			    lodging                  :lodging_outport,
+					  			    adw                      :adw_outport,
+					  			    tdt            		     :tdt_outport,
+					  			    pull_out_date   		 :pull_out_date_outport,
+					  			    dt_final_entry_boc   	 :dt_final_entry_boc_outport,
+					  			    dt_boc          	     :dt_boc_outport,
+					  			    actual_dt_rcvd_cont_whse :actual_dt_rcvd_cont_whse_outport
 					  		}
 						})
 				  		.done(function(data) {
 				  			 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content:'Container is updated!',
+				        		content:data,
 				        		confirm: function(){
 				        			 $('#updateContainer-outport').modal('hide');
 				        			 $('#viewcontainers-outport').modal('hide');

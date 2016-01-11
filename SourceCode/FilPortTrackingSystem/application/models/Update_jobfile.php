@@ -6,10 +6,28 @@ Class Update_jobfile extends CI_Model
 {
   
   function jobfile_up(
-		$carrierbyjobfile,$containerno,$contno,
-		$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
-		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
-		$pull_out_date,$dt_final_entry_boc,$dt_boc,$userid,$actual_dt_rcvd_cont_whse)
+    $cbcid,
+		$carrierbyjobfile,
+    $containerno,
+    $contno,
+    $cartons,
+    $truckid,
+    $truckername,
+    $refentry,
+    $dtpaid,
+    $dt_pre_assess,
+    $dt_final_assess,
+    $storage,
+    $demorage,
+    $lodging,
+    $gip,
+    $gop,
+    $adw,
+    $tdt,
+    $pull_out_date,
+    $dt_final_entry_boc,
+    $dt_boc,
+    $actual_dt_rcvd_cont_whse)
   {
      $session_data      = $this->session->userdata('logged_in');
      $userid            = $session_data['uid'];
@@ -17,7 +35,7 @@ Class Update_jobfile extends CI_Model
   	     $data = array(
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
-      /*  'CarrierByJobFileId'   =>$vesid,*/
+        'CarrierByJobFileId'   => $carrierbyjobfile,
         'NoOfCartons'          =>$cartons,
         'RefEntryNo'           =>$refentry,
         'TruckerName'          => $truckername,
@@ -39,14 +57,14 @@ Class Update_jobfile extends CI_Model
 
 
         );
-          $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
+          $this->db->where('ContainerByCarrierId', $cbcid);
           $this->db->update('ContainerByCarrier', $data);
 
 
       $data2 = array(
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
-      /*  'CarrierByJobFileId'   =>$vesid,*/
+        'CarrierByJobFileId'   => $carrierbyjobfile,
         'NoOfCartons'          =>$cartons,
         'RefEntryNo'           =>$refentry,
         'TruckerName'          => $truckername,
@@ -70,7 +88,7 @@ Class Update_jobfile extends CI_Model
 
 
         );
-          $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
+          $this->db->where('ContainerByCarrierId', $cbcid);
           $this->db->update('ContainerByCarrierHistory', $data2);
   }
 

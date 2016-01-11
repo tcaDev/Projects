@@ -65,11 +65,10 @@ $(document).ready(function(){
         var productsbycontainerid = $(this).closest('tr').children('td:eq(5)').text();
 
 
-        alert(product_value);
-        prodconid_outport= product_value;
-		prodid_outport =  productsbycontainerid;
+        
+        prodconid_outport= productsbycontainerid;
 
-		alert(prodconid_outport);
+	
         
 		 $(".prodname-updateProduct-outport option").filter(function() {
 		    return this.text == product; 
@@ -98,18 +97,19 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click','.update_comodity-outport',function(){
-		var   cbc_outport = $('.container-updateProduct-outport-gets select option:selected').val();
+		var   cbc = $('.container-updateProduct-outport-gets select option:selected').val();
+		var   prodid = $('.prodname-updateProduct-outport').val();
+		var   jbfl = $('.jobfile-updateProduct-outport').val();
 
-		alert(prodconid_outport);
-		alert(cbc_outport);
-		alert(prodid_outport);
-		  			
+		  /*	alert("prodconid" + prodconid_outport + " " + "cbc" + " " +cbc + " " + prodid );
+		  		*/
 		  				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_manila_update/product');?>",
-				  		data: { prodconid:prodconid,
+				  		data: { prodconid:prodconid_outport,
 				  			     prodid  :prodid,
-				  			     cbcid   :cbc
+				  			     cbcid   :cbc,
+				  			     jbfl    :jbfl
 				  		}
 					})
 			  		.done(function(data) {
@@ -117,7 +117,8 @@ $(document).ready(function(){
 				        		title: 'Success!',
 				        		content: data,
 				        		confirm: function(){
-								
+									 $('#updateProduct-outport').modal('hide');
+				        			 $('#viewgoods-outport').modal('hide');
 				        	    }
 				   			   });
 								

@@ -1021,7 +1021,8 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
               echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
-            
+              echo "<td class='row hidden '>".stripslashes($row->ContainerByCarrierId)."</td>";
+              
              echo "</tr>";
          }
 
@@ -1075,7 +1076,7 @@ class Job extends CI_Controller {
                     <th>Reference Entry No.</th>
                         <th class='hidden'>value date received container to warehouse</th>
                     <th>Actual Date Received Container to Warehouse</th>
-                   
+                        <th class='hidden'>value CONTAINER BY CARRIER ID</th>
 
               </tr>";
 
@@ -1200,6 +1201,7 @@ class Job extends CI_Controller {
              echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DateReceivedAtWhse)."</td>";
              echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
+              echo "<td class='row'>".stripslashes($row->ContainerByCarrierId)."</td>";
             
              echo "</tr>";
          }

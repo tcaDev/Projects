@@ -15,9 +15,8 @@ class Job_manila_update extends CI_Controller {
 
 
       function container(){
-
+      $cbcid =$this->input->post('cbcid');
       $carrierbyjobfile  =	$this->input->post('carrierbyjobfile');
-     /* $vesid 			 =	$this->input->post('vesid');*/
       $containerno 		 =	$this->input->post('containerno');
       $contno 			 =	$this->input->post('contno');
       $cartons 			 =	$this->input->post('cartons');
@@ -37,13 +36,35 @@ class Job_manila_update extends CI_Controller {
       $pull_out_date     =	$this->input->post('pull_out_date');
       $dt_final_entry_boc=	$this->input->post('dt_final_entry_boc');
       $dt_boc 			 =	$this->input->post('dt_boc');
+      $actual_dt_rcvd_cont_whse = $this->input->post('actual_dt_rcvd_cont_whse');
 
+     if(($gop='') && ($gip='')){
+      $gop=NULL;
+      $gip=NULL;
+     }
 
-	$this->Update_jobfile->jobfile_up(
-		$carrierbyjobfile,$containerno,$contno,
-		$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
-		$dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,
-		$pull_out_date,$dt_final_entry_boc,$dt_boc);
+	$this->Update_jobfile->jobfile_up($cbcid,
+		$carrierbyjobfile,
+    $containerno,
+    $contno,
+		$cartons,
+    $truckid,
+    $truckername,
+    $refentry,
+    $dtpaid,
+    $dt_pre_assess,
+		$dt_final_assess,
+    $storage,
+    $demorage,
+    $lodging,
+    $gip,
+    $gop,
+    $adw,
+    $tdt,
+		$pull_out_date,
+    $dt_final_entry_boc,
+    $dt_boc,
+    $actual_dt_rcvd_cont_whse);
   
       }
 
