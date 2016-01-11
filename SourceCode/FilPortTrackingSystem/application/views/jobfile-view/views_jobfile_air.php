@@ -189,11 +189,13 @@
 
 				          <th>Additional per Day Included VAT</th>
 
-				          <th  style="text-align:center !important">Status Reports</th>
+				          <th>Status Reports</th>
+
+				          <th>Running Charges</th>
 				      </tr>
+
 				      <tbody>
 				      		<tr>
-	      					<td class="hidden">1</td>
 					         
 				      		</tr>
 				      </tbody>

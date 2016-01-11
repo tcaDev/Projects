@@ -378,7 +378,8 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				        	<button type="button" class="btn btn-danger asd update-charges-mnila">Save</button>
+				       	 <button type="button" class="btn btn-danger qwerty">Update</button>
+				        	<button type="button" class="btn btn-danger asd update-charges-mnila" disabled>Save</button>
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -396,6 +397,30 @@ var jbfl;
 	$(document).on('click','.runchar',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl = jobfile;
+	});
+
+	$(document).on('click','.qwerty',function(){
+
+		alert('asdasd');
+			$('#runchar .lodge_update').removeAttr('disabled');
+			$('#runchar .cont-deposit').removeAttr('disabled');
+			$('#runchar .thc-charges').removeAttr('disabled');
+			$('#runchar .arrastre').removeAttr('disabled');
+			$('#runchar .wharfage').removeAttr('disabled');
+			$('#runchar .weight').removeAttr('disabled');
+			$('#runchar .del').removeAttr('disabled');
+			$('#runchar .dispatch').removeAttr('disabled');
+			$('#runchar .storage').removeAttr('disabled');
+			$('#runchar .demurrage').removeAttr('disabled');
+			$('#runchar .detention').removeAttr('disabled');			
+			$('#runchar .EIC').removeAttr('disabled');
+			$('#runchar .bai-app').removeAttr('disabled');
+			$('#runchar .bai-inspect').removeAttr('disabled');
+			$('#runchar .sra-app').removeAttr('disabled');
+			$('#runchar .sra-inspect').removeAttr('disabled');
+			$('#runchar .bad-cargo').removeAttr('disabled');
+
+			$('update_charges-mnila').removeAttr('disabled');
 	});
    $(document).on('click','.asd',function(){
 
