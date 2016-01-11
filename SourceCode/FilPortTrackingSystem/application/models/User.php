@@ -599,7 +599,7 @@ function get_jobfile_outport(){
   }
 
   function get_jobfile_air(){
-    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='3' limit 10");
+    $query = $this->db->query("select * from JobFile_Air");
     return $query->result();
   }
 

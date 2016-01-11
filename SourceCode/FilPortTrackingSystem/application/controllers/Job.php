@@ -1232,13 +1232,21 @@ class Job extends CI_Controller {
    $broker          =mysql_real_escape_string($this->input->post('broker'));
    $dt_req_budget   =mysql_real_escape_string($this->input->post('dt_req_budget'));
    $ref_due_dt      =mysql_real_escape_string($this->input->post('ref_due_dt'));
-   $dt_boc          =mysql_real_escape_string($this->input->post('dt_boc'));    
+  
    $status          =mysql_real_escape_string($this->input->post('status'));  //status report in job tab has no insert in db  
    $purch_order_no  =mysql_real_escape_string($this->input->post('purch_order_no'));  
    $color           =mysql_real_escape_string($this->input->post('color'));  
    $color_select    =mysql_real_escape_string($this->input->post('color_select')); 
    $origin           =mysql_real_escape_string($this->input->post('origin'));  
-   $origcity    =mysql_real_escape_string($this->input->post('origcity'));    
+   $origcity    =mysql_real_escape_string($this->input->post('origcity'));  
+   $flight    =mysql_real_escape_string($this->input->post('flight'));    
+   $forwarder    =mysql_real_escape_string($this->input->post('forwarder'));    
+   $warehouse    =mysql_real_escape_string($this->input->post('warehouse'));      
+   $aircraft    =mysql_real_escape_string($this->input->post('aircraft')); 
+   $dt_airline    =mysql_real_escape_string($this->input->post('dt_airline')); 
+
+
+    
    
    if($dtRcvd!=''){
    $date1  = date_create($dtRcvd);
@@ -1287,10 +1295,11 @@ class Job extends CI_Controller {
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
                'DateRequestBudgetToGL'         =>$dt_req_budget,
                'RFPDueDate'                    =>$ref_due_dt,
-   /*            'ForwarderWarehouse'            => NULL,// la png ui
-               'FlightNo'                      =>NULL ,
-               'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder' =>NULL*/
+               'Forwarder'                      => $forwarder,// la png ui
+               'FlightNo'                      =>$flight ,
+               'AirCraftNo'                    =>$aircraft,
+               'Warehouse'                    =>$warehouse,
+               'DateReceivedArrivalNoticeFromALine' =>$dt_airline
                
         );
 
@@ -1322,10 +1331,11 @@ class Job extends CI_Controller {
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
                'DateRequestBudgetToGL'         =>$dt_req_budget,
                'RFPDueDate'                    =>$ref_due_dt,
-      /*         'ForwarderWarehouse'            => NULL,// la png ui
-               'FlightNo'                      =>NULL ,
-               'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder'  =>NULL,*/
+               'Forwarder'                      => $forwarder,// la png ui
+               'FlightNo'                      =>$flight,
+               'AirCraftNo'                    =>$aircraft,
+               'Warehouse'                    =>$warehouse,
+               'DateReceivedArrivalNoticeFromALine' =>$dt_airline,
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
 
@@ -1414,7 +1424,8 @@ foreach($job as $row){
 
        $this->db->insert('CarrierByJobFile',$data); 
         $lastid =  $this->db->insert_id();
-       $data2 = array(
+
+/*       $data2 = array(
                'CarrierByJobFileId'  => $lastid,
                'JobFileId'           => $job,
                'CarrierId'           => $lines,
@@ -1427,7 +1438,7 @@ foreach($job as $row){
                'UpdatedBy_UserId'    => $userid
         );
 
-  $this->db->insert('CarrierByJobFileHistory',$data2); 
+  $this->db->insert('CarrierByJobFileHistory',$data2); */
                 
                 
 }
@@ -1726,6 +1737,20 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                      'AddedBy_UserId'           => $userid
               );
         $this->db->insert('HistoricalStatus',$data); 
+   }
+
+
+   function get_vessel(){
+    $jobfile = $this->input->post('jbfl');
+    $job= $this->Jobdata->select_jobfile($jobfile);
+    foreach($job as $row){
+          $job =  $row->JobFileId;
+          }
+    $ves =  $this->Jobdata->air_vessel($job);
+
+    foreach ($ves as $row) {
+       echo "<option value=".$row->CarrierByJobFileId."> ".$row->VesselVoyageNo." </option>";
+    }
    }
 
 }

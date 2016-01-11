@@ -126,7 +126,7 @@
 
 				          <th>House Airway Bill </th>
 
-				          <th>Master Bill of Airway No.</th>
+				          <th>Master Bill of Airway</th>
 
 				           <th>Origin</th>
 
@@ -135,6 +135,8 @@
 				          <th>Forwarder</th>
 
 				          <th>Warehouse</th>
+
+				           <th>AirCraft No.</th>
 
 				          <th>Date Recieved Arrival notice from Airline/Forwarder</th>
 
@@ -150,25 +152,7 @@
 
 				          <th>Reference Due Date</th>
 
-				          <th>Reference Entry No.</th>
-
 				          <th>Color Selectivity</th>
-
-				          <th>Date Paid (Date & Time)</th>
-
-				          <th>Date Cleared BOC</th>
-
-				          <th>Target Delivery Date</th>
-
-				          <th>Actual P-Out Date of at NAIA</th>
-
-				          <th>Actual Date Recieved Good at Warehouse</th>
-
-				          <th>Haulers</th>
-
-				          <th>Total Storage</th>
-
-				          <th>Additional per Day Included VAT</th>
 
 				          <th>Status Reports</th>
 
@@ -180,14 +164,50 @@
 				      <?php $i= 0; 
 				      		foreach ($air as $row) {
 				      			$i++;
+
+				      			$pick =$row->IsBackground;
+				    			if($pick==0){
+						        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+						        }else{
+						        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+						        }
 				      	?>
 				      		<tr>
 					         	  <td><?php echo stripslashes($i);?></td>
-						          <td><button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+						          <td><button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-3-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 						          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 						           <?php echo $pick1 ;?>
 						          <td><?php echo stripslashes($row->ShipperName); ?></td>
 						          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
+						          <td>
+								  		<button type="button" class="btn btn-Goods-air btn-info view_goods-air" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+								  		<button type="button" class="btn btn-Add-Product-air btn-success" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								  </td>
+								  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
+								  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
+								  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
+								  <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
+								  <td><?php echo stripslashes($row->Origin); ?></td>
+								  <td><?php echo stripslashes($row->FlightNo); ?></td>
+								  <td><?php echo stripslashes($row->Forwarder); ?></td>
+								  <td><?php echo stripslashes($row->Warehouse); ?></td>
+								  <td><?php echo stripslashes($row->AirCraftNo); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedArrivalNoticeFromALine); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
+								  <td><?php echo stripslashes($row->Broker); ?></td>
+								  <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
+								  <td><?php echo stripslashes($row->RFPDueDate); ?></td>
+								  <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
+								  <td>
+						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-outport" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+						          		<button type="button" class="btn btn-Add-Report-air btn-success" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+						          </td>
+						          <td class="view_charges">
+						          		<button type="button" class="btn btn-StatusReport btn-info runchar-air" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
+						          </td>
+						          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 				      		</tr>
 
 				      		<?php } ?>

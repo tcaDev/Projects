@@ -236,11 +236,11 @@ var suc;
 	});
 
 		$('#tableAddVessel-mnla').on('click', '.deleteButton', function() {
-	    var del = $(this).closest('tr').children('td:eq(0)').text();
-	    $("#tableAddContainer-mnla .vessel_voyage").find("option[value="+ del +"]").remove();
-    	$(this).closest("tr").remove();
+		    var del = $(this).closest('tr').children('td:eq(0)').text();
+		    $("#tableAddContainer-mnla .vessel_voyage").find("option[value="+ del +"]").remove();
+	    	$(this).closest("tr").remove();
 
-	});
+		});
 });
 	$(document).ready(function(){
 			var testme=false;
