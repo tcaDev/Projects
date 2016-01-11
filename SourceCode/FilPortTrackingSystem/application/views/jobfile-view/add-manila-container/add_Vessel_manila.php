@@ -191,11 +191,11 @@ function check_vessel_avail(vess){
 });*/
 
  $(document).on('click', '.save_vessel',function(){
-
  	$('.save_vessel').attr('disabled','disabled');
  	if($("#table-AddVessel-mnla  table tbody tr td").length == 0){
  					$.confirm({
 		 			 title: 'Add New Vessel',
+		 			 closeIcon:false,
 		 			 content:'You have not Added Any Vessel. Do you wish to Continue Exitting?',
 		 			 backgroundDismiss: false,
 		 			 confirmButton: 'Yes',

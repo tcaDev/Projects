@@ -25,9 +25,6 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  
-
-
 
 					  <!-- Modal -->
 
@@ -83,10 +80,9 @@
 				
 
 			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
-				    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
+				    <table class="table table_manila table-bordered table-condensed order-tablejob " style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
-
 								          <th > No. </th>
 
 								          <th > Update </th>
@@ -98,6 +94,8 @@
 								          <th> Shipper </th>
 										   
 										  <th >Consignee</th>
+
+										   <th >Vessel/Voyage</th>
 
 								          <th >Container No.</th>
 
@@ -114,8 +112,6 @@
 								          <th >Letter of Credit No. from Bank</th> 
 
 								          <th >Registry</th>
-
-								          <th >Vessel/Voyage</th>
 
 								          <th >Origin</th>  
 
@@ -202,6 +198,10 @@
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td>
+									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
+								          <td>
 								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
 								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
@@ -215,10 +215,7 @@
 								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
-										  <td>
-									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
-										  </td>
+										 
 								           <td><?php echo stripslashes($row->Origin); ?></td>
 								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
@@ -241,8 +238,6 @@
 								        </tr>
 
 								        <?php } ?>
-				           
-				         
 				        </tbody>
 				    </table>
 
@@ -437,9 +432,9 @@ var jbfl;
 			$('#runchar .bad-cargo').removeAttr('disabled');
 
 			$('.asd').removeAttr('disabled');
+			$(this).attr('disabled','disabled');
 	});
    $(document).on('click','.asd',function(){
-
 
      var lodge        = $('#runchar .lodge_update').val();
      var cont_deposit = $('#runchar .cont-deposit').val();
@@ -499,19 +494,13 @@ var jbfl;
 				        		content: 'Running Charges Updated!',
 				        		confirm: function(){
 									dia_running_charges.close();
+									$('.qwerty').removeAttr('disabled');
+									$('.asd').attr('disabled','disabled');
 				        			$('#runchar').modal('hide');
 				        	    }
 				   			   });
 	    		    })
-     
-     
-     
-     
-     
-     
-     
-     
-    
+
   });
    });
   $(document).on('change',' .checkDec',function(){
@@ -520,7 +509,7 @@ var jbfl;
  		var holders = inp.toString().split('.');
  		var n = inp.indexOf('.');
  		if(n < 0){
- 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[0] =  numeral(holders[0]).format('0,0.00');
  			$('#runchar #' + holder).val(holders.join('.'));
  		}else{
  			holders[0] =  numeral(holders[0]).format('0,0');
@@ -1091,6 +1080,10 @@ $('#select').change(function(){
     </div>
   </div>
 
+
+<style>
+
+</style>
 
 
 

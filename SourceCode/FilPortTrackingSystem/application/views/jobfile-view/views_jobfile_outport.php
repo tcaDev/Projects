@@ -500,7 +500,7 @@ var jbfl_outport;
  		var holders = inp.toString().split('.');
  		var n = inp.indexOf('.');
  		if(n < 0){
- 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[0] =  numeral(holders[0]).format('0,00');
  			$('#runchar-outport #' + holder).val(holders.join('.'));
  		}else{
  			holders[0] =  numeral(holders[0]).format('0,0');

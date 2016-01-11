@@ -75,8 +75,26 @@ $(document).on('click','.btn-addReport-outport',function(){
 
 <script>
 $('.save_reports-outport').click(function(){
-
-					 	  dia =	$.dialog({
+$('.save_reports-outport').attr('disabled','disabled');
+ 	if($("#table-AddReport-outport  table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Report',
+		 			 closeIcon:false,
+		 			 content:'You have not Added Any Report. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 	$('.save_reports-outport').removeAttr('disabled');
+  					 },
+  					 cancel: function(){
+  					 	$('.save_reports-outport').removeAttr('disabled');
+  					 }
+		 		});
+				}
+				else{
+						  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
@@ -111,6 +129,7 @@ $('.save_reports-outport').click(function(){
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
 				        			dia.close();
+				        			$('.save_reports-outport').removeAttr('disabled');
 				        			location.reload();
 				        	    }
 				   			});

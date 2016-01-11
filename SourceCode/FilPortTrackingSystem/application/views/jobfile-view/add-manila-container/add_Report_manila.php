@@ -79,6 +79,7 @@ $(document).on('click','.save_reports',function(){
  	if($("#table-AddReport-mnla  table tbody tr td").length == 0){
  					$.confirm({
 		 			 title: 'Add New Report',
+		 			 closeIcon:false,
 		 			 content:'You have not Added Any Report. Do you wish to Continue Exitting?',
 		 			 backgroundDismiss: false,
 		 			 confirmButton: 'Yes',

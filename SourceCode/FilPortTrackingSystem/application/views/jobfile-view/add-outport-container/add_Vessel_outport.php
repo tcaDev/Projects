@@ -192,8 +192,25 @@ function check_vessel_avail_outport(vess){
 
  $(document).on('click', '.save_vessel-outport',function(){
 
-
-				 	  dia =	$.dialog({
+	$('.save_vessel-outport').attr('disabled','disabled');
+ 	if($("#table-AddVessel-outport  table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Vessel',
+		 			 closeIcon:false,
+		 			 content:'You have not Added Any Vessel. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 	$('.save_vessel-outport').removeAttr('disabled');
+  					 },
+  					 cancel: function(){
+  					 	$('.save_vessel-outport').removeAttr('disabled');
+  					 }
+		 		});
+				}else{
+					  dia =	$.dialog({
 				 	  	    icon: 'fa fa-spinner fa-spin',
 				 	  	    closeIcon: false,
 			        		title: 'Please wait!',
@@ -201,7 +218,7 @@ function check_vessel_avail_outport(vess){
 			        		content: 'Currently Adding Vessel',
 			   			});
 
- 	var jbfl = $('.jobfile-addVessel-outport').val();
+ 			var jbfl = $('.jobfile-addVessel-outport').val();
 
 
 		//for adding vessel
@@ -243,13 +260,18 @@ function check_vessel_avail_outport(vess){
 				        			$('.vessel-msg-addVessel-outports').empty();
 				        			$(".remove_tr" ).remove();
 				        			dia.close();
-				        			location.reload();
+				        			$('.save_vessel-outport').removeAttr('disabled');
+				        			$('.modal').modal('hide');
 				        	    }
 				   			});
 	  					   }
 	    		    });		  
 	   });	
 		//end
+
+				}
+
+
 });
 </script>
 

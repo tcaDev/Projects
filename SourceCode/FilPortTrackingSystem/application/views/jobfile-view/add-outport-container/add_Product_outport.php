@@ -159,19 +159,36 @@ function click_vessel_outport(){
 
 
  $(document).on('click','.submit_vessel-outport',function(){
-					 	   dia =	$.dialog({
+ 	$('.submit_vessel-outport').attr('disabled','disabled');
+	 if($("#table-AddProduct-outport table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Commodity',
+		 			 content:'You have not Added Any Commodity. Do you wish to Continue Exitting?',
+		 			 closeIcon:false,
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 	$('.submit_vessel-outport').removeAttr('disabled');
+  					 },cancel:function(){
+  					 	$('.submit_vessel-outport').removeAttr('disabled');
+  					 }
+		 		});
+						
+				}else{	 	  
+							    dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,
 				        		content: 'Currently Adding Commodity',
 				   			});
+		    var table = $("#table-AddProduct-outport table tbody");
+			var ct2   = $("#table-AddProduct-outport table tbody tr").length;
 
-					    	   var table = $("#table-AddProduct-outport table tbody");
-					    	   var ct2   = $("#table-AddProduct-outport table tbody tr").length;
-
-		 table.find('tr').each(function (count1) {		 			  
-		  var c2 = count1+1;
+			 table.find('tr').each(function (count1) {		 			  
+		  	 var c2 = count1+1;
 		 
 
 	
@@ -179,9 +196,6 @@ function click_vessel_outport(){
 								     product_name  = $tds.eq(0).text(),
 								     prod_orderno  = $tds.eq(1).text();  //origin_id
 								     con_id        = $tds.eq(2).text(), //change to  container 
-
-
-								 
 
 			        	$.ajax({
 					  		method: "POST",
@@ -202,16 +216,21 @@ function click_vessel_outport(){
 								        		title: 'Success!',
 								        		content:data,
 								        		confirm: function(){
-								        
 						        		    	$(".remove_tr" ).remove();
 						        		    	dia.close();
-						        		    	location.reload();
+						        		    	dia.close();
+						        		    	$('.modal').modal('hide');
+						        		    	$('.submit_vessel-outport').removeAttr('disabled');
 								        	    }
 								   			  });
 								   	   }
 			    		    });
 		 	    
 		});
+
+				}
+
+		   
  });
  </script>
 

@@ -308,11 +308,34 @@
     
 /*Add Container to Database*/
 $(document).on('click','.save_container_outport',function(){
-
-		    	  var table = $("#table-AddContainer-outport table tbody");
+	$('.save_container_outport').attr('disabled','disabled');
+ 	if($("#table-AddContainer-outport table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Commodity',
+		 			 closeIcon:false,
+		 			 content:'You have not Added Any Container. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 },
+  					 cancel: function(){
+  					 	$('.save_container_outport').removeAttr('disabled');
+  					 }
+		 		});
+				}else{
+					dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding container',
+				   			});
+				  var table = $("#table-AddContainer-outport table tbody");
 		    	  var ct    = $("#table-AddContainer-outport table tbody tr").length;
                           
-		    table.find('tr').each(function (count1) {
+		   	  table.find('tr').each(function (count1) {
 			  var c = count1+1;
 				        var $tds = $(this).find('td'),
 				            vessel_voyage 	= $tds.eq(0).text();
@@ -338,7 +361,7 @@ $(document).on('click','.save_container_outport',function(){
                                             dt_recvd_cont_whse  = $tds.eq(20).text();
 
 				     						
-		$.ajax({
+			$.ajax({
                         method: "POST",
                         url: "<?php echo base_url('Job/container');?>",
 /*					  beforeSend: function() {
@@ -379,14 +402,19 @@ $(document).on('click','.save_container_outport',function(){
                                     $.alert({
                                         backgroundDismiss: false, 	
                                         title: 'Success!',
-                                        content: 'New container is added!',
+                                        content: 'New Container Added!',
                                         confirm: function(){
                                                 $(".remove_tr" ).remove();
-                                                /*dia.close();*/
+                                                dia.close();
+                                                $('.modal').modal('hide');
                                             }
                                   }); 
                                 }
 	    		  });
 		     });	
+
+				}
+
+		    
 });
 </script>

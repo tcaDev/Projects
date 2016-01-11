@@ -159,16 +159,22 @@ function click_vessel(){
 
 
  $(document).on('click','.submit_vessel',function(){
- 				if($("#table-AddProduct-mnla table tbody tr td").length == 0){
+ 		$('.submit_vessel').attr('disabled','disabled');
+ 			if($("#table-AddProduct-mnla table tbody tr td").length == 0){
  					$.confirm({
 		 			 title: 'Add New Commodity',
 		 			 content:'You have not Added Any Commodity. Do you wish to Continue Exitting?',
+		 			 closeIcon:false,
 		 			 backgroundDismiss: false,
 		 			 confirmButton: 'Yes',
   					 cancelButton: 'No',
   					 confirm: function(){
   					 	$('.modal').modal('hide');
+  					 	$('submit_vessel').removeAttr('disabled','disabled');
   					 },
+  					 cancel : function(){
+  					 	$('submit_vessel').removeAttr('disabled','disabled');
+  					 }
 		 		});
 						
 				}else{	 	  

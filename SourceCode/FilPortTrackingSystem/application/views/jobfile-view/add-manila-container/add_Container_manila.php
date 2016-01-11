@@ -335,6 +335,7 @@ function check_Container_mnilas(container){
  					$.confirm({
 		 			 title: 'Add New Commodity',
 		 			 content:'You have not Added Any Container. Do you wish to Continue Exitting?',
+		 			 closeIcon:false,
 		 			 backgroundDismiss: false,
 		 			 confirmButton: 'Yes',
   					 cancelButton: 'No',
@@ -419,7 +420,7 @@ function check_Container_mnilas(container){
 			    	 	  	 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content: 'New container is added!',
+				        		content: 'New container Added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
 				        			dia.close();

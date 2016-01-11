@@ -81,13 +81,13 @@ var suc;
 			{
 				$('.reference-msg').text("Need Reference Entry No.");
 			}
-			else if($('#check_jobfiles').text() == "Jobfile is already exists in Outport")
+			else if($('#check_jobfiles').text() == "Jobfile Already Exist in Outport")
 			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
+				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exist");
 			}
-				else if($('#check_jobfiles').text() == "Jobfile is already exists in Air")
+				else if($('#check_jobfiles').text() == "Jobfile Already Exists in Air")
 			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
+				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
 			}
 			else{i++;}
 
@@ -361,7 +361,7 @@ var suc;
 
 			if(isExist2(prod,cont))
 			{	
-				$('.cont-size-msg').text("The Commodity is already in this Container");
+				$('.cont-size-msg').text("The Commodity Already Exists in this Container");
 			}
 			else if($('#tableAddTruck-mnla .prodname').val() == "")
 			{
@@ -863,6 +863,7 @@ $('.save_charge').click(function(){
 		 if(wVal == 18){
 		 		$.confirm({
 		 			 title: 'Add Running Charges',
+		 			 closeIcon:false,
 		 			 content:'You have not Entered any Running Charges. Do you wish to Continue?',
 		 			 backgroundDismiss: false,
 		 			 confirmButton: 'Yes',

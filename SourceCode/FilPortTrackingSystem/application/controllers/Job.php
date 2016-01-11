@@ -111,10 +111,10 @@ class Job extends CI_Controller {
       if($jobfile!=''){
           if($query->num_rows() ==1){
             if($moni!=''){
-                echo  "<i style='color:red;font-size:12px;'>Jobfile is already exists in ".$moni."</i>";     
+                echo  "<i style='color:red;font-size:12px;'>Jobfile Already Exists in ".$moni."</i>";     
              }
           }else{
-             echo "<i style='color:green;'>Jobfile  is available</i>"; 
+             echo "<i style='color:green;'>Jobfile  is Available</i>"; 
           }
        }
 
@@ -257,47 +257,47 @@ class Job extends CI_Controller {
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Lodgement Fee</label>
-                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge" value="'.$row->LodgementFee.'" disabled />
+                              <input type="text" name="lodge" class="form-control input-sm lodge_update checkDec" id="lodge" value="'.$row->LodgementFee.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont-deposit" value="'.$row->ContainerDeposit.'" disabled/>
+                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit checkDec" id="cont-deposit" value="'.$row->ContainerDeposit.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc-charges" value="'.$row->THCCharges.'" disabled/>
+                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges checkDec" id="thc-charges" value="'.$row->THCCharges.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre" value="'.$row->Arrastre.'" disabled/>
+                              <input type="text" name="arrastre" class="form-control input-sm arrastre checkDec" id="arrastre" value="'.$row->Arrastre.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage" value="'.$row->Wharfage.'" disabled/>
+                              <input type="text" name="wharfage" class="form-control input-sm wharfage checkDec" id="wharfage" value="'.$row->Wharfage.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm weight" id="weight" value="'.$row->Weighing.'" disabled />
+                              <input type="text" name="weight" class="form-control input-sm weight checkDec" id="weight" value="'.$row->Weighing.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm del" id="del" value="'.$row->DEL.'" disabled/>
+                              <input type="text" name="del" class="form-control input-sm del checkDec" id="del" value="'.$row->DEL.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch" value="'.$row->DispatchFee.'" disabled/>
+                              <input type="text" name="dispatch" class="form-control input-sm dispatch checkDec" id="dispatch" value="'.$row->DispatchFee.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm storage" id="storage" value="'.$row->Storage.'" disabled />
+                              <input type="text" name="storage" class="form-control input-sm storage checkDec" id="storage" value="'.$row->Storage.'" disabled />
                             </div>
 
                           </div>
@@ -307,42 +307,42 @@ class Job extends CI_Controller {
 
                             <div class="form-group">
                                 <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage" value="'.$row->Demorage.'"  disabled/>
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage checkDec" id="demurrage" value="'.$row->Demorage.'"  disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention" value="'.$row->Detention.'" disabled />
+                                <input type="text" name="detention" class="form-control input-sm detention checkDec"  id="detention" value="'.$row->Detention.'" disabled />
                               </div>
                         
                               <div class="form-group">
                                 <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC" value="'.$row->EIC.'" disabled />
+                                <input type="text" name="EIC" class="form-control input-sm EIC checkDec" id="EIC" value="'.$row->EIC.'" disabled />
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai-app" value="'.$row->BAIApplication.'" disabled/>
+                                <input type="text" name="bai-app" class="form-control input-sm bai-app checkDec" id="bai-app" value="'.$row->BAIApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai-inspect" value="'.$row->BAIInspection.'" disabled/>
+                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect checkDec" id="bai-inspect" value="'.$row->BAIInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra-app" value="'.$row->SRAApplication.'" disabled/>
+                                <input type="text" name="sra-app" class="form-control input-sm sra-app checkDec" id="sra-app" value="'.$row->SRAApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra-inspect" value="'.$row->SRAInspection.'" disabled/>
+                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect checkDec" id="sra-inspect" value="'.$row->SRAInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad-cargo" value="'.$row->BadCargo.'"disabled />
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo checkDec" id="bad-cargo" value="'.$row->BadCargo.'"disabled />
                               </div>
                           </div>
                         </div>';
@@ -1256,7 +1256,7 @@ class Job extends CI_Controller {
      $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
-        echo "JobFile already Exists";
+        echo "JobFile Already Exists";
        }else{
          echo "New Jobfile is Added";
 
