@@ -418,7 +418,6 @@ var jbfl;
 
 	$(document).on('click','.qwerty',function(){
 
-		alert('asdasd');
 			$('#runchar .lodge_update').removeAttr('disabled');
 			$('#runchar .cont-deposit').removeAttr('disabled');
 			$('#runchar .thc-charges').removeAttr('disabled');
@@ -437,7 +436,7 @@ var jbfl;
 			$('#runchar .sra-inspect').removeAttr('disabled');
 			$('#runchar .bad-cargo').removeAttr('disabled');
 
-			$('.update_charges-mnila').removeAttr('disabled');
+			$('.asd').removeAttr('disabled');
 	});
    $(document).on('click','.asd',function(){
 

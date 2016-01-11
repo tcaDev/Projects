@@ -162,6 +162,7 @@ class Login_user extends CI_Controller {
 
 		  	$data['manila']    = $this->User->get_jobfile_manila();
 		  	$data['outport']    = $this->User->get_jobfile_outport();
+		  	$data['air']    = $this->User->get_jobfile_air();
 		  	$data['carrier'] = $this->User->get_carrier();
 		  	$data['products'] = $this->User->get_products();
 

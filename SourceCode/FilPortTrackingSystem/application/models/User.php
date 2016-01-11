@@ -598,6 +598,11 @@ function get_jobfile_outport(){
     return $query->result();
   }
 
+  function get_jobfile_air(){
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='3' limit 10");
+    return $query->result();
+  }
+
   function get_jobfile_manila_global(){
     $query = $this->db->query("select * from vw_JobFile");
     return $query->result();

@@ -118,10 +118,6 @@
 
 				          <th>Consignee</th>
 
-				          <th>Number of Cartons</th>
-
-				          <th>Gross Weight (kg)</th>
-
 				          <th>Description of Goods</th>
 
 				          <th>WK/PI/PO No.</th>
@@ -133,12 +129,6 @@
 				          <th>Master Bill of Airway No.</th>
 
 				           <th>Origin</th>
-
-				          <th>Estimated Time of Departure</th>
-
-				          <th>Estimated Time of Arrival</th>
-
-				          <th>Actual Time of Arrival</th>
 
 				          <th>Flight No.</th>
 
@@ -152,17 +142,13 @@
 
 				          <th>Date Pick-up O-Hawb</th>
 
-				          <th>Date Pick-up other Docs</th>
+				          <th>Date Pick-up Other Docs</th>
 
 				          <th>Broker</th>
 
 				          <th>Date Request Budget to GL</th>
 
 				          <th>Reference Due Date</th>
-
-				          <th>Date Sent Pre-Assess</th>
-
-				          <th>Date Final Assess</th>
 
 				          <th>Reference Entry No.</th>
 
@@ -190,9 +176,21 @@
 				      </tr>
 
 				      <tbody>
+
+				      <?php $i= 0; 
+				      		foreach ($air as $row) {
+				      			$i++;
+				      	?>
 				      		<tr>
-					         
+					         	  <td><?php echo stripslashes($i);?></td>
+						          <td><button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+						          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+						           <?php echo $pick1 ;?>
+						          <td><?php echo stripslashes($row->ShipperName); ?></td>
+						          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 				      		</tr>
+
+				      		<?php } ?>
 				      </tbody>
 				    
 				  </table>
