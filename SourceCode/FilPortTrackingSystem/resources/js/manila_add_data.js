@@ -81,7 +81,7 @@ var suc;
 			{
 				$('.reference-msg').text("Need Reference Entry No.");
 			}
-			else if($('#check_jobfiles').text() == "Jobfile already exists")
+			else if($('#check_jobfiles').text() == "Jobfile is already exists in Outport" || "Jobfile is already exists in Air")
 			{
 				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
 			}

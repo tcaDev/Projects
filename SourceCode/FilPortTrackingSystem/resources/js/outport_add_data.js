@@ -77,7 +77,11 @@ var suc;
 			{
 				$('.colsel-msg-outport').text("Need House Bill of Lading No.");
 			}
-			else if($('#check_jobfiles-outport i').text() == "Jobfile is already been used ")
+			else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Air")
+			{
+				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
+			}
+				else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Manila")
 			{
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}

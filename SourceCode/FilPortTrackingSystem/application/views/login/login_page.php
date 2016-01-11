@@ -114,7 +114,7 @@
 
 								</div>
 
-								<span class="pull-right"><a href="<?php echo base_url('login_user/forgot');?>" style="font-size: 15px !important; "> Forgot your Password? </a></span>
+								<!-- <span class="pull-right"><a href="<?php// echo base_url('login_user/forgot');?>" style="font-size: 15px !important; "> Forgot your Password? </a></span> -->
 
 				            </div>	
 
@@ -124,11 +124,11 @@
 
 				        <div class="row">
 
-				        	<div class="form-group col-lg-12 col-md-12 col-sm-12">
+				        	<div class="form-group col-lg-12 col-md-12 col-sm-12"  >
 
-				            	<button type="submit" class="pull-right btn btn-primary">Login</button>
+				            	<button type="submit" class="pull-right btn btn-primary col-md-4 "><span class="fa fa-sign-in fa-fw"></span> Login</button>
 
-				            	<a href="<?php echo base_url('login_user/registration');?>"><button type="button" class="pull-right btn btn-primary" style="margin-right: 10px;">Register</button></a>
+				            	<!-- <a href="<?php //echo base_url('login_user/registration');?>"><button type="button" class="pull-right btn btn-primary" style="margin-right: 10px;">Register</button></a> -->
 
 				            	
 
