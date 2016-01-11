@@ -74,9 +74,25 @@ $(document).on('click','.btn-addReport-mnila',function(){
 
 
 <script>
-$('.save_reports').click(function(){
-
-					 	  dia =	$.dialog({
+$(document).on('click','.save_reports',function(){
+	$('.save_reports').attr('disabled','disabled');
+ 	if($("#table-AddReport-mnla  table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Report',
+		 			 content:'You have not Added Any Report. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 },
+  					 cancel: function(){
+  					 	$('.save_reports').removeAttr('disabled');
+  					 }
+		 		});
+				}
+				else{
+						  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
@@ -111,12 +127,17 @@ $('.save_reports').click(function(){
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
 				        			dia.close();
-				        			location.reload();
+				        			$('.save_reports').removeAttr('disabled');
+				        			$('.modal').modal('hide');
 				        	    }
 				   			});
 	  					   }
 	    		    });		  
 	        });	
+
+				}
+
+					 
 });
 
 

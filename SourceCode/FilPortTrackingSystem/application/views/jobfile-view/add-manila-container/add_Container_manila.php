@@ -330,11 +330,34 @@ function check_Container_mnilas(container){
 
 
  $(document).on('click','.add_container',function(){
+ 	$('.add_container').attr('disabled','disabled');
+ 	if($("#table-AddContainer-mnla table tbody tr td").length == 0){
+ 					$.confirm({
+		 			 title: 'Add New Commodity',
+		 			 content:'You have not Added Any Container. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 },
+  					 cancel: function(){
+  					 	$('.add_container').removeAttr('disabled');
+  					 }
+		 		});
+				}else{
+					dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding container',
+				   			});
 
-		    	  var table = $("#table-AddContainer-mnla table tbody");
-		    	  var ct    = $("#table-AddContainer-mnla table tbody tr").length;
-		    table.find('tr').each(function (count1) {
-			  var c = count1+1;
+					var table = $("#table-AddContainer-mnla table tbody");
+				    var ct    = $("#table-AddContainer-mnla table tbody tr").length;
+				    table.find('tr').each(function (count1) {
+					var c = count1+1;
 
 				        var $tds = $(this).find('td'),
 				            vessel_voyage 	= $tds.eq(0).text(),
@@ -363,15 +386,6 @@ function check_Container_mnilas(container){
 		$.ajax({
 			  		method: "POST",
 					 url: "<?php echo base_url('Job/container');?>",
-/*					  beforeSend: function() {
-					 	  dia =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Adding container',
-				   			});
- 					  },*/
 			  		data: {
 			  				//from container tab
 			  				vessel_voyage  :vessel_voyage,
@@ -408,7 +422,8 @@ function check_Container_mnilas(container){
 				        		content: 'New container is added!',
 				        		confirm: function(){
 				        			$(".remove_tr" ).remove();
-				        			/*dia.close();*/
+				        			dia.close();
+				        			$('.modal').modal('hide');
 				        	    }
 				   			  }); 
 			    	 	}
@@ -418,6 +433,10 @@ function check_Container_mnilas(container){
 
 
 		     });	
+
+				}
+
+		    	
 });
 
 </script>
