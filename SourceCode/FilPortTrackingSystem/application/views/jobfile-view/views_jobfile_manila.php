@@ -9,7 +9,7 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila" onkeyup="search_manila(this.value)" >
+						<input type="search" class="form-control input-sm light-table-filter" data-table="order-tablejob" id="search_manila" >
 
 			 		</div>	
 
@@ -203,7 +203,7 @@
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td>
 								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
-								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 										  <td>
 										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
@@ -378,7 +378,7 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				        	<button type="button" class="btn btn-danger asd update-charges-mnila">Save</button>
+				        	<button type="button " class="btn btn-danger update_charges">Save</button>
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -395,29 +395,34 @@ $(document).ready(function(){
 var jbfl;
 	$(document).on('click','.runchar',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+
 			jbfl = jobfile;
 	});
-   $(document).on('click','.asd',function(){
+   $(document).on('click','.update_charges',function(){
 
+   	
+     var lodge        = $('.lodge_update').val();
+     var cont_deposit = $('.cont-deposit').val();
+     var thc_charges  = $('.thc-charges').val();
+     var arrastre     = $('.arrastre').val();
+     var wharfage     = $('.wharfage').val();
+     var weight       = $('.weight').val();
+     var del          = $('.del').val();
+     var dispatch     = $('.dispatch').val();
+     var storage      = $('.storage').val();
+     var demurrage    = $('.demurrage').val();
+     var detention    = $('.detention').val();
+     var eic 		  = $('.EIC').val();
+     var bai_app 	  = $('.bai-app').val();
+     var bai_inspect  = $('.bai-inspect').val();
+     var sra_app 	  = $('.sra-app').val();
+     var sra_inspect  = $('.sra-inspect').val();
+     var bad_cargo    = $('.bad-cargo').val();
 
-     var lodge        = $('#runchar .lodge_update').val();
-     var cont_deposit = $('#runchar .cont-deposit').val();
-     var thc_charges  = $('#runchar .thc-charges').val();
-     var arrastre     = $('#runchar .arrastre').val();
-     var wharfage     = $('#runchar .wharfage').val();
-     var weight       = $('#runchar .weight').val();
-     var del          = $('#runchar .del').val();
-     var dispatch     = $('#runchar .dispatch').val();
-     var storage      = $('#runchar .storage').val();
-     var demurrage    = $('#runchar .demurrage').val();
-     var detention    = $('#runchar .detention').val();
-     var eic 		  = $('#runchar .EIC').val();
-     var bai_app 	  = $('#runchar .bai-app').val();
-     var bai_inspect  = $('#runchar .bai-inspect').val();
-     var sra_app 	  = $('#runchar .sra-app').val();
-     var sra_inspect  = $('#runchar .sra-inspect').val();
-     var bad_cargo    = $('#runchar .bad-cargo').val();
+     
 
+     
+     
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
@@ -458,9 +463,21 @@ var jbfl;
 				        		content: 'Running Charges Updated!',
 				        		confirm: function(){
 									dia_running_charges.close();
+				        			$('#runchar').modal('hide');
 				        	    }
 				   			   });
 	    		    })
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
   });
    });
   
@@ -502,7 +519,7 @@ var jbfl;
 				    </div>
 				 </div>
 
-				  <!--Add Report when Adding New Container  -->
+				  <!--Add Product when Adding New Container  -->
 			
 				  <!-- Modal -->
 				  <div class="modal fade" id="addReport-mnla" tabindex="-1" data-replace="true"  style="display: none;" data-backdrop="static" data-keyboard="false">
@@ -552,32 +569,6 @@ var jbfl;
 					 </div>
  
 
-
-
-
-
-
-<script>
-	//for search
-	function search_manila(jbfl){
-       
-    		 	$.ajax({
-		           method: "GET",
-	 		       url: "<?php echo base_url('search/get_jobfile_search');?>",
-			  	   beforeSend: function() {
-							$('.job-manila').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
- 					  },
-			  	   data: {
-			  	   			   montype  		   :1,
-			  	   	           jobfile   		   :jbfl,
-			  	   		 }
-	              })
-					.done(function(data) {
-						$('.job-manila').html(data);
-	  		    });
-    }
-
-</script>
 
 <script>
 $(document).ready(function(){
@@ -674,14 +665,11 @@ $(document).ready(function(){
 	//for getting the product goods
  $('.view_vessels').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 		var button_update = "btn-update-vessel";
- 		var modal ="mnla";
+ 		
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessels');?>",
 				  		data: { id:ids,
-				  				button_update:button_update,
-                                 href:modal,
 				  		}
 					})
 			  		.done(function(data) {
@@ -707,14 +695,11 @@ $(document).ready(function(){
 
  $('.view_goods').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 			var button_update = "btn-update-product";
- 			var modal = "mnla";
+ 		
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_goods');?>",
 				  		data: { id:ids,
-				  				button_update:button_update,
-				  				href:modal,
 				  		}
 					})
 			  		.done(function(data) {
@@ -778,15 +763,13 @@ $(".btn-Vessel").click(function(){
 
 	$(".btn-Add-Container-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-		var modal_ID= "#addVessel-mnla";
+
 		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
-		$(".jobfile-addVessel-mnla").val(jobfile_mnla) ;
 
 					$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessel_container');?>",
 				  		data: { jobfile:jobfile_mnla,
-				  				href:modal_ID
 				  		}
 					})
 			  		.done(function(data) {
@@ -801,17 +784,13 @@ $(".btn-Vessel").click(function(){
 
 	$(".btn-Add-Product-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-		var modal_ID= "#addContainer-mnla";
-		var onclick = "click_vessel";
-		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
+
 		$(".jobfile-addProduct-mnla").val(jobfile_mnla) ;
 
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_container_product');?>",
-				  		data: { jobfile:jobfile_mnla,
-				  				href:modal_ID,
-				  				onclick:onclick
+				  		data: { jobfile:jobfile_mnla
 				  		}
 					})
 			  		.done(function(data) {
