@@ -258,47 +258,47 @@ class Job extends CI_Controller {
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Lodgement Fee</label>
-                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge" value="'.$row->LodgementFee.'"  />
+                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge" value="'.$row->LodgementFee.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont-deposit" value="'.$row->ContainerDeposit.'" />
+                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont-deposit" value="'.$row->ContainerDeposit.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc-charges" value="'.$row->THCCharges.'" />
+                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc-charges" value="'.$row->THCCharges.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre" value="'.$row->Arrastre.'" />
+                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre" value="'.$row->Arrastre.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage" value="'.$row->Wharfage.'" />
+                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage" value="'.$row->Wharfage.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm weight" id="weight" value="'.$row->Weighing.'" />
+                              <input type="text" name="weight" class="form-control input-sm weight" id="weight" value="'.$row->Weighing.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm del" id="del" value="'.$row->DEL.'" />
+                              <input type="text" name="del" class="form-control input-sm del" id="del" value="'.$row->DEL.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch" value="'.$row->DispatchFee.'" />
+                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch" value="'.$row->DispatchFee.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm storage" id="storage" value="'.$row->Storage.'" />
+                              <input type="text" name="storage" class="form-control input-sm storage" id="storage" value="'.$row->Storage.'" disabled />
                             </div>
 
                           </div>
@@ -308,42 +308,42 @@ class Job extends CI_Controller {
 
                             <div class="form-group">
                                 <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage" value="'.$row->Demorage.'" />
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage" value="'.$row->Demorage.'"  disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention" value="'.$row->Detention.'" />
+                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention" value="'.$row->Detention.'" disabled />
                               </div>
                         
                               <div class="form-group">
                                 <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC" value="'.$row->EIC.'" />
+                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC" value="'.$row->EIC.'" disabled />
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai-app" value="'.$row->BAIApplication.'" />
+                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai-app" value="'.$row->BAIApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai-inspect" value="'.$row->BAIInspection.'" />
+                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai-inspect" value="'.$row->BAIInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra-app" value="'.$row->SRAApplication.'" />
+                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra-app" value="'.$row->SRAApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra-inspect" value="'.$row->SRAInspection.'" />
+                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra-inspect" value="'.$row->SRAInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad-cargo" value="'.$row->BadCargo.'" />
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad-cargo" value="'.$row->BadCargo.'"disabled />
                               </div>
                           </div>
                         </div>';

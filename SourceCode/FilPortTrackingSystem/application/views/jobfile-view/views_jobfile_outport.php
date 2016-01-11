@@ -369,7 +369,10 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				        	<button type="button " class="btn btn-danger update_charges-outport">Save</button>
+				        	<button type="button" class="btn btn-danger update_charges-outport-qwerty">Update</button>
+
+				        	<button type="button" class="btn btn-danger update_charges-outport" disabled>Save</button>
+
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -386,6 +389,28 @@ var jbfl_outport;
 	$(document).on('click','.runchar-outport',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl_outport = jobfile;
+	});
+
+	$(document).on('click','.update_charges-outport-qwerty',function(){
+			$('#runchar-outport .lodge_update').removeAttr('disabled');
+			$('#runchar-outport .cont-deposit').removeAttr('disabled');
+			$('#runchar-outport .thc-charges').removeAttr('disabled');
+			$('#runchar-outport .arrastre').removeAttr('disabled');
+			$('#runchar-outport .wharfage').removeAttr('disabled');
+			$('#runchar-outport .weight').removeAttr('disabled');
+			$('#runchar-outport .del').removeAttr('disabled');
+			$('#runchar-outport .dispatch').removeAttr('disabled');
+			$('#runchar-outport .storage').removeAttr('disabled');
+			$('#runchar-outport .demurrage').removeAttr('disabled');
+			$('#runchar-outport .detention').removeAttr('disabled');			
+			$('#runchar-outport .EIC').removeAttr('disabled');
+			$('#runchar-outport .bai-app').removeAttr('disabled');
+			$('#runchar-outport .bai-inspect').removeAttr('disabled');
+			$('#runchar-outport .sra-app').removeAttr('disabled');
+			$('#runchar-outport .sra-inspect').removeAttr('disabled');
+			$('#runchar-outport .bad-cargo').removeAttr('disabled');
+
+			$('update_charges-outport').removeAttr('disabled');
 	});
 
    $(document).on('click','.update_charges-outport',function(){
