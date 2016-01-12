@@ -136,6 +136,8 @@ $('.save_reports-outport').attr('disabled','disabled');
 	  					   }
 	    		    });		  
 	        });	
+}
+
 });
 
 

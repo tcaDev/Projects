@@ -125,7 +125,7 @@ class Job_air extends CI_Controller {
 
      }
 
-     function status_reports(){
+     function status_reports($status_report,$job,$userid){
      	             $air_insert = array(
                      'StatusDescription' => $status_report,
                      'JobFile_AirId'     => $job,  
