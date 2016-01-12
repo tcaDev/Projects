@@ -599,7 +599,7 @@ function get_jobfile_outport(){
   }
 
   function get_jobfile_air(){
-    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='3'  ORDER BY JobFileId desc ");
+    $query = $this->db->query("select * from vw_JobFileAir  ORDER BY JobFile_AirId desc ");
     return $query->result();
   }
 

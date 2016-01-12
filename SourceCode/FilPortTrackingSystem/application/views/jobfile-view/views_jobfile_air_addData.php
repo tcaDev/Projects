@@ -84,33 +84,33 @@
 									<div class="form-group">
 
 									  <label for="hbl">House Airway Bill:</label><i style="color:red;">*</i>
-									  <input type="text" class="form-control input-sm hbl-air" name="hbl" id="hbl">
+									  <input type="text" class="form-control input-sm hbl-air">
 									  <i class="colsel-msg-air" style="color:red;"></i>
 									</div>
 
 									<div class="form-group">
 									  <label for="mbl">Master Airway Bill:</label>
-									  <input type="text" class="form-control input-sm mbl-air" name="mbl" id="mbl">
+									  <input type="text" class="form-control input-sm mbl-air">
 									 </div>
 
 									 <div class="form-group">
 									  <label for="mbl">Flight No.:</label>
-									  <input type="text" class="form-control input-sm flight-air" name="mbl" id="mbl">
+									  <input type="text" class="form-control input-sm flight-air" >
 									 </div>
 
 									 <div class="form-group">
 									  <label for="mbl">Forwarder:</label>
-									  <input type="text" class="form-control input-sm forwarder-air" name="mbl" id="mbl">
+									  <input type="text" class="form-control input-sm forwarder-air" >
 									 </div>
 
 									  <div class="form-group">
 									  <label for="mbl">Warehouse:</label>
-									  <input type="text" class="form-control input-sm warehouse-air" name="mbl" id="mbl">
+									  <input type="text" class="form-control input-sm warehouse-air" >
 									 </div>
 
 									 <div class="form-group">
 									  <label for="mbl">Air Craft No. :</label>
-									  <input type="text" class="form-control input-sm aircraft-air" name="mbl" id="mbl">
+									  <input type="text" class="form-control input-sm aircraft-air" >
 									 </div>
 
 
@@ -139,17 +139,17 @@
 
 										<div class="form-group">
 											<label>Number of Cartons</label> <span id="errmsg-air" style="color:red;"></span>
-											<input type="text" step="1" class="form-control input-sm cartons-air" id="cartons-air" name="numofcartons-air">
+											<input type="text" step="1" class="form-control input-sm cartons-air" name="numofcartons-air">
 										</div>
 
 									<div class="form-group">
 										  <label for="bank">Letter of Credit No. from Bank:</label>
-										  <input type="text" class="form-control input-sm bank-air" name="bank" id="bank">
+										  <input type="text" class="form-control input-sm bank-air" name="bank">
 										</div>
 
 										<div class="form-group">
 										  <label for="registry">Registry:</label>
-										  <input type="text" class="form-control input-sm registry-air" name="registry" id="registry">
+										  <input type="text" class="form-control input-sm registry-air">
 										</div>
 
 										<div class="form-group ">
@@ -202,7 +202,7 @@
 
 								 <div class="form-group">
 										 <label for="broker">Broker:</label>
-								  			<select name="broker"id="Broker"class="form-control input-sm broker-air">
+								  			<select name="broker" class="form-control input-sm broker-air">
 								            	<?php  foreach($broker_data as $row){  ?> 
 								                <option value="<?php echo $row->BrokerId ?>">
 								                <?php echo stripslashes($row->FirstName) . " " . stripslashes($row->MiddleName) . " " . stripslashes($row->LastName); ?>
@@ -242,7 +242,7 @@
 
 									 <div class="form-group">
 									   <label for="status">Status Report:</label>
-									  	<textarea name="status" rows="5" class="form-control input-sm status-air" id="status"></textarea>
+									  	<textarea name="status" rows="5" class="form-control input-sm status-air" id="status_air"></textarea>
 									 </div>
 					  			</div>
 					  		</div>

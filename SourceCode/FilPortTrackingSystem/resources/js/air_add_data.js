@@ -167,7 +167,7 @@ var suc;
    if(jobfile==''){
    	$('#check_jobfiles-air').empty();
    }else{
-       var mon = $('.monitoring_type-air').val();
+      /* var mon = $('.monitoring_type-air').val();*/
 
    			$.ajax({
 			  		method: "POST",
@@ -256,38 +256,39 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 /*Function Inserting Jobfile*/
 
 	function insert_jobfile_air(){
-
-       var monitoring_type   = $('.monitoring_type-air').val();
 	   var jbfl          	 = $('.jobfiles-air').val();
-       var shipper 	  	     = $('.shipper-air').val();
+	   var shipper 	  	     = $('.shipper-air').val();
        var consignee  		 = $('.consignee-air').val();
-       var mbl 		  		 = $('.mbl-air').val();
-       var hbl 	 	  		 = $('.hbl-air').val(); 
-       var bank       		 = $('.bank-air').val();
-       var registry   		 = $('.registry-air').val(); 
-       var vdt        		 = $('.vdt-air').val();
-       var dtRcvd     		 = $('.dtRcvd-air').val();
-       var dt_pickup_obl  	 = $('.dt_pickup_obl-air').val();  
- 	   var dt_pickup_docs 	 = $('.dt_pickup_docs-air').val();  
-       var broker         	 =  $('.broker-air').val();
-       var dt_req_budget  	 =  $('#dt_req_budget-air').val();
-       var ref_due_dt     	 =  $('#ref_due_dt-air').val();
-       var status         	 =  $('#status-air').val();
-       var purch_order_no 	 =  $('#purch_order_no-air').val();
        var color          	 =  $('.colsel-air').val();
-	   var vessels        	 =  $('.vessel-air').val();
-       var color_select   	 =  $('#color-select-air').val();
-       var origin     		 =  $('.origin-air').val();
-       var origcity   	 	 =  $('.origcity-air').val();
+       var hbl 	 	  		 = $('.hbl-air').val();
+       var mbl 		  		 = $('.mbl-air').val();
        var flight  	 		 =  $('.flight-air').val();
-       var forwarder   		 =  $('.forwarder-air').val();
+  	   var forwarder   		 =  $('.forwarder-air').val();
        var warehouse   	     =  $('.warehouse-air').val();
        var aircraft   		 =  $('.aircraft-air').val();
+       var edtair			 =  $('.edt-air').val();
+       var eatair		     =  $('.eat-air').val();
+       var aatair		     =  $('.aat-air').val();
+ 	   var cartons		     =  $('.cartons-air').val();
+ 	   var bank       		 = $('.bank-air').val();
+ 	   var registry   		 = $('.registry-air').val(); 
+       var origin_air        = $('.origin-air').val();  
+       var origcity   	 	 =  $('.origcity-air').val();
        var dt_airline   	 =  $('.dtRcvd-airline-air').val();
+       var dtRcvd     		 = $('.dtRcvd-air').val();
+       var dt_pickup_obl  	 = $('.dt_pickup_obl-air').val(); 
+ 	   var dt_pickup_docs 	 = $('.dt_pickup_docs-air').val();  
+       var broker         	 =  $('.broker-air').val(); 
+       var purch_order_no 	 =  $('#purch_order_no-air').val();
+       var dt_req_budget  	 =  $('#dt_req_budget-air').val();
+       var ref_due_dt     	 =  $('#ref_due_dt-air').val();
+       var color_select   	 =  $('#color-select-air').val();
+       var status_air   	 =  $('#status_air').val();
+
 
         		$.ajax({
 			  		method: "POST",
-					url: link + "/Job/jobfile_add/",
+					url: link + "/Job_air/",
 					beforeSend: function() {
 					 	  dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
@@ -298,32 +299,36 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 				   			});
  					  },
 			  		data: {
-			  			    //from jobfile tab
-			  			    monitoring_type:monitoring_type,
-			  			    jbfl 		   :jbfl,
-			  			    shipper        :shipper,
-			  			    consignee      :consignee,
-			  			    mbl		       :mbl,
-			  			    hbl			   :hbl,
-			  			    bank		   :bank,
-			  			    registry	   :registry,
-			  			    dtRcvd         :dtRcvd,
-			  			    dt_pickup_obl  :dt_pickup_obl,
-			  			    dt_pickup_docs :dt_pickup_docs,
-			  			    broker         :broker,
-			  			    dt_req_budget  :dt_req_budget,
-			  			    ref_due_dt     :ref_due_dt,
-			  			    status		   :status,
-			  			    purch_order_no :purch_order_no,
-			  			    color          :color,
-			  			    color_select   :color_select,
-			  			    origin   	   :origin,
-			  			    origcity       :origcity,
-			  			    flight         : flight,
-			  			    forwarder      : forwarder,
-			  			    warehouse      : warehouse,
-			  			    aircraft       : aircraft,
-			  			    dt_airline     : dt_airline
+			  			    jbfl      	 :jbfl,
+			  			    shipper  	 :shipper,
+			  			    consignee    :consignee,
+			  			    color        :color,
+			  			    hbl          :hbl,
+			  			    mbl          :mbl,
+			  			    flight       :flight,
+			  			    forwarder    :forwarder,
+			  			    warehouse    :warehouse,
+			  			    aircraft     :aircraft,
+			  			    edtair       :edtair,
+			  			    eatair       :eatair,
+			  			    aatair       :aatair,
+			  			    cartons      :cartons,
+			  			   	bank         :bank, 
+			  			   	registry     :registry,
+			  			   	origin_air   :origin_air,
+			  			   	origcity     :origcity,
+			  			    dt_airline   :dt_airline,
+			  			    dtRcvd       :dtRcvd,
+			  			    dt_pickup_obl:dt_pickup_obl,
+			  			    dt_pickup_docs:dt_pickup_docs,
+			  			    broker        :broker,
+			  			    purch_order_no:purch_order_no,
+			  			    dt_req_budget :dt_req_budget,
+			  			    ref_due_dt    :ref_due_dt,
+			  			    color_select  :color_select,
+			  			    status_air    :status_air  
+
+
 			  		}
 				})
 			    .done(function(data) {
@@ -443,3 +448,4 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 
 
 }*/
+

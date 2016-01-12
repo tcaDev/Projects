@@ -7,7 +7,8 @@ class Job_air extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
-            date_default_timezone_set('Asia/Manila');     
+            date_default_timezone_set('Asia/Manila');
+            $this->load->model('Jobdata');     
        }
 
 
@@ -16,32 +17,32 @@ class Job_air extends CI_Controller {
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
       $jbfl 	     =$this->input->post('jbfl');
-      $shipperid     =	$this->input->post('shipperid');
-      $cosigid 		 =	$this->input->post('cosigid');
-      $nocart 	     =	$this->input->post('nocart');
-      $purchord 	 =	$this->input->post('purchord');  
-      $letcred 	     =	$this->input->post('letcred');
+      $shipperid     =	$this->input->post('shipper');
+      $cosigid 		 =	$this->input->post('consignee');
+      $nocart 	     =	$this->input->post('cartons');
+      $purchord 	 =	$this->input->post('purch_order_no');  
+      $letcred 	     =	$this->input->post('bank');
       $hbl		     =	$this->input->post('hbl');
       $mbl 		     =	$this->input->post('mbl');
-      $countryid     =	$this->input->post('countryid');
-      $city          =	$this->input->post('city');
-      $etd           =	$this->input->post('etd');
-      $eta           =	$this->input->post('eta');
-      $ata			 =	$this->input->post('ata');
+      $countryid     =	$this->input->post('origin_air');
+      $city          =	$this->input->post('origcity');
+      $etd           =	$this->input->post('edtair');
+      $eta           =	$this->input->post('eatair');
+      $ata			 =	$this->input->post('aatair');
       $flight 	     =	$this->input->post('flight');
       $aircraft 			 =	$this->input->post('aircraft');
-      $forward				 =	$this->input->post('forward');
+      $forward				 =	$this->input->post('forwarder');
       $warehouse 			 =	$this->input->post('warehouse');
-      $dt_rec_arv_aline 	 =	$this->input->post('dt_rec_arv_aline');
-      $dt_rec_arv_client     =	$this->input->post('dt_rec_arv_client');
-      $dtpickup_hawb	     =	$this->input->post('dtpickup_hawb');
-      $dtpikup_docs 		 =	$this->input->post('dtpikup_docs');
-      $brokerid 			 = $this->input->post('brokerid');
-      $dtreqbudget   	     =	$this->input->post('dtreqbudget');
-      $rfpduedate 			 =	$this->input->post('rfpduedate');
+      $dt_rec_arv_aline 	 =	$this->input->post('dt_airline');
+      $dt_rec_arv_client     =	$this->input->post('dtRcvd');
+      $dtpickup_hawb	     =	$this->input->post('dt_pickup_obl');
+      $dtpikup_docs 		 =	$this->input->post('dt_pickup_docs');
+      $brokerid 			 = $this->input->post('broker');
+      $dtreqbudget   	     =	$this->input->post('dt_req_budget');
+      $rfpduedate 			 =	$this->input->post('ref_due_dt');
       $color_select		     = $this->input->post('color_select');
-      $status		         = $this->input->post('status');
-      $status_report		 = $this->input->post('status_report');
+      $status		         = $this->input->post('color');
+      $status_report		 = $this->input->post('status_air');
 
       $air_job = array(
       					'JobFileNo' 			 =>$jbfl,
