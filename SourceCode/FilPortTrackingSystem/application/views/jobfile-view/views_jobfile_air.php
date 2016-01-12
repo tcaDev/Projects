@@ -319,7 +319,7 @@
 
 			 <!--Update product  -->
 				  <!-- Modal -->
-				  <div class="modal fade" id="updateProduct-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+				  <div class="modal fade" id="updateProduct-air" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
 				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
