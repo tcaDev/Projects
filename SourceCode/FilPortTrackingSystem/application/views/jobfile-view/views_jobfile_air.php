@@ -33,31 +33,8 @@
 
 					      <!-- Modal content-->
 
-					      <div class="modal-content">
+					     <?php $this->load->view('jobfile-view/views_jobfile_air_updateData'); ?>
 
-					        <div class="modal-header">
-
-					          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-					          <h4 class="modal-title">Modal Header</h4>
-
-					        </div>
-
-					        <div class="modal-body">
-
-					          <p>Some text in the modal.</p>
-
-					        </div>
-
-					        <div class="modal-footer">
-
-					          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-					        </div>
-
-					      </div>
-
-					      
 
 					    </div>
 
@@ -102,7 +79,7 @@
 
 
 	 <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
-		    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
+		    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5500px;">
 		        <thead>
 		             <tr style="cursor:w-resize ;">
 
@@ -162,6 +139,8 @@
 
 				          <th>Color Selectivity</th>
 
+				          <th>Registry</th>
+
 				          <th>Status Reports</th>
 
 				          <th>Running Charges</th>
@@ -179,6 +158,25 @@
 						        }else{
 						        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
 						        }
+
+						        if($row->ETD == "0000-00-00 00:00:00"){
+					                $ETD = $row->ETD;
+					             }else{
+					                 $ETD = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ETD));
+					             }
+
+					              if($row->ETA == "0000-00-00 00:00:00"){
+					                $ETA = $row->ETA;
+					             }else{
+					                 $ETA = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ETA));
+					             }
+
+					              if($row->ATA == "0000-00-00 00:00:00"){
+					                $ATA = $row->ATA;
+					             }else{
+					                 $ATA = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ATA));
+					             }
+
 				      	?>
 				      		<tr>
 					         	  <td><?php echo stripslashes($i);?></td>
@@ -201,11 +199,14 @@
 								  <td><?php echo stripslashes($row->Forwarder); ?></td>
 								  <td><?php echo stripslashes($row->Warehouse); ?></td>
 								  <td><?php echo stripslashes($row->Aircraft); ?></td>
+								  	<td class="hidden"><?php echo stripslashes($ETD); ?></td>
 								  <td><?php echo stripslashes($row->ETD); ?></td>
+								  	<td class="hidden"><?php echo stripslashes($ETA); ?></td>
 								  <td><?php echo stripslashes($row->ETA); ?></td>
+								  	<td class="hidden"><?php echo stripslashes($ATA); ?></td>
 								  <td><?php echo stripslashes($row->ATA); ?></td>
 								  <td><?php echo stripslashes($row->DateReceivedArrivalFromALine); ?></td>
-								  <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
+								 <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
 								  <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
 								  <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
 								  <td><?php echo stripslashes($row->Broker); ?></td>
@@ -216,7 +217,7 @@
 						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-air" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
 						          		<button type="button" class="btn btn-Add-Report-air btn-success" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 						          </td>
-						          <td class="view_charges">
+						          <td class="view_charges-air">
 						          		<button type="button" class="btn btn-StatusReport btn-info runchar-air" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
 						          </td>
 						          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFile_AirId); ?></td>
@@ -256,7 +257,7 @@
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				          <input type="text" class="jobfile_outport_update_product hidden">
+				          <input type="text" class="jobfile_air_update_product hidden">
 				        </div>
 				      </div>
 				      
@@ -289,6 +290,63 @@
 				 </div>
 				  
 			</div>	
+
+			<!--pop up for Running Charges start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="runchar-air" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Running Charges</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_charges"> </div>
+
+				        </div>
+				        <div class="footer-modal">
+				        <hr>
+				        	<button type="button" class="btn btn-danger update_charges-air-qwerty">Update</button>
+
+				        	<button type="button" class="btn btn-danger update_charges-air" disabled>Save</button>
+
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+
+	<script>
+			$(document).on('click','.update_charges-air-qwerty',function(){
+					$('#runchar-air .lodge_update').removeAttr('disabled');
+					$('#runchar-air .cont-deposit').removeAttr('disabled');
+					$('#runchar-air .thc-charges').removeAttr('disabled');
+					$('#runchar-air .arrastre').removeAttr('disabled');
+					$('#runchar-air .wharfage').removeAttr('disabled');
+					$('#runchar-air .weight').removeAttr('disabled');
+					$('#runchar-air .del').removeAttr('disabled');
+					$('#runchar-air .dispatch').removeAttr('disabled');
+					$('#runchar-air .storage').removeAttr('disabled');
+					$('#runchar-air .demurrage').removeAttr('disabled');
+					$('#runchar-air .detention').removeAttr('disabled');			
+					$('#runchar-air .EIC').removeAttr('disabled');
+					$('#runchar-air .bai-app').removeAttr('disabled');
+					$('#runchar-air .bai-inspect').removeAttr('disabled');
+					$('#runchar-air .sra-app').removeAttr('disabled');
+					$('#runchar-air .sra-inspect').removeAttr('disabled');
+					$('#runchar-air .bad-cargo').removeAttr('disabled');
+
+					$('.update_charges-air').removeAttr('disabled');
+					$(this).attr('disabled','disabled');
+			});
+	</script>
 
 
 
@@ -340,6 +398,10 @@
    		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
    });
 
+       $(document).on('click','.runchar-air',function(){
+   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   });
+
 
   $('.view_goods-air').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
@@ -370,6 +432,24 @@
                         .done(function(data) {
                                 $('.list_status').html(data);
                         });
+        });
+
+
+         /*View Charges*/
+        $('.view_charges-air').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(30)').text();
+
+ 		alert(jobfileno);
+ 		
+	 		  $.ajax({
+                                    method: "POST",
+                                      url: "<?php echo base_url('Job/get_charges_air');?>",
+                                    data: { id:jobfileno,
+                                    }
+                                })
+                                .done(function(data) {
+                                    $('.list_charges').html(data);
+                                });
         });
 
 </script>

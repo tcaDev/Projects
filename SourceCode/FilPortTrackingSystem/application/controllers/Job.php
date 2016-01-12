@@ -92,6 +92,26 @@ class Job extends CI_Controller {
   
   }
 
+  function get_country_air(){
+      $jobfile =  $this->input->post('jobfile');
+
+      $country = $this->Jobdata->get_countryID_air($jobfile);
+        foreach ($country as $row) {
+          echo $row->Origin_CountryId;
+        }
+  
+  }
+
+  function get_country_name_air(){
+      $jobfile =  $this->input->post('jobfile');
+      
+      $country = $this->Jobdata->get_countryID_air($jobfile);
+        foreach ($country as $row) {
+          echo $row->OriginCity;
+        }
+  
+  }
+
 
     function check_jobfiless(){
       //$dt = Date("Y/m/d H:i:s");
@@ -247,6 +267,113 @@ class Job extends CI_Controller {
     function get_charges(){
       $charges =  $this->input->post('id');   
       $charge  = $this->Jobdata->get_chargess($charges);
+
+/*    if($charge==NULL){
+          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
+    }else{*/
+
+           foreach($charge as $row){
+                      echo '<div class="col-lg-12">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label>Lodgement Fee</label>
+                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge" value="'.$row->LodgementFee.'" disabled />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Container Deposit</label>
+                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont-deposit" value="'.$row->ContainerDeposit.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>THC Charges</label>
+                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc-charges" value="'.$row->THCCharges.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Arrastre </label>
+                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre" value="'.$row->Arrastre.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Wharfage</label>
+                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage" value="'.$row->Wharfage.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Weighing</label>
+                              <input type="text" name="weight" class="form-control input-sm weight" id="weight" value="'.$row->Weighing.'" disabled />
+                            </div>
+
+                            <div class="form-group">
+                              <label>DEL</label>
+                              <input type="text" name="del" class="form-control input-sm del" id="del" value="'.$row->DEL.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Dispatch Fee</label>
+                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch" value="'.$row->DispatchFee.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Storage</label>
+                              <input type="text" name="storage" class="form-control input-sm storage" id="storage" value="'.$row->Storage.'" disabled />
+                            </div>
+
+                          </div>
+                            
+
+                          <div class="col-lg-6">
+
+                            <div class="form-group">
+                                <label>Demurrage</label>
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage" value="'.$row->Demorage.'"  disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>Detention</label>
+                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention" value="'.$row->Detention.'" disabled />
+                              </div>
+                        
+                              <div class="form-group">
+                                <label>EIC</label>
+                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC" value="'.$row->EIC.'" disabled />
+                              </div>
+
+                              <div class="form-group">
+                                <label>BAI Application</label>
+                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai-app" value="'.$row->BAIApplication.'" disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>BAI Inspection</label>
+                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai-inspect" value="'.$row->BAIInspection.'" disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>SRA Application</label>
+                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra-app" value="'.$row->SRAApplication.'" disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>SRA Inspection</label>
+                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra-inspect" value="'.$row->SRAInspection.'" disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>Bad Cargo</label>
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad-cargo" value="'.$row->BadCargo.'"disabled />
+                              </div>
+                          </div>
+                        </div>';
+                      }
+
+   // }
+    }
+
+    function get_charges_air(){
+      $charges =  $this->input->post('id');   
+      $charge  = $this->Jobdata->get_chargess_air($charges);
 
 /*    if($charge==NULL){
           echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
@@ -713,6 +840,7 @@ class Job extends CI_Controller {
                   <th>Hauler</th>
                   <th>Total Storage</th>
                   <th>Additional Per Day Include VAT</th>
+                
               </tr>";
 
           $i=0;
@@ -729,14 +857,24 @@ class Job extends CI_Controller {
                 break;
               }
           }
+
+
+            if($row->DatePaid == "0000-00-00 00:00:00"){
+                $DatePaid = $row->DatePaid;
+             }else{
+                 $DatePaid = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DatePaid));
+             }
+
+
              echo "<tr>";
              echo "<td> ".$i." </td>";
              echo "<td><button type='button' class='btn btn-default btn-update-air' data-toggle='modal' href='#updateProduct-air'><span class='fa fa-pencil fa-fw'></span></button></td>";
-             echo "<td class='row hidden'>".stripslashes($row->Products_AirId)."</td>";
+                 echo "<td class='row hidden'>".stripslashes($row->Products_AirId)."</td>"; 
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo) ."</td>";
              echo "<td class='row '>".stripslashes($row->GrossWeight) ."</td>";
              echo "<td class='row '>".stripslashes($row->DateSentPreAssessment) ."</td>";
+                  echo "<td class='row hidden'>".stripslashes($DatePaid) ."</td>";
              echo "<td class='row '>".stripslashes($row->DatePaid) ."</td>";
              echo "<td class='row '>".stripslashes($row->DateSentFinalAssessment) ."</td>";
              echo "<td class='row '>".stripslashes($row->DateBOCCleared) ."</td>";
@@ -746,6 +884,7 @@ class Job extends CI_Controller {
              echo "<td class='row '>".stripslashes($row->HaulerOrTruck) ."</td>";
              echo "<td class='row '>".stripslashes($row->TotalStorage) ."</td>";
              echo "<td class='row '>".stripslashes($row->AdtlPerDayncludeVat) ."</td>";
+              echo "<td class='row hidden'>".stripslashes($row->JobFileNo) ."</td>";
              echo "</tr>";
          }
 

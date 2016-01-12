@@ -193,7 +193,7 @@
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
-								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
+								          <td><?php echo stripslashes($row->ConsigneeName);?></td>
 								          <td>
 								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
 								          		<button type="button" class="btn btn-Add-Container-outport btn-success" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
@@ -207,7 +207,7 @@
 								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
 								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
- 									      <td><?php echo stripslashes($row->Registry); ?></td>
+ 									      <td><?php echo stripslashes($row->Registry);?></td>
 										  <td>
 									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
 									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
@@ -429,6 +429,7 @@ var jbfl_outport;
 			$('#runchar-outport .bad-cargo').removeAttr('disabled');
 
 			$('.update_charges-outport').removeAttr('disabled');
+			$(this).attr('disabled','disabled');
 	});
 
    $(document).on('click','.update_charges-outport',function(){

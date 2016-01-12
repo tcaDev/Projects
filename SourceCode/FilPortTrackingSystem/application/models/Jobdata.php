@@ -31,6 +31,14 @@ function get_chargess($charges){
     $query=$this->db->get();
     return $query->result();
 }
+
+function get_chargess_air($charges){
+    $this->  db ->select('*');
+    $this -> db -> from('RunningCharges_Air');
+    $this -> db ->where('JobFile_AirId', $charges);
+    $query=$this->db->get();
+    return $query->result();
+}
 function get_vessels($JobFile){
     $this->  db ->select('*');
     $this -> db -> from('vw_CarrierByJobFile');
@@ -134,6 +142,11 @@ function get_container_product($container_product){
 
 function get_countryID_manila($jobfile){
     $query = $this->db->query("Select Origin_CountryId,OriginCity from JobFile where JobFileNo ='$jobfile'");
+    return $query->result();
+  }
+
+  function get_countryID_air($jobfile){
+    $query = $this->db->query("Select Origin_CountryId,OriginCity from JobFile_Air where JobFileNo ='$jobfile'");
     return $query->result();
   }
 
