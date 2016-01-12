@@ -152,21 +152,21 @@ class Job_air extends CI_Controller {
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
 
-      $prodid    			 =	$this->input->post('prodid');
+      $prodid    			 =	$this->input->post('prodname');
       $jbfl 	 			 =$this->input->post('jbfl');
 
-      $refentry 			 =	$this->input->post('refentry');
+      $refentry 			 =	$this->input->post('ref_entry_no_air');
       $gross 	     		 =	$this->input->post('gross');
-      $dtfinal_assess 		 =	$this->input->post('dtfinal_assess');  
-      $dtpaid 	    		 =	$this->input->post('dtpaid');
-      $dtpre_assess		     =	$this->input->post('dtpre_assess');
-      $dt_boc_cleared 		 =	$this->input->post('dt_boc_cleared');
-      $tdt     				 =	$this->input->post('tdt');
-      $ac_pu_dt_naia         =	$this->input->post('ac_pu_dt_naia');
-      $dt_rec_whse           =	$this->input->post('dt_rec_whse');
-      $hauler_trucker        =	$this->input->post('hauler_trucker');
-      $total_stor			 =	$this->input->post('total_stor');
-      $adtlperday 	 	     =	$this->input->post('adtlperday');
+      $dtfinal_assess 		 =	$this->input->post('final_assess_air');  
+      $dtpaid 	    		 =	$this->input->post('date_paid_air');
+      $dtpre_assess		     =	$this->input->post('pre_assess_air');
+      $dt_boc_cleared 		 =	$this->input->post('boc_cleared_air');
+      $tdt     				 =	$this->input->post('target_delivery_air');
+      $ac_pu_dt_naia         =	$this->input->post('act_pull_naia_air');
+      $dt_rec_whse           =	$this->input->post('date_recvd_whse_air');
+      $hauler_trucker        =	$this->input->post('truckname_air');
+      $total_stor			 =	$this->input->post('total_storage');
+      $adtlperday 	 	     =	$this->input->post('addtl_per_day');
       
 
       $products_insert = array
@@ -216,7 +216,78 @@ class Job_air extends CI_Controller {
        $this->db->insert('Products_AirHistory',$products_insert_h); 
      }
 
+  function running_charges(){
+   $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+   $jbfl             =  mysql_real_escape_string($this->input->post('jbfl'));
+   $lodge             =  mysql_real_escape_string($this->input->post('lodge'));
+   $cont_deposit      =  mysql_real_escape_string($this->input->post('cont_deposit'));
+   $thc_charges       =  mysql_real_escape_string($this->input->post('thc_charges'));   
+   $wharfage          =  mysql_real_escape_string($this->input->post('wharfage'));
+   $arrastre          =  mysql_real_escape_string($this->input->post('arrastre'));
+   $weight            =  mysql_real_escape_string($this->input->post('weight'));
+   $del               =  mysql_real_escape_string($this->input->post('del'));
+   $dispatch          =  mysql_real_escape_string($this->input->post('dispatch'));
+   $storage           =  mysql_real_escape_string($this->input->post('storage'));   
+   $demurrage         =  mysql_real_escape_string($this->input->post('demurrage'));
+   $detention         =  mysql_real_escape_string($this->input->post('detention'));
+   $eic               =  mysql_real_escape_string($this->input->post('eic'));
+   $bai_app           =  mysql_real_escape_string($this->input->post('bai_app'));
+   $bai_inspect       =  mysql_real_escape_string($this->input->post('bai_inspect'));
+   $sra_app           =  mysql_real_escape_string($this->input->post('sra_app'));   
+   $sra_inspect       =  mysql_real_escape_string($this->input->post('sra_inspect'));
+   $bad_cargo         =  mysql_real_escape_string($this->input->post('bad_cargo'));
+      $add_charges = array(
+              'JobFile_AirId'    => $jbfl,
+              'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo
+            /*   'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges*/
+            );
 
+$this->db->insert('RunningCharges_Air', $add_charges);
+
+
+             $add_charges_history = array(
+               'JobFile_AirId'    => $jbfl,
+               'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'DateUpdated'      => Date('Y-m-d H:i'),
+               'UpdatedBy_UsrId'  => $userid
+            );
+
+  $this->db->insert('RunningCharges_AirHistory', $add_charges_history);
+  }
   
     function check_jobfile(){
       //$dt = Date("Y/m/d H:i:s");

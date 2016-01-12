@@ -43,6 +43,14 @@ class Job_air_update extends CI_Controller {
       $status		             = $this->input->post('status');
       $status_report		     = $this->input->post('status_report');
 
+         //stop inserting data in jobfile to avoid duplication
+   $chek= $this->db->query("Select * from JobFile where
+        JobFileNo='$jbfl' limit 1");
+    if($chek->num_rows() ==1){
+      echo "JobFile already Exists";
+     }else{
+       echo "New Jobfile is Added";
+
       $air_job = array(
       					'ShipperId' 			         =>$shipperid, 
       					'ConsigneeId'   	      	 =>$cosigid,
@@ -116,7 +124,7 @@ class Job_air_update extends CI_Controller {
       				   );
 
        $this->db->insert('JobFile_AirHistory',$air_job2); 
-
+      }
      }
 
 

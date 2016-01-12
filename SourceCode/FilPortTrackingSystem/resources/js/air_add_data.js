@@ -17,6 +17,8 @@ var suc;
 
 		$(".btn-save-air").click(function(){
 			$(this).attr('disabled','disabled');
+			air_add_charges();
+
 		});
 
 		$(".btn-cancel-air").click(function(){
@@ -98,24 +100,25 @@ var suc;
 
 			else if(i==2){
 
-				if($("#tableAddVessel-air table tbody tr td").length == 0){
-					$('.tableVessel-msg-air').text("Can't Proceed Need Vessel");
+				if($("#tableAddTruck-air table tbody tr td").length == 0){
+					$('.tableGoods-msg-air').text("Can't Proceed Need Vessel");
 					i=1;
 				}else{
-				  $('.btn-Next').attr('disabled','disabled');
-				  insert_vessels_air();
+				  $(this).attr('disabled','disabled');
+				  ins_descriptions_air();
 				}
 
-			}else if(i==3){
+			}
+				
 
-					if($("#tableAddTruck-air table tbody tr td").length == 0){
+				/*	if($("#tableAddTruck-air table tbody tr td").length == 0){
 						$('.tableGoods-msg').text("Can't Proceed Need Commodity");
 						i=3;
 					}else{
 					    var add_comodity=1;
 					    $('.btn-Next').attr('disabled','disabled');
-		  		        ins_descriptions_air();
-					}
+		  		       
+					}*/
 
 
 				/*if($("#tableAddContainer-air table tbody tr td").length == 0){
@@ -151,7 +154,7 @@ var suc;
 						});
 			 		}*/
 			
-			}
+			
 			
 		});
 
@@ -170,6 +173,9 @@ var suc;
    			$.ajax({
 			  		method: "POST",
 					url: link + "/Job_air/check_jobfile/",
+					beforeSend: function() {
+						$('#check_jobfiles-air i').empty().addClass('fa fa-spinner fa-spin');
+ 					  },
 			  		data: { jobfile:jobfile}
 			})
 			.done(function(data) {
@@ -232,7 +238,6 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 			    $('#tableAddTruck-air table tr:last td:nth-child(3)').html($("#tableAddTruck-air .gross").val());
 			    $('#tableAddTruck-air table tr:last td:nth-child(4)').html($("#tableAddTruck-air #pre-assess-air").val());
 			    $('#tableAddTruck-air table tr:last td:nth-child(5)').html($("#tableAddTruck-air #final-assess-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(6)').html($("#tableAddTruck-air #date_paid-air").val());
 			    $('#tableAddTruck-air table tr:last td:nth-child(6)').html($("#tableAddTruck-air #date_paid-air").val());
 			    $('#tableAddTruck-air table tr:last td:nth-child(7)').html($("#tableAddTruck-air #boc-cleared-air").val());
 			    $('#tableAddTruck-air table tr:last td:nth-child(8)').html($("#tableAddTruck-air #target-delivery-air").val());
@@ -351,14 +356,13 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 				        		title: 'Success!',
 				        		content:data,
 				        		confirm: function(){
-				        			$('#btn-vessel-air-add').removeClass('active');
+				        			
 									$('#btn-jobfile-air-add').removeClass('active');
 									$('#btn-truck-air-add').addClass('active');
 									$('#btn-charges-air-add').removeClass('active');
 									$('.pill-jobfile-air-add').addClass('hidden');
 									$('.pill-truck-air-add').removeClass('hidden');
 									$('.pill-charges-air-add').addClass('hidden');
-									$('.pill-vessel-air-add').addClass('hidden');
 									$('.test_data').addClass('hidden');
 									$('.btn-Next-air').removeClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');
@@ -380,39 +384,50 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
  }
 
 
-/*  function insert_vessels_air(){
 
- 				dia_vessels =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Adding Vessel(s)',
-				   	});
+
+
+ function ins_descriptions_air(){
+  
  	   var jbfl   = $('.jobfiles-air').val();
-       var table = $("#tableAddVessel-air table tbody");
-         var t3  = $("#tableAddVessel-air table tbody tr").length;
+       var table = $("#tableAddTruck-air table tbody");
+         var t3  = $("#tableAddTruck-air table tbody tr").length;
 		 table.find('tr').each(function (count1) {
 	     var c3 = count1+1;
 			var $tds = $(this).find('td'),
-			vessel 	= $tds.eq(0).text(),
-		    edt 	= $tds.eq(1).text();
-		    eat     = $tds.eq(2).text();
-		    aat     = $tds.eq(3).text();
-	        vdt    	= $tds.eq(4).text();
-		    lines   = $tds.eq(5).text();
+			prodname 		    = $tds.eq(0).text(),
+			gross			    = $tds.eq(2).text(),
+		    pre_assess_air 		= $tds.eq(3).text(),
+		    final_assess_air    = $tds.eq(4).text(),
+		    date_paid_air       = $tds.eq(5).text(),
+	        boc_cleared_air   	= $tds.eq(6).text(),
+		    target_delivery_air = $tds.eq(7).text(),  
+			act_pull_naia_air 	= $tds.eq(8).text(),
+			date_recvd_whse_air = $tds.eq(9).text(),
+			truckname_air 		= $tds.eq(10).text(),
+			total_storage 		= $tds.eq(12).text(),
+		    addtl_per_day 		= $tds.eq(13).text(),
+		    ref_entry_no_air    = $tds.eq(14).text()
+
 		       $.ajax({
 			  		method: "POST",
-					url: link + "/Job/vessel/",
+					url: link + "/Job_air/products/",
 			  		data: {
 			  			    //from jobfile tab
-			  			    jbfl           :jbfl,
-			  			    vessel 		   :vessel,
-			  			    vdt		       :vdt,
-			  			    edt            :edt,
-			  		        eat            :eat,
-			  		        aat            :aat,
-			  			    lines		   :lines
+			  			    jbfl                        :jbfl,
+			  			    prodname          		    :prodname,
+			  			    gross 		  				:gross,
+			  			    pre_assess_air		        :pre_assess_air,
+			  			    final_assess_air            :final_assess_air,
+			  		        date_paid_air          		:date_paid_air,
+			  		        boc_cleared_air             :boc_cleared_air,
+			  			    target_delivery_air		    :target_delivery_air,
+			  			    act_pull_naia_air			:act_pull_naia_air,
+			  			    date_recvd_whse_air  		:date_recvd_whse_air,
+			  			    truckname_air				:truckname_air,
+			  			    total_storage				:total_storage,
+			  			    addtl_per_day				:addtl_per_day,
+			  			    ref_entry_no_air			:ref_entry_no_air
 			  		}
 				})
 			    .done(function(data) {
@@ -420,21 +435,19 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
-				        		content: 'New Vessel Added!',
+				        		content: 'New  Commodity added!',
 				        		confirm: function(){
 				        			
 									$('#btn-jobfile-air-add').removeClass('active');
-									$('#btn-truck-air-add').addClass('active');
-									$('#btn-charges-air-add').removeClass('active');
-									$('#btn-vessel-air-add').removeClass('active');
-									$('.pill-jobfile-air-add').addClass('hidden');
-									$('.pill-vessel-air-add').addClass('hidden');
-									$('.pill-truck-air-add').removeClass('hidden');
-									$('.pill-charges-air-add').addClass('hidden');
-									$('.test_data-air').addClass('hidden');
-									$('.btn-Next-air').removeClass('hidden');
+									$('#btn-truck-air-add').removeClass('active');
+									$('#btn-charges-air-add').addClass('active');
+									$('.pill-jobfile-air-add').addClass('hidden');								
+									$('.pill-truck-air-add').addClass('hidden');
+									$('.pill-charges-air-add').removeClass('hidden');
+									$('.test_data-air').removeClass('hidden');
+									$('.btn-Next-air').addClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');
-									dia_vessels.close();
+								
 				        	    }
 				   			});
 
@@ -443,23 +456,70 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 	
 	   });	
 
-
-
-	   		    $.ajax({
-			  		method: "POST",
-					url: link + "/Job/get_vessel/",
-			  		data: {jbfl :jbfl}
-				})
-			    .done(function(data) {
-			    	$('.vessel-prod-air').html(data);
-	    	   });	    
- }
-
-
- function ins_descriptions_air(){
-  
     
 
 
-}*/
+}
 
+function air_add_charges(){
+	   var jbfl       = $('.jobfiles-air').val();
+       var lodge 		  =  $('#lodge-air').val();
+ 	   var cont_deposit   =  $('#cont-deposit-air').val();
+       var thc_charges    =  $('#thc-charges-air').val();
+       var arrastre       =  $('#arrastre-air').val();
+       var wharfage 	  =  $('#wharfage-air').val();
+       var weight         =  $('#weight-air').val();
+	   var del       	  =  $('#del-air').val();
+       var dispatch  	  =  $('#dispatch-air').val();
+       var storage 	 	  =  $('#storage-air').val();
+       var demurrage      =  $('#demurrage-air').val();
+	   var detention      =  $('#detention-air').val();
+       var eic  	  	  =  $('#EIC-air').val();
+       var bai_app 	 	  =  $('#bai-app-air').val();
+       var bai_inspect    =  $('#bai-inspect-air').val();
+	   var sra_app        =  $('#sra-app-air').val();
+       var sra_inspect    =  $('#sra-inspect-air').val();
+       var bad_cargo 	  =  $('#bad-cargo-air').val();
+       var all_charges    =  $('#all-charges-air').val();
+	   var part_charges   =  $('#part-charges-air').val();
+	
+
+			       $.ajax({
+			  		method: "POST",
+					url: link + "/Job_air/running_charges/",
+			  		data: {
+			  			    //from jobfile tab
+			  	   	           jbfl   		:jbfl,
+			  	   			   lodge        :lodge,
+			                   cont_deposit :cont_deposit,   
+			                   thc_charges  :thc_charges,
+			                   wharfage     :wharfage,
+			                   arrastre     :arrastre,
+			                   weight	    :weight,
+			                   del			:del,
+			                   dispatch     :dispatch,
+			                   storage      :storage,
+			                   demurrage    :demurrage,
+			                   detention    :detention,
+			                   eic          :eic,
+			                   bai_app      :bai_app,
+			                   bai_inspect  :bai_inspect,
+			                   sra_app      :sra_app,
+			                   sra_inspect  :sra_inspect,
+			                   bad_cargo    :bad_cargo,
+			                   all_charges  :all_charges,
+			                   part_charges :part_charges
+			  		}
+				})
+			    .done(function(data) {
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content: 'New  Commodity added!',
+				        		confirm: function(){	
+				        		  location.reload();						
+				        	    }
+				   			});
+
+	    	  });
+}

@@ -269,7 +269,7 @@
 
 							<div class="form-group">
 								<label>Gross Weight (kgs):</label> <span id="errmsg-air" style="color:red;"></span>
-								<input type="text" step="1" class="form-control input-sm gross" id="cartons-air" name="numofcartons-air">
+								<input type="text" step="1" class="form-control input-sm gross" name="numofcartons-air">
 							</div>
 
 							<div class="form-group">
@@ -378,7 +378,7 @@
 
 					<!-- Add Charges -->
 
-					<div class="hidden pill-charges-mnla-add table-editable col-lg-12">
+					<div class="hidden pill-charges-air-add table-editable col-lg-12">
 						
 						<div class="col-lg-6">
 							<div class="form-group">
