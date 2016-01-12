@@ -162,7 +162,7 @@
 				    </table>
 
 
-				    <script>
+<script>
 $(document).ready(function(){
 
 /*Refresh Modal When Close*/
@@ -257,11 +257,14 @@ $(document).ready(function(){
 	//for getting the product goods
  $('.view_vessels').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 		
+ 		var button_update = "btn-update-vessel";
+ 		var modal ="mnla";
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessels');?>",
 				  		data: { id:ids,
+				  				button_update:button_update,
+                                 href:modal,
 				  		}
 					})
 			  		.done(function(data) {
@@ -287,11 +290,14 @@ $(document).ready(function(){
 
  $('.view_goods').click(function(){	
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 		
+ 			var button_update = "btn-update-product";
+ 			var modal = "mnla";
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_goods');?>",
 				  		data: { id:ids,
+				  				button_update:button_update,
+				  				href:modal,
 				  		}
 					})
 			  		.done(function(data) {
@@ -355,13 +361,15 @@ $(".btn-Vessel").click(function(){
 
 	$(".btn-Add-Container-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-
+		var modal_ID= "#addVessel-mnla";
 		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
+		$(".jobfile-addVessel-mnla").val(jobfile_mnla) ;
 
 					$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessel_container');?>",
 				  		data: { jobfile:jobfile_mnla,
+				  				href:modal_ID
 				  		}
 					})
 			  		.done(function(data) {
@@ -376,13 +384,17 @@ $(".btn-Vessel").click(function(){
 
 	$(".btn-Add-Product-mnla").click(function(){
 		var jobfile_mnla =  $(this).closest('tr').children('td:eq(2)').text();
-
+		var modal_ID= "#addContainer-mnla";
+		var onclick = "click_vessel";
+		$(".jobfile-addContainer-mnla").val(jobfile_mnla) ;
 		$(".jobfile-addProduct-mnla").val(jobfile_mnla) ;
 
 				$.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_container_product');?>",
-				  		data: { jobfile:jobfile_mnla
+				  		data: { jobfile:jobfile_mnla,
+				  				href:modal_ID,
+				  				onclick:onclick
 				  		}
 					})
 			  		.done(function(data) {
@@ -487,14 +499,14 @@ $(".btn-Vessel").click(function(){
 			     var ShipperName    = $(this).closest('tr').children('td:eq(4)').text();
 
 			     var ConsigneeName  = $(this).closest('tr').children('td:eq(5)').text();
-			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(8)').text();
+			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(9)').text();
 					
-				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(9)').text();
-			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(10)').text();
-				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(11)').text();
-			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(12)').text();
+				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(10)').text();
+			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(11)').text();
+				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(12)').text();
+			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(13)').text();
 		
-			     var registry   = $(this).closest('tr').children('td:eq(13)').text();
+			     var registry   = $(this).closest('tr').children('td:eq(14)').text();
 
 			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(16)').text();
 			     var date_rcvd_bl     = $(this).closest('tr').children('td:eq(18)').text();
@@ -504,9 +516,13 @@ $(".btn-Vessel").click(function(){
 			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
 			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
 
+
 			     $('.jobfiles-update').val(jobfileNo);
 			     $('.monitoring_type_id').val(jobfileID);
 			     
+			      $(".broker-update option").filter(function() {
+				    return this.text == broker; 
+				}).attr('selected', 'selected');
 
 			     $(".shipper-update option").filter(function() {
 				    return this.text == ShipperName; 
@@ -530,9 +546,7 @@ $(".btn-Vessel").click(function(){
 			      $('.dt_pickup_obl-update').val(date_rcvd_bl);
 			      $('.dt_pickup_docs-update').val(date_rcvd_other_docs);
 
-			      $(".broker-update option").filter(function() {
-				    return this.text == broker; 
-				}).attr('selected', 'selected');
+			     
 
 			      $('.purch_order_no_update').val(PurchaseOrderNo);
 			      $('.dt-req-update').val(date_req_budget);

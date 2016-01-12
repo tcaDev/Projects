@@ -507,3 +507,5 @@ function air_add_charges(){
                            	 return false;	
                 }
                });
+
+

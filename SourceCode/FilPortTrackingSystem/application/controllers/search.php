@@ -1319,9 +1319,18 @@ function get_jobfile_search(){
 	$montype  =  $this->input->get('montype');
 	$jobfile  =  $this->input->get('jobfile');
 
-	$data['manila'] =  $this->User->search_manila($montype,$jobfile);  
-    $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
+	 
+	if($montype==1){
+		$data['manila'] =  $this->User->search_manila($montype,$jobfile); 
+    	$this->load->view('jobfile-view/add-manila-container/search_manila',$data);
+	}else{
+		    $data['outport'] =  $this->User->search_manila($montype,$jobfile); 
+		    $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
+	}
 }
 
+function mm(){
+  $this->load->view('jobfile-view/add-outport-container/search_outport');
+}
 }
 ?>

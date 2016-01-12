@@ -105,7 +105,7 @@
 	        </div>
 
         <div class="modal-footer" >
-	       	 <button type="button" class="btn btn-danger submit_vessel-update">Save</button>
+	       	 <button type="button" class="btn btn-danger products_air_updates">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -155,8 +155,9 @@
 
 	});
 
-
-  
+	$(document).on('click','.products_air_updates', function(){
+  		alert('test');
+    });
 
 	
 </script>

@@ -8,7 +8,7 @@
 
 			 		  	<label for="search_air">Search:</label>
 
-				  		<input type="text" class="form-control input-sm" id="search_air" >		
+				  		<input type="text" class="form-control input-sm" id="search_air" onkeyup="search_airs(this.value)" >		
 
 			 		</div>
 
@@ -138,8 +138,6 @@
 				          <th>Reference Due Date</th>
 
 				          <th>Color Selectivity</th>
-
-				          <th>Registry</th>
 
 				          <th>Status Reports</th>
 
@@ -437,9 +435,9 @@
 
          /*View Charges*/
         $('.view_charges-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(30)').text();
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
 
- 		alert(jobfileno);
+ 	
  		
 	 		  $.ajax({
                                     method: "POST",
@@ -452,4 +450,39 @@
                                 });
         });
 
+
+//air search
+function search_airs(){
+/*    		 	$.ajax({
+		           method: "GET",
+	 		       url: "<?php echo base_url('search/get_jobfile_search');?>",
+			  	   beforeSend: function() {
+							$('.job-manila').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   	           jobfile   		   :jbfl,
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.job-manila').html(data);
+	  		    });*/
+    
+}
+
+
+$('.btn-Add-Product-air').click(function(){
+
+			 jb_air =  $(this).closest('tr').children('td:eq(33)').text();
+
+			
+});
+
+$('.btn-Add-Report-air').click(function(){
+		  jbfl_airs = $(this).closest('tr').children('td:eq(33)').text();
+		var jbfl_haha = $(this).closest('tr').children('td:eq(2)').text();
+
+		 $('.jobfile-addReport-air').val(jbfl_haha);
+
+		/* alert(jbfl);*/
+});
 </script>

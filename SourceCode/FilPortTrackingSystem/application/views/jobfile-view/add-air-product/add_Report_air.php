@@ -10,7 +10,7 @@
 
   					<div class="form-group ">
 						<label>JobFile</label>
-			        	<input type="text" class="jobfile-addReport-mnla form-control input-sm"disabled>
+			        	<input type="text" class="jobfile-addReport-air form-control input-sm"disabled>
 					</div>
 
   					<div class="form-group">
@@ -36,7 +36,7 @@
   				</div>
 	        </div>
         <div class="modal-footer" >
-	       	 <button type="button " class="btn btn-danger save_reports">Save</button>
+	       	 <button type="button " class="btn btn-danger save_reports_air">Save</button>
 	         <button type="button" class="btn btn-default btn-close-vessels" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -58,7 +58,7 @@ $(document).on('click','.btn-addReport-air',function(){
 				$('.report-msg-addReport-air').text("Need Status.");
 
 			}else{
-				$('#table-AddReport-air table').append('<tr class="remove_tr"><td></td><td></td></tr>');
+				$('#table-AddReport-air table').append('<tr class="tr_remove"><td></td><td></td></tr>');
 				$('#table-AddReport-air table tr:last td:nth-child(1)').html($(".report-air").val());
 			    $('#table-AddReport-air table tr:last td:nth-child(2)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
@@ -72,4 +72,56 @@ $(document).on('click','.btn-addReport-air',function(){
 			});
 </script>
 
+<script>
+
+var jbfl_airs;
+
+$('.save_reports_air').click(function(){
+
+	alert(jbfl_airs);
+/*       dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding reports',
+	});*/
+       var table = $("#table-AddReport-air table tbody");
+         var t3  = $("#table-AddReport-air table tbody tr").length;
+		 table.find('tr').each(function (count1) {
+	     var c3 = count1+1;
+			var $tds = $(this).find('td'),
+			reports 		    = $tds.eq(0).text()
+
+
+
+		   
+		       $.ajax({
+			  		method: "POST",
+					url:"<?php echo base_url('Job_air/status_reports')?>",
+			  		data: {
+			  			    jbfl                        :jbfl_airs,
+			  			    reports          		    :reports
+
+			  		}
+				})
+			    .done(function(data) {
+			    	       if(t3==c3){
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content: 'New  reports added!',
+				        		confirm: function(){
+				        			$('.tr_remove').empty();
+									/*dia.close();*/
+				        	    }
+				   			});
+
+				     	  }
+	    	  });
+	
+	   });	
+});
+
+</script>
 

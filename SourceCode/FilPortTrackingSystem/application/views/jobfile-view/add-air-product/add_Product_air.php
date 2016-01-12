@@ -128,15 +128,14 @@
 	        </div>
 
         <div class="modal-footer" >
-	       	 <button type="button" class="btn btn-danger submit_vessel">Save</button>
+	       	 <button type="button" class="btn btn-danger  submit_air_add">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
       </div>
 
 
       <script>
-
-
+var jb_air;
       /*Delete Row*/
 
       $('#table-AddTruck-air').on('click', '.deleteButton', function() {
@@ -160,7 +159,7 @@
 			{
 				$('#table-AddTruck-air .prodname-msg-air').text("Need Commodity Name.");
 			}else{
-				$('#table-AddTruck-air table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+				$('#table-AddTruck-air table').append('<tr class="tr_remove"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 				$('#table-AddTruck-air table tr:last td:nth-child(1)').html($("#table-AddTruck-air .prodname-air").val()).hide();
 			 	$('#table-AddTruck-air table tr:last td:nth-child(2)').html($("#table-AddTruck-air .prodname-air option:selected").text());
 			    $('#table-AddTruck-air table tr:last td:nth-child(3)').html($("#table-AddTruck-air .gross").val());
@@ -200,3 +199,79 @@
 
 			});
       </script>
+
+
+    <script>
+    $('.submit_air_add').click(function(){
+
+
+     dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Commodity',
+	});
+       var table = $("#table-AddTruck-air table tbody");
+         var t3  = $("#table-AddTruck-air table tbody tr").length;
+		 table.find('tr').each(function (count1) {
+	     var c3 = count1+1;
+			var $tds = $(this).find('td'),
+			prodname 		    = $tds.eq(0).text(),
+			gross			    = $tds.eq(2).text(),
+		    pre_assess_air 		= $tds.eq(3).text(),
+		    final_assess_air    = $tds.eq(4).text(),
+		    date_paid_air       = $tds.eq(5).text(),
+	        boc_cleared_air   	= $tds.eq(6).text(),
+		    target_delivery_air = $tds.eq(7).text(),  
+			act_pull_naia_air 	= $tds.eq(8).text(),
+			date_recvd_whse_air = $tds.eq(9).text(),
+			truckname_air 		= $tds.eq(10).text(),
+			total_storage 		= $tds.eq(12).text(),
+		    addtl_per_day 		= $tds.eq(13).text(),
+		    ref_entry_no_air    = $tds.eq(14).text()
+
+
+
+		   
+		       $.ajax({
+			  		method: "POST",
+					url:"<?php echo base_url('Job_air/products')?>",
+			  		data: {
+			  			    jbfl                        :jb_air,
+			  			    prodname          		    :prodname,
+			  			    gross 		  				:gross,
+			  			    pre_assess_air		        :pre_assess_air,
+			  			    final_assess_air            :final_assess_air,
+			  		        date_paid_air          		:date_paid_air,
+			  		        boc_cleared_air             :boc_cleared_air,
+			  			    target_delivery_air		    :target_delivery_air,
+			  			    act_pull_naia_air			:act_pull_naia_air,
+			  			    date_recvd_whse_air  		:date_recvd_whse_air,
+			  			    truckname_air				:truckname_air,
+			  			    total_storage				:total_storage,
+			  			    addtl_per_day				:addtl_per_day,
+			  			    ref_entry_no_air			:ref_entry_no_air
+			  		}
+				})
+			    .done(function(data) {
+			    	       if(t3==c3){
+	  						$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content: 'New  Commodity added!',
+				        		confirm: function(){
+				        			$('.tr_remove').empty();
+									dia.close();
+				        	    }
+				   			});
+
+				     	  }
+	    	  });
+	
+	   });	
+
+   
+  });
+
+    </script>

@@ -137,15 +137,22 @@ class Job_air extends CI_Controller {
   }
  }
 
-     function status_reports(){
-     	             $air_insert = array(
-                     'StatusDescription' => 1,
-                     'JobFile_AirId'     => 1,  
-                     'DateAdded'		 => date('Y-m-d H:i'), 
-                     'AddedBy_UserId'    => 1
-                     );
-              $this->db->insert('HistoricalStatus_Air',$air_insert);
+function status_reports(){
+
+          $session_data = $this->session->userdata('logged_in');
+          $userid = $session_data['uid'];
+          $jbfl            = $this->input->post('jbfl');
+          $reports         = $this->input->post('reports');
+     if($reports!=''){
+         	             $air_insert = array(
+                         'StatusDescription' => $reports,
+                         'JobFile_AirId'     => $jbfl,  
+                         'DateAdded'		     => date('Y-m-d H:i'), 
+                         'AddedBy_UserId'    => $userid
+                         );
+                  $this->db->insert('HistoricalStatus_Air',$air_insert);
      }
+  }
 
 
      function products(){
@@ -153,22 +160,22 @@ class Job_air extends CI_Controller {
       $userid = $session_data['uid'];
 
       $prodid    			 =	$this->input->post('prodname');
-      $jbfl 	 			 =$this->input->post('jbfl');
+      $jbfl 	 			   =  $this->input->post('jbfl');
 
       $refentry 			 =	$this->input->post('ref_entry_no_air');
       $gross 	     		 =	$this->input->post('gross');
-      $dtfinal_assess 		 =	$this->input->post('final_assess_air');  
-      $dtpaid 	    		 =	$this->input->post('date_paid_air');
-      $dtpre_assess		     =	$this->input->post('pre_assess_air');
-      $dt_boc_cleared 		 =	$this->input->post('boc_cleared_air');
+      $dtfinal_assess  =	$this->input->post('final_assess_air');  
+      $dtpaid 	    	 =	$this->input->post('date_paid_air');
+      $dtpre_assess		 =	$this->input->post('pre_assess_air');
+      $dt_boc_cleared  =	$this->input->post('boc_cleared_air');
       $tdt     				 =	$this->input->post('target_delivery_air');
-      $ac_pu_dt_naia         =	$this->input->post('act_pull_naia_air');
-      $dt_rec_whse           =	$this->input->post('date_recvd_whse_air');
-      $hauler_trucker        =	$this->input->post('truckname_air');
+      $ac_pu_dt_naia   =	$this->input->post('act_pull_naia_air');
+      $dt_rec_whse     =	$this->input->post('date_recvd_whse_air');
+      $hauler_trucker  =	$this->input->post('truckname_air');
       $total_stor			 =	$this->input->post('total_storage');
-      $adtlperday 	 	     =	$this->input->post('addtl_per_day');
+      $adtlperday 	 	 =	$this->input->post('addtl_per_day');
       
-
+  if($prodid!=''){
       $products_insert = array
       					(
       						'ProductId'			  		    =>$prodid, 
@@ -214,6 +221,7 @@ class Job_air extends CI_Controller {
       					);	
 
        $this->db->insert('Products_AirHistory',$products_insert_h); 
+}
      }
 
   function running_charges(){
