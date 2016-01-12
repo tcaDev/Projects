@@ -163,19 +163,17 @@ var suc;
 /*Function Check if Jobfile is Exist*/
 
  function myjob_air(jobfile){
-   jobfile = jobfile.value;
    if(jobfile==''){
    	$('#check_jobfiles-air').empty();
    }else{
-      /* var mon = $('.monitoring_type-air').val();*/
 
    			$.ajax({
 			  		method: "POST",
-					url: link + "/Job/check_jobfiless/",
-			  		data: { jobfile:jobfile,
-			  		        mon    :mon}
+					url: link + "/Job_air/check_jobfile/",
+			  		data: { jobfile:jobfile}
 			})
 			.done(function(data) {
+
 		   		 	   $('#check_jobfiles-air').html(data);
 				});
     }
@@ -350,7 +348,7 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 	  						$.alert({
 	  							backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content: 'New JobFile Added!',
+				        		content:data,
 				        		confirm: function(){
 				        			$('#btn-vessel-air-add').addClass('active');
 									$('#btn-jobfile-air-add').removeClass('active');

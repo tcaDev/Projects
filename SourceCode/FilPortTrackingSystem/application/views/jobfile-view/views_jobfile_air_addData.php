@@ -28,7 +28,7 @@
 					           		<div class="form-group">
 					              <!--check if jofile is already exists -->
 					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-air"></span></label> 
-									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air(this)">
+									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air(this.value)">
 									 <i class="jobfile-msg-air" style="color:red;"></i>
 					           </div>
 					  				

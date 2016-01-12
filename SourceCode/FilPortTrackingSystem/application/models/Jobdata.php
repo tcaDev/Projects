@@ -93,6 +93,13 @@ function get_vessels($JobFile){
     $query=$this->db->get();
     return $query->result();
  }
+   function select_jobfile_air($job){
+    $this->  db ->select('JobFile_AirId');
+    $this -> db -> from('JobFile_Air');
+    $this -> db ->where('JobFileNo', $job);
+    $query=$this->db->get();
+    return $query->result();
+ }
  function select_carrier($vessel){
     $query = $this->db->query("Select CarrierByJobFileId from CarrierByJobFile
     where VesselVoyageNo='$vessel'  ORDER BY CarrierByJobFileId desc limit 1");

@@ -8,7 +8,7 @@ class Job_air extends CI_Controller {
        {
             parent::__construct();
             date_default_timezone_set('Asia/Manila');
-            $this->load->model('Jobdata');     
+            $this->load->model('Jobdata');
        }
 
 
@@ -44,7 +44,12 @@ class Job_air extends CI_Controller {
       $status		         = $this->input->post('color');
       $status_report		 = $this->input->post('status_air');
 
-      $air_job = array(
+    $chek= $this->db->query("Select * from JobFile_Air where JobFileNo='$jbfl' limit 1");
+   if($chek->num_rows() ==1){
+        echo "JobFile already Exists";
+   }else{
+         echo "New Jobfile is Added";
+         $air_job = array(
       					'JobFileNo' 			 =>$jbfl,
       					'ShipperId' 			 =>$shipperid, 
       					'ConsigneeId'   		 =>$cosigid,
@@ -115,22 +120,29 @@ class Job_air extends CI_Controller {
 
        $this->db->insert('JobFile_AirHistory',$air_job2); 
 
-        $job           = $this->Jobdata->select_jobfile($jbfl);
+        $job=$this->Jobdata->select_jobfile_air($jbfl);
         foreach($job as $row){
-         $job =  $row->JobFileId;
+         $jobs =  $row->JobFile_AirId;
         }
-          if($status!=''){
-          		$this->status_reports($status_report,$job,$userid);
-          }
-
-     }
-
-     function status_reports($status_report,$job,$userid){
+          if($status_report!=''){
      	             $air_insert = array(
                      'StatusDescription' => $status_report,
-                     'JobFile_AirId'     => $job,  
+                     'JobFile_AirId'     => $jobs,  
                      'DateAdded'		 => date('Y-m-d H:i'), 
                      'AddedBy_UserId'    => $userid
+                     );
+              $this->db->insert('HistoricalStatus_Air',$air_insert);
+          		/*$this->status_reports($status_report,$job,$userid);*/
+          }
+  }
+ }
+
+     function status_reports(){
+     	             $air_insert = array(
+                     'StatusDescription' => 1,
+                     'JobFile_AirId'     => 1,  
+                     'DateAdded'		 => date('Y-m-d H:i'), 
+                     'AddedBy_UserId'    => 1
                      );
               $this->db->insert('HistoricalStatus_Air',$air_insert);
      }
@@ -206,7 +218,18 @@ class Job_air extends CI_Controller {
 
 
   
+    function check_jobfile(){
+      //$dt = Date("Y/m/d H:i:s");
+      $jobfile =  $this->input->post('jobfile');
 
+
+      $query= $this->db->query("Select * from JobFile_Air where JobFileNo ='$jobfile' limit 1");
+          if($query->num_rows() ==1){
+                echo  "<i style='color:red;font-size:12px;'>Jobfile Already Exists in Air</i>";     
+          }else{
+             echo "<i style='color:green;'>Jobfile  is Available</i>";      
+    		}
+ }
 
  }
 
