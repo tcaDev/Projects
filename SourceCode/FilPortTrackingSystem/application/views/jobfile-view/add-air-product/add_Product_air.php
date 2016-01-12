@@ -128,6 +128,7 @@
 	        </div>
 
         <div class="modal-footer" >
+      		  <i class="tableProd-msg-air" style="color:red;"></i>
 	       	 <button type="button" class="btn btn-danger  submit_air_add">Save</button>
 	         <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
         </div>
@@ -203,9 +204,26 @@ var jb_air;
 
     <script>
     $('.submit_air_add').click(function(){
+    	$('.submit_air_add').attr('disabled','disabled');
+    	if($("#table-AddTruck-air table tbody tr td").length == 0){
+    			$.confirm({
+		 			 title: 'Add New Vessel',
+		 			 closeIcon:false,
+		 			 content:'You have not Added Any Product. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 },
+  					 cancel: function(){
+  					 	$('.submit_air_add').removeAttr('disabled');
+  					 }
+		 		});
+    	}
+    	else{
 
-
-     dia =	$.dialog({
+    		 dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
@@ -262,6 +280,7 @@ var jb_air;
 				        		content: 'New  Commodity added!',
 				        		confirm: function(){
 				        			$('.tr_remove').empty();
+				        			$('.tableProd-msg-air').text("");
 									dia.close();
 				        	    }
 				   			});
@@ -270,6 +289,9 @@ var jb_air;
 	    	  });
 	
 	   });	
+
+    	}
+    
 
    
   });
