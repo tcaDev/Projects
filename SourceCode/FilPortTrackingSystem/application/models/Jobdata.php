@@ -139,9 +139,9 @@ function get_countryID_manila($jobfile){
     return $query->result();
  }
 
- function air_vessel($job){
-      $query = $this->db->query("select * FROM CarrierByJobFile where JobFileId='$job'");
-      return $query->result(); 
+ function update_data($mon){
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='$mon' ORDER BY JobFileId desc limit 10 ");
+    return $query->result();
  }
 
 }

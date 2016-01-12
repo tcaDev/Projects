@@ -167,6 +167,18 @@ class Login_user extends CI_Controller {
 		  	$data['products'] = $this->User->get_products();
 
 
+		    $query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=1');
+			$m=  $query->num_rows();
+		  	$data['count_total_manila']= $m;
+
+		  	$query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=2');
+			$o=  $query->num_rows();
+		  	$data['count_total_outport']= $o;
+
+		    $query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=3');
+			$a=  $query->num_rows();
+		  	$data['count_total_air']= $a;
+
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{

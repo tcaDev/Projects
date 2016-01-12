@@ -8,8 +8,8 @@
 
 			 			<label for="search_outport">Search:</label>
 
-					  	<input type="text" class="form-control input-sm" id="search_outport" >	
-
+					  	<input type="text" class="form-control input-sm" id="search_outport" onkeyup="search_outport(this.value)">	
+					  	<input type="hidden" class="outport_total">
 			 		</div>
 
 				</div>
@@ -71,7 +71,7 @@
 
 
 
-			<div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
+			<div id="scroller" class="table-responsive job-outport" style= "overflow-y:auto; height :485px; width:100%;">
 
 				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
@@ -597,7 +597,50 @@ var jbfl_outport;
 					      	
 					    </div>
 					 </div>
-                        
+      
+<script>
+	//for search
+	function search_outport(jbfl){
+       
+    		 	$.ajax({
+		           method: "GET",
+	 		       url: "<?php echo base_url('search/get_jobfile_search');?>",
+			  	   beforeSend: function() {
+							$('.job-outport').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   			   montype  		   :2,
+			  	   	           jobfile   		   :jbfl,
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.job-outport').html(data);
+	  		    });
+    }
+   setInterval(refresh_table_outport, 3000);
+
+function refresh_table_outport() {
+	var manila = $('.manila_total').val();
+ 		 	$.ajax({
+		           method: "GET",
+	 		       url: link + "/Job_availability/check_content",
+	 		       data:{total : manila,
+	 		                     montype:2
+	 		            }
+
+	              })
+					.done(function(data) {
+						
+							if(data!=1){
+							
+								$('.job-outport').html(data);
+							}
+
+	    		    })
+}
+
+</script>
+
     <script>
  /*Refresh Modal When Close*/  
     

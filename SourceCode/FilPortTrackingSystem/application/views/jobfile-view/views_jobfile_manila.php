@@ -10,7 +10,10 @@
 			 			<label for="search_manila">Search:</label>
 
 						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila" onkeyup="search_manila(this.value)" >
-
+						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>" >
+						<input type="hidden" class="manila_total_new" >
+						<a><span class="hidden new_jobfiles">View new Jobfiles</span></a>
+			 		
 			 		</div>	
 
 				</div>
@@ -191,7 +194,8 @@
 				            <tr>
 								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
-								          <td><?php echo stripslashes($i);?></td>
+								         
+								         <td><?php echo stripslashes($i);?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
@@ -633,6 +637,7 @@ var jbfl;
 						$('.job-manila').html(data);
 	  		    });
     }
+
 
 </script>
 

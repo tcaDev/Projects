@@ -253,7 +253,7 @@ $(document).on('click','.update_jobfiles',function(){
  var color_selectivity     =   $('.color-select-update').val();
    
  
-alert(jbid);
+/*alert(jbid);*/
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job_manila_update/jobfile_update');?>",

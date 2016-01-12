@@ -94,5 +94,26 @@ class Job_availability extends CI_Controller {
   	
 
   }*/
+
+  function check_content(){
+  $old_total =   $this->input->get('total');
+  $montype =   $this->input->get('montype');
+
+  $query = $this->db->query("SELECT * FROM vw_JobFile where MonitoringTypeId='$montype'");
+  $update_total=  $query->num_rows();
+
+
+   if($update_total>$old_total){
+    $data['manila'] =   $this->Jobdata->update_data($montype);;  
+    $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
+    ?>
+    <script>
+         $('.manila_total').val(<?php echo $update_total; ?>);
+    </script>
+   
+    <?php
+   }else
+     echo 1;
+  }
 }
 ?>   

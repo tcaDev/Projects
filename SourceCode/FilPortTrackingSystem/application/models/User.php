@@ -589,17 +589,17 @@ function get_products(){
   }
 
 function get_jobfile_manila(){
-    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='1' limit 10");
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='1'  ORDER BY JobFileId desc ");
     return $query->result();
   }
 
 function get_jobfile_outport(){
-    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='2' limit 10");
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='2'  ORDER BY JobFileId desc ");
     return $query->result();
   }
 
   function get_jobfile_air(){
-    $query = $this->db->query("select * from JobFile_Air");
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='3'  ORDER BY JobFileId desc ");
     return $query->result();
   }
 
@@ -700,7 +700,7 @@ function get_jobfile_outport(){
 
 
     function search_manila($montype,$jobfile){
-    $query = $this->db->query("Select * from vw_JobFile where MonitoringTypeId='$montype' and JobFileNo like '%$jobfile%' limit 10");
+    $query = $this->db->query("Select * from vw_JobFile where MonitoringTypeId='$montype' and JobFileNo like '%$jobfile%' ");
     return $query->result();
     }
 }
