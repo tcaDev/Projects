@@ -46,6 +46,14 @@ function get_vessels($JobFile){
     return $query->result();
  }
 
+ function get_goods_air($products){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_ProductsAir');
+    $this -> db ->where('JobFileNo', $products);
+    $query=$this->db->get();
+    return $query->result();
+ }
+
  function get_containers($id){
  	$this->  db ->select('*');
     $this -> db -> from('vw_Containers');
@@ -53,6 +61,8 @@ function get_vessels($JobFile){
     $query=$this->db->get();
     return $query->result();
  }
+
+ 
  function get_charges($id){
  	$this->  db ->select('*');
     $this -> db -> from('RunningCharges');
@@ -63,6 +73,14 @@ function get_vessels($JobFile){
  function get_status($id){
     $this->  db ->select('*');
     $this -> db -> from('vw_StatusReports');
+    $this -> db ->where('JobFileNo', $id);
+    $query=$this->db->get();
+    return $query->result(); 
+ }
+
+ function get_status($id){
+    $this->  db ->select('*');
+    $this -> db -> from('vw_StatusReportsAir');
     $this -> db ->where('JobFileNo', $id);
     $query=$this->db->get();
     return $query->result(); 

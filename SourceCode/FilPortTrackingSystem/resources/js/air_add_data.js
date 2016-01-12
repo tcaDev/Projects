@@ -248,6 +248,21 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 	
 			    $('#tableAddTruck-air table tr:last td:nth-child(16)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
+
+			    $("#tableAddTruck-air .gross").val('');
+			    $("#tableAddTruck-air #pre-assess-air").val('');
+			    $("#tableAddTruck-air #final-assess-air").val('');
+			    $("#tableAddTruck-air #date_paid-air").val('');
+			    $("#tableAddTruck-air #boc-cleared-air").val('');
+			    $("#tableAddTruck-air #target-delivery-air").val('');
+			    $("#tableAddTruck-air #act-pull-naia-air").val('');
+			    $("#tableAddTruck-air #date-recvd-whse-air").val('');
+			    $("#tableAddTruck-air .total-storage").val('');
+			    $("#tableAddTruck-air .addtl-per-day").val('');
+			    $("#tableAddTruck-air .ref-entry-no-air").val();
+
+			    $("#tableAddTruck-air  .prodname-air option:eq(0)").attr("selected","selected");
+			    $("#tableAddTruck-air  .truckname-air option:eq(0)").attr("selected","selected");
 			}
 				
 

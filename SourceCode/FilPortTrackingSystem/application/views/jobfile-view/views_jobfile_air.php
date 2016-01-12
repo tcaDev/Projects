@@ -69,7 +69,7 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-3-2" style="margin-right: 10px;">Add Data</button>
+					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-3-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 
 
@@ -118,11 +118,13 @@
 
 				          <th>Consignee</th>
 
+				          <th>No. Of Cartons</th>
+
 				          <th>Description of Goods</th>
 
-				          <th>WK/PI/PO No.</th>
+				          <th>Purchase Order No.</th>
 
-				          <th >Letter of Credit No. from Bank</th>
+				          <th>Letter of Credit No. from Bank</th>
 
 				          <th>House Airway Bill </th>
 
@@ -137,6 +139,12 @@
 				          <th>Warehouse</th>
 
 				           <th>AirCraft No.</th>
+
+				           <th>Estimated Time of Depatrure</th>
+
+				           <th>Estimated Time of Arrival</th>
+
+				           <th>Actual Time of Arrival</th>
 
 				          <th>Date Recieved Arrival notice from Airline/Forwarder</th>
 
@@ -179,35 +187,39 @@
 						           <?php echo $pick1 ;?>
 						          <td><?php echo stripslashes($row->ShipperName); ?></td>
 						          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
+						          <td><?php echo stripslashes($row->NoOfCartons); ?></td>
 						          <td>
 								  		<button type="button" class="btn btn-Goods-air btn-info view_goods-air" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
 								  		<button type="button" class="btn btn-Add-Product-air btn-success" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								  </td>
 								  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
-								  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
+								  <td><?php echo stripslashes($row->LetterCreditNoFromBank); ?></td>
 								  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
 								  <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
-								  <td><?php echo stripslashes($row->Origin); ?></td>
+								  <td><?php echo stripslashes($row->ORIGIN); ?></td>
 								  <td><?php echo stripslashes($row->FlightNo); ?></td>
 								  <td><?php echo stripslashes($row->Forwarder); ?></td>
 								  <td><?php echo stripslashes($row->Warehouse); ?></td>
-								  <td><?php echo stripslashes($row->AirCraftNo); ?></td>
-								  <td><?php echo stripslashes($row->DateReceivedArrivalNoticeFromALine); ?></td>
-								  <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
-								  <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
-								  <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
+								  <td><?php echo stripslashes($row->Aircraft); ?></td>
+								  <td><?php echo stripslashes($row->ETD); ?></td>
+								  <td><?php echo stripslashes($row->ETA); ?></td>
+								  <td><?php echo stripslashes($row->ATA); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedArrivalFromALine); ?></td>
+								  <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
+								  <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
+								  <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
 								  <td><?php echo stripslashes($row->Broker); ?></td>
 								  <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
 								  <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								  <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								  <td>
-						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-outport" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-air" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
 						          		<button type="button" class="btn btn-Add-Report-air btn-success" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 						          </td>
 						          <td class="view_charges">
 						          		<button type="button" class="btn btn-StatusReport btn-info runchar-air" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
 						          </td>
-						          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
+						          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFile_AirId); ?></td>
 				      		</tr>
 
 				      		<?php } ?>
@@ -220,3 +232,128 @@
 		  	</div>
 
 		  </div>
+
+
+
+<!--pop up for goods start -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="viewgoods-air"  data-backdrop="static" data-keyboard="false"role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">List of Commodity</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_products"> </div>
+
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <input type="text" class="jobfile_outport_update_product hidden">
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>
+
+	<!--pop up for Status Report -->
+			<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="statrepo-air" data-backdrop="static" data-keyboard="false" role="dialog">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title">Status Report</h4>
+				        </div>
+				        <div class="modal-body">
+				            <div class="list_status"> </div>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+				        </div>
+				      </div>
+				      
+				    </div>
+				 </div>
+				  
+			</div>	
+
+
+
+ <!--Add Product when Adding New Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addProduct-air" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-air-product/add_Product_air'); ?>
+				      	
+				    </div>
+				 </div>
+
+			 <!--Add Report when Adding New Container  -->
+		
+				  <!-- Modal -->
+				  <div class="modal fade" id="addReport-air" tabindex="-1" data-replace="true"  style="display: none;" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-air-product/add_Report_air'); ?>
+				      	
+				    </div>
+				 </div>
+
+
+
+
+<script>
+ $(document).on('click','.btn-Goods-air',function(){
+   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   });	
+
+   $(document).on('click','.btn-StatusReport-air',function(){
+   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   });
+
+
+  $('.view_goods-air').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 		
+  				$.ajax({
+                    method: "POST",
+                      url: "<?php echo base_url('Job/get_goods_air');?>",
+                    data: { id:jobfileno,
+                    		
+                    }
+                })
+                .done(function(data) {
+                    $('.list_products').html(data);
+                });
+        });
+
+
+     /*View Reports*/
+        $('.reports-air').click(function(){	
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+	 		  $.ajax({
+                            method: "POST",
+                              url: "<?php echo base_url('Job/status_report_air');?>",
+                            data: { id:jobfileno,
+                            }
+                        })
+                        .done(function(data) {
+                                $('.list_status').html(data);
+                        });
+        });
+
+</script>

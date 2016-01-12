@@ -45,7 +45,7 @@
 
 					<!-- Trigger the modal with a button -->
 
-					<button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-2-2" style="margin-right: 10px;">Add Data</button>
+					<button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-2-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 					  <!-- Modal -->
 

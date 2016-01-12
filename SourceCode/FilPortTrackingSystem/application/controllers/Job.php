@@ -687,6 +687,75 @@ class Job extends CI_Controller {
     }
 
 
+    function get_goods_air(){
+       $products =  $this->input->post('id');   
+       $product  = $this->Jobdata->get_goods_air($products);
+
+       if($product==NULL){
+          echo    '<center><span style="color:red">No Goods Yet </span></center>';
+    }else{
+         echo "<div style='width:100%; overflow-x:auto; '> 
+              <table class='table-bordered table table-striped table-hover table-condensed' '>
+              <tr>
+                   <th>No.</th>
+                   <th>Update</th>
+                      <th class='hidden'>Commodity Id</th>
+                  <th>Commodity</th>
+                  <th>Reference Entry No.</th>
+                  <th>Gross Weight(kgs)</th>
+                  <th>Date Sent Pre Assess</th>
+                  <th>Date Paid (Date & Time)</th>
+                  <th>Date Sent Final Assess</th>
+                  <th>Date BOC Cleared</th>
+                  <th>Target Delivery Date</th>
+                  <th>Actual Pull Out Date at NAIA</th>
+                  <th>Date Received at Warehouse</th>
+                  <th>Hauler</th>
+                  <th>Total Storage</th>
+                  <th>Additional Per Day Include VAT</th>
+              </tr>";
+
+          $i=0;
+         foreach($product as $row){
+          $i++;
+          if($i==1){
+             if($row->ProductName==''){
+                echo "</table>";
+                echo    '<center><span style="color:red">No Goods Yet </span></center>';
+                break;
+              }
+          }else{
+              if($row->ProductName==''){
+                break;
+              }
+          }
+             echo "<tr>";
+             echo "<td> ".$i." </td>";
+             echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateProduct-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td class='row hidden'>".stripslashes($row->Product_AirId)."</td>";
+             echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
+             echo "<td class='row'>".stripslashes($row->RefEntryNo) ."</td>";
+             echo "<td class='row '>".stripslashes($row->GrossWeight) ."</td>";
+             echo "<td class='row '>".stripslashes($row->DateSentPreAssessment) ."</td>";
+             echo "<td class='row '>".stripslashes($row->DatePaid) ."</td>";
+             echo "<td class='row '>".stripslashes($row->DateSentFinalAssessment) ."</td>";
+             echo "<td class='row '>".stripslashes($row->DateBOCCleared) ."</td>";
+             echo "<td class='row '>".stripslashes($row->TargetDeliveryDate) ."</td>";
+             echo "<td class='row '>".stripslashes($row->ActualPullOutDateAtNAIA) ."</td>";
+             echo "<td class='row '>".stripslashes($row->DateReceivedAtWhse) ."</td>";
+             echo "<td class='row '>".stripslashes($row->HaulerOrTruck) ."</td>";
+             echo "<td class='row '>".stripslashes($row->TotalStorage) ."</td>";
+             echo "<td class='row '>".stripslashes($row->AdtPerDayncludeVat) ."</td>";
+             echo "</tr>";
+         }
+
+         echo "</table>
+              </div>";
+    }
+
+    }
+
+
   function status_report(){
                           
     $status    =  $this->input->post('id');   
@@ -715,6 +784,42 @@ class Job extends CI_Controller {
       }
        echo "</table>";
    }
+
+
+   function status_report_air(){
+                          
+    $status    =  $this->input->post('id');   
+    $charges   = $this->Jobdata->get_status_air($status);
+
+
+      if($charges==NULL){
+          echo    '<center><span style="color:red">No Goods Yet </span></center>';
+    }else{
+      echo "<table class='table-bordered table table-striped table-hover table-condensed'>
+              <tr>
+                   <th>No.</th>
+                    <th>Status Description</th>
+              </tr>";
+      $i=0;
+      foreach ($charges as $row) {
+        $i++;
+         $description = $row->StatusDescription;
+/*         if($description==''){
+         ?>
+          <script>
+           $('.remove_tr').remove();
+          </script>
+         <?php 
+         }*/
+       echo " <tr class='remove_tr'>
+                 <td>".$i."</td>
+                 <td> ".$row->StatusDescription."</td>
+              </tr>
+            ";
+      }
+       echo "</table>";
+   }
+ }
 
    function global_status_report(){
     $status    =  $this->input->post('id');   
