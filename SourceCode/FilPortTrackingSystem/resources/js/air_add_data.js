@@ -109,53 +109,7 @@ var suc;
 				}
 
 			}
-				
-
-				/*	if($("#tableAddTruck-air table tbody tr td").length == 0){
-						$('.tableGoods-msg').text("Can't Proceed Need Commodity");
-						i=3;
-					}else{
-					    var add_comodity=1;
-					    $('.btn-Next').attr('disabled','disabled');
-		  		       
-					}*/
-
-
-				/*if($("#tableAddContainer-air table tbody tr td").length == 0){
-					$('.tableContainer-msg').text("Can't Proceed Need Container");
-					i=2;
-				}else{
-						$('.btn-Next').attr('disabled','disabled');
-					    $.confirm({
-					    	      backgroundDismiss: false, 
-		   						  title: 'Add Container', 
-		   						  confirmButton: 'Yes',
-    							  cancelButton: 'No',
-		  						  content: 'Do you want to Add Commodity?',
-		 					      confirm: function(){
-		  					        	$("#btn-truck-air-add").click();
-		  					        	$('#btn-truck-air-add').addClass('active');
-										$('#btn-jobfile-air-add').removeClass('active');
-										$('#btn-container-air-add').removeClass('active');
-										$('#btn-charges-air-add').removeClass('active');
-										$('#btn-vessel-air-add').removeClass('active');
-										$('.pill-jobfile-air-add').addClass('hidden');
-										$('.pill-truck-air-add').removeClass('hidden');
-										$('.pill-charges-air-add').addClass('hidden');
-										$('.pill-container-air-add').addClass('hidden');
-										$('.pill-vessel-air-add').addClass('hidden');
-										$('.test_data').addClass('hidden');
-										$('.btn-Next').removeClass('hidden'); 
-										$('.btn-Next').removeAttr('disabled');
-		  					  },
-		  						  cancel: function(){
-		  						  	 ins_contains();
-		   						 }
-						});
-			 		}*/
-			
-			
-			
+							
 		});
 
 
@@ -200,34 +154,11 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 
 	});
 
- /*Adding Vessel*/
 
-		/*var vessel_check=false;
-				function isExist2(prod,vessel){
-
-				var table_air_2 = $("#tableAddTruck-air table tbody");
-
-				    vessel_check=false;
-				 	  table_air_2.find('tr').each(function(){
-				 	  	if($('td:nth(2)',$(this)).html()===vessel) 
-					    if($('td:nth(0)',$(this)).html()===prod) {
-					       vessel_check=true;            
-					        }   
-					     })
-				    return vessel_check;
-				}*/
 
 		
 	 $(".btn-Add-Product-Data-air").click(function(){
 
-			/*var vessel = $('#tableAddTruck-air .vessel-prod-air option:selected').val();
-			var prod = $('#tableAddTruck-air .prodname-air option:selected').val();
-
-			if(isExist2(prod,vessel))
-			{	
-				$('.vessel-size-msg-air').text("The Commodity is already in this Container");
-			}
-			else*/ 
 			if($('#tableAddTruck-air .prodname-air').val() == "")
 			{
 				$('#tableAddTruck-air .prodname-msg-air').text("Need Commodity Name.");
@@ -388,7 +319,13 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 
 
  function ins_descriptions_air(){
-  
+     dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Commodity',
+	});
  	   var jbfl   = $('.jobfiles-air').val();
        var table = $("#tableAddTruck-air table tbody");
          var t3  = $("#tableAddTruck-air table tbody tr").length;
@@ -447,7 +384,7 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 									$('.test_data-air').removeClass('hidden');
 									$('.btn-Next-air').addClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');
-								
+									dia.close();
 				        	    }
 				   			});
 
@@ -483,6 +420,32 @@ function air_add_charges(){
        var all_charges    =  $('#all-charges-air').val();
 	   var part_charges   =  $('#part-charges-air').val();
 	
+	  	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
+        var wVal = 0;
+		var len = totalCharges.length;
+		 for($x = 0 ; $x <= len ; $x++){
+		 	if(totalCharges[$x] == "" || totalCharges[$x] == 0 || totalCharges[$x] == null){
+		 		wVal = wVal+1;;
+		 	}
+		 	//alert(totalCharges[$x]);
+		 }
+		 if(wVal == 18){
+		 		$.confirm({
+		 			 title: 'Add Running Charges',
+		 			 closeIcon:false,
+		 			 content:'You have not Entered any Running Charges. Do you wish to Continue?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	location.reload();
+  					 },
+  					 cancel: function(){
+  					 	$('.btn-save-mnla').removeAttr('disabled');
+  					 }
+		 		});
+		 }else{
+
 
 			       $.ajax({
 			  		method: "POST",
@@ -522,4 +485,25 @@ function air_add_charges(){
 				   			});
 
 	    	  });
+			}
 }
+
+
+
+
+//check  if num or not
+              $(".checkDec").keypress(function (e) {
+                 //if the letter is not digit then display error and don't type anything
+                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                   	  	    $.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Invalid!',
+				        		content: 'Only numbers are allowed!',
+				        		confirm: function(){	
+				        					
+				        	    }
+				   			});
+                           	 return false;	
+                }
+               });

@@ -380,6 +380,9 @@
 
 					<div class="hidden pill-charges-air-add table-editable col-lg-12">
 						
+						<div class="form-group">
+								<span class='numbers_only'></span>
+						</div>
 						<div class="col-lg-6">
 							<div class="form-group">
 								<label>Lodgement Fee</label>
