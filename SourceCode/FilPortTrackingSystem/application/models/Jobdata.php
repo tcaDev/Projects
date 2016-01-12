@@ -78,7 +78,7 @@ function get_vessels($JobFile){
     return $query->result(); 
  }
 
- function get_status($id){
+ function get_status_air($id){
     $this->  db ->select('*');
     $this -> db -> from('vw_StatusReportsAir');
     $this -> db ->where('JobFileNo', $id);

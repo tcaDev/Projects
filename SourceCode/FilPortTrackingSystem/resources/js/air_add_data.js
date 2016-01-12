@@ -224,24 +224,25 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 			else*/ 
 			if($('#tableAddTruck-air .prodname-air').val() == "")
 			{
-				$('.prodname-msg-air').text("Need Commodity Name.");
+				$('#tableAddTruck-air .prodname-msg-air').text("Need Commodity Name.");
 			}else{
 				$('#tableAddTruck-air table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
-				$('#tableAddTruck-air table tr:last td:nth-child(1)').html($(".prodname-air").val()).hide();
-			 	$('#tableAddTruck-air table tr:last td:nth-child(2)').html($(".prodname-air option:selected").text());
-			    $('#tableAddTruck-air table tr:last td:nth-child(3)').html($(".gross").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(4)').html($("#pre-assess-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(5)').html($("#final-assess-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(6)').html($("#date_paid-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(7)').html($("#boc-cleared-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(8)').html($("#target-delivery-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(9)').html($("#act-pull-naia-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(10)').html($("#date-recvd-whse-air").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(11)').html($(".truckname-air").val()).hide();
-			    $('#tableAddTruck-air table tr:last td:nth-child(12)').html($(".truckname-air option:selected").text());
-			    $('#tableAddTruck-air table tr:last td:nth-child(13)').html($(".total-storage").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(14)').html($(".addtl-per-day").val());
-			    $('#tableAddTruck-air table tr:last td:nth-child(15)').html($(".ref-entry-no-air").val());
+				$('#tableAddTruck-air table tr:last td:nth-child(1)').html($("#tableAddTruck-air .prodname-air").val()).hide();
+			 	$('#tableAddTruck-air table tr:last td:nth-child(2)').html($("#tableAddTruck-air .prodname-air option:selected").text());
+			    $('#tableAddTruck-air table tr:last td:nth-child(3)').html($("#tableAddTruck-air .gross").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(4)').html($("#tableAddTruck-air #pre-assess-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(5)').html($("#tableAddTruck-air #final-assess-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(6)').html($("#tableAddTruck-air #date_paid-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(6)').html($("#tableAddTruck-air #date_paid-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(7)').html($("#tableAddTruck-air #boc-cleared-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(8)').html($("#tableAddTruck-air #target-delivery-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(9)').html($("#tableAddTruck-air #act-pull-naia-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(10)').html($("#tableAddTruck-air #date-recvd-whse-air").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(11)').html($("#tableAddTruck-air .truckname-air").val()).hide();
+			    $('#tableAddTruck-air table tr:last td:nth-child(12)').html($("#tableAddTruck-air .truckname-air option:selected").text());
+			    $('#tableAddTruck-air table tr:last td:nth-child(13)').html($("#tableAddTruck-air .total-storage").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(14)').html($("#tableAddTruck-air .addtl-per-day").val());
+			    $('#tableAddTruck-air table tr:last td:nth-child(15)').html($("#tableAddTruck-air .ref-entry-no-air").val());
 
 	
 			    $('#tableAddTruck-air table tr:last td:nth-child(16)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
@@ -350,14 +351,14 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 				        		title: 'Success!',
 				        		content:data,
 				        		confirm: function(){
-				        			$('#btn-vessel-air-add').addClass('active');
+				        			$('#btn-vessel-air-add').removeClass('active');
 									$('#btn-jobfile-air-add').removeClass('active');
-									$('#btn-truck-air-add').removeClass('active');
+									$('#btn-truck-air-add').addClass('active');
 									$('#btn-charges-air-add').removeClass('active');
 									$('.pill-jobfile-air-add').addClass('hidden');
-									$('.pill-truck-air-add').addClass('hidden');
+									$('.pill-truck-air-add').removeClass('hidden');
 									$('.pill-charges-air-add').addClass('hidden');
-									$('.pill-vessel-air-add').removeClass('hidden');
+									$('.pill-vessel-air-add').addClass('hidden');
 									$('.test_data').addClass('hidden');
 									$('.btn-Next-air').removeClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');

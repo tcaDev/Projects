@@ -694,12 +694,12 @@ class Job extends CI_Controller {
        if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
     }else{
-         echo "<div style='width:100%; overflow-x:auto; '> 
+         echo "<div style='width:3000px;'> 
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
                    <th>Update</th>
-                      <th class='hidden'>Commodity Id</th>
+                    <th class='hidden'>Commodity Id</th>
                   <th>Commodity</th>
                   <th>Reference Entry No.</th>
                   <th>Gross Weight(kgs)</th>
@@ -731,8 +731,8 @@ class Job extends CI_Controller {
           }
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateProduct-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
-             echo "<td class='row hidden'>".stripslashes($row->Product_AirId)."</td>";
+             echo "<td><button type='button' class='btn btn-default btn-update-air' data-toggle='modal' href='#updateProduct-air'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             echo "<td class='row hidden'>".stripslashes($row->Products_AirId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo) ."</td>";
              echo "<td class='row '>".stripslashes($row->GrossWeight) ."</td>";
@@ -745,7 +745,7 @@ class Job extends CI_Controller {
              echo "<td class='row '>".stripslashes($row->DateReceivedAtWhse) ."</td>";
              echo "<td class='row '>".stripslashes($row->HaulerOrTruck) ."</td>";
              echo "<td class='row '>".stripslashes($row->TotalStorage) ."</td>";
-             echo "<td class='row '>".stripslashes($row->AdtPerDayncludeVat) ."</td>";
+             echo "<td class='row '>".stripslashes($row->AdtlPerDayncludeVat) ."</td>";
              echo "</tr>";
          }
 
@@ -793,7 +793,7 @@ class Job extends CI_Controller {
 
 
       if($charges==NULL){
-          echo    '<center><span style="color:red">No Goods Yet </span></center>';
+          echo    '<center><span style="color:red">No Reports Yet </span></center>';
     }else{
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>

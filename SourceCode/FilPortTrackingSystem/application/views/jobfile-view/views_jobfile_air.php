@@ -242,13 +242,16 @@
 				    <div class="modal-dialog">
 				    
 				      <!-- Modal content-->
-				      <div class="modal-content">
+				      <div class="modal-content"  style="width:180%;right:40%;padding: 10px; ">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Commodity</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_products"> </div>
+
+				        	<div style='overflow-x:auto;'>	
+				            	<div class="list_products"> </div>
+				            </div>
 
 				        </div>
 				        <div class="modal-footer">
@@ -314,6 +317,18 @@
 				 </div>
 
 
+			 <!--Update product  -->
+				  <!-- Modal -->
+				  <div class="modal fade" id="updateProduct-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog" >
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-air-product/update_Product_air'); ?>
+				      	
+				    </div>
+				 </div>
+
+
 
 
 <script>
@@ -328,7 +343,6 @@
 
   $('.view_goods-air').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
- 		
   				$.ajax({
                     method: "POST",
                       url: "<?php echo base_url('Job/get_goods_air');?>",
@@ -337,6 +351,7 @@
                     }
                 })
                 .done(function(data) {
+                	
                     $('.list_products').html(data);
                 });
         });
@@ -345,6 +360,7 @@
      /*View Reports*/
         $('.reports-air').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+
 	 		  $.ajax({
                             method: "POST",
                               url: "<?php echo base_url('Job/status_report_air');?>",

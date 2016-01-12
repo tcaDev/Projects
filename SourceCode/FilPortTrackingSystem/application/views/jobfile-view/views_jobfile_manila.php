@@ -978,14 +978,14 @@ $(".btn-Vessel").click(function(){
 			     var ShipperName    = $(this).closest('tr').children('td:eq(4)').text();
 
 			     var ConsigneeName  = $(this).closest('tr').children('td:eq(5)').text();
-			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(8)').text();
+			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(9)').text();
 					
-				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(9)').text();
-			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(10)').text();
-				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(11)').text();
-			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(12)').text();
+				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(10)').text();
+			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(11)').text();
+				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(12)').text();
+			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(13)').text();
 		
-			     var registry   = $(this).closest('tr').children('td:eq(13)').text();
+			     var registry   = $(this).closest('tr').children('td:eq(14)').text();
 
 			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(16)').text();
 			     var date_rcvd_bl     = $(this).closest('tr').children('td:eq(18)').text();
@@ -995,9 +995,13 @@ $(".btn-Vessel").click(function(){
 			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
 			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
 
+alert(broker);
 			     $('.jobfiles-update').val(jobfileNo);
 			     $('.monitoring_type_id').val(jobfileID);
 			     
+			      $(".broker-update option").filter(function() {
+				    return this.text == broker; 
+				}).attr('selected', 'selected');
 
 			     $(".shipper-update option").filter(function() {
 				    return this.text == ShipperName; 
@@ -1021,9 +1025,7 @@ $(".btn-Vessel").click(function(){
 			      $('.dt_pickup_obl-update').val(date_rcvd_bl);
 			      $('.dt_pickup_docs-update').val(date_rcvd_other_docs);
 
-			      $(".broker-update option").filter(function() {
-				    return this.text == broker; 
-				}).attr('selected', 'selected');
+			     
 
 			      $('.purch_order_no_update').val(PurchaseOrderNo);
 			      $('.dt-req-update').val(date_req_budget);
