@@ -995,7 +995,7 @@ $(".btn-Vessel").click(function(){
 			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
 			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
 
-alert(broker);
+
 			     $('.jobfiles-update').val(jobfileNo);
 			     $('.monitoring_type_id').val(jobfileID);
 			     

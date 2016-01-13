@@ -27,8 +27,9 @@
 					           	<div class="required-fields-air">
 					           		<div class="form-group">
 					              <!--check if jofile is already exists -->
-					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-air"></span></label> 
-									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air(this.value)">
+					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i></label>
+					           		<div class="check_jobfiles-air"></div> 
+									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air_add(this.value)">
 									 <i class="jobfile-msg-air" style="color:red;"></i>
 					           </div>
 					  				
@@ -516,4 +517,25 @@
 
 
 
+</script>
+
+<script>
+function myjob_air_add(jbfl){
+  	//for search
+   
+    		 	$.ajax({
+		           method: "GET",
+	 		       url: "<?php echo base_url('Job_availability/check_air');?>",
+			  	   beforeSend: function() {
+							$('.check_jobfiles-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   	           jobfile   		   :jbfl
+			  	   		 }
+	              })
+					.done(function(data) {
+						
+						$('.check_jobfiles-air').html(data);
+	  		    });
+}
 </script>

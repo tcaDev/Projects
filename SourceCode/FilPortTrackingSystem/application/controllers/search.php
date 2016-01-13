@@ -1329,8 +1329,7 @@ function get_jobfile_search(){
 	}
 }
 
-function mm(){
-  $this->load->view('jobfile-view/add-outport-container/search_outport');
-}
+
+
 }
 ?>

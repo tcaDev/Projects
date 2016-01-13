@@ -115,5 +115,16 @@ class Job_availability extends CI_Controller {
    }else
      echo 1;
   }
+
+function check_air(){
+ $jobfile =  $this->input->get('jobfile');
+           $query= $this->db->query("Select * from JobFile_Air where JobFileNo ='$jobfile'  limit 1");
+          if($query->num_rows() == 1){ 
+            echo  "<i style='color:red;'>Already exists</i>";     
+          }else{
+             echo "<i style='color:green;'>Available</i>"; 
+          }
+}
+
 }
 ?>   
