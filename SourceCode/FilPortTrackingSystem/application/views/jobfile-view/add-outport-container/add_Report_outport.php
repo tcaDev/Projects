@@ -20,9 +20,18 @@
 
 					</div>
 
-				
+					<button type="button" class="btn-addReport-outport btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Status Report</button>
 
-						<div style="width: 100%; overflow-x: auto;"></div>
+						<div style="width: 100%; overflow-x: auto;">
+						    <table class="table" style="width: 100%;" border="1">
+							    <thead>
+							    	 <tr>
+							    	 	<th>Status Report</th>
+								        <th></th>
+							      	</tr>
+							    </thead>
+						    </table>
+						</div>
 
   				</div>
 	        </div>
@@ -36,12 +45,12 @@
 
 <script>
 	/*Delete Row*/
-	  	/*$(document).on('click', '#table-AddReport-outport .deleteButton', function() {
+	  	$(document).on('click', '#table-AddReport-outport .deleteButton', function() {
 	    	$(this).closest("tr").remove();
-		});*/
+		});
 
 /*Status Report Add*/
-/*$(document).on('click','.btn-addReport-outport',function(){
+$(document).on('click','.btn-addReport-outport',function(){
 
 		
 			if($('#table-AddReport-outport .report-outport').val() == "")
@@ -60,7 +69,7 @@
 			}
 				
 
-			});*/
+			});
 </script>
 
 
