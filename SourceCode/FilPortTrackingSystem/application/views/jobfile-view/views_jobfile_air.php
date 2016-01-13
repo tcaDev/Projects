@@ -535,7 +535,7 @@ function search_airs(){
 									dia_running_charges.close();
 									$('.qwerty').removeAttr('disabled');
 									$('.asd').attr('disabled','disabled');
-				        			$('#runchar').modal('hide');
+				        			$('#runchar-air').modal('hide');
 				        	    }
 				   			   });
 	    		    })

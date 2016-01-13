@@ -506,7 +506,7 @@ var jbfl;
 	    		    })
 
   });
-   });
+ });
   $(document).on('change',' .checkDec',function(){
  		var inp = $(this).val();
  		var holder = $(this).attr('id');
