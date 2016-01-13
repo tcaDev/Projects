@@ -490,5 +490,10 @@ $('.btn-Add-Report-air').click(function(){
 
 
 <script>
+ $(document).on('click','.update_charges-air',function(){
+ 	var lodge = $('#lodge_airs').val();
 
+ 	alert(lodge);
+   
+});
 </script>
