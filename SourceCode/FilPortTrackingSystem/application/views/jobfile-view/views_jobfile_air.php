@@ -302,14 +302,16 @@
 				          <h4 class="modal-title">Running Charges</h4>
 				        </div>
 				        <div class="modal-body">
+
 				            <div class="list_charges_air"> </div>
+
 
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
 				        	<button type="button" class="btn btn-danger update_charges-air-qwerty">Update</button>
 
-				        	<button type="button" class="btn btn-danger update_charges-air-asdfghj" disabled>Save</button>
+				        	<button type="button" class="btn btn-danger update_charges-air" disabled>Save</button>
 
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
@@ -323,39 +325,27 @@
 
 	<script>
 			$(document).on('click','.update_charges-air-qwerty',function(){
-					$('#runchar-air .lodge_update').removeAttr('disabled');
-					$('#runchar-air .cont-deposit').removeAttr('disabled');
-					$('#runchar-air .thc-charges').removeAttr('disabled');
-					$('#runchar-air .arrastre').removeAttr('disabled');
-					$('#runchar-air .wharfage').removeAttr('disabled');
-					$('#runchar-air .weight').removeAttr('disabled');
-					$('#runchar-air .del').removeAttr('disabled');
-					$('#runchar-air .dispatch').removeAttr('disabled');
-					$('#runchar-air .storage').removeAttr('disabled');
-					$('#runchar-air .demurrage').removeAttr('disabled');
-					$('#runchar-air .detention').removeAttr('disabled');			
-					$('#runchar-air .EIC').removeAttr('disabled');
-					$('#runchar-air .bai-app').removeAttr('disabled');
-					$('#runchar-air .bai-inspect').removeAttr('disabled');
-					$('#runchar-air .sra-app').removeAttr('disabled');
-					$('#runchar-air .sra-inspect').removeAttr('disabled');
-					$('#runchar-air .bad-cargo').removeAttr('disabled');
+					$('#runchar-air .lodge_airs').removeAttr('disabled');
+					$('#runchar-air .cont-deposit_airs').removeAttr('disabled');
+					$('#runchar-air .thc-charges_airs').removeAttr('disabled');
+					$('#runchar-air .arrastre_airs').removeAttr('disabled');
+					$('#runchar-air .wharfage_airs').removeAttr('disabled');
+					$('#runchar-air .weight_airs').removeAttr('disabled');
+					$('#runchar-air .del_airs').removeAttr('disabled');
+					$('#runchar-air .dispatch_airs').removeAttr('disabled');
+					$('#runchar-air .storage_airs').removeAttr('disabled');
+					$('#runchar-air .demurrage_airs').removeAttr('disabled');
+					$('#runchar-air .detention_airs').removeAttr('disabled');			
+					$('#runchar-air .EIC_airs').removeAttr('disabled');
+					$('#runchar-air .bai-app_airs').removeAttr('disabled');
+					$('#runchar-air .bai-inspect_airs').removeAttr('disabled');
+					$('#runchar-air .sra-app_airs').removeAttr('disabled');
+					$('#runchar-air .sra-inspect_airs').removeAttr('disabled');
+					$('#runchar-air .bad-cargo_airs').removeAttr('disabled');
 
-					$('.update_charges-air-asdfghj').removeAttr('disabled');
+					$('.update_charges-air').removeAttr('disabled');
 					$(this).attr('disabled','disabled');
 			});
-
-		
- $(document).on('click','.update_charges-air-asdfghj',function(){
-  var lodge = $('#runchar-air #lodge_airs').val();
-
-  alert(lodge);
-   
-});
-
-
-
-     
 	</script>
 
 
@@ -400,6 +390,7 @@
 
 
 <script>
+var jbfl;
  $(document).on('click','.btn-Goods-air',function(){
    		$('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
    });	
@@ -409,7 +400,9 @@
    });
 
        $(document).on('click','.runchar-air',function(){
+
    		$('.list_charges_air').html('<div class="list_charges_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+
    });
 
 
@@ -448,17 +441,18 @@
          /*View Charges*/
         $('.view_charges-air').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
-
- 	
- 		
+ 		jbfl = jobfileno;
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",
-                                    data: { id:jobfileno,
+                                    data: { 
+                                    	id:jobfileno,
                                     }
                                 })
                                 .done(function(data) {
+
                                     $('.list_charges_air').html(data);
+
                                 });
         });
 
@@ -480,7 +474,73 @@ function search_airs(){
 	  		    });*/
     
 }
+   $(document).on('click','.update_charges-air',function(){
+     var lodge        = $('#runchar-air .lodge_airs').val();
+     var cont_deposit = $('#runchar-air .cont-deposit_airs').val();
+     var thc_charges  = $('#runchar-air .thc-charges_airs').val();
+     var arrastre     = $('#runchar-air .arrastre_airs').val();
+     var wharfage     = $('#runchar-air .wharfage_airs').val();
+     var weight       = $('#runchar-air .weight_airs').val();
+     var del          = $('#runchar-air .del_airs').val();
+     var dispatch     = $('#runchar-air .dispatch_airs').val();
+     var storage      = $('#runchar-air .storage_airs').val();
+     var demurrage    = $('#runchar-air .demurrage_airs').val();
+     var detention    = $('#runchar-air .detention_airs').val();
+     var eic 		  = $('#runchar-air .EIC_airs').val();
+     var bai_app 	  = $('#runchar-air .bai-app_airs').val();
+     var bai_inspect  = $('#runchar-air .bai-inspect_airs').val();
+     var sra_app 	  = $('#runchar-air .sra-app_airs').val();
+     var sra_inspect  = $('#runchar-air .sra-inspect_airs').val();
+     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val();
 
+		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job_air_update/jobfile_add_charge_air');?>",
+	 		       beforeSend: function() {
+					 	  dia_running_charges =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating Running Charges',
+				   			});
+ 					  },
+			  	   data: {
+			  	   	           jbfl   		:jbfl,
+			  	   			   lodge        :lodge,
+			                   cont_deposit :cont_deposit,   
+			                   thc_charges  :thc_charges,
+			                   wharfage     :wharfage,
+			                   arrastre     :arrastre,
+			                   weight	    :weight,
+			                   del			:del,
+			                   dispatch     :dispatch,
+			                   storage      :storage,
+			                   demurrage    :demurrage,
+			                   detention    :detention,
+			                   eic          :eic,
+			                   bai_app      :bai_app,
+			                   bai_inspect  :bai_inspect,
+			                   sra_app      :sra_app,
+			                   sra_inspect  :sra_inspect,
+			                   bad_cargo    :bad_cargo
+
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Success!',
+				        		content: 'Running Charges Updated!',
+				        		confirm: function(){
+									dia_running_charges.close();
+									$('.qwerty').removeAttr('disabled');
+									$('.asd').attr('disabled','disabled');
+				        			$('#runchar').modal('hide');
+				        	    }
+				   			   });
+	    		    })
+
+  });
 
 $('.btn-Add-Product-air').click(function(){
 
@@ -501,3 +561,8 @@ $('.btn-Add-Report-air').click(function(){
 
 
 
+<script>
+ $(document).on('click','.update_charges-air',function(){
+ 	var lodge = $('#lodge_airs').val();
+});
+</script>
