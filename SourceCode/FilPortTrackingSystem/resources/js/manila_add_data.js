@@ -941,13 +941,12 @@ $('.save_charge').click(function(){
 });  
 
 
-setInterval(refresh_table, 3000);
+/*setInterval(refresh_table, 3000);
 
 function refresh_table(update_total) {
 	var manila = $('.manila_total').val();
     var manila_new = $('.manila_total_new').val();
   
-/*  alert(update_total);*/
 
  		 	$.ajax({
 		           method: "GET",
@@ -970,5 +969,5 @@ function refresh_table(update_total) {
 
  		 	
 }
-
+*/
 

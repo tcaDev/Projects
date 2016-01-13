@@ -227,7 +227,7 @@ function status_reports(){
   function running_charges(){
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
-   $jbfl             =  mysql_real_escape_string($this->input->post('jbfl'));
+   $jbfl              =  mysql_real_escape_string($this->input->post('jbfl'));
    $lodge             =  mysql_real_escape_string($this->input->post('lodge'));
    $cont_deposit      =  mysql_real_escape_string($this->input->post('cont_deposit'));
    $thc_charges       =  mysql_real_escape_string($this->input->post('thc_charges'));   

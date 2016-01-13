@@ -486,3 +486,11 @@ $('.btn-Add-Report-air').click(function(){
 		/* alert(jbfl);*/
 });
 </script>
+
+
+
+<script>
+ $(document).on('click','.btn-Goods-air',function(){
+   alert('elissss');
+});
+</script>

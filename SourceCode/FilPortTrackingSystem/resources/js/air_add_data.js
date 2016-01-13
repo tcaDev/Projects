@@ -211,35 +211,36 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 /*Function Inserting Jobfile*/
 
 	function insert_jobfile_air(){
-	   var jbfl          	 = $('.jobfiles-air').val();
-	   var shipper 	  	     = $('.shipper-air').val();
-       var consignee  		 = $('.consignee-air').val();
-       var color          	 =  $('.colsel-air').val();
-       var hbl 	 	  		 = $('.hbl-air').val();
-       var mbl 		  		 = $('.mbl-air').val();
-       var flight  	 		 =  $('.flight-air').val();
-  	   var forwarder   		 =  $('.forwarder-air').val();
-       var warehouse   	     =  $('.warehouse-air').val();
-       var aircraft   		 =  $('.aircraft-air').val();
-       var edtair			 =  $('.edt-air').val();
-       var eatair		     =  $('.eat-air').val();
-       var aatair		     =  $('.aat-air').val();
- 	   var cartons		     =  $('.cartons-air').val();
- 	   var bank       		 = $('.bank-air').val();
- 	   var registry   		 = $('.registry-air').val(); 
-       var origin_air        = $('.origin-air').val();  
-       var origcity   	 	 =  $('.origcity-air').val();
-       var dt_airline   	 =  $('.dtRcvd-airline-air').val();
-       var dtRcvd     		 = $('.dtRcvd-air').val();
-       var dt_pickup_obl  	 = $('.dt_pickup_obl-air').val(); 
- 	   var dt_pickup_docs 	 = $('.dt_pickup_docs-air').val();  
-       var broker         	 =  $('.broker-air').val(); 
-       var purch_order_no 	 =  $('#purch_order_no-air').val();
-       var dt_req_budget  	 =  $('#dt_req_budget-air').val();
-       var ref_due_dt     	 =  $('#ref_due_dt-air').val();
-       var color_select   	 =  $('#color-select-air').val();
-       var status_air   	 =  $('#status_air').val();
+	   var jbfl          	 = $('.pill-jobfile-air-add .jobfiles-air').val();
+	   var shipper 	  	     = $('.pill-jobfile-air-add .shipper-air').val();
+       var consignee  		 = $('.pill-jobfile-air-add .consignee-air').val();
+       var color          	 =  $('.pill-jobfile-air-add .colsel-air').val();
+       var hbl 	 	  		 = $('.pill-jobfile-air-add .hbl-air').val();
+       var mbl 		  		 = $('.pill-jobfile-air-add .mbl-air').val();
+       var flight  	 		 =  $('.pill-jobfile-air-add .flight-air').val();
+  	   var forwarder   		 =  $('.pill-jobfile-air-add .forwarder-air').val();
+       var warehouse   	     =  $('.pill-jobfile-air-add .warehouse-air').val();
+       var aircraft   		 =  $('.pill-jobfile-air-add .aircraft-air').val();
+       var edtair			 =  $('.pill-jobfile-air-add .edt-air').val();
+       var eatair		     =  $('.pill-jobfile-air-add .eat-air').val();
+       var aatair		     =  $('.pill-jobfile-air-add .aat-air').val();
+ 	   var cartons		     =  $('.pill-jobfile-air-add .cartons-air').val();
+ 	   var bank       		 = $('.pill-jobfile-air-add .bank-air').val();
+ 	   var registry   		 = $('.pill-jobfile-air-add .registry-air').val(); 
+       var origin_air        = $('.pill-jobfile-air-add .origin-air').val();  
+       var origcity   	 	 =  $('.pill-jobfile-air-add .origcity-air').val();
+       var dt_airline   	 =  $('.pill-jobfile-air-add .dtRcvd-airline-air').val();
+       var dtRcvd     		 = $('.pill-jobfile-air-add .dtRcvd-air').val();
+       var dt_pickup_obl  	 = $('.pill-jobfile-air-add .dt_pickup_obl-air').val(); 
+ 	   var dt_pickup_docs 	 = $('.pill-jobfile-air-add .dt_pickup_docs-air').val();  
+       var broker         	 =  $('.pill-jobfile-air-add .broker-air').val(); 
+       var purch_order_no 	 =  $('.pill-jobfile-air-add #purch_order_no-air').val();
+       var dt_req_budget  	 =  $('.pill-jobfile-air-add #dt_req_budget-air').val();
+       var ref_due_dt     	 =  $('.pill-jobfile-air-add #ref_due_dt-air').val();
+       var color_select   	 =  $('.pill-jobfile-air-add #color-select-air').val();
+       var status_air   	 =  $('.pill-jobfile-air-add  #status_air').val();
 
+alert(jbfl);
 
         		$.ajax({
 			  		method: "POST",
