@@ -475,23 +475,23 @@ function search_airs(){
     
 }
    $(document).on('click','.update_charges-air',function(){
-     var lodge        = $('#runchar-air .lodge_airs').val();
-     var cont_deposit = $('#runchar-air .cont-deposit_airs').val();
-     var thc_charges  = $('#runchar-air .thc-charges_airs').val();
-     var arrastre     = $('#runchar-air .arrastre_airs').val();
-     var wharfage     = $('#runchar-air .wharfage_airs').val();
-     var weight       = $('#runchar-air .weight_airs').val();
-     var del          = $('#runchar-air .del_airs').val();
-     var dispatch     = $('#runchar-air .dispatch_airs').val();
-     var storage      = $('#runchar-air .storage_airs').val();
-     var demurrage    = $('#runchar-air .demurrage_airs').val();
-     var detention    = $('#runchar-air .detention_airs').val();
-     var eic 		  = $('#runchar-air .EIC_airs').val();
-     var bai_app 	  = $('#runchar-air .bai-app_airs').val();
-     var bai_inspect  = $('#runchar-air .bai-inspect_airs').val();
-     var sra_app 	  = $('#runchar-air .sra-app_airs').val();
-     var sra_inspect  = $('#runchar-air .sra-inspect_airs').val();
-     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val();
+     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
+     var cont_deposit = $('#runchar-air .cont-deposit_airs').val().replace(/,/g,'');
+     var thc_charges  = $('#runchar-air .thc-charges_airs').val().replace(/,/g,'');
+     var arrastre     = $('#runchar-air .arrastre_airs').val().replace(/,/g,'');
+     var wharfage     = $('#runchar-air .wharfage_airs').val().replace(/,/g,'');
+     var weight       = $('#runchar-air .weight_airs').val().replace(/,/g,'');
+     var del          = $('#runchar-air .del_airs').val().replace(/,/g,'');
+     var dispatch     = $('#runchar-air .dispatch_airs').val().replace(/,/g,'');
+     var storage      = $('#runchar-air .storage_airs').val().replace(/,/g,'');
+     var demurrage    = $('#runchar-air .demurrage_airs').val().replace(/,/g,'');
+     var detention    = $('#runchar-air .detention_airs').val().replace(/,/g,'');
+     var eic 		  = $('#runchar-air .EIC_airs').val().replace(/,/g,'');
+     var bai_app 	  = $('#runchar-air .bai-app_airs').val().replace(/,/g,'');
+     var bai_inspect  = $('#runchar-air .bai-inspect_airs').val().replace(/,/g,'');
+     var sra_app 	  = $('#runchar-air .sra-app_airs').val().replace(/,/g,'');
+     var sra_inspect  = $('#runchar-air .sra-inspect_airs').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",

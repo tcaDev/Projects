@@ -440,23 +440,23 @@ var jbfl;
 	});
    $(document).on('click','.asd',function(){
 
-     var lodge        = $('#runchar .lodge_update').val();
-     var cont_deposit = $('#runchar .cont-deposit').val();
-     var thc_charges  = $('#runchar .thc-charges').val();
-     var arrastre     = $('#runchar .arrastre').val();
-     var wharfage     = $('#runchar .wharfage').val();
-     var weight       = $('#runchar .weight').val();
-     var del          = $('#runchar .del').val();
-     var dispatch     = $('#runchar .dispatch').val();
-     var storage      = $('#runchar .storage').val();
-     var demurrage    = $('#runchar .demurrage').val();
-     var detention    = $('#runchar .detention').val();
-     var eic 		  = $('#runchar .EIC').val();
-     var bai_app 	  = $('#runchar .bai-app').val();
-     var bai_inspect  = $('#runchar .bai-inspect').val();
-     var sra_app 	  = $('#runchar .sra-app').val();
-     var sra_inspect  = $('#runchar .sra-inspect').val();
-     var bad_cargo    = $('#runchar .bad-cargo').val();
+     var lodge        = $('#runchar .lodge_update').val().replace(/,/g,'');
+     var cont_deposit = $('#runchar .cont-deposit').val().replace(/,/g,'');
+     var thc_charges  = $('#runchar .thc-charges').val().replace(/,/g,'');
+     var arrastre     = $('#runchar .arrastre').val().replace(/,/g,'');
+     var wharfage     = $('#runchar .wharfage').val().replace(/,/g,'');
+     var weight       = $('#runchar .weight').val().replace(/,/g,'');
+     var del          = $('#runchar .del').val().replace(/,/g,'');
+     var dispatch     = $('#runchar .dispatch').val().replace(/,/g,'');
+     var storage      = $('#runchar .storage').val().replace(/,/g,'');
+     var demurrage    = $('#runchar .demurrage').val().replace(/,/g,'');
+     var detention    = $('#runchar .detention').val().replace(/,/g,'');
+     var eic 		  = $('#runchar .EIC').val().replace(/,/g,'');
+     var bai_app 	  = $('#runchar .bai-app').val().replace(/,/g,'');
+     var bai_inspect  = $('#runchar .bai-inspect').val().replace(/,/g,'');
+     var sra_app 	  = $('#runchar .sra-app').val().replace(/,/g,'');
+     var sra_inspect  = $('#runchar .sra-inspect').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",

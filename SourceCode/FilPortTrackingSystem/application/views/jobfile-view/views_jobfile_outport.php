@@ -433,23 +433,23 @@ var jbfl_outport;
 	});
 
    $(document).on('click','.update_charges-outport',function(){
-     var lodge        = $('#runchar-outport .lodge_update').val();
-     var cont_deposit = $('#runchar-outport .cont-deposit').val();
-     var thc_charges  = $('#runchar-outport .thc-charges').val();
-     var arrastre     = $('#runchar-outport .arrastre').val();
-     var wharfage     = $('#runchar-outport .wharfage').val();
-     var weight       = $('#runchar-outport .weight').val();
-     var del          = $('#runchar-outport .del').val();
-     var dispatch     = $('#runchar-outport .dispatch').val();
-     var storage      = $('#runchar-outport .storage').val();
-     var demurrage    = $('#runchar-outport .demurrage').val();
-     var detention    = $('#runchar-outport .detention').val();
-     var eic 		  = $('#runchar-outport .EIC').val();
-     var bai_app 	  = $('#runchar-outport .bai-app').val();
-     var bai_inspect  = $('#runchar-outport .bai-inspect').val();
-     var sra_app 	  = $('#runchar-outport .sra-app').val();
-     var sra_inspect  = $('#runchar-outport .sra-inspect').val();
-     var bad_cargo    = $('#runchar-outport .bad-cargo').val();
+     var lodge        = $('#runchar-outport .lodge_update').val().replace(/,/g,'');
+     var cont_deposit = $('#runchar-outport .cont-deposit').val().replace(/,/g,'');
+     var thc_charges  = $('#runchar-outport .thc-charges').val().replace(/,/g,'');
+     var arrastre     = $('#runchar-outport .arrastre').val().replace(/,/g,'');
+     var wharfage     = $('#runchar-outport .wharfage').val().replace(/,/g,'');
+     var weight       = $('#runchar-outport .weight').val().replace(/,/g,'');
+     var del          = $('#runchar-outport .del').val().replace(/,/g,'');
+     var dispatch     = $('#runchar-outport .dispatch').val().replace(/,/g,'');
+     var storage      = $('#runchar-outport .storage').val().replace(/,/g,'');
+     var demurrage    = $('#runchar-outport .demurrage').val().replace(/,/g,'');
+     var detention    = $('#runchar-outport .detention').val().replace(/,/g,'');
+     var eic 		  = $('#runchar-outport .EIC').val().replace(/,/g,'');
+     var bai_app 	  = $('#runchar-outport .bai-app').val().replace(/,/g,'');
+     var bai_inspect  = $('#runchar-outport .bai-inspect').val().replace(/,/g,'');
+     var sra_app 	  = $('#runchar-outport .sra-app').val().replace(/,/g,'');
+     var sra_inspect  = $('#runchar-outport .sra-inspect').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar-outport .bad-cargo').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",
