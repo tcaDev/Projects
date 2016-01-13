@@ -491,6 +491,9 @@ var jbfl_outport;
 				        		content: 'Running Charges Updated!',
 				        		confirm: function(){
 									dia_running_charges.close();
+									$('.update_charges-outport-qwerty').removeAttr('disabled');
+									$('.update_charges-outport').attr('disabled','disabled');
+				        			$('#runchar-outport').modal('hide');
 				        	    }
 				   			   });
 	    		    })
