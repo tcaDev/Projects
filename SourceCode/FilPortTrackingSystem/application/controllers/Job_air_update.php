@@ -152,7 +152,7 @@ class Job_air_update extends CI_Controller {
       $tdt             =  $this->input->post('tdt');
       $ac_pu_dt_naia   =  $this->input->post('ac_pu_dt_naia');
       $dt_rec_whse     =  $this->input->post('dt_rec_whse');
-      $hauler_trucker  =  $this->input->post('hauler_trucker');
+      $hauler_trucker  =  $this->input->post('truckname_air');
       $total_stor      =  $this->input->post('total_storage');
       $adtlperday      =  $this->input->post('addtl_per_day');
 

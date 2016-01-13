@@ -117,7 +117,7 @@
 <script>
 
 var ProductAirID;
-var ProductID;
+/*var ProductID;*/
 var jobs_air;
 	$(document).on('click','.btn-update-air', function(){
 
@@ -140,7 +140,7 @@ var jobs_air;
 
 		
 		 ProductAirID = Product_AirId;
-		 ProductID = ProductId;
+		/* ProductID = ProductId;*/
 		 jobs_air = JobfileNo;
 
 $('#table-updateTruck-air .jobfile-update-air').val(JobfileNo);
@@ -176,16 +176,18 @@ $('#table-updateTruck-air .jobfile-update-air').val(JobfileNo);
 		 var target_delivery_air 		 =  $('#table-updateTruck-air .target_delivery_air').val();
 		 var act_pull_naia_air  		 =  $('#table-updateTruck-air .act-pull-naia-air').val();
 		 var date_recvd_whse_air 		 =  $('#table-updateTruck-air .date-recvd-whse-air').val();
-		 var truckname_air			     =  $('#table-updateTruck-air .truckname_air').val();
+		 var truckname_air			     =  $('#table-updateTruck-air .truckname_air option:selected').val();
 
 		 var total_storage  		 =  $('#table-updateTruck-air .total_storage').val();
 		 var addtl_per_day 		     =  $('#table-updateTruck-air .addtl-per-day').val();
 		 var cartons_air			 =  $('#table-updateTruck-air .cartons-air').val();
 		 var ref					 =  $('#table-updateTruck-air .ref-entry-no-air').val();
          var pre_assess				 =  $('#table-updateTruck-air .pre-assess-air').val();
+   
+   	   var ProductID				 =  $('#table-updateTruck-air .prodname-air option:selected').val();
 
 
-     alert(ProductID);
+    
 
 		 	
 
