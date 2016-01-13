@@ -142,7 +142,7 @@ function status_reports(){
           $session_data = $this->session->userdata('logged_in');
           $userid = $session_data['uid'];
           $jbfl            = $this->input->post('jbfl');
-          $reports         = $this->input->post('reports');
+          $reports         = stripslashes($this->input->post('reports'));
      if($reports!=''){
          	             $air_insert = array(
                          'StatusDescription' => $reports,
