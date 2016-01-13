@@ -375,56 +375,52 @@ class Job extends CI_Controller {
       $charges =  $this->input->post('id');   
       $charge  = $this->Jobdata->get_chargess_air($charges);
 
-/*    if($charge==NULL){
-          echo    '<center><span style="color:red">No RunningCharges Found </span></center>';
-    }else{*/
-
            foreach($charge as $row){
-                      echo '<div class="col-lg-12">
+                  echo '<div class="col-lg-12 list_charges-air">
                         <div class="col-lg-6">
                           <div class="form-group">
                             <label>Lodgement Fee</label>
-                              <input type="text" name="lodge" class="form-control input-sm lodge_update" id="lodge_airs" value="'.$row->LodgementFee.'" disabled />
+                              <input type="text" name="lodge" class="form-control input-sm lodge_airs" id="lodge_airs" value="'.$row->LodgementFee.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit" id="cont_deposit_airs" value="'.$row->ContainerDeposit.'" disabled/>
+                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit_airs" id="cont_deposit_airs" value="'.$row->ContainerDeposit.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges" id="thc_charges_airs" value="'.$row->THCCharges.'" disabled/>
+                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges_airs" id="thc_charges_airs" value="'.$row->THCCharges.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm arrastre" id="arrastre_airs" value="'.$row->Arrastre.'" disabled/>
+                              <input type="text" name="arrastre" class="form-control input-sm arrastre_airs" id="arrastre_airs" value="'.$row->Arrastre.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm wharfage" id="wharfage_airs" value="'.$row->Wharfage.'" disabled/>
+                              <input type="text" name="wharfage" class="form-control input-sm wharfage_airs" id="wharfage_airs" value="'.$row->Wharfage.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm weight" id="weight_airs" value="'.$row->Weighing.'" disabled />
+                              <input type="text" name="weight" class="form-control input-sm weight_airs" id="weight_airs" value="'.$row->Weighing.'" disabled />
                             </div>
 
                             <div class="form-group">
                               <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm del" id="del_airs" value="'.$row->DEL.'" disabled/>
+                              <input type="text" name="del" class="form-control input-sm del_airs" id="del_airs" value="'.$row->DEL.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm dispatch" id="dispatch_airs" value="'.$row->DispatchFee.'" disabled/>
+                              <input type="text" name="dispatch" class="form-control input-sm dispatch_airs" id="dispatch_airs" value="'.$row->DispatchFee.'" disabled/>
                             </div>
 
                             <div class="form-group">
                               <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm storage" id="storage_airs" value="'.$row->Storage.'" disabled />
+                              <input type="text" name="storage" class="form-control input-sm storage_airs" id="storage_airs" value="'.$row->Storage.'" disabled />
                             </div>
 
                           </div>
@@ -434,42 +430,42 @@ class Job extends CI_Controller {
 
                             <div class="form-group">
                                 <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm demurrage" id="demurrage_airs" value="'.$row->Demorage.'"  disabled/>
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage_airs" id="demurrage_airs" value="'.$row->Demorage.'"  disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm detention"  id="detention_airs" value="'.$row->Detention.'" disabled />
+                                <input type="text" name="detention" class="form-control input-sm detention_airs"  id="detention_airs" value="'.$row->Detention.'" disabled />
                               </div>
                         
                               <div class="form-group">
                                 <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm EIC" id="EIC_airs" value="'.$row->EIC.'" disabled />
+                                <input type="text" name="EIC" class="form-control input-sm EIC_airs" id="EIC_airs" value="'.$row->EIC.'" disabled />
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm bai-app" id="bai_app_airs" value="'.$row->BAIApplication.'" disabled/>
+                                <input type="text" name="bai-app" class="form-control input-sm bai-app_airs" id="bai_app_airs" value="'.$row->BAIApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect" id="bai_inspect_airs" value="'.$row->BAIInspection.'" disabled/>
+                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect_airs" id="bai_inspect_airs" value="'.$row->BAIInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm sra-app" id="sra_app_airs" value="'.$row->SRAApplication.'" disabled/>
+                                <input type="text" name="sra-app" class="form-control input-sm sra-app_airs" id="sra_app_airs" value="'.$row->SRAApplication.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect" id="sra_inspect_airs" value="'.$row->SRAInspection.'" disabled/>
+                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect_airs" id="sra_inspect_airs" value="'.$row->SRAInspection.'" disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo" id="bad_cargo_airs" value="'.$row->BadCargo.'"disabled />
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo_airs" id="bad_cargo_airs" value="'.$row->BadCargo.'"disabled />
                               </div>
                           </div>
                         </div>';
@@ -1955,6 +1951,10 @@ $this->db->update('RunningCharges', $update_charges);
 $this->db->insert('RunningChargesHistory', $update_charges_history);
 //}
    }
+
+   
+
+
 
    function add_report(){
      $session_data      = $this->session->userdata('logged_in');

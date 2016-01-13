@@ -47,7 +47,7 @@ class Job_air_update extends CI_Controller {
       $status_report		     = $this->input->post('status_report');
 
          //stop inserting data in jobfile to avoid duplication
-   $chek= $this->db->query("Select * from JobFile_Air where
+    $chek= $this->db->query("Select * from JobFile_Air where
         JobFile_AirId='$jbfl' limit 1");
     if($chek->num_rows() ==1){
       echo "JobFile already Exists";
@@ -209,6 +209,91 @@ class Job_air_update extends CI_Controller {
 
        $this->db->insert('Products_AirHistory',$products_insert_h); 
      }
+
+function jobfile_add_charge_air(){
+   $session_data = $this->session->userdata('logged_in');
+   $userid = $session_data['uid'];
+   $jobfile =  $this->input->post('jbfl');
+   $job= $jobfile;
+   $check             =  $this->input->post('check');
+   $lodge             =  $this->input->post('lodge');
+   $cont_deposit      =  $this->input->post('cont_deposit');
+   $thc_charges       =  $this->input->post('thc_charges');   
+   $wharfage          =  $this->input->post('wharfage');
+   $arrastre          =  $this->input->post('arrastre');
+   $weight            =  $this->input->post('weight');
+   $del               =  $this->input->post('del');
+   $dispatch          =  $this->input->post('dispatch');
+   $storage           =  $this->input->post('storage');   
+   $demurrage         =  $this->input->post('demurrage');
+   $detention         =  $this->input->post('detention');
+   $eic               =  $this->input->post('eic');
+   $bai_app           =  $this->input->post('bai_app');
+   $bai_inspect       =  $this->input->post('bai_inspect');
+   $sra_app           =  $this->input->post('sra_app');   
+   $sra_inspect       =  $this->input->post('sra_inspect');
+   $bad_cargo         =  $this->input->post('bad_cargo');
+/*   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
+   $part_charges      =  mysql_real_escape_string($this->input->post('part_charges'));
+*/
+
+  //stop inserting data in jobfile to avoid duplication
+ /* $query= $this->db->query("Select * from vw_RunningCharges where
+        JobFileId='$job' limit 1");
+if($query->num_rows() ==1){*/
+
+  
+      $update_charges = array(
+              'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo
+            /*   'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges*/
+            );
+
+              $this->db->where('JobFile_AirId', $job);
+              $this->db->update('RunningCharges_Air', $update_charges);
+
+
+             $update_charges_history = array(
+               'JobFile_AirId'        => $job,
+               'LodgementFee'     => $lodge,
+               'ContainerDeposit' => $cont_deposit,
+               'THCCharges'       => $thc_charges,
+               'Arrastre'         => $arrastre,
+               'Wharfage'         => $wharfage,
+               'Weighing'         => $weight,
+               'DEL'              => $del,
+               'DispatchFee'      => $dispatch,
+               'Storage'          => $storage,
+               'Demorage'         => $demurrage,
+               'Detention'        => $detention,
+               'EIC'              => $eic,
+               'BAIApplication'   => $bai_app,
+               'BAIInspection'    => $bai_inspect,
+               'SRAApplication'   => $sra_app,
+               'SRAInspection'    => $sra_inspect,
+               'BadCargo'         => $bad_cargo,
+               'DateUpdated'      => Date('Y-m-d H:i'),
+               'UpdatedBy_UsrId'  => $userid
+            );
+          $this->db->insert('RunningCharges_AirHistory', $update_charges_history);
+//}
+   }
 
 
 
