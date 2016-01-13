@@ -240,7 +240,7 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
        var color_select   	 =  $('.pill-jobfile-air-add #color-select-air').val();
        var status_air   	 =  $('.pill-jobfile-air-add  #status_air').val();
 
-alert(jbfl);
+
 
         		$.ajax({
 			  		method: "POST",

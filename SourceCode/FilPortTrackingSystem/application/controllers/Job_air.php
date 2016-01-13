@@ -134,6 +134,12 @@ class Job_air extends CI_Controller {
               $this->db->insert('HistoricalStatus_Air',$air_insert);
           		/*$this->status_reports($status_report,$job,$userid);*/
           }
+
+            $add_charges = array(
+              'JobFile_AirId'    => $jobs
+            );
+      $this->db->insert('RunningCharges_Air', $add_charges);
+
   }
  }
 
@@ -245,8 +251,12 @@ function status_reports(){
    $sra_app           =  mysql_real_escape_string($this->input->post('sra_app'));   
    $sra_inspect       =  mysql_real_escape_string($this->input->post('sra_inspect'));
    $bad_cargo         =  mysql_real_escape_string($this->input->post('bad_cargo'));
-      $add_charges = array(
-              'JobFile_AirId'    => $jbfl,
+    
+       $job=$this->Jobdata->select_jobfile_air($jbfl);
+        foreach($job as $row){
+         $jobs =  $row->JobFile_AirId;
+        }
+      $update_charges = array(
               'LodgementFee'     => $lodge,
                'ContainerDeposit' => $cont_deposit,
                'THCCharges'       => $thc_charges,
@@ -267,12 +277,12 @@ function status_reports(){
             /*   'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges*/
             );
-
-$this->db->insert('RunningCharges_Air', $add_charges);
+$this->db->where('JobFile_AirId', $jobs);
+$this->db->update('RunningCharges_Air', $update_charges);
 
 
              $add_charges_history = array(
-               'JobFile_AirId'    => $jbfl,
+               'JobFile_AirId'    => $jobs,
                'LodgementFee'     => $lodge,
                'ContainerDeposit' => $cont_deposit,
                'THCCharges'       => $thc_charges,

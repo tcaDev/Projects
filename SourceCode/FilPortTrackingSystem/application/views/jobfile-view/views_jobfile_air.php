@@ -490,7 +490,5 @@ $('.btn-Add-Report-air').click(function(){
 
 
 <script>
- $(document).on('click','.btn-Goods-air',function(){
-   alert('elissss');
-});
+
 </script>
