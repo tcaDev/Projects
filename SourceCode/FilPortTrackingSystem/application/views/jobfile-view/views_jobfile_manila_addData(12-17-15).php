@@ -29,13 +29,13 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> <input type="hidden" class="msg-jobfile" />
-								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="search_jobfile(this)">
+				           		<label for="jbfl">JobFile No.:</label> <i style="color:red;font-size: 20px;">*</i> <span id="check_jobfiles"></span>
+								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onchange="search_jobfile(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
 				  				
 				           <div class="form-group">
-							 	 <label for="shipper">Shipper:<i style="color:red;">*</i><span class"ship-check"></span></label> 
+							 	 <label for="shipper">Shipper:</label> <i style="color:red;font-size: 20px;">*</i><span class"ship-check"></span>
 								  		<select name="shipper"  class="form-control input-sm shipper ">
 							            	<option> </option>
 							            	<?php  foreach($shipper_data as $row){  ?> 
@@ -48,7 +48,7 @@
 						      </div>
 
 						     <div class="form-group">
-								  <label for="consignee">Consignee:<i style="color:red;">*</i></label> 
+								  <label for="consignee">Consignee:</label> <i style="color:red;font-size: 20px;">*</i>
 								  		<select name="consignee" class="form-control input-sm consignee">
 								  			<option> </option>
 							            	<?php  foreach($consignee_data as $row){  ?> 
@@ -63,9 +63,9 @@
 				           	
 
 				           	<div class="form-group">
-								<label>Color Stages</label> <i style="color:red;">*</i>
+								<label>Color Stages</label> <i style="color:red;font-size: 20px;">*</i>
 									<select name="colors" class="form-control colsel input-sm" >
-									  	<option value="0" disabled selected>Jobfile Status</option>
+									  	<option value="" disabled selected>Jobfile Status</option>
 										<?php  foreach($color_data as $row){ 
 										   $status = $row->StatusId;
 										   if($status==0){?> 
@@ -88,7 +88,7 @@
 								 </div> -->
 
 								<div class="form-group">
-								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;">*</i> -->
+								  <label for="hbl">House Bill of Landing No.:</label><!-- <i style="color:red;font-size: 20px;">*</i> -->
 								  <input type="text" class="form-control input-sm hbl" name="hbl" id="hbl">
 								</div>
 
@@ -114,6 +114,17 @@
 						</div>
 
 					<div class="col-lg-4">
+
+								
+
+								<div class="form-group">
+				  				  
+								<!-- 	  <label for="vsl">Vessel / Voyage No.:</label>
+									  	<div class="vesel" >
+								  	
+								  		</div> -->
+								 </div>
+
 								 <div class="form-group">
 								  	<label for="dtClrd">Vessel Arrival Time</label>
 								 	<input type="datetime-local" name="ves_arrival_time" class="form-control input-sm vat">
@@ -202,7 +213,7 @@
 								</div>
 
 								<div class="form-group">
-								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;">*</i>
+								 	<label for="dtClrd">Reference Entry No.:</label><i style="color:red;font-size: 20px;">*</i>
 								 	<input type="text" name="entryno" class="form-control input-sm reference" id="entryno">
 								 	<i class="reference-msg" style="color:red;"></i>
 								</div>
@@ -234,25 +245,19 @@
 
 				  		<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Product Name</label><i style="color:red;">*</i>
-								<select class="form-control input-sm prodname" name="prodname">
-									<?php foreach($products as $row){ ?>
-											 <option value="<?php echo $row->ProductId?>">
-											 <?php echo $row->ProductName;?>
-											 </option>
-											<?php }?> 
-								</select> 
+								<label>Product Name</label><i style="color:red;font-size: 20px;">*</i>
+								<input type="text" class="form-control input-sm prodname" name="prodname">
 								<i class="prodname-msg" style="color:red;"></i>
 							</div>
 
 <!-- 						<div class="form-group">
-								<label>Purchase Order Number</label> <i style="color:red;">*</i>
+								<label>Purchase Order Number</label> <i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm PON"  name="PON">
 								<i class="pon-msg" style="color:red;"></i>
 							</div>
  -->
 							<div class="form-group">
-								<label>Container Number</label> <i style="color:red;">*</i>
+								<label>Container Number</label> <i style="color:red;font-size: 20px;">*</i>
 								<select class="containers-prod form-control input-sm"> 
 
 								</select>
@@ -268,7 +273,7 @@
 
 				  		<div class="col-lg-6">
 					  		<div class="form-group ">
-									<label>Origin Country</label><i style="color:red;">*</i>
+									<label>Origin Country</label><i style="color:red;font-size: 20px;">*</i>
 										<select  class="form-control origin" name="countries">
 											<?php foreach($countries as $row){ ?>
 											 <option value="<?php echo $row->CountryId?>">
@@ -296,8 +301,8 @@
 						    <table class="table" style="width: 1000px;" border="1">
 							    <thead>
 							    	 <tr>
-							    	 	<th class="hidden">Product Value</th>
 								        <th>Product Name</th>
+								       <!--  <th>Purchase Order Number</th> -->
 								        <th>Container</th>
 								        <th>Date Cleared BOC</th>
 								        <th class="hidden">Origin Value</th>
@@ -312,12 +317,12 @@
 
 		<!--container plate is no names yet -->
 				<!--CONTAINER WINDOW-->
-				  	<div id="tableAddContainer-mnla" class="hidden pill-container-mnla-add table-editable ">
+				  	<div id="tableAddContainer-mnla" class="hidden pill-container-mnla-add table-editable col-lg-12">
 
 				  	 	
 					  	<div class="col-lg-6">
 				  			<div class="form-group">
-								<label>Container Number</label><i style="color:red;">*</i>
+								<label>Container Number</label><i style="color:red;font-size: 20px;">*</i>
 							     
 					        		<input type="text" class="containerss form-control input-sm">
 							<i class="container-msg" style="color:red;"></i>
@@ -325,7 +330,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Container Size</label><i style="color:red;">*</i>
+								<label>Container Size</label><i style="color:red;font-size: 20px;">*</i>
 							     
 					        		<input type="text" class="containerss-size form-control input-sm">
 								<i class="container-size-msg" style="color:red;"></i>
@@ -333,20 +338,15 @@
 							</div>
 
 							<div class="form-group">
-
-							<label>Shipping Lines/Carrier</label><i style="color:red;">*</i>
-								<select class="form-control carrier" name="countries">
-										<?php foreach($carrier as $row){ ?>
-											 <option value="<?php echo $row->CarrierId?>">
-											 <?php echo $row->CarrierName;?>
-											 </option>
-											<?php }?> 
-								</select>
-									<i class="carrier-msg" style="color:red;"></i>
+								<input type="text" name="veselid" class="veselid hidden">
+				  				<input type="text" name="veselid" class="veseltext hidden">
+							<label>Shipping Lines/Carrier</label><i style="color:red;font-size: 20px;">*</i>
+								<div class="vesel" ></div>
+									<i class="vessel-msg" style="color:red;"></i>
 							</div>
 
 							<div class="form-group">
-								<label>Vessel</label> <i style="color:red;">*</i>
+								<label>Vessel</label> <i style="color:red;font-size: 20px;">*</i>
 								<input type="text" class="form-control input-sm vessel" id="vessel" name="vessel">
 								<i class="vessel-vessel-msg" style="color:red;"></i>
 							</div>
@@ -706,9 +706,9 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
+			else if($('.colsel').val() == "")
 			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
+				$('.colsel-msg').text("Need Color Selectivity");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
@@ -717,10 +717,6 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.colsel').val() == "0")
-			{
-				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -757,9 +753,9 @@
 			{
 				$('.jobfile-msg').text("Need Jobfile");
 			}
-			else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
+			else if($('.colsel').val() == "")
 			{
-				$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
+				$('.colsel-msg').text("Need Color Selectivity");
 			}
 			else if($('.required-fields .shipper').val() == "")
 			{
@@ -768,10 +764,6 @@
 			else if($('.required-fields .consignee').val() == "")
 			{
 				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.colsel').val() == "0")
-			{
-				$('.colsel-msg').text("Need Color Stages");
 			}
 			else if($('.reference').val() == "")
 			{
@@ -842,72 +834,34 @@
 		* Next Button
 		*/
 
-		var test=false;
-				function isExist_next(next){
-
-				var table_next = $("#tableAddContainer-mnla table tbody");
-
-				    test=false;
-				 	  table_next.find('tr').each(function(){
-					    if($('td:nth(0)',$(this)).html()===next) {
-					       test=true;            
-					        }   
-					     })
-				    return testme;
-				}
-
 		var i=0;
 
 		$(".btn-Next").click(function(){
-
-			if(i==0){
-				 if($('.required-fields .jobfiles').val() == "")
-				{
-					$('.jobfile-msg').text("Need Jobfile");
-				}
-				else if($('.required-fields #check_jobfiles').text() == "Jobfile already exists")
-				{
-					$('.jobfile-msg').text("Can't Proceed Jobfile Already Exists");
-				}
-				else if($('.required-fields .shipper').val() == "")
-				{
-					$('.shipper-msg').text("Need Shipper");
-				}
-				else if($('.required-fields .consignee').val() == "")
-				{
-					$('.consignee-msg').text("Need Consignee");
-				}
-				else if($('.colsel option:selected').val() == "0")
-				{
-					$('.colsel-msg').text("Need Color Stages");
-				}
-				else if($('.reference').val() == "")
-				{
-					$('.reference-msg').text("Need Reference Entry No.");
-				}
-				else
-				{
-					i=1;
-				}
-			}
-			else if(i==1)
+			
+			 if($('.required-fields .jobfiles').val() == "")
 			{
-				 var table = $("#tableAddContainer-mnla table tbody");
-
-				    table.find('tr').each(function (i) {
-				        var $tds = $(this).find('td'),
-				            productId = $tds.eq(0).text(),
-				        // do something with productId, product, Quantity
-				        alert('Row ' + (i + 1) + ':\nContainer: ' + productId);
-				    });
-
+				$('.jobfile-msg').text("Need Jobfile");
 			}
-			
-			
+			else if($('.colsel').val() == "")
+			{
+				$('.colsel-msg').text("Need Color Selectivity");
+			}
+			else if($('.required-fields .shipper').val() == "")
+			{
+				$('.shipper-msg').text("Need Shipper");
+			}
+			else if($('.required-fields .consignee').val() == "")
+			{
+				$('.consignee-msg').text("Need Consignee");
+			}
+			else if($('.reference').val() == "")
+			{
+				$('.reference-msg').text("Need Reference Entry No.");
+			}
+			else{i++;}
 
-		
-				
 			
+				   
 
 			/*Next Page*/
 			if(i==1){
@@ -993,18 +947,6 @@ $('.table-remove-cont').click(function () {
                            return false;
                 }
                });
-
-
-                $(".num_only").keypress(function (e) {
-                 //if the letter is not digit then display error and don't type anything
-                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                    //display error message
-                    /*$("#errmsg").html("Numbers Only").show().fadeOut("slow");
-                           return false;*/
-                           alert('Numbers Only');
-                           return false;
-                }
-               });
             });
 
             </script>
@@ -1054,7 +996,20 @@ $('.table-remove-cont').click(function () {
 				    return testme;
 				}
 
-				
+				var testme2=false;
+				function isExist2(prod,cont){
+
+				var table2 = $("#tableAddTruck-mnla table tbody");
+
+				    testme2=false;
+				 	  table2.find('tr').each(function(){
+				 	  	if($('td:nth(1)',$(this)).html()===cont) 
+					    if($('td:nth(0)',$(this)).html()===prod) {
+					       testme2=true;            
+					        }   
+					     })
+				    return testme2;
+				}
 
 		$(".btn-Add-Container-Data-mnla").click(function(){
 
@@ -1075,11 +1030,7 @@ $('.table-remove-cont').click(function () {
 			}
 			else if($('#tableAddContainer-mnla .vessel').val() == "")
 			{
-				$('.vessel-vessel-msg').text("Need Vessel.");
-			}
-			else if($('#tableAddContainer-mnla .carrier').val() == "0")
-			{
-				$('.carrier-msg').text("Need Carrier.");
+				$('.vessel-msg').text("Need Vessel.");
 			}
 			else{
 
@@ -1087,8 +1038,8 @@ $('.table-remove-cont').click(function () {
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss-size").val());
 	       /* $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss option:selected").text());*/
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".carrier").val()).hide();
-	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".carrier option:selected").text());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".veselid").val()).hide();
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".veseltext").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".vessel").val());
 
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".cartons").val());
@@ -1111,9 +1062,9 @@ $('.table-remove-cont').click(function () {
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
 			$('.container-size-msg').text('');
-			$('.vessel-vessel-msg').text('');
+			$('.vessel-msg').text('');
 			$('.truckplate-msg').text('');
-			$('.carrier-msg').text('');
+			$('.truckname-msg').text('');
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
@@ -1141,25 +1092,13 @@ $('.table-remove-cont').click(function () {
 });
 
 	
-		var testme2=false;
-				function isExist2(prod,cont){
-
-				var table2 = $("#tableAddTruck-mnla table tbody");
-
-				    testme2=false;
-				 	  table2.find('tr').each(function(){
-				 	  	if($('td:nth(2)',$(this)).html()===cont) 
-					    if($('td:nth(0)',$(this)).html()===prod) {
-					       testme2=true;            
-					        }   
-					     })
-				    return testme2;
-				}
+		
 
 		$(".btn-Add-Product-Data-mnla").click(function(){
 
 			var cont = $('#tableAddTruck-mnla .containers-prod option:selected').val();
-			var prod = $('#tableAddTruck-mnla .prodname option:selected').val();
+			var prod = $('#tableAddTruck-mnla .prodname').val();
+
 
 			if(isExist2(prod,cont))
 			{	
@@ -1177,22 +1116,23 @@ $('.table-remove-cont').click(function () {
 			{
 				$('.origin-msg').text("Need Origin.");
 			}else{
-				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td><td></td></tr>');
-				$('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val()).hide();
-			 	$('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".prodname option:selected").text());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".containers-prod").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".dt_boc").val());
-			    $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin").val()).hide();
-			     $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origin option:selected").text());
-			      $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html($(".origcity").val());
-			       	$('#tableAddTruck-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+				$('#tableAddTruck-mnla table').append('<tr><td></td><td></td><td></td><td><td></td></td><td></td><td></td></tr>');
+			 $('#tableAddTruck-mnla table tr:last td:nth-child(1)').html($(".prodname").val());
+			   /* $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".PON").val());*/
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(2)').html($(".containers-prod").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(3)').html($(".dt_boc").val());
+			     $('#tableAddTruck-mnla table tr:last td:nth-child(4)').html($(".origin").val()).hide();
+			      $('#tableAddTruck-mnla table tr:last td:nth-child(5)').html($(".origin option:selected").text());
+			       $('#tableAddTruck-mnla table tr:last td:nth-child(6)').html($(".origcity").val());
+			       	 $('#tableAddTruck-mnla table tr:last td:nth-child(7)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
-			
+			$('#tableAddTruck-mnla .prodname').val('');
 			$('#tableAddTruck-mnla .PON').val('');
 			$('#tableAddTruck-mnla .origincity').val('');
 
 			$('.cont-size-msg').text('');
 			$('.prodname-msg').text('');
+			$('.cont-size-msg').text('');
 			$('.origin-msg').text('');
 
 			}
@@ -1269,7 +1209,6 @@ $('.table-remove-cont').click(function () {
        
 
        //for containers table
-       			  	
 		    	  var table = $("#tableAddContainer-mnla table tbody");
 		    	  var ct = $("#tableAddContainer-mnla table tbody tr").length;
 		table.find('tr').each(function (count1) {
@@ -1352,86 +1291,16 @@ $('.table-remove-cont').click(function () {
 			  			    color_select   :color_select
 
 			  		}
-				});	
-					
-					if(c<=ct){
-						 insert_container(ct,c);
-					}
-		/*			var b = 1;		
-					while (b < ct) {
-    					
-    					if(b<=c){
-    					
-    					}else{
-    						break;
-    					}	
-    				b++;	
-					}*/
-											
-
+				});
+						
+						if(c!=ct+1){				
+						insert_container(ct,c);
+						}
+				     
 
 
 		});
 
-
-         //for running charges
-       var lodge 		  =  $('#lodge').val();
- 	   var cont_deposit   =  $('#cont-deposit').val();
-       var thc_charges    =  $('#thc-charges').val();
-       var arrastre       =  $('#arrastre').val();
-       var wharfage 	  =  $('#wharfage').val();
-       var weight         =  $('#weight').val();
-	   var del       	  =  $('#del').val();
-       var dispatch  	  =  $('#dispatch').val();
-       var storage 	 	  =  $('#storage').val();
-       var demurrage      =  $('#demurrage').val();
-	   var detention      =  $('#detention').val();
-       var eic  	  	  =  $('#EIC').val();
-       var bai_app 	 	  =  $('#bai-app').val();
-       var bai_inspect    =  $('#bai-inspect').val();
-	   var sra_app        =  $('#sra-app').val();
-       var sra_inspect    =  $('#sra-inspect').val();
-       var bad_cargo 	  =  $('#bad-cargo').val();
-       var all_charges    =  $('#all-charges').val();
-	   var part_charges   =  $('#part-charges').val();
-
-
-    $.ajax({
-		           method: "POST",
-	 		   url: "<?php echo base_url('Job/jobfile_add_charges');?>",
-			  	   data: {
-			  	   	           jbfl   		:jbfl,
-			  	   			   lodge        :lodge,
-			                   cont_deposit :cont_deposit,   
-			                   thc_charges  :thc_charges,
-			                   wharfage     :wharfage,
-			                   arrastre     :arrastre,
-			                   weight	    :weight,
-			                   del			:del,
-			                   dispatch     :dispatch,
-			                   storage      :storage,
-			                   demurrage    :demurrage,
-			                   detention    :detention,
-			                   eic          :eic,
-			                   bai_app      :bai_app,
-			                   bai_inspect  :bai_inspect,
-			                   sra_app      :sra_app,
-			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo,
-			                   all_charges  :all_charges,
-			                   part_charges :part_charges
-			  	   		 }
-	              })
-					.done(function(data) {
-	  							 $.alert({
-				        		title: 'Alert!',
-				        		content: 'Running Charges has been inserted!',
-				        		confirm: function(){
-				        	    }
-				   			   });
-	    		    })
-
-  
 	
 	});
 
@@ -1441,42 +1310,35 @@ $('.table-remove-cont').click(function () {
 
 <script>
 	function insert_container(ct,c){
-
-
 				       //for the 4th proc insert start
 		             //description of goods
 	var table2 	  = $("#tableAddTruck-mnla table tbody");
 	var ct2  = $("#tableAddTruck-mnla table tbody tr").length;         
 	table2.find('tr').each(function (i) {
 	    var c2 = i+1;
-if(ct2==c2){
-	if(ct==c){
+	    alert(c2 + " " +ct2)
+	if(c2!=ct2){
  			    	
 				       //unset the maxid
 				        var $tds		   = $(this).find('td'),
-
-				       	 	 prodid        = $tds.eq(0).text(),
-						     product_name  = $tds.eq(1).text(),
+						     product_name  = $tds.eq(0).text(),
 						   /*  prod_orderno  = $tds.eq(1).text();*/  //origin_id
-						     con_id        = $tds.eq(2).text(), //change to  container 
-						     dt_boc        = $tds.eq(3).text(); 
-						     origin_id     = $tds.eq(4).text();  //origin_id
-					         origin_cty    = $tds.eq(6).text();
+						     con_id        = $tds.eq(1).text(), //change to  container 
+						     dt_boc        = $tds.eq(2).text(); 
+						     origin_id     = $tds.eq(3).text();  //origin_id
+					         origin_cty    = $tds.eq(5).text();
 
-					         /*alert(con_id);*/
+				 	      
 
-
-					   /*      alert("prodid:" +prodid + " product_name" + product_name +
-					         " con_id" + con_id + " dt_boc:" + dt_boc + " origin_id" +
-					          "origin_cty" + origin_cty);*/
-
-					            $.ajax({
+					       /*  	alert("product_name:" + product_name + "container:" + con_id +  "origin_id:" + origin_id + "origin_cty:" + origin_cty);
+*/						
+					         	$.ajax({
 				  		           method: "POST",
 						 		   url: "<?php echo base_url('Job/jobfile_add2');?>",
 				  			  	   data: {
 				  			  	   			   product_name    :product_name,
-				  			                   con_id 	       :con_id,   
-				  			                   prodid          :prodid,
+				  			                   con_id 	       :con_id,   //change to container
+				  			                  /* prod_orderno    :prod_orderno,*/
 				  			                   dt_boc          :dt_boc,
 				  			                   origin_id	   :origin_id,
 				  			                   origin_cty	   :origin_cty
@@ -1486,6 +1348,8 @@ if(ct2==c2){
 				  			  	   		 }
 						              })
 										.done(function(data) {
+			  								if(ct2==c2){
+				  								if(ct==c){
 						  							 $.alert({
 									        		title: 'Alert!',
 									        		content: 'Data has been inserted!',
@@ -1493,21 +1357,16 @@ if(ct2==c2){
 									        	    }
 									   			   });
 						  							location.reload();
-
+												}
+									   		}
 						    		    })
 						    		    .fail(function(data) {
-				  						   			 $.alert({
-									        		title: 'Alert!',
-									        		content: 'inserting data failed!',
-									        		confirm: function(){
-									        	    }
-									   			   });
-						    	});
-	} 
-}    								
+				  						   console.log(data);
+						    		    });
+	}					    		    
 
 			});
-//for the 4th proc insert end
-}
+    			//for the 4th proc insert end
+ }
 </script>
 

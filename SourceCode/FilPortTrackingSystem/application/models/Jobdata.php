@@ -48,111 +48,16 @@ function get_vessels($JobFile){
 }
  function get_goods($products){
     $this->  db ->select('*');
-    $this -> db -> from('vw_Products');
-    $this -> db ->where('JobFileNo', $products);
-    $query=$this->db->get();
-    return $query->result();
- }
-
- function get_goods_air($products){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_ProductsAir');
-    $this -> db ->where('JobFileNo', $products);
+    $this -> db -> from('Products');
+    $this -> db ->where('ContainerByVesselId', $products);
     $query=$this->db->get();
     return $query->result();
  }
 
  function get_containers($id){
  	$this->  db ->select('*');
-    $this -> db -> from('vw_Containers');
-    $this -> db ->where('JobFileNo', $id);
-    $query=$this->db->get();
-    return $query->result();
- }
-
- 
- function get_charges($id){
- 	$this->  db ->select('*');
-    $this -> db -> from('RunningCharges');
-    $this -> db ->where('JobFileId', $id);
-    $query=$this->db->get();
-    return $query->result();
- }
- function get_status($id){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_StatusReports');
-    $this -> db ->where('JobFileNo', $id);
-    $query=$this->db->get();
-    return $query->result(); 
- }
-
- function get_status_air($id){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_StatusReportsAir');
-    $this -> db ->where('JobFileNo', $id);
-    $query=$this->db->get();
-    return $query->result(); 
- }
-
-  function select_jobfile($job){
- 	$this->  db ->select('JobFileId');
-    $this -> db -> from('JobFile');
-    $this -> db ->where('JobFileNo', $job);
-    $query=$this->db->get();
-    return $query->result();
- }
-   function select_jobfile_air($job){
-    $this->  db ->select('JobFile_AirId');
-    $this -> db -> from('JobFile_Air');
-    $this -> db ->where('JobFileNo', $job);
-    $query=$this->db->get();
-    return $query->result();
- }
- function select_carrier($vessel){
-    $query = $this->db->query("Select CarrierByJobFileId from CarrierByJobFile
-    where VesselVoyageNo='$vessel'  ORDER BY CarrierByJobFileId desc limit 1");
-    return $query->result();
- }
-  function select_productcontainer($cont){
-    $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
-    where ContainerNo='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
-    return $query->result();
- }
-
-
- 
-
-function comodity($comodity){
-  $this->db->insert('ProductsByContainer',$comodity); 
-     $insert_id = $this->db->insert_id();
-     return  $insert_id;
-}
-
-function get_vessel_container($vessel_container,$vessel){
-     $query = $this->db->query("Select VesselVoyageNo,CarrierByJobFileId from vw_CarrierByJobFile
-            where JobFileNo='$vessel_container' and VesselVoyageNo !='$vessel' ");
-    return $query->result();
-}
-
-function get_container_product($container_product){
-     $query = $this->db->query("Select ContainerNo,ContainerByCarrierId from vw_Containers
-            where JobFileNo='$container_product' ");
-    return $query->result();
-}
-
-function get_countryID_manila($jobfile){
-    $query = $this->db->query("Select Origin_CountryId,OriginCity from JobFile where JobFileNo ='$jobfile'");
-    return $query->result();
-  }
-
-  function get_countryID_air($jobfile){
-    $query = $this->db->query("Select Origin_CountryId,OriginCity from JobFile_Air where JobFileNo ='$jobfile'");
-    return $query->result();
-  }
-
- function all_goods(){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_Products');
+    $this -> db -> from('ContainerByVessel');
+    $this -> db ->where('VesselByJobFileId', $id);
     $query=$this->db->get();
     return $query->result();
  }
@@ -181,6 +86,8 @@ function get_countryID_manila($jobfile){
     $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId='$mon' ORDER BY JobFileId desc limit 10 ");
     return $query->result();
  }
+
+
 
 }
 

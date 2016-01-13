@@ -197,48 +197,58 @@
 								         
 								         <td><?php echo stripslashes($i);?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
-								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
-								           <?php echo $pick1 ;?>
-								          <td><?php echo stripslashes($row->ShipperName); ?></td>
-								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
-								          <td>
-									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
-										  </td>
-								          <td>
-								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
-								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
-								          </td>
-										  <td>
-										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-										  		<button type="button" class="btn btn-Add-Product-mnla btn-success" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
-										  </td>
-										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
- 										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
-								          <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
-								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
-										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
- 									      <td><?php echo stripslashes($row->Registry); ?></td>
-										 
-								           <td><?php echo stripslashes($row->Origin); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
-								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfBL) ?></td>
-								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfOtherDocs) ?></td>
-								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
- 										  <td><?php echo stripslashes($row->Broker); ?></td>
- 										  	<td class="hidden"><?php echo stripcslashes($DateRequestBudgetToGL) ?></td>
-								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($RFPDueDate) ?></td>
-								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
-								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
-								          <td>
-								          		<button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-								          		<button type="button" class="btn btn-Add-Report-mnla btn-success" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
-								          </td>
-								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
-								          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
+
+								          <td><?php echo $row->JobFileId; ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+
+								          <?php echo $pick1 ;?>
+
+								          <td><?php echo $row->ShipperName; ?></td>
+
+								          <td><?php echo $row->ConsigneeName; ?></td>
+
+								          <td class="view_goods"><button type="button" class="btn btn-Goods btn-info" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Goods</button></td>
+
+								          <td><?php echo $row->PurchaseOrderNo; ?></td>
+
+								          <td><?php echo $row->HouseBillLadingNo; ?></td>
+
+								          <td><?php echo $row->MasterBillLadingNo; ?></td>
+
+								          <td class="view_containers"><button type="button" class="btn btn-Container btn-info" data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container No.</button></td>
+
+								          <td><?php echo $row->LetterCreditFromBank; ?></td>
+
+								          <td><?php echo $row->Registry; ?></td>
+
+								          <td><?php echo $row->CarrierName; ?></td>
+								        
+								          <td><?php echo $row->DateReceivedNoticeFromClients; ?></td>
+
+								          <td><?php echo $row->DateReceivedOfBL; ?></td>
+
+								          <td><?php echo $row->DateReceivedOfOtherDocs; ?></td>
+
+								          <td><?php echo $row->Broker; ?></td>
+
+								          <td><?php echo $row->DateRequestBudgetToGL; ?></td>
+
+								          <td><?php echo $row->RFPDueDate; ?></td>
+
+								          <td><?php echo $row->DateSentPreAssessment; ?></td>
+
+								          <td><?php echo $row->DateFileEntryToBOC; ?></td>
+
+								          <td><?php echo $row->DateSentFinalAssessment; ?></td>
+
+								          <td><?php echo $row->RefEntryNo; ?></td>
+
+								          <td>Color Selectivity</td>
+
+								          <td><?php echo $row->DatePaid; ?></td>
+
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								      
 								        </tr>
 
 								        <?php } ?>
@@ -768,9 +778,7 @@ $(document).ready(function(){
 
 
  $('.view_goods').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
- 			var button_update = "btn-update-product";
- 			var modal = "mnla";
+ 		var ids =  $(this).closest('tr').children('td:eq(0)').text();
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_goods');?>",
@@ -786,7 +794,7 @@ $(document).ready(function(){
 
 
   $('.view_containers').click(function(){	
- 		var ids =  $(this).closest('tr').children('td:eq(2)').text();
+ 		var ids =  $(this).closest('tr').children('td:eq(1)').text();
  	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",
@@ -798,6 +806,23 @@ $(document).ready(function(){
 				  				$('.list_conts').html(data);
 					});
  });
+
+ $('.runchar').click(function(){	
+ 		var ids =  $(this).closest('tr').children('td:eq(4)').text();
+ 	/* alert(ids);*/
+	 		  $.ajax({
+				  		method: "POST",
+						  url: "<?php echo base_url('Job/running_charges');?>",
+				  		data: { id:ids,
+				  		}
+					})
+			  		.done(function(data) {
+				  				$('.list_charges').html(data);
+					});
+ });
+
+
+  
 
 
 
