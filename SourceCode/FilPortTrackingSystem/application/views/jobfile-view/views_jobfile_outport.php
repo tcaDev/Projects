@@ -71,7 +71,7 @@
 
 
 
-			<div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+			<div id="scroller" class="table-responsive job-outport" style= "overflow-y:auto; height :485px; width:100%;">
 
 				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
@@ -229,7 +229,7 @@
 								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
 								          		<button type="button" class="btn btn-Add-Report-outport btn-success" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
-								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td ><button type="button" class="btn btn-StatusReport btn-info runchar-outport view_charges-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        	<td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 								        </tr>
 
@@ -742,7 +742,7 @@ function refresh_table_outport() {
         /*View Charges*/
         $('.view_charges-outport').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
- 		
+ 	
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges');?>",
