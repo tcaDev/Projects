@@ -13,7 +13,7 @@
 					           <input type="hidden" value="3" name="monitoring_type" class="monitoring_type-air"/>
 
 
-					           	<div class="required-fields-air">
+					           	<div class="required-fields-air-update">
 					           		<div class="form-group">
 					              <!--check if jofile is already exists -->
 					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-air"></span></label> 

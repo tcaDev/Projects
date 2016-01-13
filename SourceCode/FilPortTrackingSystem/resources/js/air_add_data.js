@@ -1,13 +1,13 @@
  var link = 'http://localhost/FilPortTrackingSystem';
 
 //FOR COLOR SELECT DROPDOWN
-	$('.colsel-air').change(function(){
+	$('.required-fields-air .colsel-air').change(function(){
   var status = $(this).val();
-  var color = $('.colsel-air option:selected').attr('data-color');
+  var color = $('.required-fields-air .colsel-air option:selected').attr('data-color');
     if(status==1){
-    	$('.colsel-air').css({ 'color': 'red','background-color':'white' });
+    	$('.required-fields-air .colsel-air').css({ 'color': 'red','background-color':'white' });
     }else{
-     $('.colsel-air').css({'background-color': color,'color': 'white'});
+     $('.required-fields-air .colsel-air').css({'background-color': color,'color': 'white'});
   	}
  });
 
@@ -75,15 +75,20 @@ var suc;
 			{
 				$('.consignee-msg-air').text("Need Consignee");
 			}
-			else if($('.hbl-air').val() == '')
+			else if($('.required-fields-air .hbl-air').val() == '')
 			{
 				$('.colsel-msg-air').text("Need House Bill of Lading No.");
 			}
-			else if($('#check_jobfiles-air').text() == "Jobfile is already exists in Outport")
+			else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile is already exists in Outport")
 			{
 				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");
 			}
-				else if($('#check_jobfiles-air').text() == "Jobfile is already exists in Manila")
+				else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile is already exists in Manila")
+			{
+				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");
+			}
+
+			else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile is already exists in Air")
 			{
 				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");
 			}

@@ -79,7 +79,7 @@
 										
 								</div>
 
-					           </div>
+					           
 						
 							
 									<div class="form-group">
@@ -89,6 +89,7 @@
 									  <i class="colsel-msg-air" style="color:red;"></i>
 									</div>
 
+									</div>
 									<div class="form-group">
 									  <label for="mbl">Master Airway Bill:</label>
 									  <input type="text" class="form-control input-sm mbl-air">
@@ -154,7 +155,7 @@
 										</div>
 
 										<div class="form-group ">
-											<label>Origin Country</label><i style="color:red;">*</i>
+											<label>Origin Country</label>
 												<select  class="form-control origin-air" name="countries">
 													<?php foreach($countries as $row){ ?>
 													 <option value="<?php echo $row->CountryId?>">
