@@ -179,7 +179,7 @@
 				      		<tr>
 					         	  <td><?php echo stripslashes($i);?></td>
 						          <td><button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-3-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
-						          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+						          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 						           <?php echo $pick1 ;?>
 						          <td><?php echo stripslashes($row->ShipperName); ?></td>
 						          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
@@ -249,7 +249,7 @@
 				        <div class="modal-body">
 
 				        	<div style='overflow-x:auto;'>	
-				            	<div class="list_products"> </div>
+				            	<div class="list_products_air"> </div>
 				            </div>
 
 				        </div>
@@ -277,7 +277,7 @@
 				          <h4 class="modal-title">Status Report</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_status"> </div>
+				            <div class="list_status_air"> </div>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
@@ -302,7 +302,7 @@
 				          <h4 class="modal-title">Running Charges</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_charges"> </div>
+				            <div class="list_charges_air"> </div>
 
 				        </div>
 				        <div class="footer-modal">
@@ -401,15 +401,15 @@
 
 <script>
  $(document).on('click','.btn-Goods-air',function(){
-   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   		$('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
    });	
 
    $(document).on('click','.btn-StatusReport-air',function(){
-   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   		$('.list_status_air').html('<div class="list_status_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
    });
 
        $(document).on('click','.runchar-air',function(){
-   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   		$('.list_charges_air').html('<div class="list_charges_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
    });
 
 
@@ -424,7 +424,7 @@
                 })
                 .done(function(data) {
                 	
-                    $('.list_products').html(data);
+                    $('.list_products_air').html(data);
                 });
         });
 
@@ -440,7 +440,7 @@
                             }
                         })
                         .done(function(data) {
-                                $('.list_status').html(data);
+                                $('.list_status_air').html(data);
                         });
         });
 
@@ -458,7 +458,7 @@
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_charges').html(data);
+                                    $('.list_charges_air').html(data);
                                 });
         });
 

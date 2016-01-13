@@ -190,7 +190,7 @@
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
 								          <td><?php echo stripslashes($i);?></td>
 								          <td><button type="button" class="btn btn-Update-outport btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
-								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
+								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#askjd" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName);?></td>
@@ -256,7 +256,7 @@
 				          <h4 class="modal-title">List of Vessels</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_vessels"> </div>
+				            <div class="list_vessels_outport"> </div>
 
 				        </div>
 				        <div class="modal-footer">
@@ -283,7 +283,7 @@
 				          <h4 class="modal-title">List of Commodity</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_products"> </div>
+				            <div class="list_products_outport"> </div>
 
 				        </div>
 				        <div class="modal-footer">
@@ -310,7 +310,7 @@
 				          <h4 class="modal-title">Status Report</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_status"> </div>
+				            <div class="list_status_outport"> </div>
 				        </div>
 				        <div class="modal-footer">
 				          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
@@ -337,7 +337,7 @@
 				        </div>
 				        <div class="modal-body">
 				        	<div style='overflow-x:auto;'>	
-				            	<div class="list_conts"> </div>
+				            	<div class="list_conts_outport"> </div>
 				            </div>
 				        </div>
 				        <div class="modal-footer">
@@ -364,7 +364,7 @@
 				          <h4 class="modal-title">Running Charges</h4>
 				        </div>
 				        <div class="modal-body">
-				            <div class="list_charges"> </div>
+				            <div class="list_charges_outport"> </div>
 
 				        </div>
 				        <div class="footer-modal">
@@ -388,19 +388,19 @@ $(document).ready(function(){
 
 
    $(document).on('click','.btn-Container-outport',function(){
-   		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   		$('.list_conts_outport').html('<div class="list_conts_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
    });
     $(document).on('click','.btn-Goods-outport',function(){
-   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   		$('.list_products_outport').html('<div class="list_products_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
    });
      $(document).on('click','.btn-Vessel-outport',function(){
-   		$('.list_vessels').html('<div class="list_vessels"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   		$('.list_vessels_outport').html('<div class="list_vessels_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
    });
       $(document).on('click','.btn-StatusReport-outport',function(){
-   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   		$('.list_status_outport').html('<div class="list_status_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
    });
        $(document).on('click','.runchar-outport',function(){
-   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   		$('.list_charges_outport').html('<div class="list_charges_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
    });
 
 var jbfl_outport;
@@ -698,7 +698,7 @@ function refresh_table_outport() {
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_conts').html(data);
+                                    $('.list_conts_outport').html(data);
                                 });
         });
         
@@ -716,7 +716,7 @@ function refresh_table_outport() {
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_products').html(data);
+                                    $('.list_products_outport').html(data);
                                 });
         });
         
@@ -735,7 +735,7 @@ function refresh_table_outport() {
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_vessels').html(data);
+                                    $('.list_vessels_outport').html(data);
                                 });
         });
         
@@ -750,7 +750,7 @@ function refresh_table_outport() {
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_charges').html(data);
+                                    $('.list_charges_outport').html(data);
                                 });
         });
         
@@ -764,7 +764,7 @@ function refresh_table_outport() {
                                         }
                                     })
                                     .done(function(data) {
-                                            $('.list_status').html(data);
+                                            $('.list_status_outport').html(data);
                                     });
         });
         
