@@ -475,7 +475,9 @@ class Job extends CI_Controller {
                         </div>';
                       }
 
-   // }
+
+
+           
     }
 
     function get_vessels(){

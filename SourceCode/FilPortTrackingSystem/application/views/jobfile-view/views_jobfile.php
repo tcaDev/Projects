@@ -6,11 +6,11 @@
 
 		  <ul class="nav nav-tabs">
 
-		    <li class="active"><a data-toggle="tab" href="#manila">SEA FREIGHT MANILA</a></li>
+		    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA</a></li>
 
-		    <li><a data-toggle="tab" href="#outport">SEA FREIGHT OUTPORT</a></li>
+		    <li><a data-toggle="tab" href="#outport" class="sea_outport">SEA FREIGHT OUTPORT</a></li>
 
-		    <li><a data-toggle="tab" href="#air">AIR FREIGHT</a></li>
+		    <li><a data-toggle="tab" href="#air" class="air_freight">AIR FREIGHT</a></li>
 
 		  </ul>
 

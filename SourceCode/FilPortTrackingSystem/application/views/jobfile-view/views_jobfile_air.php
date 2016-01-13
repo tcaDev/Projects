@@ -309,7 +309,7 @@
 				        <hr>
 				        	<button type="button" class="btn btn-danger update_charges-air-qwerty">Update</button>
 
-				        	<button type="button" class="btn btn-danger update_charges-air" disabled>Save</button>
+				        	<button type="button" class="btn btn-danger update_charges-air-asdfghj" disabled>Save</button>
 
 				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				        </div>
@@ -341,9 +341,21 @@
 					$('#runchar-air .sra-inspect').removeAttr('disabled');
 					$('#runchar-air .bad-cargo').removeAttr('disabled');
 
-					$('.update_charges-air').removeAttr('disabled');
+					$('.update_charges-air-asdfghj').removeAttr('disabled');
 					$(this).attr('disabled','disabled');
 			});
+
+		
+ $(document).on('click','.update_charges-air-asdfghj',function(){
+  var lodge = $('#runchar-air #lodge_airs').val();
+
+  alert(lodge);
+   
+});
+
+
+
+     
 	</script>
 
 
@@ -489,11 +501,3 @@ $('.btn-Add-Report-air').click(function(){
 
 
 
-<script>
- $(document).on('click','.update_charges-air',function(){
- 	var lodge = $('#lodge_airs').val();
-
- 	alert(lodge);
-   
-});
-</script>

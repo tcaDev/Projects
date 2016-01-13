@@ -111,12 +111,12 @@
 
 								<div class="form-group">
 								  <label for="bank">Letter of Credit No. from Bank:</label>
-								  <input type="text" class="form-control input-sm bank" name="bank" id="bank">
+								  <input type="text" class="form-control input-sm bank-outport" name="bank" id="bank">
 								</div>
 
 								<div class="form-group">
 								  <label for="registry">Registry:</label>
-								  <input type="text" class="form-control input-sm registry" name="registry" id="registry">
+								  <input type="text" class="form-control input-sm registry-outport" name="registry" id="registry">
 								</div>
 
 								<div class="form-group ">
@@ -134,23 +134,23 @@
 
 								<div class="form-group">
 									<label>Origin City</label>
-									<input type="text" name="origcity" class="form-control input-sm origcity" />
+									<input type="text" name="origcity" class="form-control input-sm origcity-outport" />
 								</div>
 								
 
 								<div class="form-group">
 								  <label for="dtRcvd">Date Received Arrival Notice From Client / SLINE:</label>
-								  <input type="datetime-local" name="dtRcvd" class="form-control input-sm dtRcvd" >
+								  <input type="date" name="dtRcvd" class="form-control input-sm dtRcvd-outport" >
 								</div>
 
 								<div class="form-group">
 								  <label for="dtPckup">Date Pick-up / Received O-BL:</label>
-								  <input type="datetime-local" name="dt_pickup_obl" class="form-control input-sm dt_pickup_obl" >
+								  <input type="date" name="dt_pickup_obl" class="form-control input-sm dt_pickup_obl-outport" >
 								</div>
 
 								<div class="form-group">
 								  <label for="dtPckRcv">Date Pick-up / Received Other Document :</label>
-								  <input type="datetime-local" name="dt_pickup_docs" class="form-control input-sm dt_pickup_docs" >
+								  <input type="date" name="dt_pickup_docs" class="form-control input-sm dt_pickup_docs-outport" >
 								 </div>
 
 				  			</div>
@@ -160,7 +160,7 @@
 
 							<div class="form-group">
 									 <label for="broker">Broker:</label>
-							  			<select name="broker"id="Broker"class="form-control input-sm broker">
+							  			<select name="broker"id="Broker"class="form-control input-sm broker-outport">
 							            	<?php  foreach($broker_data as $row){  ?> 
 							                <option value="<?php echo $row->BrokerId ?>">
 							                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
@@ -170,26 +170,26 @@
 						          </div>
 						           <div class="form-group">
 						              <label for="dtPckRcv">Purchase Order No.</label>
-								      <input type="text"  class="form-control input-sm dt_pickup_docs" id="purch_order_no">
+								      <input type="text"  class="form-control input-sm dt_pickup_docs-outport" id="purch_order_no">
 
 						           </div>
 
 						           <div class="form-group">
 						               <label for="dtReq">Date Request Budget to GL:</label>
-									   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dtReq">
+									   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dt_req_budget-outport">
 								  </div>
 
 						         
 								<div class="form-group">
 									 <label for="rfp">Reference Due Date:</label>
-									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="rfp">
+									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="ref_due_dt-outport">
 								 </div>
 
 								
 
 								<div class="form-group">
 									<label>Color Selectivity :</label>
-									<select name="color-select" id="color-select-outport" class="form-control input-sm color-select">
+									<select name="color-select" id="color-select-outport" class="form-control input-sm color-select-outport">
 										<?php foreach($color_selectivity as $row){ ?>
 												 <option value="<?php echo $row->ColorSelectivityId?>">
 												 <?php echo $row->ColorSelectivityName;?>
@@ -202,7 +202,7 @@
 
 								 <div class="form-group">
 								   <label for="status">Status Report:</label>
-								  	<textarea name="status" rows="5" class="form-control input-sm status" id="status"></textarea>
+								  	<textarea name="status" rows="5" class="form-control input-sm status-outport" id="status"></textarea>
 								 </div>
 				  			</div>
 				  		</div>
