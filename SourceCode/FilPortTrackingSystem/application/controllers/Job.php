@@ -884,7 +884,8 @@ class Job extends CI_Controller {
              echo "<td class='row '>".stripslashes($row->HaulerOrTruck) ."</td>";
              echo "<td class='row '>".stripslashes($row->TotalStorage) ."</td>";
              echo "<td class='row '>".stripslashes($row->AdtlPerDayncludeVat) ."</td>";
-              echo "<td class='row hidden'>".stripslashes($row->JobFileNo) ."</td>";
+             echo "<td class='row hidden'>".stripslashes($row->JobFileNo) ."</td>";
+             echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>"; 
              echo "</tr>";
          }
 

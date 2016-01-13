@@ -207,13 +207,13 @@
 
 							           <div class="form-group">
 							               <label for="dtReq">Date Request Budget to GL:</label>
-										   <input type="date" name="dt_req_budget" class="form-control input-sm" id="dt_req_budget-air">
+										   <input type="date" name="dt_req_budget" class="form-control input-sm dt_req_budget-air" id="dt_req_budget-air">
 									  </div>
 
 							         
 									<div class="form-group">
 										 <label for="rfp">Reference Due Date:</label>
-										 <input type="date" name="ref_due_dt" class="form-control input-sm " id="ref_due_dt-air">
+										 <input type="date" name="ref_due_dt" class="form-control input-sm ref_due_dt-air" id="ref_due_dt-air">
 									 </div>
 									 
 
@@ -237,13 +237,14 @@
 					<div style="width: 100%; overflow-x: auto;"> </div>
     	</div>
 	<div class="modal-footer">
-	   	 <button type="button" class="btn btn-danger update_container">Save</button>
+	   	 <button type="button" class="btn btn-danger update_container_air">Save</button>
 	     <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
 	</div>
 </div>
 
 <script>
-	
+var jbs_air;
+
 	$(document).on('click','.btn-Update-air', function(){
 			var jobfile =  $(this).closest('tr').children('td:eq(2)').text();
 			var color_stages =  $(this).closest('tr').children('td:eq(3)').text();
@@ -272,7 +273,7 @@
 			var color_selectivity =  $(this).closest('tr').children('td:eq(30)').text();
 			var JobFileID =  $(this).closest('tr').children('td:eq(33)').text();
 		
-
+    jbs_air=jobfile;
 
 
 				$('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
@@ -344,5 +345,95 @@
 
 							
 	});
+	$(document).on('click','.update_container_air', function(){
+		
+	  var   j_new	        = $(".jobfiles-air").val();
+      var  shipper_air 		= $(".shipper-air").val();
+ 	  var  consignee_air 	= $(".consignee-air").val();
+      var  colsel_air 	    = $(".colsel-air").val();
+      var  hbl_air          = $(".hbl-air").val();
+      var  mbl_air 			= $(".mbl-air").val();
+      var  flight_air 		= $(".flight-air").val();
+      var  forwarder_air 	= $(".forwarder-air").val();
+ 	  var  warehouse_air 	= $(".warehouse-air").val();
+      var  aircraft_air 	= $(".aircraft-air").val();
+      var  edt_air 			= $(".edt-air").val();
+      var  eat_air 			= $(".eat-air").val();
+      var  aat_air 			= $(".aat-air").val();
+      var  cartons_air 		= $(".cartons-air").val();
+ 	  var  bank_air 		= $(".bank-air").val();
+      var  registry_air 	= $(".registry-air").val();
+      var  origin_air 		= $(".origin-air").val();
+      var  origcity_air 	= $(".origcity-air").val();
+      var  dtRcvd_airline_air = $(".dtRcvd-airline-air").val();
+      var  dtRcvd_air 		  = $(".dtRcvd-air").val();
+ 	  var  dt_pickup_obl_air  = $(".dt_pickup_obl-air").val();
+      var  dt_pickup_docs_air = $(".dt_pickup_docs-air").val();
+      var  broker_air 		  = $(".broker-air").val();
+      var  purch_order_no_air = $(".purch_order_no-air").val();
+      var  dt_req_budget_air  = $(".dt_req_budget-air").val();
+      var  ref_due_dt_air 	  = $(".ref_due_dt-air").val();
+ 	  var  color_select_air   = $(".color-select-air").val();
+
+  
+
+ 	  			 $.ajax({
+			  		method: "POST",
+					url:"<?php echo base_url('Job_air_update')?>",
+				    beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Updating Jobfile ',
+				   			});
+ 					  },
+			  		data: {
+			  			    jbfl_new               :j_new,
+			  			    jbfl                   :jbs_air,
+			  			    shipperid          	   :shipper_air,
+			  			    cosigid 		  	   :consignee_air,
+			  			    nocart		           :cartons_air,
+			  			    purchord               :purch_order_no_air,
+			  		        letcred          	   :bank_air,
+			  		        hbl                    :hbl_air,
+			  			    mbl		  			   :mbl_air,
+			  			    countryid			   :origin_air,
+			  			    city  				   :origcity_air,
+			  			    etd					   :edt_air,
+			  			    eta					   :eat_air,
+			  			    ata					   :aat_air,
+			  			    flight				   :flight_air,
+			  			    aircraft               :aircraft_air,
+			  			    forward                :forwarder_air,
+			  			    warehouse              :warehouse_air,
+			  			    dt_rec_arv_aline       :dtRcvd_airline_air,
+			  			    dt_rec_arv_client      :dtRcvd_air,
+			  			    dtpickup_hawb          :dt_pickup_obl_air,
+			  			    dtpikup_docs           :dt_pickup_obl_air,
+			  			    brokerid               :broker_air,
+			  			    dtreqbudget            :dt_req_budget_air,
+			  			    rfpduedate             :ref_due_dt_air,
+			  			    color_select           :color_select_air,
+			  			    status                 :colsel_air
+	
+
+
+			  		}
+				})
+			    .done(function(data) {
+			    		$.alert({
+	  							backgroundDismiss: false, 	 	
+				        		title: 'Success!',
+				        		content:data,
+				        		confirm: function(){
+									dia.close();
+								   location.reload();
+				        	    }
+				   			});   	  
+	    	     });
+		
+    });
 	
 </script>

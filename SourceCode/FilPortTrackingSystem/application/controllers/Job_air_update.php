@@ -7,7 +7,8 @@ class Job_air_update extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
-            date_default_timezone_set('Asia/Manila');   
+            date_default_timezone_set('Asia/Manila');  
+            $this->load->model('Jobdata'); 
        }
 
 
@@ -15,6 +16,8 @@ class Job_air_update extends CI_Controller {
      function index(){
       $session_data    =  $this->session->userdata('logged_in');
       $userid          =  $session_data['uid'];
+
+      $jbfl_new        =  $this->input->post('jbfl_new');
       $jbfl 	         =  $this->input->post('jbfl');
       $shipperid       =	$this->input->post('shipperid');
       $cosigid 		     =	$this->input->post('cosigid');
@@ -44,14 +47,16 @@ class Job_air_update extends CI_Controller {
       $status_report		     = $this->input->post('status_report');
 
          //stop inserting data in jobfile to avoid duplication
-   $chek= $this->db->query("Select * from JobFile where
-        JobFileNo='$jbfl' limit 1");
+   $chek= $this->db->query("Select * from JobFile_Air where
+        JobFile_AirId='$jbfl' limit 1");
     if($chek->num_rows() ==1){
       echo "JobFile already Exists";
      }else{
-       echo "New Jobfile is Added";
+       echo "Jobfile is updated";
+
 
       $air_job = array(
+                'JobFileNo'                =>$jbfl_new,
       					'ShipperId' 			         =>$shipperid, 
       					'ConsigneeId'   	      	 =>$cosigid,
       					'NoOfCartons'			         =>$nocart,
@@ -81,13 +86,16 @@ class Job_air_update extends CI_Controller {
       					'StatusId'						              =>$status
 
       				   );
-
-       $this->db->where('JobFileNo',$jbfl); 
+         $job= $this->Jobdata->select_jobfile_air($jbfl);
+        foreach($job as $row){
+      echo   $job_id =  $row->JobFile_AirId;
+        }
+       $this->db->where('JobFile_AirId',1); 
        $this->db->update('JobFile_Air',$air_job); 
 
-        $job           = $this->Jobdata->select_jobfile($jbfl);
+/*        $job= $this->Jobdata->select_jobfile_air($jbfl);
         foreach($job as $row){
-         $job_id =  $row->JobFileId;
+         $job_id =  $row->JobFile_AirId;
         }
           $air_job2 = array(
              	  'JobFile_AirId'			          =>$job_id,
@@ -123,8 +131,9 @@ class Job_air_update extends CI_Controller {
       					'UpdatedBy_UserId'			    	 =>$userid
       				   );
 
-       $this->db->insert('JobFile_AirHistory',$air_job2); 
+       $this->db->insert('JobFile_AirHistory',$air_job2); */
       }
+
      }
 
 
@@ -138,29 +147,33 @@ class Job_air_update extends CI_Controller {
       $gross           =  $this->input->post('gross');
       $dtfinal_assess  =  $this->input->post('dtfinal_assess');  
       $dtpaid          =  $this->input->post('dtpaid');
-      $dtpre_assess    =  $this->input->post('dtpre_assess');
+      $dtpre_assess    =  $this->input->post('pre_assess');
       $dt_boc_cleared  =  $this->input->post('dt_boc_cleared');
       $tdt             =  $this->input->post('tdt');
       $ac_pu_dt_naia   =  $this->input->post('ac_pu_dt_naia');
       $dt_rec_whse     =  $this->input->post('dt_rec_whse');
       $hauler_trucker  =  $this->input->post('hauler_trucker');
-      $total_stor      =  $this->input->post('total_stor');
-      $adtlperday      =  $this->input->post('adtlperday');
+      $total_stor      =  $this->input->post('total_storage');
+      $adtlperday      =  $this->input->post('addtl_per_day');
 
       //air id history
-      $Products_arid  =  $this->input->post('Products_arid');
-      
+       $Products_arid  =  $this->input->post('ProductAirID');
+        $job     = $this->Jobdata->select_jobfile_air($jbfl);
+        foreach($job as $row){
+      echo   $job_id =  $row->JobFile_AirId;
+        }
+
       
 
       $products_update = array
       					(
                   'ProductId'                   =>$prodid,
-      						'JobFile_AirId'				   	    =>$jbfl,
-      						'RefEntryNo'					        =>$refentry,
+      						'JobFile_AirId'				   	    =>$job_id,
+      						'RefEntryNo'					        =>$refentry,  
       						'GrossWeight'					        =>$gross,
       						'DateSentFinalAssessment' 		=>$dtfinal_assess,
       						'DatePaid'						        =>$dtpaid,
-      						'DateSentPreAssessment'		   	=>$dtpre_assess,
+      						'DateSentPreAssessment'		   	=>$dtpre_assess, //la
       						'DateBOCCleared'				      =>$dt_boc_cleared,
       						'TargetDeliveryDate'		    	=>$tdt,
       						'ActualPullOutDateAtNAIA'	  	=>$ac_pu_dt_naia,
@@ -172,10 +185,6 @@ class Job_air_update extends CI_Controller {
        $this->db->where('Products_AirId',$Products_arid);
        $this->db->update('Products_Air',$products_update); 
 
-        $job     = $this->Jobdata->select_jobfile($jbfl);
-        foreach($job as $row){
-         $job_id =  $row->JobFileId;
-        }
 
        $products_insert_h = array
       					(
@@ -202,27 +211,7 @@ class Job_air_update extends CI_Controller {
      }
 
 
-     function status_report(){
-      $session_data     = $this->session->userdata('logged_in');
-      $userid           = $session_data['uid'];
 
-      $history_id       =  $this->input->post('history_id');
-      $status_report    =  $this->input->post('status_report');
-      $jbfl             =  $this->input->post('jbfl');
-
-      $job     = $this->Jobdata->select_jobfile($jbfl);
-        foreach($job as $row){
-         $job_id =  $row->JobFileId;
-        }
-             $air_update = array(
-                     'StatusDescription' => $status_report,
-                     'JobFile_AirId'     => $job_id,  
-                     'DateAdded'         => date('Y-m-d H:i'), 
-                     'AddedBy_UserId'    => $userid
-                     );
-              $this->db->where ('HistoricalStatus_AirId',$history_id)
-              $this->db->update('HistoricalStatus_Air',$air_update);
-     }
 
 
 
