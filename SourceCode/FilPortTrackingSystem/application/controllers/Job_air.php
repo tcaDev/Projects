@@ -208,7 +208,7 @@ function status_reports(){
        $this->db->insert('Products_Air',$products_insert); 
        $lastid =  $this->db->insert_id();
 
-       $products_insert_h = array
+/*       $products_insert_h = array
       					(
       						'Products_AirId'				=>$lastid,
       						'ProductId'			  		    =>$prodid, 
@@ -231,7 +231,7 @@ function status_reports(){
       					);	
 
        $this->db->insert('Products_AirHistory',$products_insert_h); 
-}
+}*/
      }
 
   function running_charges(){
