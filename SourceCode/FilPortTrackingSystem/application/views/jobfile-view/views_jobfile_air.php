@@ -392,6 +392,24 @@
 
 <script>
 var jbfl;
+ $(document).on('change',' .checkDec-air',function(){
+ 		var inp = $(this).val();
+ 		var holder = $(this).attr('id');
+ 		var newInp = inp.replace(/,/g,'');
+ 		var holders = newInp.toString().split('.');
+ 		var n = newInp.indexOf('.');
+ 		if(n < 0){
+ 			holders[0] =  numeral(holders[0]).format('0,0.00');
+ 			$('#runchar-air #' + holder).val(holders.join('.'));
+ 		}else{
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[1] =  numeral("0." + holders[1]).format('.000');
+ 			$('#runchar-air #' + holder).val(holders.join(''));
+ 		}
+ 		if(inp.trim() == ""){
+ 			$('#runchar-air #' + holder).val('0.00');
+ 		}
+ 	});
  $(document).on('click','.btn-Goods-air',function(){
    		$('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
    });	
@@ -441,8 +459,8 @@ var jbfl;
 
          /*View Charges*/
         $('.view_charges-air').click(function(){	
- 		var jobfileeno =  $(this).closest('tr').children('td:eq(33)').text();
- 		jbfl = jobfileeno;
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
+ 		jbfl = jobfileno;
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",
