@@ -72,7 +72,7 @@
 
 
 			<div id="scroller" class="table-responsive" style= "overflow-y:auto; height :485px; width:100%;">
-				<div class="job-outport">
+				<div class="">
 				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
 				      <thead>
@@ -650,18 +650,6 @@ function refresh_table_outport() {
 
     <script>
  /*Refresh Modal When Close*/  
-
-
- 	/*add New jobfile*/
-	 var myBackup_jobfile_outport = $('#myModal-2-2').clone();
-    
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#myModal-2-2',function() {
-        $('#myModal-2-2').modal('hide').remove();
-        var myClone_jobfile_outport = myBackup_jobfile_outport.clone();
-        $('body').append(myClone_jobfile_outport);
-        i=0;
-    }); 
     
     /*Add New Container Modal*/
 	 var myBackup_container_outport = $('#addContainer-outport').clone();
@@ -669,7 +657,7 @@ function refresh_table_outport() {
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
     $('body').on('hidden.bs.modal','#addContainer-outport', function() {
         $('#addContainer-outport').modal('hide').remove();
-        var myClone_container_outport = myBackup_container_outport.clone();
+        var myClone_container_ouport = myBackup_container_outport.clone();
         $('body').append(myClone_container_outport);
     });
 

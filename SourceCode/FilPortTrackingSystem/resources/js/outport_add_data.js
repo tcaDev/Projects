@@ -20,7 +20,8 @@ var suc;
 		});
 
 		$(".btn-cancel").click(function(){
-			
+			window.location.hash="#outport";
+			location.reload();
 		});
 
 		});
@@ -536,6 +537,7 @@ function insert_jobfile_outport(){
 				        		title: 'Success!',
 				        		content: 'New JobFile Added!',
 				        		confirm: function(){
+				        			$('.pp').html(data);
 				        			$('#btn-vessel-outport-add').addClass('active');
 									$('#btn-jobfile-outport-add').removeClass('active');
 									$('#btn-truck-outport-add').removeClass('active');
