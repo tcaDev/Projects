@@ -160,117 +160,39 @@
 				        </tbody>
 				    </table>
 
- <script>
-   //for update charges
-
-   $(document).on('click','.btn-Container',function(){
-   		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
-   });
-    $(document).on('click','.btn-Goods',function(){
-   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
-   });
-     $(document).on('click','.btn-Vessel',function(){
-   		$('.list_vessels').html('<div class="list_vessels"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
-   });
-      $(document).on('click','.btn-StatusReport',function(){
-   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
-   });
-       $(document).on('click','.runchar',function(){
-   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
-   });
-
-$(document).ready(function(){
-var jbfl;
-	$(document).on('click','.runchar',function(){
-			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
-			jbfl = jobfile;
-	});
-
-	$(document).on('click','.qwerty',function(){
-
-			$('#runchar .lodge_update').removeAttr('disabled');
-			$('#runchar .cont-deposit').removeAttr('disabled');
-			$('#runchar .thc-charges').removeAttr('disabled');
-			$('#runchar .arrastre').removeAttr('disabled');
-			$('#runchar .wharfage').removeAttr('disabled');
-			$('#runchar .weight').removeAttr('disabled');
-			$('#runchar .del').removeAttr('disabled');
-			$('#runchar .dispatch').removeAttr('disabled');
-			$('#runchar .storage').removeAttr('disabled');
-			$('#runchar .demurrage').removeAttr('disabled');
-			$('#runchar .detention').removeAttr('disabled');			
-			$('#runchar .EIC').removeAttr('disabled');
-			$('#runchar .bai-app').removeAttr('disabled');
-			$('#runchar .bai-inspect').removeAttr('disabled');
-			$('#runchar .sra-app').removeAttr('disabled');
-			$('#runchar .sra-inspect').removeAttr('disabled');
-			$('#runchar .bad-cargo').removeAttr('disabled');
-
-			$('.asd').removeAttr('disabled');
-			$(this).attr('disabled','disabled');
-	});
-   $(document).on('click','.asd',function(){
-
-     var lodge        = $('#runchar .lodge_update').val().replace(/,/g,'');
-     var cont_deposit = $('#runchar .cont-deposit').val().replace(/,/g,'');
-     var thc_charges  = $('#runchar .thc-charges').val().replace(/,/g,'');
-     var arrastre     = $('#runchar .arrastre').val().replace(/,/g,'');
-     var wharfage     = $('#runchar .wharfage').val().replace(/,/g,'');
-     var weight       = $('#runchar .weight').val().replace(/,/g,'');
-     var del          = $('#runchar .del').val().replace(/,/g,'');
-     var dispatch     = $('#runchar .dispatch').val().replace(/,/g,'');
-     var storage      = $('#runchar .storage').val().replace(/,/g,'');
-     var demurrage    = $('#runchar .demurrage').val().replace(/,/g,'');
-     var detention    = $('#runchar .detention').val().replace(/,/g,'');
-     var eic 		  = $('#runchar .EIC').val().replace(/,/g,'');
-     var bai_app 	  = $('#runchar .bai-app').val().replace(/,/g,'');
-     var bai_inspect  = $('#runchar .bai-inspect').val().replace(/,/g,'');
-     var sra_app 	  = $('#runchar .sra-app').val().replace(/,/g,'');
-     var sra_inspect  = $('#runchar .sra-inspect').val().replace(/,/g,'');
-     var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
-
-
-
-  });
- });
-  $(document).on('change',' .checkDec',function(){
- 		var inp = $(this).val();
- 		var holder = $(this).attr('id');
- 		var newInp = inp.replace(/,/g,'');
- 		var holders = newInp.toString().split('.');
- 		var n = newInp.indexOf('.');
- 		if(n < 0){
- 			holders[0] =  numeral(holders[0]).format('0,0.00');
- 			$('#runchar #' + holder).val(holders.join('.'));
- 		}else{
- 			holders[0] =  numeral(holders[0]).format('0,0');
- 			holders[1] =  numeral("0." + holders[1]).format('.000');
- 			$('#runchar #' + holder).val(holders.join(''));
- 		}
- 		if(inp.trim() == ""){
- 			$('#runchar #' + holder).val('0.00');
- 		}
- 	});
-  
-   </script>
-
-
-
-
 <script>
 $(document).ready(function(){
 
 /*Refresh Modal When Close*/
 
-	// /*add New jobfile*/
-	//  var myBackup_jobfile = $('#myModal-1-2').clone();
-    
- //    // Delegated events because we make a copy, and the copied button does not exist onDomReady
- //    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
- //        $('#myModal-1-2').modal('hide').remove();
- //        var myClone_jobfile = myBackup_jobfile.clone();
- //        $('body').append(myClone_jobfile);
- //    });
+	/*add New jobfile*/
+
+
+
+
+	/* Refresh Jobfile*/
+
+/*	$('.btn-AddData-mnila').click(function(){
+
+			$('#btn-jobfile-mnila-add').addClass('active');
+			$('#btn-charges-mnla-add').removeClass('active');
+			$('#btn-container-mnla-add').removeClass('active');
+			$('#btn-truck-mnla-add').removeClass('active');
+			$('#btn-vessel-mnla-add').removeClass('active');
+
+			$('.pill-jobfile-mnla-add').removeClass('hidden');
+			$('.pill-truck-mnla-add').addClass('hidden');
+			$('.pill-charges-mnla-add').addClass('hidden');
+			$('.pill-container-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').addClass('hidden');
+			$('.test_data').addClass('hidden');
+
+			$('.btn-Next').removeClass('hidden');
+
+	});
+*/
+
+
 
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
@@ -531,7 +453,7 @@ $(".btn-Vessel").click(function(){
 
 <script>
 
-	$(function() {
+/*	$(function() {
 
 	    var pressed = false;
 	    var start = undefined;
@@ -559,7 +481,7 @@ $(".btn-Vessel").click(function(){
 	    });
 
 	});
-
+*/
 
 
 
@@ -668,42 +590,4 @@ $(".btn-Vessel").click(function(){
 
 });
 
-
-
-
-
-
-$('#select').change(function(){
-  if($(this).val() == 'A'){ 
-    $("select").css('background-color', 'white');
-  }
-    if($(this).val() == 'B'){
-    $("select").css('background-color', 'red');
-  }
-    if($(this).val() == 'C'){
-    $("select").css('background-color', 'yellow');
-  }
-    if($(this).val() == 'D'){
-    $("select").css('background-color', 'green');
-  }
-
-  if($(this).val() == 'E'){
-    $("select").css('background-color', 'pink');
-  }
-});
-
 </script>
-
-
-<!---JOBFILE MODALSSS-->
-
-<div class="modal fade" id="jobfiles" role="dialog">
-    <div class="modal-dialog">		      
-		<?php $this->load->view('jobfile-view/views_jobfiledata_manila'); ?>
-    </div>
-  </div>
-
-
-<style>
-
-</style>

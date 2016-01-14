@@ -20,7 +20,7 @@ var suc;
 		});
 
 		$(document).on('click','.btn-cancel-mnla',function(){
-			 
+			 location.reload();
 		});
 		});
 
@@ -940,7 +940,9 @@ $(document).on('click','.save_charge',function(){
 									$('.pill-vessel-mnla-add').addClass('hidden');
 									$('.btn-Next').addClass('hidden');
 									dia_running_charges.close();
-									$('#myModal').modal('hide');
+
+									$('#myModal-1-2').modal('hide');
+									location.reload();
 									
 				        			 
 				        	    }

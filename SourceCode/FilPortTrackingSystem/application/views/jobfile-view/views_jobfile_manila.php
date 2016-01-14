@@ -9,8 +9,8 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila" onkeyup="search_manila(this.value)" >
-
+						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila"  ><!-- onkeyup="search_manila(this.value)"
+ -->
 						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
 						<input type="hidden" class="manila_total_new">
 				
@@ -83,7 +83,7 @@
 			
 				
 
-			  <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
+			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				    <table class="table table_manila table-bordered table-condensed order-tablejob " style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
@@ -627,7 +627,7 @@ var jbfl;
 
 <script>
 	//for search
-	function search_manila(jbfl){
+/*	function search_manila(jbfl){
        
     		 	$.ajax({
 		           method: "GET",
@@ -643,7 +643,7 @@ var jbfl;
 					.done(function(data) {
 						$('.job-manila').html(data);
 	  		    });
-    }
+    }*/
 
 
 </script>
