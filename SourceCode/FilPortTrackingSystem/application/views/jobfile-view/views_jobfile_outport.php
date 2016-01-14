@@ -72,7 +72,7 @@
 
 
 			<div id="scroller" class="table-responsive" style= "overflow-y:auto; height :485px; width:100%;">
-
+				<div class="job-outport">
 				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
 				      <thead>
@@ -238,7 +238,7 @@
 				  </table>
 
 			  </div>
-
+			  </div>
 		  	</div>
 		 </div>
 
@@ -605,6 +605,8 @@ var jbfl_outport;
 <script>
 	//for search
 	function search_outport(jbfl){
+
+		
        
     		 	$.ajax({
 		           method: "GET",
@@ -614,14 +616,14 @@ var jbfl_outport;
  					  },
 			  	   data: {
 			  	   			   montype  		   :2,
-			  	   	           jobfile   		   :jbfl,
+			  	   	           jobfile   		   :jbfl
 			  	   		 }
 	              })
 					.done(function(data) {
 						$('.job-outport').html(data);
 	  		    });
     }
-   setInterval(refresh_table_outport, 3000);
+/*   setInterval(refresh_table_outport, 3000);
 
 function refresh_table_outport() {
 	var manila = $('.manila_total').val();
@@ -642,7 +644,7 @@ function refresh_table_outport() {
 
 	    		    })
 }
-
+*/
 </script>
 
     <script>

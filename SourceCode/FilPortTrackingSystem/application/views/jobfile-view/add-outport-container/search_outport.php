@@ -154,7 +154,7 @@
 								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
 								          		<button type="button" class="btn btn-Add-Report-outport btn-success" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
-								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td><button type="button" class="btn btn-StatusReport btn-info runchar-outport view_charges-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        	<td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 								        </tr>
 
@@ -164,7 +164,230 @@
 
 
 
-		   <script>
+<script>
+   //for update charges
+
+$(document).ready(function(){
+
+
+   $(document).on('click','.btn-Container-outport',function(){
+   		$('.list_conts_outport').html('<div class="list_conts_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   });
+    $(document).on('click','.btn-Goods-outport',function(){
+   		$('.list_products_outport').html('<div class="list_products_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   });
+     $(document).on('click','.btn-Vessel-outport',function(){
+   		$('.list_vessels_outport').html('<div class="list_vessels_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   });
+      $(document).on('click','.btn-StatusReport-outport',function(){
+   		$('.list_status_outport').html('<div class="list_status_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   });
+       $(document).on('click','.runchar-outport',function(){
+   		$('.list_charges_outport').html('<div class="list_charges_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   });
+
+var jbfl_outport;
+	$(document).on('click','.runchar-outport',function(){
+			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl_outport = jobfile;
+	});
+
+	$(document).on('click','.update_charges-outport-qwerty',function(){
+			$('#runchar-outport .lodge_update').removeAttr('disabled');
+			$('#runchar-outport .cont-deposit').removeAttr('disabled');
+			$('#runchar-outport .thc-charges').removeAttr('disabled');
+			$('#runchar-outport .arrastre').removeAttr('disabled');
+			$('#runchar-outport .wharfage').removeAttr('disabled');
+			$('#runchar-outport .weight').removeAttr('disabled');
+			$('#runchar-outport .del').removeAttr('disabled');
+			$('#runchar-outport .dispatch').removeAttr('disabled');
+			$('#runchar-outport .storage').removeAttr('disabled');
+			$('#runchar-outport .demurrage').removeAttr('disabled');
+			$('#runchar-outport .detention').removeAttr('disabled');			
+			$('#runchar-outport .EIC').removeAttr('disabled');
+			$('#runchar-outport .bai-app').removeAttr('disabled');
+			$('#runchar-outport .bai-inspect').removeAttr('disabled');
+			$('#runchar-outport .sra-app').removeAttr('disabled');
+			$('#runchar-outport .sra-inspect').removeAttr('disabled');
+			$('#runchar-outport .bad-cargo').removeAttr('disabled');
+
+			$('.update_charges-outport').removeAttr('disabled');
+			$(this).attr('disabled','disabled');
+	});
+
+   $(document).on('click','.update_charges-outport',function(){
+     var lodge        = $('#runchar-outport .lodge_update').val().replace(/,/g,'');
+     var cont_deposit = $('#runchar-outport .cont-deposit').val().replace(/,/g,'');
+     var thc_charges  = $('#runchar-outport .thc-charges').val().replace(/,/g,'');
+     var arrastre     = $('#runchar-outport .arrastre').val().replace(/,/g,'');
+     var wharfage     = $('#runchar-outport .wharfage').val().replace(/,/g,'');
+     var weight       = $('#runchar-outport .weight').val().replace(/,/g,'');
+     var del          = $('#runchar-outport .del').val().replace(/,/g,'');
+     var dispatch     = $('#runchar-outport .dispatch').val().replace(/,/g,'');
+     var storage      = $('#runchar-outport .storage').val().replace(/,/g,'');
+     var demurrage    = $('#runchar-outport .demurrage').val().replace(/,/g,'');
+     var detention    = $('#runchar-outport .detention').val().replace(/,/g,'');
+     var eic 		  = $('#runchar-outport .EIC').val().replace(/,/g,'');
+     var bai_app 	  = $('#runchar-outport .bai-app').val().replace(/,/g,'');
+     var bai_inspect  = $('#runchar-outport .bai-inspect').val().replace(/,/g,'');
+     var sra_app 	  = $('#runchar-outport .sra-app').val().replace(/,/g,'');
+     var sra_inspect  = $('#runchar-outport .sra-inspect').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar-outport .bad-cargo').val().replace(/,/g,'');
+
+		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
+	 		       beforeSend: function() {
+					 	  dia_running_charges =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating Running Charges',
+				   			});
+ 					  },
+			  	   data: {
+			  	   	           jbfl   		:jbfl_outport,
+			  	   			   lodge        :lodge,
+			                   cont_deposit :cont_deposit,   
+			                   thc_charges  :thc_charges,
+			                   wharfage     :wharfage,
+			                   arrastre     :arrastre,
+			                   weight	    :weight,
+			                   del			:del,
+			                   dispatch     :dispatch,
+			                   storage      :storage,
+			                   demurrage    :demurrage,
+			                   detention    :detention,
+			                   eic          :eic,
+			                   bai_app      :bai_app,
+			                   bai_inspect  :bai_inspect,
+			                   sra_app      :sra_app,
+			                   sra_inspect  :sra_inspect,
+			                   bad_cargo    :bad_cargo
+
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Success!',
+				        		content: 'Running Charges Updated!',
+				        		confirm: function(){
+									dia_running_charges.close();
+									$('.update_charges-outport-qwerty').removeAttr('disabled');
+									$('.update_charges-outport').attr('disabled','disabled');
+				        			$('#runchar-outport').modal('hide');
+				        	    }
+				   			   });
+	    		    })
+  });
+ $(document).on('change',' .checkDec',function(){
+ 		var inp = $(this).val();
+ 		var holder = $(this).attr('id');
+ 		var holders = inp.toString().split('.');
+ 		var n = inp.indexOf('.');
+ 		if(n < 0){
+ 			holders[0] =  numeral(holders[0]).format('0,00');
+ 			$('#runchar-outport #' + holder).val(holders.join('.'));
+ 		}else{
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[1] =  numeral("0." + holders[1]).format('.000');
+ 			$('#runchar-outport #' + holder).val(holders.join(''));
+ 		}
+ 		if(inp.trim() == ""){
+ 			$('#runchar-outport #' + holder).val('0.00');
+ 		}
+ 	});
+   });
+  
+   </script>
+                        
+                <!--Add Container Outport -->
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="addContainer-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog" >
+
+                              <!-- Modal content-->
+                                <?php $this->load->view('jobfile-view/add-outport-container/add_Container_outport'); ?>
+
+                            </div>
+                         </div>
+
+                <!--Add Product when Adding New Container  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addProduct-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-outport-container/add_Product_outport'); ?>
+				      	
+				    </div>
+				 </div>
+
+				<!--Add Vessel when Adding New vessel  -->
+			
+				  <!-- Modal -->
+				  <div class="modal fade" id="addVessel-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog" >
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-outport-container/add_Vessel_outport'); ?>
+				      	
+				    </div>
+				 </div>
+
+			 <!--Add Report when Adding New Container  -->
+		
+				  <!-- Modal -->
+				  <div class="modal fade" id="addReport-outport" tabindex="-1" data-replace="true"  style="display: none;" data-backdrop="static" data-keyboard="false">
+				    <div class="modal-dialog">
+				    
+				      <!-- Modal content-->
+				      	<?php $this->load->view('jobfile-view/add-outport-container/add_Report_outport'); ?>
+				      	
+				    </div>
+				 </div>
+
+<!-- Update Modals -->
+
+			<!--Update Container  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateContainer-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-outport-container/update_Container_outport'); ?>
+					      	
+					    </div>
+					 </div>
+
+			<!--Update product  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateProduct-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-outport-container/update_Product_outport'); ?>
+					      	
+					    </div>
+					 </div>
+
+			<!--Update Vessel  -->
+					  <!-- Modal -->
+					  <div class="modal fade" id="updateVessel-outport" tabindex="-1" data-replace="true" data-backdrop="static" data-keyboard="false">
+					    <div class="modal-dialog" >
+					    
+					      <!-- Modal content-->
+					      	<?php $this->load->view('jobfile-view/add-outport-container/update_Vessel_outport'); ?>
+					      	
+					    </div>
+					 </div>
+      
+
+
+    <script>
  /*Refresh Modal When Close*/  
     
     /*Add New Container Modal*/
@@ -220,7 +443,7 @@
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_conts').html(data);
+                                    $('.list_conts_outport').html(data);
                                 });
         });
         
@@ -238,7 +461,7 @@
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_products').html(data);
+                                    $('.list_products_outport').html(data);
                                 });
         });
         
@@ -257,14 +480,14 @@
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_vessels').html(data);
+                                    $('.list_vessels_outport').html(data);
                                 });
         });
         
         /*View Charges*/
         $('.view_charges-outport').click(function(){	
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
- 		
+ 	
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges');?>",
@@ -272,7 +495,7 @@
                                     }
                                 })
                                 .done(function(data) {
-                                    $('.list_charges').html(data);
+                                    $('.list_charges_outport').html(data);
                                 });
         });
         
@@ -286,7 +509,7 @@
                                         }
                                     })
                                     .done(function(data) {
-                                            $('.list_status').html(data);
+                                            $('.list_status_outport').html(data);
                                     });
         });
         
