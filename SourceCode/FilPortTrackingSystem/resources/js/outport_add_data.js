@@ -360,7 +360,7 @@ var suc;
 			{	
 				$('.cont-size-msg-outport').text("The Commodity is already in this Container");
 			}
-			else if($('#tableAddTruck-outport .prodname-outport').val() == "")
+			else if($('#tableAddTruck-outport .prodname-outport option:selected').val() == "0")
 			{
 				$('.prodname-msg-outport').text("Need Commodity Name.");
 			}else{

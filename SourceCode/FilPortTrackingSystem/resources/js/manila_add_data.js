@@ -372,7 +372,7 @@ var suc;
 			{	
 				$('.cont-size-msg').text("The Commodity Already Exists in this Container");
 			}
-			else if($('#tableAddTruck-mnla .prodname').val() == "")
+			else if($('#tableAddTruck-mnla .prodname option:selected').val() == "0")
 			{
 				$('.prodname-msg').text("Need Commodity Name.");
 			}else{
