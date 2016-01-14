@@ -251,8 +251,8 @@ var jb_air;
 		    addtl_per_day 		= $tds.eq(13).text(),
 		    ref_entry_no_air    = $tds.eq(14).text()
 
-
-
+/*
+		    alert(jb_air);*/
 		   
 		       $.ajax({
 			  		method: "POST",

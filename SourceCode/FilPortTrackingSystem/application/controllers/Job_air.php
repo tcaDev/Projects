@@ -181,15 +181,15 @@ function status_reports(){
       $total_stor			 =	$this->input->post('total_storage');
       $adtlperday 	 	 =	$this->input->post('addtl_per_day');
       
-          $job=$this->Jobdata->select_jobfile_air($jbfl);
+/*          $job=$this->Jobdata->select_jobfile_air($jbfl);
         foreach($job as $row){
          $jobs =  $row->JobFile_AirId;
-        }
+        }*/
   if($prodid!=''){
       $products_insert = array
       					(
       						'ProductId'			  		    =>$prodid, 
-      						'JobFile_AirId'					=>$jobs,
+      						'JobFile_AirId'					=>$jbfl,
       						'RefEntryNo'					=>$refentry,
       						'GrossWeight'					=>$gross,
       						'DateSentFinalAssessment' 		=>$dtfinal_assess,
@@ -206,7 +206,7 @@ function status_reports(){
       					);	
 
        $this->db->insert('Products_Air',$products_insert); 
-       $lastid =  $this->db->insert_id();
+      /* $lastid =  $this->db->insert_id();*/
 
 /*       $products_insert_h = array
       					(
@@ -233,7 +233,7 @@ function status_reports(){
        $this->db->insert('Products_AirHistory',$products_insert_h); 
 }*/
      }
-
+   }
   function running_charges(){
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
