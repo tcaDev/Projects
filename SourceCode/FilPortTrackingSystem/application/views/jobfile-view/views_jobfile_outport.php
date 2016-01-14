@@ -373,7 +373,7 @@
 
 				        	<button type="button" class="btn btn-danger update_charges-outport" disabled>Save</button>
 
-				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger btn-close-outport" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -407,6 +407,11 @@ var jbfl_outport;
 	$(document).on('click','.runchar-outport',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl_outport = jobfile;
+	});
+
+	$(document).on('click','.btn-close-outport',function(){
+			$('.update_charges-outport-qwerty').removeAttr('disabled');
+			$('.update_charges-outport').attr('disabled','disabled');
 	});
 
 	$(document).on('click','.update_charges-outport-qwerty',function(){
@@ -657,7 +662,7 @@ function refresh_table_outport() {
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
     $('body').on('hidden.bs.modal','#addContainer-outport', function() {
         $('#addContainer-outport').modal('hide').remove();
-        var myClone_container_ouport = myBackup_container_outport.clone();
+        var myClone_container_outport = myBackup_container_outport.clone();
         $('body').append(myClone_container_outport);
     });
 

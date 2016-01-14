@@ -380,7 +380,7 @@
 				        <hr>
 				       	 <button type="button" class="btn btn-danger qwerty">Update</button>
 				        	<button type="button" class="btn btn-danger asd update-charges-mnila" disabled>Save</button>
-				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger btn-close-mnila" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -414,6 +414,11 @@ var jbfl;
 	$(document).on('click','.runchar',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl = jobfile;
+	});
+
+	$(document).on('click','.btn-close-mnila',function(){
+			$('.qwerty').removeAttr('disabled');
+			$('.asd').attr('disabled','disabled');
 	});
 
 	$(document).on('click','.qwerty',function(){
@@ -658,6 +663,8 @@ $(document).ready(function(){
         $('body').append(myClone_jobfile);
         i=0;
     }); 
+
+
 
 	/* Refresh Jobfile*/
 

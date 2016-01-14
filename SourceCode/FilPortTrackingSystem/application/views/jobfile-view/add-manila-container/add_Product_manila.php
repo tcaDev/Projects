@@ -119,12 +119,18 @@ function click_vessel(){
 			{	
 				$('.cont-size-msg-addProduct-mnila').text("The Product is already in this Container");
 			}
-			else if($('#table-AddProduct-mnla .prodname-addProduct-mnila').val() == "")
+			else if($('#table-AddProduct-mnla .prodname-addProduct-mnila option:selected').val() == "0")
 			{
 				$('.prodname-msg-addProduct-mnila').text("Need Product Name.");
 
 			}
-			else if($('#table-AddProduct-mnla .containers-prod-addProduct-mnila').val() == "")
+			else if($('#table-AddProduct-mnla .containers-prod-addProduct-mnila option:selected').val() == "0")
+			{
+				$('.cont-size-msg-addProduct-mnila').text("Need Container.");
+
+			}
+
+			else if($('#table-AddProduct-mnla .containers-prod-addProduct-mnila ').val() == "")
 			{
 				$('.cont-size-msg-addProduct-mnila').text("Need Container.");
 

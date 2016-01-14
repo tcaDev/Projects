@@ -119,9 +119,14 @@ function click_vessel_outport(){
 			{	
 				$('.cont-size-msg-addProduct-outport').text("The Product is already in this Container");
 			}
-			else if($('#table-AddProduct-outport .prodname-addProduct-outport').val() == "")
+			else if($('#table-AddProduct-outport .prodname-addProduct-outport option:selected').val() == "0")
 			{
 				$('.prodname-msg-addProduct-outport').text("Need Product Name.");
+
+			}
+			else if($('#table-AddProduct-outport .containers-prod-addProduct-outport option:selected').val() == "0")
+			{
+				$('.cont-size-msg-addProduct-outport').text("Need Container.");
 
 			}
 			else if($('#table-AddProduct-outport .containers-prod-addProduct-outport').val() == "")

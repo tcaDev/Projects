@@ -314,7 +314,7 @@
 
 				        	<button type="button" class="btn btn-danger update_charges-air" disabled>Save</button>
 
-				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger btn-close-air" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
 				      
@@ -346,6 +346,11 @@
 
 					$('.update_charges-air').removeAttr('disabled');
 					$(this).attr('disabled','disabled');
+			});
+
+		$(document).on('click','.btn-close-air',function(){
+					$('#runchar-air .update_charges-air-qwerty').removeAttr('disabled');
+					$('#runchar-air .update_charges-air').attr('disabled','disabled');
 			});
 	</script>
 
