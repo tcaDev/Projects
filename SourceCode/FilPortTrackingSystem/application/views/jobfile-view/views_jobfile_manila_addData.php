@@ -2,7 +2,7 @@
 
 <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<button type="button" class="close btn-close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title text-uppercase ">Add Data Form</h4>
 </div>
 
@@ -294,6 +294,7 @@
 						    <div class="form-group">
 								<label>Hauler/Truck Name</label>
 								<select class="form-control truckname" >
+								<option value="0" selected></option>
 										<?php foreach($hauler_data as $row){ ?>
 											 <option value="<?php echo $row->HaulerOrTruckId?>">
 											 <?php echo stripslashes($row->HaulerOrTruck);?>
@@ -446,13 +447,13 @@
 							</div>
 
 							 <div class="form-group">
-								  	<label for="dtClrd">Estimated Departure Time</label>
-								 	<input type="datetime-local" name="es_dep_time" class="form-control input-sm edt">
+								  	<label for="dtClrd">Estimated Departure</label>
+								 	<input type="date" name="es_dep_time" class="form-control input-sm edt">
 						     </div>
 
 						     <div class="form-group">
-								<label>Estimated Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm eat" />
+								<label>Estimated Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm eat" />
 							 </div>
 
 						 
@@ -626,7 +627,7 @@
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
       <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save-mnla test_data save_charge" >Save</button>
-      <button type="button" class="btn btn-danger btn-cancel-mnla" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-danger btn-cancel-mnla" id="asdfghjkl" data-dismiss="modal">Cancel</button>
     </div>
   </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
@@ -652,6 +653,8 @@
  		}
  	});
 });
+
+
 
 </script>
 

@@ -1,7 +1,7 @@
  var link = 'http://localhost/FilPortTrackingSystem';
 
 //FOR COLOR SELECT DROPDOWN
-	$('.colsel').change(function(){
+	$(document).on('change','.colsel',function(){
   var status = $(this).val();
   var color = $('.colsel option:selected').attr('data-color');
     if(status==1){
@@ -15,12 +15,13 @@ var suc;
 
 	$(document).ready(function(){
 
-		$(".btn-save-mnla").click(function(){
+		$(document).on('click','.btn-save-mnla', function(){
 			$(this).attr('disabled','disabled');
 		});
 
-		$(".btn-cancel-mnla").click(function(){
+		$(document).on('click','.btn-cancel-mnla',function(){
 			 
+		});
 		});
 
 		
@@ -59,7 +60,9 @@ var suc;
 
 		var i=0;
 
-		$(".btn-Next").click(function(){
+		$(document).on('click','.btn-Next',function(){
+
+
 			
 			 if($('.required-fields .jobfiles').val() == "")
 			{
@@ -81,11 +84,15 @@ var suc;
 			{
 				$('.reference-msg').text("Need Reference Entry No.");
 			}
-			else if($('#check_jobfiles').text() == "Jobfile Already Exist in Outport")
+			else if($('#check_jobfiles').text() == "Jobfile is already exists in Outport")
 			{
 				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exist");
 			}
-				else if($('#check_jobfiles').text() == "Jobfile Already Exists in Air")
+				else if($('#check_jobfiles').text() == "Jobfile is already exists in Air")
+			{
+				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
+			}
+			else if($('#check_jobfiles').text() == "Jobfile is already exists in Manila")
 			{
 				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
 			}
@@ -159,7 +166,7 @@ var suc;
 		});
 
 
-});
+
 
 
  function myjob(jobfile){
@@ -184,7 +191,7 @@ var suc;
        
             $(document).ready(function () {
               //called when key is pressed in textbox
-              $("#cartons").keypress(function (e) {
+              $(document).on('keypress','#cartons',function (e) {
                  //if the letter is not digit then display error and don't type anything
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
@@ -194,7 +201,7 @@ var suc;
                });
 
 
-                $(".num_only").keypress(function (e) {
+                $(document).on('keypress','.num_only',function (e) {
                  //if the letter is not digit then display error and don't type anything
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
@@ -215,7 +222,7 @@ var suc;
         $(this).closest("tr").remove();
     });*/
 
-    $('#tableAddContainer-mnla').on('click', '.deleteButton', function() {
+    $(document).on('click', '#tableAddContainer-mnla .deleteButton', function() {
 
     	var del = $(this).closest('tr').children('td:eq(1)').text();
 
@@ -229,13 +236,13 @@ var suc;
 
 	});
 
-	$('#tableAddTruck-mnla').on('click', '.deleteButton', function() {
+	$(document).on('click', '#tableAddTruck-mnla .deleteButton', function() {
 
     	$(this).closest("tr").remove();
 
 	});
 
-		$('#tableAddVessel-mnla').on('click', '.deleteButton', function() {
+		$(document).on('click', '#tableAddVessel-mnla .deleteButton', function() {
 		    var del = $(this).closest('tr').children('td:eq(0)').text();
 		    $("#tableAddContainer-mnla .vessel_voyage").find("option[value="+ del +"]").remove();
 	    	$(this).closest("tr").remove();
@@ -259,7 +266,7 @@ var suc;
 
 				
 
-		$(".btn-Add-Container-Data-mnla").click(function(){
+		$(document).on('click','.btn-Add-Container-Data-mnla',function(){
 
 			var compare = $('#tableAddContainer-mnla .containerss').val();
 			
@@ -354,7 +361,7 @@ var suc;
 				    return testme2;
 				}
 
-		$(".btn-Add-Product-Data-mnla").click(function(){
+		$(document).on('click','.btn-Add-Product-Data-mnla',function(){
 
 			var cont = $('#tableAddTruck-mnla .containers-prod option:selected').val();
 			var prod = $('#tableAddTruck-mnla .prodname option:selected').val();
@@ -402,7 +409,7 @@ var suc;
 				    return testme3;
 				}
 	
-	$(".btn-Add-Vessel-Data-mnla").click(function(){
+	$(document).on('click','.btn-Add-Vessel-Data-mnla',function(){
 
 		if(isExist3($('#tableAddVessel-mnla .vessel').val()))
 			{	
@@ -828,7 +835,7 @@ function ins_descriptions(c,ct,container){
 
 
 
-$('.save_charge').click(function(){
+$(document).on('click','.save_charge',function(){
 	        //for running charges
 
 	   var jbfl       = $('.jobfiles').val();

@@ -51,6 +51,7 @@
 		    <div class="form-group">
 				<label>Hauler/Truck Name</label>
 				<select class="form-control truckname-addContainer-outport" >
+				<option value="0" selected></option>
                                         <?php foreach($hauler_data as $row){ ?>
                                                  <option value="<?php echo $row->HaulerOrTruckId?>">
                                                  <?php echo stripslashes($row->HaulerOrTruck);?>

@@ -54,7 +54,7 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-1-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 
 
@@ -648,15 +648,40 @@ $(document).ready(function(){
 
 /*Refresh Modal When Close*/
 
-	// /*add New jobfile*/
-	//  var myBackup_jobfile = $('#myModal-1-2').clone();
+	/*add New jobfile*/
+	 var myBackup_jobfile = $('#myModal-1-2').clone();
     
- //    // Delegated events because we make a copy, and the copied button does not exist onDomReady
- //    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
- //        $('#myModal-1-1').modal('hide').remove();
- //        var myClone_jobfile = myBackup_jobfile.clone();
- //        $('body').append(myClone_jobfile);
- //    });
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
+        $('#myModal-1-2').modal('hide').remove();
+        var myClone_jobfile = myBackup_jobfile.clone();
+        $('body').append(myClone_jobfile);
+        i=0;
+    }); 
+
+	/* Refresh Jobfile*/
+
+/*	$('.btn-AddData-mnila').click(function(){
+
+			$('#btn-jobfile-mnila-add').addClass('active');
+			$('#btn-charges-mnla-add').removeClass('active');
+			$('#btn-container-mnla-add').removeClass('active');
+			$('#btn-truck-mnla-add').removeClass('active');
+			$('#btn-vessel-mnla-add').removeClass('active');
+
+			$('.pill-jobfile-mnla-add').removeClass('hidden');
+			$('.pill-truck-mnla-add').addClass('hidden');
+			$('.pill-charges-mnla-add').addClass('hidden');
+			$('.pill-container-mnla-add').addClass('hidden');
+			$('.pill-vessel-mnla-add').addClass('hidden');
+			$('.test_data').addClass('hidden');
+
+			$('.btn-Next').removeClass('hidden');
+
+	});
+*/
+
+
 
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();

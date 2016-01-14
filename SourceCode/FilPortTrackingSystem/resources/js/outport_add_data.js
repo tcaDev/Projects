@@ -1,7 +1,7 @@
  var link = 'http://localhost/FilPortTrackingSystem';
 
 //FOR COLOR SELECT DROPDOWN
-	$('.colsel-outport').change(function(){
+	$(document).on('change','.colsel-outport',function(){
   var status = $(this).val();
   var color = $('.colsel-outport option:selected').attr('data-color');
     if(status==1){
@@ -15,15 +15,15 @@ var suc;
 
 	$(document).ready(function(){
 
-		$(".btn-save").click(function(){
+		$(document).on('click','.btn-save',function(){
 			$(this).attr('disabled','disabled');
 		});
 
 		$(".btn-cancel").click(function(){
-			window.location.hash="#outport";
-			location.reload();
+			
 		});
 
+		});
 		
     $('[data-toggle="tooltip"]').tooltip(); 
 
@@ -60,7 +60,7 @@ var suc;
 
 		var i=0;
 
-		$(".btn-Next-outport").click(function(){
+		$(document).on('click','.btn-Next-outport',function(){
 			
 			 if($('.required-fields .jobfiles-outport').val() == "")
 			{
@@ -83,6 +83,10 @@ var suc;
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}
 				else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Manila")
+			{
+				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
+			}
+			else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Outport")
 			{
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}
@@ -156,7 +160,7 @@ var suc;
 		});
 
 
-});
+
 
 
  function myjob_outport(jobfile){
@@ -178,7 +182,7 @@ var suc;
        
             $(document).ready(function () {
               //called when key is pressed in textbox
-              $("#cartons-outport").keypress(function (e) {
+              $(document).on('keypress','#cartons-outport',function (e) {
                  //if the letter is not digit then display error and don't type anything
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
@@ -188,7 +192,7 @@ var suc;
                });
 
 
-                $(".num_only").keypress(function (e) {
+                $(document).on('keypress','.num_only',function (e) {
                  //if the letter is not digit then display error and don't type anything
                  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                     //display error message
@@ -205,7 +209,7 @@ var suc;
 	$(function(){
   
 
-    $('#tableAddContainer-outport').on('click', '.deleteButton', function() {
+    $(document).on('click', '#tableAddContainer-outport .deleteButton', function() {
 
     	var del = $(this).closest('tr').children('td:eq(1)').text();
 
@@ -215,13 +219,13 @@ var suc;
     	
 	});
 
-	$('#tableAddTruck-outport').on('click', '.deleteButton', function() {
+	$(document).on('click', '#tableAddTruck-outport .deleteButton', function() {
 
     	$(this).closest("tr").remove();
 
 	});
 
-		$('#tableAddVessel-outport').on('click', '.deleteButton', function() {
+		$(document).on('click', '#tableAddVessel-outport .deleteButton', function() {
 	    var del = $(this).closest('tr').children('td:eq(0)').text();
 	    $("#tableAddContainer-outport .vessel_voyage").find("option[value="+ del +"]").remove();
     	$(this).closest("tr").remove();
@@ -245,7 +249,7 @@ var suc;
 
 				
 
-		$(".btn-Add-Container-Data-outport").click(function(){
+		$(document).on('click','.btn-Add-Container-Data-outport',function(){
 
 			var compare = $('#tableAddContainer-outport .containerss').val();
 			
@@ -343,7 +347,7 @@ var suc;
 				    return testme2;
 				}
 
-		$(".btn-Add-Product-Data-outport").click(function(){
+		$(document).on('click','.btn-Add-Product-Data-outport',function(){
 
 			var cont = $('#tableAddTruck-outport .containers-prod-outport option:selected').val();
 			var prod = $('#tableAddTruck-outport .prodname-outport option:selected').val();
@@ -392,7 +396,7 @@ var suc;
 				    return testme3;
 				}
 	
-	$(".btn-Add-Vessel-Data-outport").click(function(){
+	$(document).on('click','.btn-Add-Vessel-Data-outport',function(){
 
 		if(isExist3($('#tableAddVessel-outport .vessel-outport').val()))
 			{	
@@ -459,10 +463,6 @@ var suc;
 		  
 
 		});
-
-
-
-
 
 
 

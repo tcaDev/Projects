@@ -288,6 +288,7 @@
 						    <div class="form-group">
 								<label>Hauler/Truck Name</label>
 								<select class="form-control truckname-outport" >
+								<option value="0" selected></option>
 										<?php foreach($hauler_data as $row){ ?>
 											 <option value="<?php echo $row->HaulerOrTruckId?>">
 											 <?php echo stripslashes($row->HaulerOrTruck);?>
@@ -428,13 +429,13 @@
 							</div>
 
 							 <div class="form-group">
-								  	<label for="dtClrd">Estimated Departure Time</label>
-								 	<input type="datetime-local" name="es_dep_time" class="form-control input-sm edt-outport">
+								  	<label for="dtClrd">Estimated Departure</label>
+								 	<input type="date" name="es_dep_time" class="form-control input-sm edt-outport">
 						     </div>
 
 						     <div class="form-group">
-								<label>Estimated Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm eat-outport" />
+								<label>Estimated Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm eat-outport" />
 							 </div>
 
 						 

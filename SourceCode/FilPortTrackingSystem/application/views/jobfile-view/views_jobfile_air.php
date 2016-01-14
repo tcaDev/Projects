@@ -391,6 +391,43 @@
 
 
 <script>
+
+
+/*add New jobfile*/
+	 var myBackup_jobfile_air = $('#myModal-3-2').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-3-2',function() {
+        $('#myModal-3-2').modal('hide').remove();
+        var myClone_jobfile_air = myBackup_jobfile_air.clone();
+        $('body').append(myClone_jobfile_air);
+        i=0;
+    }); 
+
+
+    /*add New jobfile*/
+	 var myBackup_product_air = $('#addProduct-air').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addProduct-air',function() {
+        $('#addProduct-air').modal('hide').remove();
+        var myClone_product_air = myBackup_product_air.clone();
+        $('body').append(myClone_product_air);
+        
+    }); 
+
+    /*add New jobfile*/
+	 var myBackup_report_air = $('#addReport-air').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addReport-air',function() {
+        $('#addReport-air').modal('hide').remove();
+        var myClone_report_air = myBackup_report_air.clone();
+        $('body').append(myClone_report_air);
+        
+    }); 
+
+
 var jbfl;
  $(document).on('change',' .checkDec-air',function(){
  		var inp = $(this).val();

@@ -1539,10 +1539,10 @@ fieldset legend {
     text-decoration: none;
 }
 
-#tabs a:hover {
+/*#tabs a:hover {
     background: #4D9EE4;
 
-}
+}*/
 
 #tabs a:focus {
     outline: 0;

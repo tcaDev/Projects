@@ -1,7 +1,6 @@
- <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5000px;">
+ 			    <table class="table table_manila table-bordered table-condensed order-tablejob " style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
-
 								          <th > No. </th>
 
 								          <th > Update </th>
@@ -13,6 +12,8 @@
 								          <th> Shipper </th>
 										   
 										  <th >Consignee</th>
+
+										   <th >Vessel/Voyage</th>
 
 								          <th >Container No.</th>
 
@@ -29,8 +30,6 @@
 								          <th >Letter of Credit No. from Bank</th> 
 
 								          <th >Registry</th>
-
-								          <th >Vessel/Voyage</th>
 
 								          <th >Origin</th>  
 
@@ -110,15 +109,20 @@
 				            <tr>
 								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
-								          <td><?php echo stripslashes($i);?></td>
+								         
+								         <td><?php echo stripslashes($i);?></td>
 								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td>
+									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
+								          <td>
 								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
-								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" data-target="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 										  <td>
 										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
@@ -130,10 +134,7 @@
 								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry); ?></td>
-										  <td>
-									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
-										  </td>
+										 
 								           <td><?php echo stripslashes($row->Origin); ?></td>
 								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
@@ -156,10 +157,104 @@
 								        </tr>
 
 								        <?php } ?>
-				           
-				         
 				        </tbody>
 				    </table>
+
+ <script>
+   //for update charges
+
+   $(document).on('click','.btn-Container',function(){
+   		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   });
+    $(document).on('click','.btn-Goods',function(){
+   		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   });
+     $(document).on('click','.btn-Vessel',function(){
+   		$('.list_vessels').html('<div class="list_vessels"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   });
+      $(document).on('click','.btn-StatusReport',function(){
+   		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   });
+       $(document).on('click','.runchar',function(){
+   		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+   });
+
+$(document).ready(function(){
+var jbfl;
+	$(document).on('click','.runchar',function(){
+			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl = jobfile;
+	});
+
+	$(document).on('click','.qwerty',function(){
+
+			$('#runchar .lodge_update').removeAttr('disabled');
+			$('#runchar .cont-deposit').removeAttr('disabled');
+			$('#runchar .thc-charges').removeAttr('disabled');
+			$('#runchar .arrastre').removeAttr('disabled');
+			$('#runchar .wharfage').removeAttr('disabled');
+			$('#runchar .weight').removeAttr('disabled');
+			$('#runchar .del').removeAttr('disabled');
+			$('#runchar .dispatch').removeAttr('disabled');
+			$('#runchar .storage').removeAttr('disabled');
+			$('#runchar .demurrage').removeAttr('disabled');
+			$('#runchar .detention').removeAttr('disabled');			
+			$('#runchar .EIC').removeAttr('disabled');
+			$('#runchar .bai-app').removeAttr('disabled');
+			$('#runchar .bai-inspect').removeAttr('disabled');
+			$('#runchar .sra-app').removeAttr('disabled');
+			$('#runchar .sra-inspect').removeAttr('disabled');
+			$('#runchar .bad-cargo').removeAttr('disabled');
+
+			$('.asd').removeAttr('disabled');
+			$(this).attr('disabled','disabled');
+	});
+   $(document).on('click','.asd',function(){
+
+     var lodge        = $('#runchar .lodge_update').val().replace(/,/g,'');
+     var cont_deposit = $('#runchar .cont-deposit').val().replace(/,/g,'');
+     var thc_charges  = $('#runchar .thc-charges').val().replace(/,/g,'');
+     var arrastre     = $('#runchar .arrastre').val().replace(/,/g,'');
+     var wharfage     = $('#runchar .wharfage').val().replace(/,/g,'');
+     var weight       = $('#runchar .weight').val().replace(/,/g,'');
+     var del          = $('#runchar .del').val().replace(/,/g,'');
+     var dispatch     = $('#runchar .dispatch').val().replace(/,/g,'');
+     var storage      = $('#runchar .storage').val().replace(/,/g,'');
+     var demurrage    = $('#runchar .demurrage').val().replace(/,/g,'');
+     var detention    = $('#runchar .detention').val().replace(/,/g,'');
+     var eic 		  = $('#runchar .EIC').val().replace(/,/g,'');
+     var bai_app 	  = $('#runchar .bai-app').val().replace(/,/g,'');
+     var bai_inspect  = $('#runchar .bai-inspect').val().replace(/,/g,'');
+     var sra_app 	  = $('#runchar .sra-app').val().replace(/,/g,'');
+     var sra_inspect  = $('#runchar .sra-inspect').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
+
+
+
+  });
+ });
+  $(document).on('change',' .checkDec',function(){
+ 		var inp = $(this).val();
+ 		var holder = $(this).attr('id');
+ 		var newInp = inp.replace(/,/g,'');
+ 		var holders = newInp.toString().split('.');
+ 		var n = newInp.indexOf('.');
+ 		if(n < 0){
+ 			holders[0] =  numeral(holders[0]).format('0,0.00');
+ 			$('#runchar #' + holder).val(holders.join('.'));
+ 		}else{
+ 			holders[0] =  numeral(holders[0]).format('0,0');
+ 			holders[1] =  numeral("0." + holders[1]).format('.000');
+ 			$('#runchar #' + holder).val(holders.join(''));
+ 		}
+ 		if(inp.trim() == ""){
+ 			$('#runchar #' + holder).val('0.00');
+ 		}
+ 	});
+  
+   </script>
+
+
 
 
 <script>
@@ -172,7 +267,7 @@ $(document).ready(function(){
     
  //    // Delegated events because we make a copy, and the copied button does not exist onDomReady
  //    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
- //        $('#myModal-1-1').modal('hide').remove();
+ //        $('#myModal-1-2').modal('hide').remove();
  //        var myClone_jobfile = myBackup_jobfile.clone();
  //        $('body').append(myClone_jobfile);
  //    });
@@ -598,3 +693,17 @@ $('#select').change(function(){
 });
 
 </script>
+
+
+<!---JOBFILE MODALSSS-->
+
+<div class="modal fade" id="jobfiles" role="dialog">
+    <div class="modal-dialog">		      
+		<?php $this->load->view('jobfile-view/views_jobfiledata_manila'); ?>
+    </div>
+  </div>
+
+
+<style>
+
+</style>

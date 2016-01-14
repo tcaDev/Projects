@@ -13,6 +13,7 @@
 		    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT</a></li>
 
 		  </ul>
+		 </div>
 
 		  	<!-- Manila -->
 
@@ -40,7 +41,7 @@
 
 			  </div>
 		  	</div>
-		</div>
+		
 
 		<hr>
 

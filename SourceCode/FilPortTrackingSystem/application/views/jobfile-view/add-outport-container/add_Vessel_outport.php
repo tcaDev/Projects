@@ -23,13 +23,13 @@
 							</div>
 
 							 <div class="form-group">
-								  	<label for="dtClrd">Estimated Departure Time</label>
-								 	<input type="datetime-local" name="es_dep_time" class="form-control input-sm edt-addVessel-outport">
+								  	<label for="dtClrd">Estimated Departure</label>
+								 	<input type="date" name="es_dep_time" class="form-control input-sm edt-addVessel-outport">
 						     </div>
 
 						     <div class="form-group">
-								<label>Estimated Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm eat-addVessel-outport" />
+								<label>Estimated Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm eat-addVessel-outport" />
 							 </div>
 
 						</div>

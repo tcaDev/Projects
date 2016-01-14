@@ -111,13 +111,13 @@
 						<div class="col-lg-4">
 
 									 <div class="form-group">
-										  	<label for="dtClrd">Estimated Departure Time</label>
-										 	<input type="datetime-local" name="es_dep_time" class="form-control input-sm edt-air">
+										  	<label for="dtClrd">Estimated Departure</label>
+										 	<input type="date" name="es_dep_time" class="form-control input-sm edt-air">
 								     </div>
 								
 								     <div class="form-group">
-										<label>Estimated Arrival Time</label>
-										<input type="datetime-local" name="est-dept" class="form-control input-sm eat-air" />
+										<label>Estimated Arrival</label>
+										<input type="date" name="est-dept" class="form-control input-sm eat-air" />
 									 </div>
 
 							   <div class="form-group">

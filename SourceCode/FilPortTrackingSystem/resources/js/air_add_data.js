@@ -1,7 +1,7 @@
  var link = 'http://localhost/FilPortTrackingSystem';
 
 //FOR COLOR SELECT DROPDOWN
-	$('.required-fields-air .colsel-air').change(function(){
+	$(document).on('change','.required-fields-air .colsel-air',function(){
   var status = $(this).val();
   var color = $('.required-fields-air .colsel-air option:selected').attr('data-color');
     if(status==1){
@@ -26,7 +26,7 @@ var suc;
 			location.reload();
 		});
 
-		
+		});
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
@@ -62,7 +62,7 @@ var suc;
 
 		var i=0;
 
-		$(".btn-Next-air").click(function(){
+		$(document).on('click','.btn-Next-air',function(){
 	
 			 if($('.required-fields-air .jobfiles-air').val() == "")
 			{
@@ -119,9 +119,6 @@ var suc;
 		});
 
 
-});
-
-
 
 /*Function Check if Jobfile is Exist*/
 
@@ -147,14 +144,14 @@ var suc;
 
  /*Delete Row*/
 
- $('#tableAddVessel-air').on('click', '.deleteButton', function() {
+ $(document).on('click', '#tableAddVessel-air .deleteButton', function() {
 		    var del = $(this).closest('tr').children('td:eq(0)').text();
 		    $("#tableAddContainer-air .vessel-prod-air").find("option[value="+ del +"]").remove();
 	    	$(this).closest("tr").remove();
 
 		});
 
-$('#tableAddTruck-air').on('click', '.deleteButton', function() {
+$(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 
     	$(this).closest("tr").remove();
 
@@ -163,7 +160,7 @@ $('#tableAddTruck-air').on('click', '.deleteButton', function() {
 
 
 		
-	 $(".btn-Add-Product-Data-air").click(function(){
+	 $(document).on('click','.btn-Add-Product-Data-air',function(){
 
 			if($('#tableAddTruck-air .prodname-air').val() == "")
 			{

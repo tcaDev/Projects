@@ -650,6 +650,18 @@ function refresh_table_outport() {
 
     <script>
  /*Refresh Modal When Close*/  
+
+
+ 	/*add New jobfile*/
+	 var myBackup_jobfile_outport = $('#myModal-2-2').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-2-2',function() {
+        $('#myModal-2-2').modal('hide').remove();
+        var myClone_jobfile_outport = myBackup_jobfile_outport.clone();
+        $('body').append(myClone_jobfile_outport);
+        i=0;
+    }); 
     
     /*Add New Container Modal*/
 	 var myBackup_container_outport = $('#addContainer-outport').clone();
