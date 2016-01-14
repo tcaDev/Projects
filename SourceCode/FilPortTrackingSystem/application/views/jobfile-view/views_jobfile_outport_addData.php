@@ -171,7 +171,7 @@
 						          </div>
 						           <div class="form-group">
 						              <label for="dtPckRcv">Purchase Order No.</label>
-								      <input type="text"  class="form-control input-sm dt_pickup_docs-outport" id="purch_order_no">
+								      <input type="text"  class="form-control input-sm dt_pickup_docs-outport" id="purch_order_no-outport">
 
 						           </div>
 
@@ -203,7 +203,7 @@
 
 								 <div class="form-group">
 								   <label for="status">Status Report:</label>
-								  	<textarea name="status" rows="5" class="form-control input-sm status-outport" id="status"></textarea>
+								  	<textarea name="status" rows="5" class="form-control input-sm status-outport" id="status-outport"></textarea>
 								 </div>
 				  			</div>
 				  		</div>
