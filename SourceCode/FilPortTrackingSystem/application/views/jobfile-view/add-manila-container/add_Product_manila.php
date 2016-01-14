@@ -18,6 +18,7 @@
 								<label>Product Name</label><i style="color:red;">*</i>
 								<div class="get_my_products"> </div>
 								 <select class="prodname-addProduct-mnila form-control input-sm">
+								 <option value="0" selected></option>
 								  <?php foreach ($products as $row) {?>
 
 								 	  <?php echo "<option value=".stripslashes($row->ProductId)."> ".stripslashes($row->ProductName)."</option>"; ?>

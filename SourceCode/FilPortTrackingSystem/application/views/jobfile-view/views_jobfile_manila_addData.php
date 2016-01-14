@@ -218,6 +218,7 @@
 				  			<div class="form-group">
 								<label>Commodity Name</label><i style="color:red;">*</i>
 								<select class="form-control input-sm prodname" name="prodname">
+								<option value="0" selected></option>
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
 											 <?php echo stripslashes($row->ProductName);?>

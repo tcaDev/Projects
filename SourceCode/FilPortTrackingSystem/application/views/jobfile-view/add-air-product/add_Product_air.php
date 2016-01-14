@@ -12,6 +12,7 @@
 							<div class="form-group">
 								<label>Commodity Name</label><i style="color:red;">*</i>
 								<select class="form-control input-sm prodname-air" name="prodname-air">
+								<option value="0" selected></option>
 									<?php foreach($products as $row){ ?>
 											 <option value="<?php echo $row->ProductId?>">
 											 <?php echo stripslashes($row->ProductName);?>
@@ -78,19 +79,19 @@
 
 
 							<div class="form-group">
-								<label>Total Storage</label> <span id="errmsg-air" style="color:red;"></span>
-								<input type="text" step="1" class="form-control input-sm total-storage" id="cartons-air" name="numofcartons-air">
+								<label>Total Storage</label> 
+								<input type="text" class="form-control input-sm total-storage" >
 							</div>
 
 							<div class="form-group">
-								<label>Additional Per day Include VAT</label> <span id="errmsg-air" style="color:red;"></span>
-								<input type="text" step="1" class="form-control input-sm addtl-per-day" id="cartons-air" name="numofcartons-air">
+								<label>Additional Per day Include VAT</label>
+								<input type="text" class="form-control input-sm addtl-per-day" >
 							</div>
 
 
 							<div class="form-group">
 								<label>Reference Entry No.</label>
-								<input type="text" step="1" class="form-control input-sm ref-entry-no-air" id="cartons-air" name="numofcartons-air">
+								<input type="text" class="form-control input-sm ref-entry-no-air" >
 							</div>
 
 							 
