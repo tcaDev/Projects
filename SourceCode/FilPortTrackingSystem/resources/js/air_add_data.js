@@ -331,7 +331,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 				        		backgroundDismiss: false,
 				        		content: 'Currently Adding Commodity',
 	});
- 	   var jbfl   = $('.jobfiles-air').val();
+ 	     var jbfl      = $('.pill-jobfile-air-add .jobfiles-air').val();
        var table = $("#tableAddTruck-air table tbody");
          var t3  = $("#tableAddTruck-air table tbody tr").length;
 		 table.find('tr').each(function (count1) {
@@ -351,6 +351,8 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 		    addtl_per_day 		= $tds.eq(13).text(),
 		    ref_entry_no_air    = $tds.eq(14).text()
 
+
+		
 		       $.ajax({
 			  		method: "POST",
 					url: link + "/Job_air/products/",
@@ -404,26 +406,26 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 }
 
 function air_add_charges(){
-	   var jbfl       = $('.jobfiles-air').val();
-       var lodge 		  =  $('#lodge-air').val();
- 	   var cont_deposit   =  $('#cont-deposit-air').val();
-       var thc_charges    =  $('#thc-charges-air').val();
-       var arrastre       =  $('#arrastre-air').val();
-       var wharfage 	  =  $('#wharfage-air').val();
-       var weight         =  $('#weight-air').val();
-	   var del       	  =  $('#del-air').val();
-       var dispatch  	  =  $('#dispatch-air').val();
-       var storage 	 	  =  $('#storage-air').val();
-       var demurrage      =  $('#demurrage-air').val();
-	   var detention      =  $('#detention-air').val();
-       var eic  	  	  =  $('#EIC-air').val();
-       var bai_app 	 	  =  $('#bai-app-air').val();
-       var bai_inspect    =  $('#bai-inspect-air').val();
-	   var sra_app        =  $('#sra-app-air').val();
-       var sra_inspect    =  $('#sra-inspect-air').val();
-       var bad_cargo 	  =  $('#bad-cargo-air').val();
-       var all_charges    =  $('#all-charges-air').val();
-	   var part_charges   =  $('#part-charges-air').val();
+	    var jbfl      = $('.pill-jobfile-air-add .jobfiles-air').val();
+       var lodge 		  =  $('.pill-charges-air-add #lodge-air').val();
+ 	   var cont_deposit   =  $('.pill-charges-air-add #cont-deposit-air').val();
+       var thc_charges    =  $('.pill-charges-air-add #thc-charges-air').val();
+       var arrastre       =  $('.pill-charges-air-add #arrastre-air').val();
+       var wharfage 	  =  $('.pill-charges-air-add #wharfage-air').val();
+       var weight         =  $('.pill-charges-air-add #weight-air').val();
+	   var del       	  =  $('.pill-charges-air-add #del-air').val();
+       var dispatch  	  =  $('.pill-charges-air-add #dispatch-air').val();
+       var storage 	 	  =  $('.pill-charges-air-add #storage-air').val();
+       var demurrage      =  $('.pill-charges-air-add #demurrage-air').val();
+	   var detention      =  $('.pill-charges-air-add #detention-air').val();
+       var eic  	  	  =  $('.pill-charges-air-add #EIC-air').val();
+       var bai_app 	 	  =  $('.pill-charges-air-add #bai-app-air').val();
+       var bai_inspect    =  $('.pill-charges-air-add #bai-inspect-air').val();
+	   var sra_app        =  $('.pill-charges-air-add #sra-app-air').val();
+       var sra_inspect    =  $('.pill-charges-air-add #sra-inspect-air').val();
+       var bad_cargo 	  =  $('.pill-charges-air-add #bad-cargo-air').val();
+       var all_charges    =  $('.pill-charges-air-add #all-charges-air').val();
+	   var part_charges   =  $('.pill-charges-air-add #part-charges-air').val();
 	
 	  	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
         var wVal = 0;
