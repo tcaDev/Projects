@@ -78,7 +78,7 @@ var jbfl_airs;
 
 $('.save_reports_air').click(function(){
 
-	alert(jbfl_airs);
+/*	alert(jbfl_airs);*/
 /*       dia =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
 					 	  	    closeIcon: false,
