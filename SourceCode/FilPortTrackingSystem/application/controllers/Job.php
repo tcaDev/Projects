@@ -493,9 +493,9 @@ class Job extends CI_Controller {
                    <th class='hidden'>value DischargeTime</th>
                    <th>Discharge Time</th>
                    <th class='hidden'>value EstDepartureTime</th>
-                   <th>Estimated Departure Time</th>
+                   <th>Estimated Departure</th>
                    <th class='hidden'>value EstArrivalTime</th>
-                   <th>Estimated Arrival Time</th>
+                   <th>Estimated Arrival</th>
                    <th class='hidden'>Value Carrier</th>
               </tr>";
 
@@ -516,7 +516,7 @@ class Job extends CI_Controller {
                  $DischargeTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->DischargeTime));
              }
 
-             if($row->EstDepartureTime == "0000-00-00 00:00:00"){
+             if($row->EstDepartureTime == "0000-00-00"){
                 $EstDepartureTime = $row->EstDepartureTime;
              }else{
                  $EstDepartureTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstDepartureTime));
@@ -537,9 +537,9 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DischargeTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->DischargeTime) ."</td>";
-                echo "<td class='row hidden'>".stripslashes($EstDepartureTime) ."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->EstDepartureTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->EstDepartureTime) ."</td>";
-                echo "<td class='row hidden'>".stripslashes($EstArrivalTime) ."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->EstArrivalTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->EstArrivalTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->CarrierByJobFileId) ."</td>";
              
@@ -1003,6 +1003,7 @@ class Job extends CI_Controller {
                           <th><center> JobfileNumber </center> </th>
                           <th><center> Shipper </center></th>
                           <th><center> Consignee </center></th>
+                          <th><center> HBL# </center></th>
                           <th><center> Date Received of Other Documents </center></th>
 
                     </thead>
@@ -1014,6 +1015,7 @@ class Job extends CI_Controller {
                           <td>'.$row->JobFileNo.'</td>
                           <td>'.$row->ShipperName.'</td>
                           <td>'.$row->ConsigneeName.'</td>
+                          <td>'.$row->HouseBillLadingNo.'</td>
                           <td>'.$row->DateReceivedOfOtherDocs.'</td>
                     </tr>
                   </tbody>

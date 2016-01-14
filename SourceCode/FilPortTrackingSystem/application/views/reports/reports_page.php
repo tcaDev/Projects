@@ -81,6 +81,14 @@
 				        			&nbsp;<a id="dtRecvdOtherDocs"> </a> 
 				        		  </td>
 				        		</tr>
+				        		<tr>
+				        		  <td style="text-align:left;">
+				        		  	 <span class="pull-left"><b> HBL#  : </b></span>
+				        		  </td>
+				        		  <td style="text-align:left;">
+				        			&nbsp;<a id="hbl"> </a> 
+				        		  </td>
+				        		</tr>
 				        	</table>
 				        	<hr>
 		<div class="container-tab" id="tabs">
@@ -206,6 +214,14 @@
 				        			&nbsp;<a id="print_dtRecvdOtherDocs"> </a> 
 				        		  </td>
 				        		</tr>
+				        		<tr>
+				        		  <td style="text-align:left;">
+				        		  	 <span class="pull-left"><b>HBL# : </b></span>
+				        		  </td>
+				        		  <td style="text-align:left;">
+				        			&nbsp;<a id="print_hbl"> </a> 
+				        		  </td>
+				        		</tr>
 				</table>
 				<br>
 				<hr>
@@ -312,11 +328,15 @@
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text())
 			$('#consignee').html($(this).closest('tr').children('td:eq(2)').text())
 			$('#shipper').html($(this).closest('tr').children('td:eq(1)').text())
-			$('#dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(3)').text())
+			$('#dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(4)').text())
+			$('#hbl').html($(this).closest('tr').children('td:eq(3)').text())
+
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text())
 			$('#print_consignee').html($(this).closest('tr').children('td:eq(2)').text())
 			$('#print_shipper').html($(this).closest('tr').children('td:eq(1)').text())
-			$('#print_dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(3)').text())
+			$('#print_dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(4)').text())
+			$('#print_hbl').html($(this).closest('tr').children('td:eq(3)').text())
+
 			$('#view-report').modal('show');
 			 $.ajax({
 				  		method: "POST",
