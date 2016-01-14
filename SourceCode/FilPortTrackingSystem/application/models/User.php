@@ -599,7 +599,7 @@ function get_jobfile_outport(){
   }
 
   function get_jobfile_air(){
-    $query = $this->db->query("select * from vw_JobFileAir");
+    $query = $this->db->query("select * from vw_JobFileAir  ORDER BY JobFile_AirId desc");
     return $query->result();
   }
 
@@ -705,7 +705,7 @@ function get_jobfile_outport(){
     }
 
     function search_air($jobfile){
-    $query = $this->db->query("Select * from vw_jobfileair where  JobFileNo like '%$jobfile%' ");
+    $query = $this->db->query("Select * from vw_jobfileair where  JobFileNo like '%$jobfile%' order by  JobFile_AirId desc ");
     return $query->result();
     }
 

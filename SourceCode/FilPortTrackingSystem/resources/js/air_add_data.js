@@ -334,6 +334,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 				        		content: 'Currently Adding Commodity',
 	});
  	     var jbfl      = $('.pill-jobfile-air-add .jobfiles-air').val();
+ 	   
        var table = $("#tableAddTruck-air table tbody");
          var t3  = $("#tableAddTruck-air table tbody tr").length;
 		 table.find('tr').each(function (count1) {

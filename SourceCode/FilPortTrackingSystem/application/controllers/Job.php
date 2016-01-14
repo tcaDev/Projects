@@ -1850,11 +1850,11 @@ function comodity(){
          $product_name=1;
         }*/
 
-         $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
+/*         $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
         echo "This Record Already Exist";
-      }else{
+      }else{*/
         echo "Commodity Successfully Added";
        $data = array(
                      'ProductId'             => $product_name,
@@ -1872,7 +1872,7 @@ function comodity(){
               );
         $this->db->insert('ProductsByContainerHistory',$data2); 
         $this->session->unset_userdata('lastid2');
-      }
+    //  }
 
  }
 

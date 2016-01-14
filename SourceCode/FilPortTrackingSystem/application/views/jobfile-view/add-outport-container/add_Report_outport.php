@@ -130,7 +130,7 @@ $('.save_reports-outport').attr('disabled','disabled');
 				        			$(".remove_tr" ).remove();
 				        			dia.close();
 				        			$('.save_reports-outport').removeAttr('disabled');
-				        			location.reload();
+				        			/*location.reload();*/
 				        	    }
 				   			});
 	  					   }
