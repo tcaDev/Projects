@@ -10,10 +10,11 @@
 			 			<label for="search_manila">Search:</label>
 
 						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila" onkeyup="search_manila(this.value)" >
-						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>" >
-						<input type="hidden" class="manila_total_new" >
-						<a><span class="hidden new_jobfiles">View new Jobfiles</span></a>
-			 		
+
+						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
+						<input type="hidden" class="manila_total_new">
+				
+			
 			 		</div>	
 
 				</div>
