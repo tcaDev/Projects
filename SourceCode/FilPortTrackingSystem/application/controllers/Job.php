@@ -1460,28 +1460,28 @@ class Job extends CI_Controller {
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
 
-   $monitoring_type =mysql_real_escape_string($this->input->post('monitoring_type'));
-   $job             =mysql_real_escape_string($this->input->post('jbfl'));
-   $consignee       =mysql_real_escape_string($this->input->post('consignee'));
-   $shipper         =mysql_real_escape_string($this->input->post('shipper'));
-   $mbl             =mysql_real_escape_string($this->input->post('mbl'));
-   $mbl2            =mysql_real_escape_string($this->input->post('mbl2'));   //no insert in db
-   $hbl             =mysql_real_escape_string($this->input->post('hbl'));
-   $bank            =mysql_real_escape_string($this->input->post('bank'));
-   $registry        =mysql_real_escape_string($this->input->post('registry'));
-   $dtRcvd          =mysql_real_escape_string($this->input->post('dtRcvd'));
-   $dt_pickup_obl   =mysql_real_escape_string($this->input->post('dt_pickup_obl'));
-   $dt_pickup_docs  =mysql_real_escape_string($this->input->post('dt_pickup_docs'));
-   $broker          =mysql_real_escape_string($this->input->post('broker'));
-   $dt_req_budget   =mysql_real_escape_string($this->input->post('dt_req_budget'));
-   $ref_due_dt      =mysql_real_escape_string($this->input->post('ref_due_dt'));
-   $dt_boc          =mysql_real_escape_string($this->input->post('dt_boc'));    
-   $status          =mysql_real_escape_string($this->input->post('status'));  //status report in job tab has no insert in db  
-   $purch_order_no  =mysql_real_escape_string($this->input->post('purch_order_no'));  
-   $color           =mysql_real_escape_string($this->input->post('color'));  
-   $color_select    =mysql_real_escape_string($this->input->post('color_select')); 
-   $origin           =mysql_real_escape_string($this->input->post('origin'));  
-   $origcity    =mysql_real_escape_string($this->input->post('origcity'));    
+   $monitoring_type =@mysql_real_escape_string($this->input->post('monitoring_type'));
+   $job             =@mysql_real_escape_string($this->input->post('jbfl'));
+   $consignee       =@mysql_real_escape_string($this->input->post('consignee'));
+   $shipper         =@mysql_real_escape_string($this->input->post('shipper'));
+   $mbl             =@mysql_real_escape_string($this->input->post('mbl'));
+   $mbl2            =@mysql_real_escape_string($this->input->post('mbl2'));   //no insert in db
+   $hbl             =@mysql_real_escape_string($this->input->post('hbl'));
+   $bank            =@mysql_real_escape_string($this->input->post('bank'));
+   $registry        =@mysql_real_escape_string($this->input->post('registry'));
+   $dtRcvd          =@mysql_real_escape_string($this->input->post('dtRcvd'));
+   $dt_pickup_obl   =@mysql_real_escape_string($this->input->post('dt_pickup_obl'));
+   $dt_pickup_docs  =@mysql_real_escape_string($this->input->post('dt_pickup_docs'));
+   $broker          =@mysql_real_escape_string($this->input->post('broker'));
+   $dt_req_budget   =@mysql_real_escape_string($this->input->post('dt_req_budget'));
+   $ref_due_dt      =@mysql_real_escape_string($this->input->post('ref_due_dt'));
+   $dt_boc          =@mysql_real_escape_string($this->input->post('dt_boc'));    
+   $status          =@mysql_real_escape_string($this->input->post('status'));  //status report in job tab has no insert in db  
+   $purch_order_no  =@mysql_real_escape_string($this->input->post('purch_order_no'));  
+   $color           =@mysql_real_escape_string($this->input->post('color'));  
+   $color_select    =@mysql_real_escape_string($this->input->post('color_select')); 
+   $origin          =@mysql_real_escape_string($this->input->post('origin'));  
+   $origcity        =@mysql_real_escape_string($this->input->post('origcity'));    
    
    if($dtRcvd!=''){
    $date1  = date_create($dtRcvd);
@@ -1499,9 +1499,9 @@ class Job extends CI_Controller {
      $chek= $this->db->query("Select * from JobFile where
           JobFileNo='$job' limit 1");
       if($chek->num_rows() ==1){
-        echo "JobFile already Exists";
+       /* echo "JobFile already Exists";*/
        }else{
-         echo "New Jobfile is Added";
+       /*  echo "New Jobfile is Added";*/
 
 
       $session_data = $this->session->userdata('logged_in');
@@ -1587,12 +1587,13 @@ class Job extends CI_Controller {
                      );
               $this->db->insert('HistoricalStatus',$data3);
           }
+
+
+
+       $data['manila'] =   $this->Jobdata->update_data($monitoring_type);
+       $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
    
-
-    }
-      
-
-      //for running charges insert
+          //for running charges insert
         $data = array(
                'JobFileId'        => $job,
         );
@@ -1604,7 +1605,12 @@ class Job extends CI_Controller {
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UsrId'  => $userid
         );
-          $this->db->insert('RunningChargesHistory',$data2); 
+          $this->db->insert('RunningChargesHistory',$data2);
+
+    }
+      
+
+ 
       //
    }
 function vessel(){

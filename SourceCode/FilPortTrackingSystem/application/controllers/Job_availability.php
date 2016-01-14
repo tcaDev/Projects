@@ -108,7 +108,7 @@ class Job_availability extends CI_Controller {
     $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
     ?>
     <script>
-         $('.manila_total').val(<?php echo $update_total; ?>);
+         $('.manila_total_new').val(<?php echo $update_total; ?>);
     </script>
    
     <?php
