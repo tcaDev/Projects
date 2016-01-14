@@ -161,6 +161,7 @@
 							<div class="form-group">
 									 <label for="broker">Broker:</label>
 							  			<select name="broker"id="Broker"class="form-control input-sm broker-outport">
+							            	<option> </option>
 							            	<?php  foreach($broker_data as $row){  ?> 
 							                <option value="<?php echo $row->BrokerId ?>">
 							                <?php echo $row->FirstName . " " . $row->MiddleName . " " . $row->LastName; ?>
