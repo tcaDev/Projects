@@ -598,6 +598,7 @@ class Job extends CI_Controller {
     }else{
          echo "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;'>
               <tr>
+                   <th style='border: 1px solid gray'><center>No.</center></th>
                    <th style='border: 1px solid gray'><center>Container No.</center></th>
                    <th style='border: 1px solid gray'><center>Commodity</center></th>
               </tr>";
@@ -617,6 +618,7 @@ class Job extends CI_Controller {
               }
           }
              echo "<tr class='tableRow'>";
+             echo "<td style='border: 1px solid gray'>". $i ."</td>";
              echo "<td style='border: 1px solid gray'>".stripslashes($row->ContainerNo) ."</td>";
              echo "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
              echo "</tr>";
@@ -961,16 +963,16 @@ class Job extends CI_Controller {
     if(count($charges)){
        echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
               <tr>
-                    <th>No.</th>
-                    <th>Status Description</th>
+                    <th style='border: 1px solid gray'>No.</th>
+                    <th style='border: 1px solid gray'>Status Description</th>
               </tr>";
       $i=0;
       foreach ($charges as $row) {
         $i++;
        $description = $row->StatusDescription;
        echo " <tr>
-                 <td class='loadReports tdOverFlow' id='loadReports'>".$i."</td>
-                 <td class='loadReports tdOverFlow' id='loadReports'>". $description ."</td>
+                 <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$i."</td>
+                 <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>". $description ."</td>
               </tr>
             ";
       }
@@ -999,8 +1001,8 @@ class Job extends CI_Controller {
       $dispOutput .= '
                     <thead>
                           <th><center> JobfileNumber </center> </th>
-                          <th><center> Consignee </center></th>
                           <th><center> Shipper </center></th>
+                          <th><center> Consignee </center></th>
                           <th><center> Date Received of Other Documents </center></th>
 
                     </thead>
@@ -1010,8 +1012,8 @@ class Job extends CI_Controller {
                   <tbody>
                     <tr class="tableRow">
                           <td>'.$row->JobFileNo.'</td>
-                          <td>'.$row->ConsigneeName.'</td>
                           <td>'.$row->ShipperName.'</td>
+                          <td>'.$row->ConsigneeName.'</td>
                           <td>'.$row->DateReceivedOfOtherDocs.'</td>
                     </tr>
                   </tbody>
@@ -1045,6 +1047,7 @@ class Job extends CI_Controller {
          echo "
          <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;'>
               <tr>
+                    <th style='border: 1px solid gray'>No.</th>
                     <th style='border: 1px solid gray'>Container Number</th>
                     <th style='border: 1px solid gray'>Date File Entry to BOC</th>
                     <th style='border: 1px solid gray'>Date Sent Pre Assessment</th>
@@ -1066,6 +1069,7 @@ class Job extends CI_Controller {
              }
             }
              echo "<tr>";
+             echo "<td class='row' style='border: 1px solid gray'>".$i."</td>";
              echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
              echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";

@@ -252,7 +252,7 @@
 					})
 			  		.done(function(data) {
 				  		$('#tbl-status-reports').html(data);
-					});
+				});
 
 			  	 $.ajax({
 				  		method: "POST",
