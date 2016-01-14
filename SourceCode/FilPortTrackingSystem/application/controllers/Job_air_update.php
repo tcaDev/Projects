@@ -218,7 +218,6 @@ function jobfile_add_charge_air(){
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
    $jobfile =  $this->input->post('jbfl');
-   $job= $jobfile;
    $check             =  $this->input->post('check');
    $lodge             =  $this->input->post('lodge');
    $cont_deposit      =  $this->input->post('cont_deposit');
@@ -246,6 +245,11 @@ function jobfile_add_charge_air(){
         JobFileId='$job' limit 1");
 if($query->num_rows() ==1){*/
 
+      $job     = $this->Jobdata->select_jobfile_air($jobfile);
+        foreach($job as $row){
+         $job_id =  $row->JobFile_AirId;
+        }
+
   
       $update_charges = array(
               'LodgementFee'     => $lodge,
@@ -269,10 +273,10 @@ if($query->num_rows() ==1){*/
                'ParticularCharges'=> $part_charges*/
             );
 
-              $this->db->where('JobFile_AirId', $job);
+              $this->db->where('JobFile_AirId', $job_id);
               $this->db->update('RunningCharges_Air', $update_charges);
 
-
+/*
              $update_charges_history = array(
                'JobFile_AirId'        => $job,
                'LodgementFee'     => $lodge,
@@ -295,7 +299,7 @@ if($query->num_rows() ==1){*/
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UsrId'  => $userid
             );
-          $this->db->insert('RunningCharges_AirHistory', $update_charges_history);
+          $this->db->insert('RunningCharges_AirHistory', $update_charges_history);*/
 //}
    }
 

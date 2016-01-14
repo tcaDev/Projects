@@ -78,7 +78,7 @@
 
 
 
-	 <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
+	 <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 		   <div class="job-air">
 		    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5500px;">
 		        <thead>
@@ -550,6 +550,7 @@ function search_airs(jbfl){
      var sra_inspect  = $('#runchar-air .sra-inspect_airs').val().replace(/,/g,'');
      var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
 
+     	
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job_air_update/jobfile_add_charge_air');?>",
