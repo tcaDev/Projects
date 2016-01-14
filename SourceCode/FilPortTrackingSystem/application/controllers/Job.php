@@ -373,8 +373,11 @@ class Job extends CI_Controller {
 
     function get_charges_air(){
       $charges =  $this->input->post('id');   
-      $charge  = $this->Jobdata->get_chargess_air($charges);
-
+      $job=$this->Jobdata->select_jobfile_air($charges);
+        foreach($job as $row){
+         $jobs =  $row->JobFile_AirId;
+        }
+          $charge  = $this->Jobdata->get_chargess_air($jobs);
            foreach($charge as $row){
                   echo '<div class="col-lg-12 list_charges-air">
                         <div class="col-lg-6">
@@ -811,8 +814,12 @@ class Job extends CI_Controller {
 
 
     function get_goods_air(){
-       $products =  $this->input->post('id');   
-       $product  = $this->Jobdata->get_goods_air($products);
+       $products =  $this->input->post('id'); 
+        $job=$this->Jobdata->select_jobfile_air($products);
+        foreach($job as $row){
+         $jobs =  $row->JobFile_AirId;
+        }  
+       $product  = $this->Jobdata->get_goods_air($jobs);
 
        if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';

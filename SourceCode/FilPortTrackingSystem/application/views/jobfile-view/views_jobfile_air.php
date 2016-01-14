@@ -496,13 +496,14 @@ var jbfl;
 
          /*View Charges*/
         $('.view_charges-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
+ 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
  		jbfl = jobfileno;
+
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",
                                     data: { 
-                                    	id:jobfileno,
+                                    	id:jbfl,
                                     }
                                 })
                                 .done(function(data) {
@@ -589,8 +590,8 @@ function search_airs(jbfl){
 				        		content: 'Running Charges Updated!',
 				        		confirm: function(){
 									dia_running_charges.close();
-									$('.qwerty').removeAttr('disabled');
-									$('.asd').attr('disabled','disabled');
+									$('#runchar-air .update_charges-air-qwerty').removeAttr('disabled');
+									$('#runchar-air .update_charges-air').attr('disabled','disabled');
 				        			$('#runchar-air').modal('hide');
 				        	    }
 				   			   });
@@ -612,13 +613,5 @@ $('.btn-Add-Report-air').click(function(){
 		 $('.jobfile-addReport-air').val(jbfl_haha);
 
 		/* alert(jbfl);*/
-});
-</script>
-
-
-
-<script>
- $(document).on('click','.update_charges-air',function(){
- 	var lodge = $('#lodge_airs').val();
 });
 </script>

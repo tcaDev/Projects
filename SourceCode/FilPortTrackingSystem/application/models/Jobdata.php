@@ -57,7 +57,7 @@ function get_vessels($JobFile){
  function get_goods_air($products){
     $this->  db ->select('*');
     $this -> db -> from('vw_ProductsAir');
-    $this -> db ->where('JobFileNo', $products);
+    $this -> db ->where('JobFile_AirId', $products);
     $query=$this->db->get();
     return $query->result();
  }
