@@ -479,30 +479,30 @@ var suc;
 
 
 function insert_jobfile(){
-       var monitoring_type   = $('.monitoring_type').val();
-	   var jbfl       = $('.jobfiles').val();
-       var shipper 	  = $('.shipper').val();
-       var consignee  = $('.consignee').val();
-       var mbl 		  = $('.mbl').val();
-       var mbl2 	  = $('.mbl2').val();
-       var hbl 	 	  = $('.hbl').val(); 
-       var bank       = $('.bank').val();
-       var registry   = $('.registry').val(); 
-       var vdt        = $('.vdt').val();
-       var dtRcvd     = $('.dtRcvd').val();
-       var dt_pickup_obl  = $('.dt_pickup_obl').val();  
- 	   var dt_pickup_docs = $('.dt_pickup_docs').val();  
-       var broker         =  $('.broker').val();
-       var dt_req_budget  =  $('#dt_req_budget').val();
-       var ref_due_dt     =  $('#ref_due_dt').val();
- 	   var dt_boc         =  $('#dt_boc').val();
-       var status         =  $('#status').val();
-       var purch_order_no =  $('#purch_order_no').val();
-       var color          =  $('.colsel').val();
-	   var vessels        =  $('.vessels').val();
-       var color_select   =  $('#color-select').val();
-       var origin     =  $('.origin').val();
-       var origcity   =  $('.origcity').val();
+       var monitoring_type   = $('.pill-jobfile-mnla-add .monitoring_type').val();
+	   var jbfl       = $('.pill-jobfile-mnla-add .jobfiles').val();
+       var shipper 	  = $('.pill-jobfile-mnla-add .shipper').val();
+       var consignee  = $('.pill-jobfile-mnla-add .consignee').val();
+       var mbl 		  = $('.pill-jobfile-mnla-add .mbl').val();
+       var mbl2 	  = $('.pill-jobfile-mnla-add .mbl2').val();
+       var hbl 	 	  = $('.pill-jobfile-mnla-add .hbl').val(); 
+       var bank       = $('.pill-jobfile-mnla-add .bank').val();
+       var registry   = $('.pill-jobfile-mnla-add .registry').val(); 
+       var vdt        = $('.pill-jobfile-mnla-add .vdt').val();
+       var dtRcvd     = $('.pill-jobfile-mnla-add .dtRcvd').val();
+       var dt_pickup_obl  = $('.pill-jobfile-mnla-add .dt_pickup_obl').val();  
+ 	   var dt_pickup_docs = $('.pill-jobfile-mnla-add .dt_pickup_docs').val();  
+       var broker         =  $('.pill-jobfile-mnla-add .broker').val();
+       var dt_req_budget  =  $('.pill-jobfile-mnla-add #dt_req_budget').val();
+       var ref_due_dt     =  $('.pill-jobfile-mnla-add #ref_due_dt').val();
+ 	   var dt_boc         =  $('.pill-jobfile-mnla-add #dt_boc').val();
+       var status         =  $('.pill-jobfile-mnla-add #status').val();
+       var purch_order_no =  $('.pill-jobfile-mnla-add #purch_order_no').val();
+       var color          =  $('.pill-jobfile-mnla-add .colsel').val();
+	   var vessels        =  $('.pill-jobfile-mnla-add .vessels').val();
+       var color_select   =  $('.pill-jobfile-mnla-add #color-select').val();
+       var origin     =  $('.pill-jobfile-mnla-add .origin').val();
+       var origcity   =  $('.pill-jobfile-mnla-add .origcity').val();
 
         		$.ajax({
 			  		method: "POST",
