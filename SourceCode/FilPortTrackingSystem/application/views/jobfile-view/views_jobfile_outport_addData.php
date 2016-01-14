@@ -1,4 +1,4 @@
-<meta http-equiv="Refresh" content="1200">
+
 
 <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
