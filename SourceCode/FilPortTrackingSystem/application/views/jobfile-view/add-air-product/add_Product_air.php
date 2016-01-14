@@ -182,6 +182,7 @@ var jb_air;
 	
 			    $('#table-AddTruck-air table tr:last td:nth-child(16)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
+				$('#table-AddTruck-air .prodname-msg-air').text("");
 		
 			    $("#table-AddTruck-air .gross").val('');
 			    $("#table-AddTruck-air #pre-assess-air").val('');

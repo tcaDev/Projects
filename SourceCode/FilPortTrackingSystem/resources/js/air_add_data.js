@@ -187,6 +187,8 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 			    $('#tableAddTruck-air table tr:last td:nth-child(16)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 
+			    $('#tableAddTruck-air .prodname-msg-air').text("");
+
 			    $("#tableAddTruck-air .gross").val('');
 			    $("#tableAddTruck-air #pre-assess-air").val('');
 			    $("#tableAddTruck-air #final-assess-air").val('');
