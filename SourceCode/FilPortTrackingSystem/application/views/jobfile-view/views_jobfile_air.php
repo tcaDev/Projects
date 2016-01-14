@@ -79,6 +79,7 @@
 
 
 	 <div id="scroller" class="table-responsive job-manila" style= "overflow-y:auto; height :485px; width:100%;">
+		   <div class="job-air">
 		    <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5500px;">
 		        <thead>
 		             <tr style="cursor:w-resize ;">
@@ -225,7 +226,7 @@
 				      </tbody>
 				    
 				  </table>
-
+ 				</div>
 			  </div>
 
 		  	</div>
@@ -458,20 +459,20 @@ var jbfl;
 
 
 //air search
-function search_airs(){
-/*    		 	$.ajax({
+function search_airs(jbfl){
+    		 	$.ajax({
 		           method: "GET",
-	 		       url: "<?php echo base_url('search/get_jobfile_search');?>",
+	 		       url: "<?php echo base_url('search/get_jobfile_search_air');?>",
 			  	   beforeSend: function() {
-							$('.job-manila').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+							$('.job-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
  					  },
 			  	   data: {
-			  	   	           jobfile   		   :jbfl,
+			  	   	           jobfile   		   :jbfl
 			  	   		 }
 	              })
 					.done(function(data) {
-						$('.job-manila').html(data);
-	  		    });*/
+						$('.job-air').html(data);
+	  		    });
     
 }
    $(document).on('click','.update_charges-air',function(){

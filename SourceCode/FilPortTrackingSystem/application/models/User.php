@@ -703,5 +703,11 @@ function get_jobfile_outport(){
     $query = $this->db->query("Select * from vw_JobFile where MonitoringTypeId='$montype' and JobFileNo like '%$jobfile%' ");
     return $query->result();
     }
+
+    function search_air($jobfile){
+    $query = $this->db->query("Select * from vw_jobfileair where  JobFileNo like '%$jobfile%' ");
+    return $query->result();
+    }
+
 }
 ?>

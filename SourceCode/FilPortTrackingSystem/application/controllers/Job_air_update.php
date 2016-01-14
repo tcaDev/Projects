@@ -46,12 +46,18 @@ class Job_air_update extends CI_Controller {
       $status		             = $this->input->post('status');
       $status_report		     = $this->input->post('status_report');
 
+         $job= $this->Jobdata->select_jobfile_air($jbfl);
+        foreach($job as $row){
+         $job_id =  $row->JobFile_AirId;
+        }
+
+
          //stop inserting data in jobfile to avoid duplication
-    $chek= $this->db->query("Select * from JobFile_Air where
-        JobFile_AirId='$jbfl' limit 1");
+/*    $chek= $this->db->query("Select * from JobFile_Air where
+        JobFileNo in ($jbfl_new,$jbfl) limit 1");
     if($chek->num_rows() ==1){
       echo "JobFile already Exists";
-     }else{
+     }else{*/
        echo "Jobfile is updated";
 
 
@@ -86,11 +92,8 @@ class Job_air_update extends CI_Controller {
       					'StatusId'						              =>$status
 
       				   );
-         $job= $this->Jobdata->select_jobfile_air($jbfl);
-        foreach($job as $row){
-      echo   $job_id =  $row->JobFile_AirId;
-        }
-       $this->db->where('JobFile_AirId',1); 
+
+       $this->db->where('JobFile_AirId',$job_id); 
        $this->db->update('JobFile_Air',$air_job); 
 
 /*        $job= $this->Jobdata->select_jobfile_air($jbfl);
@@ -132,9 +135,10 @@ class Job_air_update extends CI_Controller {
       				   );
 
        $this->db->insert('JobFile_AirHistory',$air_job2); */
-      }
+     // }
 
      }
+
 
 
      function products(){

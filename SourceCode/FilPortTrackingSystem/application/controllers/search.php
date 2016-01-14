@@ -1328,6 +1328,12 @@ function get_jobfile_search(){
 		    $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
 	}
 }
+function get_jobfile_search_air(){
+	$jobfile  =  $this->input->get('jobfile');
+		$data['air'] =  $this->User->search_air($jobfile); 
+    	$this->load->view('jobfile-view/add-air-product/search_air',$data);
+
+}
 
 
 
