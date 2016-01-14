@@ -8,9 +8,9 @@
 
 		    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA</a></li>
 
-		    <li><a data-toggle="tab" href="#outport" class="sea_outport">SEA FREIGHT OUTPORT</a></li>
+		    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT</a></li>
 
-		    <li><a data-toggle="tab" href="#air" class="air_freight">AIR FREIGHT</a></li>
+		    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT</a></li>
 
 		  </ul>
 
@@ -70,3 +70,14 @@
 	 	padding-top:2px;
 	 }
 	</style>
+
+<script>
+		         if(location.hash=="#outport"){
+		      		  $('.sea_outport_tab').trigger('click');
+		      		   location.hash='';
+		       	}else if(location.hash=="#air"){
+		       		 $('.air_freight_tab').trigger('click');
+		       		 location.hash='';
+		       	}
+
+</script>

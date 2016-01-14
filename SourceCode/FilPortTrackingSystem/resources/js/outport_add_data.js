@@ -20,6 +20,7 @@ var suc;
 		});
 
 		$(".btn-cancel").click(function(){
+			window.location.hash="#outport";
 			location.reload();
 		});
 
@@ -558,6 +559,7 @@ function insert_jobfile_outport(){
 				        		title: 'Error!',
 				        		content: 'There is a problem in adding data ,please try another data or reload the page!',
 				        		confirm: function(){
+				        			 window.location.hash="#outport";
 									location.reload();
 				        	    }
 				   			   });
@@ -855,6 +857,7 @@ $('.save_charges-outport').click(function(){
 		 			 confirmButton: 'Yes',
   					 cancelButton: 'No',
   					 confirm: function(){
+  					 	window.location.hash="#outport";
   					 	location.reload();
   					 },
   					 cancel: function(){
@@ -915,6 +918,7 @@ $('.save_charges-outport').click(function(){
 									$('.pill-vessel-outport-add').addClass('hidden');
 									$('.btn-Next-outport').addClass('hidden');
 									dia_running_charges.close();
+									window.location.hash="#outport";
 				        			location.reload();
 				        	    }
 				   			   });

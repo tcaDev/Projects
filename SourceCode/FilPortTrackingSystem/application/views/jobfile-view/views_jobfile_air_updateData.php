@@ -429,7 +429,8 @@ var jbs_air;
 				        		content:data,
 				        		confirm: function(){
 									dia.close();
-								   location.reload();
+								   window.location.hash="#air";
+									location.reload();
 				        	    }
 				   			});   	  
 	    	     });

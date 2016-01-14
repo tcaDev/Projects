@@ -22,6 +22,7 @@ var suc;
 		});
 
 		$(".btn-cancel-air").click(function(){
+			window.location.hash="#air";
 			location.reload();
 		});
 
@@ -444,6 +445,7 @@ function air_add_charges(){
 		 			 confirmButton: 'Yes',
   					 cancelButton: 'No',
   					 confirm: function(){
+  					 	window.location.hash="#air";
   					 	location.reload();
   					 },
   					 cancel: function(){
@@ -485,7 +487,8 @@ function air_add_charges(){
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
 				        		content: 'New  Commodity added!',
-				        		confirm: function(){	
+				        		confirm: function(){
+				        		window.location.hash="#air";	
 				        		  location.reload();						
 				        	    }
 				   			});

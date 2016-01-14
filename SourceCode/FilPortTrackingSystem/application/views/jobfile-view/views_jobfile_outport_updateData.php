@@ -294,7 +294,9 @@ $(document).on('click','.update_jobfiles-outport',function(){
 				        		content: 'Jobfile is Updated',
 				        		confirm: function(){
 									dia_jobfile.close();
+									window.location.hash="#outport";
 									location.reload();
+									
 				        		
 				        	    }
 				   			   });
