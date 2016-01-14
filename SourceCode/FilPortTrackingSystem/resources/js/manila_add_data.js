@@ -20,7 +20,7 @@ var suc;
 		});
 
 		$(".btn-cancel-mnla").click(function(){
-			location.reload();
+			 
 		});
 
 		
@@ -548,6 +548,7 @@ function insert_jobfile(){
 				        		title: 'Success!',
 				        		content: 'New JobFile Added!',
 				        		confirm: function(){
+				        			$('.job-manila').html(data);
 				        			$('#btn-vessel-mnla-add').addClass('active');
 									$('#btn-jobfile-mnla-add').removeClass('active');
 									$('#btn-truck-mnla-add').removeClass('active');
@@ -869,7 +870,7 @@ $('.save_charge').click(function(){
 		 			 confirmButton: 'Yes',
   					 cancelButton: 'No',
   					 confirm: function(){
-  					 	location.reload();
+  					 	 
   					 },
   					 cancel: function(){
   					 	$('.btn-save-mnla').removeAttr('disabled');
@@ -930,7 +931,7 @@ $('.save_charge').click(function(){
 									$('.pill-vessel-mnla-add').addClass('hidden');
 									$('.btn-Next').addClass('hidden');
 									dia_running_charges.close();
-				        			location.reload();
+				        			 
 				        	    }
 				   			   });
 	    		    })
@@ -944,30 +945,31 @@ $('.save_charge').click(function(){
 /*setInterval(refresh_table, 3000);
 
 function refresh_table(update_total) {
+	var h = 1;
 	var manila = $('.manila_total').val();
     var manila_new = $('.manila_total_new').val();
   
+    var  current_new =  parseInt(manila_new) -  parseInt(manila);
+
 
  		 	$.ajax({
 		           method: "GET",
 	 		       url: link + "/Job_availability/check_content",
 	 		       data:{total : manila,
-	 		             montype:1
-
-
+	 		       	   	 		montype:1
 	 		            }
 
 	              })
  		 		  .done(function(data) {
  		 		  
-					if(data!=1){
-						
-						$('.job-manila').html(data);
+ 		 		  
+					if(data!=h){
+					    alert(current_new);
 					}
 
 	    		})
 
- 		 	
-}
-*/
+ 	h=0;	 	
+}*/
+
 
