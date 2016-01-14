@@ -510,8 +510,9 @@ var jbfl;
   $(document).on('change',' .checkDec',function(){
  		var inp = $(this).val();
  		var holder = $(this).attr('id');
- 		var holders = inp.toString().split('.');
- 		var n = inp.indexOf('.');
+ 		var newInp = inp.replace(/,/g,'');
+ 		var holders = newInp.toString().split('.');
+ 		var n = newInp.indexOf('.');
  		if(n < 0){
  			holders[0] =  numeral(holders[0]).format('0,0.00');
  			$('#runchar #' + holder).val(holders.join('.'));
