@@ -285,6 +285,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 
 			  		}
 				})
+
 			    .done(function(data) {
 	  						$.alert({
 	  							backgroundDismiss: false, 	
@@ -433,7 +434,7 @@ function air_add_charges(){
 		 	}
 		 	//alert(totalCharges[$x]);
 		 }
-		 if(wVal == 18){
+/*		 if(wVal == 18){
 		 		$.confirm({
 		 			 title: 'Add Running Charges',
 		 			 closeIcon:false,
@@ -449,7 +450,7 @@ function air_add_charges(){
   					 	$('.btn-save-mnla').removeAttr('disabled');
   					 }
 		 		});
-		 }else{
+		 }else{*/
 
 
 			       $.ajax({
@@ -491,7 +492,7 @@ function air_add_charges(){
 				   			});
 
 	    	  });
-			}
+			//}
 }
 
 

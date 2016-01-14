@@ -280,7 +280,7 @@ function status_reports(){
 $this->db->where('JobFile_AirId', $jobs);
 $this->db->update('RunningCharges_Air', $update_charges);
 
-
+/*
              $add_charges_history = array(
                'JobFile_AirId'    => $jobs,
                'LodgementFee'     => $lodge,
@@ -304,7 +304,7 @@ $this->db->update('RunningCharges_Air', $update_charges);
                'UpdatedBy_UsrId'  => $userid
             );
 
-  $this->db->insert('RunningCharges_AirHistory', $add_charges_history);
+  $this->db->insert('RunningCharges_AirHistory', $add_charges_history);*/
   }
   
     function check_jobfile(){

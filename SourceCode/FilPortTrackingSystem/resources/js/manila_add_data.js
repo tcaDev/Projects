@@ -941,6 +941,7 @@ $(document).on('click','.save_charge',function(){
 									$('.btn-Next').addClass('hidden');
 									dia_running_charges.close();
 									$('#myModal').modal('hide');
+									
 				        			 
 				        	    }
 				   			   });
