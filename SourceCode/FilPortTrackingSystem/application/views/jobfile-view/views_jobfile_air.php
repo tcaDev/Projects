@@ -441,8 +441,8 @@ var jbfl;
 
          /*View Charges*/
         $('.view_charges-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
- 		jbfl = jobfileno;
+ 		var jobfileeno =  $(this).closest('tr').children('td:eq(33)').text();
+ 		jbfl = jobfileeno;
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",
