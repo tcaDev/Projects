@@ -1841,7 +1841,7 @@ function comodity(){
          $product_name         =  $this->input->post('product_name');
          $con_id               =  $this->input->post('con_id'); 
 
-      $result              = $this->Jobdata->select_productcontainer($con_id);
+      $result = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
         $con_id =  $row->ContainerByCarrierId;
        }

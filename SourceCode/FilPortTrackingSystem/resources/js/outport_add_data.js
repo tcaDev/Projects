@@ -757,7 +757,7 @@ function ins_contains_outport(add_comodity){
 function ins_descriptions_outport(c,ct,container){
 		        var table = $("#tableAddTruck-outport table tbody");
 			    var ct2   = $("#tableAddTruck-outport table tbody tr").length;
-			    	 
+			      var jbfl       = $('.jobfiles-outport').val();	 
  				table.find('tr').each(function (count1) {		 			  
   				var c2 = count1+1;
  
@@ -767,7 +767,7 @@ function ins_descriptions_outport(c,ct,container){
 						     product_name  = $tds.eq(0).text(),
 						     prod_orderno  = $tds.eq(1).text();  //origin_id
 						     con_id        = $tds.eq(2).text(), //change to  container 
-
+			alert(jbfl + " " +  con_id);
 	        	$.ajax({
 			  		method: "POST",
 					url: link + "/Job/comodity/",
@@ -775,8 +775,8 @@ function ins_descriptions_outport(c,ct,container){
 			  				//from comodity tab
 			  			    product_name   :product_name,
 			  			    prod_orderno   :prod_orderno, 
-			  			    con_id	   	   :con_id
-
+			  			    con_id	   	   :con_id,
+			  			    jbfl           :jbfl
 		
 			  		}
 				})

@@ -115,7 +115,7 @@ function get_vessels($JobFile){
  }
   function select_productcontainer($cont){
     $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
-    where ContainerNo='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
+    where ContainerByCarrierId='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
     return $query->result();
  }
 
