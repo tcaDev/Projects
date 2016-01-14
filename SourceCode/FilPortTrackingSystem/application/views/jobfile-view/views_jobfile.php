@@ -81,3 +81,13 @@
 		       	}
 
 </script>
+
+
+<script>
+$('.new_manila_jobfile').click(function(){
+	$('.new_manila_jobfile').empty();
+});
+
+
+
+</script>
