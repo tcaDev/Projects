@@ -158,7 +158,7 @@ var jb_air;
 				$('.vessel-size-msg-air').text("The Commodity is already in this Container");
 			}
 			else*/ 
-			if($('#table-AddTruck-air .prodname-air').val() == "")
+			if($('#table-AddTruck-air .prodname-air option:selected').val() == "0")
 			{
 				$('#table-AddTruck-air .prodname-msg-air').text("Need Commodity Name.");
 			}else{
