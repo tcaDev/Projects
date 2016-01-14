@@ -160,9 +160,9 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 
 
 		
-	 $(document).on('click','.btn-Add-Product-Data-air',function(){
+	 $(document).on('click','.btn-Add-Product-Data-air', function(){
 
-			if($('#tableAddTruck-air .prodname-air').val() == "")
+			if($('#tableAddTruck-air .prodname-air option:selected').val() == "0")
 			{
 				$('#tableAddTruck-air .prodname-msg-air').text("Need Commodity Name.");
 			}else{
@@ -501,7 +501,7 @@ function air_add_charges(){
 
 
 //check  if num or not
-              $(".checkDec").keypress(function (e) {
+              $(document).on('keypress','.checkDec',function (e) {
 					  if(event.which < 46
 					    || event.which > 59) {
 					        event.preventDefault();

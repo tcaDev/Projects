@@ -141,14 +141,14 @@
 var jb_air;
       /*Delete Row*/
 
-      $('#table-AddTruck-air').on('click', '.deleteButton', function() {
+      $(document).on('click', '#table-AddTruck-air .deleteButton', function() {
 
     	$(this).closest("tr").remove();
 
 	});
 
 
-      	 $(".btn-Add-Product-Data-air").click(function(){
+      	 $(document).on('click','.btn-Add-Product-Data-air', function(){
 
 			/*var vessel = $('#tableAddTruck-air .vessel-prod-air option:selected').val();
 			var prod = $('#tableAddTruck-air .prodname-air option:selected').val();
@@ -205,7 +205,7 @@ var jb_air;
 
 
     <script>
-    $('.submit_air_add').click(function(){
+    $(document).on('click','.submit_air_add',function(){
     	$('.submit_air_add').attr('disabled','disabled');
     	if($("#table-AddTruck-air table tbody tr td").length == 0){
     			$.confirm({
