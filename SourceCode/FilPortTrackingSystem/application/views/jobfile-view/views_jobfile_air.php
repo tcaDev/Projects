@@ -352,6 +352,20 @@
 					$('#runchar-air .update_charges-air-qwerty').removeAttr('disabled');
 					$('#runchar-air .update_charges-air').attr('disabled','disabled');
 			});
+
+		//check  if num or not
+              $(document).on('keypress','.checkDec-air',function (e) {
+					  if(event.which < 46
+					    || event.which > 59) {
+					        event.preventDefault();
+					    } // prevent if not number/dot
+
+					    if(event.which == 46
+					    && $(this).val().indexOf('.') != -1) {
+					        event.preventDefault();
+					    } // prevent if already dot
+
+               });
 	</script>
 
 
@@ -607,7 +621,7 @@ function search_airs(jbfl){
 
 $('.btn-Add-Product-air').click(function(){
 
-			 jb_air =  $(this).closest('tr').children('td:eq(33)').text();
+			 jb_air =  $(this).closest('tr').children('td:eq(2)').text();
 
 			
 });

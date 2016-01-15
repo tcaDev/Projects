@@ -114,6 +114,7 @@ $('.save_reports_air').click(function(){
 				        		confirm: function(){
 				        			$('.tr_remove').empty();
 									/*dia.close();*/
+									$('.modal').modal('hide');
 				        	    }
 				   			});
 

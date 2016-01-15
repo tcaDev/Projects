@@ -421,6 +421,20 @@ var jbfl;
 			$('.asd').attr('disabled','disabled');
 	});
 
+	//check  if num or not
+              $(document).on('keypress','.checkDec',function (e) {
+					  if(event.which < 46
+					    || event.which > 59) {
+					        event.preventDefault();
+					    } // prevent if not number/dot
+
+					    if(event.which == 46
+					    && $(this).val().indexOf('.') != -1) {
+					        event.preventDefault();
+					    } // prevent if already dot
+
+               });
+
 	$(document).on('click','.qwerty',function(){
 
 			$('#runchar .lodge_update').removeAttr('disabled');

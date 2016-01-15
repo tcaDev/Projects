@@ -141,7 +141,7 @@
 
 										<div class="form-group">
 											<label>Number of Cartons</label> <span id="errmsg-air" style="color:red;"></span>
-											<input type="text" step="1" class="form-control input-sm cartons-air" name="numofcartons-air">
+											<input type="text" step="1" class="form-control input-sm cartons-air" id="cartons-air" name="numofcartons-air">
 										</div>
 
 									<div class="form-group">

@@ -437,6 +437,20 @@ var jbfl_outport;
 			$(this).attr('disabled','disabled');
 	});
 
+//check  if num or not
+              $(document).on('keypress','.checkDec',function (e) {
+					  if(event.which < 46
+					    || event.which > 59) {
+					        event.preventDefault();
+					    } // prevent if not number/dot
+
+					    if(event.which == 46
+					    && $(this).val().indexOf('.') != -1) {
+					        event.preventDefault();
+					    } // prevent if already dot
+
+               });
+
    $(document).on('click','.update_charges-outport',function(){
      var lodge        = $('#runchar-outport .lodge_update').val().replace(/,/g,'');
      var cont_deposit = $('#runchar-outport .cont-deposit').val().replace(/,/g,'');

@@ -252,8 +252,10 @@ var jb_air;
 		    addtl_per_day 		= $tds.eq(13).text(),
 		    ref_entry_no_air    = $tds.eq(14).text()
 
-/*
-		    alert(jb_air);*/
+
+		    /*alert(jb_air);*/
+
+		    /*jb_air = JOBFILENO UNG KUNIN MO WAG ID KASE UNG ID KINUKUHA MO PA SA JOB_AIR/PRODUCTS*/
 		   
 		       $.ajax({
 			  		method: "POST",
@@ -284,6 +286,7 @@ var jb_air;
 				        		confirm: function(){
 				        			$('.tr_remove').empty();
 				        			$('.tableProd-msg-air').text("");
+				        			$('.submit_air_add').removeAttr('disabled');
 									dia.close();
 				        	    }
 				   			});

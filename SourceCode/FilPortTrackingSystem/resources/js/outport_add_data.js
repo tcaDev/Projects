@@ -767,7 +767,21 @@ function ins_descriptions_outport(c,ct,container){
 						     product_name  = $tds.eq(0).text(),
 						     prod_orderno  = $tds.eq(1).text();  //origin_id
 						     con_id        = $tds.eq(2).text(), //change to  container 
-			alert(jbfl + " " +  con_id);
+			/*alert(jbfl + " " +  con_id);*/
+
+			/*
+
+HINDI N PASOK UNG COMMODITY SA OUTPORT
+LOOK MO QUERY MO
+PERO WAG KA MAG ALALA AYOS NA.
+
+				  function select_productcontainer($cont){
+				    $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
+				    where ContainerByCarrierId='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
+				    return $query->result();
+					 }
+					 
+			*/
 	        	$.ajax({
 			  		method: "POST",
 					url: link + "/Job/comodity/",
