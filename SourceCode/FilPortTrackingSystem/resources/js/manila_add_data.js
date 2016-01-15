@@ -777,8 +777,9 @@ function ins_descriptions(c,ct,container){
  				table.find('tr').each(function (count1) {		 			  
   				var c2 = count1+1;
  
- 	/*			if(c<=ct){	*/
+ 				if(c<=ct){	
    				if(c2<=ct2){
+
 				          var $tds		   = $(this).find('td'),
 						     product_name  = $tds.eq(0).text(),
 						     prod_orderno  = $tds.eq(1).text();  //origin_id
@@ -786,7 +787,7 @@ function ins_descriptions(c,ct,container){
 
 	        	$.ajax({
 			  		method: "POST",
-					url: link + "/Job/comodity/",
+					url: link + "/Job/comodity_manila/",
 					data: {
 			  				//from comodity tab
 			  			    product_name   :product_name,
@@ -796,6 +797,7 @@ function ins_descriptions(c,ct,container){
 		
 			  		}
 				})
+
 			    .done(function(data) {
 			    	          if(container!=''){
 			    	          	var message = "New Commodity and Container Added!";
@@ -829,7 +831,7 @@ function ins_descriptions(c,ct,container){
 						   	  }
 	    		    });
 				 }
-				 //} 	    
+				 } 	    
 				});
 
 

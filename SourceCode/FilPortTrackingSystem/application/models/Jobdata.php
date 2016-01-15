@@ -119,6 +119,12 @@ function get_vessels($JobFile){
     return $query->result();
  }
 
+ function select_productcontainer_manila($cont){
+        $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
+    where ContainerNo='$cont'  ORDER BY ContainerByCarrierId desc limit 1");
+    return $query->result();
+ }
+
 
  
 

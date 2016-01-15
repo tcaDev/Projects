@@ -1843,7 +1843,7 @@ function comodity(){
 
       $result = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
-        $con_id =  $row->ContainerByCarrierId;
+        echo $con_id =  $row->ContainerByCarrierId;
        }
 /*
         if($product_name==''){
@@ -1853,12 +1853,12 @@ function comodity(){
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
-        echo "This Record Already Exist";
+     /*   echo "This Record Already Exist";*/
       }else{
-        echo "Commodity Successfully Added";
+       /* echo "Commodity Successfully Added";*/
        $data = array(
                      'ProductId'             => $product_name,
-                     'ContainerByCarrierId'  => $con_id,
+                     'ContainerByCarrierId'  => $con_id
               );
       $this->db->insert('ProductsByContainer',$data); 
       $lastid=$this->db->insert_id(); 
@@ -1875,6 +1875,49 @@ function comodity(){
       }
 
  }
+
+ function comodity_manila(){
+        $session_data = $this->session->userdata('logged_in');
+         $userid = $session_data['uid'];
+         $prodid               =  $this->input->post('prod_orderno');
+         $product_name         =  $this->input->post('product_name');
+         $con_id               =  $this->input->post('con_id'); 
+
+      $result = $this->Jobdata->select_productcontainer_manila($con_id);
+       foreach($result as $row){
+         $con_ids =  $row->ContainerByCarrierId;
+       }
+/*
+        if($product_name==''){
+         $product_name=1;
+        }*/
+
+         $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
+          and ContainerByCarrierId='$con_ids' "); 
+      if($query->num_rows()==1) {
+        echo "This Record Already Exist";
+      }else{
+        echo "Commodity Successfully Added";
+       $data = array(
+                     'ProductId'             => $product_name,
+                     'ContainerByCarrierId'  => $con_ids
+              );
+      $this->db->insert('ProductsByContainer',$data); 
+      $lastid=$this->db->insert_id(); 
+
+         $data2 = array(
+                     'ProductsByContainerId'    => $lastid,
+                     'ProductId'                => $product_name,
+                     'ContainerByCarrierId'     => $con_id,
+                     'DateUpdated'              => Date('Y-m-d H:i'),
+                     'UpdatedBy_UserId'         => $userid
+              );
+        $this->db->insert('ProductsByContainerHistory',$data2); 
+        $this->session->unset_userdata('lastid2');
+      }
+
+ }
+
 
  function jobfile_add_charge(){
    $session_data = $this->session->userdata('logged_in');
