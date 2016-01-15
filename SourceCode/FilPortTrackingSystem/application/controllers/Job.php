@@ -1843,7 +1843,7 @@ function comodity(){
 
       $result = $this->Jobdata->select_productcontainer($con_id);
        foreach($result as $row){
-        echo $con_id =  $row->ContainerByCarrierId;
+         $con_id =  $row->ContainerByCarrierId;
        }
 /*
         if($product_name==''){
@@ -1853,9 +1853,11 @@ function comodity(){
          $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$product_name'
           and ContainerByCarrierId='$con_id' "); 
       if($query->num_rows()==1) {
-     /*   echo "This Record Already Exist";*/
+        echo "COmmodity is successfully added.";
+        echo "</br>";
+        echo "Some Record already exist,Please check the view comodity for confirmation";
       }else{
-       /* echo "Commodity Successfully Added";*/
+        echo "Commodity Successfully Added";
        $data = array(
                      'ProductId'             => $product_name,
                      'ContainerByCarrierId'  => $con_id
