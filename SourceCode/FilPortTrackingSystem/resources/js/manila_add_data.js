@@ -80,15 +80,15 @@ var suc;
 			{
 				$('.reference-msg').text("Need Reference Entry No.");
 			}
-			else if($('#check_jobfiles').text() == "Jobfile is already exists in Outport")
+			else if($('#check_jobfiles').text() == "Jobfile already exists in Outport")
 			{
 				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exist");
 			}
-				else if($('#check_jobfiles').text() == "Jobfile is already exists in Air")
+				else if($('#check_jobfiles').text() == "Jobfile already exists in Air")
 			{
 				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
 			}
-			else if($('#check_jobfiles').text() == "Jobfile is already exists in Manila")
+			else if($('#check_jobfiles').text() == "Jobfile already exists in Manila")
 			{
 				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
 			}

@@ -30,7 +30,7 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles"></span></label> 
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> </label> <span id="check_jobfiles"></span>
 								 <input type="text" class="form-control input-sm jobfiles" name="jbfl" id="jbfl" onkeyup="myjob(this)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>

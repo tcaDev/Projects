@@ -85,7 +85,7 @@ var suc;
 				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");
 			}
 
-			else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile is already exists in Air")
+			else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile Already Exists in Air")
 			{
 				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");
 			}
@@ -118,14 +118,14 @@ var suc;
 
 /*Function Check if Jobfile is Exist*/
 
- function myjob_air(jobfile){
-   if(jobfile==''){
-   	$('#check_jobfiles-air').empty();
+/* function myjob_air_asdssssss(jobfile){
+   if(jobfile == ""){
+   	$('#check_jobfiles-air').text("sds");
    }else{
 
    			$.ajax({
 			  		method: "POST",
-					url: link + "/Job_air/check_jobfile/",
+					url: link + "/Job_air/check_jobfiles/",
 					beforeSend: function() {
 						$('#check_jobfiles-air i').empty().addClass('fa fa-spinner fa-spin');
  					  },
@@ -136,7 +136,7 @@ var suc;
 		   		 	   $('#check_jobfiles-air').html(data);
 				});
     }
- }
+ }*/
 
  /*Delete Row*/
 

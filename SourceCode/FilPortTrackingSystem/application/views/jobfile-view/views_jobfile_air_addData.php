@@ -1,4 +1,4 @@
-<div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+                    <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title text-uppercase ">Add Data Form</h4>
@@ -28,7 +28,7 @@
 					           		<div class="form-group">
 					              <!--check if jofile is already exists -->
 					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i></label>
-					           		<div class="check_jobfiles-air"></div> 
+					           		<span class="check_jobfiles-air"></span> 
 									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air_add(this.value)">
 									 <i class="jobfile-msg-air" style="color:red;"></i>
 					           </div>

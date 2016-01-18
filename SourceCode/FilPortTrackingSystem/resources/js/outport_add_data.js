@@ -75,15 +75,15 @@ var suc;
 			{
 				$('.consignee-msg-outport').text("Need Consignee");
 			}
-			else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Air")
+			else if($('#check_jobfiles-outport i').text() == "Jobfile already exists in Air")
 			{
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}
-				else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Manila")
+				else if($('#check_jobfiles-outport i').text() == "Jobfile already exists in Manila")
 			{
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}
-			else if($('#check_jobfiles-outport i').text() == "Jobfile is already exists in Outport")
+			else if($('#check_jobfiles-outport i').text() == "Jobfile already exists in Outport")
 			{
 				$('.jobfile-msg-outport').text("Can't Proceed Jobfile Already Exists");
 			}

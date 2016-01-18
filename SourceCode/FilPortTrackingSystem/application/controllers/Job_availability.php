@@ -120,9 +120,9 @@ function check_air(){
  $jobfile =  $this->input->get('jobfile');
            $query= $this->db->query("Select * from JobFile_Air where JobFileNo ='$jobfile'  limit 1");
           if($query->num_rows() == 1){ 
-            echo  "<i style='color:red;'>Already exists</i>";     
+            echo  "<i style='color:red;'>Jobfile Already Exists in Air</i>";     
           }else{
-             echo "<i style='color:green;'>Available</i>"; 
+             echo "<i style='color:green;'>Jobfile is Available</i>"; 
           }
 }
 

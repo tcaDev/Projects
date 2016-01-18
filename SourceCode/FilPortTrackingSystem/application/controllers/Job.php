@@ -131,10 +131,10 @@ class Job extends CI_Controller {
       if($jobfile!=''){
           if($query->num_rows() ==1){
             if($moni!=''){
-                echo  "<i style='color:red;font-size:12px;'>Jobfile is already exists in ".$moni."</i>";     
+                echo  "<i style='color:red;'>Jobfile already exists in ".$moni."</i>";     
              }
           }else{
-             echo "<i style='color:green;'>Jobfile  is available</i>"; 
+             echo "<i style='color:green;'>Jobfile available</i>"; 
           }
        }
 

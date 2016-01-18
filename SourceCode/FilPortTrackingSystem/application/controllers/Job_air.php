@@ -311,7 +311,7 @@ $this->db->update('RunningCharges_Air', $update_charges);
   $this->db->insert('RunningCharges_AirHistory', $add_charges_history);*/
   }
   
-    function check_jobfile(){
+    function check_jobfiles(){
       //$dt = Date("Y/m/d H:i:s");
       $jobfile =  $this->input->post('jobfile');
 
@@ -320,7 +320,7 @@ $this->db->update('RunningCharges_Air', $update_charges);
           if($query->num_rows() ==1){
                 echo  "<i style='color:red;font-size:12px;'>Jobfile Already Exists in Air</i>";     
           }else{
-             echo "<i style='color:green;'>Jobfile  is Available</i>";      
+                echo "<i style='color:green;'>Jobfile is Available</i>";      
     		}
  }
 
