@@ -72,9 +72,9 @@
 							
 									<div class="form-group">
 
-									  <label for="hbl">House Airway Bill:</label><i style="color:red;">*</i>
+									  <label for="hbl">House Airway Bill:</label>
 									  <input type="text" class="form-control input-sm hbl-air">
-									  <i class="colsel-msg-air" style="color:red;"></i>
+								
 									</div>
 
 									<div class="form-group">

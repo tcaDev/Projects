@@ -76,10 +76,6 @@ var suc;
 			{
 				$('.consignee-msg').text("Need Consignee");
 			}
-			else if($('.hbl').val() == '')
-			{
-				$('.colsel-msg').text("Need House Bill of Lading No.");
-			}
 			else if($('.reference').val() == "")
 			{
 				$('.reference-msg').text("Need Reference Entry No.");

@@ -76,10 +76,6 @@ var suc;
 			{
 				$('.consignee-msg-air').text("Need Consignee");
 			}
-			else if($('.required-fields-air .hbl-air').val() == '')
-			{
-				$('.colsel-msg-air').text("Need House Bill of Lading No.");
-			}
 			else if($('.required-fields-air #check_jobfiles-air').text() == "Jobfile is already exists in Outport")
 			{
 				$('.jobfile-msg-air').text("Can't Proceed Jobfile Already Exists");

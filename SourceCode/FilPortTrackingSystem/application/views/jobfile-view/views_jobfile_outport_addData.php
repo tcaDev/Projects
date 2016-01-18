@@ -90,9 +90,9 @@
 
 								<div class="form-group">
 
-								  <label for="hbl">House Bill of Lading No.:</label><i style="color:red;">*</i>
+								  <label for="hbl">House Bill of Lading No.:</label>
 								  <input type="text" class="form-control input-sm hbl-outport" name="hbl" id="hbl">
-								  <i class="colsel-msg-outport" style="color:red;"></i>
+								 
 								</div>
 
 								<div class="form-group">
