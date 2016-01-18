@@ -273,7 +273,7 @@
 							</div>
 
 							<div class="form-group">
-								<label>Gross Weight (kgs):</label> <span id="errmsg-air" style="color:red;"></span>
+								<label>Gross Weight (kgs):</label> 
 								<input type="text" step="1" class="form-control input-sm gross" name="numofcartons-air">
 							</div>
 
