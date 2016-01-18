@@ -23,14 +23,14 @@ class Update extends CI_Controller {
 		}
 
 	function update_consignee(){
-		$id 	= 	mysql_real_escape_string($this->input->post('consig_id'));
-		$name 	= 	mysql_real_escape_string($this->input->post('consig_name'));
-		$hbno 	=	mysql_real_escape_string($this->input->post('hbno'));
-		$vilage =	mysql_real_escape_string($this->input->post('vilage'));
-		$city 	=	mysql_real_escape_string($this->input->post('city'));
-	    $country=	mysql_real_escape_string($this->input->post('country'));
-		$ofnum  = 	mysql_real_escape_string($this->input->post('consig_ofnum'));
-		$status = 	mysql_real_escape_string($this->input->post('status'));
+		$id 	= 	addslashes($this->input->post('consig_id'));
+		$name 	= 	addslashes($this->input->post('consig_name'));
+		$hbno 	=	addslashes($this->input->post('hbno'));
+		$vilage =	addslashes($this->input->post('vilage'));
+		$city 	=	addslashes($this->input->post('city'));
+	    $country=	addslashes($this->input->post('country'));
+		$ofnum  = 	addslashes($this->input->post('consig_ofnum'));
+		$status = 	addslashes($this->input->post('status'));
 
 		$query= $this->db->query("Select * from Consignee where ConsigneeName = '$name' limit 1");
 
@@ -56,11 +56,11 @@ class Update extends CI_Controller {
 	
 	}
 	function update_vessel(){
-		$id 	= 	mysql_real_escape_string($this->input->post('ves_id'));
-		$name 	= 	mysql_real_escape_string($this->input->post('ves_name'));
-		$address_carrier = 	mysql_real_escape_string($this->input->post('address_carrier'));
-		$number_carrier = mysql_real_escape_string($this->input->post('number_carrier'));
-		$status = 	mysql_real_escape_string($this->input->post('status'));
+		$id 	= 	addslashes($this->input->post('ves_id'));
+		$name 	= 	addslashes($this->input->post('ves_name'));
+		$address_carrier = 	addslashes($this->input->post('address_carrier'));
+		$number_carrier = addslashes($this->input->post('number_carrier'));
+		$status = 	addslashes($this->input->post('status'));
 		
 		    $query= $this->db->query("Select * from 
 		    	Carrier where CarrierName = '$name' 
@@ -82,13 +82,13 @@ class Update extends CI_Controller {
 	
 	}
 		function update_shipper(){
-		$id 	   = 	mysql_real_escape_string($this->input->post('ship_id'));
-		$name 	   = 	mysql_real_escape_string($this->input->post('ship_name'));
-		$hbno 	   = 	mysql_real_escape_string($this->input->post('hbno'));
-		$vilage    = 	mysql_real_escape_string($this->input->post('vilage'));
-		$city 	   = 	mysql_real_escape_string($this->input->post('city'));
-		$country   = 	mysql_real_escape_string($this->input->post('country'));
-		$status    = 	mysql_real_escape_string($this->input->post('status'));
+		$id 	   = 	addslashes($this->input->post('ship_id'));
+		$name 	   = 	addslashes($this->input->post('ship_name'));
+		$hbno 	   = 	addslashes($this->input->post('hbno'));
+		$vilage    = 	addslashes($this->input->post('vilage'));
+		$city 	   = 	addslashes($this->input->post('city'));
+		$country   = 	addslashes($this->input->post('country'));
+		$status    = 	addslashes($this->input->post('status'));
 
 		
 
@@ -112,43 +112,43 @@ class Update extends CI_Controller {
 	
 	}
 	function update_shippercon(){
-		$id 	= 	mysql_real_escape_string($this->input->post('ship_id'));
-		$fname 	= 	mysql_real_escape_string($this->input->post('fname'));
-		$mname 	= 	mysql_real_escape_string($this->input->post('mname'));
-		$lname 	= 	mysql_real_escape_string($this->input->post('lname'));
-		$c1 	= 	mysql_real_escape_string($this->input->post('c1'));
-		$c2 	= 	mysql_real_escape_string($this->input->post('c2'));
+		$id 	= 	addslashes($this->input->post('ship_id'));
+		$fname 	= 	addslashes($this->input->post('fname'));
+		$mname 	= 	addslashes($this->input->post('mname'));
+		$lname 	= 	addslashes($this->input->post('lname'));
+		$c1 	= 	addslashes($this->input->post('c1'));
+		$c2 	= 	addslashes($this->input->post('c2'));
 
 	$this->User->update_shippercon($id,$fname,$mname,$lname,$c1,$c2);
 	redirect('Login_User/settings');
 	}
     function update_consigneecon(){
-		$id 	= 	mysql_real_escape_string($this->input->post('c_id'));
-		$fname 	= 	mysql_real_escape_string($this->input->post('fname'));
-		$mname 	= 	mysql_real_escape_string($this->input->post('mname'));
-		$lname 	= 	mysql_real_escape_string($this->input->post('lname'));
-		$c1 	= 	mysql_real_escape_string($this->input->post('c1'));
-		$c2 	= 	mysql_real_escape_string($this->input->post('c2'));
+		$id 	= 	addslashes($this->input->post('c_id'));
+		$fname 	= 	addslashes($this->input->post('fname'));
+		$mname 	= 	addslashes($this->input->post('mname'));
+		$lname 	= 	addslashes($this->input->post('lname'));
+		$c1 	= 	addslashes($this->input->post('c1'));
+		$c2 	= 	addslashes($this->input->post('c2'));
 
 	$this->User->update_consigneecon($id,$fname,$mname,$lname,$c1,$c2);
 	redirect('Login_User/settings');
 	}
 		function update_broker(){
-		$id 			= 			mysql_real_escape_string($this->input->post('broker_id'));
-		$broker_fname 	= 			mysql_real_escape_string($this->input->post('broker_fname'));
-		$broker_mname 	= 			mysql_real_escape_string($this->input->post('broker_mname'));
-		$broker_lname 	= 			mysql_real_escape_string($this->input->post('broker_lname'));
+		$id 			= 			addslashes($this->input->post('broker_id'));
+		$broker_fname 	= 			addslashes($this->input->post('broker_fname'));
+		$broker_mname 	= 			addslashes($this->input->post('broker_mname'));
+		$broker_lname 	= 			addslashes($this->input->post('broker_lname'));
 
-		$broker_houseno = 			mysql_real_escape_string($this->input->post('houseno'));
-		$broker_vil	    = 			mysql_real_escape_string($this->input->post('village'));
-		$broker_city	= 			mysql_real_escape_string($this->input->post('city'));
-	    $broker_cid	    = 			mysql_real_escape_string($this->input->post('country'));
+		$broker_houseno = 			addslashes($this->input->post('houseno'));
+		$broker_vil	    = 			addslashes($this->input->post('village'));
+		$broker_city	= 			addslashes($this->input->post('city'));
+	    $broker_cid	    = 			addslashes($this->input->post('country'));
 
 
-		$broker_contact1 = 			mysql_real_escape_string($this->input->post('c1'));
-		$broker_contact2 = 			mysql_real_escape_string($this->input->post('c2'));
+		$broker_contact1 = 			addslashes($this->input->post('c1'));
+		$broker_contact2 = 			addslashes($this->input->post('c2'));
 
-    	$status_broker 	= 			mysql_real_escape_string($this->input->post('status'));
+    	$status_broker 	= 			addslashes($this->input->post('status'));
     	$status_broker =  (int) $status_broker; 
 		
 /*		$query= $this->db->query("Select * from Broker where FirstName = '$broker_fname' 
@@ -179,11 +179,11 @@ class Update extends CI_Controller {
 	}
 
     function update_hauler(){
-		$id 	= 	mysql_real_escape_string($this->input->post('hauler_id'));
-		$name 	= 	mysql_real_escape_string($this->input->post('hauler_name'));
-		$add 	= 	mysql_real_escape_string($this->input->post('hauler_address'));
-		$tin 	= 	mysql_real_escape_string($this->input->post('hauler_tin'));
-	    $status = 	mysql_real_escape_string($this->input->post('status'));
+		$id 	= 	addslashes($this->input->post('hauler_id'));
+		$name 	= 	addslashes($this->input->post('hauler_name'));
+		$add 	= 	addslashes($this->input->post('hauler_address'));
+		$tin 	= 	addslashes($this->input->post('hauler_tin'));
+	    $status = 	addslashes($this->input->post('status'));
 
 
    		 $query= $this->db->query("Select * from HaulerOrTruck where
@@ -226,12 +226,12 @@ class Update extends CI_Controller {
 	}
 
     function update_legend(){
-		$legend_id 	    = 	mysql_real_escape_string($this->input->post('legend_id'));
-		$name 			= 	mysql_real_escape_string($this->input->post('name'));
-	    $description    = 	mysql_real_escape_string($this->input->post('legend_descrip'));
-	    $back_ground 	=	mysql_real_escape_string($this->input->post('legend_bacg'));
- 		$legend_color 	= 	mysql_real_escape_string($this->input->post('legend_color'));
- 		$status 		= 	mysql_real_escape_string($this->input->post('status'));
+		$legend_id 	    = 	addslashes($this->input->post('legend_id'));
+		$name 			= 	addslashes($this->input->post('name'));
+	    $description    = 	addslashes($this->input->post('legend_descrip'));
+	    $back_ground 	=	addslashes($this->input->post('legend_bacg'));
+ 		$legend_color 	= 	addslashes($this->input->post('legend_color'));
+ 		$status 		= 	addslashes($this->input->post('status'));
  		$back_ground			= (int) $back_ground;
 
 
@@ -251,10 +251,10 @@ class Update extends CI_Controller {
 		        redirect('Login_User/settings/#legend');
 	}
 	    function update_container(){
-		$container_id 	= 	mysql_real_escape_string($this->input->post('container_id'));
-		$con 	        = 	mysql_real_escape_string($this->input->post('con'));
-	    $con_descrip    = 	mysql_real_escape_string($this->input->post('con_descrip'));
-		$con_size 	    = 	mysql_real_escape_string($this->input->post('con_size'));
+		$container_id 	= 	addslashes($this->input->post('container_id'));
+		$con 	        = 	addslashes($this->input->post('con'));
+	    $con_descrip    = 	addslashes($this->input->post('con_descrip'));
+		$con_size 	    = 	addslashes($this->input->post('con_size'));
 
 
    	/*	 $query= $this->db->query("Select * from Container where
@@ -275,9 +275,9 @@ class Update extends CI_Controller {
 
 
     function update_products(){
-		$id 	= 	mysql_real_escape_string($this->input->post('prod_id'));
-		$name 	= 	mysql_real_escape_string($this->input->post('prod_name'));
-		$status = 	mysql_real_escape_string($this->input->post('status'));
+		$id 	= 	addslashes($this->input->post('prod_id'));
+		$name 	= 	addslashes($this->input->post('prod_name'));
+		$status = 	addslashes($this->input->post('status'));
 		$status = (int) $status;
 
 

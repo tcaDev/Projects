@@ -17,34 +17,34 @@ class Job_air_update extends CI_Controller {
       $session_data    =  $this->session->userdata('logged_in');
       $userid          =  $session_data['uid'];
 
-      $jbfl_new        =  $this->input->post('jbfl_new');
-      $jbfl 	         =  $this->input->post('jbfl');
-      $shipperid       =	$this->input->post('shipperid');
-      $cosigid 		     =	$this->input->post('cosigid');
-      $nocart 	       =	$this->input->post('nocart');
-      $purchord 	     =	$this->input->post('purchord');  
-      $letcred 	       =	$this->input->post('letcred');
-      $hbl		         =	$this->input->post('hbl');
-      $mbl 		         =	$this->input->post('mbl');
-      $countryid       =	$this->input->post('countryid');
-      $city            =	$this->input->post('city');
-      $etd             =	$this->input->post('etd');
-      $eta             =	$this->input->post('eta');
-      $ata			       =	$this->input->post('ata');
-      $flight 	       =	$this->input->post('flight');
-      $aircraft 			 =	$this->input->post('aircraft');
-      $forward				 =	$this->input->post('forward');
-      $warehouse 			 =	$this->input->post('warehouse');
-      $dt_rec_arv_aline 	   =	$this->input->post('dt_rec_arv_aline');
-      $dt_rec_arv_client     =	$this->input->post('dt_rec_arv_client');
-      $dtpickup_hawb	       =	$this->input->post('dtpickup_hawb');
-      $dtpikup_docs 	    	 =	$this->input->post('dtpikup_docs');
-      $brokerid 			       = $this->input->post('brokerid');
-      $dtreqbudget   	       =	$this->input->post('dtreqbudget');
-      $rfpduedate 			     =	$this->input->post('rfpduedate');
-      $color_select		       = $this->input->post('color_select');
-      $status		             = $this->input->post('status');
-      $status_report		     = $this->input->post('status_report');
+      $jbfl_new        =  addslashes($this->input->post('jbfl_new'));
+      $jbfl 	         =  addslashes($this->input->post('jbfl'));
+      $shipperid       =	addslashes($this->input->post('shipperid'));
+      $cosigid 		     =	addslashes($this->input->post('cosigid'));
+      $nocart 	       =	addslashes($this->input->post('nocart'));
+      $purchord 	     =	addslashes($this->input->post('purchord'));  
+      $letcred 	       =	addslashes($this->input->post('letcred'));
+      $hbl		         =	addslashes($this->input->post('hbl'));
+      $mbl 		         =	addslashes($this->input->post('mbl'));
+      $countryid       =	addslashes($this->input->post('countryid'));
+      $city            =	addslashes($this->input->post('city'));
+      $etd             =	addslashes($this->input->post('etd'));
+      $eta             =	addslashes($this->input->post('eta'));
+      $ata			       =	addslashes($this->input->post('ata'));
+      $flight 	       =	addslashes($this->input->post('flight'));
+      $aircraft 			 =	addslashes($this->input->post('aircraft'));
+      $forward				 =	addslashes($this->input->post('forward'));
+      $warehouse 			 =	addslashes($this->input->post('warehouse'));
+      $dt_rec_arv_aline 	   =	addslashes($this->input->post('dt_rec_arv_aline'));
+      $dt_rec_arv_client     =	addslashes($this->input->post('dt_rec_arv_client'));
+      $dtpickup_hawb	       =	addslashes($this->input->post('dtpickup_hawb'));
+      $dtpikup_docs 	    	 =	addslashes($this->input->post('dtpikup_docs'));
+      $brokerid 			       = addslashes($this->input->post('brokerid'));
+      $dtreqbudget   	       =	addslashes($this->input->post('dtreqbudget'));
+      $rfpduedate 			     =	addslashes($this->input->post('rfpduedate'));
+      $color_select		       = addslashes($this->input->post('color_select'));
+      $status		             = addslashes($this->input->post('status'));
+      $status_report		     = addslashes($this->input->post('status_report'));
 
          $job= $this->Jobdata->select_jobfile_air($jbfl);
         foreach($job as $row){
@@ -58,7 +58,7 @@ class Job_air_update extends CI_Controller {
     if($chek->num_rows() ==1){
       echo "JobFile already Exists";
      }else{*/
-       echo "Jobfile is updated";
+       echo "Jobfile Updated";
 
 
       $air_job = array(
@@ -145,20 +145,20 @@ class Job_air_update extends CI_Controller {
       $session_data     = $this->session->userdata('logged_in');
       $userid           = $session_data['uid'];
 
-      $prodid          =  $this->input->post('prodid');
-      $jbfl            =  $this->input->post('jbfl');
-      $refentry        =  $this->input->post('refentry');
-      $gross           =  $this->input->post('gross');
-      $dtfinal_assess  =  $this->input->post('dtfinal_assess');  
-      $dtpaid          =  $this->input->post('dtpaid');
-      $dtpre_assess    =  $this->input->post('pre_assess');
-      $dt_boc_cleared  =  $this->input->post('dt_boc_cleared');
-      $tdt             =  $this->input->post('tdt');
-      $ac_pu_dt_naia   =  $this->input->post('ac_pu_dt_naia');
-      $dt_rec_whse     =  $this->input->post('dt_rec_whse');
-      $hauler_trucker  =  $this->input->post('truckname_air');
-      $total_stor      =  $this->input->post('total_storage');
-      $adtlperday      =  $this->input->post('addtl_per_day');
+      $prodid          =  addslashes($this->input->post('prodid'));
+      $jbfl            =  addslashes($this->input->post('jbfl'));
+      $refentry        =  addslashes($this->input->post('refentry'));
+      $gross           =  addslashes($this->input->post('gross'));
+      $dtfinal_assess  =  addslashes($this->input->post('dtfinal_assess'));  
+      $dtpaid          =  addslashes($this->input->post('dtpaid'));
+      $dtpre_assess    =  addslashes($this->input->post('pre_assess'));
+      $dt_boc_cleared  =  addslashes($this->input->post('dt_boc_cleared'));
+      $tdt             =  addslashes($this->input->post('tdt'));
+      $ac_pu_dt_naia   =  addslashes($this->input->post('ac_pu_dt_naia'));
+      $dt_rec_whse     =  addslashes($this->input->post('dt_rec_whse'));
+      $hauler_trucker  =  addslashes($this->input->post('truckname_air'));
+      $total_stor      =  addslashes($this->input->post('total_storage'));
+      $adtlperday      =  addslashes($this->input->post('addtl_per_day'));
 
       //air id history
        $Products_arid  =  $this->input->post('ProductAirID');
@@ -236,8 +236,8 @@ function jobfile_add_charge_air(){
    $sra_app           =  $this->input->post('sra_app');   
    $sra_inspect       =  $this->input->post('sra_inspect');
    $bad_cargo         =  $this->input->post('bad_cargo');
-/*   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
-   $part_charges      =  mysql_real_escape_string($this->input->post('part_charges'));
+/*   $all_charges       =  addslashes($this->input->post('all_charges'));
+   $part_charges      =  addslashes($this->input->post('part_charges'));
 */
 
   //stop inserting data in jobfile to avoid duplication

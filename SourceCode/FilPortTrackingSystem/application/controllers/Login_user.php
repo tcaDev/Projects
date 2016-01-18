@@ -836,11 +836,11 @@ function select_country(){
 					   echo     '<tr style="cursor:pointer;">
 					    		    <td class="hidden">'. $row->ConsigneeId .'</td>
 							        <td>'.  stripslashes($row->ConsigneeName).'</td>
-							      	<td>'. $row->HouseBuildingNoOrStreet .'</td>
-							        <td>'. $row->BarangayOrVillage .'</td>  
-							        <td>'. $row->TownOrCityProvince .'</td> 
-							        <td>'. $row->Country .'</td>          
-							        <td>'. $number .'</td> 
+							      	<td>'. stripslashes($row->HouseBuildingNoOrStreet) .'</td>
+							        <td>'. stripslashes($row->BarangayOrVillage) .'</td>  
+							        <td>'. stripslashes($row->TownOrCityProvince) .'</td> 
+							        <td>'.stripslashes($row->Country) .'</td>          
+							        <td>'. stripslashes($number) .'</td> 
 							           <td>
 							           		   <button type="button" class="btn  view_consignee_contact" data-toggle="modal" data-target="#modal_view_consignee_contact">Edit</button>   
 					       					   <button type="button" class="btn  add_consignee_contact"  data-toggle="modal" data-target="#modal_add_consignee_contact">Add</button> 
@@ -879,11 +879,11 @@ function select_country(){
   if(isset($_SESSION['failed'])){
   	$failed = $_SESSION['failed'];
   	if($failed=='failed'){
-  	 $message = 'Failed to add, because the data already exists!';
+  	 $message = 'Failed to Add, because the data already exists!';
   	
   	}
     if($failed=='update_failed'){
-  	$message = 'Failed to update, because the data already exists!';
+  	$message = 'Failed to Update, because the data already exists!';
   }
 
   

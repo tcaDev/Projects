@@ -535,9 +535,9 @@ if(isset($_SESSION['success'])){
 					        <td>'.$stat .'</td>
 						    <td  class="hidden">'. $mystat .'</td>
 						    <td  class="hidden">'. $row->CountryId .'</td>
-						    <td class="hidden">'.$row->FirstName.' </td>
-						    <td class="hidden">'.$row->MiddleName.' </td>
-						    <td class="hidden">'.$row->LastName.' </td>		
+						    <td class="hidden">'.stripslashes($row->FirstName).' </td>
+						    <td class="hidden">'.stripslashes($row->MiddleName).' </td>
+						    <td class="hidden">'.stripslashes($row->LastName).' </td>		
 					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        
 					      
@@ -1009,7 +1009,7 @@ $this->message();
 					    echo  '<tr>
 							        <td class="hidden">'.stripslashes($row->ForwarderWarehouseId).'</td>
 							        <td>'.stripslashes($row->ForwarderWarehouseName).'</td>
-							        <td>'.$stat .'</td>
+							        <td>'.stripslashes($stat) .'</td>
 						    		<td  class="hidden">'. $mystat .'</td>  
 							         <td><button type="button" class="btn update_forwards" data-toggle="modal" data-target="#modal_update_forward"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
@@ -1114,8 +1114,8 @@ $this->message();
 				        <td>'.stripslashes($row->Description).'</td>
 				        '.$pick1.'
 				        '.$pick2.'
-				         <td>'.$stat .'</td>
-						 <td  class="hidden">'. $mystat .'</td> 
+				         <td>'.stripslashes($stat) .'</td>
+						 <td  class="hidden">'. stripslashes($mystat) .'</td> 
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
@@ -1273,8 +1273,8 @@ function search_product(){
 					    echo  '<tr>
 							        <td>'.stripslashes($row->ProductId).'</td>
 							        <td>'.stripslashes($row->ProductName).'</td>      
-							        <td>'.$stat .'</td>
-						    		<td  class="hidden">'. $mystat .'</td>  
+							        <td>'.stripslashes($stat) .'</td>
+						    		<td  class="hidden">'. stripslashes($mystat) .'</td>  
 							         <td><button type="button" class="btn update_product" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 							        
 					    	  </tr>';}

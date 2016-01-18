@@ -63,7 +63,7 @@
 	        		<input type="text" class="ref_entry_no-addContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
-				<label>Date Paid(Date & Time)</label>					     
+				<label>Date Paid (Date & Time)</label>					     
 	        		<input type="datetime-local" class="dt_paid-addContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">

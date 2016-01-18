@@ -316,8 +316,8 @@
 					        		<input type="date-time-local" class="ref_entry_no form-control input-sm">
 							</div>
 							<div class="form-group">
-								<label>Date Paid</label>					     
-					        		<input type="date" class="dt_paid form-control input-sm">
+								<label>Date Paid (Date & Time)</label>					     
+					        		<input type="datetime" class="dt_paid form-control input-sm">
 							</div>
 							<div class="form-group">
 								<label>Date Sent PreAssessment</label>					     

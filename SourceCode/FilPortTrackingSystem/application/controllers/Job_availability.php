@@ -13,9 +13,9 @@ class Job_availability extends CI_Controller {
 
 
    function index(){
-   	  $jobfile = stripslashes($this->input->post('jbfl'));
-   	  $vessel  = stripslashes($this->input->post('vessel'));
-      $exist_vessel  = stripslashes($this->input->post('exist_vessel'));
+   	  $jobfile = addslashes($this->input->post('jbfl'));
+   	  $vessel  = addslashes($this->input->post('vessel'));
+      $exist_vessel  = addslashes($this->input->post('exist_vessel'));
 
    /*   if($vessel){
         echo "<i style='color:green;'>This is your old vessel!</i>"; 
@@ -50,9 +50,9 @@ class Job_availability extends CI_Controller {
    }
 
    function container_manila(){
-   	 	  $jobfile    = $this->input->post('jbfl');
-   	    $container  = $this->input->post('containerno');
-        $vessel_voyage  = $this->input->post('vessel_voyage');
+   	 	  $jobfile    = addslashes($this->input->post('jbfl'));
+   	    $container  = addslashes($this->input->post('containerno'));
+        $vessel_voyage  = addslashes($this->input->post('vessel_voyage'));
 
           $query2= $this->db->query("Select * from vw_Containers where JobFileNo ='eli' and ContainerNo='$container' and CarrierByJobFileId='$vessel_voyage' limit 1");
    	      /* $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");*/

@@ -66,8 +66,8 @@
 	        		<input type="text" class="ref_entry_no-updateContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
-				<label>Date Paid</label>					     
-	        		<input type="date" class="dt_paid-updateContainer-manila form-control input-sm">
+				<label>Date Paid (Date & Time)</label>					     
+	        		<input type="datetime-local" class="dt_paid-updateContainer-manila form-control input-sm">
 			</div>
 			<div class="form-group">
 				<label>Date Sent PreAssessment</label>					     

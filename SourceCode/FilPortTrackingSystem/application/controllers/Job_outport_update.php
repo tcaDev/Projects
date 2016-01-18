@@ -18,26 +18,26 @@ class Job_outport_update extends CI_Controller {
 
       $carrierbyjobfile  =  $this->input->post('carrierbyjobfile');
      /* $vesid       =  $this->input->post('vesid');*/
-      $containerno     =  $this->input->post('containerno');
-      $contno        =  $this->input->post('contno');
-      $cartons       =  $this->input->post('cartons');
-      $truckid       =  $this->input->post('truckid');
-      $truckername     =  $this->input->post('truckername');
-      $refentry      =  $this->input->post('refentry');
-      $dtpaid        =  $this->input->post('dtpaid');
-      $dt_pre_assess     =  $this->input->post('dt_pre_assess');
-      $dt_final_assess   =  $this->input->post('dt_final_assess');
-      $storage           =  $this->input->post('storage');
-      $demorage      =  $this->input->post('demorage');
-      $lodging       =  $this->input->post('lodging');
-      $gip         =  $this->input->post('gip');
-      $gop         =  $this->input->post('gop');
-      $adw         =  $this->input->post('adw');
-      $tdt         =  $this->input->post('tdt');
-      $pull_out_date     =  $this->input->post('pull_out_date');
-      $dt_final_entry_boc=  $this->input->post('dt_final_entry_boc');
-      $dt_boc        =  $this->input->post('dt_boc');
-      $actual_dt_rcvd_cont_whse  =  $this->input->post('actual_dt_rcvd_cont_whse');
+      $containerno     =  addslashes($this->input->post('containerno'));
+      $contno        =  addslashes($this->input->post('contno'));
+      $cartons       =  addslashes($this->input->post('cartons'));
+      $truckid       =  addslashes($this->input->post('truckid'));
+      $truckername     =  addslashes($this->input->post('truckername');
+      $refentry      =  addslashes($this->input->post('refentry'));
+      $dtpaid        =  addslashes($this->input->post('dtpaid'));
+      $dt_pre_assess     =  addslashes($this->input->post('dt_pre_assess'));
+      $dt_final_assess   =  addslashes($this->input->post('dt_final_assess'));
+      $storage           =  addslashes($this->input->post('storage'));
+      $demorage      =  addslashes($this->input->post('demorage'));
+      $lodging       =  addslashes($this->input->post('lodging'));
+      $gip         =  addslashes($this->input->post('gip'));
+      $gop         =  addslashes($this->input->post('gop'));
+      $adw         =  addslashes($this->input->post('adw'));
+      $tdt         =  addslashes($this->input->post('tdt'));
+      $pull_out_date     =  addslashes($this->input->post('pull_out_date'));
+      $dt_final_entry_boc=  addslashes($this->input->post('dt_final_entry_boc'));
+      $dt_boc        =  addslashes($this->input->post('dt_boc'));
+      $actual_dt_rcvd_cont_whse  =  addslashes($this->input->post('actual_dt_rcvd_cont_whse'));
 
 
   $this->Update_jobfile_outport->jobfile_up_outport(
@@ -52,13 +52,13 @@ class Job_outport_update extends CI_Controller {
     function vessel(){
       $session_data = $this->session->userdata('logged_in');
       $userid = $session_data['uid'];
-      $v             	     =	$this->input->post('Vessel');
-      $est_dept_time         =	$this->input->post('est_dept_time');
-      $est_arrival_time 	 =	$this->input->post('est_arrival_time');
-      $act_arrival_time      =	$this->input->post('act_arrival_time');
-      $discharge_time 	     =	$this->input->post('discharge_time');
-      $Carrierid 			 =	$this->input->post('Carrierid');
-      $cr 					 =	$this->input->post('cr');
+      $v             	     =	addslashes($this->input->post('Vessel'));
+      $est_dept_time         =	addslashes($this->input->post('est_dept_time'));
+      $est_arrival_time 	 =	addslashes($this->input->post('est_arrival_time'));
+      $act_arrival_time      =	addslashes($this->input->post('act_arrival_time'));
+      $discharge_time 	     =	addslashes($this->input->post('discharge_time'));
+      $Carrierid 			 =	addslashes($this->input->post('Carrierid'));
+      $cr 					 =	addslashes($this->input->post('cr'));
 
 
 
@@ -72,26 +72,26 @@ class Job_outport_update extends CI_Controller {
       $userid = $session_data['uid'];
 
       
-      $jb        =	$this->input->post('jbid');
-      $jbfl      =	$this->input->post('jbfl');
-      $shipper 	 =	$this->input->post('shipper');
-      $consignee =	$this->input->post('consignee');
-      $colsel 	 =	$this->input->post('colsel');
-      $hbfl      =	$this->input->post('hbfl');
-      $mbl 		 =	$this->input->post('mbl');
-      $mbl2      =	$this->input->post('mbl2');
-      $bank 	 =	$this->input->post('bank');
-      $reg       =	$this->input->post('reg');
-      $country 	 =	$this->input->post('country');
-      $city      =	$this->input->post('city');
-      $dtRcvd_arr_client 		 =	$this->input->post('dtRcvd_arr_client');
-      $dtPckup_obl       =	$this->input->post('dtPckup_obl');
-      $dt_pickup_docs 	 =	$this->input->post('dt_pickup_docs');
-      $broker            =	$this->input->post('broker');
-      $purch_order_no 	 =	$this->input->post('purch_order_no');
-      $dtReq_budge_gl    =	$this->input->post('dtReq_budge_gl');
-      $ref_due_dt 		 =	$this->input->post('ref_due_dt');
-      $color_selectivity =	$this->input->post('color_selectivity');
+      $jb        =	addslashes($this->input->post('jbid'));
+      $jbfl      =	addslashes($this->input->post('jbfl'));
+      $shipper 	 =	addslashes($this->input->post('shipper'));
+      $consignee =	addslashes($this->input->post('consignee'));
+      $colsel 	 =	addslashes($this->input->post('colsel'));
+      $hbfl      =	addslashes($this->input->post('hbfl'));
+      $mbl 		 =	addslashes($this->input->post('mbl'));
+      $mbl2      =	addslashes($this->input->post('mbl2'));
+      $bank 	 =	addslashes($this->input->post('bank'));
+      $reg       =	addslashes($this->input->post('reg'));
+      $country 	 =	addslashes($this->input->post('country'));
+      $city      =	addslashes($this->input->post('city'));
+      $dtRcvd_arr_client 		 =	addslashes($this->input->post('dtRcvd_arr_client'));
+      $dtPckup_obl       =	addslashes($this->input->post('dtPckup_obl'));
+      $dt_pickup_docs 	 =	addslashes($this->input->post('dt_pickup_docs'));
+      $broker            =	addslashes($this->input->post('broker'));
+      $purch_order_no 	 =	addslashes($this->input->post('purch_order_no'));
+      $dtReq_budge_gl    =	addslashes($this->input->post('dtReq_budge_gl'));
+      $ref_due_dt 		 =	addslashes($this->input->post('ref_due_dt'));
+      $color_selectivity =	addslashes($this->input->post('color_selectivity'));
 
   
 
@@ -187,7 +187,7 @@ class Job_outport_update extends CI_Controller {
        $query = $this->db->query("select ProductId from ProductsByContainer where ProductId='$prodid'
           and ContainerByCarrierId='$cbc' "); 
       if($query->num_rows()==1) {
-      	echo "Not updated because the data is already exists";
+      	echo "Not Updated because the Data already exists";
       }else{
       	echo "Comodity is Updated";
       $this->Update_jobfile->product($prodconid,$prodid,$cbc);

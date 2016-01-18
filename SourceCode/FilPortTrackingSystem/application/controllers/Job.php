@@ -20,7 +20,7 @@ class Job extends CI_Controller {
   
      $data =  $this->input->post('ship_id');
     if(isset($data)){
-     $shipper = $this->Jobdata->get_vessel($data);
+     $shipper = addslashes($this->Jobdata->get_vessel($data));
 
 
     if($shipper==NULL){
@@ -29,7 +29,7 @@ class Job extends CI_Controller {
      
             echo'<select name="vessel" id="vess" class="myvessel form-control ">';                                   
             foreach ($shipper as $row){
-                echo "<option value=".$row->ShipperVesselId."> ".$row->Vesselname." </option>";
+                echo "<option value=".stripslashes($row->ShipperVesselId)."> ".stripslashes($row->Vesselname)." </option>";
             }
           }
 
@@ -187,7 +187,7 @@ class Job extends CI_Controller {
          echo '<label>Vessel/Voyage #</label>
                 <select class="vessel-addContainer-manila vessel-addContainer-outport form-control input-sm">';
           foreach ($vessel_mnila_container as $row) {
-              echo '<option value='.$row->CarrierByJobFileId.'>'.$row->VesselVoyageNo.'</option>';
+              echo '<option value='.stripslashes($row->CarrierByJobFileId).'>'.stripslashes($row->VesselVoyageNo).'</option>';
           }
          echo '</select>';
       }
@@ -1019,11 +1019,11 @@ class Job extends CI_Controller {
           $dispOutput .='
                   <tbody>
                     <tr class="tableRow">
-                          <td>'.$row->JobFileNo.'</td>
-                          <td>'.$row->ShipperName.'</td>
-                          <td>'.$row->ConsigneeName.'</td>
-                          <td>'.$row->HouseBillLadingNo.'</td>
-                          <td>'.$row->DateReceivedOfOtherDocs.'</td>
+                          <td>'.stripslashes($row->JobFileNo).'</td>
+                          <td>'.stripslashes($row->ShipperName).'</td>
+                          <td>'.stripslashes($row->ConsigneeName).'</td>
+                          <td>'.stripslashes($row->HouseBillLadingNo).'</td>
+                          <td>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
                     </tr>
                   </tbody>
           ';
@@ -1469,28 +1469,28 @@ class Job extends CI_Controller {
    $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
 
-   $monitoring_type =@mysql_real_escape_string($this->input->post('monitoring_type'));
-   $job             =@mysql_real_escape_string($this->input->post('jbfl'));
-   $consignee       =@mysql_real_escape_string($this->input->post('consignee'));
-   $shipper         =@mysql_real_escape_string($this->input->post('shipper'));
-   $mbl             =@mysql_real_escape_string($this->input->post('mbl'));
-   $mbl2            =@mysql_real_escape_string($this->input->post('mbl2'));   //no insert in db
-   $hbl             =@mysql_real_escape_string($this->input->post('hbl'));
-   $bank            =@mysql_real_escape_string($this->input->post('bank'));
-   $registry        =@mysql_real_escape_string($this->input->post('registry'));
-   $dtRcvd          =@mysql_real_escape_string($this->input->post('dtRcvd'));
-   $dt_pickup_obl   =@mysql_real_escape_string($this->input->post('dt_pickup_obl'));
-   $dt_pickup_docs  =@mysql_real_escape_string($this->input->post('dt_pickup_docs'));
-   $broker          =@mysql_real_escape_string($this->input->post('broker'));
-   $dt_req_budget   =@mysql_real_escape_string($this->input->post('dt_req_budget'));
-   $ref_due_dt      =@mysql_real_escape_string($this->input->post('ref_due_dt'));
-   $dt_boc          =@mysql_real_escape_string($this->input->post('dt_boc'));    
-   $status          =@mysql_real_escape_string($this->input->post('status'));  //status report in job tab has no insert in db  
-   $purch_order_no  =@mysql_real_escape_string($this->input->post('purch_order_no'));  
-   $color           =@mysql_real_escape_string($this->input->post('color'));  
-   $color_select    =@mysql_real_escape_string($this->input->post('color_select')); 
-   $origin          =@mysql_real_escape_string($this->input->post('origin'));  
-   $origcity        =@mysql_real_escape_string($this->input->post('origcity'));    
+   $monitoring_type =addslashes($this->input->post('monitoring_type'));
+   $job             =addslashes($this->input->post('jbfl'));
+   $consignee       =addslashes($this->input->post('consignee'));
+   $shipper         =addslashes($this->input->post('shipper'));
+   $mbl             =addslashes($this->input->post('mbl'));
+   $mbl2            =addslashes($this->input->post('mbl2'));   //no insert in db
+   $hbl             =addslashes($this->input->post('hbl'));
+   $bank            =addslashes($this->input->post('bank'));
+   $registry        =addslashes($this->input->post('registry'));
+   $dtRcvd          =addslashes($this->input->post('dtRcvd'));
+   $dt_pickup_obl   =addslashes($this->input->post('dt_pickup_obl'));
+   $dt_pickup_docs  =addslashes($this->input->post('dt_pickup_docs'));
+   $broker          =addslashes($this->input->post('broker'));
+   $dt_req_budget   =addslashes($this->input->post('dt_req_budget'));
+   $ref_due_dt      =addslashes($this->input->post('ref_due_dt'));
+   $dt_boc          =addslashes($this->input->post('dt_boc'));    
+   $status          =addslashes($this->input->post('status'));  //status report in job tab has no insert in db  
+   $purch_order_no  =addslashes($this->input->post('purch_order_no'));  
+   $color           =addslashes($this->input->post('color'));  
+   $color_select    =addslashes($this->input->post('color_select')); 
+   $origin          =addslashes($this->input->post('origin'));  
+   $origcity        =addslashes($this->input->post('origcity'));    
    
    if($dtRcvd!=''){
    $date1  = date_create($dtRcvd);
@@ -1632,13 +1632,13 @@ function vessel(){
 foreach($job as $row){
   $job =  $row->JobFileId;
  }
- $vessel        =  mysql_real_escape_string($this->input->post('vessel'));
- $lines         =  mysql_real_escape_string($this->input->post('lines'));
+ $vessel        =  addslashes($this->input->post('vessel'));
+ $lines         =  addslashes($this->input->post('lines'));
 
- $eat           =  mysql_real_escape_string($this->input->post('eat'));
- $edt           =  mysql_real_escape_string($this->input->post('edt'));
- $aat           =  mysql_real_escape_string($this->input->post('aat'));
- $discharge     =  mysql_real_escape_string($this->input->post('vdt'));
+ $eat           =  addslashes($this->input->post('eat'));
+ $edt           =  addslashes($this->input->post('edt'));
+ $aat           =  addslashes($this->input->post('aat'));
+ $discharge     =  addslashes($this->input->post('vdt'));
  
  
    if($eat!=''){
@@ -1699,27 +1699,27 @@ function container(){
 foreach($result as $row){
   $vessel_voyage =  $row->CarrierByJobFileId;
  }
-   $container       =  mysql_real_escape_string($this->input->post('containerId'));
-   $consize         =  mysql_real_escape_string($this->input->post('consize')); 
-   $cartons_no      =  mysql_real_escape_string($this->input->post('cartons_no')); 
-   $plateno         =  mysql_real_escape_string($this->input->post('trucker_plate'));
-   $trucker_name    =  mysql_real_escape_string($this->input->post('trucker_name'));
-   $trucker_id      =  mysql_real_escape_string($this->input->post('trucker_id'));
-   $ref_entry_no    =  mysql_real_escape_string($this->input->post('ref_entry_no'));
-   $dt_paid         =  mysql_real_escape_string($this->input->post('dt_paid'));
-   $dt_pre_assess   =  mysql_real_escape_string($this->input->post('dt_pre_assess'));
-   $start_storage   =  mysql_real_escape_string($this->input->post('start_storage'));
-   $start_demorage  =  mysql_real_escape_string($this->input->post('start_demorage'));
-   $lodging         = mysql_real_escape_string($this->input->post('lodging'));
-   $dt_file_entry_boc = mysql_real_escape_string($this->input->post('dt_file_entry_boc'));
-   $dt_final_assess = mysql_real_escape_string($this->input->post('dt_final_assess'));
-   $gip             = mysql_real_escape_string($this->input->post('gip'));
-   $gop             = mysql_real_escape_string($this->input->post('gop'));
-   $adw             =  mysql_real_escape_string($this->input->post('adw'));
-   $dtboc           = mysql_real_escape_string($this->input->post('dtboc'));
-   $tdt             =  mysql_real_escape_string($this->input->post('tdt'));
-   $pul_out_port    = mysql_real_escape_string($this->input->post('pul_out_port'));
-   $dt_recvd_cont_whse = mysql_real_escape_string($this->input->post('dt_recvd_cont_whse'));
+   $container       =  addslashes($this->input->post('containerId'));
+   $consize         =  addslashes($this->input->post('consize')); 
+   $cartons_no      =  addslashes($this->input->post('cartons_no')); 
+   $plateno         =  addslashes($this->input->post('trucker_plate'));
+   $trucker_name    =  addslashes($this->input->post('trucker_name'));
+   $trucker_id      =  addslashes($this->input->post('trucker_id'));
+   $ref_entry_no    =  addslashes($this->input->post('ref_entry_no'));
+   $dt_paid         =  addslashes($this->input->post('dt_paid'));
+   $dt_pre_assess   =  addslashes($this->input->post('dt_pre_assess'));
+   $start_storage   =  addslashes($this->input->post('start_storage'));
+   $start_demorage  =  addslashes($this->input->post('start_demorage'));
+   $lodging         = addslashes($this->input->post('lodging'));
+   $dt_file_entry_boc = addslashes($this->input->post('dt_file_entry_boc'));
+   $dt_final_assess = addslashes($this->input->post('dt_final_assess'));
+   $gip             = addslashes($this->input->post('gip'));
+   $gop             = addslashes($this->input->post('gop'));
+   $adw             =  addslashes($this->input->post('adw'));
+   $dtboc           = addslashes($this->input->post('dtboc'));
+   $tdt             =  addslashes($this->input->post('tdt'));
+   $pul_out_port    = addslashes($this->input->post('pul_out_port'));
+   $dt_recvd_cont_whse = addslashes($this->input->post('dt_recvd_cont_whse'));
 
 
    if($dt_paid!=''){
@@ -1931,26 +1931,26 @@ foreach($job as $row){
   $job =  $row->JobFileId;
  }
 
-   $check             =  mysql_real_escape_string($this->input->post('check'));
-   $lodge             =  mysql_real_escape_string($this->input->post('lodge'));
-   $cont_deposit      =  mysql_real_escape_string($this->input->post('cont_deposit'));
-   $thc_charges       =  mysql_real_escape_string($this->input->post('thc_charges'));   
-   $wharfage          =  mysql_real_escape_string($this->input->post('wharfage'));
-   $arrastre          =  mysql_real_escape_string($this->input->post('arrastre'));
-   $weight            =  mysql_real_escape_string($this->input->post('weight'));
-   $del               =  mysql_real_escape_string($this->input->post('del'));
-   $dispatch          =  mysql_real_escape_string($this->input->post('dispatch'));
-   $storage           =  mysql_real_escape_string($this->input->post('storage'));   
-   $demurrage         =  mysql_real_escape_string($this->input->post('demurrage'));
-   $detention         =  mysql_real_escape_string($this->input->post('detention'));
-   $eic               =  mysql_real_escape_string($this->input->post('eic'));
-   $bai_app           =  mysql_real_escape_string($this->input->post('bai_app'));
-   $bai_inspect       =  mysql_real_escape_string($this->input->post('bai_inspect'));
-   $sra_app           =  mysql_real_escape_string($this->input->post('sra_app'));   
-   $sra_inspect       =  mysql_real_escape_string($this->input->post('sra_inspect'));
-   $bad_cargo         =  mysql_real_escape_string($this->input->post('bad_cargo'));
-/*   $all_charges       =  mysql_real_escape_string($this->input->post('all_charges'));
-   $part_charges      =  mysql_real_escape_string($this->input->post('part_charges'));
+   $check             =  addslashes($this->input->post('check'));
+   $lodge             =  addslashes($this->input->post('lodge'));
+   $cont_deposit      =  addslashes($this->input->post('cont_deposit'));
+   $thc_charges       =  addslashes($this->input->post('thc_charges'));   
+   $wharfage          =  addslashes($this->input->post('wharfage'));
+   $arrastre          =  addslashes($this->input->post('arrastre'));
+   $weight            =  addslashes($this->input->post('weight'));
+   $del               =  addslashes($this->input->post('del'));
+   $dispatch          =  addslashes($this->input->post('dispatch'));
+   $storage           =  addslashes($this->input->post('storage'));   
+   $demurrage         =  addslashes($this->input->post('demurrage'));
+   $detention         =  addslashes($this->input->post('detention'));
+   $eic               =  addslashes($this->input->post('eic'));
+   $bai_app           =  addslashes($this->input->post('bai_app'));
+   $bai_inspect       =  addslashes($this->input->post('bai_inspect'));
+   $sra_app           =  addslashes($this->input->post('sra_app'));   
+   $sra_inspect       =  addslashes($this->input->post('sra_inspect'));
+   $bad_cargo         =  addslashes($this->input->post('bad_cargo'));
+/*   $all_charges       =  addslashes($this->input->post('all_charges'));
+   $part_charges      =  addslashes($this->input->post('part_charges'));
 */
 
   //stop inserting data in jobfile to avoid duplication
@@ -2019,8 +2019,8 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
    function add_report(){
      $session_data      = $this->session->userdata('logged_in');
      $userid            = $session_data['uid'];
-     $jobfile           = mysql_real_escape_string($this->input->post('jbfl'));
-     $save_report       = mysql_real_escape_string($this->input->post('save_report'));
+     $jobfile           = addslashes($this->input->post('jbfl'));
+     $save_report       = addslashes($this->input->post('save_report'));
      
         $job= $this->Jobdata->select_jobfile($jobfile);
         foreach($job as $row){

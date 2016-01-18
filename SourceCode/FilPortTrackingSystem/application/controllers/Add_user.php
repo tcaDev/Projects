@@ -173,12 +173,12 @@ class Add_user extends CI_Controller {
         } 
     function add_client(){
     
-             $cname  = mysql_real_escape_string($this->input->post('cname'));
-             $hbno   = mysql_real_escape_string($this->input->post('hbno'));
-             $vilage = mysql_real_escape_string($this->input->post('vilage'));
-             $city   = mysql_real_escape_string($this->input->post('city'));
-             $country= mysql_real_escape_string($this->input->post('country'));
-             $ofnum  = mysql_real_escape_string($this->input->post('OfficeNumber'));
+             $cname  = addslashes($this->input->post('cname'));
+             $hbno   = addslashes($this->input->post('hbno'));
+             $vilage = addslashes($this->input->post('vilage'));
+             $city   = addslashes($this->input->post('city'));
+             $country= addslashes($this->input->post('country'));
+             $ofnum  = addslashes($this->input->post('OfficeNumber'));
 
 
             $query= $this->db->query("Select * from Consignee where ConsigneeName = '$cname' limit 1");
@@ -205,9 +205,9 @@ class Add_user extends CI_Controller {
     }
 
       function add_broker(){
-             $fname = mysql_real_escape_string($this->input->post('fname'));
-             $mname = mysql_real_escape_string($this->input->post('mname'));
-             $lname = mysql_real_escape_string($this->input->post('lname'));
+             $fname = addslashes($this->input->post('fname'));
+             $mname = addslashes($this->input->post('mname'));
+             $lname = addslashes($this->input->post('lname'));
 
 
              $query= $this->db->query("Select * from Broker where FirstName = '$fname' 
@@ -246,9 +246,9 @@ class Add_user extends CI_Controller {
 
 
     function add_carrier(){
-              $carrier = mysql_real_escape_string($this->input->post('carrier'));
-              $address_carrier = mysql_real_escape_string($this->input->post('address-carrier'));
-              $num_carrier = mysql_real_escape_string($this->input->post('num-carrier'));
+              $carrier = addslashes($this->input->post('carrier'));
+              $address_carrier = addslashes($this->input->post('address-carrier'));
+              $num_carrier = addslashes($this->input->post('num-carrier'));
               
 
                   $query= $this->db->query("Select * from Carrier where CarrierName = '$carrier' limit 1");
@@ -271,11 +271,11 @@ class Add_user extends CI_Controller {
           
     function add_shipper(){
             //ps get the shipper id ;
-             $shipper = mysql_real_escape_string($this->input->post('shipper'));
-             $hbno = mysql_real_escape_string($this->input->post('hbno'));
-             $vil = mysql_real_escape_string($this->input->post('vil'));
-             $city = mysql_real_escape_string($this->input->post('city'));
-             $country = mysql_real_escape_string($this->input->post('country'));
+             $shipper = addslashes($this->input->post('shipper'));
+             $hbno = addslashes($this->input->post('hbno'));
+             $vil = addslashes($this->input->post('vil'));
+             $city = addslashes($this->input->post('city'));
+             $country = addslashes($this->input->post('country'));
 
             $query= $this->db->query("Select * from Shipper where ShipperName = '$shipper' limit 1");
           
@@ -300,12 +300,12 @@ class Add_user extends CI_Controller {
          
           }
     function add_shippercon(){
-             $id = mysql_real_escape_string($this->input->post('shipper_id'));
-             $fname = mysql_real_escape_string($this->input->post('fname_contact'));
-             $mname = mysql_real_escape_string($this->input->post('mname_contact'));
-             $lname = mysql_real_escape_string($this->input->post('lname_contact'));
-             $c1 = mysql_real_escape_string($this->input->post('no_contact1'));
-             $c2 = mysql_real_escape_string($this->input->post('no_contact2'));
+             $id = addslashes($this->input->post('shipper_id'));
+             $fname = addslashes($this->input->post('fname_contact'));
+             $mname = addslashes($this->input->post('mname_contact'));
+             $lname = addslashes($this->input->post('lname_contact'));
+             $c1 = addslashes($this->input->post('no_contact1'));
+             $c2 = addslashes($this->input->post('no_contact2'));
 
             
                 $data = array(
@@ -323,12 +323,12 @@ class Add_user extends CI_Controller {
      }
 
          function add_consigneecon(){
-             $id = mysql_real_escape_string($this->input->post('consig_id'));
-             $fname = mysql_real_escape_string( $this->input->post('fname_contact'));
-             $mname = mysql_real_escape_string($this->input->post('mname_contact'));
-             $lname = mysql_real_escape_string($this->input->post('lname_contact'));
-             $c1 = mysql_real_escape_string($this->input->post('no_contact1'));
-             $c2 = mysql_real_escape_string($this->input->post('no_contact2'));
+             $id = addslashes($this->input->post('consig_id'));
+             $fname = addslashes( $this->input->post('fname_contact'));
+             $mname = addslashes($this->input->post('mname_contact'));
+             $lname = addslashes($this->input->post('lname_contact'));
+             $c1 = addslashes($this->input->post('no_contact1'));
+             $c2 = addslashes($this->input->post('no_contact2'));
 
             
                 $data = array(
@@ -346,9 +346,9 @@ class Add_user extends CI_Controller {
      }
 
      function add_hauler(){
-             $name = mysql_real_escape_string($this->input->post('hauler_name'));
-             $add = mysql_real_escape_string($this->input->post('hauler_address'));
-             $tin = mysql_real_escape_string($this->input->post('hauler_tin'));
+             $name = addslashes($this->input->post('hauler_name'));
+             $add = addslashes($this->input->post('hauler_address'));
+             $tin = addslashes($this->input->post('hauler_tin'));
                 $data = array(
                   'HaulerOrTruck' => $name,
                   'Address' => $add,
@@ -368,7 +368,7 @@ class Add_user extends CI_Controller {
      }
 
     function add_product(){
-             $name = mysql_real_escape_string($this->input->post('product_name'));
+             $name = addslashes($this->input->post('product_name'));
                 $data = array(
                   'ProductName' => $name
                 );
@@ -403,10 +403,10 @@ class Add_user extends CI_Controller {
 
    }
     function add_legend(){
-               $legend  = mysql_real_escape_string($this->input->post('legend'));
-               $descrip = mysql_real_escape_string($this->input->post('descrip'));
-               $backg   = mysql_real_escape_string($this->input->post('backg'));
-               $color   = mysql_real_escape_string($this->input->post('color'));
+               $legend  = addslashes($this->input->post('legend'));
+               $descrip = addslashes($this->input->post('descrip'));
+               $backg   = addslashes($this->input->post('backg'));
+               $color   = addslashes($this->input->post('color'));
                $data   = array(
                   'StatusName' => $legend,
                   'Description'=> $descrip,
@@ -429,9 +429,9 @@ class Add_user extends CI_Controller {
 
        function add_container(){
 
-               $containers  = mysql_real_escape_string($this->input->post('cno'));
-               $descrip = mysql_real_escape_string($this->input->post('cd'));
-               $size   = mysql_real_escape_string($this->input->post('cs'));
+               $containers  = addslashes($this->input->post('cno'));
+               $descrip = addslashes($this->input->post('cd'));
+               $size   = addslashes($this->input->post('cs'));
                 $data   = array(
                   'ContainerNo' => $containers,
                   'ContainerDescription'=> $descrip,
