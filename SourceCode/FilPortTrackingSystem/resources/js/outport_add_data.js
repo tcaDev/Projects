@@ -834,26 +834,49 @@ PERO WAG KA MAG ALALA AYOS NA.
 $('.save_charges-outport').click(function(){
 	        //for running charges
 
-	   var jbfl       = $('.jobfiles-outport').val();
-       var lodge 		  =  $('#lodge-outport').val();
- 	   var cont_deposit   =  $('#cont-deposit-outport').val();
-       var thc_charges    =  $('#thc-charges-outport').val();
-       var arrastre       =  $('#arrastre-outport').val();
-       var wharfage 	  =  $('#wharfage-outport').val();
-       var weight         =  $('#weight-outport').val();
-	   var del       	  =  $('#del-outport').val();
-       var dispatch  	  =  $('#dispatch-outport').val();
-       var storage 	 	  =  $('#storage-outport').val();
-       var demurrage      =  $('#demurrage-outport').val();
-	   var detention      =  $('#detention-outport').val();
-       var eic  	  	  =  $('#EIC-outport').val();
-       var bai_app 	 	  =  $('#bai-app-outport').val();
-       var bai_inspect    =  $('#bai-inspect-outport').val();
-	   var sra_app        =  $('#sra-app-outport').val();
-       var sra_inspect    =  $('#sra-inspect-outport').val();
-       var bad_cargo 	  =  $('#bad-cargo-outport').val();
-       var all_charges    =  $('#all-charges-outport').val();
-	   var part_charges   =  $('#part-charges-outport').val();
+	    var jbfl       = $('.jobfiles-outport').val();
+	  
+	        //for running charges
+	   var get_lodge 		 	  = $('#lodge-outport').val();
+	   var get_cont_deposit  	  =  $('#cont-deposit-outport').val();
+	   var get_thc_charges    	  =  $('#thc-charges-outport').val();
+       var get_arrastre       	  =  $('#arrastre-outport').val();
+       var get_wharfage 	  	  =  $('#wharfage-outport').val();
+       var get_weight         	  =  $('#weight-outport').val();
+	   var get_del       	  	  =  $('#del-outport').val();
+       var get_dispatch  	  	  =  $('#dispatch-outport').val();
+       var get_storage 	 	  	  =  $('#storage-outport').val();
+       var get_demurrage      	  =  $('#demurrage-outport').val();
+	   var get_detention      	  =  $('#detention-outport').val();
+       var get_eic  	  	  	  =  $('#EIC-outport').val();
+       var get_bai_app 	 	  	  =  $('#bai-app-outport').val();
+       var get_bai_inspect    	  =  $('#bai-inspect-outport').val();
+	   var get_sra_app       	  =  $('#sra-app-outport').val();
+       var get_sra_inspect    	  =  $('#sra-inspect-outport').val();
+       var get_bad_cargo 	  	  =  $('#bad-cargo-outport').val();
+       var get_all_charges    	  =  $('#all-charges-outport').val();
+	   var get_part_charges   	  =  $('#part-charges-outport').val();
+
+	  
+       var lodge 	 	  =  get_lodge.replace(/,/g,'');
+ 	   var cont_deposit   =  get_cont_deposit.replace(/,/g,'');
+       var thc_charges    =  get_thc_charges.replace(/,/g,'');
+       var arrastre       =  get_arrastre.replace(/,/g,'');
+       var wharfage 	  =  get_wharfage.replace(/,/g,'');
+       var weight         =  get_weight.replace(/,/g,'');
+	   var del       	  =  get_del.replace(/,/g,'');
+       var dispatch  	  =	 get_dispatch.replace(/,/g,'');
+       var storage 	 	  =  get_storage.replace(/,/g,'');
+       var demurrage      =  get_demurrage.replace(/,/g,'');
+	   var detention      =  get_detention.replace(/,/g,'');
+       var eic  	  	  =  get_eic.replace(/,/g,'');
+       var bai_app 	 	  =  get_bai_app.replace(/,/g,'');
+       var bai_inspect    =  get_bai_inspect.replace(/,/g,'');
+	   var sra_app        =  get_sra_app.replace(/,/g,'');
+       var sra_inspect    =  get_sra_inspect.replace(/,/g,'');
+       var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
+       var all_charges    =  get_all_charges;
+	   var part_charges   =  get_part_charges;
 
 	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
         var wVal = 0;

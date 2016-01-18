@@ -612,14 +612,14 @@
 <script src="<?php echo base_url('resources/js/outport_add_data.js');?>"></script>
 <script>
  $(document).ready(function(){
- 		
- 	$(document).on('change',' .checkDec-outport',function(){
+   $(document).on('change',' .checkDec-outport',function(){
  		var inp = $(this).val();
+ 		var newInp = inp.replace(/,/g,'');
  		var holder = $(this).attr('id');
- 		var holders = inp.toString().split('.');
- 		var n = inp.indexOf('.');
+ 		var holders = newInp.toString().split('.');
+ 		var n = newInp.indexOf('.');
  		if(n < 0){
- 			holders[0] =  numeral(holders[0]).format('0,00');
+ 			holders[0] =  numeral(holders[0]).format('0,0.00');
  			$('#' + holder).val(holders.join('.'));
  		}else{
  			holders[0] =  numeral(holders[0]).format('0,0');
@@ -634,9 +634,8 @@
 
 
 
-
 //check  if num or not
-              $(document).on('keypress','.checkDec',function (e) {
+              $(document).on('keypress','.checkDec-outport',function (e) {
 					  if(event.which < 46
 					    || event.which > 59) {
 					        event.preventDefault();

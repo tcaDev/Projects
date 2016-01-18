@@ -46,9 +46,9 @@ class Job_air extends CI_Controller {
 
     $chek= $this->db->query("Select * from JobFile_Air where JobFileNo='$jbfl' limit 1");
    if($chek->num_rows() ==1){
-        echo "JobFile already Exists";
+        echo "JobFile Already Exists";
    }else{
-         echo "New Jobfile is Added";
+         echo "New Jobfile Added";
          $air_job = array(
       					'JobFileNo' 			 =>$jbfl,
       					'ShipperId' 			 =>$shipperid, 

@@ -406,27 +406,49 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 
 function air_add_charges(){
 	    var jbfl      = $('.pill-jobfile-air-add .jobfiles-air').val();
-       var lodge 		  =  $('.pill-charges-air-add #lodge-air').val();
- 	   var cont_deposit   =  $('.pill-charges-air-add #cont-deposit-air').val();
-       var thc_charges    =  $('.pill-charges-air-add #thc-charges-air').val();
-       var arrastre       =  $('.pill-charges-air-add #arrastre-air').val();
-       var wharfage 	  =  $('.pill-charges-air-add #wharfage-air').val();
-       var weight         =  $('.pill-charges-air-add #weight-air').val();
-	   var del       	  =  $('.pill-charges-air-add #del-air').val();
-       var dispatch  	  =  $('.pill-charges-air-add #dispatch-air').val();
-       var storage 	 	  =  $('.pill-charges-air-add #storage-air').val();
-       var demurrage      =  $('.pill-charges-air-add #demurrage-air').val();
-	   var detention      =  $('.pill-charges-air-add #detention-air').val();
-       var eic  	  	  =  $('.pill-charges-air-add #EIC-air').val();
-       var bai_app 	 	  =  $('.pill-charges-air-add #bai-app-air').val();
-       var bai_inspect    =  $('.pill-charges-air-add #bai-inspect-air').val();
-	   var sra_app        =  $('.pill-charges-air-add #sra-app-air').val();
-       var sra_inspect    =  $('.pill-charges-air-add #sra-inspect-air').val();
-       var bad_cargo 	  =  $('.pill-charges-air-add #bad-cargo-air').val();
-       var all_charges    =  $('.pill-charges-air-add #all-charges-air').val();
-	   var part_charges   =  $('.pill-charges-air-add #part-charges-air').val();
+
+       var get_lodge 		  =  $('.pill-charges-air-add #lodge-air').val();
+ 	   var get_cont_deposit   =  $('.pill-charges-air-add #cont-deposit-air').val();
+       var get_thc_charges    =  $('.pill-charges-air-add #thc-charges-air').val();
+       var get_arrastre       =  $('.pill-charges-air-add #arrastre-air').val();
+       var get_wharfage 	  =  $('.pill-charges-air-add #wharfage-air').val();
+       var get_weight         =  $('.pill-charges-air-add #weight-air').val();
+	   var get_del       	  =  $('.pill-charges-air-add #del-air').val();
+       var get_dispatch  	  =  $('.pill-charges-air-add #dispatch-air').val();
+       var get_storage 	 	  =  $('.pill-charges-air-add #storage-air').val();
+       var get_demurrage      =  $('.pill-charges-air-add #demurrage-air').val();
+	   var get_detention      =  $('.pill-charges-air-add #detention-air').val();
+       var get_eic  	  	  =  $('.pill-charges-air-add #EIC-air').val();
+       var get_bai_app 	 	  =  $('.pill-charges-air-add #bai-app-air').val();
+       var get_bai_inspect    =  $('.pill-charges-air-add #bai-inspect-air').val();
+	   var get_sra_app        =  $('.pill-charges-air-add #sra-app-air').val();
+       var get_sra_inspect    =  $('.pill-charges-air-add #sra-inspect-air').val();
+       var get_bad_cargo 	  =  $('.pill-charges-air-add #bad-cargo-air').val();
+       var get_all_charges    =  $('.pill-charges-air-add #all-charges-air').val();
+	   var get_part_charges   =  $('.pill-charges-air-add #part-charges-air').val();
+
+	   var lodge 	 	  =  get_lodge.replace(/,/g,'');
+ 	   var cont_deposit   =  get_cont_deposit.replace(/,/g,'');
+       var thc_charges    =  get_thc_charges.replace(/,/g,'');
+       var arrastre       =  get_arrastre.replace(/,/g,'');
+       var wharfage 	  =  get_wharfage.replace(/,/g,'');
+       var weight         =  get_weight.replace(/,/g,'');
+	   var del       	  =  get_del.replace(/,/g,'');
+       var dispatch  	  =	 get_dispatch.replace(/,/g,'');
+       var storage 	 	  =  get_storage.replace(/,/g,'');
+       var demurrage      =  get_demurrage.replace(/,/g,'');
+	   var detention      =  get_detention.replace(/,/g,'');
+       var eic  	  	  =  get_eic.replace(/,/g,'');
+       var bai_app 	 	  =  get_bai_app.replace(/,/g,'');
+       var bai_inspect    =  get_bai_inspect.replace(/,/g,'');
+	   var sra_app        =  get_sra_app.replace(/,/g,'');
+       var sra_inspect    =  get_sra_inspect.replace(/,/g,'');
+       var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
+       var all_charges    =  get_all_charges;
+	   var part_charges   =  get_part_charges;
+
 	
-	  	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
+	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
         var wVal = 0;
 		var len = totalCharges.length;
 		 for($x = 0 ; $x <= len ; $x++){
@@ -457,6 +479,15 @@ function air_add_charges(){
 			       $.ajax({
 			  		method: "POST",
 					url: link + "/Job_air/running_charges/",
+				    beforeSend: function() {
+					 	  dia_running_charges =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Adding Running Charges',
+				   			});
+ 					  },
 			  		data: {
 			  			    //from jobfile tab
 			  	   	           jbfl   		:jbfl,
@@ -485,10 +516,11 @@ function air_add_charges(){
 	  						$.alert({
 	  							backgroundDismiss: false, 	 	
 				        		title: 'Success!',
-				        		content: 'New  Commodity added!',
+				        		content: 'Running Charges Added!',
 				        		confirm: function(){
 				        		window.location.hash="#air";	
-				        		  location.reload();						
+				        	      dia_running_charges.close();		
+				        		  location.reload();	
 				        	    }
 				   			});
 

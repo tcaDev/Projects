@@ -465,7 +465,7 @@ var jbfl;
  		if(inp.trim() == ""){
  			$('#runchar-air #' + holder).val('0.00');
  		}
- 	});
+ });
  $(document).on('click','.btn-Goods-air',function(){
    		$('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
    });	

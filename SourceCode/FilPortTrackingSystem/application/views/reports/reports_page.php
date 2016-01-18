@@ -238,6 +238,11 @@
 				            </center>
 				            </div>
 				<br>
+				<hr>
+							<h4> Status Reports </h4>
+						      <table id="tbl-fourth-report-data-print" class="table table-striped tableOverFlow" style="cursor:pointer;width:100%">
+	    				      </table>
+	    		<br>
 				<hr>        	
 				        	<h4>Running Charges</h4>
 				        	<div>
@@ -247,10 +252,7 @@
 				            </center>
 				            </div>
 				<br>
-				<hr>
-							<h4> Status Reports </h4>
-						      <table id="tbl-fourth-report-data-print" class="table table-striped tableOverFlow" style="cursor:pointer;">
-	    				      </table>
+				
 			</div>
 		</div>
 
