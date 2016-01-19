@@ -947,7 +947,7 @@ class Job extends CI_Controller {
       foreach ($charges as $row) {
         $i++;
          $description = $row->StatusDescription;
-/*         if($description==''){
+    /*   if($description==''){
          ?>
           <script>
            $('.remove_tr').remove();
@@ -999,41 +999,157 @@ class Job extends CI_Controller {
       echo $desc;
     }
 
-  function get_consignee_status_report(){
-      $consignee_name    =  $this->input->post('consignee_name');   
-      $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name);
-      $ct = count($jobfiles);
-      if($ct > 0){
-      $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
-      $dispOutput .= '
-                    <thead>
-                          <th><center> JobfileNumber </center> </th>
-                          <th><center> Shipper </center></th>
-                          <th><center> Consignee </center></th>
-                          <th><center> HBL# </center></th>
-                          <th><center> Date Received of Other Documents </center></th>
+    function get_details_report(){
+      $consignee_name     =  $this->input->post('consignee_name');  
+      $monitoringType     =  $this->input->post('monType');
 
-                    </thead>
-                  ';
-      foreach($jobfiles as $row){
-          $dispOutput .='
-                  <tbody>
-                    <tr class="tableRow">
-                          <td>'.stripslashes($row->JobFileNo).'</td>
-                          <td>'.stripslashes($row->ShipperName).'</td>
-                          <td>'.stripslashes($row->ConsigneeName).'</td>
-                          <td>'.stripslashes($row->HouseBillLadingNo).'</td>
-                          <td>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+      $shipper            =  $this->input->post('shipperName');
+      $dateRcvd           =  $this->input->post('dateRcvdOther_Docs');
+      $consigneename      =  $this->input->post('consigneeName');
+      $HBL                =  $this->input->post('HBL_');
+
+      $dispOutput = "";
+
+      $jfNo    =  $this->input->post('jfNo');
+
+      $dispOutput .= '<table style="font-family:Century Gothic;font-size:16px;table-layout:fixed;width:100%;" id="table-pre-details">
+                    <tr >
+                      <td style="text-align:left;">
+                      <span class="pull-left">  <b> Shipper   : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="shipper">' . $shipper . '</a>
+                      </td>
                     </tr>
-                  </tbody>
-          ';
-      }
+                    <tr>
+                      <td style="text-align:left;">
+                       <span class="pull-left"> <b> Consignee  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="consignee">' . $consigneename . ' </a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b>Date Received of other Documents  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="dtRecvdOtherDocs">' . $dateRcvd . ' </a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b>Vessels  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                        &nbsp;<a id="Carriers"> </a> 
+                      </td>
+                    </tr>';
+                    $jobfiles= $this->Jobdata->getCarriers_Consignee($consignee_name,$monitoringType,$jfNo);
+                    $ct = count($jobfiles);
+                     if($ct > 0){
+                    foreach($jobfiles as $row){
+                        $dispOutput .='
+                                  <tr class="tableRow">
+                                        <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Vessel '.stripslashes($row->VesselNumber).'</b></td>
+                                        <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
+                                  </tr>
+                        ';
+                    }
+                    }else{
+                       $dispOutput .= ' <tr class="tableRow">
+                                        <td style="text-align:left;font-style:15px;">No Data for Vessels</td>
+                                        </tr><center><span style="color:red">No Data for Vessels </span></center>'
+                                      ;
+                    }
+                    $dispOutput .='<tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b>Carriers  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="dtRecvdOtherDocs">' . $dateRcvd . ' </a> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b> HBL#  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="hbl">' . $HBL . ' </a> 
+                      </td>
+                    </tr>
+                  </table>';
+          echo $dispOutput;
+   }
 
-        $dispOutput .= '</table>';
+  function get_consignee_status_report(){
+      $consignee_name    =  $this->input->post('consignee_name');  
+      $monitoringType    =  $this->input->post('monType');
+      $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name,$monitoringType);
+      if($monitoringType == 3){
+          $ct = count($jobfiles);
+          if($ct > 0){
+          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
+          $dispOutput .= '
+                        <thead>
+                              <th><center> JobfileNumber </center> </th>
+                              <th><center> Shipper </center></th>
+                              <th><center> Consignee </center></th>
+                              <th><center> House Airway Bill# </center></th>
+                              <th><center> Date Received of Other Documents </center></th>
+                        </thead>
+                      ';
+          foreach($jobfiles as $row){
+              $dispOutput .='
+                      <tbody>
+                        <tr class="tableRow">
+                              <td>'.stripslashes($row->JobFileNo).'</td>
+                              <td>'.stripslashes($row->ShipperName).'</td>
+                              <td>'.stripslashes($row->ConsigneeName).'</td>
+                              <td>'.stripslashes($row->HouseBillLadingNo).'</td>
+                              <td>'.stripslashes($row->DatePickUpOtherDocs).'</td>
+                        </tr>
+                      </tbody>
+              ';
+          }
+
+            $dispOutput .= '</table>';
+          }else{
+            $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
+          }
       }else{
-        $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
-      }
+         $ct = count($jobfiles);
+          if($ct > 0){
+          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
+          $dispOutput .= '
+                        <thead>
+                              <th><center> JobfileNumber </center> </th>
+                              <th><center> Shipper </center></th>
+                              <th><center> Consignee </center></th>
+                              <th><center> HBL# </center></th>
+                              <th><center> Date Received of Other Documents </center></th>
+                        </thead>
+                      ';
+          foreach($jobfiles as $row){
+              $dispOutput .='
+                      <tbody>
+                        <tr class="tableRow">
+                              <td>'.stripslashes($row->JobFileNo).'</td>
+                              <td>'.stripslashes($row->ShipperName).'</td>
+                              <td>'.stripslashes($row->ConsigneeName).'</td>
+                              <td>'.stripslashes($row->HouseBillLadingNo).'</td>
+                              <td>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                        </tr>
+                      </tbody>
+              ';
+          }
 
+            $dispOutput .= '</table>';
+          }else{
+            $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
+          }
+      }
+     
       $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $ct . ') Data Match(es)</i>';
 
       $output = array(
@@ -1043,7 +1159,8 @@ class Job extends CI_Controller {
           )
         );
 
-      echo json_encode($output);
+     echo json_encode($output);
+     // echo $dispOutput;
   }
 
   function get_containers_report(){

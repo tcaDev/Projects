@@ -4,14 +4,14 @@
 
 <div class="dash-cont">
 	<div class="dash-title"><h3>REPORTS</h3></div>
-		<!-- <div class="dash-subtitle">
+		<div class="dash-subtitle">
 			<ul class="nav nav-pills nav-stacked col-md-2">
-			  <li class="active"><a href="#tab_a" data-toggle="pill">Consignee</a></li>
-			  <li><a href="#tab_b" data-toggle="pill">Broker</a></li>
-			  <li><a href="#tab_c" data-toggle="pill">Shipper</a></li>
-			  <!-- <li><a href="#tab_d" data-toggle="pill">Vessel</a></li> -->
-		<!-- 	</ul>
-		</div> --> 
+			  <li value="1"class="active"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+			  <li value="2"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+			  <li value="3"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+			</ul>
+		</div> 
+ 	</div>
 </div>
 
 		<div class="dash-side" >
@@ -39,6 +39,8 @@
 					</div>
 		</div>
 	</div>
+
+	<!-- Manila and Outport Details -->
 	 <div class="container">
 		<!-- Modal -->
 				   <div class="modal fade" id="view-report" role="dialog" data-keyboard="false" data-backdrop="static">
@@ -55,42 +57,12 @@
 				        </div>
 				        <div class="modal-body">
 				        <div style="overflow-x:auto;">
-				        	
-				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;">
-				        		<tr >
-				        		  <td style="text-align:left;">
-				        		  <span class="pull-left">	<b> Shipper   : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        		 	&nbsp;<a id="shipper"> </a>
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		   <span class="pull-left"> <b> Consignee  : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        		 	&nbsp;<a id="consignee"> </a> 
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		  	 <span class="pull-left"><b>Date Received of other Documents  : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        			&nbsp;<a id="dtRecvdOtherDocs"> </a> 
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		  	 <span class="pull-left"><b> HBL#  : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        			&nbsp;<a id="hbl"> </a> 
-				        		  </td>
-				        		</tr>
+				        <span class="loadPre-Details pull-left" style="font-size:18px;"></span>
+				       	
+				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details">
 				        	</table>
-				        	<hr>
+		<hr>		        
+
 		<div class="container-tab" id="tabs">
 
 		  <ul class="nav nav-pills">
@@ -178,84 +150,9 @@
 				      </div>
 				    
 			</div> 
-
-			
-				            </div>
-						</div>
+		  </div>
+	    </div>
 		<!-- End Modal for Details -->
-		<div id="tab-results" hidden>	
-			<div style="font-family:Century Gothic;">
-				<div style="font-size:22px;">
-				<span class="pull left"><b>  Jobfile Number </b></span> 
-				 <a id="print_jfNo"> </a> 
-				</div>
-				<table style="font-family:Century Gothic;font-size:18px;width:100%;table-layout:fixed;">
-				        		<tr >
-				        		  <td style="text-align:left;">
-				        		  <span class="pull-left">	<b> Shipper   : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        		 	&nbsp;<a id="print_shipper"> </a>
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		   <span class="pull-left"> <b> Consignee  : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        		 	&nbsp;<a id="print_consignee"> </a> 
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		  	 <span class="pull-left"><b>Date Received of other Documents  : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        			&nbsp;<a id="print_dtRecvdOtherDocs"> </a> 
-				        		  </td>
-				        		</tr>
-				        		<tr>
-				        		  <td style="text-align:left;">
-				        		  	 <span class="pull-left"><b>HBL# : </b></span>
-				        		  </td>
-				        		  <td style="text-align:left;">
-				        			&nbsp;<a id="print_hbl"> </a> 
-				        		  </td>
-				        		</tr>
-				</table>
-				<br>
-				<hr>
-				        	<h4>Containers</h4>
-								<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;font-size:12px;text-align:center;border:1px solid gray;">
-				                </table>
-				<br>
-				<hr>        	
-				        	<h4>Commodity</h4>
-				        	<div>
-				        	<center>
-								<table id="tbl-second-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;">
-				                </table>
-				            </center>
-				            </div>
-				<br>
-				<hr>
-							<h4> Status Reports </h4>
-						      <table id="tbl-fourth-report-data-print" class="table table-striped tableOverFlow" style="cursor:pointer;width:100%">
-	    				      </table>
-	    		<br>
-				<hr>        	
-				        	<h4>Running Charges</h4>
-				        	<div>
-				        	<center>
-								<table id="tbl-third-report-data-print" class="table table-striped table-bordered table-layout:fixed;" style="cursor:pointer;width:100%;text-align:left;">
-				      		   </table>
-				            </center>
-				            </div>
-				<br>
-				
-			</div>
-		</div>
-
 		<div class="modal fade" id="view-status-report-profile" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
 				    <div class="modal-dialog">
 				      <!-- Modal content-->
@@ -287,14 +184,67 @@
 				    </div>
 		</div>
 	</div> 
+	<!-- End of Manila and Outport Details -->
 	</div> 
+
+
+		<!-- PRINT REPORT MANILA AND OUTPORT -->
+
+		<div id="tab-results" hidden>	
+			<div style="font-family:Century Gothic;">
+				<div style="font-size:22px;">
+				<span class="pull left"><b>  Jobfile Number </b></span> 
+				 <a id="print_jfNo"> </a> 
+				</div>
+				
+				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details-print">
+				        	</table>
+				<br>
+				<hr>
+				        	<h4>Containers</h4>
+								<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;font-size:12px;text-align:center;border:1px solid gray;">
+				                </table>
+				<br>
+				<hr>        	
+				        	<h4>Commodity</h4>
+				        	<div>
+				        	<center>
+								<table id="tbl-second-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;">
+				                </table>
+				            </center>
+				            </div>
+				<br>
+				<hr>
+							<h4> Status Reports </h4>
+						      <table id="tbl-fourth-report-data-print" class="table table-striped tableOverFlow" style="cursor:pointer;width:100%">
+	    				      </table>
+	    		<br>
+				<hr>        	
+				        	<h4>Running Charges</h4>
+				        	<div>
+				        	<center>
+								<table id="tbl-third-report-data-print" class="table table-striped table-bordered table-layout:fixed;" style="cursor:pointer;width:100%;text-align:left;">
+				      		   </table>
+				            </center>
+				            </div>
+				<br>
+			</div>
+		</div>
+		<!-- END PRINT REPORT MANILA AND OUTPORT  -->
 </body>
 <script>
  var jbNo;
- var statusData;
-	$('#btn-search-consignee').on('click',function(){
-		var txt = $('#txt-search-consignee').val();
+ var consigneeName;
+ var shipperName;
+ var rcvdOfOtherDocs;
+ var HBL;
 
+ var statusData;
+ var txt;
+ var mon_Type;
+	$('#btn-search-consignee').on('click',function(){
+		txt = $('#txt-search-consignee').val();
+	    mon_Type = $('.nav-pills .active').val();
 		  $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
@@ -305,9 +255,11 @@
 						},
 				  		data: { 
 				  			consignee_name:txt,
+				  			monType : mon_Type
 				  		}
 					})
 			  		.done(function(consignee_data) {
+			  			//$('.reports-table').html(consignee_data);
 			  			var result = JSON.parse(consignee_data);
 				  		$('.reports-table').html(result[0].disp);
 				  		$('.result-count').html(result[0].result_count);
@@ -316,6 +268,7 @@
 		   });
 		
 		$(document).on('dblclick','.tableRow',function(){
+			$('#table-pre-details').html('<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details"></table>');
 			$('#tbl-first-report-data').html('<table id="tbl-first-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadContainers pull-left" style="font-size:18px;"></span></td></tr></table>');
 			$('#tbl-second-report-data').html('<table id="tbl-second-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadCommodity pull-left" style="font-size:18px;"></span></td></tr></table>');
 			$('#tbl-third-report-data').html('<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadCharges pull-left" style="font-size:18px;"></span></td></tr></table>');
@@ -326,20 +279,35 @@
 			$('#tbl-third-report-data-print').html('<table id="tbl-third-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
 			$('#tbl-fourth-report-data-print').html('<table id="tbl-fourth-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
 			/*Reload Data on Print*/
-			jbNo = $(this).closest('tr').children('td:eq(0)').text();
-			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text())
-			$('#consignee').html($(this).closest('tr').children('td:eq(2)').text())
-			$('#shipper').html($(this).closest('tr').children('td:eq(1)').text())
-			$('#dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(4)').text())
-			$('#hbl').html($(this).closest('tr').children('td:eq(3)').text())
+			jbNo	    	= $(this).closest('tr').children('td:eq(0)').text();
+			shipperName 	= $(this).closest('tr').children('td:eq(1)').text();
+			consigneeName 	= $(this).closest('tr').children('td:eq(2)').text();
+			rcvdOfOtherDocs = $(this).closest('tr').children('td:eq(4)').text();
+			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
+			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
+			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
+				 $.ajax({
+				  		method: "POST",
+						url: "<?php echo base_url('Job/get_details_report');?>",
+						beforeSend: function(){
+							$('.loadPre-Details').html('<a class="loadPre-Details"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Details</a>');
+						},
+				  		data: { 
+				  			consignee_name		: txt,
+				  			monType 			: mon_Type,
+				  			shipperName 		: shipperName,
+				  			consigneeName 		: consigneeName,
+				  			dateRcvdOther_Docs  : rcvdOfOtherDocs,
+				  			HBL_ 				: HBL,
+				  			jfNo 				: jbNo
+				  		}
+					})
+			  		.done(function(report_container_data){
+			  			$('#table-pre-details').html(report_container_data);
+			  			$('#table-pre-details-print').html(report_container_data);
+			  			$('.loadPre-Details').html('<a class="loadPre-Details"></a>');
+				});
 
-			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text())
-			$('#print_consignee').html($(this).closest('tr').children('td:eq(2)').text())
-			$('#print_shipper').html($(this).closest('tr').children('td:eq(1)').text())
-			$('#print_dtRecvdOtherDocs').html($(this).closest('tr').children('td:eq(4)').text())
-			$('#print_hbl').html($(this).closest('tr').children('td:eq(3)').text())
-
-			$('#view-report').modal('show');
 			 $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/get_containers_report');?>",
@@ -399,8 +367,7 @@
 			  			$('#tbl-fourth-report-data-print').html(statusData);
 
 				 });
-
-
+			  	$('#view-report').modal('show');
 		   });
 			$(document).on('dblclick','#loadReports',function(){
 				var pre_txt = $(this).closest('tr').children('td:eq(1)').text();
@@ -421,6 +388,15 @@
 			    }
 			});
 
+			$(document).on('click','li',function(){
+				if($('#txt-search-consignee').val() != ""){
+				   $('#btn-search-consignee').click();
+				}else{
+					$('.loading-consignee').html('<a class="loading-consignee"></a>');
+					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
+					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+				}
+			});
 </script>
 <style>
 	 .tableOverFlow{

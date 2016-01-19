@@ -172,8 +172,21 @@ function get_countryID_manila($jobfile){
     return $query->result(); 
  }
 
- function getJobFiles_Consignee($consigneeName){
-    $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'");
+ function getJobFiles_Consignee($consigneeName,$monitoringType){
+    if($monitoringType != 3){
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
+     }else{
+         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
+     }
+    return $query->result();
+ }
+
+ function getCarriers_Consignee($consigneeName,$monitoringType,$jbNo){
+     if($monitoringType != 3){
+         $query = $this->db->query("select b.ActualArrivalTime as ActualArrivalTime, b.VesselVoyageNo As VesselNumber FROM vw_JobFile AS a , CarrierByJobFile AS b WHERE a.ConsigneeName LIKE '%$consigneeName%' AND a.MonitoringTypeId = '$monitoringType' AND b.JobFileId = a.JobFileId AND a.JobFileNo = '$jbNo'");
+     }else{
+         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
+     }
     return $query->result();
  }
 
