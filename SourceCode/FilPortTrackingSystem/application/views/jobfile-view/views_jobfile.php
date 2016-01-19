@@ -2,22 +2,24 @@
 
 	<!-- Tabs -->
 	<div class="jobfile-cont">
-		<div class="container-tab" id="tabs">
+		<div class="container-fluid">
+			<div class="row">
+				<div  class="container-tab" id="tabs">
+			  <ul class="nav nav-tabs">
 
-		  <ul class="nav nav-tabs">
+			    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA</a></li>
 
-		    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA</a></li>
+			    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT</a></li>
 
-		    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT</a></li>
+			    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT</a></li>
 
-		    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT</a></li>
+			  </ul>
 
-		  </ul>
-		 </div>
+			</div>		
 
 		  	<!-- Manila -->
 
-		  	<div class="tab-content">
+		  	<div class="tab-content" style="margin-bottom: 10px;">
 		  	
 		  		<div id="manila" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
 
@@ -41,7 +43,10 @@
 
 			  </div>
 		  	</div>
+			</div>
+			
 		
+ 		</div>
 
 		<hr>
 

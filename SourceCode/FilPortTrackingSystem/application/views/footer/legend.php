@@ -1,5 +1,5 @@
   <fieldset >
-    <legend align="left" style="font-size:12px;">Legend For Color Stages:</legend>
+    <legend align="left" style="font-size:15px;">Legend For Color Stages:</legend>
 			<div class="legend-body-font" style="overflow-x:auto;font-size:12px;line-height: 1.6875;">
 				<div class="container-fluid">
 					<div class="row">
