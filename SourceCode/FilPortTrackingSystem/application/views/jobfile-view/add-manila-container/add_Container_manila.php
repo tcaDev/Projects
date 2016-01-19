@@ -271,7 +271,7 @@
 
 			$('.tableContainer-msg-addContainer-manila').text("");
 
-			$('#table-AddContainer-mnla .container-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .container-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .container-size-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .plate-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .cartons-addContainer-manila').val('');
@@ -290,7 +290,7 @@
 			$('#table-AddContainer-mnla .gtinport-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .gtoutport-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .act-del-whse-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .dt_boc-addContainer-manila').val('');
+			$('#table-AddContainer-mnla .dt_boc-addContainer-manila').val('');*/
 			}
 			
 		});

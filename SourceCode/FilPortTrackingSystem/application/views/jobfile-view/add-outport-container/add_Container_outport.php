@@ -263,10 +263,10 @@
 
 			$('#table-AddContainer-outport .container-addContainer-outport').val('');
 			$('#table-AddContainer-outport .container-size-addContainer-outport').val('');
-			$('#table-AddContainer-outport .plate-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .plate-addContainer-outport').val('');*/
 			$('#table-AddContainer-outport .cartons-addContainer-outport').val('');
 
-			$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
+		/*	$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_paid-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_pre_assess-addContainer-outport').val('');
                         
@@ -282,7 +282,7 @@
 			$('#table-AddContainer-outport .gtoutport-addContainer-outport').val('');
 			$('#table-AddContainer-outport .act-del-whse-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_boc-addContainer-outport').val('');
-                        $('#table-AddContainer-outport .act_dt_to_whse-addContainer-outport').val('');
+                        $('#table-AddContainer-outport .act_dt_to_whse-addContainer-outport').val('');*/
 			}
 			
 		});

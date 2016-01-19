@@ -37,19 +37,28 @@
 								<input type="date" name="est-dept" class="form-control input-sm eat-updateVessel-outport" />
 							 </div>
 
+							
+
 						</div>
 
 						<div class="col-lg-6">
+
+						 <div class="form-group">	 
+							    <label for="dtClrd">Actual Berthing Time</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm abt-updateVessel-outport">
+							 </div>
+
+						<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-updateVessel-outport">
+							 </div>
 
 						    <div class="form-group">
 								<label>Actual Arrival Time</label>
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-updateVessel-outport" />
 							 </div>
 
-							<div class="form-group">	 
-							    <label for="dtClrd">Discharge Time of Vessel</label>
-							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-updateVessel-outport">
-							 </div>
+							
 
 							 <div class="form-group carrier-updateVessel-outport">
 
@@ -108,6 +117,7 @@ $(document).ready(function(){
 		 var est_dept_time = $(this).closest('tr').children('td:eq(8)').text();
 		 var est_arrival_time = $(this).closest('tr').children('td:eq(10)').text();
 		 var carrier_value = $(this).closest('tr').children('td:eq(12)').text();
+		 var berting_time = $(this).closest('tr').children('td:eq(13)').text();
 		 Carrierid = carrier_value;
 
 		 	/*alert(carrier_name);*/
@@ -116,6 +126,7 @@ $(document).ready(function(){
 		 $('.eat-updateVessel-outport').val(est_arrival_time);
 		 $('.aat-updateVessel-outport').val(act_arrival_time);
 		 $('.vdt-updateVessel-outport').val(discharge_time);
+		 $('.abt-updateVessel-outport').val(berting_time);
 		
 
 		  $(".carrier-updateVessel-outport option").filter(function() {
@@ -133,6 +144,7 @@ $(document).ready(function(){
 		est_arrival_time  =   $('.eat-updateVessel-outport').val();
 		act_arrival_time  =   $('.aat-updateVessel-outport').val();
 		discharge_time    =   $('.vdt-updateVessel-outport').val();
+		berting_time    =   $('.abt-updateVessel-outport').val();
         shipping_lines    =   $('.shipping_lines-outport').val();
        
       		
@@ -146,6 +158,7 @@ $(document).ready(function(){
 				  			    est_arrival_time   : est_arrival_time,
 				  			    act_arrival_time   : act_arrival_time,
 				  			    discharge_time     : discharge_time,
+				  			    act_berthing_time  : berting_time,
 				  			    Carrierid  		   : Carrierid,
 				  			    cr 				   : shipping_lines
 				  		}

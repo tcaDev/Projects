@@ -28,7 +28,7 @@ var suc;
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
-		if(i==0){
+		/*if(i==0){
 			$('#btn-jobfile-mnla-add').on('click',function(){
 			$(this).addClass('active');
 			$('#btn-charges-mnla-add').removeClass('active');
@@ -51,7 +51,7 @@ var suc;
 		}
 		else{
 			$('#btn-jobfile-mnla-add').click(false);
-		}
+		}*/
 		
 
 		/*
@@ -60,106 +60,250 @@ var suc;
 
 		var i=0;
 
+		var proceed = 0;
+
 		$(document).on('click','.btn-Next',function(){
+			
+			// if(back==1){
 
+			// 	/*Update Jobfile*/
+			// 	update_jobfile_back();
+			// 	$(this).attr('disabled','disabled');
+			// 	back=0;
+			// }
+			//  else if(back==2){
+			//  		/*Update vessel*/
+			//  }
+			//   else if(back==2){
+			//  		Update Container
+			//  }
+			//   else if(back==2){
+			//  		/*Update product*/
+			//  }
+			// else{
+
+	/*Start*/
+	/*
+	-------------------------------------------------------------------------------------------------
+	*/
+					 if($('.required-fields .jobfiles').val() == "")
+						{
+							$('.jobfile-msg').text("Need Jobfile");
+						}
+						else if($('.required-fields .shipper').val() == "")
+						{
+							$('.shipper-msg').text("Need Shipper");
+						}
+						else if($('.required-fields .consignee').val() == "")
+						{
+							$('.consignee-msg').text("Need Consignee");
+						}
+						else if($('.reference').val() == "")
+						{
+							$('.reference-msg').text("Need Reference Entry No.");
+						}
+						else if($('#check_jobfiles').text() == "Jobfile already exists in Outport")
+						{
+							$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exist");
+						}
+							else if($('#check_jobfiles').text() == "Jobfile already exists in Air")
+						{
+							$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
+						}
+						else if($('#check_jobfiles').text() == "Jobfile already exists in Manila")
+						{
+							$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
+						}
+						else{i++;}
+
+
+						
+							  
+						/*Next Page*/
+						if(i==2){
+							
+							if($("#tableAddVessel-mnla table tbody tr td").length == 0){
+								$('.tableVessel-msg').text("Can't Proceed Need Vessel");
+								i=1;
+							}else{
+							  $('.btn-Next').attr('disabled','disabled');
+							  insert_vessels();
+							}
+
+						}else if(i==3){
+							
+							if($("#tableAddContainer-mnla table tbody tr td").length == 0){
+								$('.tableContainer-msg').text("Can't Proceed Need Container");
+								i=2;
+							}else{
+									$('.btn-Next').attr('disabled','disabled');
+								    $.confirm({
+								    	      backgroundDismiss: false, 
+					   						  title: 'Add Container', 
+					   						  confirmButton: 'Yes',
+			    							  cancelButton: 'No',
+					  						  content: 'Do you want to Add Commodity?',
+					 					      confirm: function(){
+					  					        	/*$("#btn-truck-mnla-add").click();*/ 
+					  					        	$('#btn-truck-mnla-add').addClass('active');
+													$('#btn-jobfile-mnla-add').removeClass('active');
+													$('#btn-container-mnla-add').removeClass('active');
+													$('#btn-charges-mnla-add').removeClass('active');
+													$('#btn-vessel-mnla-add').removeClass('active');
+													$('.pill-jobfile-mnla-add').addClass('hidden');
+													$('.pill-truck-mnla-add').removeClass('hidden');
+													$('.pill-charges-mnla-add').addClass('hidden');
+													$('.pill-container-mnla-add').addClass('hidden');
+													$('.pill-vessel-mnla-add').addClass('hidden');
+													$('.test_data').addClass('hidden');
+													$('.btn-Next').removeClass('hidden'); 
+													$('.btn-Next').removeAttr('disabled');
+													$('.btn-Back').removeClass('hidden');
+					  					  },
+					  						  cancel: function(){
+					  						  	 ins_contains();
+					  						  	 proceed = 1;
+					   						 }
+									});
+						 		}
+						
+						}else if(i==4){
+							
+							if($("#tableAddTruck-mnla table tbody tr td").length == 0){
+								$('.tableGoods-msg').text("Can't Proceed Need Commodity");
+								i=3;
+							}else{
+						    var add_comodity=1;
+						    $('.btn-Next').attr('disabled','disabled');
+			  		        ins_contains(add_comodity);
+			  		        proceed=2;
+							}
+						}
+						else if(i==1){
+							
+			    			insert_jobfile();
+			    			$(this).attr('disabled','disabled');
+							/*$("#btn-vessel-mnla-add").click();*/
+						}
+	
+	/*
+	--------------------------------------------------------------------------------------------------
+	*/
+	/*End*/
+			// }
 
 			
-			 if($('.required-fields .jobfiles').val() == "")
-			{
-				$('.jobfile-msg').text("Need Jobfile");
-			}
-			else if($('.required-fields .shipper').val() == "")
-			{
-				$('.shipper-msg').text("Need Shipper");
-			}
-			else if($('.required-fields .consignee').val() == "")
-			{
-				$('.consignee-msg').text("Need Consignee");
-			}
-			else if($('.reference').val() == "")
-			{
-				$('.reference-msg').text("Need Reference Entry No.");
-			}
-			else if($('#check_jobfiles').text() == "Jobfile already exists in Outport")
-			{
-				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exist");
-			}
-				else if($('#check_jobfiles').text() == "Jobfile already exists in Air")
-			{
-				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
-			}
-			else if($('#check_jobfiles').text() == "Jobfile already exists in Manila")
-			{
-				$('.jobfile-msg').text("Can't Proceed -Jobfile Already Exists");
-			}
-			else{i++;}
-
-
-			
-				   
-
-			/*Next Page*/
-			if(i==2){
-
-				if($("#tableAddVessel-mnla table tbody tr td").length == 0){
-					$('.tableVessel-msg').text("Can't Proceed Need Vessel");
-					i=1;
-				}else{
-				  $('.btn-Next').attr('disabled','disabled');
-				  insert_vessels();
-				}
-
-			}else if(i==3){
-				if($("#tableAddContainer-mnla table tbody tr td").length == 0){
-					$('.tableContainer-msg').text("Can't Proceed Need Container");
-					i=2;
-				}else{
-						$('.btn-Next').attr('disabled','disabled');
-					    $.confirm({
-					    	      backgroundDismiss: false, 
-		   						  title: 'Add Container', 
-		   						  confirmButton: 'Yes',
-    							  cancelButton: 'No',
-		  						  content: 'Do you want to Add Commodity?',
-		 					      confirm: function(){
-		  					        	/*$("#btn-truck-mnla-add").click();*/ 
-		  					        	$('#btn-truck-mnla-add').addClass('active');
-										$('#btn-jobfile-mnla-add').removeClass('active');
-										$('#btn-container-mnla-add').removeClass('active');
-										$('#btn-charges-mnla-add').removeClass('active');
-										$('#btn-vessel-mnla-add').removeClass('active');
-										$('.pill-jobfile-mnla-add').addClass('hidden');
-										$('.pill-truck-mnla-add').removeClass('hidden');
-										$('.pill-charges-mnla-add').addClass('hidden');
-										$('.pill-container-mnla-add').addClass('hidden');
-										$('.pill-vessel-mnla-add').addClass('hidden');
-										$('.test_data').addClass('hidden');
-										$('.btn-Next').removeClass('hidden'); 
-										$('.btn-Next').removeAttr('disabled');
-		  					  },
-		  						  cancel: function(){
-		  						  	 ins_contains();
-		   						 }
-						});
-			 		}
-			
-			}else if(i==4){
-				if($("#tableAddTruck-mnla table tbody tr td").length == 0){
-					$('.tableGoods-msg').text("Can't Proceed Need Commodity");
-					i=3;
-				}else{
-			    var add_comodity=1;
-			    $('.btn-Next').attr('disabled','disabled');
-  		        ins_contains(add_comodity);
-				}
-			}
-			else if(i==1){
-    			insert_jobfile();
-    			$(this).attr('disabled','disabled');
-				/*$("#btn-vessel-mnla-add").click();*/
-			}
 
 		});
+
+
+
+/*BACK Button*/
+
+var back=0;
+	 $(document).on('click','.btn-Back', function(){
+
+	 		if(i==1){
+	 			$('#btn-vessel-mnla-add').removeClass('active');
+				$('#btn-jobfile-mnla-add').addClass('active');
+				$('#btn-truck-mnla-add').removeClass('active');
+				$('#btn-charges-mnla-add').removeClass('active');
+				$('#btn-container-mnla-add').removeClass('active');
+				$('.pill-jobfile-mnla-add').removeClass('hidden');
+				$('.pill-truck-mnla-add').addClass('hidden');
+				$('.pill-charges-mnla-add').addClass('hidden');
+				$('.pill-container-mnla-add').addClass('hidden');
+				$('.pill-vessel-mnla-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next').removeClass('hidden');
+				$('.btn-Next').removeAttr('disabled');
+				$('.btn-Back').addClass('hidden');
+				
+				i=0;
+				back=1;
+
+	 		}else if(i==2){
+	 			$('#btn-container-mnla-add').removeClass('active');
+				$('#btn-jobfile-mnla-add').removeClass('active');
+				$('#btn-truck-mnla-add').removeClass('active');
+				$('#btn-charges-mnla-add').removeClass('active');
+				$('#btn-vessel-mnla-add').addClass('active');
+				$('.pill-jobfile-mnla-add').addClass('hidden');
+				$('.pill-vessel-mnla-add').removeClass('hidden');
+				$('.pill-truck-mnla-add').addClass('hidden');
+				$('.pill-charges-mnla-add').addClass('hidden');
+				$('.pill-container-mnla-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next').removeClass('hidden');
+				$('.btn-Next').removeAttr('disabled');
+				$('.btn-Back').removeClass('hidden');
+
+				i=1;
+				back=2;
+
+	 		}else if(i==3){
+
+
+	 			$('#btn-truck-mnla-add').removeClass('active');
+				$('#btn-jobfile-mnla-add').removeClass('active');
+				$('#btn-container-mnla-add').addClass('active');
+				$('#btn-charges-mnla-add').removeClass('active');
+				$('#btn-vessel-mnla-add').removeClass('active');
+				$('.pill-jobfile-mnla-add').addClass('hidden');
+				$('.pill-truck-mnla-add').addClass('hidden');
+				$('.pill-charges-mnla-add').addClass('hidden');
+				$('.pill-container-mnla-add').removeClass('hidden');
+				$('.pill-vessel-mnla-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next').removeClass('hidden'); 
+				$('.btn-Next').removeAttr('disabled');
+				$('.btn-Back').removeClass('hidden');
+
+	 			i=2;
+	 			back=3;
+
+	 		}else if(i==4){
+	 			if(proceed==1){
+
+	 				$('#btn-truck-mnla-add').removeClass('active');
+					$('#btn-jobfile-mnla-add').removeClass('active');
+					$('#btn-container-mnla-add').addClass('active');
+					$('#btn-charges-mnla-add').removeClass('active');
+					$('#btn-vessel-mnla-add').removeClass('active');
+					$('.pill-jobfile-mnla-add').addClass('hidden');
+					$('.pill-truck-mnla-add').addClass('hidden');
+					$('.pill-charges-mnla-add').addClass('hidden');
+					$('.pill-container-mnla-add').removeClass('hidden');
+					$('.pill-vessel-mnla-add').addClass('hidden');
+					$('.test_data').addClass('hidden');
+					$('.btn-Next').removeClass('hidden'); 
+					$('.btn-Next').removeAttr('disabled');
+					$('.btn-Back').removeClass('hidden');
+
+		 			i=2;
+		 			back=3;
+
+	 			}else if(proceed==2){
+	 				$('#btn-truck-mnla-add').addClass('active');
+					$('#btn-jobfile-mnla-add').removeClass('active');
+					$('#btn-container-mnla-add').removeClass('active');
+					$('#btn-charges-mnla-add').removeClass('active');
+					$('#btn-vessel-mnla-add').removeClass('active');
+					$('.pill-jobfile-mnla-add').addClass('hidden');
+					$('.pill-truck-mnla-add').removeClass('hidden');
+					$('.pill-charges-mnla-add').addClass('hidden');
+					$('.pill-container-mnla-add').addClass('hidden');
+					$('.pill-vessel-mnla-add').addClass('hidden');
+					$('.test_data').addClass('hidden');
+					$('.btn-Next').removeClass('hidden'); 
+					$('.btn-Next').removeAttr('disabled');
+					$('.btn-Back').removeClass('hidden');
+
+		 			i=3;
+		 			back=4;
+	 			}
+	 		}
+	 });
 
 
 
@@ -175,6 +319,9 @@ var suc;
    			$.ajax({
 			  		method: "POST",
 					url: link + "/Job/check_jobfiless/",
+					 beforeSend: function() {
+							$('#check_jobfiles').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
 			  		data: { jobfile:jobfile,
 			  		        mon    :mon}
 			})
@@ -317,10 +464,10 @@ var suc;
 
 			$('#tableAddContainer-mnla .containerss').val('');
 			$('#tableAddContainer-mnla .containerss-size').val('');
-			$('#tableAddContainer-mnla .plate').val('');
+			/*$('#tableAddContainer-mnla .plate').val('');*/
 			$('#tableAddContainer-mnla .cartons').val('');
 
-			$('#tableAddContainer-mnla .ref_entry_no').val('');
+			/*$('#tableAddContainer-mnla .ref_entry_no').val('');
 			$('#tableAddContainer-mnla .dt_paid').val('');
 			$('#tableAddContainer-mnla .dt_pre_assess').val('');
 		    $('#tableAddContainer-mnla .dt_file_entry_boc').val('');
@@ -334,7 +481,7 @@ var suc;
 			$('#tableAddContainer-mnla .gtinport').val('');
 			$('#tableAddContainer-mnla .gtoutport').val('');
 			$('#tableAddContainer-mnla .act-del-whse').val('');
-			$('#tableAddContainer-mnla .dt_boc').val('');
+			$('#tableAddContainer-mnla .dt_boc').val('');*/
 			}
 
 		
@@ -424,16 +571,17 @@ var suc;
 		
 		else{
 
-		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		$('#tableAddVessel-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		
 		$('#tableAddVessel-mnla table tr:last td:nth-child(1)').html($(".vessel").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(2)').html($(".edt").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(3)').html($(".eat").val());
-		$('#tableAddVessel-mnla table tr:last td:nth-child(4)').html($(".aat").val());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(4)').html($(".abt").val());
 		$('#tableAddVessel-mnla table tr:last td:nth-child(5)').html($(".vdt").val());
-		$('#tableAddVessel-mnla table tr:last td:nth-child(6)').html($(".carrier").val()).hide();
-	    $('#tableAddVessel-mnla table tr:last td:nth-child(7)').html($(".carrier option:selected").text());
-		$('#tableAddVessel-mnla table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		$('#tableAddVessel-mnla table tr:last td:nth-child(6)').html($(".aat").val());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(7)').html($(".carrier").val()).hide();
+	    $('#tableAddVessel-mnla table tr:last td:nth-child(8)').html($(".carrier option:selected").text());
+		$('#tableAddVessel-mnla table tr:last td:nth-child(9)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 		$('.containers-vessel').append('<option value='+ $(".vessel").val() +'>' + $(".vessel").val() + '</option>');
 
@@ -452,6 +600,7 @@ var suc;
 		$('#tableAddVessel-mnla .eat').val('');
 		$('#tableAddVessel-mnla .aat').val('');
 		$('#tableAddVessel-mnla .vdt').val('');
+		$('#tableAddVessel-mnla .abt').val('');
 
 		}
 	});
@@ -481,7 +630,7 @@ var suc;
 
 
 
-
+var Jobfile_num;
 
 function insert_jobfile(){
        var monitoring_type   = $('.pill-jobfile-mnla-add .monitoring_type').val();
@@ -567,7 +716,10 @@ function insert_jobfile(){
 									$('.test_data').addClass('hidden');
 									$('.btn-Next').removeClass('hidden');
 									$('.btn-Next').removeAttr('disabled');
+									$('.btn-Back').removeClass('hidden');
 									dia.close();
+
+									Jobfile_num = jbfl;
 				        	    }
 				   			 });
 	    		    })
@@ -591,6 +743,105 @@ function insert_jobfile(){
 
  }
 
+
+ function update_jobfile_back(){
+
+	  /* var monitoring_type   = $('.pill-jobfile-mnla-add .monitoring_type').val();*/
+	   var jbfl       = $('.pill-jobfile-mnla-add .jobfiles').val();
+       var shipper 	  = $('.pill-jobfile-mnla-add .shipper').val();
+       var consignee  = $('.pill-jobfile-mnla-add .consignee').val();
+       var mbl 		  = $('.pill-jobfile-mnla-add .mbl').val();
+       var mbl2 	  = $('.pill-jobfile-mnla-add .mbl2').val();
+       var hbl 	 	  = $('.pill-jobfile-mnla-add .hbl').val(); 
+       var bank       = $('.pill-jobfile-mnla-add .bank').val();
+       var registry   = $('.pill-jobfile-mnla-add .registry').val(); 
+       var dtRcvd     = $('.pill-jobfile-mnla-add .dtRcvd').val();
+       var dt_pickup_obl  = $('.pill-jobfile-mnla-add .dt_pickup_obl').val();  
+ 	   var dt_pickup_docs = $('.pill-jobfile-mnla-add .dt_pickup_docs').val();  
+       var broker         =  $('.pill-jobfile-mnla-add .broker').val();
+       var dt_req_budget  =  $('.pill-jobfile-mnla-add #dt_req_budget').val();
+       var ref_due_dt     =  $('.pill-jobfile-mnla-add #ref_due_dt').val();
+ 	   var dt_boc         =  $('.pill-jobfile-mnla-add #dt_boc').val();
+     /*  var status         =  $('.pill-jobfile-mnla-add #status').val();*/
+       var purch_order_no =  $('.pill-jobfile-mnla-add #purch_order_no').val();
+       var color          =  $('.pill-jobfile-mnla-add .colsel').val();
+       var color_select   =  $('.pill-jobfile-mnla-add #color-select').val();
+       var origin     =  $('.pill-jobfile-mnla-add .origin').val();
+       var origcity   =  $('.pill-jobfile-mnla-add .origcity').val();   
+ 
+
+ 		alert(Jobfile_num);
+/*alert(jbid);*/
+		 	$.ajax({
+		           method: "POST",
+	 		       url:  link + "/Job_manila_update/jobfile_update/",
+	 		       beforeSend: function() {
+					 	  dia_jobfile =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating Jobfile',
+				   			});
+ 					  },
+			  	   data: {
+			  	   			   jbid 		   		:Jobfile_num,
+			  	   	           jbfl   		   		:jbfl,
+			  	   			   shipper         		:shipper,
+			                   consignee       		:consignee,   
+			                   colsel  		   		:color,
+			                   hbfl       	   		:hbl,
+			                   mbl     		   		:mbl,
+			                   mbl2	           		:mbl2,
+			                   bank		       		:bank,
+			                   reg             		:registry,
+			                   country         		:origin,
+			                   city           		:origcity,
+			                   dtRcvd_arr_client    :dtRcvd,
+			                   dtPckup_obl          :dt_pickup_obl,
+			                   dt_pickup_docs       :dt_pickup_docs,
+			                   broker               :broker,
+			                   purch_order_no       :purch_order_no,
+			                   dtReq_budge_gl       :dt_req_budget,
+			                   ref_due_dt           :ref_due_dt,
+			                   color_selectivity    :color_select
+
+			  	   		 }
+	              })
+					.done(function(data) {
+	  							 $.alert({
+				        		title: 'Success!',
+				        		content: 'Jobfile is Updated',
+				        		confirm: function(){
+
+				        			$('.job-manila').html(data);
+				        			$('#btn-vessel-mnla-add').addClass('active');
+									$('#btn-jobfile-mnla-add').removeClass('active');
+									$('#btn-truck-mnla-add').removeClass('active');
+									$('#btn-charges-mnla-add').removeClass('active');
+									$('#btn-container-mnla-add').removeClass('active');
+									$('.pill-jobfile-mnla-add').addClass('hidden');
+									$('.pill-truck-mnla-add').addClass('hidden');
+									$('.pill-charges-mnla-add').addClass('hidden');
+									$('.pill-container-mnla-add').addClass('hidden');
+									$('.pill-vessel-mnla-add').removeClass('hidden');
+									$('.test_data').addClass('hidden');
+									$('.btn-Next').removeClass('hidden');
+									$('.btn-Next').removeAttr('disabled');
+									$('.btn-Back').removeClass('hidden');						
+									dia_jobfile.close();
+				        	    }
+				   			   });
+	    		    })
+
+
+ 
+ 
+ 
+
+ 
+}
+
  function insert_vessels(){
 
  				dia_vessels =	$.dialog({
@@ -609,9 +860,10 @@ function insert_jobfile(){
 			vessel 	= $tds.eq(0).text(),
 		    edt 	= $tds.eq(1).text();
 		    eat     = $tds.eq(2).text();
-		    aat     = $tds.eq(3).text();
-	        vdt    	= $tds.eq(4).text();
-		    lines   = $tds.eq(5).text();
+		    abt    	= $tds.eq(3).text();
+		    vdt    	= $tds.eq(4).text();
+		    aat     = $tds.eq(5).text();
+		    lines   = $tds.eq(6).text();
 		       $.ajax({
 			  		method: "POST",
 					url: link + "/Job/vessel/",
@@ -620,6 +872,7 @@ function insert_jobfile(){
 			  			    jbfl           :jbfl,
 			  			    vessel 		   :vessel,
 			  			    vdt		       :vdt,
+			  			    abt		       :abt,
 			  			    edt            :edt,
 			  		        eat            :eat,
 			  		        aat            :aat,
@@ -646,6 +899,7 @@ function insert_jobfile(){
 									$('.test_data').addClass('hidden');
 									$('.btn-Next').removeClass('hidden');
 									$('.btn-Next').removeAttr('disabled');
+									$('.btn-Back').removeClass('hidden');
 									dia_vessels.close();
 				        	    }
 				   			});
@@ -857,8 +1111,7 @@ $(document).on('click','.save_charge',function(){
 	   var get_sra_app       	  =  $('#sra-app').val();
        var get_sra_inspect    	  =  $('#sra-inspect').val();
        var get_bad_cargo 	  	  =  $('#bad-cargo').val();
-       var get_all_charges    	  =  $('#all-charges').val();
-	   var get_part_charges   	  =  $('#part-charges').val();
+      
 
 	  
        var lodge 	 	  =  get_lodge.replace(/,/g,'');
@@ -878,8 +1131,7 @@ $(document).on('click','.save_charge',function(){
 	   var sra_app        =  get_sra_app.replace(/,/g,'');
        var sra_inspect    =  get_sra_inspect.replace(/,/g,'');
        var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
-       var all_charges    =  get_all_charges.replace(/,/g,'');
-	   var part_charges   =  get_part_charges.replace(/,/g,'');
+     
 
 	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
         var wVal = 0;

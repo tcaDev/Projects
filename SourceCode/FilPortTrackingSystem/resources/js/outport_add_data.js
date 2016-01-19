@@ -29,7 +29,7 @@ var suc;
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
-		if(i==0){
+		/*if(i==0){
 			$('#btn-jobfile-outport-add').on('click',function(){
 			$(this).addClass('active');
 			$('#btn-charges-outport-add').removeClass('active');
@@ -52,7 +52,7 @@ var suc;
 		}
 		else{
 			$('#btn-jobfile-outport-add').click(false);
-		}
+		}*/
 		
 
 		/*
@@ -62,7 +62,12 @@ var suc;
 		var i=0;
 
 		$(document).on('click','.btn-Next-outport',function(){
-			
+
+/*Start*/
+/*
+---------------------------------------------------------------------------------------------------------------------
+*/
+
 			 if($('.required-fields .jobfiles-outport').val() == "")
 			{
 				$('.jobfile-msg-outport').text("Need Jobfile");
@@ -153,20 +158,134 @@ var suc;
     			$(this).attr('disabled','disabled');
 				/*$("#btn-vessel-outport-add").click();*/
 			}
+/*End*/
+/*
+---------------------------------------------------------------------------------------------------------------------------------
+*/
 
 		});
 
 
 
+/*BACK Button*/
+
+var back=0;
+	 $(document).on('click','.btn-Back-outport', function(){
+
+	 		if(i==1){
+	 			$('#btn-vessel-outport-add').removeClass('active');
+				$('#btn-jobfile-outport-add').addClass('active');
+				$('#btn-truck-outport-add').removeClass('active');
+				$('#btn-charges-outport-add').removeClass('active');
+				$('#btn-container-outport-add').removeClass('active');
+				$('.pill-jobfile-outport-add').removeClass('hidden');
+				$('.pill-truck-outport-add').addClass('hidden');
+				$('.pill-charges-outport-add').addClass('hidden');
+				$('.pill-container-outport-add').addClass('hidden');
+				$('.pill-vessel-outport-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next-outport').removeClass('hidden');
+				$('.btn-Next-outport').removeAttr('disabled');
+				$('.btn-Back-outport').addClass('hidden');
+				back=1;
+				i=0;
+
+	 		}else if(i==2){
+	 			$('#btn-container-outport-add').removeClass('active');
+				$('#btn-jobfile-outport-add').removeClass('active');
+				$('#btn-truck-outport-add').removeClass('active');
+				$('#btn-charges-outport-add').removeClass('active');
+				$('#btn-vessel-outport-add').addClass('active');
+				$('.pill-jobfile-outport-add').addClass('hidden');
+				$('.pill-vessel-outport-add').removeClass('hidden');
+				$('.pill-truck-outport-add').addClass('hidden');
+				$('.pill-charges-outport-add').addClass('hidden');
+				$('.pill-container-outport-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next-outport').removeClass('hidden');
+				$('.btn-Next-outport').removeAttr('disabled');
+				$('.btn-Back-outport').removeClass('hidden');
+
+				i=1;
+				back=2;
+
+	 		}else if(i==3){
+
+
+	 			$('#btn-truck-outport-add').removeClass('active');
+				$('#btn-jobfile-outport-add').removeClass('active');
+				$('#btn-container-outport-add').addClass('active');
+				$('#btn-charges-outport-add').removeClass('active');
+				$('#btn-vessel-outport-add').removeClass('active');
+				$('.pill-jobfile-outport-add').addClass('hidden');
+				$('.pill-truck-outport-add').addClass('hidden');
+				$('.pill-charges-outport-add').addClass('hidden');
+				$('.pill-container-outport-add').removeClass('hidden');
+				$('.pill-vessel-outport-add').addClass('hidden');
+				$('.test_data').addClass('hidden');
+				$('.btn-Next-outport').removeClass('hidden'); 
+				$('.btn-Next-outport').removeAttr('disabled');
+				$('.btn-Back-outport').removeClass('hidden');
+
+	 			i=2;
+	 			back=3;
+
+	 		}else if(i==4){
+	 			if(proceed==1){
+
+	 				$('#btn-truck-outport-add').removeClass('active');
+					$('#btn-jobfile-outport-add').removeClass('active');
+					$('#btn-container-outport-add').addClass('active');
+					$('#btn-charges-outport-add').removeClass('active');
+					$('#btn-vessel-outport-add').removeClass('active');
+					$('.pill-jobfile-outport-add').addClass('hidden');
+					$('.pill-truck-outport-add').addClass('hidden');
+					$('.pill-charges-outport-add').addClass('hidden');
+					$('.pill-container-outport-add').removeClass('hidden');
+					$('.pill-vessel-outport-add').addClass('hidden');
+					$('.test_data').addClass('hidden');
+					$('.btn-Next-outport').removeClass('hidden'); 
+					$('.btn-Next-outport').removeAttr('disabled');
+					$('.btn-Back-outport').removeClass('hidden');
+
+		 			i=2;
+		 			back=3;
+
+	 			}else if(proceed==2){
+	 				$('#btn-truck-outport-add').addClass('active');
+					$('#btn-jobfile-outport-add').removeClass('active');
+					$('#btn-container-outport-add').removeClass('active');
+					$('#btn-charges-outport-add').removeClass('active');
+					$('#btn-vessel-outport-add').removeClass('active');
+					$('.pill-jobfile-outport-add').addClass('hidden');
+					$('.pill-truck-outport-add').removeClass('hidden');
+					$('.pill-charges-outport-add').addClass('hidden');
+					$('.pill-container-outport-add').addClass('hidden');
+					$('.pill-vessel-outport-add').addClass('hidden');
+					$('.test_data').addClass('hidden');
+					$('.btn-Next-outport').removeClass('hidden'); 
+					$('.btn-Next-outport').removeAttr('disabled');
+					$('.btn-Back-outport').removeClass('hidden');
+
+		 			i=3;
+		 			back=4;
+	 			}
+	 		}
+	 });
 
 
  function myjob_outport(jobfile){
    jobfile = jobfile.value;
    var mon = $('.monitoring_type').val();
-
+    if(jobfile==''){
+   	$('#check_jobfiles-outport').empty();
+   }else{
    			$.ajax({
 			  		method: "POST",
 					url: link + "/Job/check_jobfiless/",
+					 beforeSend: function() {
+							$('#check_jobfiles-outport').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
 			  		data: { jobfile:jobfile,
 			  		        mon    :mon}
 			})
@@ -174,7 +293,8 @@ var suc;
 		   		 	   $('#check_jobfiles-outport').html(data);
 				});
 
- }
+	 }
+}
 
        
             $(document).ready(function () {
@@ -304,10 +424,10 @@ var suc;
 
 			$('#tableAddContainer-outport .containerss-outport').val('');
 			$('#tableAddContainer-outport .containerss-size-outport').val('');
-			$('#tableAddContainer-outport .plate-outport').val('');
+			/*$('#tableAddContainer-outport .plate-outport').val('');*/
 			$('#tableAddContainer-outport .cartons-outport').val('');
 
-			$('#tableAddContainer-outport .ref_entry_no-outport').val('');
+		/*	$('#tableAddContainer-outport .ref_entry_no-outport').val('');
 			$('#tableAddContainer-outport .dt_paid-outport').val('');
 			$('#tableAddContainer-outport .dt_pre_assess-outport').val('');
 		    $('#tableAddContainer-outport .dt_file_entry_boc-outport').val('');
@@ -322,7 +442,7 @@ var suc;
 			$('#tableAddContainer-outport .gtoutport-outport').val('');
 			$('#tableAddContainer-outport .act-del-whse-outport').val('');
 			$('#tableAddContainer-outport .dt_boc-outport').val('');
-			$('#tableAddContainer-outport .act_dt_to_whse-outport').val('');
+			$('#tableAddContainer-outport .act_dt_to_whse-outport').val('');*/
 			}
 
 		
@@ -413,16 +533,17 @@ var suc;
 		
 		else{
 
-		$('#tableAddVessel-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		$('#tableAddVessel-outport table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		
 		$('#tableAddVessel-outport table tr:last td:nth-child(1)').html($(".vessel-outport").val());
 		$('#tableAddVessel-outport table tr:last td:nth-child(2)').html($(".edt-outport").val());
 		$('#tableAddVessel-outport table tr:last td:nth-child(3)').html($(".eat-outport").val());
-		$('#tableAddVessel-outport table tr:last td:nth-child(4)').html($(".aat-outport").val());
+		$('#tableAddVessel-outport table tr:last td:nth-child(4)').html($(".abt-outport").val());
 		$('#tableAddVessel-outport table tr:last td:nth-child(5)').html($(".vdt-outport").val());
-		$('#tableAddVessel-outport table tr:last td:nth-child(6)').html($(".carrier-outport").val()).hide();
-	    $('#tableAddVessel-outport table tr:last td:nth-child(7)').html($(".carrier-outport option:selected").text());
-		$('#tableAddVessel-outport table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		$('#tableAddVessel-outport table tr:last td:nth-child(6)').html($(".aat-outport").val());
+		$('#tableAddVessel-outport table tr:last td:nth-child(7)').html($(".carrier-outport").val()).hide();
+	    $('#tableAddVessel-outport table tr:last td:nth-child(8)').html($(".carrier-outport option:selected").text());
+		$('#tableAddVessel-outport table tr:last td:nth-child(9)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 		//to know what is the vessel of container
 		  $('.vessel_voyage-outport').append('<option value='+ $(".vessel-outport").val() +'>' + $(".vessel-outport").val() + '</option>');
@@ -439,6 +560,7 @@ var suc;
 		$('#tableAddVessel-outport .eat-outport').val('');
 		$('#tableAddVessel-outport .aat-outport').val('');
 		$('#tableAddVessel-outport .vdt-outport').val('');
+		$('#tableAddVessel-outport .abt-outport').val('');
 
 		}
 	});
@@ -550,6 +672,7 @@ function insert_jobfile_outport(){
 									$('.test_data').addClass('hidden');
 									$('.btn-Next-outport').removeClass('hidden');
 									$('.btn-Next-outport').removeAttr('disabled');
+									$('.btn-Back-outport').removeClass('hidden');
 									dia.close();
 				        	    }
 				   			 });
@@ -593,9 +716,10 @@ function insert_jobfile_outport(){
 			vessel 	= $tds.eq(0).text(),
 		    edt 	= $tds.eq(1).text();
 		    eat     = $tds.eq(2).text();
-		    aat     = $tds.eq(3).text();
-	        vdt    	= $tds.eq(4).text();
-		    lines   = $tds.eq(5).text();
+		    abt    	= $tds.eq(3).text();
+		    vdt    	= $tds.eq(4).text();
+		    aat     = $tds.eq(5).text();
+		    lines   = $tds.eq(6).text();
 		       $.ajax({
 			  		method: "POST",
 					url: link + "/Job/vessel/",
@@ -603,6 +727,7 @@ function insert_jobfile_outport(){
 			  			    //from jobfile tab
 			  			    jbfl           :jbfl,
 			  			    vessel 		   :vessel,
+			  			    abt		       :abt,
 			  			    vdt		       :vdt,
 			  			    edt            :edt,
 			  		        eat            :eat,
@@ -630,6 +755,7 @@ function insert_jobfile_outport(){
 									$('.test_data').addClass('hidden');
 									$('.btn-Next-outport').removeClass('hidden');
 									$('.btn-Next-outport').removeAttr('disabled');
+									$('.btn-Back-outport').removeClass('hidden');
 									dia_vessels.close();
 				        	    }
 				   			});
@@ -741,6 +867,7 @@ function ins_contains_outport(add_comodity){
 									$('.pill-vessel-outport-add').addClass('hidden');
 									$('.btn-Next-outport').addClass('hidden');
 									$('.btn-Next-outport').removeAttr('disabled');
+									$('.btn-Back-outport').removeClass('hidden');
 									dia_containers.close();
 				        	    }
 				   			  }); 
@@ -816,6 +943,7 @@ PERO WAG KA MAG ALALA AYOS NA.
 											$('.pill-vessel-outport-add').addClass('hidden');
 											$('.btn-Next-outport').addClass('hidden');
 											$('.btn-Next-outport').removeAttr('disabled');
+											$('.btn-Back-outport').removeClass('hidden');
 						        	    }
 						   			  });
 						   		dia_containers.close();
@@ -955,6 +1083,7 @@ $('.save_charges-outport').click(function(){
 									$('.pill-container-outport-add').addClass('hidden');
 									$('.pill-vessel-outport-add').addClass('hidden');
 									$('.btn-Next-outport').addClass('hidden');
+									$('.btn-Back-outport').removeClass('hidden');
 									dia_running_charges.close();
 									window.location.hash="#outport";
 				        			location.reload();

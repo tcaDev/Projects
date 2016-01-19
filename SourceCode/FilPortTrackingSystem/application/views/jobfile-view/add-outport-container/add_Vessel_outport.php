@@ -32,9 +32,21 @@
 								<input type="date" name="est-dept" class="form-control input-sm eat-addVessel-outport" />
 							 </div>
 
+							
+
 						</div>
 
 						<div class="col-lg-6">
+
+						 <div class="form-group">	 
+							    <label for="dtClrd">Actual Berthing Time</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm abt-addVessel-outport">
+							 </div>
+
+							<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-addVessel-outport">
+							 </div>
 
 						    <div class="form-group">
                                                             <!--Actual Arrival Time -->
@@ -42,10 +54,7 @@
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-addVessel-outport" />
 							 </div>
 
-							<div class="form-group">	 
-							    <label for="dtClrd">Discharge Time of Vessel</label>
-							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-addVessel-outport">
-							 </div>
+							
 
 							 <div class="form-group">
 
@@ -73,8 +82,9 @@
 								        <th>Vessel/Voyage #</th>
 								        <th>Estimated Departure Time</th>
 								        <th>Estimated Arrival Time</th>
-								        <th>Actual Arrival Time</th>
+								        <th>Actual Berthing Time</th>
 								        <th>Discharge Time of Vessel</th>
+								        <th>Actual Arrival Time</th>
 								        <th class="hidden">Vessel Value</th>
 						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>
@@ -137,16 +147,17 @@
 		
 		else{
 
-		$('#table-AddVessel-outport table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+		$('#table-AddVessel-outport table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 		
 		$('#table-AddVessel-outport table tr:last td:nth-child(1)').html($(".vessel-addVessel-outport").val());
 		$('#table-AddVessel-outport table tr:last td:nth-child(2)').html($(".edt-addVessel-outport").val());
 		$('#table-AddVessel-outport table tr:last td:nth-child(3)').html($(".eat-addVessel-outport").val());
-		$('#table-AddVessel-outport table tr:last td:nth-child(4)').html($(".aat-addVessel-outport").val());
+		$('#table-AddVessel-outport table tr:last td:nth-child(4)').html($(".abt-addVessel-outport").val());
 		$('#table-AddVessel-outport table tr:last td:nth-child(5)').html($(".vdt-addVessel-outport").val());
-		$('#table-AddVessel-outport table tr:last td:nth-child(6)').html($(".carrier-addVessel-outport").val()).hide();
-	    $('#table-AddVessel-outport table tr:last td:nth-child(7)').html($(".carrier-addVessel-outport option:selected").text());
-		$('#table-AddVessel-outport table tr:last td:nth-child(8)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+		$('#table-AddVessel-outport table tr:last td:nth-child(6)').html($(".aat-addVessel-outport").val());
+		$('#table-AddVessel-outport table tr:last td:nth-child(7)').html($(".carrier-addVessel-outport").val()).hide();
+	    $('#table-AddVessel-outport table tr:last td:nth-child(8)').html($(".carrier-addVessel-outport option:selected").text());
+		$('#table-AddVessel-outport table tr:last td:nth-child(9)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 		$('.vessel-msg-addVessel-outport').text("");
 		$('.carrier-msg-addVessel-outport').text("");
@@ -160,6 +171,7 @@
 		$('#table-AddVessel-outport .eat-addVessel-outport').val('');
 		$('#table-AddVessel-outport .aat-addVessel-outport').val('');
 		$('#table-AddVessel-outport .vdt-addVessel-outport').val('');
+		$('#table-AddVessel-outport .abt-addVessel-outport').val('');
 
 		}
 	});
@@ -230,9 +242,10 @@ function check_vessel_avail_outport(vess){
 			vessel   = $tds.eq(0).text(),
 		    edt 	= $tds.eq(1).text();
 		    eat     = $tds.eq(2).text();
-		    aat     = $tds.eq(3).text();
-	        vdt    	= $tds.eq(4).text();
-		    lines   = $tds.eq(5).text();
+		    abt    	= $tds.eq(3).text();
+		    vdt    	= $tds.eq(4).text();
+		    aat     = $tds.eq(5).text();
+		    lines   = $tds.eq(6).text();
 
 	
 		         $.ajax({
@@ -243,6 +256,7 @@ function check_vessel_avail_outport(vess){
 			  			    //from jobfile tab
 			  			    jbfl           :jbfl,
 			  			    vessel 		   :vessel,
+			  			    abt		  	   :abt,
 			  			    vdt		       :vdt,
 			  			    edt            :edt,
 			  		        eat            :eat,

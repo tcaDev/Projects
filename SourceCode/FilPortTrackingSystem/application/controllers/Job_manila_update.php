@@ -79,6 +79,7 @@ class Job_manila_update extends CI_Controller {
       $est_arrival_time 	 =	$this->input->post('est_arrival_time');
       $act_arrival_time      =	$this->input->post('act_arrival_time');
       $discharge_time 	     =	$this->input->post('discharge_time');
+      $act_berthing_time       =  $this->input->post('act_berthing_time');
       $Carrierid 			 =	$this->input->post('Carrierid');
       $cr 					 =	$this->input->post('cr');
 
@@ -88,7 +89,7 @@ class Job_manila_update extends CI_Controller {
             }
 
        $this->Update_jobfile->vessel($jb,$v,$est_dept_time,$est_arrival_time,
-      	$act_arrival_time,$discharge_time,$Carrierid,$cr,$userid);
+      	$act_arrival_time,$discharge_time,$act_berthing_time,$Carrierid,$cr,$userid);
       echo "Vessel is Updated";
     }
 
@@ -224,13 +225,6 @@ class Job_manila_update extends CI_Controller {
 
 
     }
-
-
-
-
-
-
-
 
 }
 ?>

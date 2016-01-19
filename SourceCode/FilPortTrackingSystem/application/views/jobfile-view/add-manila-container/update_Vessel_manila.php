@@ -37,20 +37,28 @@
 								<input type="date" name="est-dept" class="form-control input-sm eat-updateVessel-mnila" />
 							 </div>
 
+							
+
 						</div>
 
 						<div class="col-lg-6">
+
+						 <div class="form-group">	 
+							    <label for="dtClrd">Actual Berthing Time</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm abt-updateVessel-mnila">
+							 </div>
+
+						<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-updateVessel-mnila">
+							 </div>
 
 						    <div class="form-group">
 								<label>Actual Arrival Time</label>
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-updateVessel-mnila" />
 							 </div>
 
-							<div class="form-group">	 
-							    <label for="dtClrd">Discharge Time of Vessel</label>
-							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-updateVessel-mnila">
-							 </div>
-
+							
 							 <div class="form-group carrier-updateVessel-mnila">
 
 							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
@@ -108,6 +116,7 @@ $(document).ready(function(){
 		 var est_dept_time = $(this).closest('tr').children('td:eq(8)').text();
 		 var est_arrival_time = $(this).closest('tr').children('td:eq(10)').text();
 		 var carrier_value = $(this).closest('tr').children('td:eq(12)').text();
+		  var act_berthing_time = $(this).closest('tr').children('td:eq(13)').text();
 		 Carrierid = carrier_value;
 
 		 	/*alert(carrier_name);*/
@@ -116,6 +125,7 @@ $(document).ready(function(){
 		 $('.eat-updateVessel-mnila').val(est_arrival_time);
 		 $('.aat-updateVessel-mnila').val(act_arrival_time);
 		 $('.vdt-updateVessel-mnila').val(discharge_time);
+		  $('.abt-updateVessel-mnila').val(act_berthing_time);
 		
 
 		  $(".carrier-updateVessel-mnila option").filter(function() {
@@ -133,6 +143,7 @@ $(document).ready(function(){
 		est_arrival_time  =   $('.eat-updateVessel-mnila').val();
 		act_arrival_time  =   $('.aat-updateVessel-mnila').val();
 		discharge_time    =   $('.vdt-updateVessel-mnila').val();
+		act_berthing_time    =   $('.abt-updateVessel-mnila').val();
         shipping_lines    =   $('.shipping_lines').val();
        
       		
@@ -146,6 +157,7 @@ $(document).ready(function(){
 				  			    est_arrival_time   : est_arrival_time,
 				  			    act_arrival_time   : act_arrival_time,
 				  			    discharge_time     : discharge_time,
+				  			    act_berthing_time  : act_berthing_time,
 				  			    Carrierid  		   : Carrierid,
 				  			    cr 				   : shipping_lines
 				  		}

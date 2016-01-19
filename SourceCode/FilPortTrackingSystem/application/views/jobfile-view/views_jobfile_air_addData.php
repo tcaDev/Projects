@@ -494,6 +494,7 @@
 
     <div class="footer-modal" >
     	<hr>
+    	 <button type="button" class=" hidden btn btn-danger btn-Back-air" >Back</button>
       <button type="button" class="btn btn-danger btn-Next-air submit_jobfile-air" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save-air test_data-air save_charge-air" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel-air" data-dismiss="modal">Cancel</button>
@@ -546,7 +547,9 @@
 <script>
 function myjob_air_add(jbfl){
   	//for search
-   
+    if(jbfl==''){
+   	$('.check_jobfiles-air').empty();
+   }else{
     		 	$.ajax({
 		           method: "GET",
 	 		       url: "<?php echo base_url('Job_availability/check_air');?>",
@@ -561,5 +564,6 @@ function myjob_air_add(jbfl){
 						
 						$('.check_jobfiles-air').html(data);
 	  		    });
+}
 }
 </script>

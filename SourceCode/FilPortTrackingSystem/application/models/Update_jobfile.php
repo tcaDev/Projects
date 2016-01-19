@@ -93,13 +93,14 @@ Class Update_jobfile extends CI_Model
   }
 
   function vessel($jb,$v,$est_dept_time,$est_arrival_time,
-      	$act_arrival_time,$discharge_time,$Carrierid,$cr){
+      	$act_arrival_time,$discharge_time,$act_berthing_time,$Carrierid,$cr){
   	 $session_data      = $this->session->userdata('logged_in');
      $userid            = $session_data['uid'];
 
          $data = array(
         'CarrierId'             => $cr,
         'VesselVoyageNo'	    	=> $v,
+        'BerthingTime'          => $act_berthing_time,
         'DischargeTime'         => $discharge_time,
         'EstDepartureTime'		  => $est_dept_time,
         'EstArrivalTime'		    => $est_arrival_time,
@@ -118,6 +119,7 @@ Class Update_jobfile extends CI_Model
         'JobFileId'             => $jb,
         'CarrierId'             => $cr,
         'VesselVoyageNo'        => $v,
+        'BerthingTime'          => $act_berthing_time,
         'DischargeTime'         => $discharge_time,
         'EstDepartureTime'      => $est_dept_time,
         'EstArrivalTime'        => $est_arrival_time,

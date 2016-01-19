@@ -440,23 +440,26 @@
 								<input type="date" name="est-dept" class="form-control input-sm eat-outport" />
 							 </div>
 
-						 
-
-
-							
+							 <div class="form-group">	 
+							    <label for="dtClrd">Actual Berthing Time</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm abt-outport">
+							 </div>
+	
 						</div>
 
 						<div class="col-lg-6">
+
+						<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-outport">
+							 </div>
 
 						    <div class="form-group">
 								<label>Actual Arrival Time</label>
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-outport" />
 							 </div>
 
-							<div class="form-group">	 
-							    <label for="dtClrd">Discharge Time of Vessel</label>
-							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt-outport">
-							 </div>
+							
 
 							 <div class="form-group">
 
@@ -485,8 +488,9 @@
 								        <th>Vessel/Voyage #</th>
 								        <th>Estimated Departure Time</th>
 								        <th>Estimated Arrival Time</th>
-								        <th>Actual Arrival Time</th>
+								        <th>Actual Berthing Time</th>
 								        <th>Discharge Time of Vessel</th>
+								        <th>Actual Arrival Time</th>
 								        <th class="hidden">Vessel Value</th>
 						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>
@@ -603,6 +607,7 @@
     <div class="footer-modal" >
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
+ <button type="button" class="hidden btn btn-danger btn-Back-outport " >Back</button>
       <button type="button" class="btn btn-danger btn-Next-outport submit_jobfile-outport" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save test_data save_charges-outport" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel" data-dismiss="modal">Cancel</button>

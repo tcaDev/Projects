@@ -500,6 +500,8 @@ class Job extends CI_Controller {
                    <th class='hidden'>value EstArrivalTime</th>
                    <th>Estimated Arrival</th>
                    <th class='hidden'>Value Carrier</th>
+                   <th class='hidden'>value Actual Berthing Time</th>
+                   <th>Actual Berthing Time</th>
               </tr>";
 
           $i=0;
@@ -531,6 +533,12 @@ class Job extends CI_Controller {
                  $EstArrivalTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstArrivalTime));
              }
 
+              if($row->BerthingTime == "0000-00-00 00:00:00"){
+                $BerthingTime = $row->BerthingTime;
+             }else{
+                 $BerthingTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->BerthingTime));
+             }
+
              echo "<tr>";
              echo "<td> ".$i." </td>";
              echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
@@ -545,7 +553,8 @@ class Job extends CI_Controller {
                 echo "<td class='row hidden'>".stripslashes($row->EstArrivalTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->EstArrivalTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->CarrierByJobFileId) ."</td>";
-             
+                echo "<td class='row hidden'>".stripslashes($BerthingTime) ."</td>";
+             echo "<td class='row'>".stripslashes($row->BerthingTime) ."</td>";
              echo "</tr>";
          }
 
@@ -1756,6 +1765,7 @@ foreach($job as $row){
  $edt           =  addslashes($this->input->post('edt'));
  $aat           =  addslashes($this->input->post('aat'));
  $discharge     =  addslashes($this->input->post('vdt'));
+  $berting     =  addslashes($this->input->post('abt'));
  
  
    if($eat!=''){
@@ -1775,6 +1785,11 @@ foreach($job as $row){
    $aat    =  date_format($date4, 'Y-m-d H:i');
    }
 
+   if($berting!=''){
+   $date5  = date_create($berting);
+   $berting    =  date_format($date5, 'Y-m-d H:i');
+   }
+
 
 
         $data = array(
@@ -1784,7 +1799,8 @@ foreach($job as $row){
                'EstDepartureTime'    => $edt,
                'EstArrivalTime'      => $eat,
                'ActualArrivalTime'   => $aat,
-               'DischargeTime'       => $discharge      
+               'DischargeTime'       => $discharge,
+               'BerthingTime'       => $berting      
         );
 
        $this->db->insert('CarrierByJobFile',$data); 
@@ -1798,6 +1814,7 @@ foreach($job as $row){
                'EstArrivalTime'      => $eat,
                'ActualArrivalTime'   => $aat,
                'DischargeTime'       => $discharge,
+               'BerthingTime'       => $berting, 
                'DateUpdated'         => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'    => $userid
         );

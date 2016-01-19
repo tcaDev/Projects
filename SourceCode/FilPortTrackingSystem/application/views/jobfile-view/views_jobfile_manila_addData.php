@@ -317,7 +317,7 @@
 							</div>
 							<div class="form-group">
 								<label>Date Paid (Date & Time)</label>					     
-					        		<input type="datetime" class="dt_paid form-control input-sm">
+					        		<input type="datetime-local" class="dt_paid form-control input-sm">
 							</div>
 							<div class="form-group">
 								<label>Date Sent PreAssessment</label>					     
@@ -458,7 +458,10 @@
 								<input type="date" name="est-dept" class="form-control input-sm eat" />
 							 </div>
 
-						 
+						 	<div class="form-group">	 
+							    <label for="dtClrd">Actual Berthing Time</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm abt">
+							 </div>
 
 
 							
@@ -466,16 +469,17 @@
 
 						<div class="col-lg-6">
 
+						<div class="form-group">	 
+							    <label for="dtClrd">Discharge Time of Vessel</label>
+							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
+							 </div>
+
 						    <div class="form-group">
 								<label>Actual Arrival Time</label>
 								<input type="datetime-local" name="est-dept" class="form-control input-sm aat" />
 							 </div>
 
-							<div class="form-group">	 
-							    <label for="dtClrd">Discharge Time of Vessel</label>
-							 	<input type="datetime-local" name="ves_discharge_time" class="form-control input-sm vdt">
-							 </div>
-
+							
 							 <div class="form-group">
 
 							<label>Shipping Line/Carrier</label><i style="color:red;">*</i>
@@ -503,8 +507,9 @@
 								        <th>Vessel/Voyage #</th>
 								        <th>Estimated Departure Time</th>
 								        <th>Estimated Arrival Time</th>
-								        <th>Actual Arrival Time</th>
+								        <th>Actual Berthing Time</th>
 								        <th>Discharge Time of Vessel</th>
+								        <th>Actual Arrival Time</th>
 								        <th class="hidden">Vessel Value</th>
 						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>
@@ -627,6 +632,7 @@
     <div class="footer-modal" >
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
+  	  <button type="button" class="hidden btn btn-danger btn-Back" >Back</button>
       <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save-mnla test_data save_charge" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel-mnla" id="asdfghjkl" data-dismiss="modal">Cancel</button>

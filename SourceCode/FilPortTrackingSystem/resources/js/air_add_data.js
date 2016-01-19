@@ -30,7 +30,7 @@ var suc;
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
-		if(i==0){
+		/*if(i==0){
 			$('#btn-jobfile-air-add').on('click',function(){
 			$(this).addClass('active');
 			$('#btn-charges-air-add').removeClass('active');
@@ -53,7 +53,7 @@ var suc;
 		}
 		else{
 			$('#btn-jobfile-air-add').click(false);
-		}
+		}*/
 		
 
 		/*
@@ -64,6 +64,11 @@ var suc;
 
 		$(document).on('click','.btn-Next-air',function(){
 	
+
+/*Start*/
+/*
+--------------------------------------------------------------------------------------------------------------------
+*/
 			 if($('.required-fields-air .jobfiles-air').val() == "")
 			{
 				$('.jobfile-msg-air').text("Need Jobfile");
@@ -111,32 +116,55 @@ var suc;
 				}
 
 			}
-							
+		
+/*
+--------------------------------------------------------------------------------------------------------------------------------
+*/		
+/*End*/			
 		});
 
+/*BAck Button*/
+
+var back=0;
+	 $(document).on('click','.btn-Back-air', function(){
+
+	 	if(i==1){
+
+	 		$('#btn-jobfile-air-add').addClass('active');
+			$('#btn-truck-air-add').removeClass('active');
+			$('#btn-charges-air-add').removeClass('active');
+			$('.pill-jobfile-air-add').removeClass('hidden');
+			$('.pill-truck-air-add').addClass('hidden');
+			$('.pill-charges-air-add').addClass('hidden');
+			$('.test_data').addClass('hidden');
+			$('.btn-Next-air').removeClass('hidden');
+			$('.btn-Next-air').removeAttr('disabled');
+			$('.btn-Back-air').addClass('hidden');
+
+			i=0;
+			back=1;
+	 	}else if(i==2){
+
+	 		$('#btn-jobfile-air-add').removeClass('active');
+			$('#btn-truck-air-add').addClass('active');
+			$('#btn-charges-air-add').removeClass('active');
+			$('.pill-jobfile-air-add').addClass('hidden');
+			$('.pill-truck-air-add').removeClass('hidden');
+			$('.pill-charges-air-add').addClass('hidden');
+			$('.test_data').addClass('hidden');
+			$('.btn-Next-air').removeClass('hidden');
+			$('.btn-Next-air').removeAttr('disabled');
+			$('.btn-Back-air').removeClass('hidden');
+
+			i=1;
+			back=2;
+	 	}
+
+	 });
 
 
-/*Function Check if Jobfile is Exist*/
 
-/* function myjob_air_asdssssss(jobfile){
-   if(jobfile == ""){
-   	$('#check_jobfiles-air').text("sds");
-   }else{
 
-   			$.ajax({
-			  		method: "POST",
-					url: link + "/Job_air/check_jobfiles/",
-					beforeSend: function() {
-						$('#check_jobfiles-air i').empty().addClass('fa fa-spinner fa-spin');
- 					  },
-			  		data: { jobfile:jobfile}
-			})
-			.done(function(data) {
-
-		   		 	   $('#check_jobfiles-air').html(data);
-				});
-    }
- }*/
 
  /*Delete Row*/
 
@@ -300,6 +328,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 									$('.test_data').addClass('hidden');
 									$('.btn-Next-air').removeClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');
+									$('.btn-Back-air').removeClass('hidden');
 									dia.close();
 				        	    }
 				   			 });
@@ -390,6 +419,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 									$('.test_data-air').removeClass('hidden');
 									$('.btn-Next-air').addClass('hidden');
 									$('.btn-Next-air').removeAttr('disabled');
+									$('.btn-Back-air').removeClass('hidden');
 									dia.close();
 				        	    }
 				   			});
