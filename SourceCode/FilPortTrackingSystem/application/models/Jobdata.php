@@ -30,7 +30,6 @@ function get_chargess($charges,$mon_type){
     }else{
       $query = $this->db->query("select * FROM vw_RunningCharges WHERE JobFileNo = '$charges'");
     }
-
     return $query->result();
 }
 
@@ -67,6 +66,7 @@ function get_vessels($JobFile){
     }else{
       $query =  $this->db->query("select * FROM vw_Containers WHERE JobFileNo = '$id'");
     }
+
    return $query->result();
  }
 

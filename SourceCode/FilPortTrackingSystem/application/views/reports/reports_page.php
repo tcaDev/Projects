@@ -21,7 +21,7 @@
 				        	<div class="row">
 				        			<div class="tools-bar">
 									    <div class="input-group col-lg-8">
-									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee".... '>
+									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
 									      <span class="input-group-btn">
 									        <button class="btn btn-danger" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
 									      </span>
@@ -293,6 +293,7 @@
 			/*Reload Data on Print*/
 
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
+
 				$('.nav-data').html('<ul class="nav nav-pills"><li class="active containers"><a data-toggle="tab" href="#containers">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
@@ -432,12 +433,20 @@
 			});
 
 			$(document).on('click','li',function(){
+				mon_Type = $('.nav-pills .active').val();
 				if($('#txt-search-consignee').val() != ""){
 				   $('#btn-search-consignee').click();
 				}else{
 					$('.loading-consignee').html('<a class="loading-consignee"></a>');
 					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+				}
+				if(mon_Type == 3){
+					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Air Freight">');
+				}else if(mon_Type == 2){
+					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Sea Freight Outport">');
+				}else if(mon_Type == 1){
+					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Sea Freight Manila">');
 				}
 			});
 
