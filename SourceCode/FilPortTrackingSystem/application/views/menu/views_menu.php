@@ -23,10 +23,14 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-jobfile card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-folder-open img-jobfile"></span>
+								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Transaction Data Entry</span>
 								</div>
-							</div>							
+							</div>		
+
 						</div>
 					</div>
 					</a>
@@ -37,7 +41,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-clnt-mngt card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
-									<span class="fa fa-gears  img-jobfile"></span>
+									<span class="fa fa-cog  img-jobfile"></span>
 								</div>
 
 								<div class="col-lg-8 col-md-8 col-sm-8">
@@ -49,12 +53,13 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-clnt-mngt card__back " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-gears img-jobfile"></span>
+								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Master Data Setup</span>
 								</div>
-								
-							</div>							
+							</div>		
 						</div>
 					</div>
 					</a>
@@ -76,11 +81,13 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-gbl card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Quick Jobfile View </span>
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-search img-jobfile"></span>
 								</div>
-
-							</div>							
+								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
+									<span class="job-file">Quick Jobfile View</span>
+								</div>
+							</div>		
 						</div>
 					</div>
 					</a>
@@ -106,12 +113,13 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-report card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-pencil-square-o img-jobfile"></span>
+								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Consignee Transaction</span>
 								</div>
-								
-							</div>							
+							</div>		
 						</div>
 					</div>
 					</a>
@@ -135,11 +143,12 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-dashboard img-jobfile"></span>
+								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Management Metrics</span>
 								</div>
-								
 							</div>							
 						</div>
 					</div>
@@ -163,7 +172,9 @@
 
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-
+								<div class="col-lg-4 col-md-4 col-sm-4">
+									<span class="fa fa-book img-jobfile"></span>
+								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
 									<span class="job-file">Online User Manual</span>
 								</div>
