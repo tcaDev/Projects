@@ -24,11 +24,13 @@ function getLastInserted($table, $id) {
     return $row[$id];
  }
 
-function get_chargess($charges){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_RunningCharges');
-    $this -> db ->where('JobFileNo', $charges);
-    $query=$this->db->get();
+function get_chargess($charges,$mon_type){
+    if($mon_type == 3){
+       $query = $this->db->query("select a.LodgementFee, a.ContainerDeposit, a.THCCharges, a.Arrastre, a.Wharfage, a.Weighing, a.DEL, a.DispatchFee, a.Storage, a.Demorage, a.Detention, a.EIC, a.BAIApplication, a.BAIInspection, a.SRAApplication, a.SRAInspection, a.BadCargo  FROM RunningCharges_Air as a, vw_JobFileAir as b WHERE a.JobFile_AirId = b.JobFile_AirId AND b.JobFileNo = '$charges'");
+    }else{
+      $query = $this->db->query("select * FROM vw_RunningCharges WHERE JobFileNo = '$charges'");
+    }
+
     return $query->result();
 }
 
@@ -55,19 +57,17 @@ function get_vessels($JobFile){
  }
 
  function get_goods_air($products){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_ProductsAir');
-    $this -> db ->where('JobFile_AirId', $products);
-    $query=$this->db->get();
+    $query = $this->db->query("select * FROM vw_ProductsAir WHERE JobFileNo = '$products'");
     return $query->result();
  }
 
- function get_containers($id){
-    $this->  db ->select('*');
-    $this -> db -> from('vw_Containers');
-    $this -> db ->where('JobFileNo', $id);
-    $query=$this->db->get();
-    return $query->result();
+ function get_containers($id,$monType){
+    if($monType == 3){
+      $query =  $this->db->query("select * FROM vw_JobFileAir WHERE JobFileNo = '$id'");
+    }else{
+      $query =  $this->db->query("select * FROM vw_Containers WHERE JobFileNo = '$id'");
+    }
+   return $query->result();
  }
 
  
@@ -84,6 +84,15 @@ function get_vessels($JobFile){
     $this -> db ->where('JobFileNo', $id);
     $query=$this->db->get();
     return $query->result(); 
+ }
+
+ function report_get_status($id,$monType){
+   if($monType == 3){
+      $query =  $this->db->query("select * FROM vw_StatusReportsAir WHERE JobFileNo = '$id'");
+    }else{
+      $query =  $this->db->query("select * FROM vw_StatusReports WHERE JobFileNo = '$id'");
+    }
+   return $query->result();
  }
 
  function get_status_air($id){
@@ -165,7 +174,7 @@ function get_countryID_manila($jobfile){
 
   function compare_products($jobfile,$finals){
     $query = $this->db->query("select * from Products where
-       ProductName not in ('Kopiko Blanca Hanger 24x10x30G') ");
+       ProductName not in ('Kopiko Blanca Hanger 24x10x30G')");
 /*      if($query->num_rows() ==0){
             $query = $this->db->query("Select * from Products");
       } */
@@ -185,8 +194,9 @@ function get_countryID_manila($jobfile){
      if($monitoringType != 3){
          $query = $this->db->query("select b.ActualArrivalTime as ActualArrivalTime, b.VesselVoyageNo As VesselNumber FROM vw_JobFile AS a , CarrierByJobFile AS b WHERE a.ConsigneeName LIKE '%$consigneeName%' AND a.MonitoringTypeId = '$monitoringType' AND b.JobFileId = a.JobFileId AND a.JobFileNo = '$jbNo'");
      }else{
-         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
+         $query = $this->db->query("select ATA as ActualArrivalTime, AirCraft As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'");
      }
+     //echo "select ATA as ActualArrivalTime, FlightNo As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'";
     return $query->result();
  }
 

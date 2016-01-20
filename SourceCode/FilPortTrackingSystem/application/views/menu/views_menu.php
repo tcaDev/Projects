@@ -24,7 +24,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-jobfile card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Job File Description</span>
+									<span class="job-file">Transaction Data Entry</span>
 								</div>
 							</div>							
 						</div>
@@ -51,7 +51,7 @@
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Site Settings Description</span>
+									<span class="job-file">Master Data Setup</span>
 								</div>
 								
 							</div>							
@@ -77,7 +77,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-gbl card__back" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Global Search Description </span>
+									<span class="job-file">Quick Jobfile View </span>
 								</div>
 
 							</div>							
@@ -108,7 +108,7 @@
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Reports Description</span>
+									<span class="job-file">Consignee Transaction</span>
 								</div>
 								
 							</div>							
@@ -137,7 +137,7 @@
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Dashboard Description</span>
+									<span class="job-file">Management Metrics</span>
 								</div>
 								
 							</div>							
@@ -165,7 +165,7 @@
 							<div class="row">
 
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Help Description</span>
+									<span class="job-file">Online User Manual</span>
 								</div>
 								
 							</div>							
