@@ -8,7 +8,7 @@
 
 			 			<label for="search_outport">Search:</label>
 
-					  	<input type="text" class="form-control input-sm" id="search_outport" onkeyup="search_outport(this.value)">	
+					  	<input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm" id="search_outport" onkeyup="search_outport(this.value)">	
 					  	<input type="hidden" class="outport_total">
 			 		</div>
 

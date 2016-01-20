@@ -9,7 +9,7 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="search" class="form-control input-sm light-table-filter"  id="search_manila"  ><!-- onkeyup="search_manila(this.value)"
+						<input type="search" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm light-table-filter"  id="search_manila"  ><!-- onkeyup="search_manila(this.value)"
  -->
 						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
 						<input type="hidden" class="manila_total_new">
