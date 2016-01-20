@@ -113,11 +113,12 @@ $(document).ready(function(){
 		 var vessel = $(this).closest('tr').children('td:eq(2)').text();
 		 var carrier_name= $(this).closest('tr').children('td:eq(3)').text();
 		 var act_arrival_time = $(this).closest('tr').children('td:eq(4)').text();
-		 var discharge_time = $(this).closest('tr').children('td:eq(6)').text();
-		 var est_dept_time = $(this).closest('tr').children('td:eq(8)').text();
-		 var est_arrival_time = $(this).closest('tr').children('td:eq(10)').text();
-		 var carrier_value = $(this).closest('tr').children('td:eq(12)').text();
-		 var berting_time = $(this).closest('tr').children('td:eq(13)').text();
+		  var berting_time = $(this).closest('tr').children('td:eq(6)').text();
+		 var discharge_time = $(this).closest('tr').children('td:eq(8)').text();
+		 var est_dept_time = $(this).closest('tr').children('td:eq(10)').text();
+		 var est_arrival_time = $(this).closest('tr').children('td:eq(12)').text();
+		 var carrier_value = $(this).closest('tr').children('td:eq(14)').text();
+		
 		 Carrierid = carrier_value;
 
 		 	/*alert(carrier_name);*/

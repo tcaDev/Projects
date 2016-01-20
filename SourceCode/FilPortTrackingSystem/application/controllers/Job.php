@@ -492,16 +492,17 @@ class Job extends CI_Controller {
                    <th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
                    <th class='hidden'>value Actual Arrival Time</th>
-                   <th>Actual Arrival Time</th>
+                   <th>Actual Time of Arrival</th>
+                   <th class='hidden'>value Actual Berthing Time</th>
+                   <th>Actual Berthing Time</th>
                    <th class='hidden'>value DischargeTime</th>
-                   <th>Discharge Time</th>
+                   <th>Actual Discharge Time</th>
                    <th class='hidden'>value EstDepartureTime</th>
                    <th>Estimated Departure</th>
                    <th class='hidden'>value EstArrivalTime</th>
                    <th>Estimated Arrival</th>
                    <th class='hidden'>Value Carrier</th>
-                   <th class='hidden'>value Actual Berthing Time</th>
-                   <th>Actual Berthing Time</th>
+                  
               </tr>";
 
           $i=0;
@@ -546,6 +547,8 @@ class Job extends CI_Controller {
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
                 echo "<td class='row hidden'>".stripslashes($ActualArrivalTime)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+                echo "<td class='row hidden'>".stripslashes($BerthingTime) ."</td>";
+             echo "<td class='row'>".stripslashes($row->BerthingTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($DischargeTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->DischargeTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->EstDepartureTime) ."</td>";
@@ -553,8 +556,7 @@ class Job extends CI_Controller {
                 echo "<td class='row hidden'>".stripslashes($row->EstArrivalTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->EstArrivalTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->CarrierByJobFileId) ."</td>";
-                echo "<td class='row hidden'>".stripslashes($BerthingTime) ."</td>";
-             echo "<td class='row'>".stripslashes($row->BerthingTime) ."</td>";
+               
              echo "</tr>";
          }
 
@@ -603,30 +605,18 @@ class Job extends CI_Controller {
 
    function report_get_products(){
      $products =  $this->input->post('id');   
-     $monitoringType    =  $this->input->post('monType');
-     if($monitoringType == 3){
-       $product  = $this->Jobdata->get_goods_air($products);
-     }else{
-       $product  = $this->Jobdata->get_goods($products);
-     }
+     $product  = $this->Jobdata->get_goods($products);
             
     if($product==NULL){
          echo    '<center><span style="color:red">No Commodities Yet </span></center>';
     }else{
-          if($monitoringType == 3){
-              echo "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;'>
-              <tr>
-                   <th style='border: 1px solid gray'><center>No.</center></th>
-                   <th style='border: 1px solid gray'><center>Commodity</center></th>
-              </tr>";
-          }else{
-            echo "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;'>
+         echo "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;'>
               <tr>
                    <th style='border: 1px solid gray'><center>No.</center></th>
                    <th style='border: 1px solid gray'><center>Container No.</center></th>
                    <th style='border: 1px solid gray'><center>Commodity</center></th>
               </tr>";
-          }
+
           $i=0;
          foreach($product as $row){
           $i++;
@@ -641,47 +631,21 @@ class Job extends CI_Controller {
                 break;
               }
           }
-          if($monitoringType == 3){
-             echo "<tr>";
-             echo "<td style='border: 1px solid gray'>". $i ."</td>";
-             echo "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
-             echo "</tr>";
-          }else{
-             echo "<tr>";
+             echo "<tr class='tableRow'>";
              echo "<td style='border: 1px solid gray'>". $i ."</td>";
              echo "<td style='border: 1px solid gray'>".stripslashes($row->ContainerNo) ."</td>";
              echo "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
              echo "</tr>";
-          }
          }
          echo "</table>";
     }
    }
 
    function report_get_running_charges(){
-     $charges           =  $this->input->post('id'); 
-     $monitoringType    =  $this->input->post('monType');
-     $charge  = $this->Jobdata->get_chargess($charges,$monitoringType);
-     $total = 0;
+     $charges =  $this->input->post('id');   
+     $charge  = $this->Jobdata->get_chargess($charges);
 
            foreach($charge as $row){
-            $total += $row->LodgementFee;
-            $total += $row->Demorage;
-            $total += $row->ContainerDeposit;
-            $total += $row->Detention;
-            $total += $row->THCCharges;
-            $total += $row->EIC;
-            $total += $row->Arrastre;
-            $total += $row->BAIInspection;
-            $total += $row->BAIApplication;
-            $total += $row->Wharfage;
-            $total += $row->Weighing;
-            $total += $row->SRAInspection;
-            $total += $row->SRAApplication;
-            $total += $row->DEL;
-            $total += $row->DispatchFee;
-            $total += $row->BadCargo;
-            $total += $row->Storage;
                       echo '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
@@ -804,17 +768,9 @@ class Job extends CI_Controller {
                                 </span>
                             </td>
                           </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <hidden> </hidden>                             
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                                  <span class="pull-right"style="font-size:20px;"><b> Sub Total : </b> ' . $total . ' </span>
-                            </td>
-                          </tr>
-
                       </table>';
                       }
+
    }
 
     function get_goods(){
@@ -1044,33 +1000,6 @@ class Job extends CI_Controller {
     }
    }
 
-   function reports_get_status_report(){
-      $status    =  $this->input->post('id');   
-      $monType   = $this->input->post('monType');
-      $charges   = $this->Jobdata->report_get_status($status,$monType);
-
-      if(count($charges)){
-         echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
-                <tr>
-                      <th style='border: 1px solid gray'>No.</th>
-                      <th style='border: 1px solid gray'>Status Description</th>
-                </tr>";
-        $i=0;
-        foreach ($charges as $row) {
-          $i++;
-         $description = $row->StatusDescription;
-         echo " <tr>
-                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$i."</td>
-                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>". $description ."</td>
-                </tr>
-              ";
-        }
-         echo "</table>";
-      }else{
-        echo '<center><span style="color:red">No Record of Status Report </span></center>';
-      }
-   }
-
    function get_legend_desc(){
       $color_legend = $this->input->post('colors');
               $data = $this->Jobdata->get_legend_description($color_legend);
@@ -1094,7 +1023,7 @@ class Job extends CI_Controller {
 
       $jfNo    =  $this->input->post('jfNo');
 
-      $dispOutput .= '<table style="font-family:Century Gothic;font-size:16px;table-layout:fixed;width:100%;cursor:pointer;" id="table-pre-details">
+      $dispOutput .= '<table style="font-family:Century Gothic;font-size:16px;table-layout:fixed;width:100%;" id="table-pre-details">
                     <tr >
                       <td style="text-align:left;">
                       <span class="pull-left">  <b> Shipper   : </b></span>
@@ -1118,56 +1047,40 @@ class Job extends CI_Controller {
                       <td style="text-align:left;">
                       &nbsp;<a id="dtRecvdOtherDocs">' . $dateRcvd . ' </a> 
                       </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b>Vessels  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                        &nbsp;<a id="Carriers"> </a> 
+                      </td>
                     </tr>';
-                    if($monitoringType == 3){
-                    $dispOutput .='
-                                    <tr>
-                                      <td style="text-align:left;">
-                                         <span class="pull-left"><b>Aircraft  : </b></span>
-                                      </td>
-                                      <td style="text-align:left;">
-                                        &nbsp;<a id="Carriers"> </a> 
-                                      </td>
-                                    </tr>';
-                    }else{
-                      $dispOutput .='
-                                    <tr>
-                                      <td style="text-align:left;">
-                                         <span class="pull-left"><b>Vessel  : </b></span>
-                                      </td>
-                                      <td style="text-align:left;">
-                                        &nbsp;<a id="Carriers"> </a> 
-                                      </td>
-                                    </tr>';
-
-                    }
                     $jobfiles= $this->Jobdata->getCarriers_Consignee($consignee_name,$monitoringType,$jfNo);
                     $ct = count($jobfiles);
                      if($ct > 0){
                     foreach($jobfiles as $row){
-                        if($monitoringType == 3){
-                            $dispOutput .='
-                                      <tr>
-                                            <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Aircraft No '.stripslashes($row->VesselNumber).'</b></td>
-                                            <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
-                                      </tr>
-                            ';
-                          }else{
-                            $dispOutput .='
-                                      <tr>
-                                            <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Vessel '.stripslashes($row->VesselNumber).'</b></td>
-                                            <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
-                                      </tr>
-                            ';
-                          }
+                        $dispOutput .='
+                                  <tr class="tableRow">
+                                        <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Vessel '.stripslashes($row->VesselNumber).'</b></td>
+                                        <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
+                                  </tr>
+                        ';
                     }
                     }else{
-                       $dispOutput .= ' <tr>
+                       $dispOutput .= ' <tr class="tableRow">
                                         <td style="text-align:left;font-style:15px;">No Data for Vessels</td>
                                         </tr><center><span style="color:red">No Data for Vessels </span></center>'
                                       ;
                     }
-                    $dispOutput .='
+                    $dispOutput .='<tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b>Carriers  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="dtRecvdOtherDocs">' . $dateRcvd . ' </a> 
+                      </td>
+                    </tr>
                     <tr>
                       <td style="text-align:left;">
                          <span class="pull-left"><b> HBL#  : </b></span>
@@ -1179,6 +1092,7 @@ class Job extends CI_Controller {
                   </table>';
           echo $dispOutput;
    }
+
   function get_consignee_status_report(){
       $consignee_name    =  $this->input->post('consignee_name');  
       $monitoringType    =  $this->input->post('monType');
@@ -1186,7 +1100,7 @@ class Job extends CI_Controller {
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
-          $dispOutput = '<table style="background-color:#fff;border:1px solid #000;border-collapse:collapse;cursor:pointer;" class="table table-bordered order-table">';
+          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
           $dispOutput .= '
                         <thead>
                               <th><center> JobfileNumber </center> </th>
@@ -1217,7 +1131,7 @@ class Job extends CI_Controller {
       }else{
          $ct = count($jobfiles);
           if($ct > 0){
-          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table">';
+          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
           $dispOutput .= '
                         <thead>
                               <th><center> JobfileNumber </center> </th>
@@ -1261,84 +1175,49 @@ class Job extends CI_Controller {
   }
 
   function get_containers_report(){
-   $containers        =  $this->input->post('id'); 
-   $monType           =  $this->input->post('monType');
-   $container         =  $this->Jobdata->get_containers($containers,$monType);
-  
-   if($monType == 3){
-     if($container==NULL){
-              echo    '<center><span style="color:red">No Aircraft Data </span></center>';
-        }else{
-             echo "
-             <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;width:100%'>
-                  <tr>
-                        <th style='border: 1px solid gray'>No.</th>
-                        <th style='border: 1px solid gray'>AirCraft</th>
-                        <th style='border: 1px solid gray'>Flight Number</th>
-                  </tr>";
+   $containers =  $this->input->post('id'); 
+   $container  = $this->Jobdata->get_containers($containers);
 
-              $i=0;
-             foreach($container as $row){
-              $i++;
-                 $container = $row->Aircraft;
-                if($i==1){
-                 if($container==''){
-                   echo    '</table>';
-                   echo    '<center><span style="color:red">No Aircarft Data </span></center>';
-                  break;
-                 }
-                }
-                 echo "<tr>";
-                 echo "<td class='row' style='border: 1px solid gray'>".$i."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->Aircraft)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->FlightNo)."</td>";
-                 echo "</tr>";
+    if($container==NULL){
+          echo    '<center><span style="color:red">No Containers Yet </span></center>';
+    }else{
+         echo "
+         <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;'>
+              <tr>
+                    <th style='border: 1px solid gray'>No.</th>
+                    <th style='border: 1px solid gray'>Container Number</th>
+                    <th style='border: 1px solid gray'>Date File Entry to BOC</th>
+                    <th style='border: 1px solid gray'>Date Sent Pre Assessment</th>
+                    <th style='border: 1px solid gray'>Date Sent Final Assessment</th>
+                    <th style='border: 1px solid gray'>Date Paid</th>
+                    <th style='border: 1px solid gray'>Target Delivery Date</th>
+                    <th style='border: 1px solid gray'>Actual Delivery At Warehouse</th>
+              </tr>";
+
+          $i=0;
+         foreach($container as $row){
+          $i++;
+             $container = $row->ContainerNo;
+            if($i==1){
+             if($container==''){
+               echo    '</table>';
+               echo    '<center><span style="color:red">No Containers Yet </span></center>';
+              break;
              }
-             echo "</table>";
-        }
-
-   }else{
-        if($container==NULL){
-              echo    '<center><span style="color:red">No Containers Yet </span></center>';
-        }else{
-             echo "
-             <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;width:100%'>
-                  <tr>
-                        <th style='border: 1px solid gray'>No.</th>
-                        <th style='border: 1px solid gray'>Container Number</th>
-                        <th style='border: 1px solid gray'>Date File Entry to BOC</th>
-                        <th style='border: 1px solid gray'>Date Sent Pre Assessment</th>
-                        <th style='border: 1px solid gray'>Date Sent Final Assessment</th>
-                        <th style='border: 1px solid gray'>Date Paid</th>
-                        <th style='border: 1px solid gray'>Target Delivery Date</th>
-                        <th style='border: 1px solid gray'>Actual Delivery At Warehouse</th>
-                  </tr>";
-
-              $i=0;
-             foreach($container as $row){
-              $i++;
-                 $container = $row->ContainerNo;
-                if($i==1){
-                 if($container==''){
-                   echo    '</table>';
-                   echo    '<center><span style="color:red">No Containers Yet </span></center>';
-                  break;
-                 }
-                }
-                 echo "<tr>";
-                 echo "<td class='row' style='border: 1px solid gray'>".$i."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentFinalAssessment)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DatePaid)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->TargetDeliveryDate)."</td>";
-                 echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
-                 echo "</tr>";
-             }
-             echo "</table>";
-        }
-   }
+            }
+             echo "<tr>";
+             echo "<td class='row' style='border: 1px solid gray'>".$i."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentFinalAssessment)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DatePaid)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->TargetDeliveryDate)."</td>";
+             echo "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+             echo "</tr>";
+         }
+         echo "</table>";
+    }
 
   }
 
@@ -1388,6 +1267,8 @@ class Job extends CI_Controller {
                     <th class='hidden'>Value DateSentFinalAssessment</th>
                     <th>Date Sent Final Assessment</th>
                     <th>Reference Entry No.</th>
+                   
+
               </tr>";
 
           $i=0;

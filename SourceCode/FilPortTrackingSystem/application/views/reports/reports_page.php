@@ -17,13 +17,18 @@
 		<div class="dash-side" >
 			<div class="tab-content">
 			        <div class="repcon-table tab-pane active" id="tab_a">		        
-			        	<div class="col-md-12 tools-bar" >
-			        			<div class="col-md-3 pull-left">
-				        			<input type="search" class="form-control light-table-filter" data-table="order-table" placeholder="Enter CONSIGNEE Name"  id="txt-search-consignee"/>
-				        		</div>
-				        		<div class="col-md-3 pull-left">
-									<button type="button" class="btn btn-danger" id="btn-search-consignee"><span class="fa fa-search fa-fw"></span></button>
-				        		</div>
+			        	<div class="col-md-12 ">
+				        	<div class="row">
+				        			<div class="tools-bar">
+									    <div class="input-group col-lg-8">
+									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee".... '>
+									      <span class="input-group-btn">
+									        <button class="btn btn-danger" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
+									      </span>
+									    </div>
+								 	</div>
+				        		
+				        	</div>     		
 			        	</div>
 			        	
 			        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
@@ -46,7 +51,7 @@
 				   <div class="modal fade" id="view-report" role="dialog" data-keyboard="false" data-backdrop="static">
 				    <div class="modal-dialog"  style="font-family:Century Gothic;">
 				      <!-- Modal content-->
-				      <div class="modal-content" style="width:150%;">
+				      <div class="modal-content" style="width:150%;right:25%;">
 				        <div class="modal-header">
 				        	<div class="header" style="font-family:Century Gothic;">
 				        	<div style="font-size:22px;">
