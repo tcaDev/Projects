@@ -58,9 +58,9 @@
 	  <div class="modal-body">
 				        <div style="overflow-x:auto;">
 				        <span class="loadPre-Details pull-left" style="font-size:18px;"></span>
-				       	
+				       	 
 				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details">
-				        	</table>
+				        	</table> 
 		<hr>		        
 
 		<div class="container-tab" id="tabs">
@@ -94,8 +94,7 @@
 						     </div>
 				    </div>
 
-					  	<!-- Commodity -->
-
+				<!-- Commodity -->
 				    <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade ">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Commidity</h4>
@@ -200,7 +199,7 @@
 				<br>
 				<hr>
 				        	<h4 class="cnt">Containers</h4>
-								<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;font-size:12px;text-align:center;border:1px solid gray;">
+								<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;font-size:12px;text-align:center;border:1px solid gray;width:100%;">
 				                </table>
 				<br>
 				<hr>        	
