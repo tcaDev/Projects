@@ -1221,6 +1221,7 @@ th{
 
     font-weight: 900;
 
+ 
      
 
 }
@@ -1470,17 +1471,17 @@ th{
 }
 
 
-.dash-subtitle ul, .dash-subtitle li,.dash-subtitle a {
+/*.dash-subtitle ul, .dash-subtitle li,.dash-subtitle a {
 
         width: 99.5%;
 
     font-size: 17px;
 
-    color: #000;
+    color: #000;*/
 
     /*text-align: center;*/
 
-}
+/*}*/
  .active{
 
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12) !important;
@@ -1495,7 +1496,7 @@ th{
 
     top: 26%;
 
-    width: 100%;
+    width: 90%;
 
     height: 13%;
 
@@ -1616,4 +1617,42 @@ fieldset legend {
   left: initial;
   font-size: 14px;
 }
+
+
+
+/* Icon Forward */
+.hvr-icon-forward {
+  /*display: inline-block;*/
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward:before {
+  content: "\f101";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-forward:hover:before, .hvr-icon-forward:focus:before, .hvr-icon-forward:active:before {
+  -webkit-transform: translateX(7px);
+  transform: translateX(7px);
+}
+
 

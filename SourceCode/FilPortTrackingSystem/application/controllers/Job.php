@@ -2247,7 +2247,7 @@ $this->db->update('RunningCharges', $update_charges);
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
                'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UsrId'  => $userid
+               'UpdatedBy_UserId'  => $userid
             );
 
 $this->db->insert('RunningChargesHistory', $update_charges_history);

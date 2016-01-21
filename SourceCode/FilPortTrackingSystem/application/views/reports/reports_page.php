@@ -5,13 +5,43 @@
 <div class="dash-cont">
 	<div class="dash-title"><h3>REPORTS</h3></div>
 		<div class="dash-subtitle">
-			<ul class="nav nav-pills nav-stacked col-md-2">
-			  <li value="1"class="active"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-			  <li value="2"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-			  <li value="3"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
-			</ul>
-		</div> 
- 	</div>
+			<!-- Start Accordion -->
+						<div class="panel-group" id="accordion">
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
+						        <span class="hvr-icon-forward"> Jobfile </span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
+						         <ul class="nav nav-pills nav-data">
+									  <li value="1"class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+								</ul>
+
+						    </div>
+						  </div>
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Audit Trail</span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse2" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2">
+									  <li value="1"class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+						</div>
+			<!-- End Accordion -->
+		</div>
+		
 </div>
 
 		<div class="dash-side" >
@@ -431,8 +461,8 @@
 			    }
 			});
 
-			$(document).on('click','li',function(){
-				mon_Type = $('.nav-pills .active').val();
+			$(document).on('click','.nav-data li',function(){
+				mon_Type = $('.nav-data .active').val();
 				if($('#txt-search-consignee').val() != ""){
 				   $('#btn-search-consignee').click();
 				}else{
@@ -441,12 +471,25 @@
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 				}
 				changePlaceHolder(mon_Type);
-				
 			});
+
+			$(document).on('click','.nav-data-2 li',function(){
+				mon_Type = $('.nav-data-2 .active').val();
+				if($('#txt-search-consignee').val() != ""){
+				   $('#btn-search-consignee').click();
+				}else{
+					$('.loading-consignee').html('<a class="loading-consignee"></a>');
+					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
+					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+				}
+				changePlaceHolder(mon_Type);
+			});
+
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
 		});
-	function changePlaceHolder(monType){
+
+		function changePlaceHolder(monType){
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Air Freight');
 			}else if(monType == 2){
@@ -454,7 +497,7 @@
 			}else if(monType == 1){
 				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Sea Freight Manila');
 			}
-	}
+		}
 
 </script>
 <style>

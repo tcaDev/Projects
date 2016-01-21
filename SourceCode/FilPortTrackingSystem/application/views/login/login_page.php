@@ -54,7 +54,7 @@
 
 						<div class="col-lg-10 col-md-10 col-sm-10" style="top: 30px;">
 
-							<h3 class="text-uppercase" style="font-weight: 600;font-size: 20px;">Fil-Port Express brokerage , inc.</h3>
+							<h3 class="text-uppercase" style="font-weight: 900;font-size: 18px;">Fil-Port Express brokerage , inc.</h3>
 
 							<h5 class="text-uppercase" style="font-weight: 600;"><?php echo $tab ?></h5>
 
@@ -78,7 +78,11 @@
 
 					<?php echo form_open('Login_user'); ?>
 
-					   <?php echo validation_errors(); ?>
+					   
+					   <div class="alert alert-danger hidden">
+						    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						    <i class="fa fa-exclamation-circle fa-fw" ></i><?php echo validation_errors('<span>', '</span>'); ?>
+						</div>
 
 					<div class="log-form">
 
@@ -86,7 +90,7 @@
 
 				            <div class="form-group col-lg-12 col-md-12 col-sm-12">
 
-				                <input type="text" class="form-control" name="username" placeholder="Email or Username" value="" required/>
+				                <input type="text" class="form-control" name="username" placeholder="Email or Username" value="" required autofocus/>
 
 				            </div>
 
@@ -110,7 +114,7 @@
 
 			      				<div class="checkbox pull-left">
 
-								  <label><input type="checkbox" value="">Remember me</label>
+								  <!-- <label><input type="checkbox" value="">Remember me</label> -->
 
 								</div>
 
@@ -159,4 +163,14 @@
 
 
 
+<script>
 
+$(document).ready(function(){
+	if($('.alert span').text() == ""){
+		$('.alert').addClass('hidden');
+	}else{
+		$('.alert').removeClass('hidden');
+	}
+});
+
+</script>

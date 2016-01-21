@@ -79,7 +79,7 @@ class Login_user extends CI_Controller {
 		   }
 		   else
 		   {
-		     $this->form_validation->set_message('check_database','');
+		     $this->form_validation->set_message('check_database','Invalid Username or Password');
 		     return false;
 		   }
  	}	
