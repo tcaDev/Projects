@@ -1158,9 +1158,9 @@ class Job extends CI_Controller {
                     }
                     }else{
                        $dispOutput .= ' <tr>
-                                        <td style="text-align:left;font-style:15px;">No Data for Vessels</td>
-                                        </tr><center><span style="color:red">No Data for Vessels </span></center>'
-                                      ;
+                                          <td style="text-align:left;font-style:15px;">No Data for Vessels</td>
+                                        </tr>
+                                      ';
                     }
                     $dispOutput .='
                     <tr>

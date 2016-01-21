@@ -27,7 +27,7 @@
 									<span class="fa fa-folder-open img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Transaction Data Entry</span>
+									<span class="job-file pull-right">Transaction Data<br>Entry</span>
 								</div>
 							</div>		
 
@@ -57,7 +57,7 @@
 									<span class="fa fa-gears img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Master Data Setup</span>
+									<span class="job-file pull-right">Master Data<br>Setup</span>
 								</div>
 							</div>		
 						</div>
@@ -85,7 +85,7 @@
 									<span class="fa fa-search img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Quick Jobfile View</span>
+									<span class="job-file pull-right">Quick Jobfile<br>View</span>
 								</div>
 							</div>		
 						</div>
@@ -117,7 +117,7 @@
 									<span class="fa fa-pencil-square-o img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Consignee Transaction</span>
+									<span class="job-file pull-right">Consignee<br>Transaction</span>
 								</div>
 							</div>		
 						</div>
@@ -147,7 +147,7 @@
 									<span class="fa fa-dashboard img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Management Metrics</span>
+									<span class="job-file pull-right">Management<br>Metrics</span>
 								</div>
 							</div>							
 						</div>
@@ -176,7 +176,7 @@
 									<span class="fa fa-book img-jobfile"></span>
 								</div>
 								<div class="col-lg-8 col-md-8 col-sm-8 pull-right">
-									<span class="job-file">Online User Manual</span>
+									<span class="job-file pull-right">Online User<br>Manual</span>
 								</div>
 								
 							</div>							

@@ -243,7 +243,7 @@
 
  var statusData;
  var txt;
- var mon_Type;
+ var mon_Type = 1;
 
 
  var content_commodities;
@@ -254,7 +254,6 @@
  var content_status_data;
 
  var myBackUpViewReport = $('#view-report').clone();
-
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
 	    mon_Type = $('.nav-pills .active').val();
@@ -441,14 +440,21 @@
 					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 				}
-				if(mon_Type == 3){
-					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Air Freight">');
-				}else if(mon_Type == 2){
-					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Sea Freight Outport">');
-				}else if(mon_Type == 1){
-					$('#txt-search-consignee').html('<input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder="Search for Consignee... From Sea Freight Manila">');
-				}
+				changePlaceHolder(mon_Type);
+				
 			});
+		$(document).ready(function(){
+			changePlaceHolder(mon_Type);
+		});
+	function changePlaceHolder(monType){
+			if(monType == 3){
+				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Air Freight');
+			}else if(monType == 2){
+				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Sea Freight Outport');
+			}else if(monType == 1){
+				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Sea Freight Manila');
+			}
+	}
 
 </script>
 <style>
