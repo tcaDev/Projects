@@ -1,0 +1,49 @@
+1.)add data,update----sa manila at outport
+
+---replace
+referennce due date-Request for Payment Due Date
+
+
+2.)add data,update  ----sa manila at outport
+-remove
+lodging
+pull out date at port
+
+3.) check add vessel  ----sa manila at outport
+
+tingnan kung nadagdag uyng
+aat
+eat
+discharge time of vessel
+
+4.)running charges  -----sa manila at outport
+//new data
+add data
+-BPI inspection
+-Plug In for Reefer
+
+5.)
+//for air  only
+sa running charges
+
+makikita lang na nsa running charges
+
+-logment fee
+-breakbulk fee
+-storage fee
+-bad cargo order fee
+-VCRC
+-CNI
+-CNIU
+
+
+6.) ND MAKPAG add ng data sa manila
+-upon clicking 
+
+
+
+
+
+
+
+
