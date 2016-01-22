@@ -7,11 +7,11 @@
 				<div  class="container-tab" id="tabs">
 			  <ul class="nav nav-tabs ">
 
-			    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA <span class="fa fa-ship fa-fw"></span></a> </li>
+			    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA <span class="fa fa-ship fa-lg"></span></a> </li>
 
-			    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT <span class="fa fa-ship fa-fw"></span></a> </li>
+			    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT <span class="fa fa-ship fa-lg"></span></a> </li>
 
-			    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT <span class="fa fa-plane fa-fw"></span></a> </li>
+			    <li><a data-toggle="tab" href="#air" class="air_freight_tab">AIR FREIGHT <span class="fa fa-plane fa-lg"></span></a> </li>
 
 			  </ul>
 

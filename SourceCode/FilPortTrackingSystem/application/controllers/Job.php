@@ -140,6 +140,33 @@ class Job extends CI_Controller {
 
     }
 
+
+function check_uname(){
+ $uname = $this->input->post('uname');
+
+$query = $this->db->query("Select UserName from User where UserName='$uname' limit 1");
+
+if($query->num_rows() == 1){
+      echo "<i style='color:red;'>Username already exists</i> <span class='fa fa-exclamation fa-fw text-danger' ></span>";
+    }else{
+      echo "<i style='color:green;'>Username Available</i> <span class='fa fa-check fa-fw text-success' ></span>";
+    }
+}
+
+function check_email(){
+ $email = $this->input->post('email');
+
+$query = $this->db->query("Select EmailAddress from User where EmailAddress='$email' limit 1");
+
+if($query->num_rows() == 1){
+      echo "<i style='color:red;'>EmailAddress already exists</i> <span class='fa fa-exclamation fa-fw text-danger' ></span>";
+    }else{
+      echo "<i style='color:green;'>EmailAddress Available</i> <span class='fa fa-check fa-fw text-success' ></span>";
+    }
+}
+
+
+
     function carrierjobfile(){
 
        $jobfile =  $this->input->post('jbfl_vessel');
@@ -1527,8 +1554,9 @@ class Job extends CI_Controller {
   
   /* get Container Outport*/
   function get_containers_outport(){
+
    $containers =  $this->input->post('id'); 
-   $container  = $this->Jobdata->get_containers($containers);
+   $container  = $this->Jobdata->get_containers($containers,2);
 
     if($container==NULL){
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
@@ -2276,6 +2304,129 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               );
         $this->db->insert('HistoricalStatus',$data); 
    }
+
+
+   function user_add(){
+
+    $fname = addslashes($this->input->post('fname'));
+    $mname = addslashes($this->input->post('mname'));
+    $lname = addslashes($this->input->post('lname'));
+    $bdate = addslashes($this->input->post('bdate'));
+    $contact1 = addslashes($this->input->post('contact1'));
+    $contact2 = addslashes($this->input->post('contact2'));
+    $addr = addslashes($this->input->post('addr'));
+    $brgy = addslashes($this->input->post('brgy'));
+    $towncity = addslashes($this->input->post('towncity'));
+    $country = addslashes($this->input->post('country'));
+    $consignee = addslashes($this->input->post('consignee'));
+    $uname = addslashes($this->input->post('uname'));
+     $email = addslashes($this->input->post('email'));
+    $pass = addslashes($this->input->post('pass'));
+    $passconf = addslashes($this->input->post('passconf'));
+    $activation = addslashes($this->input->post('activation'));
+    $role = addslashes($this->input->post('role'));
+
+    $photo = "user.png";
+
+    $salt  = 'fwodhsljkfhnouh';
+    $salt2 = 'djaoiuelanwdoiwq';
+    $password = sha1($salt.$pass.$salt2);
+
+    $data = array(
+              'UserName' => $uname,
+              'Password' => $password, 
+              'FirstName' => $fname,
+              'MiddleName' => $mname,
+              'LastName' => $lname,
+              'BirthDate' => $bdate,
+              'EmailAddress' => $email,
+              'RoleId' => $role,
+              'ContactNo1' => $contact1,
+              'ContactNo2' => $contact2,
+              'HouseBuildingNoStreet' => $addr,
+              'BarangarOrVillage' => $brgy,
+              'TownOrCityProvince' => $towncity,
+              'CountryId' => $country,
+              'ConsigneeId' => $consignee,
+              'DateAdded' => Date('Y-m-d H:i'),
+              'IsActive' => $activation,
+              'ProfileImageSource' => $photo,
+              );
+
+      $this->db->insert('User',$data);
+    }
+      
+
+      function get_User_list(){
+        $User_list = $this->Jobdata->get_user();
+
+        echo '
+            <div class="col-lg-12" style="height:450px;overflow:auto;">
+            <table class=" table-bordered table-condensed " style="width:2000px;">
+                <thead>
+                  <tr>
+                      <th>No.</th>
+                      <th>Username</th>
+                      <th>FirstName</th>
+                      <th>MiddleName</th>
+                      <th>LastName</th>
+                      <th>BirthDate</th>
+                      <th>EmailAddress</th>
+                      <th>ContactNo1</th>
+                      <th>ContactNo2</th>
+                      <th>HouseBuildingNoStreet</th>
+                      <th>BarangarOrVillage</th>
+                      <th>TownOrCityProvince</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+
+        ';
+        $i=0;
+        foreach ($User_list as $row) {
+          $i++;
+          $uname = $row->UserName;
+          $fname = $row->FirstName;
+          $mname = $row->MiddleName;
+          $lname = $row->LastName;
+          $bdate = $row->BirthDate;
+          $email = $row->EmailAddress;
+          $contact1 = $row->ContactNo1;
+          $contact2 = $row->ContactNo2;
+          $addr = $row->HouseBuildingNoStreet;
+          $brgy = $row->BarangarOrVillage;
+          $towncity = $row->TownOrCityProvince;
+
+           echo '
+            <tr>
+              <td>'.$i.'</td>
+              <td>'.$uname.'</td>
+              <td>'.$fname.'</td>
+              <td>'.$mname.'</td>
+              <td>'.$lname.'</td>
+              <td>'.$bdate.'</td>     
+              <td>'.$email.'</td>
+              <td>'.$contact1.'</td>
+              <td>'.$contact2.'</td>
+              <td>'.$addr.'</td>
+              <td>'.$brgy.'</td>
+              <td>'.$towncity.'</td>                             
+            </tr>
+           '; 
+
+        }
+
+          echo '
+               </tbody>         
+             </table>
+            </div>
+        
+          ';
+
+      }
+
+   
 
 }
 

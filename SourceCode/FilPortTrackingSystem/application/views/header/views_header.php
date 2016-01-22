@@ -100,45 +100,20 @@
 
 				<!-- User -->
 
-
-
 				<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 20px;">
-
-
-
 					<div class="row">
-
-
-
 						<div class=" img-user pull-right">
-
-
-
 							<img class="img-responsive" src="<?php echo base_url('resources/img/user.png')?>" />	
-
-
-
 						</div> 
 
-
-
-
-
-
-
 						<div class="pull-right" style="padding: 10px; color : #FFF;">
-
-
-
-							
-
-
 
 							 <div class="btn-group" >
 								  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); "><i class="fa fa-user fa-fw"></i><?php  echo $fname; ?></a>
 								  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 								    <span class="fa fa-caret-down"></span></a>
 								  <ul class="dropdown-menu">
+								  	<li><a href="<?= base_url('Login_user/registration') ?>"><i class="fa fa-user fa-fw"></i> Create User</a></li>
 								    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
 								    <li class="divider"></li>
 								    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>

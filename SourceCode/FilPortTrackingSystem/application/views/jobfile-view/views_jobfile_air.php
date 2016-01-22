@@ -186,8 +186,8 @@
 						          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 						          <td><?php echo stripslashes($row->NoOfCartons); ?></td>
 						          <td>
-								  		<button type="button" class="btn btn-Goods-air btn-info view_goods-air" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-								  		<button type="button" class="btn btn-Add-Product-air btn-success" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								  		<button type="button" class="btn btn-Goods-air btn-info view_goods-air btn-sm" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+								  		<button type="button" class="btn btn-Add-Product-air btn-success btn-sm" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								  </td>
 								  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
 								  <td><?php echo stripslashes($row->LetterCreditNoFromBank); ?></td>
@@ -213,11 +213,11 @@
 								  <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								  <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								  <td>
-						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-air" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-						          		<button type="button" class="btn btn-Add-Report-air btn-success" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+						          		<button type="button" class="btn btn-StatusReport-air btn-info reports-air btn-sm" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+						          		<button type="button" class="btn btn-Add-Report-air btn-success btn-sm" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 						          </td>
 						          <td class="view_charges-air">
-						          		<button type="button" class="btn btn-StatusReport btn-info runchar-air" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
+						          		<button type="button" class="btn btn-StatusReport btn-info runchar-air btn-sm" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
 						          </td>
 						          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFile_AirId); ?></td>
 				      		</tr>
@@ -448,6 +448,7 @@
 
 
 var jbfl;
+
  $(document).on('change',' .checkDec-air',function(){
  		var inp = $(this).val();
  		var holder = $(this).attr('id');
@@ -535,6 +536,7 @@ var jbfl;
 
 //air search
 function search_airs(jbfl){
+
     		 	$.ajax({
 		           method: "GET",
 	 		       url: "<?php echo base_url('search/get_jobfile_search_air');?>",
@@ -542,7 +544,7 @@ function search_airs(jbfl){
 							$('.job-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
  					  },
 			  	   data: {
-			  	   	           jobfile   		   :jbfl
+			  	   	           jobfile  :jbfl
 			  	   		 }
 	              })
 					.done(function(data) {

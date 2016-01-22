@@ -95,7 +95,11 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['uid'] = $session_data['uid'];
 		 	$data['img'] = $session_data['img'];
+		 	$data['countries']=$this->User->countries();
+		 	$data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 			$this->load->view('header/header',$data);
 			$this->load->view('menu/views_menu' , $data);
@@ -117,6 +121,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		 	$data['img'] = $session_data['img'];
+		 	$data['uid'] = $session_data['uid'];
+		 	$data['countries']=$this->User->countries();
+		 	$data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 			$this->load->view('clientheader/header',$data);
 			$this->load->view('client_menu/views_clientmenu' , $data);
@@ -138,6 +146,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 		    // drop down in add data form in jobfile start
 		    $data['shipper_data']   = $this->User->dropdown_shipper();
@@ -198,7 +210,6 @@ class Login_user extends CI_Controller {
 
 	function login()
 	{	
-
 			$data['tab'] = "Log In";
 			$this->load->view('login/login_page' , $data);
 	}
@@ -231,6 +242,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 		    /* get status*/
 		    /*$data['consignee'] = $this->User->get_consignee();
@@ -259,6 +274,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
+
 
 		    /* get status*/
 		    $data['consignee'] = $this->User->get_consignee();
@@ -288,6 +307,9 @@ class Login_user extends CI_Controller {
 		    $data['uid'] = $session_data['uid'];
 		    $data['img'] = $session_data['img'];
 		    $data['bdate'] = $session_data['bdate'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 		  	$data['tab'] = "";
 		  	$data['msg'] = "";
@@ -394,6 +416,10 @@ class Login_user extends CI_Controller {
 	    $data['mname'] = $session_data['mname'];
 	    $data['lname'] = $session_data['lname'];
 	    $data['img'] = $session_data['img'];
+	    $data['uid'] = $session_data['uid'];
+	    $data['countries']=$this->User->countries();
+	    $data['questions'] =$this->User->question();
+        $data['consignee'] =$this->User->dropdown_consignee();
 	 
 		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
@@ -413,6 +439,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 		    $data['manila'] = $this->User->get_jobfile_manila_global();
 		 
@@ -434,6 +464,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
@@ -454,6 +488,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		 	$data['img'] = $session_data['img'];
+		 	$data['uid'] = $session_data['uid'];
+		 	$data['countries']=$this->User->countries();
+		 	$data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
 
 			$this->load->view('clientheader/header',$data);
 			$this->load->view('tracking/tracking_page' , $data);
@@ -473,6 +511,10 @@ class Login_user extends CI_Controller {
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
 		    $data['img'] = $session_data['img'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
+		    $data['uid'] = $session_data['uid'];
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('dashboard/dashboard_page' , $data);

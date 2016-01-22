@@ -71,8 +71,8 @@
 
 
 
-			<div id="scroller" class="table-responsive" style= "overflow-y:auto; height :485px; width:100%;">
-				<div class="">
+			<div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+				<div class="job-outport">
 				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
 
 				      <thead>
@@ -195,12 +195,12 @@
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName);?></td>
 								          <td>
-								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
-								          		<button type="button" class="btn btn-Add-Container-outport btn-success" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport btn-sm"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          		<button type="button" class="btn btn-Add-Container-outport btn-success btn-sm" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 										  <td>
-										  		<button type="button" class="btn btn-Goods-outport btn-info view_goods-outport" data-toggle="modal" data-target="#viewgoods-outport"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-										  		<button type="button" class="btn btn-Add-Product-outport btn-success" data-toggle="modal" data-target="#addProduct-outport"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  		<button type="button" class="btn btn-Goods-outport btn-info view_goods-outport btn-sm" data-toggle="modal" data-target="#viewgoods-outport"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+										  		<button type="button" class="btn btn-Add-Product-outport btn-success btn-sm" data-toggle="modal" data-target="#addProduct-outport"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
@@ -209,8 +209,8 @@
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry);?></td>
 										  <td>
-									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport btn-sm" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success btn-sm" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
 								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
@@ -226,10 +226,10 @@
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
-								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-								          		<button type="button" class="btn btn-Add-Report-outport btn-success" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport btn-sm" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          		<button type="button" class="btn btn-Add-Report-outport btn-success btn-sm" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
-								          <td ><button type="button" class="btn btn-StatusReport btn-info runchar-outport view_charges-outport" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td ><button type="button" class="btn btn-StatusReport btn-info runchar-outport view_charges-outport btn-sm" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        	<td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 								        </tr>
 
@@ -626,8 +626,6 @@ var jbfl_outport;
 	//for search
 	function search_outport(jbfl){
 
-		
-       
     		 	$.ajax({
 		           method: "GET",
 	 		       url: "<?php echo base_url('search/get_jobfile_search');?>",
@@ -643,6 +641,8 @@ var jbfl_outport;
 						$('.job-outport').html(data);
 	  		    });
     }
+
+
 /*   setInterval(refresh_table_outport, 3000);
 
 function refresh_table_outport() {

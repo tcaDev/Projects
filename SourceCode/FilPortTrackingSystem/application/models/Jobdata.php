@@ -70,6 +70,7 @@ function get_vessels($JobFile){
    return $query->result();
  }
 
+
  
  function get_charges($id){
     $this->  db ->select('*');
@@ -211,6 +212,10 @@ function get_countryID_manila($jobfile){
     return $query->result();
  }
 
+function get_user(){
+    $query = $this->db->query("select * from User where RoleId = 1 OR RoleId = 2");
+    return $query->result();
+ }
 }
 
 

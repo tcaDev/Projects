@@ -104,8 +104,8 @@
                       <td><?php echo stripslashes($row->ConsigneeName); ?></td>
                       <td><?php echo stripslashes($row->NoOfCartons); ?></td>
                       <td>
-                      <button type="button" class="btn btn-Goods-air btn-info view_goods-air" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-                      <button type="button" class="btn btn-Add-Product-air btn-success" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+                      <button type="button" class="btn btn-Goods-air btn-info view_goods-air btn-sm" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+                      <button type="button" class="btn btn-Add-Product-air btn-success btn-sm" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
                   </td>
                   <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
                   <td><?php echo stripslashes($row->LetterCreditNoFromBank); ?></td>
@@ -131,11 +131,11 @@
                   <td><?php echo stripslashes($row->RFPDueDate); ?></td>
                   <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
                   <td>
-                          <button type="button" class="btn btn-StatusReport-air btn-info reports-air" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-                          <button type="button" class="btn btn-Add-Report-air btn-success" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+                          <button type="button" class="btn btn-StatusReport-air btn-info reports-air btn-sm" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+                          <button type="button" class="btn btn-Add-Report-air btn-success btn-sm" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
                       </td>
                       <td class="view_charges-air">
-                          <button type="button" class="btn btn-StatusReport btn-info runchar-air" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
+                          <button type="button" class="btn btn-StatusReport btn-info runchar-air btn-sm" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>
                       </td>
                       <td class="get_me_id hidden"><?php echo stripslashes($row->JobFile_AirId); ?></td>
                   </tr>
@@ -146,44 +146,98 @@
           </table>
 
 
-<script>
+          <script>
+/*add New jobfile*/
+   var myBackup_jobfile_air = $('#myModal-3-2').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-3-2',function() {
+        $('#myModal-3-2').modal('hide').remove();
+        var myClone_jobfile_air = myBackup_jobfile_air.clone();
+        $('body').append(myClone_jobfile_air);
+        i=0;
+    }); 
+
+
+    /*add New jobfile*/
+   var myBackup_product_air = $('#addProduct-air').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addProduct-air',function() {
+        $('#addProduct-air').modal('hide').remove();
+        var myClone_product_air = myBackup_product_air.clone();
+        $('body').append(myClone_product_air);
+        
+    }); 
+
+    /*add New jobfile*/
+   var myBackup_report_air = $('#addReport-air').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#addReport-air',function() {
+        $('#addReport-air').modal('hide').remove();
+        var myClone_report_air = myBackup_report_air.clone();
+        $('body').append(myClone_report_air);
+        
+    }); 
+
+
 var jbfl;
+
+ $(document).on('change',' .checkDec-air',function(){
+    var inp = $(this).val();
+    var holder = $(this).attr('id');
+    var newInp = inp.replace(/,/g,'');
+    var holders = newInp.toString().split('.');
+    var n = newInp.indexOf('.');
+    if(n < 0){
+      holders[0] =  numeral(holders[0]).format('0,0.00');
+      $('#runchar-air #' + holder).val(holders.join('.'));
+    }else{
+      holders[0] =  numeral(holders[0]).format('0,0');
+      holders[1] =  numeral("0." + holders[1]).format('.000');
+      $('#runchar-air #' + holder).val(holders.join(''));
+    }
+    if(inp.trim() == ""){
+      $('#runchar-air #' + holder).val('0.00');
+    }
+ });
  $(document).on('click','.btn-Goods-air',function(){
-   		$('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
-   });	
+      $('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   });  
 
    $(document).on('click','.btn-StatusReport-air',function(){
-   		$('.list_status_air').html('<div class="list_status_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+      $('.list_status_air').html('<div class="list_status_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
    });
 
        $(document).on('click','.runchar-air',function(){
 
-   		$('.list_charges_air').html('<div class="list_charges_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
+      $('.list_charges_air').html('<div class="list_charges_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
 
    });
 
 
-  $('.view_goods-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
-  				$.ajax({
+  $('.view_goods-air').click(function(){  
+    var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+          $.ajax({
                     method: "POST",
                       url: "<?php echo base_url('Job/get_goods_air');?>",
                     data: { id:jobfileno,
-                    		
+                        
                     }
                 })
                 .done(function(data) {
-                	
+                  
                     $('.list_products_air').html(data);
                 });
         });
 
 
      /*View Reports*/
-        $('.reports-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+        $('.reports-air').click(function(){ 
+    var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
 
-	 		  $.ajax({
+        $.ajax({
                             method: "POST",
                               url: "<?php echo base_url('Job/status_report_air');?>",
                             data: { id:jobfileno,
@@ -196,14 +250,15 @@ var jbfl;
 
 
          /*View Charges*/
-        $('.view_charges-air').click(function(){	
- 		var jobfileno =  $(this).closest('tr').children('td:eq(33)').text();
- 		jbfl = jobfileno;
-	 		  $.ajax({
+        $('.view_charges-air').click(function(){  
+    var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+    jbfl = jobfileno;
+
+        $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",
                                     data: { 
-                                    	id:jobfileno,
+                                      id:jbfl,
                                     }
                                 })
                                 .done(function(data) {
@@ -213,47 +268,22 @@ var jbfl;
                                 });
         });
 
-
-
-   $(document).on('click','.update_charges-air',function(){
-     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
-     var cont_deposit = $('#runchar-air .cont-deposit_airs').val().replace(/,/g,'');
-     var thc_charges  = $('#runchar-air .thc-charges_airs').val().replace(/,/g,'');
-     var arrastre     = $('#runchar-air .arrastre_airs').val().replace(/,/g,'');
-     var wharfage     = $('#runchar-air .wharfage_airs').val().replace(/,/g,'');
-     var weight       = $('#runchar-air .weight_airs').val().replace(/,/g,'');
-     var del          = $('#runchar-air .del_airs').val().replace(/,/g,'');
-     var dispatch     = $('#runchar-air .dispatch_airs').val().replace(/,/g,'');
-     var storage      = $('#runchar-air .storage_airs').val().replace(/,/g,'');
-     var demurrage    = $('#runchar-air .demurrage_airs').val().replace(/,/g,'');
-     var detention    = $('#runchar-air .detention_airs').val().replace(/,/g,'');
-     var eic 		  = $('#runchar-air .EIC_airs').val().replace(/,/g,'');
-     var bai_app 	  = $('#runchar-air .bai-app_airs').val().replace(/,/g,'');
-     var bai_inspect  = $('#runchar-air .bai-inspect_airs').val().replace(/,/g,'');
-     var sra_app 	  = $('#runchar-air .sra-app_airs').val().replace(/,/g,'');
-     var sra_inspect  = $('#runchar-air .sra-inspect_airs').val().replace(/,/g,'');
-     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
-
-
-
-  });
-
+          
 $('.btn-Add-Product-air').click(function(){
 
-			 jb_air =  $(this).closest('tr').children('td:eq(33)').text();
+       jb_air =  $(this).closest('tr').children('td:eq(2)').text();
 
-			
+      
 });
 
 $('.btn-Add-Report-air').click(function(){
-		  jbfl_airs = $(this).closest('tr').children('td:eq(33)').text();
-		var jbfl_haha = $(this).closest('tr').children('td:eq(2)').text();
+      jbfl_airs = $(this).closest('tr').children('td:eq(33)').text();
+    var jbfl_haha = $(this).closest('tr').children('td:eq(2)').text();
 
-		 $('.jobfile-addReport-air').val(jbfl_haha);
+     $('.jobfile-addReport-air').val(jbfl_haha);
 
-		/* alert(jbfl);*/
+    /* alert(jbfl);*/
 });
 </script>
 
-
-
+          </script>

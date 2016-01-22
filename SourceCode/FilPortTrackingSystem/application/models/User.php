@@ -705,7 +705,7 @@ function get_jobfile_outport(){
     }
 
     function search_air($jobfile){
-    $query = $this->db->query("Select * from vw_jobfileair where  JobFileNo like '%$jobfile%' order by  JobFile_AirId desc ");
+    $query = $this->db->query("Select * from vw_JobFileAir where  JobFileNo like '%$jobfile%' order by  JobFile_AirId desc ");
     return $query->result();
     }
 

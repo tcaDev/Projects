@@ -9,8 +9,8 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="search" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm light-table-filter"  id="search_manila"  ><!-- onkeyup="search_manila(this.value)"
- -->
+						<input type="search" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm light-table-filter"  id="search_manila"   onkeyup="search_manila(this.value)">
+
 						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
 						<input type="hidden" class="manila_total_new">
 				
@@ -84,6 +84,7 @@
 				
 
 			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+				    <div class="job-manila">
 				    <table class="table table_manila table-bordered table-condensed order-tablejob " style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
@@ -203,16 +204,16 @@
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td>
-									  			<button type="button" class="btn btn-Vessel btn-info view_vessels" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+									  			<button type="button" class="btn btn-Vessel btn-info view_vessels btn-sm" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success btn-sm" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								          <td>
-								          		<button type="button" class="btn btn-Container btn-info view_containers"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
-								          		<button type="button" class="btn btn-Add-Container-mnla btn-success" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-Container btn-info view_containers btn-sm"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          		<button type="button" class="btn btn-Add-Container-mnla btn-success btn-sm" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
 										  <td>
-										  		<button type="button" class="btn btn-Goods btn-info view_goods" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-										  		<button type="button" class="btn btn-Add-Product-mnla btn-success" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  		<button type="button" class="btn btn-Goods btn-info view_goods btn-sm" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+										  		<button type="button" class="btn btn-Add-Product-mnla btn-success btn-sm" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
@@ -235,17 +236,17 @@
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
-								          		<button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-								          		<button type="button" class="btn btn-Add-Report-mnla btn-success" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          		<button type="button" class="btn btn-StatusReport btn-info reports btn-sm" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          		<button type="button" class="btn btn-Add-Report-mnla btn-success btn-sm" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
 								          </td>
-								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
+								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar btn-sm" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
 								        </tr>
 
 								        <?php } ?>
 				        </tbody>
 				    </table>
-
+				  </div>
 			  </div> 
 			 
 		  	</div>
@@ -641,7 +642,7 @@ var jbfl;
 
 <script>
 	//for search
-/*	function search_manila(jbfl){
+	function search_manila(jbfl){
        
     		 	$.ajax({
 		           method: "GET",
@@ -657,7 +658,7 @@ var jbfl;
 					.done(function(data) {
 						$('.job-manila').html(data);
 	  		    });
-    }*/
+    }
 
 
 </script>

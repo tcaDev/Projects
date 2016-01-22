@@ -68,7 +68,7 @@
 
 				<!-- end Title -->
 				<!-- User -->
-					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 20px;">
+					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 30px;">
 						<div class="row">
 							<div class=" img-user pull-right">
 								<img class="img-responsive" src="<?php echo base_url('upload/user/'.$img)?>" />	
@@ -84,6 +84,9 @@
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu bullet pull-right">
+									  	<?php if($uid == "3"){?>
+									    <li><a data-toggle="modal" href="#myModal_addUser"><i class="fa fa-user fa-fw"></i> Create User</a></li>
+									    <?php }else{}?>
 									    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
 									    <li class="divider"></li>
 									    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
@@ -98,6 +101,17 @@
 	<!-- End Header -->
 
 
+
+<!-- Modal -->
+<div id="myModal_addUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    
+    <?php $this->load->view('register/register_user'); ?>
+    
+  </div>
+</div>
 
 	<script>
 
