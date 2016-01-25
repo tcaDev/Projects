@@ -169,7 +169,7 @@
 
 						         
 								<div class="form-group">
-									 <label for="rfp">Reference Due Date:</label>
+									 <label for="rfp">Request for Payment Due Date:</label>
 									 <input type="date" name="ref_due_dt" class="form-control input-sm rfp-update" id="ref_due_dt">
 								 </div>
 								 

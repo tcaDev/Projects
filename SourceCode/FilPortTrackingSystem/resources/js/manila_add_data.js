@@ -426,7 +426,7 @@ var back=0;
 			}
 			else{
 
-	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#tableAddContainer-mnla table').append('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	       
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel_voyage option:selected").text());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss").val());
@@ -439,17 +439,17 @@ var back=0;
 	          $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage").val()); 
 	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
 	               $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".dt_paid").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_pre_assess").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_final_assess").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse").val());
-	                    		 $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".tdt").val());
-	                      		 $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".pul_out_port").val());
-	                    	 $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_file_entry_boc").val());
-	                       $('#tableAddContainer-mnla table tr:last td:nth-child(21)').html($(".dt_boc").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(22)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	                /*$('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());*/
+	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".dt_pre_assess").val());
+	                 $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_final_assess").val());
+	                  $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".gtinport").val());
+	                   $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtoutport").val());
+	                    $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".act-del-whse").val());
+	                    		 $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".tdt").val());
+	                      		/* $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".pul_out_port").val());*/
+	                    	 $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_file_entry_boc").val());
+	                       $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
+	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
 	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 

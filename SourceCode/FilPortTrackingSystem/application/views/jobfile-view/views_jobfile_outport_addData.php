@@ -182,7 +182,7 @@
 
 						         
 								<div class="form-group">
-									 <label for="rfp">Reference Due Date:</label>
+									 <label for="rfp">Request for Payment Due Date:</label>
 									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="ref_due_dt-outport">
 								 </div>
 
@@ -344,10 +344,10 @@
 								<input type="date" name="strtdmrage" class="form-control input-sm demorage-outport" />
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Lodging</label>
 								<input type="date" name="lodging" class="form-control input-sm lodging-outport" />
-							</div>
+							</div> -->
 
 							<div class="form-group">
 								<label>Actual Delivery at Warehouse</label>
@@ -359,10 +359,10 @@
 								<input type="date" name="" class="form-control input-sm tdt-outport " />
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Pull out Date at Port</label>
 								<input type="date" name="" class="form-control input-sm pul_out_port-outport " />
-							</div>
+							</div> -->
 
 
 						    <div class="form-group">

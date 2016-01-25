@@ -521,7 +521,7 @@ if($query->num_rows() == 1){
                    <th class='hidden'>value Actual Arrival Time</th>
                    <th>Actual Arrival Time</th>
                    <th class='hidden'>value DischargeTime</th>
-                   <th>Discharge Time</th>
+                   <th>Discharge Time of Vessel</th>
                    <th class='hidden'>value EstDepartureTime</th>
                    <th>Estimated Departure</th>
                    <th class='hidden'>value EstArrivalTime</th>
@@ -1385,7 +1385,7 @@ if($query->num_rows() == 1){
                     <th class='hidden'>Value storage</th>
                     <th>Start Of Storage</th>
                      <th class='hidden'>Value lodging</th>
-                    <th>Lodging</th>
+                    <th class='hidden'>Lodging</th>
                     <th>Hauler/Trucker</th>
                     <th class='hidden'>Value tdd</th>
                     <th>Target Delivery Date</th>
@@ -1398,7 +1398,7 @@ if($query->num_rows() == 1){
                     <th class='hidden'>Value StartOfDemorage</th>
                     <th>Start Of Demurrage</th>
                     <th class='hidden'>Value PullOutDateAtPort</th>
-                    <th>Pull Out Date At Port</th>
+                    <th class='hidden'>Pull Out Date At Port</th>
                     <th class='hidden'>Value DateBOCCleared</th>
                     <th>Date BOC Cleared</th>
                     <th class='hidden'>Value DateFileEntryToBOC</th>
@@ -1515,7 +1515,7 @@ if($query->num_rows() == 1){
                 echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
                 echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
-             echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
+             echo "<td class='row hidden'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
                 echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
              echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
@@ -1528,7 +1528,7 @@ if($query->num_rows() == 1){
                 echo "<td class='row hidden'>".stripslashes($StartOfDemorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
                 echo "<td class='row hidden'>".stripslashes($PullOutDateAtPort)."</td>";
-             echo "<td class='row'>".stripslashes($row->PullOutDateAtPort)."</td>";
+             echo "<td class='row hidden'>".stripslashes($row->PullOutDateAtPort)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DateBOCCleared)."</td>";
              echo "<td class='row'>".stripslashes($row->DateBOCCleared)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DateFileEntryToBOC)."</td>";

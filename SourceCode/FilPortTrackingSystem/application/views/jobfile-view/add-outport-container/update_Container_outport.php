@@ -97,10 +97,10 @@
 				<input type="date" name="strtdmrage" class="form-control input-sm demorage-updateContainer-outport" />
 			</div>
 
-			<div class="form-group">
+		<!-- 	<div class="form-group">
 				<label>Lodging</label>
 				<input type="date" name="lodging" class="form-control input-sm lodging-updateContainer-outport" />
-			</div>
+			</div> -->
 
 			
 			<div class="form-group">
@@ -113,10 +113,10 @@
 				<input type="date" name="" class="form-control input-sm tdt-updateContainer-outport" />
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label>Pull out Date at Port</label>
 				<input type="date" name="" class="form-control input-sm pull_out_port-updateContainer-outport" />
-			</div>
+			</div> -->
 
 
 		    <div class="form-group">

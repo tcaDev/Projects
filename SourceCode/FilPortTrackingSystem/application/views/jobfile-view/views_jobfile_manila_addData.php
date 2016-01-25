@@ -186,7 +186,7 @@
 
 						         
 								<div class="form-group">
-									 <label for="rfp">Reference Due Date:</label>
+									 <label for="rfp">Request for Payment Due Date:</label>
 									 <input type="date" name="ref_due_dt" class="form-control input-sm " id="ref_due_dt">
 								 </div>
 								 
@@ -350,10 +350,10 @@
 								<input type="date" name="strtdmrage" class="form-control input-sm demorage" />
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Lodging</label>
 								<input type="date" name="lodging" class="form-control input-sm lodging" />
-							</div>
+							</div> -->
 
 							<!-- <div class="form-group">
 								<label>Hauler</label>
@@ -381,10 +381,10 @@
 								<input type="date" name="" class="form-control input-sm tdt " />
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Pull out Date at Port</label>
 								<input type="date" name="" class="form-control input-sm pul_out_port " />
-							</div>
+							</div> -->
 
 
 						    <div class="form-group">
@@ -418,14 +418,14 @@
 						       
 						        <!-- <th>Hauler</th> -->
 						        <th>Date Paid</th>
-						         <th>Lodging</th>
+						        <!--  <th>Lodging</th> -->
 						        <th>Date Sent PreAssessment</th>
 						        <th>Date Sent Final Assessment</th>
 						        <th>Gate In at Port</th>
 						        <th>Gate Out at Port</th>
 						        <th>Actual Delivery at Warehouse</th>
 						        <th>Target Delivery Date</th>
-						        <th>Pull out Date at Port </th>
+						        <!-- <th>Pull out Date at Port </th> -->
 						        <th>Date File Entry To BOC</th>
 						        <th>Date Cleared BOC</th>
 						        

@@ -93,10 +93,10 @@
 				<input type="date" name="strtdmrage" class="form-control input-sm demorage-addContainer-manila" />
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label>Lodging</label>
 				<input type="date" name="lodging" class="form-control input-sm lodging-addContainer-manila" />
-			</div>
+			</div> -->
 
 			<!-- <div class="form-group">
 				<label>Hauler</label>
@@ -122,12 +122,12 @@
 				<label>Target Delivery Date</label>
 				<input type="date" name="" class="form-control input-sm tdt-addContainer-manila" />
 			</div>
-
+<!-- 
 			<div class="form-group">
 				<label>Pull out Date at Port</label>
 				<input type="date" name="" class="form-control input-sm pull_out_port-addContainer-manila" />
 			</div>
-
+ -->
 
                         <div class="form-group">
                                 <label for="dtClrd">Date File Entry To BOC:</label>
@@ -160,14 +160,14 @@
 		        <th>Start of Demurrage </th>
 		        <th>Start of Storage</th>
 		        <th>Date Paid</th>
-		         <th>Lodging</th>
+		         <!-- <th>Lodging</th> -->
 		        <th>Date Sent PreAssessment</th>
 		        <th>Date Sent Final Assessment</th>
 		        <th>Gate In at Port</th>
 		        <th>Gate Out at Port</th>
 		        <th>Actual Delivery at Warehouse</th>
 		        <th>Target Delivery Date</th>
-		        <th>Pull out Date at Port </th>
+		      <!--   <th>Pull out Date at Port </th> -->
 		        <th>Date File Entry To BOC</th>
 		        <th>Date Cleared BOC</th>
 		        <th></th>
@@ -241,7 +241,7 @@
 			}
 			else{
 
-	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
 	        
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(1)').html($(".vessel-addContainer-manila option:selected").val()).hide();
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(2)').html($(".vessel-addContainer-manila option:selected").text());
@@ -255,17 +255,17 @@
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(10)').html($(".demorage-addContainer-manila").val()); 
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(11)').html($(".storage-addContainer-manila").val());
 	        $('#table-AddContainer-mnla table tr:last td:nth-child(12)').html($(".dt_paid-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_pre_assess-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(15)').html($(".dt_final_assess-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(16)').html($(".gtinport-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(17)').html($(".gtoutport-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(18)').html($(".act-del-whse-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(19)').html($(".tdt-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(20)').html($(".pull_out_port-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(21)').html($(".dt_file_entry_boc-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(22)').html($(".dt_boc-addContainer-manila").val());
-	        $('#table-AddContainer-mnla table tr:last td:nth-child(23)').html("<button type='button' class='btn btn-danger deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	       /* $('#table-AddContainer-mnla table tr:last td:nth-child(13)').html($(".lodging-addContainer-manila").val());*/
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_pre_assess-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(14)').html($(".dt_final_assess-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(15)').html($(".gtinport-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(16)').html($(".gtoutport-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(17)').html($(".act-del-whse-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(18)').html($(".tdt-addContainer-manila").val());
+	       /* $('#table-AddContainer-mnla table tr:last td:nth-child(20)').html($(".pull_out_port-addContainer-manila").val());*/
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_file_entry_boc-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(20)').html($(".dt_boc-addContainer-manila").val());
+	        $('#table-AddContainer-mnla table tr:last td:nth-child(21)').html("<button type='button' class='btn btn-danger deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 
 	        $('.container-msg-addContainer-manila').text('');
 
