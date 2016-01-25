@@ -77,19 +77,17 @@
 
     function Popup(data) 
     {
-        var mywindow = window.open('', 'Filport Document', 'height=400,width=600');
-        mywindow.document.write('<html><head><title>Filport Document</title>');
+        var mywindow = window.open('', 'FILPORT REPORT DOCUMENT', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>Filport</title><br> <hr>');
        	//mywindow.document.write('<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">');
         mywindow.document.write('</head><body >');
         mywindow.document.write(data);
+    //    mywindow.document.write('<footer style="text-align=right;"> CONFIDENTIAL | PROPRIETARY</footer>');
         mywindow.document.write('</body></html>');
-
         mywindow.document.close(); // necessary for IE >= 10
         mywindow.focus(); // necessary for IE >= 10
-
         mywindow.print();
         mywindow.close();
-
         return true;
     }
 

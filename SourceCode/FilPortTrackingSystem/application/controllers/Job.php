@@ -11,6 +11,7 @@ class Job extends CI_Controller {
             parent::__construct();
             date_default_timezone_set('Asia/Manila');
             $this->load->model('Jobdata');
+            $this->load->library('email');
        }
 
   // for jobfile 
@@ -68,8 +69,6 @@ class Job extends CI_Controller {
       </script>
 
     <?php }}
-
-
 
 
   function get_country(){
@@ -1268,7 +1267,7 @@ if($query->num_rows() == 1){
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
           }
       }
-     
+     //$dispOutput = $consignee_name;
       $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $ct . ') Data Match(es)</i>';
 
       $output = array(

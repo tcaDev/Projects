@@ -16,7 +16,7 @@
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data">
-									  <li value="1"class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -100,7 +100,7 @@
 
 		<div class="container-tab" id="tabs">
 
-				  <ul class="nav nav-pills nav-data">
+				  <ul class="nav nav-pills nav-data nav-ins-menu">
 
 				    <li class="active"><a data-toggle="tab" href="#containers">Containers</a></li>
 
@@ -176,7 +176,7 @@
 		</div>
 				       <div class="modal-footer">
 				       	  <button class="btn btn-default" onclick="PrintElem('#tab-results')">Print</button>
-				       	  <!-- <input class="btn btn-default pull-right" type="button" value="Print" onclick="" />	  -->
+				       	 <!--  <button type="button" class="btn btn-success" id="btn-send-mail" id="btn-modal-close">E-Mail</button> -->
 				          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-close">Close</button>
 				       </div>
 				      </div>
@@ -323,10 +323,10 @@
 
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
 
-				$('.nav-data').html('<ul class="nav nav-pills"><li class="active containers"><a data-toggle="tab" href="#containers">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active containers"><a data-toggle="tab" href="#containers">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
-				$('.nav-data').html('<ul class="nav nav-pills"><li class="active containers"><a data-toggle="tab" href="#containers">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active containers"><a data-toggle="tab" href="#containers">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Containers</h4>');
 			}
 
@@ -491,14 +491,13 @@
 
 		function changePlaceHolder(monType){
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Air Freight');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Air Freight');
 			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Sea Freight Outport');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search Sea Freight Outport');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Search for Consignee from Sea Freight Manila');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search Sea Freight Manila');
 			}
 		}
-
 </script>
 <style>
 	 .tableOverFlow{

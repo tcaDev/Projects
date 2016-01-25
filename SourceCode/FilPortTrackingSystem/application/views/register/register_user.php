@@ -158,7 +158,7 @@ $(document).on('click','.get_list',function(){
 $('.btn-Save-AddUser').addClass('hidden');
     $.ajax({    //create an ajax request 
         type: "GET",
-        url:  <?php echo base_url('Job/get_User_list');?>,             
+        url:  "<?php echo base_url('Job/get_User_list');?>",             
         dataType: "html", 
         beforeSend: function() {
               $('.table_UserList').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
@@ -182,7 +182,7 @@ function uname_check(uname){
        
         $.ajax({
             method: "POST",
-          url: <?php echo base_url('Job/check_uname');?>,
+          url: "<?php echo base_url('Job/check_uname');?>",
            beforeSend: function() {
               $('#check_uname').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
             },
@@ -205,7 +205,7 @@ function uname_check(uname){
        
         $.ajax({
             method: "POST",
-          url: <?php echo base_url('Job/check_email');?>,
+          url: "<?php echo base_url('Job/check_email');?>",
            beforeSend: function() {
               $('#check_email').html('<span class="loading-email"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
             },
@@ -382,7 +382,7 @@ function validateEmail(email) {
 
       $.ajax({
             method: "POST",
-            url: <?php echo base_url('Job/user_add');?>,
+            url: "<?php echo base_url('Job/user_add');?>",
             beforeSend: function() {
                 dia = $.dialog({
                       icon: 'fa fa-spinner fa-pulse',
