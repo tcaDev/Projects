@@ -519,6 +519,8 @@ if($query->num_rows() == 1){
                    <th>Carrier Name</th>
                    <th class='hidden'>value Actual Arrival Time</th>
                    <th>Actual Arrival Time</th>
+                   <th class='hidden'>value Berthing TIme</th>
+                   <th>Actual Berthing Time</th>
                    <th class='hidden'>value DischargeTime</th>
                    <th>Discharge Time of Vessel</th>
                    <th class='hidden'>value EstDepartureTime</th>
@@ -551,7 +553,13 @@ if($query->num_rows() == 1){
                  $EstDepartureTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstDepartureTime));
              }
 
-             if($row->EstArrivalTime == "0000-00-00 00:00:00"){
+             if($row->BerthingTime == "0000-00-00 00:00:00"){
+                $BerthingTime = $row->BerthingTime;
+             }else{
+                 $BerthingTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->BerthingTime));
+             }
+
+              if($row->EstArrivalTime == "0000-00-00 00:00:00"){
                 $EstArrivalTime = $row->EstArrivalTime;
              }else{
                  $EstArrivalTime = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->EstArrivalTime));
@@ -564,6 +572,8 @@ if($query->num_rows() == 1){
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
                 echo "<td class='row hidden'>".stripslashes($ActualArrivalTime)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
+                echo "<td class='row hidden'>".stripslashes($BerthingTime) ."</td>";
+             echo "<td class='row'>".stripslashes($row->BerthingTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($DischargeTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->DischargeTime) ."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->EstDepartureTime) ."</td>";
@@ -1908,7 +1918,8 @@ foreach($job as $row){
  $edt           =  addslashes($this->input->post('edt'));
  $aat           =  addslashes($this->input->post('aat'));
  $discharge     =  addslashes($this->input->post('vdt'));
- 
+ $berthing     =  addslashes($this->input->post('abt'));
+
  
    if($eat!=''){
    $date1  = date_create($eat);
@@ -1926,6 +1937,10 @@ foreach($job as $row){
    $date4  = date_create($aat);
    $aat    =  date_format($date4, 'Y-m-d H:i');
    }
+    if($berthing!=''){
+   $date5  = date_create($berthing);
+   $berthing    =  date_format($date5, 'Y-m-d H:i');
+   }
 
 
 
@@ -1936,7 +1951,8 @@ foreach($job as $row){
                'EstDepartureTime'    => $edt,
                'EstArrivalTime'      => $eat,
                'ActualArrivalTime'   => $aat,
-               'DischargeTime'       => $discharge      
+               'DischargeTime'       => $discharge,
+               'BerthingTime'       => $berthing    
         );
 
        $this->db->insert('CarrierByJobFile',$data); 
@@ -1949,6 +1965,7 @@ foreach($job as $row){
                'EstDepartureTime'    => $edt,
                'EstArrivalTime'      => $eat,
                'ActualArrivalTime'   => $aat,
+               'BerthingTime'       => $berthing,
                'DischargeTime'       => $discharge,
                'DateUpdated'         => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'    => $userid
