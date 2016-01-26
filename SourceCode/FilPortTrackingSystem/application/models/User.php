@@ -608,6 +608,11 @@ function get_jobfile_outport(){
     return $query->result();
   }
 
+  function get_jobfile_manila_global_consignee($consigneeName){
+    $query = $this->db->query("select * from vw_JobFile WHERE ConsigneeName = '$consigneeName'");
+    return $query->result();
+  }
+
  /* function get_jobfile_outport(){
     $query = $this->db->query("select * from vw_MLAJobFile where MonitoringTypeId = 2");
     return $query->result();
@@ -707,6 +712,12 @@ function get_jobfile_outport(){
     function search_air($jobfile){
     $query = $this->db->query("Select * from vw_JobFileAir where  JobFileNo like '%$jobfile%' order by  JobFile_AirId desc ");
     return $query->result();
+    }
+
+
+    function get_role($uID){
+     $query = $this->db->query("Select RoleId from user WHERE UserId = '$uID'");
+     return $query->row();
     }
 
 }
