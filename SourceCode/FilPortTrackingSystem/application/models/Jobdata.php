@@ -112,7 +112,7 @@ function get_vessels($JobFile){
     return $query->result();
  }
    function select_jobfile_air($job){
-    $this->  db ->select('JobFile_AirId');
+    $this->  db ->select('*');
     $this -> db -> from('JobFile_Air');
     $this -> db ->where('JobFileNo', $job);
     $query=$this->db->get();
@@ -216,6 +216,13 @@ function get_user(){
     $query = $this->db->query("select * from User where RoleId = 1 OR RoleId = 2");
     return $query->result();
  }
+
+ function select_jobfile_air_charges($jobfile){
+      $query = $this->db->query("select * from RunningCharges_Air where JobFile_AirId='$jobfile'");
+    return $query->result();
+ }
+
+
 }
 
 
