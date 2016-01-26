@@ -30,7 +30,6 @@ function get_chargess($charges,$mon_type){
     }else{
       $query = $this->db->query("select * FROM vw_RunningCharges WHERE JobFileNo = '$charges'");
     }
-
     return $query->result();
 }
 
@@ -67,8 +66,10 @@ function get_vessels($JobFile){
     }else{
       $query =  $this->db->query("select * FROM vw_Containers WHERE JobFileNo = '$id'");
     }
+
    return $query->result();
  }
+
 
  
  function get_charges($id){
@@ -111,7 +112,7 @@ function get_vessels($JobFile){
     return $query->result();
  }
    function select_jobfile_air($job){
-    $this->  db ->select('*');
+    $this->  db ->select('JobFile_AirId');
     $this -> db -> from('JobFile_Air');
     $this -> db ->where('JobFileNo', $job);
     $query=$this->db->get();
@@ -182,14 +183,12 @@ function get_countryID_manila($jobfile){
  }
 
  function getJobFiles_Consignee($consigneeName,$monitoringType){
-    if($monitoringType == 1 || $monitoringType == 2){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
-     }else if($monitoringType == 4){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'");
+    if($monitoringType != 3){
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
+     }else{
+         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
      }
-     else{
-         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
-     }
+    //return "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
     return $query->result();
  }
 
@@ -199,7 +198,6 @@ function get_countryID_manila($jobfile){
      }else{
          $query = $this->db->query("select ATA as ActualArrivalTime, AirCraft As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'");
      }
-     //echo "select ATA as ActualArrivalTime, FlightNo As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'";
     return $query->result();
  }
 
@@ -214,61 +212,45 @@ function get_countryID_manila($jobfile){
     return $query->result();
  }
 
- function HistoricalStatus($jobid){
-  $query = $this->db->query("select * from HistoricalStatus where JobFileId='$jobid' order by HistoricalStatusId desc limit 1");
-     return $query->result();
-
- }
- function ge_cbid($vessel,$job){
-    $query = $this->db->query("select * from CarrierByJobFile where JobFileId=$job and VesselVoyageNo='$vessel' limit 1 ");
-     return $query->result();
- }
- function get_cbid_not($vessel,$job){
-      $query = $this->db->query("select * from CarrierByJobFile where JobFileId=$job and VesselVoyageNo!='$vessel' limit 1 ");
-     return $query->result();
- }
- function myconbyid($temp_cbid2){
-   $query=$this->db->query("SELECT `ContainerByCarrierId`,`ContainerNo` FROM `vw_Containers` where `CarrierByJobFileId`='$temp_cbid2' limit 1");
-   return $query->result();
- }
- function myconbyid_container($jbfl){
-     $query=$this->db->query("SELECT `ContainerByCarrierId`,`ContainerNo` FROM `vw_Containers` where `JobFileNo`='$jbfl' ");
-   return $query->result();
+function get_user(){
+    $query = $this->db->query("select * from User where RoleId = 1 OR RoleId = 2");
+    return $query->result();
  }
 
-  function myconbyid_not($temp_cbid2_not,$jbfl){
-   $query=$this->db->query("SELECT `ContainerByCarrierId` FROM `vw_Containers` where `CarrierByJobFileId`!='$temp_cbid2_not' and JobFileNo='$jbfl' ");
-   return $query->result();
+ function get_manilaAudit($montype){
+    $query = $this->db->query("select * from vw_JobFileHistory where MonitoringTypeId ='$montype' ");
+    return $query->result();
  }
 
- function myconbyids($vessel_voyage,$container){
-    $query=$this->db->query("SELECT `ContainerByCarrierId` FROM `vw_Containers` where `CarrierByJobFileId`='$vessel_voyage' and ContainerNo='$container'");
-   return $query->result();
- }
- function myconbyid_not_container($vessel_voyage,$container){
-       $query=$this->db->query("SELECT `ContainerByCarrierId` FROM `vw_Containers` where `CarrierByJobFileId`='$vessel_voyage' 
-                                and ContainerNo='$container'  limit 1"); 
-       return $query->result();
- }
- function myconbyid_cbid($cbid){
-   $query=$this->db->query("SELECT * FROM `vw_Containers` where `CarrierByJobFileId`='$cbid'");
-   return $query->result();
- }
- function get_update_vessel_view($jbfl){
-     $query=$this->db->query("SELECT * FROM `vw_CarrierByJobFile` where `JobFileNo`='$jbfl'");
-   return $query->result();
- }
- function get_update_container_view($jbfl){
-      $query=$this->db->query("SELECT * FROM `vw_Containers` where `JobFileNo`='$jbfl'");
-   return $query->result();
+ function get_vessel_audit($jobfile){
+  $query = $this->db->query("select * from vw_CarrierByJobFileHistory where JobFileNo ='$jobfile' ");
+    return $query->result();
  }
 
- function get_consignee_name($uid){
-   $query=$this->db->query("SELECT a.ConsigneeName FROM consignee as a , user as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
-   return $query->row();
+ function get_jobfile_audit($jobfile){
+  $query = $this->db->query("select * from vw_JobFileHistory where JobFileNo ='$jobfile' ");
+    return $query->result();
  }
 
+ function get_container_audit($jobfile){
+  $query = $this->db->query("select * from vw_ContainersHistory where JobFileNo ='$jobfile' ");
+    return $query->result();
+ }
 
+  function get_commodity_audit($jobfile){
+  $query = $this->db->query("select * from vw_ProductsHistory where JobFileNo ='$jobfile' ");
+    return $query->result();
+ }
+
+ function get_charges_audit($jobfile){
+  $query = $this->db->query("select * from vw_RunningChargesHistory where JobFileNo ='$jobfile' ");
+    return $query->result();
+ }
+
+ function get_air_audit(){
+  $query = $this->db->query("select * from vw_JobFileAirHistory");
+    return $query->result();
+ }
 }
 
 
