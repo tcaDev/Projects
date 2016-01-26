@@ -74,10 +74,7 @@
 	        		<input type="date" class="dt_pre_assess-updateContainer-manila form-control input-sm">
 			</div>
 
-			<div class="form-group">
-				<label>Date Sent Final Assessment</label>
-				<input type="date" name="" class="form-control input-sm dt_final_assess-updateContainer-manila" />
-			</div>
+			
 
 
 	  	</div>
@@ -85,6 +82,10 @@
   			
 
 	  	<div class="col-lg-6">
+	  	<div class="form-group">
+				<label>Date Sent Final Assessment</label>
+				<input type="date" name="" class="form-control input-sm dt_final_assess-updateContainer-manila" />
+			</div>
 
 	  		<div class="form-group">
 				<label>Start of Storage</label>

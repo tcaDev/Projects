@@ -346,15 +346,15 @@ if($query->num_rows() == 1){
                               <input type="text" name="storage" class="form-control input-sm storage checkDec" id="storage" value="'.$row->Storage.'" disabled />
                             </div>
 
+                            <div class="form-group">
+                                <label>Demurrage</label>
+                                <input type="text" name="demurrage" class="form-control input-sm demurrage checkDec" id="demurrage" value="'.$row->Demorage.'"  disabled/>
+                              </div>
                           </div>
                             
 
                           <div class="col-lg-6">
 
-                            <div class="form-group">
-                                <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm demurrage checkDec" id="demurrage" value="'.$row->Demorage.'"  disabled/>
-                              </div>
 
                               <div class="form-group">
                                 <label>Detention</label>
@@ -390,6 +390,16 @@ if($query->num_rows() == 1){
                                 <label>Bad Cargo</label>
                                 <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo checkDec" id="bad-cargo" value="'.$row->BadCargo.'"disabled />
                               </div>
+
+                              <div class="form-group">
+                                <label>BPI Inspection</label>
+                                <input type="text" name="bpi" class="form-control input-sm checkDec" id="bpi" value="'.$row->BadCargo.'"disabled/>
+                              </div>
+
+                              <div class="form-group">
+                                <label>Plug In for Reefer</label>
+                                <input type="text" name="reefer" class="form-control input-sm checkDec" id="reefer" value="'.$row->BadCargo.'"disabled/>
+                              </div>
                           </div>
                         </div>';
                       }
@@ -413,90 +423,38 @@ if($query->num_rows() == 1){
                             </div>
 
                             <div class="form-group">
-                              <label>Container Deposit</label>
-                              <input type="text" name="cont-deposit" class="form-control input-sm cont-deposit_airs checkDec-air" id="cont_deposit_airs" value="'.$row->ContainerDeposit.'" disabled/>
+                              <label>Break Bulk Fee</label>
+                              <input type="text" name="cont-deposit" class="form-control input-sm break_airs checkDec-air" id="break_airs" value="'.$row->BreakBulkFee.'" disabled/>
                             </div>
 
                             <div class="form-group">
-                              <label>THC Charges</label>
-                              <input type="text" name="thc-charges" class="form-control input-sm thc-charges_airs checkDec-air" id="thc_charges_airs" value="'.$row->THCCharges.'" disabled/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Arrastre </label>
-                              <input type="text" name="arrastre" class="form-control input-sm arrastre_airs checkDec-air" id="arrastre_airs" value="'.$row->Arrastre.'" disabled/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Wharfage</label>
-                              <input type="text" name="wharfage" class="form-control input-sm wharfage_airs checkDec-air"  id="wharfage_airs" value="'.$row->Wharfage.'" disabled/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Weighing</label>
-                              <input type="text" name="weight" class="form-control input-sm weight_airs checkDec-air" id="weight_airs" value="'.$row->Weighing.'" disabled />
-                            </div>
-
-                            <div class="form-group">
-                              <label>DEL</label>
-                              <input type="text" name="del" class="form-control input-sm del_airs checkDec-air" id="del_airs" value="'.$row->DEL.'" disabled/>
-                            </div>
-
-                            <div class="form-group">
-                              <label>Dispatch Fee</label>
-                              <input type="text" name="dispatch" class="form-control input-sm dispatch_airs checkDec-air" id="dispatch_airs" value="'.$row->DispatchFee.'" disabled/>
-                            </div>
+                                <label>Bad Cargo</label>
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo_airs checkDec-air" id="bad_cargo_airs" value="'.$row->BadCargoOrderFee.'"disabled />
+                              </div>
 
                             <div class="form-group">
                               <label>Storage</label>
-                              <input type="text" name="storage" class="form-control input-sm storage_airs checkDec-air" id="storage_airs" value="'.$row->Storage.'" disabled />
+                              <input type="text" name="storage" class="form-control input-sm storage_airs checkDec-air" id="storage_airs" value="'.$row->StorageFee.'" disabled />
                             </div>
 
-                          </div>
-                            
-
-                          <div class="col-lg-6">
+                            <div class="form-group">
+                              <label>VCRC</label>
+                              <input type="text" name="thc-charges" class="form-control input-sm VCRC_airs checkDec-air" id="VCRC_airs" value="'.$row->VCRC.'" disabled/>
+                            </div>
 
                             <div class="form-group">
-                                <label>Demurrage</label>
-                                <input type="text" name="demurrage" class="form-control input-sm demurrage_airs checkDec-air" id="demurrage_airs" value="'.$row->Demorage.'"  disabled/>
-                              </div>
+                              <label>CNI</label>
+                              <input type="text" name="arrastre" class="form-control input-sm CNI_airs checkDec-air" id="CNI_airs" value="'.$row->CNI.'" disabled/>
+                            </div>
 
-                              <div class="form-group">
-                                <label>Detention</label>
-                                <input type="text" name="detention" class="form-control input-sm detention_airs checkDec-air"  id="detention_airs" value="'.$row->Detention.'" disabled />
-                              </div>
-                        
-                              <div class="form-group">
-                                <label>EIC</label>
-                                <input type="text" name="EIC" class="form-control input-sm EIC_airs checkDec-air" id="EIC_airs" value="'.$row->EIC.'" disabled />
-                              </div>
+                            <div class="form-group">
+                              <label>CNIU</label>
+                              <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" value="'.$row->CNIU.'" disabled/>
+                            </div>
 
-                              <div class="form-group">
-                                <label>BAI Application</label>
-                                <input type="text" name="bai-app" class="form-control input-sm bai-app_airs checkDec-air" id="bai_app_airs" value="'.$row->BAIApplication.'" disabled/>
-                              </div>
 
-                              <div class="form-group">
-                                <label>BAI Inspection</label>
-                                <input type="text" name="bai-inspect" class="form-control input-sm bai-inspect_airs checkDec-air" id="bai_inspect_airs" value="'.$row->BAIInspection.'" disabled/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>SRA Application</label>
-                                <input type="text" name="sra-app" class="form-control input-sm sra-app_airs checkDec-air" id="sra_app_airs" value="'.$row->SRAApplication.'" disabled/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>SRA Inspection</label>
-                                <input type="text" name="sra-inspect" class="form-control input-sm sra-inspect_airs checkDec-air" id="sra_inspect_airs" value="'.$row->SRAInspection.'" disabled/>
-                              </div>
-
-                              <div class="form-group">
-                                <label>Bad Cargo</label>
-                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo_airs checkDec-air" id="bad_cargo_airs" value="'.$row->BadCargo.'"disabled />
-                              </div>
                           </div>
+ 
                         </div>';
                       }
     }

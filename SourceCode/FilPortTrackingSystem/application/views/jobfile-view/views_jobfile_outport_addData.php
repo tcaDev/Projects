@@ -318,10 +318,6 @@
 					        		<input type="date" class="dt_pre_assess-outport form-control input-sm">
 							</div>
 
-							<div class="form-group">
-								<label>Date Sent Final Assessment-</label>
-								<input type="date" name="" class="form-control input-sm dt_final_assess-outport" />
-							</div>
 
 
 					  	</div>
@@ -332,7 +328,10 @@
 
 					  	<div class="col-lg-6">
 
-					  		
+					  			<div class="form-group">
+								<label>Date Sent Final Assessment-</label>
+								<input type="date" name="" class="form-control input-sm dt_final_assess-outport" />
+							</div>
 
 					  		<div class="form-group">
 								<label>Start of Storage</label>
@@ -550,6 +549,10 @@
 							</div>
 
 							
+							<div class="form-group">
+									<label>Demurrage</label>
+									<input type="text" name="demurrage" class="form-control input-sm checkDec-outport" id="demurrage-outport" />
+								</div>
 
 
 						</div>
@@ -557,10 +560,6 @@
 
 						<div class="col-lg-6">
 
-							<div class="form-group">
-									<label>Demurrage</label>
-									<input type="text" name="demurrage" class="form-control input-sm checkDec-outport" id="demurrage-outport" />
-								</div>
 							
 								<div class="form-group">
 									<label>Detention</label>
@@ -596,6 +595,16 @@
 									<label>Bad Cargo</label>
 									<input type="text" name="bad-cargo" class="form-control input-sm checkDec-outport" id="bad-cargo-outport"/>
 								</div> 
+
+								<div class="form-group">
+									<label>BPI Inspection</label>
+									<input type="text" name="bpi" class="form-control input-sm checkDec" id="bpi-outport"/>
+								</div>
+
+								<div class="form-group">
+									<label>Plug In for Reefer</label>
+									<input type="text" name="reefer" class="form-control input-sm checkDec" id="reefer-outport"/>
+								</div>
 							
 						</div>
 					</div>
