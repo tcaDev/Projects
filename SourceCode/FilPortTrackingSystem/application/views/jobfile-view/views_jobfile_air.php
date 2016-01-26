@@ -327,8 +327,13 @@
 	<script>
 			$(document).on('click','.update_charges-air-qwerty',function(){
 					$('#runchar-air .lodge_airs').removeAttr('disabled');
-					$('#runchar-air .cont-deposit_airs').removeAttr('disabled');
-					$('#runchar-air .thc-charges_airs').removeAttr('disabled');
+					$('#runchar-air .break_airs').removeAttr('disabled');
+				    $('#runchar-air .bad-cargo_airs').removeAttr('disabled');
+					$('#runchar-air .storage_airs').removeAttr('disabled');
+					$('#runchar-air .VCRC_airs').removeAttr('disabled');
+					$('#runchar-air .CNI_airs').removeAttr('disabled');
+				    $('#runchar-air .CNIU_airs').removeAttr('disabled');
+		/*			$('#runchar-air .thc-charges_airs').removeAttr('disabled');
 					$('#runchar-air .arrastre_airs').removeAttr('disabled');
 					$('#runchar-air .wharfage_airs').removeAttr('disabled');
 					$('#runchar-air .weight_airs').removeAttr('disabled');
@@ -342,7 +347,7 @@
 					$('#runchar-air .bai-inspect_airs').removeAttr('disabled');
 					$('#runchar-air .sra-app_airs').removeAttr('disabled');
 					$('#runchar-air .sra-inspect_airs').removeAttr('disabled');
-					$('#runchar-air .bad-cargo_airs').removeAttr('disabled');
+					$('#runchar-air .bad-cargo_airs').removeAttr('disabled');*/
 
 					$('.update_charges-air').removeAttr('disabled');
 					$(this).attr('disabled','disabled');
@@ -553,7 +558,7 @@ function search_airs(jbfl){
     
 }
    $(document).on('click','.update_charges-air',function(){
-     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
+/*     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
      var cont_deposit = $('#runchar-air .cont-deposit_airs').val().replace(/,/g,'');
      var thc_charges  = $('#runchar-air .thc-charges_airs').val().replace(/,/g,'');
      var arrastre     = $('#runchar-air .arrastre_airs').val().replace(/,/g,'');
@@ -570,8 +575,16 @@ function search_airs(jbfl){
      var sra_app 	  = $('#runchar-air .sra-app_airs').val().replace(/,/g,'');
      var sra_inspect  = $('#runchar-air .sra-inspect_airs').val().replace(/,/g,'');
      var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
+*/
 
-     	
+     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
+     var break_airs   = $('#runchar-air .break_airs').val().replace(/,/g,'');
+     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
+     var storage      = $('#runchar-air .storage_airs').val().replace(/,/g,'');
+     var vrc          = $('#runchar-air .VCRC_airs').val().replace(/,/g,'');
+     var cni           = $('#runchar-air .CNI_airs').val().replace(/,/g,'');
+     var cniu          = $('#runchar-air .CNIU_airs').val().replace(/,/g,'');
+   
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job_air_update/jobfile_add_charge_air');?>",
@@ -587,7 +600,13 @@ function search_airs(jbfl){
 			  	   data: {
 			  	   	           jbfl   		:jbfl,
 			  	   			   lodge        :lodge,
-			                   cont_deposit :cont_deposit,   
+			  	   			   break_airs   :break_airs,
+			  	   			   bad_cargo    :bad_cargo,
+			  	   			   storage      :storage,
+			  	   			   vrc          :vrc,
+			  	   			   cni          :cni,
+			  	   			   cniu         :cniu
+/*			                   cont_deposit :cont_deposit,   
 			                   thc_charges  :thc_charges,
 			                   wharfage     :wharfage,
 			                   arrastre     :arrastre,
@@ -602,7 +621,7 @@ function search_airs(jbfl){
 			                   bai_inspect  :bai_inspect,
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo
+			                   bad_cargo    :bad_cargo*/
 
 			  	   		 }
 	              })

@@ -386,7 +386,48 @@
 
 					<div class="hidden pill-charges-air-add table-editable col-lg-12">
 						
-						<div class="form-group">
+						<div class="col-lg-12 list_charges-air">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label>Lodgement Fee</label>
+                              <input type="text" name="lodge" class="form-control input-sm lodge_airs checkDec-air" id="lodge_airs"  />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Break Bulk Fee</label>
+                              <input type="text" name="cont-deposit" class="form-control input-sm break_airs checkDec-air" id="break_airs" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Bad Cargo</label>
+                                <input type="text" name="bad-cargo" class="form-control input-sm bad-cargo_airs checkDec-air" id="bad_cargo_airs" />
+                              </div>
+
+                            <div class="form-group">
+                              <label>Storage</label>
+                              <input type="text" name="storage" class="form-control input-sm storage_airs checkDec-air" id="storage_airs"  />
+                            </div>
+
+                            <div class="form-group">
+                              <label>VCRC</label>
+                              <input type="text" name="thc-charges" class="form-control input-sm VCRC_airs checkDec-air" id="VCRC_airs" />
+                            </div>
+
+                            <div class="form-group">
+                              <label>CNI</label>
+                              <input type="text" name="arrastre" class="form-control input-sm CNI_airs checkDec-air" id="CNI_airs" />
+                            </div>
+
+                            <div class="form-group">
+                              <label>CNIU</label>
+                              <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" />
+                            </div>
+
+
+                          </div>
+ 
+                        </div>
+						<!-- <div class="form-group">
 								<span class='numbers_only'></span>
 						</div>
 						<div class="col-lg-6">
@@ -484,8 +525,11 @@
 								</div>
 								
 
-						</div>
+						</div> -->
 					</div>
+
+
+
 
 				  </div>
     			</div>
