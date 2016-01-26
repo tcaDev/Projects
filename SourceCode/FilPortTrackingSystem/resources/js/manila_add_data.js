@@ -1189,9 +1189,9 @@ $(document).on('click','.save_charge',function(){
 			                   bai_inspect  :bai_inspect,
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo,
-			                   all_charges  :all_charges,
-			                   part_charges :part_charges
+			                   bad_cargo    :bad_cargo
+			                   /*all_charges  :all_charges,*/
+			                   /*part_charges :part_charges*/
 			  	   		 }
 	              })
 					.done(function(data) {

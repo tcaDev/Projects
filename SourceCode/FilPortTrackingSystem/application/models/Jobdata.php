@@ -188,7 +188,7 @@ function get_countryID_manila($jobfile){
      }else{
          $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
      }
-     //echo "select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'";
+    //return "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
     return $query->result();
  }
 
@@ -198,7 +198,6 @@ function get_countryID_manila($jobfile){
      }else{
          $query = $this->db->query("select ATA as ActualArrivalTime, AirCraft As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'");
      }
-     //echo "select ATA as ActualArrivalTime, FlightNo As VesselNumber FROM vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' AND JobFileNo = '$jbNo'";
     return $query->result();
  }
 

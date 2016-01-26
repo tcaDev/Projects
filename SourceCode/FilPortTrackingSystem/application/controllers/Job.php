@@ -1171,7 +1171,9 @@ if($query->num_rows() == 1){
   function get_consignee_status_report(){
       $consignee_name    =  $this->input->post('consignee_name');  
       $monitoringType    =  $this->input->post('monType');
+      $rowCt = 0;
       $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name,$monitoringType);
+
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
@@ -1182,7 +1184,7 @@ if($query->num_rows() == 1){
                               <th><center> Shipper </center></th>
                               <th><center> Consignee </center></th>
                               <th><center> House Airway Bill# </center></th>
-                              <th><center> Date Received of Other Documents </center></th>
+                              <th hidden><center> Date Received of Other Documents </center></th>
                         </thead>
                       ';
           foreach($jobfiles as $row){
@@ -1193,15 +1195,16 @@ if($query->num_rows() == 1){
                               <td>'.stripslashes($row->ShipperName).'</td>
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
-                              <td>'.stripslashes($row->DatePickUpOtherDocs).'</td>
+                              <td hidden>'.stripslashes($row->DatePickUpOtherDocs).'</td>
                         </tr>
                       </tbody>
               ';
+              $rowCt += 1;
           }
 
             $dispOutput .= '</table>';
           }else{
-            $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
+            $dispOutput = '<center><span style="color:red">No Data Matches Your Search</span></center>';
           }
       }else{
          $ct = count($jobfiles);
@@ -1213,10 +1216,11 @@ if($query->num_rows() == 1){
                               <th><center> Shipper </center></th>
                               <th><center> Consignee </center></th>
                               <th><center> HBL# </center></th>
-                              <th><center> Date Received of Other Documents </center></th>
+                              <th hidden><center> Date Received of Other Documents </center></th>
                         </thead>
                       ';
           foreach($jobfiles as $row){
+            if($monitoringType == $row->MonitoringTypeId){
               $dispOutput .='
                       <tbody>
                         <tr class="tableRow">
@@ -1224,20 +1228,22 @@ if($query->num_rows() == 1){
                               <td>'.stripslashes($row->ShipperName).'</td>
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
-                              <td>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                              <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
                         </tr>
                       </tbody>
               ';
-          }
+              $rowCt += 1;
+            }
+            }
 
             $dispOutput .= '</table>';
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
           }
       }
-     //$dispOutput = $consignee_name;
-      $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $ct . ') Data Match(es)</i>';
-
+ /*     $dispOutput = $jobfiles;
+      $dispCount = 0;*/
+      $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $rowCt . ') Data Match(es)</i>';
       $output = array(
         array(
            "disp" => $dispOutput,

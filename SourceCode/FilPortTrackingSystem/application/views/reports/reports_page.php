@@ -11,7 +11,7 @@
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
 						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
-						        <span class="hvr-icon-forward"> Jobfile </span></a>
+						        <span class="hvr-icon-forward"> Jobfile Transaction </span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
@@ -286,8 +286,8 @@
  var myBackUpViewReport = $('#view-report').clone();
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
-	    mon_Type = $('.nav-pills .active').val();
-		  $.ajax({
+		if(txt.trim().length > 0){
+			 $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
 						beforeSend: function(){
@@ -307,6 +307,12 @@
 				  		$('.result-count').html(result[0].result_count);
 				  		$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
 					});
+		}else{
+							 $.alert({
+				        		title: 'Search!',
+				        		content: 'Please Enter Jobfile No / Consignee Name / Shipper Name to Search',
+				   			   });
+		}
     });
 		$(document).on('dblclick','.tableRow',function(){
 			$('#table-pre-details').html('<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details"></table>');
@@ -463,6 +469,7 @@
 
 			$(document).on('click','.nav-data li',function(){
 				mon_Type = $('.nav-data .active').val();
+				//alert(mon_Type);
 				if($('#txt-search-consignee').val() != ""){
 				   $('#btn-search-consignee').click();
 				}else{
@@ -475,6 +482,7 @@
 
 			$(document).on('click','.nav-data-2 li',function(){
 				mon_Type = $('.nav-data-2 .active').val();
+				//alert(mon_Type);
 				if($('#txt-search-consignee').val() != ""){
 				   $('#btn-search-consignee').click();
 				}else{
@@ -493,9 +501,9 @@
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Air Freight');
 			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search Sea Freight Outport');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Sea Freight Outport');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search Sea Freight Manila');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Sea Freight Manila');
 			}
 		}
 </script>
