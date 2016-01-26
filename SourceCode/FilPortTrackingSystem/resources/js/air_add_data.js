@@ -437,48 +437,24 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 function air_add_charges(){
 	    var jbfl      = $('.pill-jobfile-air-add .jobfiles-air').val();
 
-       var get_lodge 		  =  $('.pill-charges-air-add #lodge-air').val();
- 	   var get_cont_deposit   =  $('.pill-charges-air-add #cont-deposit-air').val();
-       var get_thc_charges    =  $('.pill-charges-air-add #thc-charges-air').val();
-       var get_arrastre       =  $('.pill-charges-air-add #arrastre-air').val();
-       var get_wharfage 	  =  $('.pill-charges-air-add #wharfage-air').val();
-       var get_weight         =  $('.pill-charges-air-add #weight-air').val();
-	   var get_del       	  =  $('.pill-charges-air-add #del-air').val();
-       var get_dispatch  	  =  $('.pill-charges-air-add #dispatch-air').val();
-       var get_storage 	 	  =  $('.pill-charges-air-add #storage-air').val();
-       var get_demurrage      =  $('.pill-charges-air-add #demurrage-air').val();
-	   var get_detention      =  $('.pill-charges-air-add #detention-air').val();
-       var get_eic  	  	  =  $('.pill-charges-air-add #EIC-air').val();
-       var get_bai_app 	 	  =  $('.pill-charges-air-add #bai-app-air').val();
-       var get_bai_inspect    =  $('.pill-charges-air-add #bai-inspect-air').val();
-	   var get_sra_app        =  $('.pill-charges-air-add #sra-app-air').val();
-       var get_sra_inspect    =  $('.pill-charges-air-add #sra-inspect-air').val();
-       var get_bad_cargo 	  =  $('.pill-charges-air-add #bad-cargo-air').val();
-       var get_all_charges    =  $('.pill-charges-air-add #all-charges-air').val();
-	   var get_part_charges   =  $('.pill-charges-air-add #part-charges-air').val();
+       var get_lodge 		 	  =  $('.pill-charges-air-add .lodge_airs').val();
+ 	   var get_break_airs  	      =  $('.pill-charges-air-add .break_airs').val();
+       var get_bad_cargo          =  $('.pill-charges-air-add .bad-cargo_airs').val();
+       var get_storage            =  $('.pill-charges-air-add .storage_airs').val();
+       var get_vrc 	  			  =  $('.pill-charges-air-add .VCRC_airs').val();
+       var get_cni        		  =  $('.pill-charges-air-add .CNI_airs').val();
+	   var get_cniu       		  =  $('.pill-charges-air-add .CNIU_airs').val();
 
 	   var lodge 	 	  =  get_lodge.replace(/,/g,'');
- 	   var cont_deposit   =  get_cont_deposit.replace(/,/g,'');
-       var thc_charges    =  get_thc_charges.replace(/,/g,'');
-       var arrastre       =  get_arrastre.replace(/,/g,'');
-       var wharfage 	  =  get_wharfage.replace(/,/g,'');
-       var weight         =  get_weight.replace(/,/g,'');
-	   var del       	  =  get_del.replace(/,/g,'');
-       var dispatch  	  =	 get_dispatch.replace(/,/g,'');
-       var storage 	 	  =  get_storage.replace(/,/g,'');
-       var demurrage      =  get_demurrage.replace(/,/g,'');
-	   var detention      =  get_detention.replace(/,/g,'');
-       var eic  	  	  =  get_eic.replace(/,/g,'');
-       var bai_app 	 	  =  get_bai_app.replace(/,/g,'');
-       var bai_inspect    =  get_bai_inspect.replace(/,/g,'');
-	   var sra_app        =  get_sra_app.replace(/,/g,'');
-       var sra_inspect    =  get_sra_inspect.replace(/,/g,'');
-       var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
-       var all_charges    =  get_all_charges;
-	   var part_charges   =  get_part_charges;
+ 	   var break_air      =  get_break_airs.replace(/,/g,'');
+       var bad_cargo      =  get_bad_cargo.replace(/,/g,'');
+       var storage        =  get_storage.replace(/,/g,'');
+       var vrc 	 		  =  get_vrc.replace(/,/g,'');
+       var cni            =  get_cni.replace(/,/g,'');
+	   var cniu       	  =  get_cniu.replace(/,/g,'');
 
 	
-	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
+	    var totalCharges = [lodge,break_air,bad_cargo,storage,vrc,cni,cniu];
         var wVal = 0;
 		var len = totalCharges.length;
 		 for($x = 0 ; $x <= len ; $x++){
@@ -508,7 +484,7 @@ function air_add_charges(){
 
 			       $.ajax({
 			  		method: "POST",
-					url: link + "/Job_air/running_charges/",
+					url: link + "/Job_air_update/jobfile_add_charge_air/",
 				    beforeSend: function() {
 					 	  dia_running_charges =	$.dialog({
 					 	  	    icon: 'fa fa-spinner fa-spin',
@@ -522,24 +498,13 @@ function air_add_charges(){
 			  			    //from jobfile tab
 			  	   	           jbfl   		:jbfl,
 			  	   			   lodge        :lodge,
-			                   cont_deposit :cont_deposit,   
-			                   thc_charges  :thc_charges,
-			                   wharfage     :wharfage,
-			                   arrastre     :arrastre,
-			                   weight	    :weight,
-			                   del			:del,
-			                   dispatch     :dispatch,
-			                   storage      :storage,
-			                   demurrage    :demurrage,
-			                   detention    :detention,
-			                   eic          :eic,
-			                   bai_app      :bai_app,
-			                   bai_inspect  :bai_inspect,
-			                   sra_app      :sra_app,
-			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo,
-			                   all_charges  :all_charges,
-			                   part_charges :part_charges
+			  	   			   break_airs   :break_air,
+			  	   			   bad_cargo    :bad_cargo,
+			  	   			   storage      :storage,
+			  	   			   vrc          :vrc,
+			  	   			   cni          :cni,
+			  	   			   cniu         :cniu
+
 			  		}
 				})
 			    .done(function(data) {
