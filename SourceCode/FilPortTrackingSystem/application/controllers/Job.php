@@ -1925,14 +1925,7 @@ if($query->num_rows() == 1){
                'JobFileId'        => $job,
         );
         $this->db->insert('RunningCharges',$data);
-         $lastid =  $this->db->insert_id(); 
-                $data2 = array(
-               'RunnningChargesId'=> $lastid,
-               'JobFileId'        => $job,
-               'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UserId'  => $userid
-        );
-          $this->db->insert('RunningChargesHistory',$data2);
+
 
     }
       
