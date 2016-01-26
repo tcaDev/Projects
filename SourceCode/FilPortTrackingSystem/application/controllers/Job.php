@@ -2479,7 +2479,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
       }
 
-
+/*History THIS*/
       function get_manila_audit(){
 
           $montype = $this->input->post('montype');
@@ -2488,7 +2488,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit" style="width:4000px;">
+            <table class="table table-bordered table-condensed  " style="width:4000px;">
                 <thead>
                   <tr>
                       <th>Jobfile Number</th>
@@ -2546,7 +2546,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                     $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
                   }
 
-            echo '<tr class="rowTable">
+            echo '<tr>
               <td class="hidden">'.$jbid.'</td>
               <td>'.$jbno.'</td>';
                echo  $pick1;
@@ -2580,22 +2580,23 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
 
       function get_audit_vessel(){
-        $jobfile = $this->input->post('jbNum');
 
-        $audit_vessel = $this->Jobdata->get_vessel_audit($jobfile);
+        $vesselID = $this->input->post('vesselID');
+
+        $audit_vessel = $this->Jobdata->get_vessel_audit($vesselID);
 
 
          echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed " style="width:4000px;">
+            <table class="table table-bordered table-condensed " style="width:2000px;">
                 <thead>
                   <tr>
                       <th>Date Updated</th>
                       <th>UserName</th>
                       <th>Full Name</th>
-                      <th>Carrier Name</th>
                       <th>Vessel / Voyage No</th>
+                      <th>Carrier Name</th>
                       <th>Estimated Departure Time</th>
                       <th>Estimated Arrival Time </th>
                       <th>Discharge Time</th>
@@ -2626,8 +2627,8 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
             <td>'.$date_updated.'</td>
             <td>'.$uname.'</td>
             <td>'.$fullname.'</td>
-            <td>'.$carriername.'</td>
             <td>'.$vessel.'</td>
+            <td>'.$carriername.'</td>
             <td>'.$est_dept.'</td>
             <td>'.$est_arrival.'</td>
             <td>'.$discharge.'</td>
@@ -2649,11 +2650,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
     function get_audit_jobfile(){
          $jobfile = $this->input->post('jbNum');
-
           $audit_jobfile = $this->Jobdata->get_jobfile_audit($jobfile);
 
+        if($audit_jobfile == NULL)
+        {
+          echo '<i style="color:red;">No Jobfile Hisotry Yet</i>';
+        }else{
            echo '
-             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="col-lg-12" style="height:300px;overflow-x:auto;">
              <div class="row">
             <table class="table table-bordered table-condensed " style="width:4000px;">
                 <thead>
@@ -2661,6 +2665,24 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>Date Updated</th>
                       <th>UserName</th>
                       <th>Full Name</th>
+                      <th>Jobfile Number</th>
+                      <th>Color Stages</th>
+                      <th>Shipper</th>
+                      <th>Consignee</th>
+                      <th>PI/PO No.</th>
+                      <th>House Bill Lading No.</th>
+                      <th>Master Bill Lading No.</th>
+                      <th>Master Bill Lading No.2</th>
+                      <th>Letter Credit From Bank</th>
+                      <th>Registry</th>
+                      <th>Origin</th>
+                      <th>Date Received Notice From Clients</th>
+                      <th>Date Received Of BL</th>
+                      <th>Date Received Of Other Docs</th>
+                      <th>Broker</th>
+                      <th>Date Request Budget to GL</th>
+                      <th>Request for Payment Due Date</th>
+                      <th>Color Selectivity</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -2673,6 +2695,34 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
             $uname = $row->UserName;
             $fullname = $row->Full_Name;
 
+             $jbid = $row->JobFileId;
+            $jbno = $row->JobFileNo;
+            $shipper = $row->ShipperName;
+            $consignee = $row->ConsigneeName;
+            $hbl = $row->HouseBillLadingNo;
+            $mbl = $row->MasterBillLadingNo;
+            $mbl2 = $row->MasterBillLadingNo2;
+            $lcbank = $row->LetterCreditFromBank;
+            $purchaseno = $row->PurchaseOrderNo;
+            $registry = $row->Registry;
+            $dt_recvd_client = $row->DateReceivedNoticeFromClients;
+            $dt_recvd_bl = $row->DateReceivedOfBL;
+            $dt_recvd_docs = $row->DateReceivedOfOtherDocs;
+            $broker = $row->Broker;
+            $dt_recvd_budget = $row->DateRequestBudgetToGL;
+            $rfpduedate = $row->RFPDueDate;
+            $colorSelect = $row->ColorSelectivityName;
+            $colorStages = $row->StatusName;
+            $origin = $row->Origin;
+            $dt_recvd_client = $row->DateReceivedNoticeFromClients;
+
+            $pick = $row->IsBackground;
+                if($pick==0){
+                    $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                  }else{
+                    $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                  }
+
 
 
             echo '
@@ -2680,6 +2730,27 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td>'.$date_updated.'</td>
               <td>'.$uname.'</td>
               <td>'.$fullname.'</td>
+
+              <td class="hidden">'.$jbid.'</td>
+              <td>'.$jbno.'</td>';
+               echo  $pick1;
+             echo '
+              <td>'.$shipper.'</td>
+              <td>'.$consignee.'</td>
+              <td>'.$purchaseno.'</td>
+              <td>'.$hbl.'</td>
+              <td>'.$mbl.'</td>
+              <td>'.$mbl2.'</td>
+              <td>'.$lcbank.'</td>
+              <td>'.$registry.'</td>
+              <td>'.$origin.'</td>
+              <td>'.$dt_recvd_client.'</td>
+              <td>'.$dt_recvd_bl.'</td>
+              <td>'.$dt_recvd_docs.'</td>
+              <td>'.$broker.'</td>
+              <td>'.$dt_recvd_budget.'</td>
+              <td>'.$rfpduedate.'</td>
+              <td>'.$colorSelect.'</td>
             </tr>
             ';
           }
@@ -2692,10 +2763,13 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           ';
     }
 
-     function get_audit_container(){
-         $jobfile = $this->input->post('jbNum');
+  }
 
-          $audit_container = $this->Jobdata->get_container_audit($jobfile);
+     function get_audit_container(){
+
+         $containerID = $this->input->post('containerID');
+
+          $audit_container = $this->Jobdata->get_container_audit($containerID);
 
 
          echo '
@@ -2760,9 +2834,9 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                 <td>'.$date_updated.'</td>
                 <td>'.$uname.'</td>
                 <td>'.$fullname.'</td>
+                <td>'.$vessel.'</td>
                 <td>'.$containerNo.'</td>
                 <td>'.$containerSize.'</td>
-                <td>'.$vessel.'</td>
                 <td>'.$cartons.'</td>
                 <td>'.$dt_file_entry_boc.'</td>
                 <td>'.$dt_boc.'</td>
@@ -2792,14 +2866,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
    
 
    function get_audit_commodity(){
-       $jobfile = $this->input->post('jbNum');
+       $commodity = $this->input->post('commodity');
 
-      $audit_commodity = $this->Jobdata->get_commodity_audit($jobfile);
+      $audit_commodity = $this->Jobdata->get_commodity_audit($commodity);
 
        echo '
-             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="col-lg-12" style="height:300px;overflow:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed " style="width:4000px;">
+            <table class="table table-bordered table-condensed " style="width:1000px;">
                 <thead>
                   <tr>
                       <th>Date Updated</th>
@@ -2818,7 +2892,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               $uname =$row->UserName;
               $fullname =$row->Full_Name;
               $prodname =$row->ProductName;
-              $containerNo =$row->ContainerNo;
+              $containerNo = $row->ContainerNo;
 
 
               echo '
@@ -2858,7 +2932,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>Date Updated</th>
                       <th>UserName</th>
                       <th>Full Name</th>
-                      <th>Lodgement Fee/th>
+                      <th>Lodgement Fee</th>
                       <th>Container Deposit</th>
                       <th>THC Charges</th>
                       <th>Arrastre</th>
@@ -2947,11 +3021,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
       $audit_air = $this->Jobdata->get_air_audit();
 
+      if($audit_air == NULL){
+           echo '<i style="color:red;">No RunningCharges Yet</i>';
+      }else{
 
        echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed " style="width:4000px;">
+            <table class="table table-bordered table-condensed order-table-audit-air" style="width:4000px;cursor:pointer;">
                 <thead>
                   <tr>
                       <th>Jobfile No</th>
@@ -3021,7 +3098,8 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
 
                 echo '
-                <tr>
+                <tr class="airRow">
+                    <td class="hidden">'.$row->JobFile_AirId.'</td>
                     <td>'.$jfNO.'</td>';
                 echo $pick1;
                 echo '
@@ -3062,8 +3140,600 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           ';
 
     }
+  }
 
+  function get_audit_jobfile_air(){
+    $jobfile = $this->input->post('jbNum');
+
+      $audit_jobfile_air = $this->Jobdata->get_jobfile_air_audit($jobfile);
+
+      if($audit_jobfile_air == NULL){
+        echo '<i style="color:red;">No Jobfile Yet</i>';
+      }else{
+        echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:4000px;">
+                <thead>
+                  <tr>
+                      <th>Date Updated</th>
+                      <th>UserName</th>
+                      <th>Full Name</th>
+                      <th>Jobfile No</th>
+                      <th>Color Stages</th>
+                      <th>Shipper</th>
+                      <th>Consignee</th>
+                      <th>No Of Cartons</th>
+                      <th>Purchase Order No</th>
+                      <th>Letter Credit No From Bank</th>
+                      <th>House Air Way Bill</th>
+                      <th>Master Air Way Bill</th>
+                      <th>Origin</th>
+                      <th>Estimated Departure Time</th>
+                      <th>Estimated Arrival Time</th>
+                      <th>Actual Time of Arrival</th>
+                      <th>Flight No</th>
+                      <th>Air Craft No.</th>
+                      <th>Forwarder</th>
+                      <th>Warehouse</th>
+                      <th>Date Received Arrival From ALine</th>
+                      <th>Date Received Notice From Clients</th>
+                      <th>Date Pick Up Hawb</th>
+                      <th>Date PickUp Other Docs</th>
+                      <th>Broker</th>
+                      <th>Date Request Budget to GL</th>
+                      <th>Request for Payment Due Date</th>
+                      <th>Color Selectivity</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_jobfile_air as $row) {
+              $jfNO = $row->JobFileNo;
+              $shipper = $row->ShipperName;
+              $consignee = $row->ConsigneeName;
+              $cartons = $row->NoOfCartons;
+              $purchaseno = $row->PurchaseOrderNo;
+              $lcbank = $row->LetterCreditNoFromBank;
+              $hbl = $row->HouseBillLadingNo;
+              $mbl = $row->MasterBillLadingNo;
+              $origin = $row->ORIGIN;
+              $etd = $row->ETD;
+              $eta = $row->ETA;
+              $ata = $row->ATA;
+              $FlightNo = $row->FlightNo;
+              $aircraft = $row->Aircraft;
+              $forwader = $row->Forwarder;
+              $whse = $row->Warehouse;
+              $aline = $row->DateReceivedArrivalFromALine;
+              $dt_recvd_client = $row->DateReceivedArrivalFromClient;
+              $hawb = $row->DatePickUpHawb;
+              $dt_pickup_docs = $row->DatePickUpOtherDocs;
+              $broker = $row->Broker; 
+              $dt_recvd_budget = $row->DateRequestBudgetToGL;
+              $rfpduedate = $row->RFPDueDate;
+              $color_select =$row->ColorSelectivityName;
+
+             $pick = $row->IsBackground;
+              if($pick==0){
+                  $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                }else{
+                  $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                }
+
+
+
+                echo '
+                <tr class="airRow">
+                    <td class="hidden">'.$row->JobFile_AirId.'</td>
+                    <td>'.$row->DateUpdated.'</td>
+                    <td>'.$row->UserName.'</td>
+                    <td>'.$row->Full_Name.'</td>
+                    <td>'.$jfNO.'</td>';
+                echo $pick1;
+                echo '
+                    <td>'.$shipper.'</td>
+                    <td>'.$consignee.'</td>
+                    <td>'.$cartons.'</td>
+                    <td>'.$purchaseno.'</td>
+                    <td>'.$lcbank.'</td>
+                    <td>'.$hbl.'</td>
+                    <td>'.$mbl.'</td>
+                    <td>'.$origin.'</td>
+                    <td>'.$etd.'</td>
+                    <td>'.$eta.'</td>
+                    <td>'.$ata.'</td>
+                    <td>'.$FlightNo.'</td>
+                    <td>'.$aircraft.'</td>
+                    <td>'.$forwader.'</td>
+                    <td>'.$whse.'</td>
+                    <td>'.$aline.'</td>
+                    <td>'.$dt_recvd_client.'</td>
+                    <td>'.$hawb.'</td>
+                    <td>'.$dt_pickup_docs.'</td>
+                    <td>'.$broker.'</td>
+                    <td>'.$dt_recvd_budget.'</td>
+                    <td>'.$rfpduedate.'</td>
+                    <td>'.$color_select.'</td>
+                </tr>
+                ';
+
+          }
+
+
+          echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+          ';
+      }
+  }
+
+function get_audit_commodity_air(){
+   $jobfile = $this->input->post('jbNum');
+
+      $audit_commodity_air = $this->Jobdata->get_commodity_air_audit($jobfile);
+
+      if($audit_commodity_air == NULL){
+        echo '<i style="color:red;">No Commodity Yet</i>';
+      }else{
+
+          echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:3000px;">
+                <thead>
+                  <tr>
+                      <th>Product Name</th>
+                      <th>Reference Entry No</th>
+                      <th>Gross Weight</th>
+                      <th>Date Sent Final Assessment</th>
+                      <th>Date Paid</th>
+                      <th>Date Sent Pre Assessment</th>
+                      <th>Date BOC Cleared</th>
+                      <th>Target Delivery Date</th>
+                      <th>Actual Pull Out Date At NAIA</th>
+                      <th>Date Received at Warehouse</th>
+                      <th>Hauler/Trucker Name</th>
+                      <th>Total Storage</th>
+                      <th>Additional Per Day Include VAT</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_commodity_air as $row) {
+            echo '
+              <tr class="airCommodityRow">
+                  <td class="hidden">'.$row->Products_AirId.'</td>
+                  <td>'.$row->ProductName.'</td>
+                  <td>'.$row->RefEntryNo.'</td>
+                  <td>'.$row->GrossWeight.'</td>
+                  <td>'.$row->DateSentFinalAssessment.'</td>
+                  <td>'.$row->DatePaid.'</td>
+                  <td>'.$row->DateSentPreAssessment.'</td>
+                  <td>'.$row->DateBOCCleared.'</td>
+                  <td>'.$row->TargetDeliveryDate.'</td>
+                  <td>'.$row->ActualPullOutDateAtNAIA.'</td>
+                  <td>'.$row->DateReceivedAtWhse.'</td>
+                  <td>'.$row->HaulerOrTruck.'</td>
+                  <td>'.$row->TotalStorage.'</td>
+                  <td>'.$row->AdtlPerDayncludeVat.'</td>
+              </tr>
+            ';
+          }
+           echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+          ';
+
+      }
 }
+
+function get_audit_commodity_air_history(){
+  $commodityID = $this->input->post('commodityID');
+
+      $audit_commodity_air = $this->Jobdata->get_commodity_air_audit_history($commodityID);
+
+      if($audit_commodity_air == NULL){
+        echo '<i style="color:red;">No Commodity Yet</i>';
+      }else{
+
+          echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:3000px;cursor:pointer;">
+                <thead>
+                  <tr>
+                      <th>Date Updated</th>
+                      <th>Username</th>
+                      <th>Full Name</th>
+                      <th>Product Name</th>
+                      <th>Reference Entry No</th>
+                      <th>Gross Weight</th>
+                      <th>Date Sent Final Assessment</th>
+                      <th>Date Paid</th>
+                      <th>Date Sent Pre Assessment</th>
+                      <th>Date BOC Cleared</th>
+                      <th>Target Delivery Date</th>
+                      <th>Actual Pull Out Date At NAIA</th>
+                      <th>Date Received at Warehouse</th>
+                      <th>Hauler/Trucker Name</th>
+                      <th>Total Storage</th>
+                      <th>Additional Per Day Include VAT</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_commodity_air as $row) {
+            echo '
+              <tr>
+                  <td class="hidden">'.$row->Products_AirId.'</td>
+                  <td>'.$row->DateUpdated.'</td>
+                  <td>'.$row->UserName.'</td>
+                  <td>'.$row->Full_Name.'</td>
+                  <td>'.$row->ProductName.'</td>
+                  <td>'.$row->RefEntryNo.'</td>
+                  <td>'.$row->GrossWeight.'</td>
+                  <td>'.$row->DateSentFinalAssessment.'</td>
+                  <td>'.$row->DatePaid.'</td>
+                  <td>'.$row->DateSentPreAssessment.'</td>
+                  <td>'.$row->DateBOCCleared.'</td>
+                  <td>'.$row->TargetDeliveryDate.'</td>
+                  <td>'.$row->ActualPullOutDateAtNAIA.'</td>
+                  <td>'.$row->DateReceivedAtWhse.'</td>
+                  <td>'.$row->HaulerOrTruck.'</td>
+                  <td>'.$row->TotalStorage.'</td>
+                  <td>'.$row->AdtlPerDayncludeVat.'</td>
+              </tr>
+            ';
+          }
+           echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+          ';
+
+      }
+}
+
+
+function get_audit_charges_air(){
+  $jobfile = $this->input->post('jbNum');
+
+      $audit_charges_air = $this->Jobdata->get_charges_air_audit($jobfile);
+
+      if($audit_charges_air == NULL){
+        echo '<i style="color:red;">No RunningCharges Yet</i>';
+      }else{
+
+        echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:3000px;">
+                <thead>
+                  <tr>
+                      <th>Date Updated</th>
+                      <th>User Name</th>
+                      <th>Full Name</th>
+                      <th>Lodgement Fee</th>
+                      <th>Break Bulk Fee</th>
+                      <th>Storage Fee</th>
+                      <th>Bad Cargo Order Fee</th>
+                      <th>VCRC</th>
+                      <th>CNI</th>
+                      <th>CNIU</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_charges_air as $row) {
+            echo '
+              <tr>
+                  <td>'.$row->DateUpdated.'</td>
+                  <td>'.$row->UserName.'</td>
+                  <td>'.$row->Full_Name.'</td>
+                  <td>'.$row->LodgementFee.'</td>
+                  <td>'.$row->BreakBulkFee.'</td>
+                  <td>'.$row->StorageFee.'</td>
+                  <td>'.$row->BadCargoOrderFee.'</td>
+                  <td>'.$row->VCRC.'</td>
+                  <td>'.$row->CNI.'</td>
+                  <td>'.$row->CNIU.'</td>
+              </tr>
+            ';
+          }
+
+            echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+          ';
+      }
+}
+
+/*HISTORY END*/
+
+
+/*VIEW AUDIT TRAIL*/
+
+  function get_manila_audit_view(){
+
+    $montype = $this->input->post('montype');
+    $audit_manila = $this->Jobdata->get_manilaAudit_view($montype);
+
+
+    if($audit_manila == NULL){
+        echo '<i style="color:red;">No Jobfile Yet</i>';
+    }else{
+
+         echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed order-table-audit" style="width:4000px;cursor:pointer;">
+                <thead>
+                  <tr>
+                      <th>Jobfile Number</th>
+                      <th>Color Stages</th>
+                      <th>Shipper</th>
+                      <th>Consignee</th>
+                      <th>PI/PO No.</th>
+                      <th>House Bill Lading No.</th>
+                      <th>Master Bill Lading No.</th>
+                      <th>Master Bill Lading No.2</th>
+                      <th>Letter Credit From Bank</th>
+                      <th>Registry</th>
+                      <th>Origin</th>
+                      <th>Date Received Notice From Clients</th>
+                      <th>Date Received Of BL</th>
+                      <th>Date Received Of Other Docs</th>
+                      <th>Broker</th>
+                      <th>Date Request Budget to GL</th>
+                      <th>Request for Payment Due Date</th>
+                      <th>Color Selectivity</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_manila as $row) {
+
+            $pick = $row->IsBackground;
+                if($pick==0){
+                    $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                  }else{
+                    $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                  }
+
+            echo '
+            <tr class="rowTable">
+                <td class="hidden">'.$row->JobFileId.'</td>
+                <td>'.$row->JobFileNo.'</td>';
+            echo $pick1;
+            echo' <td>'.$row->ShipperName.'</td>
+                  <td>'.$row->ConsigneeName.'</td>
+                  <td>'.$row->PurchaseOrderNo.'</td>
+                  <td>'.$row->HouseBillLadingNo.'</td>
+                  <td>'.$row->MasterBillLadingNo.'</td>
+                  <td>'.$row->MasterBillLadingNo2.'</td>
+                  <td>'.$row->LetterCreditFromBank.'</td>
+                  <td>'.$row->Registry.'</td>
+                  <td>'.$row->Origin.'</td>
+                  <td>'.$row->DateReceivedNoticeFromClients.'</td>
+                  <td>'.$row->DateReceivedOfBL.'</td>
+                  <td>'.$row->DateReceivedOfOtherDocs.'</td>
+                  <td>'.$row->Broker.'</td>
+                  <td>'.$row->DateRequestBudgetToGL.'</td>
+                  <td>'.$row->RFPDueDate.'</td>
+                  <td>'.$row->ColorSelectivityName.'</td>
+            </tr>
+            ';
+          }
+
+            echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+            ';
+
+    }
+  }
+
+
+    function get_audit_vessel_view(){
+      $jobfile = $this->input->post('jbNum');
+
+      $audit_vessel = $this->Jobdata->get_vessel_audit_view($jobfile);
+
+       if($audit_vessel == NULL){
+        echo '<i style="color:red;">No Vessel History Yet</i>';
+        }else{
+
+            echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:2000px;cursor:pointer;">
+                <thead>
+                  <tr>
+                      
+                      <th>Carrier Name</th>
+                      <th>Vessel / Voyage No.</th>
+                      <th>Discharge Time</th>
+                      <th>Actual Berthing Time</th>
+                      <th>Estimated Departure</th>
+                      <th>Estimated Arrival</th>
+                      <th>Actual Arrival Time</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_vessel as $row ) {
+            echo '
+              <tr class="vesselRow">
+                  <td class="hidden">'.$row->JobFileNo.'</td>
+                  <td class="hidden">'.$row->CarrierByJobFileId.'</td> 
+                  <td>'.$row->CarrierName.'</td>
+                  <td>'.$row->VesselVoyageNo.'</td>
+                  <td>'.$row->DischargeTime.'</td>
+                  <td>'.$row->BerthingTime.'</td>
+                  <td>'.$row->EstDepartureTime.'</td>
+                  <td>'.$row->EstArrivalTime.'</td>
+                  <td>'.$row->ActualArrivalTime.'</td> 
+              </tr>
+            ';
+          }
+
+          echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+            ';
+        }
+    }
+
+    function get_audit_container_view(){
+        $jobfile = $this->input->post('jbNum');
+
+      $audit_container = $this->Jobdata->get_container_audit_view($jobfile);
+
+       if($audit_container == NULL){
+        echo '<i style="color:red;">No Container History Yet</i>';
+        }else{
+
+            echo '
+             <div class="col-lg-12" style="height:300px;overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:4000px;cursor:pointer;">
+                <thead>
+                  <tr>
+                      <th>Vessel / Voyage No.</th>
+                      <th>Container No</th>
+                      <th>Container Size</th>
+                      <th>No of Cartons</th>
+                      <th>Date File Entry To BOC</th>
+                      <th>Date BOC Cleared</th>
+                      <th>Date Sent Pre Assessment</th>
+                      <th>Date Paid</th>
+                      <th>Date Sent Final Assessment</th>
+                      <th>Reference Entry Number</th>
+                      <th>Hauler / Trucker Name</th>
+                      <th>Start Of Demmurage</th>
+                      <th>Start Of Storage</th>
+                      <th>Target Delivery Date</th>
+                      <th>Gate In at Port</th>
+                      <th>Gate Out At Port</th>
+                      <th>Actual Delivery At Warehouse</th>
+                      <th>Date Received At Warehouse</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+
+          foreach ($audit_container as $row ) {
+            echo '
+            <tr class="containerRow">
+                <td class="hidden">'.$row->JobFileNo.'</td>
+                <td class="hidden">'.$row->ContainerByCarrierId.'</td>
+                <td>'.$row->VesselVoyageNo.'</td>
+                <td>'.$row->ContainerNo.'</td>
+                <td>'.$row->ContainerSize.'</td>
+                <td>'.$row->NoOfCartons.'</td>
+                <td>'.$row->DateFileEntryToBOC.'</td>
+                <td>'.$row->DateBOCCleared.'</td>
+                <td>'.$row->DateSentPreAssessment.'</td>
+                <td>'.$row->DatePaid.'</td>
+                <td>'.$row->DateSentFinalAssessment.'</td>
+                <td>'.$row->RefEntryNo.'</td>
+                <td>'.$row->HaulerOrTruck.'</td>
+                <td>'.$row->StartOfDemorage.'</td>
+                <td>'.$row->StartOfStorage.'</td>
+                <td>'.$row->TargetDeliveryDate.'</td>
+                <td>'.$row->GateInAtPort.'</td>
+                <td>'.$row->GateOutAtPort.'</td>
+                <td>'.$row->ActualDeliveryAtWarehouse.'</td>
+                <td>'.$row->DateReceivedAtWhse.'</td>
+            </tr>
+            ';
+          }
+
+          echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+            ';
+        }
+    }
+
+    function get_audit_commodity_view(){
+       $jobfile = $this->input->post('jbNum');
+
+      $audit_commodity = $this->Jobdata->get_commodity_audit_view($jobfile);
+
+       if($audit_commodity == NULL){
+        echo '<i style="color:red;">No Commodity History Yet</i>';
+        }else{
+
+          echo '
+             <div class="col-lg-12" style="height:300px;overflow:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:100%;cursor:pointer;">
+                <thead>
+                  <tr>
+                      <th>Product Name</th>
+                      <th>Container No</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_commodity as $row) {
+            echo '
+              <tr class="commodityRow">
+                <td class="hidden">'.$row->JobFileNo.'</td>
+                <td class="hidden">'.$row->ProductsByContainerId.'</td>
+                <td>'.$row->ProductName.'</td>
+                <td>'.$row->ContainerNo.'</td>
+              </tr>
+            ';
+          }
+
+           echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+            ';
+
+        }
+
+    }
+
+
+
+  }
+
+
 
 
 ?>

@@ -23,6 +23,7 @@
 
 						    </div>
 						  </div>
+						  <?php if($role->RoleId == "1"){ ?>
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
@@ -38,6 +39,7 @@
 								</ul>
 						    </div>
 						  </div>
+						  <?php }else{} ?>
 						</div>
 			<!-- End Accordion -->
 		</div>
@@ -537,11 +539,11 @@
 
 		function changePlaceHolder(monType){
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Air Freight');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Sea Freight Outport');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name to Search from Sea Freight Manila');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}
 		}
 </script>

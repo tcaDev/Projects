@@ -20,8 +20,9 @@
                               
                                     <h4>Type Of User :</h4>
 
-                                     <label class="radio-inline"><input type="radio" value="2" name="optradio" class="filport" checked="checked" style="transform: scale(1.5);">Filport User</label>
-                                     <label class="radio-inline"><input type="radio" value="1" name="optradio" class="client" style="transform: scale(1.5);">Client User</label>
+                                     <label class="radio-inline"><input type="radio" value="5" name="optradio" class="filport" checked="checked" style="transform: scale(1.5);">Filport User</label>
+                                     <label class="radio-inline"><input type="radio" value="2" name="optradio" class="client" style="transform: scale(1.5);">Client User</label>
+                                     
                                 <hr>
                             </div>
 

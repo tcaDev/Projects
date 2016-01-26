@@ -1,5 +1,3 @@
-
-
 <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
 		<button type="button" class="close btn-close" data-dismiss="modal">&times;</button>

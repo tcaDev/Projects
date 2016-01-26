@@ -74,6 +74,7 @@
 				  	<div id="commodities-audit-air" class="tab-pane fade">
 				  			<br>
 					  		<h4 style="padding-left: 25px;">Commidity</h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="commodity-audit-list-air"></div>
@@ -105,14 +106,34 @@
   </div>
 
 
+ <!-- Commodity History -->
+<!-- Modal -->
+  <div class="modal fade" id="commodity_history_air" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Commodity History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="commodity-auditTrail-air"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 <script>
 	
 /*Get List Of Air History*/
 
 $(document).on('click','#collapse2 #audit-air',function(){
-
-
 
     $.ajax({
 	  		method: "GET",
@@ -131,5 +152,85 @@ $(document).on('click','#collapse2 #audit-air',function(){
  /*End*/
 
 
+ $(document).on('dblclick','.table-audit-air .airRow',function(){
+
+ 	$('#audit-airTrail').modal('show');
+
+ 	var jbNum2 = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	 var jbNum = $(this).closest('tr').children('td:eq(0)').text(); 
+ 	 var shipper = $(this).closest('tr').children('td:eq(3)').text(); 
+ 	 var consignee = $(this).closest('tr').children('td:eq(4)').text(); 
+
+ 	$('.auditTrail-air').text(jbNum2);
+ 	$('.auditTrail-air-shipper').text(shipper);
+ 	$('.auditTrail-air-consignee').text(consignee);
+
+
+ 	/*Jobfile*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_jobfile_air');?>",
+			  beforeSend: function() {
+							$('.jobfile-audit-list-air').html('<a class="jobfile-audit-list-air"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading JobFile...</a>');
+ 					  	},
+	  		data: { jbNum:jbNum,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.jobfile-audit-list-air').html(data);
+		});
+
+  /*Commodity*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_commodity_air');?>",
+			  beforeSend: function() {
+							$('.commodity-audit-list-air').html('<a class="commodity-audit-list-air"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading JobFile...</a>');
+ 					  	},
+	  		data: { jbNum:jbNum,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.commodity-audit-list-air').html(data);
+		});
+
+/*Running Charges*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_charges_air');?>",
+			  beforeSend: function() {
+							$('.charges-audit-list-air').html('<a class="charges-audit-list-air"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading JobFile...</a>');
+ 					  	},
+	  		data: { jbNum:jbNum,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.charges-audit-list-air').html(data);
+		});
+
+ });
+
+$(document).on('dblclick','.commodity-audit-list-air .airCommodityRow',function(){
+
+/*var jbNum = $('.auditTrail-mnila').text();*/
+
+	var commodityID = $(this).closest('tr').children('td:eq(0)').text(); 
+ 	/*Commodity*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_commodity_air_history');?>",
+			   beforeSend: function() {
+							$('.commodity-auditTrail-air').html('<a class="commodity-auditTrail-air"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
+ 					  	},
+	  		data: { commodityID:commodityID,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.commodity-auditTrail-air').html(data);
+		});
+
+
+ 	$('#commodity_history_air').modal('show');
+});
 
 </script>

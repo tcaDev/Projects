@@ -30,7 +30,7 @@
       <div class="modal-content" style="width:180%;right:40%;padding: 10px;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Audit Trail - outports</h4>
+          <h4 class="modal-title">Audit Trail - Outport</h4>
         </div>
         <div class="modal-body">
 
@@ -64,7 +64,7 @@
 
 				  	<div id="jobfile-audit-outport" class="tab-pane fade in active">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Jobfile</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Jobfile History</h4>
 					  		<br>
 
 					  		<div class="jobfile-audit-list-outport"></div>
@@ -74,7 +74,8 @@
 
 				  	<div id="vessel-audit-outport" class="tab-pane fade ">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Vessel</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Vessel </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="vessel-audit-list-outport"></div>
@@ -84,7 +85,8 @@
 
 				  	<div id="container-audit-outport" class="tab-pane fade ">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Container</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Container </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="container-audit-list-outport"></div>
@@ -94,7 +96,8 @@
 
 				  	<div id="commodities-audit-outport" class="tab-pane fade">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Commidity</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Commidity </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="commodity-audit-list-outport"></div>
@@ -104,7 +107,7 @@
 
 				  	<div id="running-charges-audit-outport" class="tab-pane fade">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Running Charges</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Running Charges History</h4>
 					  		<br>
 
 					  		<div class="charges-audit-list-outport"></div>
@@ -127,7 +130,76 @@
 
 
 
-			
+<!-- Vessel History -->
+<!-- Modal -->
+  <div class="modal fade" id="vessel_history_outport" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vessel History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="vessel-auditTrail-outport"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+<!-- Container History -->
+<!-- Modal -->
+  <div class="modal fade" id="container_history_outport" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Container History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="container-auditTrail-outport"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Commodity History -->
+<!-- Modal -->
+  <div class="modal fade" id="commodity_history_outport" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Commodity History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="commodity-auditTrail-outport"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <script>
@@ -155,7 +227,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 
     $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_manila_audit');?>",
+			  url: "<?php echo base_url('Job/get_manila_audit_view');?>",
 			  beforeSend: function() {
 		              $('.table-audit-outport').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
@@ -173,14 +245,15 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 
 
 
- $(document).on('dblclick','.rowTable',function(){
+ $(document).on('dblclick','.table-audit-outport .rowTable',function(){
  	$('#audit-outportTrail').modal('show');
 
- 	 var jbNum = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	var jbNum2 = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	 var jbNum = $(this).closest('tr').children('td:eq(0)').text(); 
  	 var shipper = $(this).closest('tr').children('td:eq(3)').text(); 
  	 var consignee = $(this).closest('tr').children('td:eq(4)').text(); 
 
- 	$('.auditTrail-outport').text(jbNum);
+ 	$('.auditTrail-outport').text(jbNum2);
  	$('.auditTrail-outport-shipper').text(shipper);
  	$('.auditTrail-outport-consignee').text(consignee);
 
@@ -202,7 +275,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 /*Vessel*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_vessel');?>",
+			  url: "<?php echo base_url('Job/get_audit_vessel_view');?>",
 			   beforeSend: function() {
 							$('.vessel-audit-list-outport').html('<a class="vessel-audit-list-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Vessel...</a>');
  					  	},
@@ -216,7 +289,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 /*Container*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_container');?>",
+			  url: "<?php echo base_url('Job/get_audit_container_view');?>",
 			   beforeSend: function() {
 							$('.container-audit-list-outport').html('<a class="container-audit-list-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
  					  	},
@@ -230,7 +303,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 /*Commodity*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_commodity');?>",
+			  url: "<?php echo base_url('Job/get_audit_commodity_view');?>",
 			   beforeSend: function() {
 							$('.commodity-audit-list-outport').html('<a class="commdoity-audit-list-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
  					  	},
@@ -257,5 +330,83 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 
  
  });
+
+
+
+ $(document).on('dblclick','.vessel-audit-list-outport .vesselRow',function(){
+
+ 	/*var jbNum = $('.auditTrail-mnila').text();*/
+ 	 var vesselID = $(this).closest('tr').children('td:eq(1)').text(); 
+
+ 	/*Vessel*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_vessel');?>",
+			   beforeSend: function() {
+							$('.vessel-auditTrail-outport').html('<a class="vessel-auditTrail-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Vessel...</a>');
+ 					  	},
+	  		data: { vesselID:vesselID,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.vessel-auditTrail-outport').html(data);
+		});
+
+
+ 	$('#vessel_history_outport').modal('show');
+
+ });
+
+
+
+  $(document).on('dblclick','.container-audit-list-outport .containerRow',function(){
+
+ 	/*var jbNum = $('.auditTrail-mnila').text();*/
+
+ 	 var containerID = $(this).closest('tr').children('td:eq(1)').text(); 
+
+ 	/*Container*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_container');?>",
+			   beforeSend: function() {
+							$('.container-auditTrail-outport').html('<a class="container-auditTrail-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
+ 					  	},
+	  		data: { containerID:containerID,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.container-auditTrail-outport').html(data);
+		});
+
+
+ 	$('#container_history_outport').modal('show');
+
+ });
+
+
+  $(document).on('dblclick','.commodity-audit-list-outport .commodityRow',function(){
+
+	/*var jbNum = $('.auditTrail-mnila').text();*/
+
+	var commodity = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	/*Commodity*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_commodity');?>",
+			   beforeSend: function() {
+							$('.commodity-auditTrail-outport').html('<a class="commodity-auditTrail-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
+ 					  	},
+	  		data: { commodity:commodity,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.commodity-auditTrail-outport').html(data);
+		});
+
+
+ 	$('#commodity_history_outport').modal('show');
+
+});
 
 </script>

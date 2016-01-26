@@ -13,7 +13,7 @@
         	</div>     		
     	</div>
 
-    	<div class="table-audit-manila"></div>
+    	<div class="table-audit-manila" ></div>
 
 </div>	
 
@@ -64,7 +64,7 @@
 
 				  	<div id="jobfile-audit" class="tab-pane fade in active">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Jobfile</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Jobfile History</h4>
 					  		<br>
 
 					  		<div class="jobfile-audit-list"></div>
@@ -74,7 +74,8 @@
 
 				  	<div id="vessel-audit" class="tab-pane fade ">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Vessel</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Vessel </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="vessel-audit-list"></div>
@@ -84,7 +85,8 @@
 
 				  	<div id="container-audit" class="tab-pane fade ">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Container</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Container </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="container-audit-list"></div>
@@ -94,7 +96,8 @@
 
 				  	<div id="commodities-audit" class="tab-pane fade">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Commidity</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Commidity </h4>
+					  		<h6 style="padding-left: 15px;font-weight:900;">* Double Click Table Row</h6>
 					  		<br>
 
 					  		<div class="commodity-audit-list"></div>
@@ -104,7 +107,7 @@
 
 				  	<div id="running-charges-audit" class="tab-pane fade">
 				  			<br>
-					  		<h4 style="padding-left: 25px;">Running Charges</h4>
+					  		<h4 style="padding-left: 25px;font-weight:900;">Running Charges History</h4>
 					  		<br>
 
 					  		<div class="charges-audit-list"></div>
@@ -127,7 +130,75 @@
 
 
 
-			
+<!-- Vessel History -->
+<!-- Modal -->
+  <div class="modal fade" id="vessel_history_manila" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Vessel History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="vessel-auditTrail-manila"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- Container History -->
+<!-- Modal -->
+  <div class="modal fade" id="container_history_manila" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Container History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="container-auditTrail-manila"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Commodity History -->
+<!-- Modal -->
+  <div class="modal fade" id="commodity_history_manila" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Commodity History</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="commodity-auditTrail-manila"></div>
+
+        </div>
+        <div class="footer-modal">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <script>
@@ -155,7 +226,7 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 
     $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_manila_audit');?>",
+			  url: "<?php echo base_url('Job/get_manila_audit_view');?>",
 			  beforeSend: function() {
 		              $('.table-audit-manila').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
@@ -173,14 +244,14 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 
 
 
- $(document).on('dblclick','.rowTable',function(){
- 	$('#audit-manilaTrail').modal('show');
-
- 	 var jbNum = $(this).closest('tr').children('td:eq(1)').text(); 
+ $(document).on('dblclick','.table-audit-manila .rowTable',function(){
+ 	
+ 		var jbNum2 = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	 var jbNum = $(this).closest('tr').children('td:eq(0)').text(); 
  	 var shipper = $(this).closest('tr').children('td:eq(3)').text(); 
  	 var consignee = $(this).closest('tr').children('td:eq(4)').text(); 
 
- 	$('.auditTrail-mnila').text(jbNum);
+ 	$('.auditTrail-mnila').text(jbNum2);
  	$('.auditTrail-mnila-shipper').text(shipper);
  	$('.auditTrail-mnila-consignee').text(consignee);
 
@@ -202,7 +273,7 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 /*Vessel*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_vessel');?>",
+			  url: "<?php echo base_url('Job/get_audit_vessel_view');?>",
 			   beforeSend: function() {
 							$('.vessel-audit-list').html('<a class="vessel-audit-list"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Vessel...</a>');
  					  	},
@@ -216,7 +287,7 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 /*Container*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_container');?>",
+			  url: "<?php echo base_url('Job/get_audit_container_view');?>",
 			   beforeSend: function() {
 							$('.container-audit-list').html('<a class="container-audit-list"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
  					  	},
@@ -230,9 +301,9 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 /*Commodity*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_commodity');?>",
+			  url: "<?php echo base_url('Job/get_audit_commodity_view');?>",
 			   beforeSend: function() {
-							$('.commodity-audit-list').html('<a class="commdoity-audit-list"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
+							$('.commodity-audit-list').html('<a class="commodity-audit-list"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
  					  	},
 	  		data: { jbNum:jbNum,
 	  		}
@@ -255,7 +326,85 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 	  				$('.charges-audit-list').html(data);
 		});
 
+
+  		$('#audit-manilaTrail').modal('show');
  
  });
 
+
+ $(document).on('dblclick','.vessel-audit-list .vesselRow',function(){
+
+ 	/*var jbNum = $('.auditTrail-mnila').text();*/
+ 	 var vesselID = $(this).closest('tr').children('td:eq(1)').text(); 
+
+ 	/*Vessel*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_vessel');?>",
+			   beforeSend: function() {
+							$('.vessel-auditTrail-manila').html('<a class="vessel-auditTrail-manila"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Vessel...</a>');
+ 					  	},
+	  		data: { vesselID:vesselID,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.vessel-auditTrail-manila').html(data);
+		});
+
+
+ 	$('#vessel_history_manila').modal('show');
+
+ });
+
+
+ $(document).on('dblclick','.container-audit-list .containerRow',function(){
+
+ 	/*var jbNum = $('.auditTrail-mnila').text();*/
+
+
+ 	var containerID = $(this).closest('tr').children('td:eq(1)').text(); 
+
+ 	/*Container*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_container');?>",
+			   beforeSend: function() {
+							$('.container-auditTrail-manila').html('<a class="container-auditTrail-manila"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
+ 					  	},
+	  		data: { containerID:containerID,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.container-auditTrail-manila').html(data);
+		});
+
+
+ 	$('#container_history_manila').modal('show');
+
+ });
+
+
+$(document).on('dblclick','.commodity-audit-list .commodityRow',function(){
+
+	/*var jbNum = $('.auditTrail-mnila').text();*/
+
+	var commodity = $(this).closest('tr').children('td:eq(1)').text(); 
+ 	/*Commodity*/
+ 	 $.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Job/get_audit_commodity');?>",
+			   beforeSend: function() {
+							$('.commodity-auditTrail-manila').html('<a class="commodity-auditTrail-manila"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Commodity...</a>');
+ 					  	},
+	  		data: { commodity:commodity,
+	  		}
+		})
+  		.done(function(data) {
+	  				$('.commodity-auditTrail-manila').html(data);
+		});
+
+
+ 	$('#commodity_history_manila').modal('show');
+
+});
 </script>

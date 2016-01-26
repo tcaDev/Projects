@@ -54,13 +54,13 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2-1" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-1-2" data-backdrop="static" data-keyboard="false" role="dialog">
+					  <div class="modal fade" id="myModal-1-2-1" data-backdrop="static" data-keyboard="false" role="dialog">
 
 					    <div class="modal-dialog">
 
@@ -669,11 +669,11 @@ $(document).ready(function(){
 /*Refresh Modal When Close*/
 
 	/*add New jobfile*/
-	 var myBackup_jobfile = $('#myModal-1-2').clone();
+	 var myBackup_jobfile = $('#myModal-1-2-1').clone();
     
     // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
-        $('#myModal-1-2').modal('hide').remove();
+    $('body').on('hidden.bs.modal','#myModal-1-2-1',function() {
+        $('#myModal-1-2-1').modal('hide').remove();
         var myClone_jobfile = myBackup_jobfile.clone();
         $('body').append(myClone_jobfile);
         i=0;

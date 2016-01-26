@@ -192,6 +192,7 @@
 								 <div class="form-group">
 										 <label for="broker">Broker:</label>
 								  			<select name="broker" class="form-control input-sm broker-air">
+								  			<option> </option>
 								            	<?php  foreach($broker_data as $row){  ?> 
 								                <option value="<?php echo $row->BrokerId ?>">
 								                <?php echo stripslashes($row->FirstName) . " " . stripslashes($row->MiddleName) . " " . stripslashes($row->LastName); ?>
