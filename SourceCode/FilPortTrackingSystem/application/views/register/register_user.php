@@ -20,8 +20,8 @@
                               
                                     <h4>Type Of User :</h4>
 
-                                     <label class="radio-inline"><input type="radio" value="2" name="optradio" class="filport" checked="checked">Filport User</label>
-                                     <label class="radio-inline"><input type="radio" value="1" name="optradio" class="client">Client User</label>
+                                     <label class="radio-inline"><input type="radio" value="2" name="optradio" class="filport" checked="checked" style="transform: scale(1.5);">Filport User</label>
+                                     <label class="radio-inline"><input type="radio" value="1" name="optradio" class="client" style="transform: scale(1.5);">Client User</label>
                                 <hr>
                             </div>
 
@@ -135,7 +135,7 @@
 
       <div class="footer-modal">
         <hr>
-         <button type="submit" class="btn btn-default btn-primary btn-Save-AddUser"><span class="fa fa-plus fa-fw"></span> Add User</button>
+         <button type="button" class="btn btn-default btn-primary btn-Save-AddUser"><span class="fa fa-plus fa-fw"></span> Add User</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -261,7 +261,6 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').removeClass('hidden');
-     
       legit=1;
     }
   });
@@ -270,7 +269,6 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').addClass('hidden');
-     
       legit=2;
     }
   });
@@ -309,7 +307,8 @@ function validateEmail(email) {
 
     if(fname == ''){
       $("input[name=fname]").focus();
-    }else if(mname == ''){
+    }
+    else if(mname == ''){
       $("input[name=mname]").focus();
     }
     else if(lname == ''){
@@ -367,6 +366,9 @@ function validateEmail(email) {
           $('#message_user').text("");
           $('#message_user_email').fadeIn('slow').text("Please Choose Consignee...");
           $('#message_user_email').fadeOut(3000);
+        } else{
+          legit =0;
+          $(this).click();
         }
     }
     else if($('.country_addUser option:selected').val() == '0'){
@@ -374,7 +376,6 @@ function validateEmail(email) {
         $('#message_user_email').fadeIn('slow').text("Please Choose Country...");
         $('#message_user_email').fadeOut(3000);
     }
-
     else{
 
        $('#message_user_email').text("");
