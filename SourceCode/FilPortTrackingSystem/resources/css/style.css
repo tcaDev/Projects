@@ -78,6 +78,27 @@ th{
 
 }
 
+.menu-tiles2{
+
+    margin : 5px;   
+
+    left : 25%;
+
+    width: 25%;
+
+    height: 160px !important;
+
+    position: relative;
+
+    float: left;
+
+
+
+    /*opacity: 0.8;*/      
+
+}
+
+
 
 
 
