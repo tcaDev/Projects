@@ -129,6 +129,13 @@ class Job_outport_update extends CI_Controller {
         $this->db->where('JobFileId', $jb);
         $this->db->update('JobFile', $data);
 
+            //get date created
+            $date= $this->Jobdata->select_jobfile_created($jbfl);
+            foreach($date as $row){
+                $datecreated =  $row->DateCreated;
+            }
+
+
     $session_data = $this->session->userdata('logged_in');
     $userid = $session_data['uid'];
     
@@ -144,7 +151,7 @@ class Job_outport_update extends CI_Controller {
                'ColorSelectivityId'     => $color_selectivity,
                'Registry'               => $reg,
                'LockedBy_UserId'        => $userid,
-/*               'DateCreated'            => Date('Y-m-d H:i'),*/
+               'DateCreated'            => $datecreated,
                'Origin_CountryId'       => $country, 
                'OriginCity'             => $city,   
                'HouseBillLadingNo'      => $hbfl,

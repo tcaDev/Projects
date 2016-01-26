@@ -1880,9 +1880,9 @@ if($query->num_rows() == 1){
                'ColorSelectivityId'     => $color_select,
                'Registry'               => $registry,
                'LockedBy_UserId'        => $userid,
-               'DateCreated'            => date('Y-m-d H:i:s'),
-               'Origin_CountryId'       => $origin,
-               'OriginCity'             => $origcity,
+               'DateCreated'            => Date('Y-m-d H:i'),
+               'Origin_CountryId'       => $origin, 
+               'OriginCity'             => $origcity,   
                'HouseBillLadingNo'      => $hbl,
                'MasterBillLadingNo'     => $mbl,
                'MasterBillLadingNo2'           =>$mbl2,
@@ -1892,10 +1892,6 @@ if($query->num_rows() == 1){
                'DateReceivedOfOtherDocs'       =>$dt_pickup_docs,
                'DateRequestBudgetToGL'         =>$dt_req_budget,
                'RFPDueDate'                    =>$ref_due_dt,
-      /*         'ForwarderWarehouse'            => NULL,// la png ui
-               'FlightNo'                      =>NULL ,
-               'AirCraftNo'                    =>NULL,
-               'DateReceivedNoticeFromForwarder'  =>NULL,*/
                'DateUpdated'                      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'                 =>$userid
 
@@ -2237,7 +2233,7 @@ function comodity(){
          $data2 = array(
                      'ProductsByContainerId'    => $lastid,
                      'ProductId'                => $product_name,
-                     'ContainerByCarrierId'     => $con_id,
+                     'ContainerByCarrierId'     => $con_ids,
                      'DateUpdated'              => Date('Y-m-d H:i'),
                      'UpdatedBy_UserId'         => $userid
               );

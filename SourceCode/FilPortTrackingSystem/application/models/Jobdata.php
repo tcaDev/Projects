@@ -274,6 +274,10 @@ function get_user(){
    return $query->result();
 
  }
+ function select_jobfile_created($jb){
+        $query=$this->db->query("SELECT * FROM `JobFile` where `JobFileNo`='$jb'");
+   return $query->result();
+ }
 
 
 }
