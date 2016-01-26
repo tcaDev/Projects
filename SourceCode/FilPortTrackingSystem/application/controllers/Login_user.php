@@ -9,6 +9,7 @@ class Login_user extends CI_Controller {
             parent::__construct();
             $this->load->helper('html');
             $this->load->model('User');	
+            $this->load->model('Jobdata');	
             $this->load->library('form_validation');
 
        }
@@ -100,10 +101,16 @@ class Login_user extends CI_Controller {
 		 	$data['countries']=$this->User->countries();
 		 	$data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+            $role = $this->User->get_role($session_data['uid']);
 
-			$this->load->view('header/header',$data);
-			$this->load->view('menu/views_menu' , $data);
-
+            if($role->RoleId == 2){
+				$this->load->view('header/header',$data);
+				$this->load->view('menu/views_menu_consignee' , $data);
+            }else{
+            	$this->load->view('header/header',$data);
+				$this->load->view('menu/views_menu' , $data);
+            }
+			
 		}else{
 			 $this->login();
 		}
@@ -254,9 +261,18 @@ class Login_user extends CI_Controller {
 		    /*$data['vessel'] = $this->User->get_vessel();*/
 		 	
 		 	 /*$data['manila'] = $this->User->get_jobfile_manila_global();*/
-		 
-			$this->load->view('header/header',$data);
-			$this->load->view('reports/reports_page');
+		 	$role = $this->User->get_role($session_data['uid']);
+            if($role->RoleId == 2){
+            	$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
+            	$jobfiles["jobfiles"] = $this->Jobdata->getJobFiles_Consignee($cName->ConsigneeName,4);
+				$this->load->view('header/header',$data);
+				$this->load->view('reports/reports_page_consignee',$jobfiles);
+            }else{
+          	    $this->load->view('header/header',$data);
+				$this->load->view('reports/reports_page');
+            }
+
+			
 		}else{
 			$this->login();
 		}
@@ -444,10 +460,21 @@ class Login_user extends CI_Controller {
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
 
-		    $data['manila'] = $this->User->get_jobfile_manila_global();
-		 
-			$this->load->view('header/header',$data);
-			$this->load->view('global/global_page' , $data);
+            $role = $this->User->get_role($session_data['uid']);
+            if($role->RoleId == 2){
+            	$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
+            	$data['manila'] = $this->User->get_jobfile_manila_global_consignee($cName->ConsigneeName);
+				$this->load->view('header/header',$data);
+				$this->load->view('global/global_page' , $data);
+            }else{
+            	$data['manila'] = $this->User->get_jobfile_manila_global();
+          	    $this->load->view('header/header',$data);
+				$this->load->view('global/global_page' , $data);
+            }
+
+		   
+		 	
+			
 		 }else{
 		 	$this->login();
 		  }
