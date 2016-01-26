@@ -16,8 +16,8 @@
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data">
-									  <li value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 
@@ -32,9 +32,9 @@
 						    </div>
 						    <div id="collapse2" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2">
-									  <li value="1"class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+									  <li id="audit-manila"  style="display:block;width:100%;"><a href="#tab_audit_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li id="audit-outport"style="display:block;width:100%;"><a href="#tab_audit_outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li id="audit-air" style="display:block;width:100%;"><a href="#tab_audit_air" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -45,7 +45,21 @@
 </div>
 
 		<div class="dash-side" >
-			<div class="tab-content">
+
+		<!-- Audit trail -->
+
+			<div class="hidden audit-trail tab-content">
+
+					<?php $this->load->view('reports/audit_trail_manila'); ?>
+
+					<?php $this->load->view('reports/audit_trail_outport'); ?>
+
+					<?php $this->load->view('reports/audit_trail_air'); ?>
+			</div>
+					
+
+		<!-- Search Consignee -->
+			<div class="tab-content search-consignee">
 			        <div class="repcon-table tab-pane active" id="tab_a">		        
 			        	<div class="col-md-12 ">
 				        	<div class="row">
@@ -74,6 +88,14 @@
 					</div>
 			</div>
 		</div>
+
+
+
+
+
+
+
+
 
 	<!-- Manila and Outport Details -->
 	 <div class="container">
@@ -480,7 +502,7 @@
 				changePlaceHolder(mon_Type);
 			});
 
-			$(document).on('click','.nav-data-2 li',function(){
+			/*$(document).on('click','.nav-data-2 li',function(){
 				mon_Type = $('.nav-data-2 .active').val();
 				//alert(mon_Type);
 				if($('#txt-search-consignee').val() != ""){
@@ -491,7 +513,7 @@
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 				}
 				changePlaceHolder(mon_Type);
-			});
+			});*/
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
@@ -521,7 +543,5 @@
 	</style>
 </html>
 
-<script>
-$("table").css('cursor','pointer');
-</script>
+
 

@@ -79,7 +79,7 @@ $db['default'] = array(
 	'username' => 'FilportAdmin',
 	'password' => 'TO_MP8^1N8(=',
 	'database' => 'dev_FilportTrackingSystem',
-	/*'hostname' => 'localhost',
+/*	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'dev_FilportTrackingSystem',*/

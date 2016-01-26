@@ -423,6 +423,25 @@ function validateEmail(email) {
                               content: 'New User Added.!',
                               confirm: function(){
                                   dia.close();
+                                  fname.val("");
+                                  lname.val("");
+                                  mname.val("");
+                                  bdate.val("");
+                                  contact1.val("");
+                                  contact2.val(""); 
+                                  addr.val("");
+                                  brgy.val(""); 
+                                  towncity.val(""); 
+
+                                  country.eq(0).attr('selected','selected'); 
+                                  consignee.eq(0).attr('selected','selected'); 
+
+                                  uname.val("");
+                                  email.val("");
+                                  pass.val("");
+                                  passconf.val(""); 
+
+                                  role :role
                                   $('#myModal_addUser').modal('hide');
                               }
                            });

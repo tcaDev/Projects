@@ -84,7 +84,7 @@
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu bullet pull-right">
-									  	<?php if($uid == "3"){?>
+									  	<?php if($username == "reinenadmin"){?>
 									    <li><a data-toggle="modal" href="#myModal_addUser"><i class="fa fa-user fa-fw"></i> Create User</a></li>
 									    <?php }else{}?>
 									    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
