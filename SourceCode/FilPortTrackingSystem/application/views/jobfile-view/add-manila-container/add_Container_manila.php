@@ -333,6 +333,7 @@ function check_Container_mnilas(container){
 
 
  $(document).on('click','.add_container',function(){
+ 	 var jbfl = $('.jobfile-addContainer-mnla').val();
  	$('.add_container').attr('disabled','disabled');
  	if($("#table-AddContainer-mnla table tbody tr td").length == 0){
  					$.confirm({
@@ -392,6 +393,7 @@ function check_Container_mnilas(container){
 					 url: "<?php echo base_url('Job/container');?>",
 			  		data: {
 			  				//from container tab
+			  				jbfl           :jbfl,
 			  				vessel_voyage  :vessel_voyage,
 			  			    containerId    :containerId,
 			  			    consize  	   :consize, 

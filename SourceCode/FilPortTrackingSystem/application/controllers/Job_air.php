@@ -189,51 +189,51 @@ function status_reports(){
       $products_insert = array
       					(
       						'ProductId'			  		    =>$prodid, 
-      						'JobFile_AirId'					=>$jobs,
-      						'RefEntryNo'					=>$refentry,
-      						'GrossWeight'					=>$gross,
-      						'DateSentFinalAssessment' 		=>$dtfinal_assess,
-      						'DatePaid'						=>$dtpaid,
-      						'DateSentPreAssessment'			=>$dtpre_assess,
-      						'DateBOCCleared'				=>$dt_boc_cleared,
+      						'JobFile_AirId'					  =>$jobs,
+      						'RefEntryNo'					    =>$refentry,
+      						'GrossWeight'				    	=>$gross,
+      						'DateSentFinalAssessment' =>$dtfinal_assess,
+      						'DatePaid'					    	=>$dtpaid,
+      						'DateSentPreAssessment'		=>$dtpre_assess,
+      						'DateBOCCleared'				  =>$dt_boc_cleared,
       						'TargetDeliveryDate'			=>$tdt,
-      						'ActualPullOutDateAtNAIA'		=>$ac_pu_dt_naia,
+      						'ActualPullOutDateAtNAIA'	=>$ac_pu_dt_naia,
       						'DateReceivedAtWhse'			=>$dt_rec_whse,
-      						'HaulerOrTruckId'				=>$hauler_trucker,
-      						'TotalStorage'					=>$total_stor,
+      						'HaulerOrTruckId'				  =>$hauler_trucker,
+      						'TotalStorage'					  =>$total_stor,
       						'AdtlPerDayncludeVat'			=>$adtlperday
 
       					);	
 
        $this->db->insert('Products_Air',$products_insert); 
-      /* $lastid =  $this->db->insert_id();*/
+        $lastid =  $this->db->insert_id();
 
-/*       $products_insert_h = array
+       $products_insert_h = array
       					(
-      						'Products_AirId'				=>$lastid,
-      						'ProductId'			  		    =>$prodid, 
-      						'JobFile_AirId'					=>$jobs,
-      						'RefEntryNo'					=>$refentry,
-      						'GrossWeight'					=>$gross,
-      						'DateSentFinalAssessment' 		=>$dtfinal_assess,
-      						'DatePaid'						=>$dtpaid,
-      						'DateSentPreAssessment'			=>$dtpre_assess,
-      						'DateBOCCleared'				=>$dt_boc_cleared,
-      						'TargetDeliveryDate'			=>$tdt,
-      						'ActualPullOutDateAtNAIA'		=>$ac_pu_dt_naia,
-      						'DateReceivedAtWhse'			=>$dt_rec_whse,
-      						'HaulerOrTruckId'				=>$hauler_trucker,
-      						'TotalStorage'					=>$total_stor,
-      						'AdtlPerDayncludeVat'			=>$adtlperday,
-      						'DateUpdated'					=>date('Y-m-d H:i'),
+      						'Products_AirId'			  	=>$lastid,
+                  'ProductId'               =>$prodid,
+                  'JobFile_AirId'           =>$jobs,
+                  'RefEntryNo'              =>$refentry,
+                  'GrossWeight'             =>$gross,
+                  'DateSentFinalAssessment' =>$dtfinal_assess,
+                  'DatePaid'                =>$dtpaid,
+                  'DateSentPreAssessment'   =>$dtpre_assess,
+                  'DateBOCCleared'          =>$dt_boc_cleared,
+                  'TargetDeliveryDate'      =>$tdt,
+                  'ActualPullOutDateAtNAIA' =>$ac_pu_dt_naia,
+                  'DateReceivedAtWhse'      =>$dt_rec_whse,
+                  'HaulerOrTruckId'         =>$hauler_trucker,
+                  'TotalStorage'            =>$total_stor,
+                  'AdtlPerDayncludeVat'     =>$adtlperday,
+      						'DateUpdated'				    	=>date('Y-m-d H:i'),
       						'UpdatedBy_UserId'				=>$userid
 
       					);	
 
        $this->db->insert('Products_AirHistory',$products_insert_h); 
-}*/
+}
      }
-   }
+   
 
   
     function check_jobfiles(){

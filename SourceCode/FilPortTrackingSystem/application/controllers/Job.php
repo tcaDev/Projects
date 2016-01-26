@@ -2019,7 +2019,14 @@ function container(){
   $session_data = $this->session->userdata('logged_in');
    $userid = $session_data['uid'];
    $vessel_voyage   =  $this->input->post('vessel_voyage');
-   $result   = $this->Jobdata->select_carrier($vessel_voyage);
+   $jbfl   =  $this->input->post('jbfl');
+
+  $job= $this->Jobdata->select_jobfile($jbfl);
+  foreach($job as $row){
+  $job =  $row->JobFileId;
+ }
+   
+   $result   = $this->Jobdata->select_carrier_job($job,$vessel_voyage);
  
 foreach($result as $row){
   $vessel_voyage =  $row->CarrierByJobFileId;

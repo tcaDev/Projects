@@ -87,7 +87,7 @@ class Job_air_update extends CI_Controller {
       					'DateRequestBudgetToGL'		        	=>$dtreqbudget,
       					'RFPDueDate'					              =>$rfpduedate,
       					'ColorSelectivityId'			          =>$color_select,
-      					'IsLocked'					              	=>1,
+      					'IsLocked'					              	=>0,
       					'LockedBy_UserId'			             	=>$userid,
       					'StatusId'						              =>$status
 
@@ -96,45 +96,45 @@ class Job_air_update extends CI_Controller {
        $this->db->where('JobFile_AirId',$job_id); 
        $this->db->update('JobFile_Air',$air_job); 
 
-/*        $job= $this->Jobdata->select_jobfile_air($jbfl);
+        $job= $this->Jobdata->select_jobfile_air($jbfl);
         foreach($job as $row){
          $job_id =  $row->JobFile_AirId;
         }
           $air_job2 = array(
-             	  'JobFile_AirId'			          =>$job_id,
-      					'JobFileNo' 			            =>$jbfl,
-      					'ShipperId' 			            =>$shipperid, 
-      					'ConsigneeId'   		          =>$cosigid,
-      					'NoOfCartons'			            =>$nocart,
-      					'PurchaseOrderNo'   	        =>$purchord,
-      					'LetterCreditNoFromBank'      =>$letcred,
-      					'HouseBillLadingNo'		        =>$hbl,
-      					'MasterBillLadingNo'	        =>$mbl,
-      					'Origin_CountryId'		        =>$countryid,
-      					'OriginCity'			            =>$city,
-      					'ETD'					                =>$etd,
-      					'ETA'					                =>$eta,
-      					'ATA'					                =>$ata,
-      					'FlightNo'				            =>$flight,
-      				  'Aircraft'				            =>$aircraft,
-      					'Forwarder'				            =>$forward,
-      					'Warehouse'				             =>$warehouse,
-      					'DateReceivedArrivalFromALine' =>$dt_rec_arv_aline,
-      					'DateReceivedArrivalFromClient'=>$dt_rec_arv_client,
-      					'DatePickUpHawb'			         =>$dtpickup_hawb,
-      					'DatePickUpOtherDocs'			     =>$dtpikup_docs,
-      					'BrokerId'						         =>$brokerid,
-      					'DateRequestBudgetToGL'		     =>$dtreqbudget,
-      					'RFPDueDate'					         =>$rfpduedate,
-      					'ColorSelectivityId'			     =>$color_select,
-      					'IsLocked'					           =>1,
-      					'LockedBy_UserId'				       =>$userid,
-      					'StatusId'					           =>$status,
-      					'DateUpdated'				           =>date('Y-m-d H:i'),
-      					'UpdatedBy_UserId'			    	 =>$userid
+             	  'JobFile_AirId'			       =>$job_id,
+                'JobFileNo'                =>$jbfl_new,
+                'ShipperId'                =>$shipperid, 
+                'ConsigneeId'              =>$cosigid,
+                'NoOfCartons'              =>$nocart,
+                'PurchaseOrderNo'          =>$purchord,
+                'LetterCreditNoFromBank'   =>$letcred,
+                'HouseBillLadingNo'        =>$hbl,
+                'MasterBillLadingNo'       =>$mbl,
+                'Origin_CountryId'         =>$countryid,
+                'OriginCity'               =>$city,
+                'ETD'                      =>$etd,
+                'ETA'                      =>$eta,
+                'ATA'                      =>$ata,
+                'FlightNo'                 =>$flight,
+                'Aircraft'                 =>$aircraft,
+                'Forwarder'                =>$forward,
+                'Warehouse'                =>$warehouse,
+                'DateReceivedArrivalFromALine'      =>$dt_rec_arv_aline,
+                'DateReceivedArrivalFromClient'     =>$dt_rec_arv_client,
+                'DatePickUpHawb'                    =>$dtpickup_hawb,
+                'DatePickUpOtherDocs'               =>$dtpikup_docs,
+                'BrokerId'                          =>$brokerid,
+                'DateRequestBudgetToGL'             =>$dtreqbudget,
+                'RFPDueDate'                        =>$rfpduedate,
+                'ColorSelectivityId'                =>$color_select,
+                'IsLocked'                          =>0,
+                'LockedBy_UserId'                   =>$userid,
+                'StatusId'                          =>$status,
+      					'DateUpdated'				                =>date('Y-m-d H:i'),
+      					'UpdatedBy_UserId'			    	      =>$userid
       				   );
 
-       $this->db->insert('JobFile_AirHistory',$air_job2); */
+       $this->db->insert('JobFile_AirHistory',$air_job2); 
      // }
 
      }

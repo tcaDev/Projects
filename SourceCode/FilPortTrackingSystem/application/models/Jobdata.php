@@ -123,6 +123,12 @@ function get_vessels($JobFile){
     where VesselVoyageNo='$vessel'  ORDER BY CarrierByJobFileId desc limit 1");
     return $query->result();
  }
+ function select_carrier_job($job,$vessel_voyage){
+    $query = $this->db->query("Select CarrierByJobFileId from CarrierByJobFile
+    where JobFileId='$job' and VesselVoyageNo='$vessel_voyage' limit 1");
+    return $query->result();
+ }
+
   function select_productcontainer($cont){
     $query = $this->db->query("Select ContainerByCarrierId from ContainerByCarrier
     where ContainerNo='$cont'  ORDER BY ContainerByCarrierId desc limit 1");

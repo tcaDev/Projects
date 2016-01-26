@@ -1,4 +1,4 @@
- var link = 'http://localhost/FilPortTrackingSystem';
+var link = 'http://localhost/FilPortTrackingSystem';
 
 
  $(document).ready(function(){	
@@ -469,7 +469,7 @@ $('.product_tab').keydown(function(e){
 									}
 });
 
-var link = 'http://localhost/FilPortTrackingSystem';
+
 
 
 function search(){

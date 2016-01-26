@@ -1,3 +1,4 @@
+ 	
  	//for getting the value to pop up modal in settings
 				 $('.get_consignee_datas').click(function(){
 
@@ -31,7 +32,7 @@
 			  	 if(country_ids!=0){ 
 						$.ajax({
 							  method: "POST",
-							  url: "http://yago/FilPortTrackingSystem/Login_user/select_country",
+							  url: link + "/Login_user/select_country",
 							  data: { countryid:country_ids,
 							  		  conname:Country 	  		  
 							  		}
@@ -87,7 +88,7 @@
 			  	  if(cid!=0){
 			  	  	$.ajax({
 						  method: "POST",
-					 	  url: "http://localhost/FilPortTrackingSystem/Login_user/select_country",
+					 	   url: link + "/Login_user/select_country",
 					  	  data: { countryid:cid,
 					  		  conname:Country 	  		  
 					  		}

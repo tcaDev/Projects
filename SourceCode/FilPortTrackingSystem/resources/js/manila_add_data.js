@@ -851,7 +851,7 @@ function insert_jobfile(){
 				        		backgroundDismiss: false,
 				        		content: 'Currently Adding Vessel(s)',
 				   	});
- 	   var jbfl   = $('.jobfiles').val();
+ 	     var jbfl       = $('.pill-jobfile-mnla-add .jobfiles').val();
        var table = $("#tableAddVessel-mnla table tbody");
          var t3  = $("#tableAddVessel-mnla table tbody tr").length;
 		 table.find('tr').each(function (count1) {
@@ -911,6 +911,7 @@ function insert_jobfile(){
  }
 
 function ins_contains(add_comodity){
+	   var jbfl       = $('.pill-jobfile-mnla-add .jobfiles').val();
 			var loadingText;
 			if(add_comodity == 1){
 				loadingText = "Currently Adding Container and Commodity";
@@ -960,6 +961,7 @@ function ins_contains(add_comodity){
 					url: link + "/Job/container/",
 			  		data: {
 			  				//from container tab
+			  			    jbfl           :jbfl,
 			  				vessel_voyage  :vessel_voyage,
 			  			    containerId    :containerId,
 			  			    consize  	   :consize, 

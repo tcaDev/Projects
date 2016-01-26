@@ -45,9 +45,9 @@ Class Update_jobfile_outport extends CI_Model
 
 
       $data2 = array(
+        'ContainerByCarrierId' => $carrierbyjobfile,
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
-      /*  'CarrierByJobFileId'   =>$vesid,*/
         'NoOfCartons'          =>$cartons,
         'RefEntryNo'           =>$refentry,
         'TruckerName'          => $truckername,
@@ -71,8 +71,7 @@ Class Update_jobfile_outport extends CI_Model
 
 
         );
-          $this->db->where('ContainerByCarrierId', $carrierbyjobfile);
-          $this->db->update('ContainerByCarrierHistory', $data2);
+          $this->db->insert('ContainerByCarrierHistory', $data2);
   }
 
 
@@ -95,21 +94,19 @@ Class Update_jobfile_outport extends CI_Model
         $this->db->update('CarrierByJobFile', $data);
 
        $data2 = array(
+        'CarrierByJobFileId'    => $Carrierid,
         'CarrierId'             => $cr,
-        'VesselVoyageNo'		=> $vessel,
+        'VesselVoyageNo'		    => $vessel,
         'DischargeTime'         => $discharge_time,
-        'EstDepartureTime'		=> $est_dept_time,
-        'EstArrivalTime'		=> $est_arrival_time,
+        'EstDepartureTime'	  	=> $est_dept_time,
+        'EstArrivalTime'		    => $est_arrival_time,
         'ActualArrivalTime'	    => $act_arrival_time,
         'DateUpdated'           => Date('Y-m-d H:i'),
         'UpdatedBy_UserId'      =>$userid
 
        );
 
-
-
-   	    $this->db->where('CarrierByJobFileId', $Carrierid);
-        $this->db->update('CarrierByJobFileHistory', $data2);
+        $this->db->insert('CarrierByJobFileHistory', $data2);
   }
 
   function product($prodconid,$prodid,$cbc){
@@ -124,14 +121,14 @@ Class Update_jobfile_outport extends CI_Model
         $this->db->update('ProductsByContainer', $data);
 
        $data2 = array(
-        'ProductId'				  => $prodid,
-        'ContainerByCarrierId'    => $cbc,
-        'DateUpdated'			  => $Date('Y-m-d H:i'),
-        'UpdatedBy_UserId'		  => $userid
+        'ProductsByContainerId'  => $prodconid
+        'ProductId'				       => $prodid,
+        'ContainerByCarrierId'   => $cbc,
+        'DateUpdated'			       => $Date('Y-m-d H:i'),
+        'UpdatedBy_UserId'		   => $userid
 
        );
-   	    $this->db->where('ProductsByContainerId', $prodconid);
-        $this->db->update('ProductsByContainerHistory', $data2);
+        $this->db->insert('ProductsByContainerHistory', $data2);
   }
 
 

@@ -62,6 +62,7 @@ Class Update_jobfile extends CI_Model
 
 
       $data2 = array(
+        'ContainerByCarrierId' => $cbcid,
         'ContainerNo'          => $containerno,
         'ContainerSize'        => $contno,
         'CarrierByJobFileId'   => $carrierbyjobfile,
@@ -88,8 +89,7 @@ Class Update_jobfile extends CI_Model
 
 
         );
-          $this->db->where('ContainerByCarrierId', $cbcid);
-          $this->db->update('ContainerByCarrierHistory', $data2);
+          $this->db->insert('ContainerByCarrierHistory', $data2);
   }
 
   function vessel($jb,$v,$est_dept_time,$est_arrival_time,
