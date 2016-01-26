@@ -216,9 +216,17 @@ class Job_air_update extends CI_Controller {
 
 function jobfile_add_charge_air(){
    $session_data = $this->session->userdata('logged_in');
-   $userid = $session_data['uid'];
-   $jobfile =  $this->input->post('jbfl');
-   $check             =  $this->input->post('check');
+   $userid       = $session_data['uid'];
+   $jobfile      =  $this->input->post('jbfl');
+   $lodge        =  $this->input->post('lodge');
+   $break_airs   =  $this->input->post('break_airs');
+   $bad_cargo      =  $this->input->post('bad_cargo');
+   $storage        =  $this->input->post('storage');
+   $vrc            =  $this->input->post('vrc');
+   $cni      =  $this->input->post('cni');
+   $cniu        =  $this->input->post('cniu');
+   
+/*   $check             =  $this->input->post('check');
    $lodge             =  $this->input->post('lodge');
    $cont_deposit      =  $this->input->post('cont_deposit');
    $thc_charges       =  $this->input->post('thc_charges');   
@@ -235,7 +243,7 @@ function jobfile_add_charge_air(){
    $bai_inspect       =  $this->input->post('bai_inspect');
    $sra_app           =  $this->input->post('sra_app');   
    $sra_inspect       =  $this->input->post('sra_inspect');
-   $bad_cargo         =  $this->input->post('bad_cargo');
+   $bad_cargo         =  $this->input->post('bad_cargo');*/
 /*   $all_charges       =  addslashes($this->input->post('all_charges'));
    $part_charges      =  addslashes($this->input->post('part_charges'));
 */
@@ -248,33 +256,49 @@ if($query->num_rows() ==1){*/
       $job     = $this->Jobdata->select_jobfile_air($jobfile);
         foreach($job as $row){
          $job_id =  $row->JobFile_AirId;
+         
         }
 
-  
+
+      $air     = $this->Jobdata->select_jobfile_air_charges($job_id);
+        foreach($air as $row){
+          $runid =  $row->RunnningCharges_AirId;
+        }
+
+
       $update_charges = array(
-              'LodgementFee'     => $lodge,
-               'ContainerDeposit' => $cont_deposit,
-               'THCCharges'       => $thc_charges,
-               'Arrastre'         => $arrastre,
-               'Wharfage'         => $wharfage,
-               'Weighing'         => $weight,
-               'DEL'              => $del,
-               'DispatchFee'      => $dispatch,
-               'Storage'          => $storage,
-               'Demorage'         => $demurrage,
-               'Detention'        => $detention,
-               'EIC'              => $eic,
-               'BAIApplication'   => $bai_app,
-               'BAIInspection'    => $bai_inspect,
-               'SRAApplication'   => $sra_app,
-               'SRAInspection'    => $sra_inspect,
-               'BadCargo'         => $bad_cargo
+               'JobFile_AirId'         =>$job_id,
+               'LodgementFee'          =>$lodge,
+               'BreakBulkFee'          =>$break_airs,
+               'StorageFee'            =>$storage,
+               'BadCargoOrderFee'      =>$bad_cargo,
+               'VCRC'                  =>$vrc,
+               'CNI'                   =>$cni,
+               'CNIU'                  =>$cniu
             /*   'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges*/
             );
 
               $this->db->where('JobFile_AirId', $job_id);
               $this->db->update('RunningCharges_Air', $update_charges);
+
+            $update_charges_history = array(
+               'RunnningCharges_AirId' =>$runid,
+               'JobFile_AirId'         =>$job_id,
+               'LodgementFee'          =>$lodge,
+               'BreakBulkFee'          =>$break_airs,
+               'StorageFee'            =>$storage,
+               'BadCargoOrderFee'      =>$bad_cargo,
+               'VCRC'                  =>$vrc,
+               'CNI'                   =>$cni,
+               'CNIU'                  =>$cniu,
+               'DateUpdated'           =>date('Y-m-d H:i'),
+               'UpdatedBy_UserId'      =>$userid
+            /*   'AllCharges'       => $all_charges,
+               'ParticularCharges'=> $part_charges*/
+            );
+
+              $this->db->insert('RunningCharges_AirHistory', $update_charges_history);
 
 /*
              $update_charges_history = array(

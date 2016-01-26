@@ -1855,7 +1855,7 @@ if($query->num_rows() == 1){
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
                'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UserId'  => $userid
+               'UpdatedBy_UsrId'  => $userid
         );
           $this->db->insert('RunningChargesHistory',$data2);
 
