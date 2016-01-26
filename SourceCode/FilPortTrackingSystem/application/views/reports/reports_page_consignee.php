@@ -57,25 +57,10 @@
                               <th><center> Consignee </center></th>
                               <th id="HBL"><center> House Airway Bill# </center></th>
                         	</thead>
-						
-						<?php foreach($jobfiles as $row){ ?>
-                     	 <tbody>
-                      	    <tr class="tableRow">
-                              <td><?php echo(stripslashes($row->JobFileNo));?></td>
-                              <td><?php echo(stripslashes($row->ShipperName));?></td>
-                              <td><?php echo(stripslashes($row->ConsigneeName));?></td>
-                              <td><?php echo(stripslashes($row->HouseBillLadingNo));?></td>
-                        	</tr>
-                     	 </tbody>
-         		 	<?php } ?>
-
          		 	</table>
 						</div>	
 					</div>
-
-					<?php foreach($jobfiles as $row){ ?>
-                              <hidden class="conName" id="<?php echo(stripslashes($row->ConsigneeName));?>"></hidden>
-         		 	<?php } ?>
+					<hidden class="conName" id="<?php echo stripslashes($jobfiles); ?>"></hidden>
 			</div>
 		</div>
 
@@ -288,10 +273,15 @@
  var content_status_data;
 
  var myBackUpViewReport = $('#view-report').clone();
-
+ var con_name = $('.conName').attr('id');
 	$('#btn-search-consignee').on('click',function(){
-		var con_name = $('.conName').attr('id');
-				 $.ajax({
+		if(con_name == "" || con_name == null){
+				$.alert({
+					title: "Search",
+					content: "This Account doesn't have any records"
+				})
+			}else{
+					 $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
 						beforeSend: function(){
@@ -306,11 +296,28 @@
 					})
 			  		.done(function(consignee_data) {
 			  			var result = JSON.parse(consignee_data);
-				  		$('.reports-table').html(result[0].disp);
-				  		$('.result-count').html(result[0].result_count);
-				  		$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			if(result[0].result_count == 0 && mon_Type != 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Sea Freight Transactions <br><center> Please Check Air Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}else if(result[0].result_count == 0 && mon_Type == 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
+			  			else{
+			  				$('.reports-table').html(result[0].disp);
+				  			$('.result-count').html('<i class="result-count" style="font-size:24px;">Found (' + result[0].result_count + ') Data Match(es)</i>');
+				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
 					});
-			
+			}
     });
 		$(document).on('dblclick','.tableRow',function(){
 			$('#table-pre-details').html('<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details"></table>');
@@ -474,6 +481,49 @@
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
+			if(con_name == "" || con_name == null){
+				$.alert({
+					title: "Search",
+					content: "This Account doesn't have any records"
+				})
+			}else{
+					 $.ajax({
+				  		method: "POST",
+						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
+						beforeSend: function(){
+							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
+							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
+							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+						},
+				  		data: { 
+				  			consignee_name:con_name,
+				  			monType : mon_Type
+				  		}
+					})
+			  		.done(function(consignee_data) {
+			  			var result = JSON.parse(consignee_data);
+			  			if(result[0].result_count == 0 && mon_Type != 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Sea Freight Transactions <br> <center> Please Check Air Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}else if(result[0].result_count == 0 && mon_Type == 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center> "
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
+			  			else{
+			  				$('.reports-table').html(result[0].disp);
+				  			$('.result-count').html('<i class="result-count" style="font-size:24px;">Found (' + result[0].result_count + ') Data Match(es)</i>');
+				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
+					});
+			}
 		});
 
 		function changePlaceHolder(monType){

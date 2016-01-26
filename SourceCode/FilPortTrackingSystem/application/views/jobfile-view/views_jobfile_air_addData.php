@@ -407,7 +407,8 @@
                               <label>Storage</label>
                               <input type="text" name="storage" class="form-control input-sm storage_airs checkDec-air" id="storage_airs"  />
                             </div>
-
+                          </div>
+                          <div class="col-lg-6">
                             <div class="form-group">
                               <label>VCRC</label>
                               <input type="text" name="thc-charges" class="form-control input-sm VCRC_airs checkDec-air" id="VCRC_airs" />

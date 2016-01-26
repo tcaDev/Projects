@@ -264,9 +264,9 @@ class Login_user extends CI_Controller {
 		 	$role = $this->User->get_role($session_data['uid']);
             if($role->RoleId == 2){
             	$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
-            	$jobfiles["jobfiles"] = $this->Jobdata->getJobFiles_Consignee($cName->ConsigneeName,4);
+            	$data["jobfiles"] = $cName->ConsigneeName;
 				$this->load->view('header/header',$data);
-				$this->load->view('reports/reports_page_consignee',$jobfiles);
+				$this->load->view('reports/reports_page_consignee',$data);
             }else{
           	    $this->load->view('header/header',$data);
 				$this->load->view('reports/reports_page');

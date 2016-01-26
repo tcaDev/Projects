@@ -26,7 +26,7 @@ function getLastInserted($table, $id) {
 
 function get_chargess($charges,$mon_type){
     if($mon_type == 3){
-       $query = $this->db->query("select a.LodgementFee, a.ContainerDeposit, a.THCCharges, a.Arrastre, a.Wharfage, a.Weighing, a.DEL, a.DispatchFee, a.Storage, a.Demorage, a.Detention, a.EIC, a.BAIApplication, a.BAIInspection, a.SRAApplication, a.SRAInspection, a.BadCargo  FROM RunningCharges_Air as a, vw_JobFileAir as b WHERE a.JobFile_AirId = b.JobFile_AirId AND b.JobFileNo = '$charges'");
+       $query = $this->db->query("select a.LodgementFee, a.BreakBulkFee, a.StorageFee, a.BadCargoOrderFee, a.VCRC, a.CNI, a.CNIU  FROM RunningCharges_Air as a, vw_JobFileAir as b WHERE a.JobFile_AirId = b.JobFile_AirId AND b.JobFileNo = '$charges'");
     }else{
       $query = $this->db->query("select * FROM vw_RunningCharges WHERE JobFileNo = '$charges'");
     }
@@ -183,10 +183,13 @@ function get_countryID_manila($jobfile){
  }
 
  function getJobFiles_Consignee($consigneeName,$monitoringType){
-    if($monitoringType != 3){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
-     }else{
-         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
+    if($monitoringType == 1 || $monitoringType == 2){
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
+     }else if($monitoringType == 4){
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'");
+     }
+     else{
+         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
      }
     //return "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
     return $query->result();
@@ -246,11 +249,27 @@ function get_user(){
   $query = $this->db->query("select * from vw_RunningChargesHistory where JobFileNo ='$jobfile' ");
     return $query->result();
  }
+ function get_update_container_view($jbfl){
+      $query=$this->db->query("SELECT * FROM `vw_Containers` where `JobFileNo`='$jbfl'");
+   return $query->result();
+ }
 
  function get_air_audit(){
   $query = $this->db->query("select * from vw_JobFileAirHistory");
     return $query->result();
  }
+ function get_consignee_name($uid){
+   $query=$this->db->query("SELECT a.ConsigneeName FROM consignee as a , user as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
+   return $query->row();
+ }
+
+ function select_jobfile_air_charges($jbfl){
+      $query=$this->db->query("SELECT * FROM `RunningCharges_Air` where `JobFile_AirId`='$jbfl'");
+   return $query->result();
+
+ }
+
+
 }
 
 

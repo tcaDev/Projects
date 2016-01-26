@@ -225,33 +225,6 @@ function jobfile_add_charge_air(){
    $vrc            =  $this->input->post('vrc');
    $cni      =  $this->input->post('cni');
    $cniu        =  $this->input->post('cniu');
-   
-/*   $check             =  $this->input->post('check');
-   $lodge             =  $this->input->post('lodge');
-   $cont_deposit      =  $this->input->post('cont_deposit');
-   $thc_charges       =  $this->input->post('thc_charges');   
-   $wharfage          =  $this->input->post('wharfage');
-   $arrastre          =  $this->input->post('arrastre');
-   $weight            =  $this->input->post('weight');
-   $del               =  $this->input->post('del');
-   $dispatch          =  $this->input->post('dispatch');
-   $storage           =  $this->input->post('storage');   
-   $demurrage         =  $this->input->post('demurrage');
-   $detention         =  $this->input->post('detention');
-   $eic               =  $this->input->post('eic');
-   $bai_app           =  $this->input->post('bai_app');
-   $bai_inspect       =  $this->input->post('bai_inspect');
-   $sra_app           =  $this->input->post('sra_app');   
-   $sra_inspect       =  $this->input->post('sra_inspect');
-   $bad_cargo         =  $this->input->post('bad_cargo');*/
-/*   $all_charges       =  addslashes($this->input->post('all_charges'));
-   $part_charges      =  addslashes($this->input->post('part_charges'));
-*/
-
-  //stop inserting data in jobfile to avoid duplication
- /* $query= $this->db->query("Select * from vw_RunningCharges where
-        JobFileId='$job' limit 1");
-if($query->num_rows() ==1){*/
 
       $job     = $this->Jobdata->select_jobfile_air($jobfile);
         foreach($job as $row){

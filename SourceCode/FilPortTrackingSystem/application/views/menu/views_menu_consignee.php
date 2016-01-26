@@ -4,7 +4,7 @@
 				<div class="row">
 						<!-- Global Search -->
 					<a style="display:block" href="<?php echo base_url('Login_user/reports')?>">
-					<div class="menu-tiles2 effect__hover" >
+					<div class="menu-tiles effect__hover" >
 						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-report card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
@@ -32,7 +32,7 @@
 					</a>
 
 					<a style="display:block" href="<?php echo base_url('Login_user/search')?>">
-					<div class="menu-tiles2 effect__hover">
+					<div class="menu-tiles effect__hover">
 						<div class="col-lg-4 col-md-4 col-sm-4  btn btn-gbl card__front " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
@@ -67,7 +67,7 @@
 						<!-- Dashboard -->	
 
 					<!-- 	<a style="display:block" href="<?php //echo base_url('Login_user/dashboard')?>"> -->
-					<div class="menu-tiles2 effect__hover">
+					<div class="menu-tiles effect__hover">
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
@@ -96,7 +96,7 @@
 
 						<!-- Help -->
 						<!-- <a style="display:block" href="<?php //echo base_url('Login_user/help')?>"> -->
-					<div class="menu-tiles2 effect__hover">
+					<div class="menu-tiles effect__hover">
 						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4 imgDisabled">

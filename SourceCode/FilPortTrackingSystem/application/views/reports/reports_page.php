@@ -323,11 +323,27 @@
 				  		}
 					})
 			  		.done(function(consignee_data) {
-			  			//$('.reports-table').html(consignee_data);
 			  			var result = JSON.parse(consignee_data);
-				  		$('.reports-table').html(result[0].disp);
-				  		$('.result-count').html(result[0].result_count);
-				  		$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			if(result[0].result_count == 0 && mon_Type != 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Sea Freight Transactions <br><center> Please Check Air Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}else if(result[0].result_count == 0 && mon_Type == 3){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
+			  			else{
+			  				$('.reports-table').html(result[0].disp);
+				  			$('.result-count').html('<i class="result-count" style="font-size:24px;">Found (' + result[0].result_count + ') Data Match(es)</i>');
+				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
 					});
 		}else{
 							 $.alert({

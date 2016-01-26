@@ -436,7 +436,8 @@ if($query->num_rows() == 1){
                               <label>Storage</label>
                               <input type="text" name="storage" class="form-control input-sm storage_airs checkDec-air" id="storage_airs" value="'.$row->StorageFee.'" disabled />
                             </div>
-
+                          </div>
+                          <div class="col-lg-6">
                             <div class="form-group">
                               <label>VCRC</label>
                               <input type="text" name="thc-charges" class="form-control input-sm VCRC_airs checkDec-air" id="VCRC_airs" value="'.$row->VCRC.'" disabled/>
@@ -452,10 +453,8 @@ if($query->num_rows() == 1){
                               <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" value="'.$row->CNIU.'" disabled/>
                             </div>
 
-
-                          </div>
- 
-                        </div>';
+                        </div>
+                      </div>';
                       }
     }
 
@@ -648,25 +647,100 @@ if($query->num_rows() == 1){
      $monitoringType    =  $this->input->post('monType');
      $charge  = $this->Jobdata->get_chargess($charges,$monitoringType);
      $total = 0;
-
            foreach($charge as $row){
-              $total += $row->LodgementFee;
-              $total += $row->Demorage;
-              $total += $row->ContainerDeposit;
-              $total += $row->Detention;
-              $total += $row->THCCharges;
-              $total += $row->EIC;
-              $total += $row->Arrastre;
-              $total += $row->BAIApplication;
-              $total += $row->Wharfage;
-              $total += $row->BAIInspection;
-              $total += $row->Weighing;
-              $total += $row->SRAApplication;
-              $total += $row->DEL;
-              $total += $row->SRAInspection;
-              $total += $row->DispatchFee;
-              $total += $row->BadCargo;
-              $total += $row->Storage;
+                if($monitoringType == 3){
+                     $total += $row->LodgementFee;
+                     $total += $row->BreakBulkFee;
+                     $total += $row->StorageFee;
+                     $total += $row->BadCargoOrderFee;
+                     $total += $row->VCRC;
+                     $total += $row->CNI;
+                     $total += $row->CNIU;
+                      echo '
+                      <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                               <b> Lodgement Fee : </b>
+                                <span class="pull-right">
+                                    '.number_format($row->LodgementFee, 2, '.', ',').'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                              <b>  Break Bulk Fee : </b>
+                                <span class="pull-right">
+                                    '.number_format($row->BreakBulkFee, 2, '.', ',').'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                              <b> Storage Fee : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->StorageFee, 2, '.', ',').'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                               <b> Bad Cargo Order Fee : </b>
+                                <span class="pull-right">
+                                    '.number_format($row->BadCargoOrderFee, 2, '.', ',').'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                              <b>  VCRC : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->VCRC, 2, '.', ',').'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                               <b> CNI : </b>
+                                <span class="pull-right">
+                                    '.number_format($row->CNI, 2, '.', ',').'
+                                </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                               <b> CNIU : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->CNIU, 2, '.', ',').'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                               
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                           
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                                <span class="pull-right">
+                                  <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
+                                </span>
+                            </td>
+                          </tr>
+                      </table>';
+
+                }else{
+                  $total += $row->LodgementFee;
+                  $total += $row->Demorage;
+                  $total += $row->ContainerDeposit;
+                  $total += $row->Detention;
+                  $total += $row->THCCharges;
+                  $total += $row->EIC;
+                  $total += $row->Arrastre;
+                  $total += $row->BAIApplication;
+                  $total += $row->Wharfage;
+                  $total += $row->BAIInspection;
+                  $total += $row->Weighing;
+                  $total += $row->SRAApplication;
+                  $total += $row->DEL;
+                  $total += $row->SRAInspection;
+                  $total += $row->DispatchFee;
+                  $total += $row->BadCargo;
+                  $total += $row->Storage;
                       echo '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
@@ -803,6 +877,7 @@ if($query->num_rows() == 1){
                             </td>
                           </tr>
                       </table>';
+                }
             }
    }
 
@@ -1243,7 +1318,7 @@ if($query->num_rows() == 1){
       }
  /*     $dispOutput = $jobfiles;
       $dispCount = 0;*/
-      $dispCount = '<i class="result-count" style="font-size:24px;">Found (' . $rowCt . ') Data Match(es)</i>';
+      $dispCount =  $rowCt ;
       $output = array(
         array(
            "disp" => $dispOutput,
@@ -1261,7 +1336,7 @@ if($query->num_rows() == 1){
    $container         =  $this->Jobdata->get_containers($containers,$monType);
   
    if($monType == 3){
-     if($container==NULL){
+     if(count($container) == 0){
               echo    '<center><span style="color:red">No Aircraft Data </span></center>';
         }else{
              echo "
@@ -1293,7 +1368,7 @@ if($query->num_rows() == 1){
         }
 
    }else{
-        if($container==NULL){
+        if(count($container) == 0){
               echo    '<center><span style="color:red">No Containers Yet </span></center>';
         }else{
              echo "
