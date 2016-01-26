@@ -1770,7 +1770,7 @@ if($query->num_rows() == 1){
              echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DateReceivedAtWhse)."</td>";
              echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
-              echo "<td class='row'>".stripslashes($row->ContainerByCarrierId)."</td>";
+              echo "<td class='row hidden'>".stripslashes($row->ContainerByCarrierId)."</td>";
             
              echo "</tr>";
          }
@@ -1930,7 +1930,7 @@ if($query->num_rows() == 1){
                'RunnningChargesId'=> $lastid,
                'JobFileId'        => $job,
                'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UsrId'  => $userid
+               'UpdatedBy_UserId'  => $userid
         );
           $this->db->insert('RunningChargesHistory',$data2);
 

@@ -716,7 +716,7 @@ function get_jobfile_outport(){
 
 
     function get_role($uID){
-     $query = $this->db->query("Select RoleId from user WHERE UserId = '$uID'");
+     $query = $this->db->query("Select RoleId from User WHERE UserId = '$uID'");
      return $query->row();
     }
 
