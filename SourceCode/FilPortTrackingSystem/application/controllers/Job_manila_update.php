@@ -98,6 +98,7 @@ class Job_manila_update extends CI_Controller {
       $userid = $session_data['uid'];
 
       
+      $montype        = addslashes($this->input->post('montype'));
       $jb        =	addslashes($this->input->post('jbid'));
       $jbfl      =	addslashes($this->input->post('jbfl'));
       $shipper 	 =	addslashes($this->input->post('shipper'));
@@ -127,6 +128,7 @@ class Job_manila_update extends CI_Controller {
                'BrokerId'               => $broker,
                'ShipperId'              => $shipper,
                'PurchaseOrderNo'        => $purch_order_no,
+               'MonitoringTypeId'       => $montype,
                'IsLocked'               => 1,
                'StatusId'               => $colsel,
                'ColorSelectivityId'     => $color_selectivity,
@@ -165,6 +167,7 @@ class Job_manila_update extends CI_Controller {
                'BrokerId'               => $broker,
                'ShipperId'              => $shipper,
                'PurchaseOrderNo'        => $purch_order_no,
+               'MonitoringTypeId'       => $montype,
                'IsLocked'               => 1,
                'StatusId'               => $colsel,
                'ColorSelectivityId'     => $color_selectivity,

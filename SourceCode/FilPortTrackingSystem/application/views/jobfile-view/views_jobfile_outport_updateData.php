@@ -11,7 +11,7 @@
 				
 				           <input type="hidden" value="2" name="monitoring_type" class="monitoring_type-outport"/>
 
-				           <input type="hidden"  name="monitoring_type" class="monitoring_type_id-outport "/>
+				           <input type="text"  name="monitoring_type" class="monitoring_type_id-outport "/>
 
 				           	<div class="required-fields">
 				           		<div class="form-group">
@@ -230,6 +230,8 @@ function check_jobfile_avi(jobfile){
 	    		    });*/
 }
 $(document).on('click','.update_jobfiles-outport',function(){
+	
+ var montype 			=   $('.monitoring_type-outport').val();
  var jbfl 			=   $('.jobfiles-update-outport').val();
  var jbid           =   $('.monitoring_type_id-outport').val();
  var shipper        =   $('.shipper-update-outport').val();
@@ -266,6 +268,7 @@ $(document).on('click','.update_jobfiles-outport',function(){
 			  	   data: {
 			  	   			   jbid 		   :jbid,
 			  	   	           jbfl   		   :jbfl,
+			  	   	           montype         :montype,
 			  	   			   shipper         :shipper,
 			                   consignee       :consignee,   
 			                   colsel  		   :colsel,

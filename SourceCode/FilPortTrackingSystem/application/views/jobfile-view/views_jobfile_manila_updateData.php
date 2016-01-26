@@ -268,6 +268,7 @@ $(document).on('click','.update_jobfiles',function(){
 			  	   data: {
 			  	   			   jbid 		   :jbid,
 			  	   	           jbfl   		   :jbfl,
+			  	   	           montype         :1,
 			  	   			   shipper         :shipper,
 			                   consignee       :consignee,   
 			                   colsel  		   :colsel,
