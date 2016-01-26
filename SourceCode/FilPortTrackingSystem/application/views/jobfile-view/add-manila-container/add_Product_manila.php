@@ -166,7 +166,7 @@ function click_vessel(){
 
 
  $(document).on('click','.submit_vessel',function(){
- 		$('.submit_vessel').attr('disabled','disabled');
+ 	/*	$('.submit_vessel').attr('disabled','disabled');*/
  			if($("#table-AddProduct-mnla table tbody tr td").length == 0){
  					$.confirm({
 		 			 title: 'Add New Commodity',
@@ -177,10 +177,10 @@ function click_vessel(){
   					 cancelButton: 'No',
   					 confirm: function(){
   					 	$('.modal').modal('hide');
-  					 	$('submit_vessel').removeAttr('disabled','disabled');
+  					 /*	$('submit_vessel').removeAttr('disabled');*/
   					 },
   					 cancel : function(){
-  					 	$('submit_vessel').removeAttr('disabled','disabled');
+  					 /*	$('submit_vessel').removeAttr('disabled');*/
   					 }
 		 		});
 						
