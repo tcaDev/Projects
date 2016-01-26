@@ -1992,20 +1992,22 @@ foreach($job as $row){
                'ActualArrivalTime'   => $aat,
                'DischargeTime'       => $discharge,
                'BerthingTime'       => $berthing    
-        );
+            );
 
        $this->db->insert('CarrierByJobFile',$data); 
-        $lastid =  $this->db->insert_id();
+        $lasts =  $this->db->insert_id();
+
+        
        $data2 = array(
-               'CarrierByJobFileId'  => $lastid,
+               'CarrierByJobFileId'  => $lasts,
                'JobFileId'           => $job,
                'CarrierId'           => $lines,
                'VesselVoyageNo'      => $vessel,
                'EstDepartureTime'    => $edt,
                'EstArrivalTime'      => $eat,
                'ActualArrivalTime'   => $aat,
-               'BerthingTime'       => $berthing,
                'DischargeTime'       => $discharge,
+               'BerthingTime'       =>  $berthing,
                'DateUpdated'         => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'    => $userid
         );

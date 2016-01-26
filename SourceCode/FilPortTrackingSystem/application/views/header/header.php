@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="<?php echo base_url('resources/js/dropdowns-enhancement.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('resources/js/bootpag.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
-
+    
 </head>
 
 
@@ -133,4 +133,9 @@
 	 });
 	</script>
 
-	<!-- End HEader -->
+
+  <script>
+      var link = 'http://localhost/FilPortTrackingSystem';
+
+      
+  </script>

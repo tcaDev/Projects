@@ -1,4 +1,4 @@
- var link = 'http://localhost/FilPortTrackingSystem';
+
 
 //FOR COLOR SELECT DROPDOWN
 	$(document).on('change','.required-fields-air .colsel-air',function(){

@@ -1,4 +1,4 @@
- var link = 'http://localhost/FilPortTrackingSystem';
+
 
 //FOR COLOR SELECT DROPDOWN
 	$(document).on('change','.colsel-outport',function(){
@@ -1015,7 +1015,7 @@ $('.save_charges-outport').click(function(){
 		 	}
 		 	//alert(totalCharges[$x]);
 		 }
-		 if(wVal == 18){
+/*		 if(wVal == 18){
 		 		$.confirm({
 		 			 title: 'Add Running Charges',
 		 			 content:'You have not Entered any Running Charges. Do you wish to Continue?',
@@ -1030,7 +1030,7 @@ $('.save_charges-outport').click(function(){
   					 	$('.btn-save').removeAttr('disabled');
   					 }
 		 		});
-		 }else{
+		 }else{*/
 		 	$.ajax({
 		           method: "POST",
 	 		       url: link + "/Job/jobfile_add_charge/",
@@ -1091,7 +1091,7 @@ $('.save_charges-outport').click(function(){
 				   			   });
 	    		    })
 
-		 }
+		// }
 	    
 
 });  
