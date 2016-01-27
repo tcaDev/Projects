@@ -333,7 +333,7 @@ var back=0;
 
     	var del = $(this).closest('tr').children('td:eq(1)').text();
 
-      	$("#tableAddTruck-outport .containers-prod").find("option[value="+ del +"]").remove();
+      	$("#tableAddTruck-outport .containers-prod-outport").find("option[value="+ del +"]").remove();
 
     	$(this).closest("tr").remove();
     	
@@ -346,9 +346,11 @@ var back=0;
 	});
 
 		$(document).on('click', '#tableAddVessel-outport .deleteButton', function() {
+			$(this).closest("tr").remove();
 	    var del = $(this).closest('tr').children('td:eq(0)').text();
-	    $("#tableAddContainer-outport .vessel_voyage").find("option[value="+ del +"]").remove();
-    	$(this).closest("tr").remove();
+	    
+	    $("#tableAddContainer-outport .vessel_voyage-outport").find("option[value="+ del +"]").remove();
+    	
 
 	});
 });
@@ -842,7 +844,7 @@ function ins_contains_outport(add_comodity){
 			  		
 			  		}
 				})
-				 .done(function(data) {	
+				 .done(function() {	
 				 	  if(add_comodity==1){
 			           	var container="container";
 			    		 if(c<=ct){
@@ -854,7 +856,7 @@ function ins_contains_outport(add_comodity){
 			    	 	  	 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content:data,
+				        		content: 'New Container Added!',
 				        		confirm: function(){
 				        		    $('#btn-charges-outport-add').addClass('active');
 									$('#btn-jobfile-outport-add').removeClass('active');
