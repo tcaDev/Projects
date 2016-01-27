@@ -365,7 +365,7 @@ function check_Container_mnilas(container){
 					var c = count1+1;
 
 				        var $tds = $(this).find('td'),
-				            vessel_voyage 	= $tds.eq(0).text(),
+				            vessel_voyage 	= $tds.eq(1).text(),
 				         	containerId 	= $tds.eq(2).text(),
 				            consize 	   	= $tds.eq(3).text();
 				          	cartons_no  	= $tds.eq(4).text(); 
@@ -387,7 +387,7 @@ function check_Container_mnilas(container){
 				         	dt_file_entry_boc = $tds.eq(20).text(); 
 				         	dtboc             = $tds.eq(21).text();
 
-				      /*  alert(trucker_id); */ 						
+				    alert(jbfl + " " + vessel_voyage);						
 		$.ajax({
 			  		method: "POST",
 					 url: "<?php echo base_url('Job/container');?>",
@@ -415,6 +415,7 @@ function check_Container_mnilas(container){
 			  			    dtboc		   :dtboc,
 			  			    tdt            :tdt,
 			  			    pul_out_port   :pul_out_port
+
 
 
 			  		
