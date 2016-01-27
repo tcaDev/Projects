@@ -222,37 +222,37 @@ function get_countryID_manila($jobfile){
  }
 
 function get_user(){
-    $query = $this->db->query("select * from User where RoleId = 1 OR RoleId = 2");
+    $query = $this->db->query("select * from User where RoleId = 5 OR RoleId = 2");
     return $query->result();
  }
 
  function get_manilaAudit($montype){
-    $query = $this->db->query("select * from vw_JobFileHistory where MonitoringTypeId ='$montype' ");
+    $query = $this->db->query("select * from vw_JobFileHistory where MonitoringTypeId ='$montype' ORDER BY DateUpdated desc");
     return $query->result();
  }
 
- function get_vessel_audit($jobfile){
-  $query = $this->db->query("select * from vw_CarrierByJobFileHistory where JobFileNo ='$jobfile' ");
+ function get_vessel_audit($veselID){
+  $query = $this->db->query("select * from vw_CarrierByJobFileHistory where CarrierByJobFileId = '$veselID' ORDER BY DateUpdated desc");
     return $query->result();
  }
 
  function get_jobfile_audit($jobfile){
-  $query = $this->db->query("select * from vw_JobFileHistory where JobFileNo ='$jobfile' ");
+  $query = $this->db->query("select * from vw_JobFileHistory where JobFileId ='$jobfile' ORDER BY DateUpdated desc ");
     return $query->result();
  }
 
- function get_container_audit($jobfile){
-  $query = $this->db->query("select * from vw_ContainersHistory where JobFileNo ='$jobfile' ");
+ function get_container_audit($containerID){
+  $query = $this->db->query("select * from vw_ContainersHistory where ContainerByCarrierId = '$containerID' ORDER BY DateUpdated desc");
     return $query->result();
  }
 
-  function get_commodity_audit($jobfile){
-  $query = $this->db->query("select * from vw_ProductsHistory where JobFileNo ='$jobfile' ");
+  function get_commodity_audit($commodity){
+  $query = $this->db->query("select * from vw_ProductsHistory where ProductsByContainerId = '$commodity' ORDER BY DateUpdated desc");
     return $query->result();
  }
 
  function get_charges_audit($jobfile){
-  $query = $this->db->query("select * from vw_RunningChargesHistory where JobFileNo ='$jobfile' ");
+  $query = $this->db->query("select * from vw_RunningChargesHistory where JobFileId = '$jobfile' ORDER BY DateUpdated desc");
     return $query->result();
  }
  function get_update_container_view($jbfl){
@@ -261,9 +261,36 @@ function get_user(){
  }
 
  function get_air_audit(){
-  $query = $this->db->query("select * from vw_JobFileAirHistory");
+  $query = $this->db->query("select * from vw_JobFileAir");
     return $query->result();
  }
+/*View Commodity in AIr*/
+ function get_commodity_air_audit($jobfile){
+  $query = $this->db->query("select * from vw_ProductsAir where JobFile_AirId ='$jobfile'");
+    return $query->result();
+ }
+ /*End*/
+
+ /*VIew Running Charges Air*/
+
+ function get_charges_air_audit($jobfile){
+  $query = $this->db->query("select * from vw_RunningChargesAirHistory where JobFile_AirId ='$jobfile' ORDER BY DateUpdated desc");
+    return $query->result();
+ }
+ /*end*/
+
+/*History AIr Commodity*/
+function get_commodity_air_audit_history($commodityID){
+  $query = $this->db->query("select * from vw_ProductsAirHistory where Products_AirId ='$commodityID' ORDER BY DateUpdated desc");
+    return $query->result();
+}
+
+/*end*/
+function get_jobfile_air_audit($jobfile){
+  $query = $this->db->query("select * from vw_JobFileAirHistory where JobFile_AirId ='$jobfile' ORDER BY DateUpdated desc");
+    return $query->result();
+}
+
  function get_consignee_name($uid){
    $query=$this->db->query("SELECT a.ConsigneeName FROM consignee as a , user as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
    return $query->row();
@@ -279,6 +306,26 @@ function get_user(){
    return $query->result();
  }
 
+ /*VIew AUdit Trail*/
+
+ function get_manilaAudit_view($montype){
+    $query = $this->db->query("select * from vw_JobFile where MonitoringTypeId ='$montype' ");
+    return $query->result();
+
+ }
+ function get_vessel_audit_view($jobfile){
+    $query = $this->db->query("select * from vw_CarrierByJobFile where JobFileId ='$jobfile' ");
+    return $query->result();
+ }
+
+  function get_container_audit_view($jobfile){
+     $query = $this->db->query("select * from vw_Containers where JobFileId ='$jobfile' ");
+    return $query->result();
+  }
+  function get_commodity_audit_view($jobfile){
+     $query = $this->db->query("select * from vw_Products where JobFileId ='$jobfile' ");
+    return $query->result();
+  }
 
 }
 
