@@ -14,18 +14,21 @@
 
 		<div class="dash-side">
 			<div class="tab-content col-lg-12">
-			        <div class="tab-pane active" id="tab_a">
-			                <img src="<?php echo base_url('resources/img/chart/sampleChart.png'); ?>" style="width:100%;">      
+			
+					 <div class="tab-pane active" id="tab_a">
+			              <img src="<?php echo base_url('resources/img/chart/sampleChart.png'); ?>" style="width:100%;">      
 			        </div>
 			        <div class="tab-pane" id="tab_b">
-			        	<img src="<?php //echo base_url('resources/img/chart/chart2.gif'); ?>">
+			        	<img src="<?php echo base_url('resources/img/chart/sample1.png'); ?>">
 			        </div>
 			        <div class="tab-pane" id="tab_c">
-						<img src="<?php //echo base_url('resources/img/chart/chart1.gif'); ?>">
+						<img src="<?php echo base_url('resources/img/chart/sample2.png'); ?>">
 			        </div>
 			        <div class="tab-pane" id="tab_d">
-			             <img src="<?php //echo base_url('resources/img/chart/chart2.gif'); ?>">
+			             <img src="<?php echo base_url('resources/img/chart/sample3.png'); ?>">
 			        </div>
+			
+			       
 			</div><!-- tab content -->
 		</div>
 	</div>
