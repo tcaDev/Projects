@@ -1,7 +1,7 @@
 
 		<div class="container-fluid">
 			<div class="menu-container">
-				<div class="row">
+				<div class="row" style="position: absolute; left:22%; width:85%;">
 						<!-- Global Search -->
 					<a style="display:block" href="<?php echo base_url('Login_user/reports')?>">
 					<div class="menu-tiles effect__hover" >
@@ -60,7 +60,7 @@
 					</a>
 					</div>
 
-				<div class="row">
+				<div class="row" style="position: absolute; left:22%; top:244%; width:85%;">
 
 						<!-- Report -->
 				
@@ -119,21 +119,21 @@
 									<span class="job-file pull-right">Online User<br>Manual</span>
 								</div>
 								
-							</div>							
+							</div>						
 						</div>
+
 					</div>
 					</a>
+					
 				</div>
 				<br>
-				<br>
-				<hr class="line">
-			</div>	
-			</div>
-
-
+			<br>	
+		</div>		
+	</div>	
 	<!-- Footer -->
-		<div class="col-lg-12 col-md-12 col-sm-12 footer hidden">
-			<?php $this->load->view('footer/date-time'); ?>
+		<div class="col-lg-12 col-md-12 col-sm-12 footer line">
+			<!-- <?php $this//->load->view('footer/date-time'); ?>-->
+
 		</div>
 	<!-- End Footer -->
 	</div>
