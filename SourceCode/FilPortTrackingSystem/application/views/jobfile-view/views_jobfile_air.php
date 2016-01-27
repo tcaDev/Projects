@@ -489,7 +489,7 @@ var jbfl;
 
   $('.view_goods-air').click(function(){
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
- 		   alert(jobfileno +"ah");	
+ 		   
   				$.ajax({
                     method: "POST",
                       url: "<?php echo base_url('Job/get_goods_air');?>",

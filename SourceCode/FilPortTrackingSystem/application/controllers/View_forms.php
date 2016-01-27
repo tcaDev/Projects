@@ -184,7 +184,7 @@ function vessel(){
   $drop = $this->User->dropdown_shipper();
 
  echo '			<div class="vessels">
- 					<button type="button" class="con-info consig-pos btn_add_vessel" data-toggle="modal" data-target="#vessels">ADD SHIPPING LINE/CARRIER</button>
+ 					<button type="button" class="con-info consig-pos btn_add_vessel" data-toggle="modal" data-target="#vessels" style="left: 83% !important;width: 15% !important;">ADD SHIPPING LINE/CARRIER</button>
 
 
 				<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
@@ -223,7 +223,7 @@ function vessel(){
 
 function hauler(){
 	echo	'<div class="brokers tab-pane">
-				<button type="button" class="con-info consig-pos btn_add_hauler" data-toggle="modal" data-target="#broker">ADD HAULER/TRUCKER</button>
+				<button type="button" class="con-info consig-pos btn_add_hauler" data-toggle="modal" data-target="#broker" style="left: 84% !important;width: 14% !important;">ADD HAULER/TRUCKER</button>
 
 					<div class="brokers consig-posbox modal fade" id="broker" role="dialog">
 					  <div class="modal-dialog">

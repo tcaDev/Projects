@@ -11,7 +11,7 @@
 				
 				           <input type="hidden" value="2" name="monitoring_type" class="monitoring_type-outport"/>
 
-				           <input type="text"  name="monitoring_type" class="monitoring_type_id-outport "/>
+				           <input type="hidden"  name="monitoring_type" class="monitoring_type_id-outport "/>
 
 				           	<div class="required-fields">
 				           		<div class="form-group">

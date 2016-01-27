@@ -51,7 +51,7 @@ class Update extends CI_Controller {
 			     $this->User->update_cosignee($id,$name,$hbno,$vilage,$city,$country,$ofnum,$status);
 			     $this->session->success= 'update_success';
 		  }
-		   redirect('Login_User/settings');
+		   redirect('Login_user/settings');
 
 	
 	}
@@ -77,7 +77,7 @@ class Update extends CI_Controller {
 				$this->User->update_vessel($id,$name,$address_carrier,$number_carrier,$status);
 				$this->session->success= 'update_success';
 		 }
-		redirect('Login_User/settings/#vessel');
+		redirect('Login_user/settings/#vessel');
 
 	
 	}
@@ -107,7 +107,7 @@ class Update extends CI_Controller {
        		$this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country,$status);
        		 $this->session->success= 'update_success';
        	   }
-		redirect('Login_User/settings/#shipper');
+		redirect('Login_user/settings/#shipper');
 
 	
 	}
@@ -120,7 +120,7 @@ class Update extends CI_Controller {
 		$c2 	= 	addslashes($this->input->post('c2'));
 
 	$this->User->update_shippercon($id,$fname,$mname,$lname,$c1,$c2);
-	redirect('Login_User/settings');
+	redirect('Login_user/settings');
 	}
     function update_consigneecon(){
 		$id 	= 	addslashes($this->input->post('c_id'));
@@ -131,7 +131,7 @@ class Update extends CI_Controller {
 		$c2 	= 	addslashes($this->input->post('c2'));
 
 	$this->User->update_consigneecon($id,$fname,$mname,$lname,$c1,$c2);
-	redirect('Login_User/settings');
+	redirect('Login_user/settings');
 	}
 		function update_broker(){
 		$id 			= 			addslashes($this->input->post('broker_id'));
@@ -174,7 +174,7 @@ class Update extends CI_Controller {
 			$broker_cid,$broker_contact1,$broker_contact2,$status_broker);
   	  		 $this->session->success= 'update_success';
   	    	}
-		redirect('Login_User/settings/#broker');
+		redirect('Login_user/settings/#broker');
 
 	}
 
@@ -199,7 +199,7 @@ class Update extends CI_Controller {
 			     $this->User->update_hauler($id,$name,$add,$tin,$status);
 			     $this->session->success= 'update_success';    
 		       }
-		        redirect('Login_User/settings/#hauler');
+		        redirect('Login_user/settings/#hauler');
 
 	}
 
@@ -221,7 +221,7 @@ class Update extends CI_Controller {
 			     $this->User->update_forward($id,$name,$status);
 			     $this->session->success= 'update_success';    
 		       }
-		        redirect('Login_User/settings/#forward');
+		        redirect('Login_user/settings/#forward');
 
 	}
 
@@ -248,7 +248,7 @@ class Update extends CI_Controller {
 			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status,$back_ground);
 			     $this->session->success= 'update_success';    
 		       }
-		        redirect('Login_User/settings/#legend');
+		        redirect('Login_user/settings/#legend');
 	}
 	    function update_container(){
 		$container_id 	= 	addslashes($this->input->post('container_id'));
@@ -270,7 +270,7 @@ class Update extends CI_Controller {
 			     $this->User->update_container($container_id,$con,$con_descrip,$con_size);
 			     $this->session->success= 'update_success';    
 		       }
-		        redirect('Login_User/settings/#container');
+		        redirect('Login_user/settings/#container');
 	}
 
 
@@ -293,7 +293,7 @@ class Update extends CI_Controller {
 			     $this->User->update_products($id,$name,$status);
 			     $this->session->success= 'update_success';    
 		       }
-		        redirect('Login_User/settings/#product');
+		        redirect('Login_user/settings/#product');
 
 	}
 

@@ -424,25 +424,30 @@ function validateEmail(email) {
                               content: 'New User Added.!',
                               confirm: function(){
                                   dia.close();
-                                  fname.val("");
-                                  lname.val("");
-                                  mname.val("");
-                                  bdate.val("");
-                                  contact1.val("");
-                                  contact2.val(""); 
-                                  addr.val("");
-                                  brgy.val(""); 
-                                  towncity.val(""); 
+								  
+								 $("input[name=fname]").val('');
+								 $("input[name=mname]").val('');
+								 $("input[name=lname]").val('');
+								 $("input[name=bdate]").val('');
+								 $("input[name=contact1]").val('');
+								 $("input[name=contact2]").val('');
+								 $("input[name=addr]").val('');
+								 $("input[name=brgy]").val('');
+								 $("input[name=towncity]").val('');
 
-                                  country.eq(0).attr('selected','selected'); 
-                                  consignee.eq(0).attr('selected','selected'); 
+								 $(".country_addUser option:eq(0)").attr('selected','selected');
+								 $(".consignee_add_user option:eq(0)").attr('selected','selected');
 
-                                  uname.val("");
-                                  email.val("");
-                                  pass.val("");
-                                  passconf.val(""); 
+								 $("input[name=uname]").val('');
+								 $("input[name=email]").val('');
+								 $("input[name=password]").val('');
+								 $("input[name=passconf]").val('');
 
-                                  role :role
+								$('.check_uname i').text('');
+								$('.check_email i').text('');
+								$('#message').text('');
+                                  
+
                                   $('#myModal_addUser').modal('hide');
                               }
                            });
