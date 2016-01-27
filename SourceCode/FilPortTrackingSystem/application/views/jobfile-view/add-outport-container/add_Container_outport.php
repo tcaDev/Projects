@@ -309,6 +309,7 @@
     
 /*Add Container to Database*/
 $(document).on('click','.save_container_outport',function(){
+       var jbfl = $('.jobfile-addContainer-outport').val();
 	$('.save_container_outport').attr('disabled','disabled');
  	if($("#table-AddContainer-outport table tbody tr td").length == 0){
  					$.confirm({
@@ -339,27 +340,26 @@ $(document).on('click','.save_container_outport',function(){
 		   	  table.find('tr').each(function (count1) {
 			  var c = count1+1;
 				        var $tds = $(this).find('td'),
-				            vessel_voyage 	= $tds.eq(0).text();
-                                            containerId 	= $tds.eq(2).text();
+				            vessel_voyage 	= $tds.eq(1).text();
+                            containerId 	= $tds.eq(2).text();
 				            consize 	   	= $tds.eq(3).text();
-                                            cartons_no  	= $tds.eq(4).text(); 
-                                            trucker_plate       = $tds.eq(5).text(); 
+                            cartons_no  	= $tds.eq(4).text(); 
+                            trucker_plate   = $tds.eq(5).text(); 
 				            trucker_name   	= $tds.eq(7).text();
 				            trucker_id   	= $tds.eq(6).text();
-				            ref_entry_no        = $tds.eq(8).text();
-                                            start_demorage      = $tds.eq(9).text(); 
+				            ref_entry_no    = $tds.eq(8).text();
+                            start_demorage  = $tds.eq(9).text(); 
 				            start_storage 	= $tds.eq(10).text();
-				            dt_paid		= $tds.eq(11).text();
-				            lodging             = $tds.eq(12).text();
-				            dt_pre_assess       = $tds.eq(13).text(); 
-                                            dt_final_assess     = $tds.eq(14).text(); 
-                                            
-                                            adw                 = $tds.eq(15).text(); 
-                                            tdt    		= $tds.eq(16).text(); 
-                                            pul_out_port        = $tds.eq(17).text();  
-                                            dt_file_entry_boc   = $tds.eq(18).text(); 
-                                            dtboc               = $tds.eq(19).text();
-                                            dt_recvd_cont_whse  = $tds.eq(20).text();
+				            dt_paid		    = $tds.eq(11).text();
+				            lodging         = $tds.eq(12).text();
+				            dt_pre_assess    = $tds.eq(13).text(); 
+                            dt_final_assess     = $tds.eq(14).text(); 
+                            adw                 = $tds.eq(15).text(); 
+                            tdt    				= $tds.eq(16).text(); 
+                            pul_out_port        = $tds.eq(17).text();  
+                            dt_file_entry_boc   = $tds.eq(18).text(); 
+                            dtboc               = $tds.eq(19).text();
+                            dt_recvd_cont_whse  = $tds.eq(20).text();
 
 				     						
 			$.ajax({
@@ -376,6 +376,7 @@ $(document).on('click','.save_container_outport',function(){
                           },*/
                         data: {
                                         //from container tab
+                                    jbfl           :jbfl,
                                     vessel_voyage  :vessel_voyage,
                                     containerId    :containerId,
                                     consize  	   :consize, 
