@@ -23,7 +23,7 @@
 					<!-- Trigger the modal with a button -->
 			  <!-- Modal -->
 
-					   <div class="modal fade" id="myModal-2-1" role="dialog">
+					   <div class="modal fade" id="myModal-2-1" role="dialog" data-backdrop="static" data-keyboard="false">
 
 					    <div class="modal-dialog">
 
@@ -49,7 +49,7 @@
 
 					  <!-- Modal -->
 
-						   <div class="modal fade" id="myModal-2-2" role="dialog">
+						   <div class="modal fade" id="myModal-2-2" role="dialog" data-backdrop="static" data-keyboard="false">
 
 					    <div class="modal-dialog">
 

@@ -26,7 +26,7 @@
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-3-1" role="dialog">
+					  <div class="modal fade" id="myModal-3-1" role="dialog" data-backdrop="static" data-keyboard="false">
 
 					    <div class="modal-dialog"> 
 					    
@@ -52,7 +52,7 @@
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-3-2" role="dialog">
+					  <div class="modal fade" id="myModal-3-2" role="dialog" data-backdrop="static" data-keyboard="false">
 
 					    <div class="modal-dialog">
 
