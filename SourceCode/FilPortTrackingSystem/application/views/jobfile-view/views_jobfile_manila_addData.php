@@ -643,7 +643,7 @@
     <div class="footer-modal" >
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
-  	  <button type="button" class="hidden btn btn-danger btn-Back" >Back</button>
+  	  <button type="button" class="hidden btn btn-danger btn-Back-Offlimit" >Back</button>
       <button type="button" class="btn btn-danger btn-Next submit_jobfile" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save-mnla test_data save_charge" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel-mnla" id="asdfghjkl" data-dismiss="modal">Cancel</button>

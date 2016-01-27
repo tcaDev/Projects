@@ -616,7 +616,7 @@
     <div class="footer-modal" >
     <hr>
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
- <button type="button" class="hidden btn btn-danger btn-Back-outport " >Back</button>
+ <button type="button" class="hidden btn btn-danger btn-Back-outport-Offlimit " >Back</button>
       <button type="button" class="btn btn-danger btn-Next-outport submit_jobfile-outport" >Next</button>
       <button type="button" class="hidden btn btn-danger btn-save test_data save_charges-outport" >Save</button>
       <button type="button" class="btn btn-danger btn-cancel" data-dismiss="modal">Cancel</button>
