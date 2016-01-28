@@ -103,6 +103,8 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
             $role = $this->User->get_role($session_data['uid']);
 
+            $data['role'] = $this->User->get_role($session_data['uid']);
+
             if($role->RoleId == 2){
 				$this->load->view('header/header',$data);
 				$this->load->view('menu/views_menu_consignee' , $data);
@@ -132,6 +134,8 @@ class Login_user extends CI_Controller {
 		 	$data['countries']=$this->User->countries();
 		 	$data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
 
 			$this->load->view('clientheader/header',$data);
 			$this->load->view('client_menu/views_clientmenu' , $data);
@@ -184,6 +188,8 @@ class Login_user extends CI_Controller {
 		  	$data['air']    = $this->User->get_jobfile_air();
 		  	$data['carrier'] = $this->User->get_carrier();
 		  	$data['products'] = $this->User->get_products();
+
+		  	$data['role'] = $this->User->get_role($session_data['uid']);
 
 
 		    $query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=1');
@@ -253,6 +259,8 @@ class Login_user extends CI_Controller {
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
 
 		    /* get status*/
 		    /*$data['consignee'] = $this->User->get_consignee();
@@ -326,6 +334,8 @@ class Login_user extends CI_Controller {
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
 
 		  	$data['tab'] = "";
 		  	$data['msg'] = "";
@@ -436,6 +446,8 @@ class Login_user extends CI_Controller {
 	    $data['countries']=$this->User->countries();
 	    $data['questions'] =$this->User->question();
         $data['consignee'] =$this->User->dropdown_consignee();
+
+        $data['role'] = $this->User->get_role($session_data['uid']);
 	 
 		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
@@ -459,6 +471,8 @@ class Login_user extends CI_Controller {
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
 
             $role = $this->User->get_role($session_data['uid']);
             if($role->RoleId == 2){
@@ -495,6 +509,8 @@ class Login_user extends CI_Controller {
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
@@ -520,6 +536,8 @@ class Login_user extends CI_Controller {
 		 	$data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
 
+            $data['role'] = $this->User->get_role($session_data['uid']);
+
 			$this->load->view('clientheader/header',$data);
 			$this->load->view('tracking/tracking_page' , $data);
 		}else{
@@ -542,6 +560,8 @@ class Login_user extends CI_Controller {
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
 		    $data['uid'] = $session_data['uid'];
+
+		    $data['role'] = $this->User->get_role($session_data['uid']);
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('dashboard/dashboard_page' , $data);

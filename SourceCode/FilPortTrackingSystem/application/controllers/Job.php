@@ -3022,7 +3022,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
       $audit_air = $this->Jobdata->get_air_audit();
 
       if($audit_air == NULL){
-           echo '<i style="color:red;">No RunningCharges Yet</i>';
+           echo '<i style="color:red;">No Jobfile Yet</i>';
       }else{
 
        echo '
