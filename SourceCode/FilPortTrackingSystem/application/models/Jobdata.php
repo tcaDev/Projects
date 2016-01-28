@@ -292,7 +292,7 @@ function get_jobfile_air_audit($jobfile){
 }
 
  function get_consignee_name($uid){
-   $query=$this->db->query("SELECT a.ConsigneeName FROM consignee as a , user as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
+   $query=$this->db->query("SELECT a.ConsigneeName FROM Consignee as a , user as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
    return $query->row();
  }
 
