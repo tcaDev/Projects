@@ -310,7 +310,6 @@
  var myBackUpViewReport = $('#view-report').clone();
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
-		if(txt.trim().length > 0){
 			 $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
@@ -347,12 +346,6 @@
 				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
 			  			}
 					});
-		}else{
-							 $.alert({
-				        		title: 'Search!',
-				        		content: 'Please Enter Jobfile No / Consignee Name / Shipper Name to Search',
-				   			   });
-		}
     });
 		$(document).on('dblclick','.tableRow',function(){
 			$('#table-pre-details').html('<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details"></table>');
@@ -503,21 +496,17 @@
 
 			$(document).on('keydown','#txt-search-consignee',function(e){
 				 if (e.keyCode == 13){
-			   	  $('#btn-search-consignee').click();
-			    }
+			   	  	 $('#btn-search-consignee').click();
+			  	 }
 			});
 
 			$(document).on('click','.nav-data li',function(){
-				mon_Type = $('.nav-data .active').val();
-				//alert(mon_Type);
-				if($('#txt-search-consignee').val() != ""){
-				   $('#btn-search-consignee').click();
-				}else{
+					mon_Type = $('.nav-data .active').val();
+				    $('#btn-search-consignee').click();
 					$('.loading-consignee').html('<a class="loading-consignee"></a>');
 					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
-				}
-				changePlaceHolder(mon_Type);
+					changePlaceHolder(mon_Type);
 			});
 
 			/*$(document).on('click','.nav-data-2 li',function(){
@@ -535,6 +524,7 @@
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
+			$('#btn-search-consignee').click();
 		});
 
 		function changePlaceHolder(monType){

@@ -17,8 +17,6 @@ class Login_user extends CI_Controller {
 
 	 public function index()
 	{
-
-
 		  //check if the user is already login
 		if($this->session->userdata('logged_in'))
 		{
@@ -262,13 +260,6 @@ class Login_user extends CI_Controller {
 
             $data['role'] = $this->User->get_role($session_data['uid']);
 
-		    /* get status*/
-		    /*$data['consignee'] = $this->User->get_consignee();
-		    $data['broker'] = $this->User->get_broker();
-		    $data['shipper'] = $this->User->get_shipper();*/
-		    /*$data['vessel'] = $this->User->get_vessel();*/
-		 	
-		 	 /*$data['manila'] = $this->User->get_jobfile_manila_global();*/
 		 	$role = $this->User->get_role($session_data['uid']);
             if($role->RoleId == 2){
             	$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
@@ -477,17 +468,14 @@ class Login_user extends CI_Controller {
             $role = $this->User->get_role($session_data['uid']);
             if($role->RoleId == 2){
             	$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
-            	$data['manila'] = $this->User->get_jobfile_manila_global_consignee($cName->ConsigneeName);
-				$this->load->view('header/header',$data);
-				$this->load->view('global/global_page' , $data);
+            	$data["jobfiles"] = $cName->ConsigneeName;
+            	$this->load->view('header/header',$data);
+				$this->load->view('global/global_page',$data);
             }else{
-            	$data['manila'] = $this->User->get_jobfile_manila_global();
-          	    $this->load->view('header/header',$data);
-				$this->load->view('global/global_page' , $data);
+            	$data["jobfiles"] = "";
+            	$this->load->view('header/header',$data);
+				$this->load->view('global/global_page');
             }
-
-		   
-		 	
 			
 		 }else{
 		 	$this->login();

@@ -164,6 +164,65 @@ if($query->num_rows() == 1){
     }
 }
 
+function get_jobfile_global_search(){
+  $search         =  $this->input->post('search');
+  $monitoringType =  $this->input->post('monType');
+  $dispOutput = "";
+  $dispCount = 0;
+ 
+ $jobfiles = $this->Jobdata->getJobFiles_Consignee($search,$monitoringType);
+ if(count($jobfiles) > 0){
+  $dispOutput .= '<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search"><thead><tr style="cursor:w-resize ;"><th > JobfileNumber </th><th >Color Stages</th><th>Consignee</th><th>Shipper </th><th> Status Report </th></tr></thead>';
+  if($monitoringType != 3){
+    foreach ($jobfiles as $row) {
+     if($monitoringType == $row->MonitoringTypeId){
+           $dispCount += 1;
+           $dispOutput .='<tbody>';
+                             $pick =$row->IsBackground;
+                              if($pick==0){
+                                  $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                                }else{
+                                  $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                                }
+         $dispOutput .= '<tr id="' . $row->JobFileNo . '" class="tableRow">   
+                         <td>' . stripslashes($row->JobFileNo) . '</td>
+                         ' . $pick1 . '
+                         <td>' .  stripslashes($row->ConsigneeName) . '</td>
+                         <td>' .  stripslashes($row->ShipperName) .   '</td>
+                         <td>Status Reports</td>
+                         </tr>
+                        </tbody>';
+        }
+     }
+  }else{
+    $dispCount = count($jobfiles);
+    foreach ($jobfiles as $row) {
+           $dispOutput .='<tbody>';
+                             $pick =$row->IsBackground;
+                              if($pick==0){
+                                  $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                                }else{
+                                  $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                                }
+         $dispOutput .= '<tr id="' . $row->JobFileNo . '" class="tableRow">   
+                         <td>' . stripslashes($row->JobFileNo) . '</td>
+                         ' . $pick1 . '
+                         <td>' .  stripslashes($row->ConsigneeName) . '</td>
+                         <td>' .  stripslashes($row->ShipperName) .   '</td>
+                         <td>Status Reports</td>
+                         </tr>
+                        </tbody>';
+     }
+  }
+ }
+ $output = array(
+      array(
+          "disp" => $dispOutput,
+          "ct" => $dispCount,
+        )
+  );
+  echo json_encode($output);
+}
 
 
     function carrierjobfile(){
@@ -549,25 +608,33 @@ if($query->num_rows() == 1){
 
    function global_get_products(){
       $products =  $this->input->post('id');   
-      $product  = $this->Jobdata->get_goods($products);
-            
+      $monType =  $this->input->post('monType');   
+      $dispoOutput = "";
+      if($monType == 3){
+        $product  = $this->Jobdata->get_goods_air($products);
+      }else{
+         $product  = $this->Jobdata->get_goods($products);
+      }
+          
     if($product==NULL){
-         echo    '<center><span style="color:red">No Commodities Yet </span></center>';
+         $dispoOutput .= '<center><span style="color:red">No Commodities Yet </span></center>';
     }else{
-         echo "<table id='tbl-commodities' class='table table-striped tableOverFlow'>
+          $dispoOutput .=  "<table id='tbl-commodities' class='table table-striped tableOverFlow'>
               <tr>
                    <th>No.</th>
-                   <th>Commodity</th>
-                   <th>Container No.</th>
-              </tr>";
+                   <th>Commodity</th>";
+                   if($monType != 3){
+                     $dispoOutput .= "<th> Container No  </th>";
+                   }          
+               $dispoOutput .= "</tr>";
 
           $i=0;
          foreach($product as $row){
           $i++;
           if($i==1){
              if($row->ProductName==''){
-                echo "</table>";
-                echo    '<center><span style="color:red">No Goods Yet </span></center>';
+                 $dispoOutput .=  "</table>";
+                 $dispoOutput .=     '<center><span style="color:red">No Goods Yet </span></center>';
                 break;
               }
           }else{
@@ -575,14 +642,17 @@ if($query->num_rows() == 1){
                 break;
               }
           }
-             echo "<tr class='tableRow'>";
-             echo "<td class='loadReports tdOverFlow'>".$i." </td>";
-             echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
-             echo "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
-             echo "</tr>";
+              $dispoOutput .=  "<tr class='tableRow'>";
+              $dispoOutput .=  "<td class='loadReports tdOverFlow'>".$i." </td>";
+              $dispoOutput .=  "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
+              if($monType != 3){
+              $dispoOutput .=   "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
+              }
+              $dispoOutput .=  "</tr>";
          }
-         echo "</table>";
+          $dispoOutput .=  "</table>";
     }
+    echo $dispoOutput;
    }
 
    function report_get_products(){
@@ -1084,8 +1154,9 @@ if($query->num_rows() == 1){
  }
 
    function global_status_report(){
-    $status    =  $this->input->post('id');   
-    $charges   = $this->Jobdata->get_status($status);
+    $status    =  $this->input->post('id'); 
+    $mon_type    =  $this->input->post('monType');   
+    $charges   = $this->Jobdata->report_get_status($status,$mon_type);
     if(count($charges)){
        echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
               <tr>
@@ -1248,7 +1319,7 @@ if($query->num_rows() == 1){
       $monitoringType    =  $this->input->post('monType');
       $rowCt = 0;
       $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name,$monitoringType);
-
+      
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
@@ -3728,12 +3799,5 @@ function get_audit_charges_air(){
         }
 
     }
-
-
-
   }
-
-
-
-
 ?>

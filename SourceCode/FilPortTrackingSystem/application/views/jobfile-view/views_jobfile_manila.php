@@ -85,7 +85,7 @@
 
 			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				    <div class="job-manila">
-				    <table class="table table_manila table-bordered table-condensed order-tablejob " style="width:5000px;">
+				    <table class="table table_manila table-bordered table-condensed order-tablejob" id="jobfile_mnila_sort" style="width:5000px;">
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          <th > No. </th>
@@ -151,6 +151,7 @@
 								      </tr>
 				        </thead>
 				        <tbody>
+
 				        				<?php $i= 0; foreach ($manila as $row) {
 				        					$i++;
 
@@ -1126,6 +1127,22 @@ $('#select').change(function(){
 });
 
 </script>
+
+
+
+
+<!--table sorting -->
+ <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script>
+	$(document).ready(function() { 
+        $("#jobfile_mnila_sort").tablesorter();}); 
+</script>
+
+
+
+
+
 
 
 <!---JOBFILE MODALSSS-->

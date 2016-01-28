@@ -21,7 +21,6 @@
 								</ul>
 						    </div>
 						  </div>
-						  
 						</div>
 			<!-- End Accordion -->
 		</div>
@@ -468,8 +467,12 @@
 
 			$(document).on('keydown','#txt-search-consignee',function(e){
 				 if (e.keyCode == 13){
-			   	  $('#btn-search-consignee').click();
-			    }
+				 	if($('#txt-search-consignee').val().trim().length > 0){
+				 	}else{
+				   	 $('#btn-search-consignee').click();
+				 	}
+			 	}
+			     $('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 			});
 
 			$(document).on('click','.nav-data li',function(){
@@ -534,11 +537,9 @@
 			}
 			
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Consignee Name to Search from Air Freight');
-			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Consignee Name to Search from Sea Freight Outport');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Air Freight');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Consignee Name to Search from Sea Freight Manila');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Sea Freight Manila');
 			}
 		}
 </script>

@@ -56,7 +56,7 @@ function get_vessels($JobFile){
  }
 
  function get_goods_air($products){
-    $query = $this->db->query("select * FROM vw_ProductsAir WHERE JobFile_AirId = '$products'");
+    $query = $this->db->query("select a.*, b.* FROM vw_JobFileAir as a , vw_ProductsAir as b where a.JobFileNo = '$products' AND a.JobFile_AirId = b.JobFile_AirId");
     return $query->result();
  }
 
@@ -190,13 +190,17 @@ function get_countryID_manila($jobfile){
 
  function getJobFiles_Consignee($consigneeName,$monitoringType){
     if($monitoringType == 1 || $monitoringType == 2){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
+         // $q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
      }else if($monitoringType == 4){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'");
+         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
+         //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'";
      }
      else{
-         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'");
+         $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
+         //$q = "select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'";
      }
+    //return $q . " MT : " . $monitoringType;
     //return "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
     return $query->result();
  }

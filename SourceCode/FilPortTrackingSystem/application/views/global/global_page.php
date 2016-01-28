@@ -1,21 +1,39 @@
 
-	<div class="gl-filter">
-		<div class="gl-filtitle">
-			<h1>Search</h1>
+
+<div class="dash-cont">
+	<div class="dash-title"><h1>Search</h1></div>
+		<div class="dash-subtitle">
+						<div class="panel-group" id="accordion">
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
+						        <span class="hvr-icon-forward"> Jobfile Transaction </span></a>
+						      </h4>
+						      	<div class="input-group col-lg-12" style="padding-bottom: 5px;">
+						            <!-- <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/> -->
+						            <label for="search-global" style="font-size:12px;">Search:  </label>
+						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" placeholder="Jobfile No/ Shipper Name / Consignee Name" >
+						        <button class="btn btn-danger col-lg-4 pull-right" type="submit" id="btnSearch" style="top: 5px;">
+									<span class="fa fa-search"></span>
+								</button>
+						        </div>
+						        
+						    </div>
+
+						    <div id="collapse1" class="panel-collapse" style="padding:5px">
+						    <label for="search-global" style="font-size:12px;">From:  </label>
+						         <ul class="nav nav-pills nav-data">
+									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+						</div>
 		</div>
-		<div class="input-group col-lg-12">
-            <!-- <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/> -->
-            <label for="search-global">Please Key in Keyword for Search:  </label>
-            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" onkeyup="search(this.value)" >
-        </div>
-		<br>
-		<button class="btn btn-danger col-lg-4 pull-right" type="submit" id="btnSearch">
-
-		<span class=" glyphicon glyphicon-search"></span>
-
-		</button>
-
-	</div>
+</div>
+	
 
 	<div class="gl-container">
 		<p id="lblResultDetails"> </p>
@@ -24,46 +42,8 @@
 	 	<h3 style="font-family:Century Gothic">
 	 		Double Click on the Result(s) to View.
 	 	</h3>
-	 	<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search" hidden>
-				        <thead>
-				             <tr style="cursor:w-resize ;">
-
-								          <th > JobfileNumber </th>
-
-								          <th >Color Stages</th>
-
-								          <th > Consignee </th>
-										 
-								         <th > Shipper </th>
-
-								          <th> Status Report </th>
-										   
-							 </tr>
-				          </thead>
-				          <tbody>
-				        				<?php $i= 0; foreach ($manila as $row) {
-				        					$i++;
-
-				        					$pick =$row->IsBackground;
-							    			if($pick==0){
-									        	$pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
-									        }else{
-									        	$pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
-									        }
-
-				        				?>
-				            <tr id="<?php echo $row->JobFileNo; ?>" class="tableRow">		
-				            			  <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
-								          <?php echo $pick1 ;?>
-								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
-								          <td><?php echo stripslashes($row->ShipperName); ?></td>
-								          <td>
-								          		<button type="button" class="btn btn-StatusReport btn-info reports" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
-								          </td>
-								       	 <?php } ?>
-							</tr>
-				        </tbody>
-		</table>
+	 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
+		 </table
 	 </span>
 	 	
 	 </div>
@@ -121,7 +101,7 @@
 		    <li><a data-toggle="tab" href="#status-reports">Status Reports</a></li>
 
 		  </ul>
-
+	
 		  	<!-- Status Report -->
 
 		  	<div class="tab-content">
@@ -139,8 +119,7 @@
 				             </table>
 				            </div>
 				       	 </div>
-			 
-
+			 	<hidden class="conName" id="<?php echo stripslashes($jobfiles); ?>"></hidden>
 			  	<!-- Commodity -->
 
 			  <div id="commodity" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
@@ -207,13 +186,18 @@
 </html>
 
 <script>
+		var mon_Type = 1;
+		var jbID;
+		var searchItem;
 		$(document).ready(function(){
-
+			$('#btnSearch').click();
+			getSearchItem();
 		});
 
-		var jbID;
-					
-			$('.tableRow').on('dblclick',function(){
+		function getSearchItem(){
+			searchItem = $('.conName').attr('id');
+		}
+			$(document).on('dblclick','.tableRow',function(){
 				$('#tbl-status-reports').html('<table id="tbl-status-reports" class="table table-striped tableOverFlow" style="width:100%;cursor:pointer;"><tr><td class="loadReports"></td></tr></table>');
 				$('#tbl-commodities').html('<table id="tbl-commodities" class="table table-striped tableOverFlow"><tr><td class="loadCommodities"></td></tr></table>');
 				$('#jfNo').html($(this).attr('id'));
@@ -248,19 +232,22 @@
  					  	},
 				  		data: { 
 				  			id:ids,
+				  			monType: mon_Type
 				  		}
 					})
 			  		.done(function(data) {
 				  		$('#tbl-status-reports').html(data);
 				});
-
-			  	 $.ajax({
+			   $.ajax({
 				  		method: "POST",
 						url: "<?php echo base_url('Job/global_get_products');?>",
 						beforeSend: function() {
 							$('.loadCommodities').html('<td class="loadCommodities" style="font-size:15px;"> <i class="fa fa-spinner fa-spin"></i>Loading Commodities </td>');
  					  	},
-				  		data: { id:ids,}
+				  		data: { 
+				  			id:ids,
+				  			monType: mon_Type
+				  		}
 					})
 			  		.done(function(data) {
 				  			$('#tbl-commodities').html(data);
@@ -271,12 +258,25 @@
 			});
 
 			$('#btnSearch').on('click',function(){
-				var searchVal = $('#search-global').val();
-				if($('#search-global').val() == ""){
-					$("#tbl-global-search").hide();
-				}else{
-					$("#tbl-global-search").show();
-				}
+				getSearchItem();
+			 	$.ajax({
+				  		method: "POST",
+						url: "<?php echo base_url('Job/get_jobfile_global_search');?>",
+						beforeSend: function(){
+							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
+							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
+							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+						},
+				  		data: { 
+				  			search  : searchItem,
+				  			monType : mon_Type
+				  		}
+					})
+			  		.done(function(consignee_data) {
+			  			var result = JSON.parse(consignee_data);
+			  			$('#tbl-global-search').html(result[0].disp);
+			  			$('.result-count').html(result[0].ct);
+					});
 			});
 
 			$(document).on('dblclick','#loadReports',function(){
@@ -293,10 +293,16 @@
             	$('#view-jobfile-profile').modal('show');
    			 });
 
+			$(document).on('keydown','#search-global',function(e){
+				 if (e.keyCode == 13){
+			   	  	 $('#btnSearch').click();
+			  	 }
+			});
 
-			function search(searchme){
-				$("#tbl-global-search").hide();
-			}
+			$(document).on('click','.nav-data li',function(){
+				mon_Type = $('.nav-data .active').val();
+			   $('#btnSearch').click();
+			});
 			
 	</script>
 

@@ -608,18 +608,15 @@ function get_jobfile_outport(){
     return $query->result();
   }
 
-  function get_jobfile_manila_global_consignee($consigneeName){
-    $query = $this->db->query("select * from vw_JobFile WHERE ConsigneeName = '$consigneeName'");
+  /*function get_jobfile_manila_global_consignee($consigneeName,$montype){
+    if($montype == 1 || $montype == 2){
+      $query = $this->db->query("select * from vw_JobFile WHERE ConsigneeName = '$consigneeName'");
+    }else if ($montype == 3){
+      $query = $this->db->query("select * from vw_JobFile WHERE ConsigneeName = '$consigneeName'");
+    }
     return $query->result();
   }
-
- /* function get_jobfile_outport(){
-    $query = $this->db->query("select * from vw_MLAJobFile where MonitoringTypeId = 2");
-    return $query->result();
-  }*/
-
-
-
+*/
  function update_hauler($id,$name,$add,$tin,$status){
    $status =  (int) $status;
          $data = array(
