@@ -314,7 +314,7 @@
 			<div class="container">
 				  <!-- Modal -->
 				  <div class="modal fade" id="statrepo" data-backdrop="static" data-keyboard="false" role="dialog">
-				    <div class="modal-dialog">
+				    <div class="modal-dialog" >
 				    
 				      <!-- Modal content-->
 				      <div class="modal-content">

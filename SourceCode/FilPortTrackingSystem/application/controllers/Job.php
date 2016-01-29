@@ -1124,12 +1124,12 @@ function get_jobfile_global_search(){
     $charges   = $this->Jobdata->get_status($status);
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
-                   <th>No.</th>
+                   <th style='width:20%;'>Date Added</th>
                     <th>Status Description</th>
               </tr>";
-      $i=0;
+     // $i=0;
       foreach ($charges as $row) {
-        $i++;
+        //$i++;
          $description = $row->StatusDescription;
 /*         if($description==''){
          ?>
@@ -1139,7 +1139,7 @@ function get_jobfile_global_search(){
          <?php 
          }*/
        echo " <tr class='remove_tr'>
-                 <td>".$i."</td>
+                 <td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
             ";
@@ -1159,12 +1159,12 @@ function get_jobfile_global_search(){
     }else{
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
-                   <th>No.</th>
+                    <th style='width:20%;'>Date Added</th>
                     <th>Status Description</th>
               </tr>";
-      $i=0;
+     // $i=0;
       foreach ($charges as $row) {
-        $i++;
+       // $i++;
          $description = $row->StatusDescription;
     /*   if($description==''){
          ?>
@@ -1174,7 +1174,7 @@ function get_jobfile_global_search(){
          <?php 
          }*/
        echo " <tr class='remove_tr'>
-                 <td>".$i."</td>
+                 <td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
             ";
