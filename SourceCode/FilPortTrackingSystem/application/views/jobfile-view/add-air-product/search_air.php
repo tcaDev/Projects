@@ -1,4 +1,4 @@
-        <table class="table table_manila table-bordered table-condensed order-tablejob" style="width:5500px;">
+        <table class="table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort_search" style="width:5500px;">
             <thead>
                  <tr style="cursor:w-resize ;">
 
@@ -287,3 +287,12 @@ $('.btn-Add-Report-air').click(function(){
 </script>
 
           </script>
+
+
+             <!--sort table -->
+   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script>
+  $(document).ready(function() { 
+        $("#table_air_sort_search").tablesorter();}); 
+</script>

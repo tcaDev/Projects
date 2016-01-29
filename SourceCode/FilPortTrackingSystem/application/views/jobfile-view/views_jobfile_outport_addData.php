@@ -319,19 +319,17 @@
 							</div>
 
 
+					  			<div class="form-group">
+								<label>Date Sent Final Assessment</label>
+								<input type="date" name="" class="form-control input-sm dt_final_assess-outport" />
+							</div>
+
 
 					  	</div>
 					  	
-				  			
-
-
 
 					  	<div class="col-lg-6">
 
-					  			<div class="form-group">
-								<label>Date Sent Final Assessment-</label>
-								<input type="date" name="" class="form-control input-sm dt_final_assess-outport" />
-							</div>
 
 					  		<div class="form-group">
 								<label>Start of Storage</label>
@@ -343,14 +341,14 @@
 								<input type="date" name="strtdmrage" class="form-control input-sm demorage-outport" />
 							</div>
 
-							<!-- <div class="form-group">
+							 <div class="form-group">
 								<label>Lodging</label>
 								<input type="date" name="lodging" class="form-control input-sm lodging-outport" />
-							</div> -->
+							</div>
 
 							<div class="form-group">
 								<label>Actual Delivery at Warehouse</label>
-								<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-outport" />
+								<input type="date" name="act-del-whse" class="form-control input-sm act-del-whse-outport" />
 							</div>
 
 						    <div class="form-group">
@@ -358,10 +356,10 @@
 								<input type="date" name="" class="form-control input-sm tdt-outport " />
 							</div>
 
-							<!-- <div class="form-group">
+							 <div class="form-group">
 								<label>Pull out Date at Port</label>
 								<input type="date" name="" class="form-control input-sm pul_out_port-outport " />
-							</div> -->
+							</div> 
 
 
 						    <div class="form-group">
@@ -454,8 +452,8 @@
 							 </div>
 
 						    <div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-outport" />
+								<label>Actual Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm aat-outport" />
 							 </div>
 
 							
@@ -485,11 +483,11 @@
 							    <thead>
 							    	 <tr>
 								        <th>Vessel/Voyage #</th>
-								        <th>Estimated Departure Time</th>
-								        <th>Estimated Arrival Time</th>
+								        <th>Estimated Departure</th>
+								        <th>Estimated Arrival</th>
 								        <th>Actual Berthing Time</th>
 								        <th>Discharge Time of Vessel</th>
-								        <th>Actual Arrival Time</th>
+								        <th>Actual Arrival</th>
 								        <th class="hidden">Vessel Value</th>
 						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>
@@ -530,7 +528,7 @@
 
 							<div class="form-group">
 								<label>Weighing</label>
-								<input type="text" name="weight" class="form-control input-smcheckDec-outport" id="weight-outport"/>
+								<input type="text" name="weight" class="form-control input-sm checkDec-outport" id="weight-outport"/>
 							</div>
 
 							<div class="form-group">

@@ -121,8 +121,8 @@
 									 </div>
 
 							   <div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm aat-air" />
+								<label>Actual Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm aat-air" />
 							 </div>
 
 

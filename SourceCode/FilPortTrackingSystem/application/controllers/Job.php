@@ -452,12 +452,12 @@ function get_jobfile_global_search(){
 
                               <div class="form-group">
                                 <label>BPI Inspection</label>
-                                <input type="text" name="bpi" class="form-control input-sm checkDec" id="bpi" value="'.$row->BadCargo.'"disabled/>
+                                <input type="text" name="bpi" class="form-control input-sm bpi checkDec" id="bpi" value="'.$row->BadCargo.'"disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Plug In for Reefer</label>
-                                <input type="text" name="reefer" class="form-control input-sm checkDec" id="reefer" value="'.$row->BadCargo.'"disabled/>
+                                <input type="text" name="reefer" class="form-control input-sm reefer checkDec" id="reefer" value="'.$row->BadCargo.'"disabled/>
                               </div>
                           </div>
                         </div>';
@@ -1631,32 +1631,32 @@ function get_jobfile_global_search(){
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
              echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
-                echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
                 echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
              echo "<td class='row hidden'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
-                echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->TargetDeliveryDate)."</td>";
              echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
-                echo "<td class='row hidden'>".stripslashes($GateInAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->GateInAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->GateInAtPort)."</td>";
-                echo "<td class='row hidden'>".stripslashes($GateOutAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->GateOutAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->GateOutAtPort)."</td>";
-                echo "<td class='row hidden'>".stripslashes($ActualDeliveryAtWarehouse)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
-                echo "<td class='row hidden'>".stripslashes($StartOfDemorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->StartOfDemorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
-                echo "<td class='row hidden'>".stripslashes($PullOutDateAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->PullOutDateAtPort)."</td>";
              echo "<td class='row hidden'>".stripslashes($row->PullOutDateAtPort)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateBOCCleared)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateBOCCleared)."</td>";
              echo "<td class='row'>".stripslashes($row->DateBOCCleared)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateFileEntryToBOC)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateFileEntryToBOC)."</td>";
              echo "<td class='row'>".stripslashes($row->DateFileEntryToBOC)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateSentPreAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateSentPreAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->DateSentPreAssessment)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DatePaid)."</td>";
              echo "<td class='row'>".stripslashes($row->DatePaid)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateSentFinalAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
               echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
@@ -1814,32 +1814,32 @@ function get_jobfile_global_search(){
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
              echo "<td class='row'>".stripslashes($row->NoOfCartons)."</td>";
-                echo "<td class='row hidden'>".stripslashes($StartOfStorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->StartOfStorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfStorage)."</td>";
-                echo "<td class='row hidden'>".stripslashes($Lodging)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->Lodging)."</td>";
              echo "<td class='row'>".stripslashes($row->HaulerOrTruck)."</td>";
-                echo "<td class='row hidden'>".stripslashes($TargetDeliveryDate)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->TargetDeliveryDate)."</td>";
              echo "<td class='row'>".stripslashes($row->TargetDeliveryDate)."</td>";
-                echo "<td class='row hidden'>".stripslashes($ActualDeliveryAtWarehouse)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
-                echo "<td class='row hidden'>".stripslashes($StartOfDemorage)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->StartOfDemorage)."</td>";
              echo "<td class='row'>".stripslashes($row->StartOfDemorage)."</td>";
-                echo "<td class='row hidden'>".stripslashes($PullOutDateAtPort)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->PullOutDateAtPort)."</td>";
              echo "<td class='row'>".stripslashes($row->PullOutDateAtPort)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateBOCCleared)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateBOCCleared)."</td>";
              echo "<td class='row'>".stripslashes($row->DateBOCCleared)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateFileEntryToBOC)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateFileEntryToBOC)."</td>";
              echo "<td class='row'>".stripslashes($row->DateFileEntryToBOC)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateSentPreAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateSentPreAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->DateSentPreAssessment)."</td>";
                 echo "<td class='row hidden'>".stripslashes($DatePaid)."</td>";
              echo "<td class='row'>".stripslashes($row->DatePaid)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateSentFinalAssessment)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->DateSentFinalAssessment)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
              echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
-                echo "<td class='row hidden'>".stripslashes($DateReceivedAtWhse)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->DateReceivedAtWhse)."</td>";
              echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
               echo "<td class='row hidden'>".stripslashes($row->ContainerByCarrierId)."</td>";
             
@@ -2343,6 +2343,8 @@ foreach($job as $row){
    $sra_app           =  addslashes($this->input->post('sra_app'));   
    $sra_inspect       =  addslashes($this->input->post('sra_inspect'));
    $bad_cargo         =  addslashes($this->input->post('bad_cargo'));
+    $bpi       =  addslashes($this->input->post('bpi'));
+   $reefer         =  addslashes($this->input->post('reefer'));
 /*   $all_charges       =  addslashes($this->input->post('all_charges'));
    $part_charges      =  addslashes($this->input->post('part_charges'));
 */
@@ -2370,7 +2372,10 @@ if($query->num_rows() ==1){*/
                'BAIInspection'    => $bai_inspect,
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
-               'BadCargo'         => $bad_cargo
+               'BadCargo'         => $bad_cargo,
+              'BPIInspection'    => $bpi,
+               'PlugInForReefer'         => $reefer
+
             /*   'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges*/
             );
@@ -2398,6 +2403,8 @@ $this->db->update('RunningCharges', $update_charges);
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
+                'BPIInspection'    => $bpi,
+               'PlugInForReefer'    => $reefer,
                'DateUpdated'      => Date('Y-m-d H:i'),
                'UpdatedBy_UserId'  => $userid
             );

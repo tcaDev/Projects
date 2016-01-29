@@ -46,6 +46,7 @@
 		    <div class="form-group">
 				<label>Hauler/Truck Name</label>
 				<select class="form-control truckname-updateContainer-outport" >
+						<option value="0" selected></option>
 						<?php foreach($hauler_data as $row){ ?>
 							 <option value="<?php echo $row->HaulerOrTruckId?>">
 							 <?php echo stripslashes($row->HaulerOrTruck);?>
@@ -66,7 +67,7 @@
 			</div>
 			<div class="form-group">
 				<label>Date Paid</label>					     
-	        		<input type="date" class="dt_paid-updateContainer-outport form-control input-sm">
+	        		<input type="datetime-local" class="dt_paid-updateContainer-outport form-control input-sm">
 			</div>
 			<div class="form-group">
 				<label>Date Sent PreAssessment</label>					     
@@ -97,10 +98,10 @@
 				<input type="date" name="strtdmrage" class="form-control input-sm demorage-updateContainer-outport" />
 			</div>
 
-		<!-- 	<div class="form-group">
+		 	<div class="form-group">
 				<label>Lodging</label>
 				<input type="date" name="lodging" class="form-control input-sm lodging-updateContainer-outport" />
-			</div> -->
+			</div> 
 
 			
 			<div class="form-group">
@@ -113,10 +114,10 @@
 				<input type="date" name="" class="form-control input-sm tdt-updateContainer-outport" />
 			</div>
 
-			<!-- <div class="form-group">
+			 <div class="form-group">
 				<label>Pull out Date at Port</label>
 				<input type="date" name="" class="form-control input-sm pull_out_port-updateContainer-outport" />
-			</div> -->
+			</div> 
 
 
 		    <div class="form-group">
@@ -266,6 +267,15 @@ var cbcid_outport;
  						$.ajax({
 					  		method: "POST",
 							url: "<?php echo base_url('Job_manila_update/container');?>",
+							beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-pulse',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Updating container',
+				   			});
+ 					     },
 					  		data: { carrierbyjobfile         :carrierbyjobfile_outport,
 					  			    cbcid                    :cbcid_outport,
 					  			    containerno   			 :containerno_outport,
@@ -291,9 +301,11 @@ var cbcid_outport;
 				  		.done(function(data) {
 				  			 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
-				        		title: 'Success!',
+				        		title: ' Success!',
+				        		content:'Container is updated!',
 				        		content:data,
 				        		confirm: function(){
+				        			dia.close();
 				        			 $('#updateContainer-outport').modal('hide');
 				        			 $('#viewcontainers-outport').modal('hide');
 				        	    }

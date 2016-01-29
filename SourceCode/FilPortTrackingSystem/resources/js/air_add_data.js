@@ -487,7 +487,7 @@ function air_add_charges(){
 					url: link + "/Job_air_update/jobfile_add_charge_air/",
 				    beforeSend: function() {
 					 	  dia_running_charges =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    icon: 'fa fa-spinner fa-pulse',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,

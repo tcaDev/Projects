@@ -47,6 +47,7 @@
 		    <div class="form-group">
 				<label>Hauler/Truck Name</label>
 				<select class="form-control truckname-updateContainer-manila" >
+						<option value="0" selected></option>
 						<?php foreach($hauler_data as $row){ ?>
 							 <option value="<?php echo $row->HaulerOrTruckId?>">
 							 <?php echo stripslashes($row->HaulerOrTruck);?>
@@ -260,15 +261,14 @@ var cbcid_manila;
      				    var	dt_final_assess  =$('.dt_final_assess-updateContainer-manila').val();
      					var	storage          =$('.storage-updateContainer-manila').val(); 
      				    var	demorage         =$('.demorage-updateContainer-manila').val(); 
-     					var	lodging          =$('.lodging-updateContainer-manila').val();  
+     					/*var	lodging          =$('.lodging-updateContainer-manila').val();  */
      					var	gip              =$('.gtinport-updateContainer-manila').val(); 
      					var	gop              =$('.gtoutport-updateContainer-manila').val(); 
      					var	adw              =$('.act-del-whse-updateContainer-manila').val();
      					var	tdt              =$('.tdt-updateContainer-manila').val();
-     					var	pull_out_date    =$('.pull_out_port-updateContainer-manila').val();
+     					/*var	pull_out_date    =$('.pull_out_port-updateContainer-manila').val();*/
      					var	dt_final_entry_boc    =$('.dt_file_entry_boc-updateContainer-manila').val(); 
      					var	dt_boc           =$('.dt_boc-updateContainer-manila').val(); 
-     					
      					
  
  						$.ajax({
@@ -296,12 +296,12 @@ var cbcid_manila;
 					  			    dt_final_assess:dt_final_assess,
 					  			    storage:storage,
 					  			    demorage:demorage,
-					  			    lodging:lodging,
+					  			   /* lodging:lodging,*/
 					  			    gip:gip,
 					  			    gop:gop,
 					  			    adw:adw,
 					  			    tdt:tdt,
-					  			    pull_out_date:pull_out_date,
+					  			   /* pull_out_date:pull_out_date,*/
 					  			    dt_final_entry_boc:dt_final_entry_boc,
 					  			    dt_boc:dt_boc
 					  		}

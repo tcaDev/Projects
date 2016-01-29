@@ -54,13 +54,12 @@ class Job_availability extends CI_Controller {
    	    $container  = addslashes($this->input->post('containerno'));
         $vessel_voyage  = addslashes($this->input->post('vessel_voyage'));
 
-          $query2= $this->db->query("Select * from vw_Containers where JobFileNo ='eli' and ContainerNo='$container' and CarrierByJobFileId='$vessel_voyage' limit 1");
+          $query2= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' and CarrierByJobFileId='$vessel_voyage' limit 1");
    	      /* $query= $this->db->query("Select * from vw_Containers where JobFileNo ='$jobfile' and ContainerNo='$container' limit 1");*/
       /*    if($query->num_rows() == 1){ 
             echo  "<i style='color:red;'>Already exists</i>";     
           }else*/if($query2->num_rows() == 1){
-            echo  "<i style='color:red;'>VesselVoyageNo and  Container Number
-            is already exists</i>"; 
+            echo  "<i style='color:red;'>Container Number is already exists</i>"; 
           }else{
             echo "<i style='color:green;'>Available</i>"; 
           }

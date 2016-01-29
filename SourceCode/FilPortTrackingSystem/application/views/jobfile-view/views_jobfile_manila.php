@@ -85,7 +85,9 @@
 
 			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				    <div class="job-manila">
-				    <table class="table table_manila table-bordered table-condensed order-tablejob" id="jobfile_mnila_sort" style="width:5000px;">
+
+				    <table class="table table_manila table-bordered table-condensed order-tablejob " id="table_manila_sort" style="width:5000px;">
+
 				        <thead>
 				             <tr style="cursor:w-resize ;">
 								          <th > No. </th>
@@ -456,6 +458,8 @@ var jbfl;
 			$('#runchar .sra-app').removeAttr('disabled');
 			$('#runchar .sra-inspect').removeAttr('disabled');
 			$('#runchar .bad-cargo').removeAttr('disabled');
+			$('#runchar .bpi').removeAttr('disabled');
+			$('#runchar .reefer').removeAttr('disabled');
 
 			$('.asd').removeAttr('disabled');
 			$(this).attr('disabled','disabled');
@@ -479,13 +483,15 @@ var jbfl;
      var sra_app 	  = $('#runchar .sra-app').val().replace(/,/g,'');
      var sra_inspect  = $('#runchar .sra-inspect').val().replace(/,/g,'');
      var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
+     var bpi  = $('#runchar .bpi').val().replace(/,/g,'');
+     var reefer    = $('#runchar .reefer').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
 	 		       beforeSend: function() {
 					 	  dia_running_charges =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    icon: 'fa fa-spinner fa-pulse',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,
@@ -510,7 +516,9 @@ var jbfl;
 			                   bai_inspect  :bai_inspect,
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo
+			                   bad_cargo    :bad_cargo,
+			                   bpi :bpi,
+			                   reefer :reefer
 
 			  	   		 }
 	              })
@@ -1129,20 +1137,13 @@ $('#select').change(function(){
 </script>
 
 
-
-
 <!--table sorting -->
  <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
   <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
 <script>
 	$(document).ready(function() { 
-        $("#jobfile_mnila_sort").tablesorter();}); 
+        $("#table_manila_sort").tablesorter();}); 
 </script>
-
-
-
-
-
 
 
 <!---JOBFILE MODALSSS-->

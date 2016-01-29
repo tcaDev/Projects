@@ -475,8 +475,8 @@
 							 </div>
 
 						    <div class="form-group">
-								<label>Actual Arrival Time</label>
-								<input type="datetime-local" name="est-dept" class="form-control input-sm aat" />
+								<label>Actual Arrival</label>
+								<input type="date" name="est-dept" class="form-control input-sm aat" />
 							 </div>
 
 							
@@ -505,11 +505,11 @@
 							    <thead>
 							    	 <tr>
 								        <th>Vessel/Voyage #</th>
-								        <th>Estimated Departure Time</th>
-								        <th>Estimated Arrival Time</th>
+								        <th>Estimated Departure</th>
+								        <th>Estimated Arrival</th>
 								        <th>Actual Berthing Time</th>
 								        <th>Discharge Time of Vessel</th>
-								        <th>Actual Arrival Time</th>
+								        <th>Actual Arrival</th>
 								        <th class="hidden">Vessel Value</th>
 						       			<th>Shipping Lines / Carrier</th>
 								        <th></th>

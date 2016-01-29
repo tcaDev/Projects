@@ -37,12 +37,12 @@ class Job_manila_update extends CI_Controller {
       $dt_final_entry_boc=	addslashes($this->input->post('dt_final_entry_boc'));
       $dt_boc 			 =	addslashes($this->input->post('dt_boc'));
       $actual_dt_rcvd_cont_whse = addslashes($this->input->post('actual_dt_rcvd_cont_whse'));
-
-     if(($gop='') && ($gip='')){
+/*
+     if(($gop='') || ($gip='')){
       $gop=NULL;
       $gip=NULL;
      }
-
+*/
 	$this->Update_jobfile->jobfile_up($cbcid,
 		$carrierbyjobfile,
     $containerno,

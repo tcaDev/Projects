@@ -73,7 +73,7 @@
 
 			<div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				<div class="job-outport">
-				    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
+				    <table class="table  table-striped table-bordered table-hover table-condensed" id="table_outport_sort" style="width:5000px;">
 
 				      <thead>
 
@@ -432,6 +432,8 @@ var jbfl_outport;
 			$('#runchar-outport .sra-app').removeAttr('disabled');
 			$('#runchar-outport .sra-inspect').removeAttr('disabled');
 			$('#runchar-outport .bad-cargo').removeAttr('disabled');
+			$('#runchar-outport .bpi').removeAttr('disabled');
+			$('#runchar-outport .reefer').removeAttr('disabled');
 
 			$('.update_charges-outport').removeAttr('disabled');
 			$(this).attr('disabled','disabled');
@@ -469,13 +471,15 @@ var jbfl_outport;
      var sra_app 	  = $('#runchar-outport .sra-app').val().replace(/,/g,'');
      var sra_inspect  = $('#runchar-outport .sra-inspect').val().replace(/,/g,'');
      var bad_cargo    = $('#runchar-outport .bad-cargo').val().replace(/,/g,'');
+       var bpi  = $('#runchar-outport .bpi').val().replace(/,/g,'');
+     var reefer    = $('#runchar-outport .reefer').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job/jobfile_add_charge');?>",
 	 		       beforeSend: function() {
 					 	  dia_running_charges =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    icon: 'fa fa-spinner fa-pulse',
 					 	  	    closeIcon: false,
 				        		title: 'Please wait!',
 				        		backgroundDismiss: false,
@@ -500,7 +504,9 @@ var jbfl_outport;
 			                   bai_inspect  :bai_inspect,
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo
+			                   bad_cargo    :bad_cargo,
+			                   bpi : bpi,
+			                   reefer : reefer
 
 			  	   		 }
 	              })
@@ -989,3 +995,11 @@ $(".btn-Vessel-outport").click(function(){
  });
         
     </script>
+
+    <!--sort table -->
+   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script>
+	$(document).ready(function() { 
+        $("#table_outport_sort").tablesorter();}); 
+</script>

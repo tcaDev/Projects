@@ -943,16 +943,16 @@ function ins_contains(add_comodity){
 				          	start_demorage  = $tds.eq(8).text(); 
 				            start_storage 	= $tds.eq(9).text();
 				            dt_paid		    = $tds.eq(10).text();
-				            lodging    	    = $tds.eq(11).text();
-				            dt_pre_assess   = $tds.eq(12).text(); 
-				        	dt_final_assess = $tds.eq(13).text(); 
-				        	gip  		   	= $tds.eq(14).text();
-				         	gop  		   	= $tds.eq(15).text(); 
-				         	adw             = $tds.eq(16).text(); 
-				         	tdt    		    = $tds.eq(17).text(); 
-				         	pul_out_port    = $tds.eq(18).text();  
-				         	dt_file_entry_boc = $tds.eq(19).text(); 
-				         	dtboc             = $tds.eq(20).text();
+				           /* lodging    	    = $tds.eq(11).text();*/
+				            dt_pre_assess   = $tds.eq(11).text(); 
+				        	dt_final_assess = $tds.eq(12).text(); 
+				        	gip  		   	= $tds.eq(13).text();
+				         	gop  		   	= $tds.eq(14).text(); 
+				         	adw             = $tds.eq(15).text(); 
+				         	tdt    		    = $tds.eq(16).text(); 
+				        /* 	pul_out_port    = $tds.eq(18).text();  */
+				         	dt_file_entry_boc = $tds.eq(17).text(); 
+				         	dtboc             = $tds.eq(18).text();
 
 				         	/*alert(trucker_id);*/
   	
@@ -973,7 +973,7 @@ function ins_contains(add_comodity){
 			  			    start_storage  :start_storage,
 			  			    start_demorage :start_demorage,
 			  			    dt_paid        :dt_paid,
-			  			    lodging        :lodging,				
+			  			   /* lodging        :lodging,*/				
 			  			    dt_pre_assess  :dt_pre_assess,
 			  			    dt_file_entry_boc :dt_file_entry_boc,
 			  			    dt_final_assess:dt_final_assess,
@@ -982,7 +982,7 @@ function ins_contains(add_comodity){
 			  			    adw            :adw,
 			  			    dtboc		   :dtboc,
 			  			    tdt            :tdt,
-			  			    pul_out_port   :pul_out_port
+			  			/*    pul_out_port   :pul_out_port*/
 			  		
 			  		}
 				})
@@ -1113,6 +1113,8 @@ $(document).on('click','.save_charge',function(){
 	   var get_sra_app       	  =  $('#sra-app').val();
        var get_sra_inspect    	  =  $('#sra-inspect').val();
        var get_bad_cargo 	  	  =  $('#bad-cargo').val();
+        var get_bpi    	  =  $('#bpi').val();
+       var get_reefer 	  	  =  $('#reefer').val();
       
 
 	  
@@ -1133,9 +1135,12 @@ $(document).on('click','.save_charge',function(){
 	   var sra_app        =  get_sra_app.replace(/,/g,'');
        var sra_inspect    =  get_sra_inspect.replace(/,/g,'');
        var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
+       var bpi    =  get_bpi.replace(/,/g,'');
+       var reefer 	  =  get_reefer.replace(/,/g,'');
+
      
 
-	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo];
+	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo,bpi,reefer];
         var wVal = 0;
 		var len = totalCharges.length;
 		 for($x = 0 ; $x <= len ; $x++){
@@ -1191,7 +1196,9 @@ $(document).on('click','.save_charge',function(){
 			                   bai_inspect  :bai_inspect,
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo
+			                   bad_cargo    :bad_cargo,
+			                   bpi 			:bpi,
+			                   reefer       :reefer
 			                   /*all_charges  :all_charges,*/
 			                   /*part_charges :part_charges*/
 			  	   		 }

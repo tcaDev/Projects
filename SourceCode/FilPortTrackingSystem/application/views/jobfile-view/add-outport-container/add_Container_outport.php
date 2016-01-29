@@ -106,7 +106,7 @@
                     
 			<div class="form-group">
 				<label>Actual Delivery at Warehouse</label>
-				<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-outport" />
+				<input type="date" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-outport" />
 			</div>
 
 		    <div class="form-group">
@@ -219,7 +219,7 @@
             {	
                     $('.container-msg-addContainer-outport').text("Container Number Already Exists.");
             }
-            else if($('#table-AddContainer-outport .check_exists_container-outport i').text() == "Already exists")
+            else if($('#table-AddContainer-outport .check_exists_container-outport i').text() == "Container Number is already exists")
             {
                     $('.container-msg-addContainer-outport').text("Place Another Container Number.");
             }
@@ -261,18 +261,18 @@
                         $('.container-msg-addContainer-outport').text("");
                         $('.check_exists_container-outport i').text("");
 
-			$('#table-AddContainer-outport .container-addContainer-outport').val('');
+		/*	$('#table-AddContainer-outport .container-addContainer-outport').val('');
 			$('#table-AddContainer-outport .container-size-addContainer-outport').val('');
-			/*$('#table-AddContainer-outport .plate-addContainer-outport').val('');*/
+			$('#table-AddContainer-outport .plate-addContainer-outport').val('');
 			$('#table-AddContainer-outport .cartons-addContainer-outport').val('');
 
-		/*	$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
+			$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_paid-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_pre_assess-addContainer-outport').val('');
                         
-                        $('#table-AddContainer-outport .dt_file_entry_boc-addContainer-outport').val('');
-                        $('#table-AddContainer-outport .tdt-addContainer-outport').val('');
-                        $('#table-AddContainer-outport .pull_out_port-addContainer-outport').val('');
+            $('#table-AddContainer-outport .dt_file_entry_boc-addContainer-outport').val('');
+            $('#table-AddContainer-outport .tdt-addContainer-outport').val('');
+            $('#table-AddContainer-outport .pull_out_port-addContainer-outport').val('');
 
 			$('#table-AddContainer-outport .storage-addContainer-outport').val('');
 			$('#table-AddContainer-outport .demorage-addContainer-outport').val('');
@@ -292,6 +292,8 @@
     
 /*function Check if Container is existing in Database*/
     function check_Container_outport(container){
+
+    	 var vessel_voyage = $('.vessel-addContainer-outport').val();
         var jbfl = $('.jobfile-addContainer-outport').val();
         var containerno = $('.container-addContainer-outport').val();
         
@@ -299,7 +301,8 @@
                         method: "POST",
                           url: "<?php echo base_url('Job_availability/container_manila');?>",
                         data: { jbfl:jbfl,
-                                containerno :containerno
+                                containerno :container,
+                                vessel_voyage :vessel_voyage
                         }
                    })
                    .done(function(data) {
@@ -345,8 +348,8 @@ $(document).on('click','.save_container_outport',function(){
 				            consize 	   	= $tds.eq(3).text();
                             cartons_no  	= $tds.eq(4).text(); 
                             trucker_plate   = $tds.eq(5).text(); 
+                             trucker_id   	= $tds.eq(6).text();
 				            trucker_name   	= $tds.eq(7).text();
-				            trucker_id   	= $tds.eq(6).text();
 				            ref_entry_no    = $tds.eq(8).text();
                             start_demorage  = $tds.eq(9).text(); 
 				            start_storage 	= $tds.eq(10).text();

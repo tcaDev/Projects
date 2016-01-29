@@ -107,17 +107,17 @@
 
 			<div class="form-group">
 				<label>Gate In at Port</label>
-				<input type="datetime-local" name="gtinport" class="form-control input-sm gtinport-addContainer-manila" />
+				<input type="date" name="gtinport" class="form-control input-sm gtinport-addContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Gate Out at Port</label>
-				<input type="datetime-local" name="gtoutport" class="form-control input-sm gtoutport-addContainer-manila" />
+				<input type="date" name="gtoutport" class="form-control input-sm gtoutport-addContainer-manila" />
 			</div>
 
 			<div class="form-group">
 				<label>Actual Delivery at Warehouse</label>
-				<input type="datetime-local" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-manila" />
+				<input type="date" name="act-del-whse" class="form-control input-sm act-del-whse-addContainer-manila" />
 			</div>
 
                         <div class="form-group">
@@ -241,6 +241,10 @@
 			{
 				$('.container-msg-addContainer-manila').text("Need Container Number.");
 			}
+			else if($('.check_exists_container i').text() == "Container Number is already exists")
+			{
+				$('.container-msg-addContainer-manila').text("Please Choose Another Container Number.");
+			}
 			else{
 
 	       $('#table-AddContainer-mnla table').append('<tr class="remove_tr"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
@@ -309,20 +313,20 @@ function check_Container_mnilas(container){
      			var containerno = $('.container-addContainer-manila').val();
      			var ex = '.check_exists_container';
 
-   		 if((vessel_voyage='') && (jbfl=='') && (containerno=='')){
+/*   		 if((vessel_voyage='') && (jbfl=='') && (containerno=='')){
    		 	
    		 	 	var jbfl = $('.jobfile-updateContainer-mnla').val();
    		 	 	var vessel_voyage = $('.vessel-updateContainer-manila-get').val(); 	
    		 	 	var containerno = container;
    		 	 	var ex = '.check_exists_container_update';
    		 	 	
-   		 }
+   		 }*/
    		 /*alert(vessel_voyage);*/
    				 $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job_availability/container_manila');?>",
 				  		data: { jbfl        :jbfl,
-				  			    containerno :containerno,
+				  			    containerno :container,
 				  			    vessel_voyage:vessel_voyage
 				  		}
 					})
@@ -376,18 +380,18 @@ function check_Container_mnilas(container){
 				          	start_demorage  = $tds.eq(9).text(); 
 				            start_storage 	= $tds.eq(10).text();
 				            dt_paid		    = $tds.eq(11).text();
-				            lodging    	    = $tds.eq(12).text();
-				            dt_pre_assess   = $tds.eq(13).text(); 
-				        	dt_final_assess = $tds.eq(14).text(); 
-				        	gip  		   	= $tds.eq(15).text();
-				         	gop  		   	= $tds.eq(16).text(); 
-				         	adw             = $tds.eq(17).text(); 
-				         	tdt    		    = $tds.eq(18).text(); 
-				         	pul_out_port    = $tds.eq(19).text();  
-				         	dt_file_entry_boc = $tds.eq(20).text(); 
-				         	dtboc             = $tds.eq(21).text();
+				            /*lodging    	    = $tds.eq(12).text();*/
+				            dt_pre_assess   = $tds.eq(12).text(); 
+				        	dt_final_assess = $tds.eq(13).text(); 
+				        	gip  		   	= $tds.eq(14).text();
+				         	gop  		   	= $tds.eq(15).text(); 
+				         	adw             = $tds.eq(16).text(); 
+				         	tdt    		    = $tds.eq(17).text(); 
+				         	/*pul_out_port    = $tds.eq(19).text();  */
+				         	dt_file_entry_boc = $tds.eq(19).text(); 
+				         	dtboc             = $tds.eq(20).text();
 
-				    alert(jbfl + " " + vessel_voyage);						
+				    					
 		$.ajax({
 			  		method: "POST",
 					 url: "<?php echo base_url('Job/container');?>",
@@ -405,7 +409,7 @@ function check_Container_mnilas(container){
 			  			    start_storage  :start_storage,
 			  			    start_demorage :start_demorage,
 			  			    dt_paid        :dt_paid,
-			  			    lodging        :lodging,				
+			  			   /* lodging        :lodging,		*/		
 			  			    dt_pre_assess  :dt_pre_assess,
 			  			    dt_file_entry_boc :dt_file_entry_boc,
 			  			    dt_final_assess:dt_final_assess,
@@ -413,8 +417,8 @@ function check_Container_mnilas(container){
 			  			    gop            :gop,
 			  			    adw            :adw,
 			  			    dtboc		   :dtboc,
-			  			    tdt            :tdt,
-			  			    pul_out_port   :pul_out_port
+			  			    tdt            :tdt
+			  			  /*  pul_out_port   :pul_out_port*/
 
 
 

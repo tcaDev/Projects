@@ -1,4 +1,4 @@
-	    <table class="table  table-striped table-bordered table-hover table-condensed" style="width:5000px;">
+	    <table class="table  table-striped table-bordered table-hover table-condensed" id="table_outport_sort_search" style="width:5000px;">
 
 				      <thead>
 
@@ -486,3 +486,11 @@ $(".btn-Vessel-outport").click(function(){
  });
         
     </script>
+
+       <!--sort table -->
+   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script>
+	$(document).ready(function() { 
+        $("#table_outport_sort_search").tablesorter();}); 
+</script>
