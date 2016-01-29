@@ -173,7 +173,7 @@ function get_jobfile_global_search(){
  $jobfiles = $this->Jobdata->getJobFiles_Consignee($search,$monitoringType);
  if(count($jobfiles) > 0){
   $dispOutput .= '<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search"><thead><tr style="cursor:w-resize ;"><th > JobfileNumber </th><th >Color Stages</th><th>Consignee</th><th>Shipper </th><th> Status Report </th></tr></thead>';
-  if($monitoringType != 3){
+  if($monitoringType == 1 || $monitoringType == 2){
     foreach ($jobfiles as $row) {
      if($monitoringType == $row->MonitoringTypeId){
            $dispCount += 1;
@@ -193,6 +193,25 @@ function get_jobfile_global_search(){
                          </tr>
                         </tbody>';
         }
+     }
+  }else if ($monitoringType == 3){
+    $dispCount = count($jobfiles);
+    foreach ($jobfiles as $row) {
+           $dispOutput .='<tbody>';
+                             $pick =$row->IsBackground;
+                              if($pick==0){
+                                  $pick1= '<td style="color:'.$row->ColorCode.';">' .$row->StatusName.'</td>';
+                                }else{
+                                  $pick1 ='<td style="background-color:'.$row->ColorCode.'; ">'.$row->StatusName.'</td>';
+                                }
+         $dispOutput .= '<tr id="' . $row->JobFileNo . '" class="tableRow">   
+                         <td>' . stripslashes($row->JobFileNo) . '</td>
+                         ' . $pick1 . '
+                         <td>' .  stripslashes($row->ConsigneeName) . '</td>
+                         <td>' .  stripslashes($row->ShipperName) .   '</td>
+                         <td>Status Reports</td>
+                         </tr>
+                        </tbody>';
      }
   }else{
     $dispCount = count($jobfiles);
@@ -610,12 +629,21 @@ function get_jobfile_global_search(){
       $products =  $this->input->post('id');   
       $monType =  $this->input->post('monType');   
       $dispoOutput = "";
-      if($monType == 3){
-        $product  = $this->Jobdata->get_goods_air($products);
-      }else{
-         $product  = $this->Jobdata->get_goods($products);
+      if($monType == 4){
+        $product1 = $this->Jobdata->get_goods_air($products);
+        $product2 = $product  = $this->Jobdata->get_goods($products);
+        if(count($product1) == 0 && count($product2) == 0){
+        }else if(count($product1) > 0 ){
+           $product = $product1;
+        }else if(count($product2) > 0){
+           $product = $product2;
+        }
+      }else if($monType == 1 || $monType == 2){
+        $product  = $this->Jobdata->get_goods($products);
+      }else if($monType == 3){
+         $product  = $this->Jobdata->get_goods_air($products);
       }
-          
+
     if($product==NULL){
          $dispoOutput .= '<center><span style="color:red">No Commodities Yet </span></center>';
     }else{
@@ -623,7 +651,7 @@ function get_jobfile_global_search(){
               <tr>
                    <th>No.</th>
                    <th>Commodity</th>";
-                   if($monType != 3){
+                   if($monType == 1 || $monType == 2){
                      $dispoOutput .= "<th> Container No  </th>";
                    }          
                $dispoOutput .= "</tr>";
@@ -645,13 +673,15 @@ function get_jobfile_global_search(){
               $dispoOutput .=  "<tr class='tableRow'>";
               $dispoOutput .=  "<td class='loadReports tdOverFlow'>".$i." </td>";
               $dispoOutput .=  "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
-              if($monType != 3){
+              if($monType == 1 || $monType == 2){
               $dispoOutput .=   "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
               }
               $dispoOutput .=  "</tr>";
          }
           $dispoOutput .=  "</table>";
     }
+
+
     echo $dispoOutput;
    }
 
@@ -1155,8 +1185,20 @@ function get_jobfile_global_search(){
 
    function global_status_report(){
     $status    =  $this->input->post('id'); 
-    $mon_type    =  $this->input->post('monType');   
-    $charges   = $this->Jobdata->report_get_status($status,$mon_type);
+    $mon_type    =  $this->input->post('monType');  
+    if($mon_type == 1 || $mon_type == 2 || $mon_type == 3){
+        $charges   = $this->Jobdata->report_get_status($status,$mon_type);
+    }else{
+        $charges1 = $this->Jobdata->report_get_status($status,3);
+        $charges2 = $this->Jobdata->report_get_status($status,1);
+        if(count($charges1) == 0 && count($charges2) == 0){
+          $charges = $charges1;
+        }else if(count($charges1) > 0){
+          $charges = $charges1;
+        }else if(count($charges2) > 0){
+          $charges = $charges2;
+        }
+    }
     if(count($charges)){
        echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
               <tr>

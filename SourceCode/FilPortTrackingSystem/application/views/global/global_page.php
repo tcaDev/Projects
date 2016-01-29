@@ -13,7 +13,7 @@
 						      	<div class="input-group col-lg-12" style="padding-bottom: 5px;">
 						            <!-- <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/> -->
 						            <label for="search-global" style="font-size:12px;">Search:  </label>
-						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" placeholder="Jobfile No/ Shipper Name / Consignee Name" >
+						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" placeholder="Jobfile No/ Shipper Name / Consignee Name" onkeyup="getText(this.value)" >
 						        <button class="btn btn-danger col-lg-4 pull-right" type="submit" id="btnSearch" style="top: 5px;">
 									<span class="fa fa-search"></span>
 								</button>
@@ -24,9 +24,10 @@
 						    <div id="collapse1" class="panel-collapse" style="padding:5px">
 						    <label for="search-global" style="font-size:12px;">From:  </label>
 						         <ul class="nav nav-pills nav-data">
-									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li  value="4" style="display:block;width:100%;" class="active"><a href="#tab_c" data-toggle="pill">All</a></li>
+									  <li  value="1" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+									  <li  value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -42,8 +43,10 @@
 	 	<h3 style="font-family:Century Gothic">
 	 		Double Click on the Result(s) to View.
 	 	</h3>
+	 	<i class="result-count" style="font-size:24px;"> </i>
+	 	<a class="loading-consignee"></a>
 	 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
-		 </table
+		 </table>
 	 </span>
 	 	
 	 </div>
@@ -186,7 +189,7 @@
 </html>
 
 <script>
-		var mon_Type = 1;
+		var mon_Type = 4;
 		var jbID;
 		var searchItem;
 		$(document).ready(function(){
@@ -195,7 +198,12 @@
 		});
 
 		function getSearchItem(){
-			searchItem = $('.conName').attr('id');
+			var item = $('.conName').attr('id');
+			if(item.trim() == ""){
+				searchItem = $('#search-global').val();
+			}else{
+				searchItem = item;
+			}	
 		}
 			$(document).on('dblclick','.tableRow',function(){
 				$('#tbl-status-reports').html('<table id="tbl-status-reports" class="table table-striped tableOverFlow" style="width:100%;cursor:pointer;"><tr><td class="loadReports"></td></tr></table>');
@@ -264,7 +272,7 @@
 						url: "<?php echo base_url('Job/get_jobfile_global_search');?>",
 						beforeSend: function(){
 							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
-							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
+							$('#tbl-global-search').html('<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search"></table>');
 							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 						},
 				  		data: { 
@@ -275,7 +283,13 @@
 			  		.done(function(consignee_data) {
 			  			var result = JSON.parse(consignee_data);
 			  			$('#tbl-global-search').html(result[0].disp);
-			  			$('.result-count').html(result[0].ct);
+			  			if(result[0].ct <= 1){
+			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Result</i>');	
+			  			}else{
+			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Results</i>');	
+			  			}
+			  			$('.loading-consignee').html('<a class="loading-consignee"></a>');
+			  			
 					});
 			});
 
@@ -301,9 +315,14 @@
 
 			$(document).on('click','.nav-data li',function(){
 				mon_Type = $('.nav-data .active').val();
-			   $('#btnSearch').click();
+
+			   	$('#btnSearch').click();
 			});
 			
+			function getText(a){
+				$("#btnSearch").click();
+			}
+
 	</script>
 
 	<style>

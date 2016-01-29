@@ -193,7 +193,9 @@ function get_countryID_manila($jobfile){
          $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
          // $q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
      }else if($monitoringType == 4){
-         $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
+         $query = $this->db->query("SELECT JobFileId, JobFileNo, ConsigneeName, ShipperName, IsBackGround, ColorCode, StatusName from vw_JobFile WHERE ConsigneeName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%'
+                                    UNION ALL
+                                    select JobFile_AirId AS 'JobFileId', JobFileNo, ConsigneeName, ShipperName, IsBackGround, ColorCode, StatusName from vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%'");
          //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'";
      }
      else{
