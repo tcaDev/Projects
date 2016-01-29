@@ -20,17 +20,17 @@
 
 					</div>
 
-					<button type="button" class="btn-addReport-outport btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Status Report</button>
+					<!-- <button type="button" class="btn-addReport-outport btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Status Report</button> -->
 
 						<div style="width: 100%; overflow-x: auto;">
-						    <table class="table" style="width: 100%;" border="1">
+						    <!-- <table class="table" style="width: 100%;" border="1">
 							    <thead>
 							    	 <tr>
 							    	 	<th>Status Report</th>
 								        <th></th>
 							      	</tr>
 							    </thead>
-						    </table>
+						    </table> -->
 						</div>
 
   				</div>
@@ -76,7 +76,8 @@ $(document).on('click','.btn-addReport-outport',function(){
 <script>
 $('.save_reports-outport').click(function(){
 $('.save_reports-outport').attr('disabled','disabled');
- 	if($("#table-AddReport-outport  table tbody tr td").length == 0){
+var save_report= $('.report-outport').val();
+ 	if(save_report==''){
  					$.confirm({
 		 			 title: 'Add New Report',
 		 			 closeIcon:false,
@@ -103,44 +104,44 @@ $('.save_reports-outport').attr('disabled','disabled');
 				   			});
  			
 
-	        var jbfl = $('.jobfile-addReport-outport').val();
-            var table = $("#table-AddReport-outport table tbody");
-            var t4    = $("#table-AddReport-outport table tbody tr").length;
+						        var jbfl = $('.jobfile-addReport-outport').val();
+					          //  var table = $("#table-AddReport-outport table tbody");
+					         //   var t4    = $("#table-AddReport-outport table tbody tr").length;
 
-		    table.find('tr').each(function (count1) {
-	          var c4   = count1+1;
-			  var $tds = $(this).find('td'),
-			  save_report   = $tds.eq(0).text();
+							   // table.find('tr').each(function (count1) {
+						      //    var c4   = count1+1;
+								//  var $tds = $(this).find('td'),
+								//  save_report   = $tds.eq(0).text();
 
-		           $.ajax({
-			  		    method: "POST",
-			  		    url: "<?php echo base_url('Job/add_report');?>",
-			  	        data: {
-			  			    jbfl           :jbfl,
-			  			    save_report    :save_report,
-			  	    	}
-			    	})
-			        .done(function(data) {
-			    	       if(t4==c4){
-	  						$.alert({
-	  							backgroundDismiss: false, 	 	
-				        		title: 'Success!',
-				        		content: 'New Report Added!',
-				        		confirm: function(){
-				        			$(".remove_tr" ).remove();
-				        			dia.close();
-				        			$('.save_reports-outport').removeAttr('disabled');
-
-				        			$('.modal').modal('hide');
-				        			/*location.reload();*/
-				        	    }
-				   			});
-	  					   }
-	    		    });		  
-	        });	
-}
-
+							           $.ajax({
+								  		    method: "POST",
+								  		    url: "<?php echo base_url('Job/add_report');?>",
+								  	        data: {
+								  			    jbfl           :jbfl,
+								  			    save_report    :save_report,
+								  	    	}
+								    	})
+								        .done(function(data) {
+								    	      // if(t4==c4){
+						  						$.alert({
+						  							backgroundDismiss: false, 	 	
+									        		title: 'Success!',
+									        		content: 'New Report Added!',
+									        		confirm: function(){
+									        			//$(".remove_tr" ).remove();
+									        			dia.close();
+									        			$('.save_reports-outport').removeAttr('disabled');
+									        			$('.modal').modal('hide');
+									        			/*location.reload();*/
+									        	    }
+									   			});
+						  					  // }
+						    		    });		  
+	                }
 });
+//}
+
+//});
 
 
 </script>

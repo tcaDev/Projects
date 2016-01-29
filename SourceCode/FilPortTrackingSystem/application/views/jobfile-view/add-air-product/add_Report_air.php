@@ -20,17 +20,17 @@
 
 					</div>
 
-					<button type="button" class="btn-addReport-air btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Status Report</button>
+					<!-- <button type="button" class="btn-addReport-air btn btn-primary pull-right" style="margin-bottom:10px;"><span class=" fa fa-plus fa-fw"></span> Add Status Report</button> -->
 
 						<div style="width: 100%; overflow-x: auto;">
-						    <table class="table" style="width: 100%;" border="1">
+						   <!--  <table class="table" style="width: 100%;" border="1">
 							    <thead>
 							    	 <tr>
 							    	 	<th>Status Report</th>
 								        <th></th>
 							      	</tr>
 							    </thead>
-						    </table>
+						    </table> -->
 						</div>
 
   				</div>
@@ -76,7 +76,10 @@ $(document).on('click','.btn-addReport-air',function(){
 
 var jbfl_airs;
 
-$('.save_reports_air').click(function(){
+$(document).on('click','.save_reports_air',function(){
+	$('.save_reports_air').attr('disabled','disabled');
+	var reports  = $('.report-air').val();
+
 
 /*	alert(jbfl_airs);*/
 /*       dia =	$.dialog({
@@ -86,42 +89,69 @@ $('.save_reports_air').click(function(){
 				        		backgroundDismiss: false,
 				        		content: 'Currently Adding reports',
 	});*/
-       var table = $("#table-AddReport-air table tbody");
-         var t3  = $("#table-AddReport-air table tbody tr").length;
-		 table.find('tr').each(function (count1) {
-	     var c3 = count1+1;
-			var $tds = $(this).find('td'),
-			reports 		    = $tds.eq(0).text()
+     //  var table = $("#table-AddReport-air table tbody");
+      //   var t3  = $("#table-AddReport-air table tbody tr").length;
+		// table.find('tr').each(function (count1) {
+	   //  var c3 = count1+1;
+		//	var $tds = $(this).find('td'),
+		//	reports 		    = $tds.eq(0).text()
 
 
+
+
+ 	if(reports==''){
+ 					$.confirm({
+		 			 title: 'Add New Report',
+		 			 closeIcon:false,
+		 			 content:'You have not Added Any Report. Do you wish to Continue Exitting?',
+		 			 backgroundDismiss: false,
+		 			 confirmButton: 'Yes',
+  					 cancelButton: 'No',
+  					 confirm: function(){
+  					 	$('.modal').modal('hide');
+  					 },
+  					 cancel: function(){
+  					 	$('.save_reports_air').removeAttr('disabled');
+  					 }
+		 		});
+				}
+				else{
+						  dia =	$.dialog({
+						 	  	    icon: 'fa fa-spinner fa-spin',
+						 	  	    closeIcon: false,
+					        		title: 'Please wait!',
+					        		backgroundDismiss: false,
+					        		content: 'Currently Adding Report',
+					   			});
 
 		   
-		       $.ajax({
-			  		method: "POST",
-					url:"<?php echo base_url('Job_air/status_reports')?>",
-			  		data: {
-			  			    jbfl                        :jbfl_airs,
-			  			    reports          		    :reports
+					       $.ajax({
+						  		method: "POST",
+								url:"<?php echo base_url('Job_air/status_reports')?>",
+						  		data: {
+						  			    jbfl                        :jbfl_airs,
+						  			    reports          		    :reports
 
-			  		}
-				})
-			    .done(function(data) {
-			    	       if(t3==c3){
-	  						$.alert({
-	  							backgroundDismiss: false, 	 	
-				        		title: 'Success!',
-				        		content: 'New  reports added!',
-				        		confirm: function(){
-				        			$('.tr_remove').empty();
-									/*dia.close();*/
-									$('.modal').modal('hide');
-				        	    }
-				   			});
+						  		}
+							})
+						    .done(function(data) {
+						    	    /*   if(t3==c3){*/
+				  						$.alert({
+				  							backgroundDismiss: false, 	 	
+							        		title: 'Success!',
+							        		content: 'New  reports added!',
+							        		confirm: function(){
+							        			//$('.tr_remove').empty();
+												dia.close();
+												$('.modal').modal('hide');
+							        	    }
+							   			});
 
-				     	  }
-	    	  });
+							     	//  }
+				    	  });
+					}
 	
-	   });	
+	  // });	
 });
 
 </script>

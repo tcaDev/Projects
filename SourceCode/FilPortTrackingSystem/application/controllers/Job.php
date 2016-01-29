@@ -471,12 +471,12 @@ function get_jobfile_global_search(){
 
                               <div class="form-group">
                                 <label>BPI Inspection</label>
-                                <input type="text" name="bpi" class="form-control input-sm bpi checkDec" id="bpi" value="'.$row->BadCargo.'"disabled/>
+                                <input type="text" name="bpi" class="form-control input-sm bpi checkDec" id="bpi" value="'.$row->BPIInspection.'"disabled/>
                               </div>
 
                               <div class="form-group">
                                 <label>Plug In for Reefer</label>
-                                <input type="text" name="reefer" class="form-control input-sm reefer checkDec" id="reefer" value="'.$row->BadCargo.'"disabled/>
+                                <input type="text" name="reefer" class="form-control input-sm reefer checkDec" id="reefer" value="'.$row->PlugInForReefer.'"disabled/>
                               </div>
                           </div>
                         </div>';
