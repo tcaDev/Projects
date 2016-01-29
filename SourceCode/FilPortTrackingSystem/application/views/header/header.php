@@ -134,7 +134,7 @@
 
 
   <script>
-      var link = 'http://localhost/FilPortTrackingSystem';
-
+     /* var link = 'http://localhost/FilPortTrackingSystem';*/
+    var link = "<?php echo base_url();?>";
       
   </script>
