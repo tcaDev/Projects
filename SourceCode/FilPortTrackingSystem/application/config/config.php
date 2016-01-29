@@ -1,4 +1,8 @@
 <?php
+ $domain = preg_replace("/^www\./", "", $_SERVER['HTTP_HOST']);
+ $main = "http://".$domain."/FilPortTrackingSystem/";
+?>
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -24,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/FilPortTrackingSystem/';
+$config['base_url'] =$main;
 
 /*
 |--------------------------------------------------------------------------
