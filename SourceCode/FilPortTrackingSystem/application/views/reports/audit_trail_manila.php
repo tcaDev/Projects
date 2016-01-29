@@ -49,7 +49,7 @@
 
        		 <div class="container-tab" id="tabs">
 
-				  <ul class="nav nav-pills nav-data nav-ins-menu">
+				  <ul class="nav nav-pills nav-data">
 				    <li id="jobfileAudit" class="active"><a data-toggle="tab" href="#jobfile-audit">Jobfile</a></li>
 				    <li id="vesselAudit"><a data-toggle="tab" href="#vessel-audit">Vessel</a></li>
 				    <li id="containerAudit"><a data-toggle="tab" href="#container-audit">Containers</a></li>

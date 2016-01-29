@@ -50,7 +50,7 @@
 
        		 <div class="container-tab" id="tabs">
 
-				  <ul class="nav nav-pills nav-data nav-ins-menu">
+				  <ul class="nav nav-pills nav-data ">
 				    <li id="jobfileAudit" class="active"><a data-toggle="tab" href="#jobfile-audit-air">Jobfile</a></li>
 				    <li id="commodityAudit"><a data-toggle="tab" href="#commodities-audit-air">Commodities</a></li>
 				    <li id="chargesAudit"><a data-toggle="tab" href="#running-charges-audit-air">Running Charges</a></li>
