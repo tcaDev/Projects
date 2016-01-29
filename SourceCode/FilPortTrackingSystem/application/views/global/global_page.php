@@ -13,7 +13,7 @@
 						      	<div class="input-group col-lg-12" style="padding-bottom: 5px;">
 						            <!-- <input type="text" class="search-query form-control" id="txtGlobalSearch" placeholder="Search" onkeyup="search(this.value)"/> -->
 						            <label for="search-global" style="font-size:12px;">Search:  </label>
-						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" placeholder="Jobfile No/ Shipper Name / Consignee Name" onkeyup="getText(this.value)" >
+						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" onkeyup="getText(this.value)" placeholder ="" >
 						        <button class="btn btn-danger col-lg-4 pull-right" type="submit" id="btnSearch" style="top: 5px;">
 									<span class="fa fa-search"></span>
 								</button>
@@ -195,6 +195,11 @@
 		$(document).ready(function(){
 			$('#btnSearch').click();
 			getSearchItem();
+			if(searchItem == ""){	
+				$("#search-global").attr('placeholder','Jobfile No / Shipper Name / Consignee ');
+			}else{
+				$("#search-global").attr('placeholder','Jobfile No / Shipper Name');
+			}
 		});
 
 		function getSearchItem(){

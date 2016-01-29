@@ -65,6 +65,8 @@ class Job_manila_update extends CI_Controller {
     $dt_final_entry_boc,
     $dt_boc,
     $actual_dt_rcvd_cont_whse);
+
+    echo "Container Successfully Updated";
   
       }
 

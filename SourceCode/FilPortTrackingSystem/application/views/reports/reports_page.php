@@ -361,7 +361,6 @@
 			/*Reload Data on Print*/
 
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
-
 				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active containers"><a data-toggle="tab" href="#containers">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
