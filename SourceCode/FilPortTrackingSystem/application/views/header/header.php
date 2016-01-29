@@ -47,6 +47,7 @@
 				</div>
 		</div>
 		<!-- End Home Button -->
+
 		<!-- Header -->
 			<div class="col-lg-12 col-md-12 col-sm-12" style="top:-34px;">
 				<div class="row">
@@ -60,7 +61,7 @@
 
 					<div class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 20px; color : #FFF; text-shadow:3px 3px 0 #000,-1px -1px 0 #000,  1px -1px 0 #000,-1px  1px 0 #000,1px  1px 0 #000;">
 
-						<h3 class="text-uppercase" style="font-weight: 600;font-size: 20px;">Fil-Port Express brokerage , inc.</h3>
+						<h3 class="text-uppercase filport" style="font-weight: 600;font-size: 20px;cursor:pointer;">Fil-Port Express brokerage , inc.</h3>
 
 						<h5 class="text-uppercase" style="font-weight: 600;"><?php echo $tab ?></h5>
 					</div>
@@ -123,6 +124,13 @@
 	 		window.location.href="<?php echo base_url('Login_user/account/');?>";
 	 	});
 
+	 	$('.user-img').click(function(){
+	 		window.location.href="<?php echo base_url('Login_user/menu/');?>";
+	 	});
+
+	 	$('.filport').click(function(){
+	 		window.location.href="<?php echo base_url('Login_user/menu/');?>";
+	 	});
 	 	// var searchString = $('#txtGlobalSearch').val();
 	 	// if(searchString == "" || searchString == null){
 	 	// 	disable_filter();
