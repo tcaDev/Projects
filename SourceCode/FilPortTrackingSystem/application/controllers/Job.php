@@ -1883,7 +1883,7 @@ function get_jobfile_global_search(){
                 echo "<td class='row hidden'>".stripslashes($row->DateReceivedAtWhse)."</td>";
              echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
               echo "<td class='row hidden'>".stripslashes($row->ContainerByCarrierId)."</td>";
-                echo "<td class='row hidden'>".trim(stripslashes($row->TruckerName))."</td>";
+                echo "<td class='row'>".trim(stripslashes($row->TruckerName))."</td>";
             
              echo "</tr>";
          }
