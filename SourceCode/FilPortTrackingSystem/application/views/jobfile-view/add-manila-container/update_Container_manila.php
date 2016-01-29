@@ -188,6 +188,7 @@ var cbcid_manila;
 					 var refEntryNo = $(this).closest('tr').children('td:eq(33)').text();
 					 var value_vessel = $(this).closest('tr').children('td:eq(34)').text();
 					  var containerbycarrierId = $(this).closest('tr').children('td:eq(35)').text();
+					    var plate_no = $(this).closest('tr').children('td:eq(36)').text();
                      
                       cbcid_manila=containerbycarrierId;
 
@@ -198,7 +199,7 @@ var cbcid_manila;
 					  $(".truckname-updateContainer-manila option").filter(function() {
 						    return this.text == hauler; 
 						}).attr('selected', 'selected');
-						/*Not in Database*/$('.plate-updateContainer-manila').val();
+						$('.plate-updateContainer-manila').val(plate_no);
 					 $('.ref_entry_no-updateContainer-manila').val(refEntryNo);
 					 $('.dt_paid-updateContainer-manila').val(date_paid);
 					 $('.dt_pre_assess-updateContainer-manila').val(date_pre_assess);

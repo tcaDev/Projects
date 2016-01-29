@@ -1567,6 +1567,7 @@ function get_jobfile_global_search(){
                     <th class='hidden'>Value DateSentFinalAssessment</th>
                     <th>Date Sent Final Assessment</th>
                     <th>Reference Entry No.</th>
+                    <th>Trucker Plate No.</th>
               </tr>";
 
           $i=0;
@@ -1699,6 +1700,7 @@ function get_jobfile_global_search(){
              echo "<td class='row'>".stripslashes($row->RefEntryNo)."</td>";
               echo "<td class='row hidden '>".stripslashes($row->CarrierByJobFileId)."</td>";
               echo "<td class='row hidden '>".stripslashes($row->ContainerByCarrierId)."</td>";
+               echo "<td class='row '>".trim(stripslashes($row->TruckerName))."</td>";
               
              echo "</tr>";
          }
@@ -1755,6 +1757,7 @@ function get_jobfile_global_search(){
                         <th class='hidden'>value date received container to warehouse</th>
                     <th>Actual Date Received Container to Warehouse</th>
                         <th class='hidden'>value CONTAINER BY CARRIER ID</th>
+                         <th>Trucker Plate No.</th>
 
               </tr>";
 
@@ -1880,6 +1883,7 @@ function get_jobfile_global_search(){
                 echo "<td class='row hidden'>".stripslashes($row->DateReceivedAtWhse)."</td>";
              echo "<td class='row'>".stripslashes($row->DateReceivedAtWhse)."</td>";
               echo "<td class='row hidden'>".stripslashes($row->ContainerByCarrierId)."</td>";
+                echo "<td class='row hidden'>".trim(stripslashes($row->TruckerName))."</td>";
             
              echo "</tr>";
          }

@@ -178,6 +178,7 @@ var cbcid_outport;
 					 var value_vessel = $(this).closest('tr').children('td:eq(30)').text();
 					 var actual_dt_rcvd_cont_whse = $(this).closest('tr').children('td:eq(31)').text();
     				 var containerbycarrierId = $(this).closest('tr').children('td:eq(33)').text();	
+    				 var plate_no = $(this).closest('tr').children('td:eq(34)').text();	
                       cbcid_outport = containerbycarrierId;
 
                      $('.ves-outport').val(vessel);
@@ -193,7 +194,7 @@ var cbcid_outport;
 						    return this.text == hauler; 
 						}).attr('selected', 'selected');
 
-						/*Not in Database*/$('.plate-updateContainer-outport').val();
+						/*Not in Database*/$('.plate-updateContainer-outport').val(plate_no);
 					 $('.ref_entry_no-updateContainer-outport').val(refEntryNo);
 					 $('.dt_paid-updateContainer-outport').val(date_paid);
 					 $('.dt_pre_assess-updateContainer-outport').val(date_pre_assess);
