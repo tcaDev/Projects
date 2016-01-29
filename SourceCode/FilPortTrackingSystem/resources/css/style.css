@@ -1402,7 +1402,7 @@ th{
 
     top: 24.5%;
 
-    left: 4%;
+    left: 2%;
 
     width: 21.5%;
 
@@ -1423,10 +1423,10 @@ th{
 .dash-side{
 
     position: absolute;
-    top: 25%;
+    top: 24.3%;
     left: 25%;
     width: 70%;
-    height: 70%;
+    height: 73%;
     border: 1px solid #828383;
     background-color: rgba(255,255,255,1);
     overflow: auto;

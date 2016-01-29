@@ -44,7 +44,7 @@
 	 		Double Click on the Result(s) to View.
 	 	</h3>
 	 	<i class="result-count" style="font-size:24px;"> </i>
-	 	<a class="loading-consignee"></a>
+	 	<!-- <a class="loading-consignee"></a> -->
 	 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
 		 </table>
 	 </span>
@@ -283,11 +283,11 @@
 			  		.done(function(consignee_data) {
 			  			var result = JSON.parse(consignee_data);
 			  			$('#tbl-global-search').html(result[0].disp);
-			  			if(result[0].ct <= 1){
+			  			/*if(result[0].ct <= 1){
 			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Result</i>');	
 			  			}else{
 			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Results</i>');	
-			  			}
+			  			}*/
 			  			$('.loading-consignee').html('<a class="loading-consignee"></a>');
 			  			
 					});
@@ -309,18 +309,21 @@
 
 			$(document).on('keydown','#search-global',function(e){
 				 if (e.keyCode == 13){
-			   	  	 $('#btnSearch').click();
+				 	if($('.conName').attr('id') == ""){
+				 		 $('#btnSearch').click();
+					}
 			  	 }
 			});
 
 			$(document).on('click','.nav-data li',function(){
 				mon_Type = $('.nav-data .active').val();
-
 			   	$('#btnSearch').click();
 			});
 			
 			function getText(a){
-				$("#btnSearch").click();
+				if(a.trim() == ""){
+					$("#btnSearch").click();
+				}
 			}
 
 	</script>
