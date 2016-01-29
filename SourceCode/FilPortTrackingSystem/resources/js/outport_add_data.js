@@ -421,30 +421,30 @@ var back=0;
 			$('.carrier-msg-outport').text('');
 			$('.tableContainer-msg-outport').text("");
 
-			$("#tableAddContainer-outport  .truckname-outport option:eq(0)").attr("selected","selected");
-			$("#tableAddContainer-outport  .vessel_voyage-outport option:eq(0)").attr("selected","selected");
+			/*$("#tableAddContainer-outport  .truckname-outport option:eq(0)").attr("selected","selected");
+			$("#tableAddContainer-outport  .vessel_voyage-outport option:eq(0)").attr("selected","selected");*/
 
 			$('#tableAddContainer-outport .containerss-outport').val('');
-			$('#tableAddContainer-outport .containerss-size-outport').val('');
-			/*$('#tableAddContainer-outport .plate-outport').val('');*/
-			$('#tableAddContainer-outport .cartons-outport').val('');
+			/*$('#tableAddContainer-outport .containerss-size-outport').val('');*/
+			$('#tableAddContainer-outport .plate-outport').val('');
+			/*$('#tableAddContainer-outport .cartons-outport').val('');*/
 
-		/*	$('#tableAddContainer-outport .ref_entry_no-outport').val('');
+			/*$('#tableAddContainer-outport .ref_entry_no-outport').val('');
 			$('#tableAddContainer-outport .dt_paid-outport').val('');
 			$('#tableAddContainer-outport .dt_pre_assess-outport').val('');
-		    $('#tableAddContainer-outport .dt_file_entry_boc-outport').val('');
+		    $('#tableAddContainer-outport .dt_file_entry_boc-outport').val('');*/
 		    $('#tableAddContainer-outport .tdt-outport').val('');
 		    $('#tableAddContainer-outport .pul_out_port-outport').val('');
 
-			$('#tableAddContainer-outport .storage-outport').val('');
+			/*$('#tableAddContainer-outport .storage-outport').val('');*/
 			$('#tableAddContainer-outport .demorage-outport').val('');
-			$('#tableAddContainer-outport .lodging-outport').val('');
-			$('#tableAddContainer-outport .dt_final_assess-outport').val('');
-			$('#tableAddContainer-outport .gtinport-outport').val('');
-			$('#tableAddContainer-outport .gtoutport-outport').val('');
+			/*$('#tableAddContainer-outport .lodging-outport').val('');
+			$('#tableAddContainer-outport .dt_final_assess-outport').val('');*/
+			/*$('#tableAddContainer-outport .gtinport-outport').val('');
+			$('#tableAddContainer-outport .gtoutport-outport').val('');*/
 			$('#tableAddContainer-outport .act-del-whse-outport').val('');
-			$('#tableAddContainer-outport .dt_boc-outport').val('');
-			$('#tableAddContainer-outport .act_dt_to_whse-outport').val('');*/
+			/*$('#tableAddContainer-outport .dt_boc-outport').val('');*/
+			$('#tableAddContainer-outport .act_dt_to_whse-outport').val('');
 			}
 
 		

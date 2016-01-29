@@ -261,28 +261,28 @@
                         $('.container-msg-addContainer-outport').text("");
                         $('.check_exists_container-outport i').text("");
 
-		/*	$('#table-AddContainer-outport .container-addContainer-outport').val('');
-			$('#table-AddContainer-outport .container-size-addContainer-outport').val('');
+			$('#table-AddContainer-outport .container-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .container-size-addContainer-outport').val('');*/
 			$('#table-AddContainer-outport .plate-addContainer-outport').val('');
-			$('#table-AddContainer-outport .cartons-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .cartons-addContainer-outport').val('');*/
 
-			$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .ref_entry_no-addContainer-outport').val('');
 			$('#table-AddContainer-outport .dt_paid-addContainer-outport').val('');
-			$('#table-AddContainer-outport .dt_pre_assess-addContainer-outport').val('');
+			$('#table-AddContainer-outport .dt_pre_assess-addContainer-outport').val('');*/
                         
-            $('#table-AddContainer-outport .dt_file_entry_boc-addContainer-outport').val('');
+           /* $('#table-AddContainer-outport .dt_file_entry_boc-addContainer-outport').val('');*/
             $('#table-AddContainer-outport .tdt-addContainer-outport').val('');
             $('#table-AddContainer-outport .pull_out_port-addContainer-outport').val('');
 
-			$('#table-AddContainer-outport .storage-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .storage-addContainer-outport').val('');*/
 			$('#table-AddContainer-outport .demorage-addContainer-outport').val('');
-			$('#table-AddContainer-outport .lodging-addContainer-outport').val('');
-			$('#table-AddContainer-outport .dt_final_assess-addContainer-outport').val('');
-			$('#table-AddContainer-outport .gtinport-addContainer-outport').val('');
-			$('#table-AddContainer-outport .gtoutport-addContainer-outport').val('');
+			/*$('#table-AddContainer-outport .lodging-addContainer-outport').val('');
+			$('#table-AddContainer-outport .dt_final_assess-addContainer-outport').val('');*/
+			/*$('#table-AddContainer-outport .gtinport-addContainer-outport').val('');
+			$('#table-AddContainer-outport .gtoutport-addContainer-outport').val('');*/
 			$('#table-AddContainer-outport .act-del-whse-addContainer-outport').val('');
-			$('#table-AddContainer-outport .dt_boc-addContainer-outport').val('');
-                        $('#table-AddContainer-outport .act_dt_to_whse-addContainer-outport').val('');*/
+			/*$('#table-AddContainer-outport .dt_boc-addContainer-outport').val('');*/
+            $('#table-AddContainer-outport .act_dt_to_whse-addContainer-outport').val('');
 			}
 			
 		});

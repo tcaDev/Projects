@@ -277,26 +277,26 @@
 
 			$('.tableContainer-msg-addContainer-manila').text("");
 
-			/*$('#table-AddContainer-mnla .container-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .container-size-addContainer-manila').val('');
+			$('#table-AddContainer-mnla .container-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .container-size-addContainer-manila').val('');*/
 			$('#table-AddContainer-mnla .plate-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .cartons-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .cartons-addContainer-manila').val('');*/
 
-			$('#table-AddContainer-mnla .ref_entry_no-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .ref_entry_no-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .dt_paid-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .dt_pre_assess-addContainer-manila').val('');
-		    $('#table-AddContainer-mnla .dt_file_entry_boc-addContainer-manila').val('');
+		    $('#table-AddContainer-mnla .dt_file_entry_boc-addContainer-manila').val('');*/
 		    $('#table-AddContainer-mnla .tdt-addContainer-manila').val('');
-		    $('#table-AddContainer-mnla .pull_out_port-addContainer-manila').val('');
+		    /*$('#table-AddContainer-mnla .pull_out_port-addContainer-manila').val('');*/
 
-			$('#table-AddContainer-mnla .storage-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .storage-addContainer-manila').val('');*/
 			$('#table-AddContainer-mnla .demorage-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .lodging-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .dt_final_assess-addContainer-manila').val('');
+			/*$('#table-AddContainer-mnla .lodging-addContainer-manila').val('');
+			$('#table-AddContainer-mnla .dt_final_assess-addContainer-manila').val('');*/
 			$('#table-AddContainer-mnla .gtinport-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .gtoutport-addContainer-manila').val('');
 			$('#table-AddContainer-mnla .act-del-whse-addContainer-manila').val('');
-			$('#table-AddContainer-mnla .dt_boc-addContainer-manila').val('');*/
+			/*$('#table-AddContainer-mnla .dt_boc-addContainer-manila').val('');*/
 			}
 			
 		});

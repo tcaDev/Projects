@@ -432,26 +432,26 @@ var back=0;
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(2)').html($(".containerss").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(3)').html($(".containerss-size").val());
 	        $('#tableAddContainer-mnla table tr:last td:nth-child(4)').html($(".cartons").val());
-	         $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".plate").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".truckname").val()).hide();
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname option:selected").text());
-	           $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".ref_entry_no").val());
-	          $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage").val()); 
-	              $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
-	               $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".dt_paid").val());
-	                /*$('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());*/
-	                $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".dt_pre_assess").val());
-	                 $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_final_assess").val());
-	                  $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".gtinport").val());
-	                   $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtoutport").val());
-	                    $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".act-del-whse").val());
-	                    		 $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".tdt").val());
-	                      		/* $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".pul_out_port").val());*/
-	                    	 $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_file_entry_boc").val());
-	                       $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
-	                     $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(5)').html($(".plate").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(6)').html($(".truckname").val()).hide();
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(7)').html($(".truckname option:selected").text());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(8)').html($(".ref_entry_no").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(9)').html($(".demorage").val()); 
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(10)').html($(".storage").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(11)').html($(".dt_paid").val());
+	         /*$('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".lodging").val());*/
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(12)').html($(".dt_pre_assess").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(13)').html($(".dt_final_assess").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(14)').html($(".gtinport").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(15)').html($(".gtoutport").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(16)').html($(".act-del-whse").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(17)').html($(".tdt").val());
+	         /* $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".pul_out_port").val());*/
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(18)').html($(".dt_file_entry_boc").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(19)').html($(".dt_boc").val());
+	        $('#tableAddContainer-mnla table tr:last td:nth-child(20)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 					
-	                     $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
+	         $('.containers-prod').append('<option value='+ $(".containerss").val() +'>' + $(".containerss").val() + '</option>');
 
 	        $('.container-msg').text('');
 			$('.container-msg').text('');
@@ -463,31 +463,28 @@ var back=0;
 
 
 			$('#tableAddContainer-mnla .containerss').val('');
-			$('#tableAddContainer-mnla .containerss-size').val('');
-			/*$('#tableAddContainer-mnla .plate').val('');*/
-			$('#tableAddContainer-mnla .cartons').val('');
+			/*$('#tableAddContainer-mnla .containerss-size').val('');*/
+			$('#tableAddContainer-mnla .plate').val('');
+			/*$('#tableAddContainer-mnla .cartons').val('');*/
 
 			/*$('#tableAddContainer-mnla .ref_entry_no').val('');
 			$('#tableAddContainer-mnla .dt_paid').val('');
 			$('#tableAddContainer-mnla .dt_pre_assess').val('');
 		    $('#tableAddContainer-mnla .dt_file_entry_boc').val('');
-		    $('#tableAddContainer-mnla .tdt').val('');
-		    $('#tableAddContainer-mnla .pul_out_port').val('');
+		    	
+		    $('#tableAddContainer-mnla .pul_out_port').val('');*/
 
-			$('#tableAddContainer-mnla .storage').val('');
+			$('#tableAddContainer-mnla .tdt').val('');
+			/*$('#tableAddContainer-mnla .storage').val('');*/
 			$('#tableAddContainer-mnla .demorage').val('');
-			$('#tableAddContainer-mnla .lodging').val('');
-			$('#tableAddContainer-mnla .dt_final_assess').val('');
+			/*$('#tableAddContainer-mnla .lodging').val('');*/
+		/*	$('#tableAddContainer-mnla .dt_final_assess').val('');*/
 			$('#tableAddContainer-mnla .gtinport').val('');
 			$('#tableAddContainer-mnla .gtoutport').val('');
 			$('#tableAddContainer-mnla .act-del-whse').val('');
-			$('#tableAddContainer-mnla .dt_boc').val('');*/
+			/*$('#tableAddContainer-mnla .dt_boc').val('');*/
 			}
 
-		
-
-
-			
 });
 
 	
