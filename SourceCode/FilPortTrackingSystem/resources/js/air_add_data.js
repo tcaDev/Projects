@@ -223,7 +223,7 @@ $(document).on('click', '#tableAddTruck-air .deleteButton', function() {
 			    $("#tableAddTruck-air #date-recvd-whse-air").val('');
 			    $("#tableAddTruck-air .total-storage").val('');
 			    $("#tableAddTruck-air .addtl-per-day").val('');
-			    $("#tableAddTruck-air .ref-entry-no-air").val();
+			    $("#tableAddTruck-air .ref-entry-no-air").val('');
 
 			    $("#tableAddTruck-air  .prodname-air option:eq(0)").attr("selected","selected");
 			    $("#tableAddTruck-air  .truckname-air option:eq(0)").attr("selected","selected");

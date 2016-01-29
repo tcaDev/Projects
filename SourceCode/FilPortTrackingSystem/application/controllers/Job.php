@@ -1034,11 +1034,7 @@ function get_jobfile_global_search(){
 
     function get_goods_air(){
        $products =  $this->input->post('id'); 
-        $job=$this->Jobdata->select_jobfile_air($products);
-        foreach($job as $row){
-         $jobs =  $row->JobFile_AirId;
-        }  
-       $product  = $this->Jobdata->get_goods_air($jobs);
+       $product  = $this->Jobdata->get_goods_air($products);
 
        if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
