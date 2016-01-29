@@ -605,7 +605,7 @@ function get_jobfile_global_search(){
              echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
-                echo "<td class='row hidden'>".stripslashes($ActualArrivalTime)."</td>";
+                echo "<td class='row hidden'>".stripslashes($row->ActualArrivalTime)."</td>";
              echo "<td class='row'>".stripslashes($row->ActualArrivalTime)."</td>";
                 echo "<td class='row hidden'>".stripslashes($BerthingTime) ."</td>";
              echo "<td class='row'>".stripslashes($row->BerthingTime) ."</td>";
