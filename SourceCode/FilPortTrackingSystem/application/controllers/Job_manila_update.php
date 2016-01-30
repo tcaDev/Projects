@@ -15,7 +15,7 @@ class Job_manila_update extends CI_Controller {
 
 
       function container(){
-     echo $check_montype     =addslashes($this->input->post('montype'));
+      $check_montype     =addslashes($this->input->post('montype'));
       $jbfl              =addslashes($this->input->post('jbfl'));
       $cbcid             =addslashes($this->input->post('cbcid'));
       $carrierbyjobfile  =	addslashes($this->input->post('carrierbyjobfile'));
