@@ -362,7 +362,7 @@ var back=0;
 
 				    testme=false;
 				 	  table.find('tr').each(function(){
-					    if($('td:nth(0)',$(this)).html()===strd) {
+					    if($('td:nth(1)',$(this)).html()===strd) {
 					       testme=true;            
 					        }   
 					     })
