@@ -243,7 +243,7 @@ var cbcid_outport;
  				
  					$(document).on('click','.update_container-outport',function(){
 
-                     
+                        var jbfl                     =$('.jobfile-updateContainer-outport').val();
  						var vesid_outport 		     =$('.vessel-updateContainer-outport-select').val();
  						var containerno_outport 	 =$('.container-updateContainer-outport').val();
  						var	carrierbyjobfile_outport =$('.carrier_jobfile_outport-update-container').val();
@@ -296,14 +296,16 @@ var cbcid_outport;
 					  			    pull_out_date   		 :pull_out_date_outport,
 					  			    dt_final_entry_boc   	 :dt_final_entry_boc_outport,
 					  			    dt_boc          	     :dt_boc_outport,
-					  			    actual_dt_rcvd_cont_whse :actual_dt_rcvd_cont_whse_outport
+					  			    actual_dt_rcvd_cont_whse :actual_dt_rcvd_cont_whse_outport,
+					  			    jbfl                     :jbfl,
+					  			    montype                  :2
+					  			     
 					  		}
 						})
 				  		.done(function(data) {
 				  			 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: ' Success!',
-				        		content:'Container is updated!',
 				        		content:data,
 				        		confirm: function(){
 				        			dia.close();

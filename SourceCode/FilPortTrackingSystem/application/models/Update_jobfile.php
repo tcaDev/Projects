@@ -5,60 +5,82 @@
 Class Update_jobfile extends CI_Model
 {
   
-  function jobfile_up(
-    $cbcid,
-		$carrierbyjobfile,
-    $containerno,
-    $contno,
-    $cartons,
-    $truckid,
-    $truckername,
-    $refentry,
-    $dtpaid,
-    $dt_pre_assess,
-    $dt_final_assess,
-    $storage,
-    $demorage,
-    $lodging,
-    $gip,
-    $gop,
-    $adw,
-    $tdt,
-    $pull_out_date,
-    $dt_final_entry_boc,
-    $dt_boc,
-    $actual_dt_rcvd_cont_whse)
+  function jobfile_up($cbcid,$carrierbyjobfile,$containerno,$contno,$cartons,
+                      $truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,$dt_final_assess,
+                      $storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,$pull_out_date,$dt_final_entry_boc,
+                      $dt_boc,$actual_dt_rcvd_cont_whse,$jbfl,$check_montype)
   {
      $session_data      = $this->session->userdata('logged_in');
      $userid            = $session_data['uid'];
 
-  	     $data = array(
-        'ContainerNo'          => $containerno,
-        'ContainerSize'        => $contno,
-        'CarrierByJobFileId'   => $carrierbyjobfile,
-        'NoOfCartons'          =>$cartons,
-        'RefEntryNo'           =>$refentry,
-        'TruckerName'          => $truckername,
-        'StartOfStorage'       => $storage,
-        'Lodging'              => $lodging,
-        'DateBOCCleared'	   => $dt_boc, 
-        'HaulerOrTruckId'	   => $truckid,
-        'TargetDeliveryDate'   => $tdt,
-        'DateSentFinalAssessment' => $dt_final_assess,
-        'DatePaid'				  => $dtpaid,
-        'DateSentPreAssessment'   => $dt_pre_assess,
-        'DateFileEntryToBOC'      => $dt_final_entry_boc,
-        'GateInAtPort'			  => $gip,
-        'GateOutAtPort'			  => $gop,
-        'ActualDeliveryAtWarehouse' =>$adw,
-        'StartOfDemorage'			=> $demorage,
-        'PullOutDateAtPort'			=> $pull_out_date,
-        'DateReceivedAtWhse' =>$actual_dt_rcvd_cont_whse
-
-
-        );
+    
+              if($check_montype==1){
+              	 $data = array(  
+                    'ContainerNo'          => $containerno,
+                    'TruckerName'          => $truckername,
+                    'Lodging'              => $lodging,
+                    'TargetDeliveryDate'   => $tdt,
+                    'GateInAtPort'			  => $gip,
+                    'GateOutAtPort'			  => $gop,
+                    'ActualDeliveryAtWarehouse' =>$adw,
+                    'StartOfDemorage'			=> $demorage,
+                    'PullOutDateAtPort'			=> $pull_out_date,
+                    'DateReceivedAtWhse' =>$actual_dt_rcvd_cont_whse
+                  );
+              }else{
+                   $data = array( 
+                    'ContainerNo'          => $containerno,
+                    'TruckerName'          => $truckername,
+                    'Lodging'              => $lodging,
+                    'TargetDeliveryDate'   => $tdt,
+                    'GateInAtPort'        => $gip,
+                    'GateOutAtPort'       => $gop,
+                    'ActualDeliveryAtWarehouse' =>$adw,
+                    'PullOutDateAtPort'     => $pull_out_date,
+                    'DateReceivedAtWhse' =>$actual_dt_rcvd_cont_whse
+                  );
+              }
+     
           $this->db->where('ContainerByCarrierId', $cbcid);
           $this->db->update('ContainerByCarrier', $data);
+
+   //note pag outport update dn ung StartOfDemorage 
+    if($check_montype==1){
+        $this->db->query("UPDATE ContainerByCarrier CBC
+                      join `CarrierByJobFile` `CBJ` on`CBC`.`CarrierByJobFileId` = `CBJ`.`CarrierByJobFileId` 
+                      join `JobFile` `JF` ON `JF`.`JobFileId` = CBJ.JobFileId
+                      SET 
+                      /*    CBC.CarrierByJobFileId =  '$carrierbyjobfile',*/
+                          CBC.ContainerSize      =  '$contno',
+                          CBC.NoOfCartons        =  '$cartons',
+                          CBC.HaulerOrTruckId    =  '$truckid',
+                          CBC.RefEntryNo         =  '$refentry',
+                          CBC.DatePaid           =  '$dtpaid',
+                          CBC.DateSentPreAssessment = '$dt_pre_assess',
+                          CBC.DateSentFinalAssessment = '$dt_final_assess',
+                          CBC.StartOfStorage          = '$storage',
+                          CBC.DateFileEntryToBOC = '$dt_final_entry_boc',
+                          CBC.DateBOCCleared = '$dt_boc'
+                      where JF.JobFileNo = '$jbfl'");
+    }else{
+              $this->db->query("UPDATE ContainerByCarrier CBC
+                      join `CarrierByJobFile` `CBJ` on`CBC`.`CarrierByJobFileId` = `CBJ`.`CarrierByJobFileId` 
+                      join `JobFile` `JF` ON `JF`.`JobFileId` = CBJ.JobFileId
+                      SET 
+                         /* CBC.CarrierByJobFileId =  '$carrierbyjobfile',*/
+                          CBC.ContainerSize      =  '$contno',
+                          CBC.NoOfCartons        =  '$cartons',
+                          CBC.HaulerOrTruckId    =  '$truckid',
+                          CBC.RefEntryNo         =  '$refentry',
+                          CBC.DatePaid           =  '$dtpaid',
+                          CBC.DateSentPreAssessment = '$dt_pre_assess',
+                          CBC.DateSentFinalAssessment = '$dt_final_assess',
+                          CBC.StartOfStorage          = '$storage',
+                          CBC.DateFileEntryToBOC = '$dt_final_entry_boc',
+                          CBC.DateBOCCleared = '$dt_boc',
+                          CBC.StartOfDemorage ='$demorage'
+                      where JF.JobFileNo = '$jbfl'");
+    }
 
 
       $data2 = array(

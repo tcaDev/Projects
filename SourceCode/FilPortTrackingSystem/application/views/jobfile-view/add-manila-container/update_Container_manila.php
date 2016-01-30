@@ -248,7 +248,7 @@ var cbcid_manila;
 
  				
  					$(document).on('click','.update_container',function(){
-
+                        var jbfl             =$('.jobfile-updateContainer-mnla').val();
  						var vesid 		     =$('.vessel-updateContainer-manila-get').val();
  						var containerno 	 =$('.container-updateContainer-manila').val();
  						var	carrierbyjobfile =$('.carrier_jobfile_manila-update-container').val();
@@ -304,14 +304,16 @@ var cbcid_manila;
 					  			    tdt:tdt,
 					  			   /* pull_out_date:pull_out_date,*/
 					  			    dt_final_entry_boc:dt_final_entry_boc,
-					  			    dt_boc:dt_boc
+					  			    dt_boc:dt_boc,
+					  			    jbfl  :jbfl,
+					  			    montype:1
 					  		}
 						})
 				  		.done(function(data) {
 				  			 $.alert({
 			    	 	  	 	backgroundDismiss: false, 	
 				        		title: 'Success!',
-				        		content:'Container is updated!',
+				        		content:data,
 				        		confirm: function(){
 				        			dia.close();
 				        			 $('#updateContainer-mnla').modal('hide');

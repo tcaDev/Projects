@@ -15,7 +15,9 @@ class Job_manila_update extends CI_Controller {
 
 
       function container(){
-      $cbcid =$this->input->post('cbcid');
+     echo $check_montype     =addslashes($this->input->post('montype'));
+      $jbfl              =addslashes($this->input->post('jbfl'));
+      $cbcid             =addslashes($this->input->post('cbcid'));
       $carrierbyjobfile  =	addslashes($this->input->post('carrierbyjobfile'));
       $containerno 		 =	addslashes($this->input->post('containerno'));
       $contno 			 =	addslashes($this->input->post('contno'));
@@ -43,28 +45,10 @@ class Job_manila_update extends CI_Controller {
       $gip=NULL;
      }
 */
-	$this->Update_jobfile->jobfile_up($cbcid,
-		$carrierbyjobfile,
-    $containerno,
-    $contno,
-		$cartons,
-    $truckid,
-    $truckername,
-    $refentry,
-    $dtpaid,
-    $dt_pre_assess,
-		$dt_final_assess,
-    $storage,
-    $demorage,
-    $lodging,
-    $gip,
-    $gop,
-    $adw,
-    $tdt,
-		$pull_out_date,
-    $dt_final_entry_boc,
-    $dt_boc,
-    $actual_dt_rcvd_cont_whse);
+	$this->Update_jobfile->jobfile_up($cbcid,$carrierbyjobfile,$containerno,
+                                    $contno,$cartons,$truckid,$truckername,$refentry,$dtpaid,$dt_pre_assess,
+                                    $dt_final_assess,$storage,$demorage,$lodging,$gip,$gop,$adw,$tdt,$pull_out_date,
+                                    $dt_final_entry_boc,$dt_boc,$actual_dt_rcvd_cont_whse,$jbfl,$check_montype);
 
     echo "Container Successfully Updated";
   
