@@ -965,9 +965,23 @@ $(".btn-Vessel").click(function(){
 </script>
 
    <!--sort table -->
-   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
-<script>
-	$(document).ready(function() { 
-        $("#table_manila_sort_search").tablesorter();}); 
-</script>
+
+
+	<!-- Demo styling -->
+	<link href="<?php echo base_url('resources/table_sort/docs/css/jq.css')?>;" rel="stylesheet">
+
+
+	<!-- Pick a theme, load the plugin & initialize plugin -->
+	<link href="<?php echo base_url('resources/table_sort/dist/css/theme.default.min.css');?>" rel="stylesheet">
+	<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+	<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
