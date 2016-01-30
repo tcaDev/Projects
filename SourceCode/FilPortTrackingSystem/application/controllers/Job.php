@@ -2917,13 +2917,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>Date Sent Fina lAssessment</th>
                       <th>Reference Entry Number</th>
                       <th>Hauler / Trucker Name</th>
+                      <th>Truck Plate No.</th>
                       <th>Start Of Demmurage</th>
                       <th>Start Of Storage</th>
                       <th>Target Delivery Date</th>
                       <th>Gate In at Port</th>
                       <th>Gate Out At Port</th>
                       <th>Actual Delivery At Warehouse</th>
-                      <th>Date Received At Warehouse</th>
+                      
                   </tr>
                 </thead>      
                 <tbody>
@@ -2951,6 +2952,109 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
             $gip = $row->GateInAtPort;
             $gop = $row->GateOutAtPort;
             $act_del_whse = $row->ActualDeliveryAtWarehouse;
+
+
+            echo '
+            <tr>
+                <td>'.$date_updated.'</td>
+                <td>'.$uname.'</td>
+                <td>'.$fullname.'</td>
+                <td>'.$vessel.'</td>
+                <td>'.$containerNo.'</td>
+                <td>'.$containerSize.'</td>
+                <td>'.$cartons.'</td>
+                <td>'.$dt_file_entry_boc.'</td>
+                <td>'.$dt_boc.'</td>
+                <td>'.$dt_pre_assess.'</td>
+                <td>'.$dt_paid.'</td>
+                <td>'.$dt_final_assess.'</td>
+                <td>'.$RefEntryNo.'</td>
+                <td>'.$hauler.'</td>
+                <td>'.$row->TruckerName.'</td>
+                <td>'.$demorage.'</td>
+                <td>'.$storage.'</td>
+                <td>'.$target_date.'</td>
+                <td>'.$gip.'</td>
+                <td>'.$gop.'</td>
+                <td>'.$act_del_whse.'</td>
+            </tr>
+            ';           
+          }
+
+          echo '
+            </tbody>
+          </table>
+        </div>
+      </div>
+          ';
+    }
+
+
+
+/*Container Outport Audit trail*/
+     function get_audit_container_outport(){
+
+         $containerID = $this->input->post('containerID');
+
+          $audit_container = $this->Jobdata->get_container_audit($containerID);
+
+
+         echo '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:4000px;">
+                <thead>
+                  <tr>
+                      <th>Date Updated</th>
+                      <th>UserName</th>
+                      <th>Full Name</th>
+                      <th>Vessel / Voayge No.</th>
+                      <th>Container No</th>
+                      <th>Container Size</th>
+                      <th>No of Cartons</th>
+                      <th>Date File Entry To BOC</th>
+                      <th>Date BOC Cleared</th>
+                      <th>Date Sent Pre Assessment</th>
+                      <th>Date Paid</th>
+                      <th>Date Sent Fina lAssessment</th>
+                      <th>Reference Entry Number</th>
+                      <th>Hauler / Trucker Name</th>
+                      <th>Truck Plate No.</th>
+                      <th>Start Of Demmurage</th>
+                      <th>Start Of Storage</th>
+                      <th>Target Delivery Date</th>
+                      <th>Lodging</th>
+                      <th>PullOutDateAtPort</th>
+                      <th>Actual Delivery At Warehouse</th>
+                      <th>Date Received At Warehouse</th>
+                      
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+          foreach ($audit_container as $row) {
+            $date_updated = $row->DateUpdated;
+            $uname = $row->UserName;
+            $fullname = $row->Full_Name;
+            $containerNo = $row->ContainerNo;
+            $containerSize = $row->ContainerSize;
+            $vessel = $row->VesselVoyageNo;
+            $cartons = $row->NoOfCartons;
+            $dt_file_entry_boc = $row->DateFileEntryToBOC;
+            $dt_boc = $row->DateBOCCleared;
+            $dt_pre_assess = $row->DateSentPreAssessment;
+            $dt_paid = $row->DatePaid;
+            $dt_final_assess = $row->DateSentFinalAssessment;
+            $RefEntryNo = $row->RefEntryNo;
+            $hauler = $row->HaulerOrTruck;
+            $demorage = $row->StartOfDemorage;
+            $storage = $row->StartOfStorage;
+            $target_date = $row->TargetDeliveryDate;
+            $lodging = $row->Lodging;
+            $PullOutDateAtPort = $row->PullOutDateAtPort;
+            $act_del_whse = $row->ActualDeliveryAtWarehouse;
             $dt_recvd_whse = $row->DateReceivedAtWhse; 
 
 
@@ -2973,10 +3077,11 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                 <td>'.$demorage.'</td>
                 <td>'.$storage.'</td>
                 <td>'.$target_date.'</td>
-                <td>'.$gip.'</td>
-                <td>'.$gop.'</td>
+                <td>'.$lodging.'</td>
+                <td>'.$PullOutDateAtPort.'</td>
                 <td>'.$act_del_whse.'</td>
                 <td>'.$dt_recvd_whse.'</td>
+                <td>'.$row->TruckerName.'</td>
             </tr>
             ';           
           }
@@ -3763,13 +3868,13 @@ function get_audit_charges_air(){
                       <th>Date Sent Final Assessment</th>
                       <th>Reference Entry Number</th>
                       <th>Hauler / Trucker Name</th>
+                      <th>Trucker Plate No.</th>
                       <th>Start Of Demmurage</th>
                       <th>Start Of Storage</th>
                       <th>Target Delivery Date</th>
                       <th>Gate In at Port</th>
                       <th>Gate Out At Port</th>
                       <th>Actual Delivery At Warehouse</th>
-                      <th>Date Received At Warehouse</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -3793,13 +3898,96 @@ function get_audit_charges_air(){
                 <td>'.$row->DateSentFinalAssessment.'</td>
                 <td>'.$row->RefEntryNo.'</td>
                 <td>'.$row->HaulerOrTruck.'</td>
+                <td>'.$row->TruckerName.'</td>
                 <td>'.$row->StartOfDemorage.'</td>
                 <td>'.$row->StartOfStorage.'</td>
                 <td>'.$row->TargetDeliveryDate.'</td>
                 <td>'.$row->GateInAtPort.'</td>
                 <td>'.$row->GateOutAtPort.'</td>
                 <td>'.$row->ActualDeliveryAtWarehouse.'</td>
+                
+            </tr>
+            ';
+          }
+
+          echo '
+              </tbody>
+            </table>
+          </div>
+        </div>
+            ';
+        }
+    }
+
+
+/*Container Outport Audit Trail*/
+    function get_audit_container_view_outport(){
+        $jobfile = $this->input->post('jbNum');
+
+      $audit_container = $this->Jobdata->get_container_audit_view($jobfile);
+
+       if($audit_container == NULL){
+        echo '<i style="color:red;">No Container History Yet</i>';
+        }else{
+
+            echo '
+             <div class="col-lg-12" style="height:300px;overflow-x:auto;">
+             <div class="row">
+            <table class="table table-bordered table-condensed " style="width:4000px;cursor:pointer;">
+                <thead>
+                  <tr>
+                      <th>Vessel / Voyage No.</th>
+                      <th>Container No</th>
+                      <th>Container Size</th>
+                      <th>No of Cartons</th>
+                      <th>Date File Entry To BOC</th>
+                      <th>Date BOC Cleared</th>
+                      <th>Date Sent Pre Assessment</th>
+                      <th>Date Paid</th>
+                      <th>Date Sent Final Assessment</th>
+                      <th>Reference Entry Number</th>
+                      <th>Hauler / Trucker Name</th>
+                      <th>Truck Plate No.</th>
+                      <th>Start Of Demmurage</th>
+                      <th>Start Of Storage</th>
+                      <th>Target Delivery Date</th>
+                      <th>Lodging</th>
+                      <th>Pull out Date at Port </th>
+                      <th>Actual Delivery At Warehouse</th>
+                      <th>Date Received At Warehouse</th>
+                      
+                  </tr>
+                </thead>      
+                <tbody>
+
+          ';
+
+
+          foreach ($audit_container as $row ) {
+            echo '
+            <tr class="containerRow">
+                <td class="hidden">'.$row->JobFileNo.'</td>
+                <td class="hidden">'.$row->ContainerByCarrierId.'</td>
+                <td>'.$row->VesselVoyageNo.'</td>
+                <td>'.$row->ContainerNo.'</td>
+                <td>'.$row->ContainerSize.'</td>
+                <td>'.$row->NoOfCartons.'</td>
+                <td>'.$row->DateFileEntryToBOC.'</td>
+                <td>'.$row->DateBOCCleared.'</td>
+                <td>'.$row->DateSentPreAssessment.'</td>
+                <td>'.$row->DatePaid.'</td>
+                <td>'.$row->DateSentFinalAssessment.'</td>
+                <td>'.$row->RefEntryNo.'</td>
+                <td>'.$row->HaulerOrTruck.'</td>
+                <td>'.$row->TruckerName.'</td>
+                <td>'.$row->StartOfDemorage.'</td>
+                <td>'.$row->StartOfStorage.'</td>
+                <td>'.$row->TargetDeliveryDate.'</td>
+                <td>'.$row->Lodging.'</td>
+                <td>'.$row->PullOutDateAtPort.'</td>
+                <td>'.$row->ActualDeliveryAtWarehouse.'</td>
                 <td>'.$row->DateReceivedAtWhse.'</td>
+                
             </tr>
             ';
           }

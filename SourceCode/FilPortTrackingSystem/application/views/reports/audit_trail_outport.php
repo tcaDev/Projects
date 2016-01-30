@@ -289,7 +289,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 /*Container*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_container_view');?>",
+			  url: "<?php echo base_url('Job/get_audit_container_view_outport');?>",
 			   beforeSend: function() {
 							$('.container-audit-list-outport').html('<a class="container-audit-list-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
  					  	},
@@ -368,7 +368,7 @@ $(document).on('click','#collapse2 #audit-outport',function(){
  	/*Container*/
  	 $.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Job/get_audit_container');?>",
+			  url: "<?php echo base_url('Job/get_audit_container_outport');?>",
 			   beforeSend: function() {
 							$('.container-auditTrail-outport').html('<a class="container-auditTrail-outport"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Container...</a>');
  					  	},
