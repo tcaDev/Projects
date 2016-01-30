@@ -1118,6 +1118,10 @@ function get_jobfile_global_search(){
                           
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
+
+    if($charges == NULL){
+          echo    '<center><span style="color:red">No Reports Yet </span></center>';
+    }else{
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
                    <th style='width:20%;'>Date Added</th>
@@ -1142,6 +1146,7 @@ function get_jobfile_global_search(){
       }
        echo "</table>";
    }
+ }
 
 
    function status_report_air(){
