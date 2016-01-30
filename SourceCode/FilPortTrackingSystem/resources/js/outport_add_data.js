@@ -114,33 +114,44 @@ var suc;
 					$('.tableContainer-msg-outport').text("Can't Proceed Need Container");
 					i=2;
 				}else{
-						$('.btn-Next-outport').attr('disabled','disabled');
-					    $.confirm({
-					    	      backgroundDismiss: false, 
-		   						  title: 'Add Container', 
-		   						  confirmButton: 'Yes',
-    							  cancelButton: 'No',
-		  						  content: 'Do you want to Add Commodity?',
-		 					      confirm: function(){
-		  					        	/*$("#btn-truck-outport-add").click();*/ 
-		  					        	$('#btn-truck-outport-add').addClass('active');
-										$('#btn-jobfile-outport-add').removeClass('active');
-										$('#btn-container-outport-add').removeClass('active');
-										$('#btn-charges-outport-add').removeClass('active');
-										$('#btn-vessel-outport-add').removeClass('active');
-										$('.pill-jobfile-outport-add').addClass('hidden');
-										$('.pill-truck-outport-add').removeClass('hidden');
-										$('.pill-charges-outport-add').addClass('hidden');
-										$('.pill-container-outport-add').addClass('hidden');
-										$('.pill-vessel-outport-add').addClass('hidden');
-										$('.test_data').addClass('hidden');
-										$('.btn-Next-outport').removeClass('hidden'); 
-										$('.btn-Next-outport').removeAttr('disabled');
-		  					  },
-		  						  cancel: function(){
-		  						  	 ins_contains_outport();
-		   						 }
-						});
+					i=2;
+						/*$('.btn-Next-outport').attr('disabled','disabled');*/
+									$.confirm({
+										    title: 'Confirm',
+										    content: 'Are  you sure to add this containers?',
+										    confirm: function(){
+									        				    $.confirm({
+														    	      backgroundDismiss: false, 
+											   						  title: 'Add Container', 
+											   						  confirmButton: 'Yes',
+									    							  cancelButton: 'No',
+											  						  content: 'Do you want to Add Commodity?',
+											 					      confirm: function(){
+											  					        	/*$("#btn-truck-outport-add").click();*/ 
+											  					        	$('#btn-truck-outport-add').addClass('active');
+																			$('#btn-jobfile-outport-add').removeClass('active');
+																			$('#btn-container-outport-add').removeClass('active');
+																			$('#btn-charges-outport-add').removeClass('active');
+																			$('#btn-vessel-outport-add').removeClass('active');
+																			$('.pill-jobfile-outport-add').addClass('hidden');
+																			$('.pill-truck-outport-add').removeClass('hidden');
+																			$('.pill-charges-outport-add').addClass('hidden');
+																			$('.pill-container-outport-add').addClass('hidden');
+																			$('.pill-vessel-outport-add').addClass('hidden');
+																			$('.test_data').addClass('hidden');
+																			$('.btn-Next-outport').removeClass('hidden'); 
+																			$('.btn-Next-outport').removeAttr('disabled');
+											  					  },
+											  						  cancel: function(){
+											  						  	 ins_contains_outport();
+											   						 }
+															});
+									    },
+									    cancel: function(){
+									        /*$.alert('Canceled!')*/
+									    }
+									});
+
 			 		}
 			
 			}else if(i==4){
