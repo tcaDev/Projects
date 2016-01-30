@@ -2779,7 +2779,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
         if($audit_jobfile == NULL)
         {
-          echo '<i style="color:red;">No Jobfile Hisotry Yet</i>';
+          echo '<i style="color:red;">No Jobfile History Yet</i>';
         }else{
            echo '
              <div class="col-lg-12" style="height:300px;overflow-x:auto;">
@@ -3047,6 +3047,9 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
       $audit_charges = $this->Jobdata->get_charges_audit($jobfile);
 
+       if($audit_charges == NULL){
+           echo '<i style="color:red;">No Running Charges History Yet</i>';
+      }else{
 
        echo '
              <div class="col-lg-12" style="overflow-x:auto;">
@@ -3137,6 +3140,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         </div>
           ';
 
+      }
    }
 
 
