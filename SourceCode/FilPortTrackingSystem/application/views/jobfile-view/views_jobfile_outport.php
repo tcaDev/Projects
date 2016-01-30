@@ -73,7 +73,7 @@
 
 			<div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				<div class="job-outport">
-				    <table class="table  table-striped table-bordered table-hover table-condensed" id="table_outport_sort" style="width:5000px;">
+				    <table class="tablesorter table  table-striped table-bordered table-hover table-condensed"  style="width:5000px;">
 
 				      <thead>
 
@@ -81,7 +81,7 @@
 
 								          <th > No. </th>
 
-								          <th > Update </th>
+								          <th data-sorter="false"> Update </th>
 										 
 								          <th >Jobfile Number</th>
 
@@ -91,9 +91,9 @@
 										   
 										  <th >Consignee</th>
 
-								          <th >Container No.</th>
+								          <th data-sorter="false">Container No.</th>
 
-								          <th >Description of Goods</th>
+								          <th data-sorter="false">Description of Goods</th>
 
  										  <th >PI/PO No.</th>
 
@@ -107,7 +107,7 @@
 
 								          <th >Registry</th>
 
-								          <th >Vessel/Voyage</th>
+								          <th data-sorter="false">Vessel/Voyage</th>
 
 								          <th >Origin</th>  
 
@@ -135,9 +135,9 @@
 
 										  <th>Color Selectivity</th>
 
-								          <th >Status Reports</th>
+								          <th data-sorter="false">Status Reports</th>
 
-								          <th >Running Charges</th>
+								          <th data-sorter="false">Running Charges</th>
 
 								      </tr>
 				   </thead>
@@ -996,10 +996,10 @@ $(".btn-Vessel-outport").click(function(){
         
     </script>
 
-    <!--sort table -->
-   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
-<script>
-	$(document).ready(function() { 
-        $("#table_outport_sort").tablesorter();}); 
-</script>
+
+    	<!-- Pick a theme, load the plugin & initialize plugin -->
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+

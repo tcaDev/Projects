@@ -584,7 +584,7 @@ function get_carrier(){
 
 
 function get_products(){
-    $query = $this->db->query("select * from Products where IsActive");
+    $query = $this->db->query("select * from Products where IsActive ORDER BY ProductName ASC");
     return $query->result();
   }
 

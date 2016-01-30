@@ -524,7 +524,7 @@ var back=0;
 			       	$('#tableAddTruck-mnla table tr:last td:nth-child(4)').html("<button type='button' class='btn btn-default table-remove deleteButton btn-sm'><span class='fa fa-times fa-lg'></span></button>");
 			
 			
-			$('#tableAddTruck-mnla .PON').val('');
+			/*$('#tableAddTruck-mnla .PON').val('');*/
 
 			$('.cont-size-msg').text('');
 			$('.prodname-msg').text('');

@@ -1366,19 +1366,23 @@ function get_jobfile_global_search(){
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
-          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
+          $dispOutput = '<table  class="tablesorter tableReports table-striped table-condensed table table-bordered order-table">';
           $dispOutput .= '
                         <thead>
+                            <tr>
                               <th><center> JobfileNumber </center> </th>
                               <th><center> Shipper </center></th>
                               <th><center> Consignee </center></th>
                               <th><center> House Airway Bill# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                            <tr>
                         </thead>
                       ';
+            $dispOutput .='<tbody>';
           foreach($jobfiles as $row){
+         
               $dispOutput .='
-                      <tbody>
+                      
                         <tr class="tableRow">
                               <td>'.stripslashes($row->JobFileNo).'</td>
                               <td>'.stripslashes($row->ShipperName).'</td>
@@ -1386,11 +1390,11 @@ function get_jobfile_global_search(){
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DatePickUpOtherDocs).'</td>
                         </tr>
-                      </tbody>
+                     
               ';
               $rowCt += 1;
           }
-
+            $dispOutput .='</tbody>';
             $dispOutput .= '</table>';
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search</span></center>';
@@ -1398,20 +1402,25 @@ function get_jobfile_global_search(){
       }else{
          $ct = count($jobfiles);
           if($ct > 0){
-          $dispOutput = '<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table">';
+          $dispOutput = '<table  class="tablesorter tableReports table table-bordered table-striped table-condensed order-table">';
           $dispOutput .= '
                         <thead>
+                           <tr>
                               <th><center> JobfileNumber </center> </th>
                               <th><center> Shipper </center></th>
                               <th><center> Consignee </center></th>
                               <th><center> HBL# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                            </tr>
                         </thead>
                       ';
+
+           $dispOutput .='<tbody>';
           foreach($jobfiles as $row){
             if($monitoringType == $row->MonitoringTypeId){
+             
               $dispOutput .='
-                      <tbody>
+                      
                         <tr class="tableRow">
                               <td>'.stripslashes($row->JobFileNo).'</td>
                               <td>'.stripslashes($row->ShipperName).'</td>
@@ -1419,12 +1428,13 @@ function get_jobfile_global_search(){
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
                         </tr>
-                      </tbody>
+                      
               ';
+                
               $rowCt += 1;
             }
             }
-
+              $dispOutput .='</tbody>';
             $dispOutput .= '</table>';
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
@@ -1439,7 +1449,7 @@ function get_jobfile_global_search(){
            "result_count" => $dispCount
           )
         );
-
+      
      echo json_encode($output);
      // echo $dispOutput;
   }

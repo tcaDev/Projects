@@ -149,8 +149,8 @@ function click_vessel_outport(){
 			$('.tableGoods-msg-addProduct-outport').text("");
 
 
-				$("#table-AddProduct-outport .prodname-addProduct-outport option:eq(0)").attr("selected","selected");
-				$("#table-AddProduct-outport .containers-prod-addProduct-outport option:eq(0)").attr("selected","selected");
+				/*$("#table-AddProduct-outport .prodname-addProduct-outport option:eq(0)").attr("selected","selected");
+				$("#table-AddProduct-outport .containers-prod-addProduct-outport option:eq(0)").attr("selected","selected");*/
 			}
 				
 

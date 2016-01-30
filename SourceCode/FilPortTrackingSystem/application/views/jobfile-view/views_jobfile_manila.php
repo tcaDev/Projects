@@ -86,13 +86,13 @@
 			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 				    <div class="job-manila">
 
-				    <table class="table table_manila table-bordered table-condensed order-tablejob " id="table_manila_sort" style="width:5000px;">
+				    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob " id="sort_manla" style="width:5000px;">
 
 				        <thead>
-				             <tr style="cursor:w-resize ;">
+				             <tr >
 								          <th > No. </th>
 
-								          <th > Update </th>
+								          <th data-sorter="false"> Update </th>
 										 
 								          <th >Jobfile Number</th>
 
@@ -102,11 +102,11 @@
 										   
 										  <th >Consignee</th>
 
-										   <th >Vessel/Voyage</th>
+										   <th data-sorter="false">Vessel/Voyage</th>
 
-								          <th >Container No.</th>
+								          <th data-sorter="false">Container No.</th>
 
-								          <th >Description of Goods</th>
+								          <th data-sorter="false">Description of Goods</th>
 
  										  <th >PI/PO No.</th>
 
@@ -146,9 +146,9 @@
 
 										  <th>Color Selectivity</th>
 
-								          <th >Status Reports</th>
+								          <th data-sorter="false">Status Reports</th>
 
-								          <th >Running Charges</th>
+								          <th data-sorter="false">Running Charges</th>
 
 								      </tr>
 				        </thead>
@@ -973,7 +973,7 @@ $(".btn-Vessel").click(function(){
 
 <script>
 
-	$(function() {
+	/*$(function() {
 
 	    var pressed = false;
 	    var start = undefined;
@@ -1000,7 +1000,7 @@ $(".btn-Vessel").click(function(){
 	        }
 	    });
 
-	});
+	});*/
 
 
 
@@ -1138,12 +1138,7 @@ $('#select').change(function(){
 
 
 <!--table sorting -->
- <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
-<script>
-	$(document).ready(function() { 
-        $("#table_manila_sort").tablesorter();}); 
-</script>
+
 
 
 <!---JOBFILE MODALSSS-->
@@ -1155,13 +1150,12 @@ $('#select').change(function(){
   </div>
 
 
-<style>
 
-</style>
+	<!-- Pick a theme, load the plugin & initialize plugin -->
 
-
-
-
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
 
 
 

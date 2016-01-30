@@ -66,9 +66,9 @@
 				
 						<!-- Dashboard -->	
 
-					<!-- 	<a style="display:block" href="<?php //echo base_url('Login_user/dashboard')?>"> -->
+					<a style="display:block" href="<?php echo base_url('Login_user/dashboard')?>">
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__front " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-pie-chart img-jobfile"></span>
@@ -81,7 +81,7 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-dashboard card__back " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-dashboard img-jobfile"></span>
@@ -95,11 +95,11 @@
 					</a>
 
 						<!-- Help -->
-						<!-- <a style="display:block" href="<?php //echo base_url('Login_user/help')?>"> -->
+						 <a style="display:block" href="<?php echo base_url('Login_user/help')?>"> 
 					<div class="menu-tiles effect__hover">
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__front imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__front " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
-								<div class="col-lg-4 col-md-4 col-sm-4 imgDisabled">
+								<div class="col-lg-4 col-md-4 col-sm-4 ">
 									<span class="fa fa-question img-jobfile"></span>
 								</div>
 
@@ -110,7 +110,7 @@
 							</div>							
 						</div>
 
-						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__back imgDisabled" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
+						<div class="col-lg-4 col-md-4 col-sm-4 btn btn-help card__back " style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4">
 									<span class="fa fa-book img-jobfile"></span>

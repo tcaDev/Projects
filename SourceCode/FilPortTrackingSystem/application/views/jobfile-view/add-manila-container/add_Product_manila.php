@@ -150,8 +150,8 @@ function click_vessel(){
 			$('.tableGoods-msg-addProduct-mnila').text("");
 
 
-				$("#table-AddProduct-mnla .prodname-addProduct-mnila option:eq(0)").attr("selected","selected");
-				$("#table-AddProduct-mnla .containers-prod-addProduct-mnila option:eq(0)").attr("selected","selected");
+			/*	$("#table-AddProduct-mnla .prodname-addProduct-mnila option:eq(0)").attr("selected","selected");
+				$("#table-AddProduct-mnla .containers-prod-addProduct-mnila option:eq(0)").attr("selected","selected");*/
 			}
 				
 

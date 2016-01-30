@@ -494,8 +494,8 @@ var back=0;
 			$('.prodname-msg-outport').text('');
 			$('.tableGoods-msg-outport').text("");
 
-			$("#tableAddTruck-outport  .containers-prod-outport option:eq(0)").attr("selected","selected");
-			$("#tableAddTruck-outport  .prodname-outport option:eq(0)").attr("selected","selected");
+			/*$("#tableAddTruck-outport  .containers-prod-outport option:eq(0)").attr("selected","selected");*/
+			/*$("#tableAddTruck-outport  .prodname-outport option:eq(0)").attr("selected","selected");*/
 
 			}
 				

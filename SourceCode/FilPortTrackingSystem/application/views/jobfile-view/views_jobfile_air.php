@@ -80,13 +80,13 @@
 
 	 <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
 		   <div class="job-air">
-		    <table class="table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort" style="width:5500px;">
+		    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob" style="width:5500px;">
 		        <thead>
 		             <tr style="cursor:w-resize ;">
 
 				          <th> No. </th>
 
-				          <th> Update </th>
+				          <th data-sorter="false"> Update </th>
 
 				          <th>Jobfile Number</th>
 
@@ -98,7 +98,7 @@
 
 				          <th>No. Of Cartons</th>
 
-				          <th>Description of Goods</th>
+				          <th data-sorter="false">Description of Goods</th>
 
 				          <th>Purchase Order No.</th>
 
@@ -140,9 +140,9 @@
 
 				          <th>Color Selectivity</th>
 
-				          <th>Status Reports</th>
+				          <th data-sorter="false">Status Reports</th>
 
-				          <th>Running Charges</th>
+				          <th data-sorter="false">Running Charges</th>
 				      </tr>
 
 				      <tbody>
@@ -659,10 +659,8 @@ $('.btn-Add-Report-air').click(function(){
 </script>
 
 
-    <!--sort table -->
-   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
-<script>
-	$(document).ready(function() { 
-        $("#table_air_sort").tablesorter();}); 
-</script>
+    	<!-- Pick a theme, load the plugin & initialize plugin -->
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
