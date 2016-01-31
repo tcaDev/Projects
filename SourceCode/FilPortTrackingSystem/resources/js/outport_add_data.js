@@ -127,6 +127,7 @@ var suc;
 									    							  cancelButton: 'No',
 											  						  content: 'Do you want to Add Commodity?',
 											 					      confirm: function(){
+											 					      	  i=3;
 											  					        	/*$("#btn-truck-outport-add").click();*/ 
 											  					        	$('#btn-truck-outport-add').addClass('active');
 																			$('#btn-jobfile-outport-add').removeClass('active');

@@ -149,6 +149,7 @@ var suc;
 									    							  cancelButton: 'No',
 											  						  content: 'Do you want to Add Commodity?',
 											 					      confirm: function(){
+											 					      	     i=3;
 											  					        	/*$("#btn-truck-mnla-add").click();*/ 
 											  					        	$('#btn-truck-mnla-add').addClass('active');
 																			$('#btn-jobfile-mnla-add').removeClass('active');
