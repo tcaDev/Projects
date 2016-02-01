@@ -139,6 +139,7 @@
 		  	<div class="tab-content">
 		  		<!-- Containers -->
 				    <div id="containers" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
+		 				<div style="height: 300px; overflow-y: auto;">
 		 					<br>
 					  		<h4 style="padding-left: 25px;" class="cnt">Commidity</h4>
 					  		<br>
@@ -151,10 +152,12 @@
 						             		</tr>
 						                </table>
 						     </div>
+						 </div>
 				    </div>
 
 				<!-- Commodity -->
 				    <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade ">
+					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Commidity</h4>
 					  		<br>
@@ -167,9 +170,11 @@
 						             		</tr>
 						                </table>
 						        </div>
+						</div>
 				    </div>
 
 				    <div id="running-charges" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Running Charges</h4>
 					  		<br>
@@ -180,11 +185,14 @@
 						             	</td>
 						            </tr>
 						       </table>
+						 </div>
 				    </div>
 
 					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Status Report</h4>
+					  		<h6> <i> *Double Click the Status Report to View the Full Report.</i></h6>
 					  		<br>
 						      <table id="tbl-fourth-report-data" class="table table-striped tableOverFlow" style="cursor:pointer;">
 						             	<tr>
@@ -193,6 +201,7 @@
 						             		</td>
 						             	</tr>
 						        </table>
+						</div>        
 					</div>
 				</div>
 			 </div>
@@ -307,7 +316,7 @@
  var content_details;
  var content_status_data;
 
- var myBackUpViewReport = $('#view-report').clone();
+ var myBackUpViewReport 
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
 			 $.ajax({
@@ -420,6 +429,7 @@
 			  			content_containers = report_container_data;
 			  			$('#tbl-first-report-data').html(content_containers);
 			  			$('#tbl-first-report-data-print').html(content_containers);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  $.ajax({
 				  		method: "POST",
@@ -436,6 +446,7 @@
 			  			content_commodities = report_commodities_data;
 			  			$('#tbl-second-report-data').html(content_commodities);
 			  			$('#tbl-second-report-data-print').html(content_commodities);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			   $.ajax({
 				  		method: "POST",
@@ -452,6 +463,7 @@
 			  			content_charges = report_charges_data;
 			  			$('#tbl-third-report-data').html(content_charges);
 			  			$('#tbl-third-report-data-print').html(content_charges);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  	 $.ajax({
 				  		method: "POST",
@@ -469,9 +481,8 @@
 			  			$('#tbl-fourth-report-data').html(content_reports);
 			  			content_status_data = content_reports.replace(/\\n/g,'<br>');
 			  			$('#tbl-fourth-report-data-print').html(content_status_data);
-
+			  			myBackUpViewReport = $('#view-report').clone();
 				 });
-			  
 			  	$('#view-report').modal('show');
 		   });
 
@@ -488,6 +499,10 @@
 				$('#view-report').modal('hide').remove();
 				var myCloneview_report = myBackUpViewReport.clone();
 				$('body').append(myCloneview_report);
+			});
+			
+			$(document).on('click','#btn-modal-close',function(){
+				myBackUpViewReport.data('null');
 			});
 
 			$("#view-status-report-profile").on('hide.bs.modal', function () {
@@ -535,6 +550,7 @@
     	 white-space: nowrap;
     	 text-align: left !important; 
 	 }
+
 	</style>
 </html>
 

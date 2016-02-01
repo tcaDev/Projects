@@ -1,6 +1,7 @@
 $(function(){
 	$('table').tablesorter({
-			widgets        : ['zebra', 'columns'],
+		    widthFixed : true,
+			widgets        : ['zebra', 'columns'],	
 			usNumberFormat : false,
 			sortReset      : true,
 			sortRestart    : true,

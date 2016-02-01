@@ -15,8 +15,9 @@
 						      </h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
-						         <ul class="nav nav-pills nav-data">
-									  <li value="5" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight</a></li>
+						         <ul class="nav nav-pills nav-data nav-freights">
+									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
@@ -103,6 +104,7 @@
 		  	<div class="tab-content">
 		  		<!-- Containers -->
 				    <div id="containers" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
+		 				<div style="height: 300px; overflow-y: auto;">
 		 					<br>
 					  		<h4 style="padding-left: 25px;" class="cnt">Commodity</h4>
 					  		<br>
@@ -115,10 +117,12 @@
 						             		</tr>
 						                </table>
 						     </div>
+					    </div>
 				    </div>
 
 				<!-- Commodity -->
 				    <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade ">
+					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Commodity</h4>
 					  		<br>
@@ -131,9 +135,11 @@
 						             		</tr>
 						                </table>
 						        </div>
+						</div>
 				    </div>
 
 				    <div id="running-charges" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+					  		<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Running Charges</h4>
 					  		<br>
@@ -144,11 +150,14 @@
 						             	</td>
 						            </tr>
 						       </table>
+						    </div>
 				    </div>
 
 					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+					  	<div style="height: 300px; overflow-y: auto;">	
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Status Report</h4>
+					  		<h6> <i> *Double Click the Status Report to View the Full Report.</i></h6>
 					  		<br>
 						      <table id="tbl-fourth-report-data" class="table table-striped tableOverFlow" style="cursor:pointer;">
 						             	<tr>
@@ -157,6 +166,7 @@
 						             		</td>
 						             	</tr>
 						      </table>
+						</div>						      
 					</div>
 				</div>
 			 </div>
@@ -261,7 +271,7 @@
 
  var statusData;
  var txt;
- var mon_Type = 5;
+ var mon_Type = 1;
 
 
  var content_commodities;
@@ -271,7 +281,7 @@
  var content_details;
  var content_status_data;
 
- var myBackUpViewReport = $('#view-report').clone();
+ var myBackUpViewReport;
  var con_name = $('.conName').attr('id');
 	$('#btn-search-consignee').on('click',function(){
 		if(con_name == "" || con_name == null){
@@ -391,6 +401,7 @@
 			  			content_containers = report_container_data;
 			  			$('#tbl-first-report-data').html(content_containers);
 			  			$('#tbl-first-report-data-print').html(content_containers);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  $.ajax({
 				  		method: "POST",
@@ -407,6 +418,7 @@
 			  			content_commodities = report_commodities_data;
 			  			$('#tbl-second-report-data').html(content_commodities);
 			  			$('#tbl-second-report-data-print').html(content_commodities);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			   $.ajax({
 				  		method: "POST",
@@ -423,6 +435,7 @@
 			  			content_charges = report_charges_data;
 			  			$('#tbl-third-report-data').html(content_charges);
 			  			$('#tbl-third-report-data-print').html(content_charges);
+			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  	 $.ajax({
 				  		method: "POST",
@@ -440,9 +453,8 @@
 			  			$('#tbl-fourth-report-data').html(content_reports);
 			  			content_status_data = content_reports.replace(/\\n/g,'<br>');
 			  			$('#tbl-fourth-report-data-print').html(content_status_data);
-
+			  			myBackUpViewReport = $('#view-report').clone();
 				 });
-			  
 			  	$('#view-report').modal('show');
 		   });
 
@@ -451,9 +463,11 @@
 				var dispTxt = pre_txt.replace(/\\n/g,'<br>');
 				$('.txt-desc').html(dispTxt);
 				$('.stat-no').html($(this).closest('tr').children('td:eq(0)').text());
+			
 				$('#view-report').modal('hide');
 				$('#view-status-report-profile').modal('show');
 			});
+
 
 			$('body').on('hidden.bs.modal','#view-report',function(){
 				$('#view-report').modal('hide').remove();
@@ -479,7 +493,10 @@
 				mon_Type = $('.nav-data .active').val();
 			   $('#btn-search-consignee').click();
 				changePlaceHolder(mon_Type);
-				
+			});
+
+			$(document).on('click','#btn-modal-close',function(){
+				myBackUpViewReport.data('null');
 			});
 
 		$(document).ready(function(){
@@ -535,11 +552,12 @@
 				}else{
 					$('#HBL').html('<th id="HBL"><center> HBL# </center></th>');
 			}
-			
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Air Freight');
-			}else if(monType == 5){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Sea Freight Manila');
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+			}else if(monType == 2){
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+			}else if(monType == 1){
+				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}
 		}
 </script>
