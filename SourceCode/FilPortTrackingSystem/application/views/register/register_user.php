@@ -20,7 +20,7 @@
                               
                                     <h4>Type Of User :</h4>
 
-                                     <label class="radio-inline"><input type="radio" value="5" name="optradio" class="filport" checked="checked" style="transform: scale(1.5);">Filport User</label>
+                                     <label class="radio-inline"><input type="radio" value="5" name="optradio" class="filport-user" checked="checked" style="transform: scale(1.5);">Filport User</label>
                                      <label class="radio-inline"><input type="radio" value="2" name="optradio" class="client" style="transform: scale(1.5);">Client User</label>
                                      
                                 <hr>
@@ -266,7 +266,7 @@ var legit=0;
     }
   });
 
-  $('.filport').click(function(){
+  $('.filport-user').click(function(){
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').addClass('hidden');
