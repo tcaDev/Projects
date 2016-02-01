@@ -15,7 +15,7 @@
 						      </h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
-						         <ul class="nav nav-pills nav-data">
+						         <ul class="nav nav-pills nav-data nav-freights">
 									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
@@ -118,8 +118,8 @@
 				        <div style="overflow-x:auto;">
 				        <span class="loadPre-Details pull-left" style="font-size:18px;"></span>
 				       	 
-				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details">
-				        	</table> 
+	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details" class="tablesorter">
+	</table> 
 		<hr>		        
 
 		<div class="container-tab" id="tabs">
@@ -324,6 +324,7 @@
 				  		}
 					})
 			  		.done(function(consignee_data) {
+
 			  			var result = JSON.parse(consignee_data);
 			  			if(result[0].result_count == 0 && mon_Type != 3){
 			  				$.alert({
@@ -499,7 +500,7 @@
 			  	 }
 			});
 
-			$(document).on('click','.nav-data li',function(){
+			$(document).on('click','.nav-freights li',function(){
 					mon_Type = $('.nav-data .active').val();
 				    $('#btn-search-consignee').click();
 					$('.loading-consignee').html('<a class="loading-consignee"></a>');
@@ -507,19 +508,6 @@
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 					changePlaceHolder(mon_Type);
 			});
-
-			/*$(document).on('click','.nav-data-2 li',function(){
-				mon_Type = $('.nav-data-2 .active').val();
-				//alert(mon_Type);
-				if($('#txt-search-consignee').val() != ""){
-				   $('#btn-search-consignee').click();
-				}else{
-					$('.loading-consignee').html('<a class="loading-consignee"></a>');
-					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
-					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
-				}
-				changePlaceHolder(mon_Type);
-			});*/
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
@@ -549,7 +537,6 @@
 	 }
 	</style>
 </html>
-
 
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>

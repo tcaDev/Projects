@@ -16,7 +16,7 @@
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data">
-									  <li value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight</a></li>
+									  <li value="5" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
@@ -261,7 +261,7 @@
 
  var statusData;
  var txt;
- var mon_Type = 1;
+ var mon_Type = 5;
 
 
  var content_commodities;
@@ -538,7 +538,7 @@
 			
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Air Freight');
-			}else if(monType == 1){
+			}else if(monType == 5){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name to Search from Sea Freight Manila');
 			}
 		}

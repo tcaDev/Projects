@@ -1362,11 +1362,10 @@ function get_jobfile_global_search(){
       $monitoringType    =  $this->input->post('monType');
       $rowCt = 0;
       $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name,$monitoringType);
-      
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
-          $dispOutput = '<table  class="tablesorter tableReports table-striped table-condensed table table-bordered order-table">';
+          $dispOutput = '<table class="tablesorter tableReports table-striped table-condensed table table-bordered order-table">';
           $dispOutput .= '
                         <thead>
                             <tr>
@@ -1417,8 +1416,7 @@ function get_jobfile_global_search(){
 
            $dispOutput .='<tbody>';
           foreach($jobfiles as $row){
-            if($monitoringType == $row->MonitoringTypeId){
-             
+            if($monitoringType == $row->MonitoringTypeId && $monitoringType != 5){
               $dispOutput .='
                       
                         <tr class="tableRow">
@@ -1430,17 +1428,32 @@ function get_jobfile_global_search(){
                         </tr>
                       
               ';
-                
               $rowCt += 1;
+            }else if($monitoringType == 5){
+              $rowCt = $ct;
+              $dispOutput .='
+                      
+                        <tr class="tableRow">
+                              <td>'.stripslashes($row->JobFileNo).'</td>
+                              <td>'.stripslashes($row->ShipperName).'</td>
+                              <td>'.stripslashes($row->ConsigneeName).'</td>
+                              <td>'.stripslashes($row->HouseBillLadingNo).'</td>
+                              <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                        </tr>
+                      
+              ';
             }
-            }
+          }
               $dispOutput .='</tbody>';
             $dispOutput .= '</table>';
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
           }
       }
- /*     $dispOutput = $jobfiles;
+       $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tablesortFilport.js") . '"></script>';
+      /*$dispOutput = $jobfiles;
       $dispCount = 0;*/
       $dispCount =  $rowCt ;
       $output = array(
