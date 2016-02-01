@@ -65,8 +65,8 @@
 						<h3 class="text-uppercase filport" style="font-weight: 600;font-size: 20px;cursor:pointer;">Fil-Port Express brokerage , inc.</h3>
 
 						<h5 class="text-uppercase" style="font-weight: 600;"><?php echo $tab ?></h5>
+						
 					</div>
-
 				<!-- end Title -->
 				<!-- User -->
 					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 30px;">
@@ -78,13 +78,14 @@
 							<div class="pull-right" style="padding: 10px; color : #FFF;">
 								 <div class="btn-group" >
 									<!-- Username -->
-									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
-									  	<span class="pull-right">
+									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); text-align:right;">
+									  	<span class="pull-right" style = "font-family:Century Gothic;font-size:18px;">		
 									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?><br>
-															  	<?php foreach($roleName as $row){
-									  										echo $row->My_RoleName;
-									  							 }?>
-									  	</span>
+									  <b>	  	<?php foreach($roleName as $row){
+									  			echo $row->My_RoleName;
+									  		  }?>
+									  </b>
+								</span>
 									  </a>
 									<!-- End Username -->
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
@@ -98,6 +99,7 @@
 									    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 									  </ul>
 								</div>
+								 
 							</div>
 						</div>
 					</div>
