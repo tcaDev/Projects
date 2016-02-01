@@ -242,7 +242,7 @@
 							</div>
 						</div>
 				       <div class="modal-footer">
-				          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				          <button type="button" class="btn btn-danger" data-dismiss="modal" id = "btn-close-report-desc">Close</button>
 				       </div>
 
 				 	  </div>
@@ -316,7 +316,9 @@
  var content_details;
  var content_status_data;
 
- var myBackUpViewReport 
+ var showed_status_details = false;
+
+ var myBackUpViewReport;
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
 			 $.ajax({
@@ -492,20 +494,20 @@
 				$('.txt-desc').html(dispTxt);
 				$('.stat-no').html($(this).closest('tr').children('td:eq(0)').text());
 				$('#view-report').modal('hide');
+				showed_status_details = true;
 				$('#view-status-report-profile').modal('show');
 			});
 
 			$('body').on('hidden.bs.modal','#view-report',function(){
-				$('#view-report').modal('hide').remove();
-				var myCloneview_report = myBackUpViewReport.clone();
-				$('body').append(myCloneview_report);
-			});
-			
-			$(document).on('click','#btn-modal-close',function(){
-				myBackUpViewReport.data('null');
+				if(showed_status_details == true){
+					$('#view-report').modal('hide').remove();
+					var myCloneview_report = myBackUpViewReport.clone();
+					$('body').append(myCloneview_report);
+				}
 			});
 
 			$("#view-status-report-profile").on('hide.bs.modal', function () {
+				showed_status_details = false;
             	$('#view-report').modal('show');
    			 });
 

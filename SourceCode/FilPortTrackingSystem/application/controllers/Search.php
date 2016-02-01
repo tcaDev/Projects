@@ -548,15 +548,21 @@ if(isset($_SESSION['success'])){
 
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
-<script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
-   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+		
+ <!-- 
+<script src="<?php //echo base_url('resources/js/get_datas.js');?>"></script>
+   <script src="<?php //echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+  <link href="<?php //echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
 <script>
 	$(document).ready(function() { 
         $("#table_broker").tablesorter();}); 
 </script>
-
+ -->
 <?php
 	}
 
@@ -645,13 +651,19 @@ function search_shipper(){
 
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
- <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+		
+ <!-- 
+ <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php// echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
 	$(document).ready(function() { 
         $("#table_shipper").tablesorter();}); 
  </script>
-	
+	 -->
 				<script>
 
 					
@@ -812,14 +824,19 @@ function search_vessel(){
 					    </tbody>
 					  </table>
 
-<script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
- <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+		
+<!-- 
+<script src="<?php //echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php //echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
 	$(document).ready(function() { 
         $("#table_vessel").tablesorter();}); 
  </script>
-
+ -->
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
 	 	 $('.update_vessels').click(function(){
@@ -920,14 +937,20 @@ $this->message();
 ?>
     </tbody>
 </table>
-<script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
- <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+
+<!-- 
+<script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php //echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php //echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
 	$(document).ready(function() { 
         $("#table_hauler").tablesorter();}); 
  </script>
-
+ -->
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
 	<script>
@@ -1282,14 +1305,20 @@ function search_product(){
 ?>
 					    </tbody>
 					  </table>
-  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
- <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+					  
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+		
+<!-- 					  
+  <script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	
+ <script src="<?php //echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
+ <link href="<?php// echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
 	$(document).ready(function() { 
         $("#table_product").tablesorter();}); 
  </script>
-
+ -->
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>

@@ -230,10 +230,6 @@ Class User extends CI_Model
     return $query->result();
   }*/
 
-
-
-
-
   //for settings datas start
   function settings_consignee(){
     $this->db->select('*');

@@ -843,7 +843,7 @@ function select_country(){
 	function consignee_content(){
 	
     $item_per_page=10;
-	//Get page number from Ajax POST
+	//Get page number from Ajax POS T
 	if(isset($_POST["page"])){
 		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
 		 if(!is_numeric($page_number)){die('Invalid page number!');} //incase of invalid page number
@@ -851,8 +851,6 @@ function select_country(){
 		$page_number = 1; //if there's no page number, set it to 1
 	}
 	
-	
-
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
 
@@ -956,11 +954,11 @@ function select_country(){
   if(isset($_SESSION['failed'])){
   	$failed = $_SESSION['failed'];
   	if($failed=='failed'){
-  	 $message = 'Failed to Add, because the data already exists!';
+  	 $message = 'Failed to Add, because the Data Already exists!';
   	
   	}
     if($failed=='update_failed'){
-  	$message = 'Failed to Update, because the data already exists!';
+  	$message = 'Failed to Update, because the Data Already exists!';
   }
 
   
@@ -988,12 +986,11 @@ function select_country(){
  <script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
  
  <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
-   <script src="<?php echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
-<script>
-	$(document).ready(function() { 
-        $("#table_consignee").tablesorter();}); 
-</script> 
+  				  
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+		
 	<?php	
 	}
    //for pagination  end

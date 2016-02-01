@@ -281,6 +281,8 @@
  var content_details;
  var content_status_data;
 
+ var showed_status_details = false;
+
  var myBackUpViewReport;
  var con_name = $('.conName').attr('id');
 	$('#btn-search-consignee').on('click',function(){
@@ -463,19 +465,22 @@
 				var dispTxt = pre_txt.replace(/\\n/g,'<br>');
 				$('.txt-desc').html(dispTxt);
 				$('.stat-no').html($(this).closest('tr').children('td:eq(0)').text());
-			
+				showed_status_details = true;
 				$('#view-report').modal('hide');
 				$('#view-status-report-profile').modal('show');
 			});
 
 
 			$('body').on('hidden.bs.modal','#view-report',function(){
-				$('#view-report').modal('hide').remove();
-				var myCloneview_report = myBackUpViewReport.clone();
-				$('body').append(myCloneview_report);
+				if(showed_status_details == true){
+					$('#view-report').modal('hide').remove();
+					var myCloneview_report = myBackUpViewReport.clone();
+					$('body').append(myCloneview_report);
+				}
 			});
 
 			$("#view-status-report-profile").on('hide.bs.modal', function () {
+				showed_status_details = false;
             	$('#view-report').modal('show');
    			 });
 
