@@ -69,6 +69,8 @@ class Login_user extends CI_Controller {
 		         'mname'     =>   $row->MiddleName,
 		         'lname'     =>   $row->LastName,
 		         'uid'		 =>	  $row->UserId,
+		         'roleID'	 =>   $row->RoleId,
+		         'cID' 		 =>   $row->ConsigneeId,
 		         'img'		 =>	  $row->ProfileImageSource,
 		         'bdate'		 =>	  $row->BirthDate
 		       );
@@ -86,9 +88,13 @@ class Login_user extends CI_Controller {
 	 function menu()
 	{
 		 //check if the user is already login
+				//$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
+            	//$data["jobfiles"] = $cName->ConsigneeName;
 		if($this->session->userdata('logged_in')){
 		  	$data['tab'] = "Main Menu";
 		  	$session_data = $this->session->userdata('logged_in');
+		  	$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -100,9 +106,7 @@ class Login_user extends CI_Controller {
 		 	$data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
             $role = $this->User->get_role($session_data['uid']);
-
             $data['role'] = $this->User->get_role($session_data['uid']);
-
             if($role->RoleId == 2){
 				$this->load->view('header/header',$data);
 				$this->load->view('menu/views_menu_consignee' , $data);
@@ -150,6 +154,8 @@ class Login_user extends CI_Controller {
 			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');
 		    $data['username'] = $session_data['username'];
+		    $logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
@@ -247,6 +253,8 @@ class Login_user extends CI_Controller {
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "REPORTS";
 			$session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -314,6 +322,8 @@ class Login_user extends CI_Controller {
 		if($this->session->userdata('logged_in')){	
 
 			$session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		   	$data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -427,6 +437,8 @@ class Login_user extends CI_Controller {
 		$data['tab']         =  "SITE SETTINGS";
 
 		$session_data = $this->session->userdata('logged_in');
+		$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		$data['roleName'] = $logInDetails;
 	    $data['username'] = $session_data['username'];
 	    $data['email'] =  $session_data['email'];
 	    $data['fname'] = $session_data['fname'];
@@ -452,6 +464,8 @@ class Login_user extends CI_Controller {
 		 if($this->session->userdata('logged_in')){		
 			$data['tab'] = "GLOBAL SEARCH";
 			$session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -487,6 +501,8 @@ class Login_user extends CI_Controller {
 		 if($this->session->userdata('logged_in')){	
 			$data['tab'] = "USER MANUAL";
 			$session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -538,6 +554,8 @@ class Login_user extends CI_Controller {
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "Charts";
 			$session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID'],$session_data['cID']);
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -631,6 +649,7 @@ class Login_user extends CI_Controller {
 		*/
 	function updated_photo(){
 				$session_data = $this->session->userdata('logged_in');
+				
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];

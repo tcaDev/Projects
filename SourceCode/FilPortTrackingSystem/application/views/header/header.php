@@ -79,7 +79,12 @@
 								 <div class="btn-group" >
 									<!-- Username -->
 									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
-									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?>
+									  	<span class="pull-right">
+									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?><br>
+															  	<?php foreach($roleName as $row){
+									  										echo $row->My_RoleName;
+									  							 }?>
+									  	</span>
 									  </a>
 									<!-- End Username -->
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">

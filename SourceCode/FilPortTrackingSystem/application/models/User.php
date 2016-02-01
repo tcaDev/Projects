@@ -10,12 +10,23 @@ Class User extends CI_Model
 
    $query = $this->db->query("select * from User where Password='$password' 
                                 and (UserName='$username' or EmailAddress='$username' ) limit 1 ");
-
    if($query -> num_rows() == 1){
      return $query->result();
    }else{
      return false;
    }
+ }
+
+
+ function getAccessType($uID,$roleID , $consigneeID){
+    if($consigneeID == 0){
+      $query = $this->db->query("SELECT c.UserName, a.RoleName AS My_RoleName FROM Role AS a , User as c WHERE c.RoleId = a.RoleId AND c.UserId = '$uID'");
+      $q = "SELECT c.UserName, a.RoleName FROM Role AS a , User as c WHERE c.RoleId = a.RoleId AND c.UserId = '$uID'";
+    }else{
+      $query = $this->db->query("SELECT c.UserName, a.RoleName , b.ConsigneeName, CONCAT(a.RoleName, ' - ',b.ConsigneeName) AS My_RoleName FROM Role AS a , Consignee AS b , User as c WHERE c.RoleId = a.RoleId AND c.ConsigneeId = b.ConsigneeId AND c.UserId = '$uID'");
+      $q = "SELECT c.UserName, a.RoleName , b.ConsigneeName, CONCAT(a.RoleName, ' - ',b.ConsigneeName) AS My_RoleName FROM Role AS a , Consignee AS b , User as c WHERE c.RoleId = a.RoleId AND c.ConsigneeId = b.ConsigneeId AND c.UserId = '$uID'";
+    }
+    return $query->result();
  }
 
 

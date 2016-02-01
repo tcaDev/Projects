@@ -1203,7 +1203,7 @@ function get_jobfile_global_search(){
     if(count($charges)){
        echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
               <tr>
-                    <th style='border: 1px solid gray'>No.</th>
+                    <th style='border: 1px solid gray'>Date Added.</th>
                     <th style='border: 1px solid gray'>Status Description</th>
               </tr>";
       $i=0;
@@ -1211,7 +1211,7 @@ function get_jobfile_global_search(){
         $i++;
        $description = $row->StatusDescription;
        echo " <tr>
-                 <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$i."</td>
+                 <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$row->DateAdded."</td>
                  <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>". $description ."</td>
               </tr>
             ";
@@ -1230,7 +1230,7 @@ function get_jobfile_global_search(){
       if(count($charges)){
          echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
                 <tr>
-                      <th style='border: 1px solid gray'>No.</th>
+                      <th style='border: 1px solid gray'>Date Added.</th>
                       <th style='border: 1px solid gray'>Status Description</th>
                 </tr>";
         $i=0;
@@ -1238,7 +1238,7 @@ function get_jobfile_global_search(){
           $i++;
          $description = $row->StatusDescription;
          echo " <tr>
-                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$i."</td>
+                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$row->DateAdded."</td>
                    <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>". $description ."</td>
                 </tr>
               ";

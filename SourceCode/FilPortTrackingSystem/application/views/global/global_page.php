@@ -164,7 +164,7 @@
 				        </div>
 				        <div class="modal-body">
 				        	<div id="body" style="font-size:13px;font-family:Century Gothic;">
-							 <u><h4> Status Description No:  <b class="stat-no"> </b> </h4></u>
+							 <u><h4> Date Added :  <b class="stat-no"> </b> </h4></u>
 							
 							<div style="overflow-x:auto;">
 								<table style="tableOverFlow;table-layout:fixed;back-ground-color:#d1d1e0;">
@@ -337,7 +337,6 @@
 	 .tableOverFlow{
 	 	width: 100%;
 	 }
-
 	 .tdOverFlow{
 	 	 max-width: 0;
    		 overflow: hidden;

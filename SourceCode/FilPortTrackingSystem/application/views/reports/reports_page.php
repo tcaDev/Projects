@@ -126,7 +126,7 @@
 
 				  <ul class="nav nav-pills nav-data nav-ins-menu">
 
-				    <li class="active"><a data-toggle="tab" href="#containers">Containers</a></li>
+				    <li class="active"><a data-toggle="tab" href="#conts">Containers</a></li>
 
 				    <li><a data-toggle="tab" href="#commodities">Commodities</a></li>
 
@@ -138,10 +138,10 @@
 		  
 		  	<div class="tab-content">
 		  		<!-- Containers -->
-				    <div id="containers" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
+				    <div id="conts" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-containers tab-clear">
 		 				<div style="height: 300px; overflow-y: auto;">
 		 					<br>
-					  		<h4 style="padding-left: 25px;" class="cnt">Commidity</h4>
+					  		<h4 style="padding-left: 25px;" class="cnt">Containers</h4>
 					  		<br>
 		 					<div style="height: 300px; overflow-y: auto;">
 										<table id="tbl-first-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;">
@@ -156,10 +156,10 @@
 				    </div>
 
 				<!-- Commodity -->
-				    <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade ">
+				    <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-commodity tab-clear">
 					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
-					  		<h4 style="padding-left: 25px;">Commidity</h4>
+					  		<h4 style="padding-left: 25px;">Commodity</h4>
 					  		<br>
 						        <div style="height: 300px; overflow-y: auto;">
 										<table id="tbl-second-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;">
@@ -173,7 +173,7 @@
 						</div>
 				    </div>
 
-				    <div id="running-charges" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+				    <div id="running-charges" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-charges tab-clear">
 					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Running Charges</h4>
@@ -188,7 +188,7 @@
 						 </div>
 				    </div>
 
-					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
+					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-status tab-clear">
 					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Status Report</h4>
@@ -225,7 +225,7 @@
 				  
 				        <div class="modal-header">
 				          <div id="title" style="font-size:24px;font-family:Century Gothic;">
-				          	 <u><h4> Status Description No:  <b class="stat-no"> </b> </h4></u>
+				          	 <u><h4> Date Added  <b class="stat-no"> </b> </h4></u>
 				          </div>
 				        </div>
 				        <div class="modal-body">
@@ -316,9 +316,7 @@
  var content_details;
  var content_status_data;
 
- var showed_status_details = false;
-
- var myBackUpViewReport;
+ //var myCloneview_report;
 	$('#btn-search-consignee').on('click',function(){
 		txt = $('#txt-search-consignee').val();
 			 $.ajax({
@@ -360,6 +358,8 @@
 					});
     });
 		$(document).on('dblclick','.tableRow',function(){
+			$('.tab-clear').removeClass('active');
+			$('.tab-containers').attr('class','col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-containers tab-clear');
 			$('#table-pre-details').html('<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details"></table>');
 			$('#tbl-first-report-data').html('<table id="tbl-first-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadContainers pull-left" style="font-size:18px;"></span></td></tr></table>');
 			$('#tbl-second-report-data').html('<table id="tbl-second-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadCommodity pull-left" style="font-size:18px;"></span></td></tr></table>');
@@ -373,10 +373,10 @@
 			/*Reload Data on Print*/
 
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
-				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active containers"><a data-toggle="tab" href="#containers">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
-				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active containers"><a data-toggle="tab" href="#containers">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Containers</h4>');
 			}
 
@@ -431,7 +431,6 @@
 			  			content_containers = report_container_data;
 			  			$('#tbl-first-report-data').html(content_containers);
 			  			$('#tbl-first-report-data-print').html(content_containers);
-			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  $.ajax({
 				  		method: "POST",
@@ -448,7 +447,6 @@
 			  			content_commodities = report_commodities_data;
 			  			$('#tbl-second-report-data').html(content_commodities);
 			  			$('#tbl-second-report-data-print').html(content_commodities);
-			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			   $.ajax({
 				  		method: "POST",
@@ -465,7 +463,6 @@
 			  			content_charges = report_charges_data;
 			  			$('#tbl-third-report-data').html(content_charges);
 			  			$('#tbl-third-report-data-print').html(content_charges);
-			  			myBackUpViewReport = $('#view-report').clone();
 				});
 			  	 $.ajax({
 				  		method: "POST",
@@ -483,7 +480,6 @@
 			  			$('#tbl-fourth-report-data').html(content_reports);
 			  			content_status_data = content_reports.replace(/\\n/g,'<br>');
 			  			$('#tbl-fourth-report-data-print').html(content_status_data);
-			  			myBackUpViewReport = $('#view-report').clone();
 				 });
 			  	$('#view-report').modal('show');
 		   });
@@ -494,22 +490,12 @@
 				$('.txt-desc').html(dispTxt);
 				$('.stat-no').html($(this).closest('tr').children('td:eq(0)').text());
 				$('#view-report').modal('hide');
-				showed_status_details = true;
 				$('#view-status-report-profile').modal('show');
 			});
 
-			$('body').on('hidden.bs.modal','#view-report',function(){
-				if(showed_status_details == true){
-					$('#view-report').modal('hide').remove();
-					var myCloneview_report = myBackUpViewReport.clone();
-					$('body').append(myCloneview_report);
-				}
+			$(document).on('hidden.bs.modal','#view-status-report-profile',function(){
+				$('#view-report').modal('show');
 			});
-
-			$("#view-status-report-profile").on('hide.bs.modal', function () {
-				showed_status_details = false;
-            	$('#view-report').modal('show');
-   			 });
 
 			$(document).on('keydown','#txt-search-consignee',function(e){
 				 if (e.keyCode == 13){
