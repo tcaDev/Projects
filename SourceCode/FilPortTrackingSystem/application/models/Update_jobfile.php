@@ -18,6 +18,7 @@ Class Update_jobfile extends CI_Model
               	 $data = array(  
                     'ContainerNo'          => $containerno,
                     'TruckerName'          => $truckername,
+                     'HaulerOrTruckId'     => $truckid,
                     'Lodging'              => $lodging,
                     'TargetDeliveryDate'   => $tdt,
                     'GateInAtPort'			  => $gip,
@@ -31,6 +32,7 @@ Class Update_jobfile extends CI_Model
                    $data = array( 
                     'ContainerNo'          => $containerno,
                     'TruckerName'          => $truckername,
+                    'HaulerOrTruckId'     => $truckid,
                     'Lodging'              => $lodging,
                     'TargetDeliveryDate'   => $tdt,
                     'GateInAtPort'        => $gip,
@@ -52,8 +54,9 @@ Class Update_jobfile extends CI_Model
                       SET 
                       /*    CBC.CarrierByJobFileId =  '$carrierbyjobfile',*/
                           CBC.ContainerSize      =  '$contno',
-                          CBC.NoOfCartons        =  '$cartons',
-                          CBC.HaulerOrTruckId    =  '$truckid',
+                          CBC.NoOfCartons        =  '$cartons',  
+                  /*      CBC.HaulerOrTruckId    =  '$truckid',*/
+                  /*        CBC.TruckerName          = $truckername,*/
                           CBC.RefEntryNo         =  '$refentry',
                           CBC.DatePaid           =  '$dtpaid',
                           CBC.DateSentPreAssessment = '$dt_pre_assess',
@@ -70,7 +73,8 @@ Class Update_jobfile extends CI_Model
                          /* CBC.CarrierByJobFileId =  '$carrierbyjobfile',*/
                           CBC.ContainerSize      =  '$contno',
                           CBC.NoOfCartons        =  '$cartons',
-                          CBC.HaulerOrTruckId    =  '$truckid',
+                    /*      CBC.HaulerOrTruckId    =  '$truckid',*/
+                 /*         CBC.TruckerName          = $truckername,*/
                           CBC.RefEntryNo         =  '$refentry',
                           CBC.DatePaid           =  '$dtpaid',
                           CBC.DateSentPreAssessment = '$dt_pre_assess',

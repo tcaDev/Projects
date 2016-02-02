@@ -195,18 +195,34 @@ class Login_user extends CI_Controller {
 
 		  	$data['role'] = $this->User->get_role($session_data['uid']);
 
+		  	//each page will view 10 items
+		  	$item_per_page = 20;
 
+		    //getting the total count of jobfile in manila
 		    $query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=1');
 			$m=  $query->num_rows();
 		  	$data['count_total_manila']= $m;
+		  	//for total count of page in manila
+		  	$page_m 	= ceil($m/$item_per_page);
+		  	$data['count_total_manila_page'] = $page_m;
 
+            //getting the total count of jobfile in outport
 		  	$query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=2');
 			$o=  $query->num_rows();
 		  	$data['count_total_outport']= $o;
-
-		    $query = $this->db->query('SELECT * FROM vw_JobFile where MonitoringTypeId=3');
+		    //for total count of page in outport
+		  	$page_a	= ceil($o/$item_per_page);
+		  	$data['count_total_outport_page'] = $page_a;
+ 
+            //getting the total count of jobfile in air
+		    $query = $this->db->query('SELECT * FROM vw_JobFileAir');
 			$a=  $query->num_rows();
 		  	$data['count_total_air']= $a;
+		  	//for total count of page in air
+		  	$page_o = ceil($a/$item_per_page);
+		  	$data['count_total_air_page'] = $page_o;
+
+		 
 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);

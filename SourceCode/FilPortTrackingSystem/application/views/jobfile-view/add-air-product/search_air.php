@@ -1,3 +1,4 @@
+      
         <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort_search" style="width:5500px;">
             <thead>
                  <tr style="cursor:w-resize ;">
@@ -64,8 +65,27 @@
               </tr>
 
               <tbody>
+                <?php
+                         if(isset($page_number)){
+                           if($page_number==1){
+                                $mynum = $page_number-1;        
+                             }else{
+                              $this->session->page_air = $page_number-1;
+                              $page_number2 = 0;
+                              $nums = $this->session->page_air;
+                              $page_number = $nums*2;      
+                            $mynum = $page_number.$page_number2;
+                            }
+                          }else{
+                            $mynum=0;
+                          }
+               ?>
 
-              <?php $i= 0; 
+
+
+          
+
+              <?php $i= $mynum; 
                   foreach ($air as $row) {
                     $i++;
 

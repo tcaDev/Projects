@@ -68,7 +68,23 @@
 				   </thead>
 
 				   <tbody>
-									<?php $i= 0; foreach ($outport as $row) {
+				   	    <?php
+                         if(isset($page_number)){
+                           if($page_number==1){
+                                $mynum = $page_number-1;        
+                             }else{
+                              $this->session->page_outport = $page_number-1;
+                              $page_number2 = 0;
+                              $nums = $this->session->page_outport;
+                              $page_number = $nums*2;      
+                            $mynum = $page_number.$page_number2;
+                            }
+                          }else{
+                            $mynum=0;
+                          }
+                       ?>
+
+									<?php $i= $mynum; foreach ($outport as $row) {
 				        					$i++;
 
 				        					$pick =$row->IsBackground;
@@ -164,7 +180,7 @@
 
 
 
-				    <script>
+    <script>
  /*Refresh Modal When Close*/  
 
   	/*add New jobfile*/
@@ -486,6 +502,7 @@ $(".btn-Vessel-outport").click(function(){
  });
         
     </script>
+
 
     
     	<!-- Pick a theme, load the plugin & initialize plugin -->
