@@ -353,13 +353,12 @@ Class User extends CI_Model
 
   //for searching  start
   function search_consignee($search){
-   
-  
    $query = $this->db->query("select * from vw_consignee_full_info WHERE ConsigneeName LIKE '%$search%'  or HouseBuildingNoOrStreet like '%$search%'   
     or BarangayOrVillage like  '%$search%' or TownOrCityProvince  like  '%$search%'  or Country like '%$search%' 
-    or OfficeNumber like '%$search%'  order by ConsigneeName  ");
+    or OfficeNumber like '%$search%' ORDER by ConsigneeName  ");
    return $query->result();
   }
+
   function search_broker($search_broker){
    $query = $this->db->query("select * from vw_broker_full_info WHERE FirstName LIKE '%$search_broker%' or 
    MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by FirstName AND MiddleName AND LastName  ");
@@ -401,30 +400,62 @@ Class User extends CI_Model
 //for pagimation start
  function findlimit($page_position,$item_per_page)
   {
-   return $this->db->get('vw_consignee_full_info',$page_position, $item_per_page)->result();
-   $query = $this->db->query("select * from vw_consignee_full_info order by ConsigneeName ",$page_position, $item_per_page);
+    $this->db->select('*');
+    $this->db->from('vw_consignee_full_info');
+    $this->db->order_by("ConsigneeName");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
+   //return $this->db->get('vw_consignee_full_info',$page_position, $item_per_page)->result();
+   //$query = $this->db->query("select * from vw_consignee_full_info order by ConsigneeName ",$page_position, $item_per_page);
   }
+
    function findlimit_broker($page_position,$item_per_page)
   {
-   return $this->db->get('vw_broker_full_info',$page_position, $item_per_page)->result();
-   $query = $this->db->query("select * from vw_broker_full_info order by FirstName ",$page_position, $item_per_page);
+    $this->db->select('*');
+    $this->db->from('vw_broker_full_info');
+    $this->db->order_by("FirstName");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
   }
+
   function findlimit_shipper($page_position,$item_per_page)
   {
-   return $this->db->get('vw_shipper_full_info',$page_position, $item_per_page)->result();
-       $query = $this->db->query("select * from vw_shipper_full_info order by ShipperName ",$page_position, $item_per_page);
+    $this->db->select('*');
+    $this->db->from('vw_shipper_full_info');
+    $this->db->order_by("ShipperName");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();  
   }
-    function findlimit_vessel($page_position,$item_per_page)
+
+  function findlimit_vessel($page_position,$item_per_page)
   {
-   return $this->db->get('Carrier',$page_position, $item_per_page)->result();
+    $this->db->select('*');
+    $this->db->from('Carrier');
+    $this->db->order_by("CarrierName");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
   }
   function findlimit_hauler($page_position,$item_per_page)
   {
-   return $this->db->get('HaulerOrTruck',$page_position, $item_per_page)->result();
+    $this->db->select('*');
+    $this->db->from('HaulerOrTruck');
+    $this->db->order_by("HaulerOrTruck");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
   }
   function findlimit_product($page_position,$item_per_page)
   {
-   return $this->db->get('Products',$page_position, $item_per_page)->result();
+    $this->db->select('*');
+    $this->db->from('Products');
+    $this->db->order_by("ProductName");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
   }
   function findlimit_forward($page_position,$item_per_page)
   {
@@ -432,7 +463,12 @@ Class User extends CI_Model
   }
    function findlimit_legend($page_position,$item_per_page)
   {
-   return $this->db->get('Status',$page_position, $item_per_page)->result();
+    $this->db->select('*');
+    $this->db->from('Status');
+    $this->db->order_by("Description");
+    $this->db->limit($page_position,$item_per_page); 
+    $query = $this->db->get();
+    return $query->result();
   }
    function findlimit_container($page_position,$item_per_page)
   {

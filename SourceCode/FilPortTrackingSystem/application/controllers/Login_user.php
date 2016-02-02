@@ -367,9 +367,7 @@ class Login_user extends CI_Controller {
 
  	 function registration()
 	{	
-	
 			 redirect('Add_user');
-	
 	}
 	 function settings()
 	{
@@ -896,10 +894,8 @@ function select_country(){
    	 $clients  =  $this->User->findlimit($item_per_page,$page_position);
 	
    }
-
-
   
-			echo	  '<table class="table table-bordered table_consignee" id="table_consignee"> 
+			echo	  '<table class="table table-bordered table_consignee tablesorter" id="table_consignee"> 
 					    <thead>
 					      <tr>
 					        <th>Consignee Name <span class="glyphicon glyphicon-sort"></span></th>

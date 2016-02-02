@@ -5,7 +5,10 @@
 	 background-color: #66FF99 !important;
 }
 </style>
-
+ 				  
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
  <script>
   var content_consignee    = "<?php echo base_url('Login_user/consignee_content')?>";
   var total_consignee      =  "<?php echo $consignee_total; ?>";
@@ -27,11 +30,6 @@
 
 
  </script>
-
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
-		
 		<!--For  pagination start -->		
 		<script type="text/javascript">
 	

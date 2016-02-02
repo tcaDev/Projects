@@ -549,7 +549,6 @@ if(isset($_SESSION['success'])){
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
-
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
@@ -656,7 +655,6 @@ function search_shipper(){
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
 		
- <!-- 
  <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
  <link href="<?php// echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
