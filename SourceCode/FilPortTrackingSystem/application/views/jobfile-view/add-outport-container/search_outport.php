@@ -1,4 +1,4 @@
-	    <table class="tablesorter table-striped table-bordered table-hover table-condensed" style="width:5000px;">
+	    <table class="tablesorter table-striped table-bordered table-hover table-condensed" id="outport_job" >
 
 				      <thead>
 
@@ -36,26 +36,24 @@
 
 								          <th >Origin</th>  
 
-								          <th class="hidden"> value date received Arrival notice</th>
+								          
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
-								          <th class="hidden"> value date pick up received 0-BL</th>
 
 								          <th >Date Pick-up/Received O-BL</th>
 
-								          <th class="hidden"> value date pick up other docs</th>
+								         
          								 
          								  <th >Date Pick-up/Received other Documents</th>
 							   	
 							   		      <th >Broker</th>
 
-							   		      <th class="hidden"> value date req budget</th>
+							   		
 
 							   		      <th >Date Request Budget to GL</th>
 
-							   		      <th class="hidden"> value ref due date</th>
-
+							   		      
 										  <th >Reference Due Date</th>
 
 										  <th>Color Selectivity</th>
@@ -124,6 +122,11 @@
 								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
 								             }
 
+								          $broke= $row->Broker;
+								          $broker=reduce_multiples($broke," ");
+								          $broker = trim($broker);
+
+
 
 				        				?>
 				            <tr>
@@ -154,16 +157,16 @@
 									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success btn-sm" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
 										  </td>
 								           <td><?php echo stripslashes($row->Origin); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
+								           	
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfBL) ?></td>
+								         
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfOtherDocs) ?></td>
+								          
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
- 										  <td><?php echo stripslashes($row->Broker); ?></td>
- 										  	<td class="hidden"><?php echo stripcslashes($DateRequestBudgetToGL) ?></td>
+ 										  <td><?php echo stripslashes($broker); ?></td>
+ 									
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($RFPDueDate) ?></td>
+								        
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
@@ -181,6 +184,13 @@
 
 
     <script>
+
+        //table fixed
+   		$("th").css("vertical-align","middle");
+		$("tbody td").css("white-space","nowrap");
+		$("tbody td").css("min-width","60px");
+		$("thead th").css("white-space","nowrap"); 
+
  /*Refresh Modal When Close*/  
 
   	/*add New jobfile*/
@@ -425,68 +435,74 @@ $(".btn-Vessel-outport").click(function(){
 						  			$(".origin-update-outport select").val(data);
 							});
 
+
+						    $.ajax({
+								method: "POST",
+								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								data: {
+									jobfile : jobfileNo,
+									monType : 1
+								} 
+							}).done(function(data){
+								 var fills = JSON.parse(data);
+							     var ShipperName    = fills[0].ShipperName;
+							     var ConsigneeName  = fills[0].ConsigneeName;
+							     var PurchaseOrderNo= fills[0].PurchaseOrderNo;
+								 var color_stages  = fills[0].StatusName;
+								 var HouseBillLadingNo      = fills[0].HouseBillLadingNo;
+							     var MasterBillLadingNo     = fills[0].MasterBillLadingNo;
+								 var MasterBillLadingNo2    = fills[0].MasterBillLadingNo2;
+							     var LetterCreditFromBank   = fills[0].LetterCreditFromBank;
+						
+							     var registry   = fills[0].Registry;
+
+							     var DateReceivedNoticeFromClients     = fills[0].DateReceivedNoticeFromClients;
+							     var date_rcvd_bl     = fills[0].DateReceivedOfBL;
+							     var date_rcvd_other_docs    = fills[0].DateReceivedOfOtherDocs;
+							     var broker    = fills[0].BrokerId;
+							     var date_req_budget    = fills[0].DateRequestBudgetToGL;
+							     var rfpduedate    = fills[0].RFPDueDate;
+							     var color_selectivity    = fills[0].ColorSelectivityName;
+
+							     $('.jobfiles-update-outport').val(jobfileNo);
+							     $('.monitoring_type_id-outport').val(jobfileID);
+							     
+							      $(".broker-update-outport").val(broker);
+
+							     $(".shipper-update-outport option").filter(function() {
+								    return this.text == ShipperName; 
+								}).attr('selected', 'selected');
+
+							    $(".consignee-update-outport option").filter(function() {
+								    return this.text == ConsigneeName; 
+								}).attr('selected', 'selected');
+
+							    $(".colsel-update-outport option").filter(function() {
+								    return this.text == color_stages; 
+								}).attr('selected', 'selected');
+
+							     $('.hbl-update-outport').val(HouseBillLadingNo);
+							     $('.mbl-update-outport').val(MasterBillLadingNo);
+							     $('.mbl2-update-outport').val(MasterBillLadingNo2);
+							     $('.bank-update-outport').val(LetterCreditFromBank);
+							     $('.registry-update-outport').val(registry);
+
+							    $('.dtRcvd-update-outport').val(DateReceivedNoticeFromClients);
+							    $('.dt_pickup_obl-update-outport').val(date_rcvd_bl);
+							    $('.dt_pickup_docs-update-outport').val(date_rcvd_other_docs);
+
+							     
+
+							      $('.purch_order_no_update-outport').val(PurchaseOrderNo);
+							      $('.dt-req-update-outport').val(date_req_budget);
+							      $('.rfp-update-outport').val(rfpduedate);
+
+							      $(".color-select-update-outport option").filter(function() {
+								    return this.text == color_selectivity; 
+								}).attr('selected', 'selected');
+
+	     		  });
 							
-
-
-			     var color_stages  = $(this).closest('tr').children('td:eq(3)').text();
-			     var ShipperName    = $(this).closest('tr').children('td:eq(4)').text();
-
-			     var ConsigneeName  = $(this).closest('tr').children('td:eq(5)').text();
-			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(8)').text();
-					
-				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(9)').text();
-			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(10)').text();
-				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(11)').text();
-			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(12)').text();
-		
-			     var registry   = $(this).closest('tr').children('td:eq(13)').text();
-
-			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(16)').text();
-			     var date_rcvd_bl     = $(this).closest('tr').children('td:eq(18)').text();
-			     var date_rcvd_other_docs    = $(this).closest('tr').children('td:eq(20)').text();
-			     var broker    = $(this).closest('tr').children('td:eq(22)').text();
-			     var date_req_budget    = $(this).closest('tr').children('td:eq(23)').text();
-			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
-			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
-
-			     $('.jobfiles-update-outport').val(jobfileNo);
-			     $('.monitoring_type_id-outport').val(jobfileID);
-			     
-
-			     $(".shipper-update-outport option").filter(function() {
-				    return this.text == ShipperName; 
-				}).attr('selected', 'selected');
-
-			     $(".consignee-update-outport option").filter(function() {
-				    return this.text == ConsigneeName; 
-				}).attr('selected', 'selected');
-
-			      $(".colsel-update-outport option").filter(function() {
-				    return this.text == color_stages; 
-				}).attr('selected', 'selected');
-
-			      $('.hbl-update-outport').val(HouseBillLadingNo);
-			      $('.mbl-update-outport').val(MasterBillLadingNo);
-			      $('.mbl2-update-outport').val(MasterBillLadingNo2);
-			      $('.bank-update-outport').val(LetterCreditFromBank);
-			      $('.registry-update-outport').val(registry);
-
-			      $('.dtRcvd-update-outport').val(DateReceivedNoticeFromClients);
-			      $('.dt_pickup_obl-update-outport').val(date_rcvd_bl);
-			      $('.dt_pickup_docs-update-outport').val(date_rcvd_other_docs);
-
-			      $(".broker-update-outport option").filter(function() {
-				    return this.text == broker; 
-				}).attr('selected', 'selected');
-
-			      $('.purch_order_no_update-outport').val(PurchaseOrderNo);
-			      $('.dt-req-update-outport').val(date_req_budget);
-			      $('.rfp-update-outport').val(rfpduedate);
-
-			      $(".color-select-update-outport option").filter(function() {
-				    return this.text == color_selectivity; 
-				}).attr('selected', 'selected');
-
 			      $.ajax({
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country_name');?>",
@@ -505,8 +521,42 @@ $(".btn-Vessel-outport").click(function(){
 
 
     
-    	<!-- Pick a theme, load the plugin & initialize plugin -->
+	<!-- Pick a theme, load the plugin & initialize plugin -->
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>"></script>
+
+<script>
+$(function(){
+
+	var startFixedColumns = 3;
+	$('table#outport_job').tablesorter({
+			widgets        : ['zebra','columns','scroller'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	      // jQuery selector or object to attach sticky header to
+	      scroller_height : 400,
+	      // scroll tbody to top after sorting
+	      scroller_upAfterSort: true,
+	      // pop table header into view while scrolling up the page
+	      scroller_jumpToHeader: true,
+	      // In tablesorter v2.19.0 the scroll bar width is auto-detected
+	       // set number of columns to fix
+	      scroller_fixedColumns : startFixedColumns,
+	      // add a fixed column overlay for styling
+	      scroller_addFixedOverlay : false,
+	      // add hover highlighting to the fixed column (disable if it causes slowing)
+	      scroller_rowHighlight : 'hover',
+
+	      // bar width is now calculated; set a value to override
+	      scroller_barWidth : null
+	    }
+	});
+});
+
+
+
+</script>

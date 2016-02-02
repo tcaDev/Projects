@@ -120,7 +120,7 @@
 
 
 
-				 <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+				 <div class="wrapper " style= "overflow-y:auto; height :485px; width:100%;position:relative;">
 					   <div class="job-air  air_pagination"></div>
 				 </div>
 				 <div class="air_pages"></div>
@@ -311,7 +311,10 @@
 
 
 <script>
-
+$('.air_freight_tab').click(function(){
+ jbfl='';
+ search_airs(jbfl);
+});
 
 /*add New jobfile*/
 	 var myBackup_jobfile_air = $('#myModal-3-2').clone();

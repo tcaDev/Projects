@@ -12,7 +12,6 @@
 				           <input type="hidden" value="1" name="monitoring_type" class="monitoring_type"/>
 
 				           <input type="hidden"  name="monitoring_type" class="monitoring_type_id"/>
-
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->

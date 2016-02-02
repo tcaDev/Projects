@@ -9,6 +9,7 @@ class Pagination extends CI_Controller {
             parent::__construct();
             $this->load->model('User');	
             $this->load->model('Jobdata');	
+            $this->load->helper('string');
        }
 
 

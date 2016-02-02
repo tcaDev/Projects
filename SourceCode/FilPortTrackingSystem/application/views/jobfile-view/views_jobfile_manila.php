@@ -123,7 +123,7 @@
 			
 				
 
-			  <div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+			  <div class="wrapper" style= "overflow-y:auto; height :485px; width:100%;">
 				    <div class="job-manila manila_pagination"></div>
 				   
 			  </div> 
@@ -526,6 +526,10 @@ var jbfl;
 
 
 <script>
+$('.sea_manila_tab').click(function(){
+ jbfl='';
+ search_manila(jbfl);
+});
 	//for search
 	function search_manila(jbfl){
 

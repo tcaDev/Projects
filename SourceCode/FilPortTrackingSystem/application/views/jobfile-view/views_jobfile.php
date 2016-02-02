@@ -7,7 +7,7 @@
 				<div  class="container-tab" id="tabs">
 			  <ul class="nav nav-tabs ">
 
-			    <li class="active"><a data-toggle="tab" href="#manila" >SEA FREIGHT MANILA <span class="fa fa-ship fa-lg"></span></a> </li>
+			    <li class="active"><a data-toggle="tab" href="#manila" class="sea_manila_tab" >SEA FREIGHT MANILA <span class="fa fa-ship fa-lg"></span></a> </li>
 
 			    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT <span class="fa fa-ship fa-lg"></span></a> </li>
 
@@ -93,6 +93,11 @@
 $('.new_manila_jobfile').click(function(){
 	$('.new_manila_jobfile').empty();
 });
+
+$(document).ready(function(){
+	 $('.sea_manila_tab').trigger('click');
+});
+
 
 
 

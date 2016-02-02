@@ -113,7 +113,7 @@
 
 
 
-			<div id="scroller" class="table-responsive " style= "overflow-y:auto; height :485px; width:100%;">
+			<div class="wrapper" style= "overflow-y:auto; height :485px; width:100%;position:relative;">
 				<div class="job-outport outport_pagination"></div>
 			 </div>
 			 <div class="out_pages"></div>
@@ -507,6 +507,10 @@ var jbfl_outport;
 					 </div>
       
 <script>
+$('.sea_outport_tab').click(function(){
+ jbfl='';
+ search_outport(jbfl);
+});
 	//for search
 	function search_outport(jbfl){
 

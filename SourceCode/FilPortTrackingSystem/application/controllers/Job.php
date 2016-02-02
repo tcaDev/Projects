@@ -4068,5 +4068,21 @@ function get_audit_charges_air(){
         }
 
     }
+
+    function get_jobcontent_manila(){
+      $jbfl = $this->input->post('jobfile');
+      $montype = $this->input->post("monType");
+      $jobID ="";
+      if($montype != 3){
+      $jobfileContent = $this->Jobdata->contentJobfileID($jbfl);
+       foreach ($jobfileContent as $row) {
+         $jobID = $row->JobFileId;
+       }
+      }else{
+        $jobID = $jbfl;
+      }
+        $jobfileContent_ = $this->Jobdata->contentJobfile($jobID,$montype);
+        echo json_encode($jobfileContent_);
+    }
   }
 ?>

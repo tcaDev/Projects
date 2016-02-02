@@ -194,7 +194,7 @@
 								  			<select name="broker" class="form-control input-sm broker-air">
 								  			<option> </option>
 								            	<?php  foreach($broker_data as $row){  ?> 
-								                <option value="<?php echo $row->BrokerId ?>">
+								                <option value="<?php echo $row->BrokerId?>">
 								                <?php echo stripslashes($row->FirstName) . " " . stripslashes($row->MiddleName) . " " . stripslashes($row->LastName); ?>
 								                </option> 
 								             	<?php }?>
@@ -247,103 +247,112 @@
 var jbs_air;
 
 	$(document).on('click','.btn-Update-air', function(){
-			var jobfile =  $(this).closest('tr').children('td:eq(2)').text();
-			var color_stages =  $(this).closest('tr').children('td:eq(3)').text();
-			var shipper =  $(this).closest('tr').children('td:eq(4)').text();
-			var consignee =  $(this).closest('tr').children('td:eq(5)').text();
-			var cartons =  $(this).closest('tr').children('td:eq(6)').text();
-			var purchaseno =  $(this).closest('tr').children('td:eq(8)').text();
-			var lcfrmbank =  $(this).closest('tr').children('td:eq(9)').text();
-			var hbl =  $(this).closest('tr').children('td:eq(10)').text();
-			var mbl =  $(this).closest('tr').children('td:eq(11)').text();
-			var origin =  $(this).closest('tr').children('td:eq(12)').text();
-			var flightno =  $(this).closest('tr').children('td:eq(13)').text();
-			var Forwader =  $(this).closest('tr').children('td:eq(14)').text();
-			var warehouse =  $(this).closest('tr').children('td:eq(15)').text();
-			var aircraft =  $(this).closest('tr').children('td:eq(16)').text();
-			var ETD =  $(this).closest('tr').children('td:eq(17)').text();
-			var ETA =  $(this).closest('tr').children('td:eq(19)').text();
-			var ATA =  $(this).closest('tr').children('td:eq(21)').text();
-			var date_airline =  $(this).closest('tr').children('td:eq(23)').text();
-			var date_client =  $(this).closest('tr').children('td:eq(24)').text();
-			var date_hawb =  $(this).closest('tr').children('td:eq(25)').text();
-			var dateotherdocs =  $(this).closest('tr').children('td:eq(26)').text();
-			var broker =  $(this).closest('tr').children('td:eq(27)').text();
-			var date_req_budget =  $(this).closest('tr').children('td:eq(28)').text();
-			var rfpduedate =  $(this).closest('tr').children('td:eq(29)').text();
-			var color_selectivity =  $(this).closest('tr').children('td:eq(30)').text();
-			var JobFileID =  $(this).closest('tr').children('td:eq(33)').text();
+		var jobfile =  $(this).closest('tr').children('td:eq(2)').text();
+		jbs_air=jobfile;
+		$.ajax({
+								method: "POST",
+								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								data: {
+									jobfile : jbs_air,
+									monType : 3
+								} 
+							}).done(function(data){
+								 var fills = JSON.parse(data);
+								
+								 var color_stages =  fills[0].StatusName;
+								 var shipper =  fills[0].ShipperName;
+								 var consignee = fills[0].ConsigneeName;
+								 var cartons =  fills[0].NoOfCartons;
+								 var purchaseno = fills[0].PurchaseOrderNo;
+								 var lcfrmbank =  fills[0].LetterCreditNoFromBank;
+								 var hbl =  fills[0].HouseBillLadingNo;
+								 var mbl =  fills[0].MasterBillLadingNo;
+
+								 var flightno =  fills[0].FlightNo;
+								 var Forwader =  fills[0].Forwarder;
+								 var warehouse =  fills[0].Warehouse;
+								 var aircraft =  fills[0].Aircraft;
+								 var ETD =  fills[0].ETD;
+								 var ETA =  fills[0].ETA;
+								 var ATA =  fills[0].ATA;
+								 var date_airline =  fills[0].DateReceivedArrivalFromALine;
+								 var date_client =  fills[0].DateReceivedArrivalFromClient;
+								 var date_hawb =  fills[0].DatePickUpHAWB
+								 var dateotherdocs =  fills[0].DatePickUpOtherDocs
+								 var broker =  fills[0].BrokerId;
+								 var date_req_budget =  fills[0].DateRequestBudgetToGL;
+								 var rfpduedate =  fills[0].RFPDueDate;
+								 var color_selectivity = fills[0].ColorSelectivityName;
+								
+								
+						      $('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
+						      $('.pill-jobfile-air-update .hbl-air').val(hbl);
+						      $('.pill-jobfile-air-update .mbl-air').val(mbl);
+							  $('.pill-jobfile-air-update .flight-air').val(flightno);
+							  $('.pill-jobfile-air-update .aircraft-air').val(aircraft);
+						      $('.pill-jobfile-air-update .forwarder-air').val(Forwader);
+						      $('.pill-jobfile-air-update .warehouse-air').val(warehouse);
+						      $('.pill-jobfile-air-update .edt-air').val(ETD);
+						      $('.pill-jobfile-air-update .eat-air').val(ETA);
+						      $('.pill-jobfile-air-update .aat-air').val(ATA);
+						      $('.pill-jobfile-air-update .cartons-air').val(cartons);
+						      $('.pill-jobfile-air-update .bank-air').val(lcfrmbank);
+						      $('.pill-jobfile-air-update .dtRcvd-airline-air').val(date_airline);
+						      $('.pill-jobfile-air-update .dtRcvd-air').val(date_client);
+						      $('.pill-jobfile-air-update .dt_pickup_obl-air').val(date_hawb);
+						      $('.pill-jobfile-air-update .dt_pickup_docs-air').val(dateotherdocs);
+
+						       $(".pill-jobfile-air-update .broker-air").val(broker);
+
+						        $(".pill-jobfile-air-update .color-select-air option").filter(function() {
+							    return this.text == color_selectivity; 
+							}).attr('selected', 'selected');
+
+						        $(".pill-jobfile-air-update .shipper-air option").filter(function() {
+							    return this.text == shipper; 
+							}).attr('selected', 'selected');
+
+						        $(".pill-jobfile-air-update .consignee-air option").filter(function() {
+							    return this.text == consignee; 
+							}).attr('selected', 'selected');
+
+						      $('.pill-jobfile-air-update #purch_order_no-air').val(purchaseno);
+						      $('.pill-jobfile-air-update #dt_req_budget-air').val(date_req_budget);
+						      $('.pill-jobfile-air-update #ref_due_dt-air').val(rfpduedate);
+
+						       $('.pill-jobfile-air-update #ref_due_dt-air').val(rfpduedate);
+
+						      
+						        $.ajax({	
+									  		method: "POST",
+											  url: "<?php echo base_url('Job/get_country_air');?>",
+									  		data: { jobfile:jobfile
+									  		}
+										})
+								  		.done(function(data) {
+									  			$(".pill-jobfile-air-update .origin-air-update select").val(data);
+										});
+						      
+						       $.ajax({
+									  		method: "POST",
+											  url: "<?php echo base_url('Job/get_country_name_air');?>",
+									  		data: { jobfile:jobfile
+									  		}
+										})
+								  		.done(function(data) {
+									  			$(".pill-jobfile-air-update .origcity-air").val(data);
+										});
+
+
+
+	     		  });
+						
 		
-    jbs_air=jobfile;
+		
+    
 
 
-				$('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
-				  
-				  $(".pill-jobfile-air-update .shipper-air option").filter(function() {
-				    return this.text == shipper; 
-				}).attr('selected', 'selected');
-
-			     $(".pill-jobfile-air-update .consignee-air option").filter(function() {
-				    return this.text == consignee; 
-				}).attr('selected', 'selected');
-
-			      $(".pill-jobfile-air-update .colsel-air option").filter(function() {
-				    return this.text == color_stages; 
-				}).attr('selected', 'selected');
-
-			      $('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
-			      $('.pill-jobfile-air-update .hbl-air').val(hbl);
-			      $('.pill-jobfile-air-update .mbl-air').val(mbl);
-				  $('.pill-jobfile-air-update .flight-air').val(flightno);
-				  $('.pill-jobfile-air-update .aircraft-air').val(aircraft);
-			      $('.pill-jobfile-air-update .forwarder-air').val(Forwader);
-			      $('.pill-jobfile-air-update .warehouse-air').val(warehouse);
-			      $('.pill-jobfile-air-update .edt-air').val(ETD);
-			      $('.pill-jobfile-air-update .eat-air').val(ETA);
-			      $('.pill-jobfile-air-update .aat-air').val(ATA);
-			      $('.pill-jobfile-air-update .cartons-air').val(cartons);
-			      $('.pill-jobfile-air-update .bank-air').val(lcfrmbank);
-			      $('.pill-jobfile-air-update .dtRcvd-airline-air').val(date_airline);
-			      $('.pill-jobfile-air-update .dtRcvd-air').val(date_client);
-			      $('.pill-jobfile-air-update .dt_pickup_obl-air').val(date_hawb);
-			      $('.pill-jobfile-air-update .dt_pickup_docs-air').val(dateotherdocs);
-
-			       $(".pill-jobfile-air-update .broker-air option").filter(function() {
-				    return this.text == broker; 
-				}).attr('selected', 'selected');
-
-			        $(".pill-jobfile-air-update .color-select-air option").filter(function() {
-				    return this.text == color_selectivity; 
-				}).attr('selected', 'selected');
-
-			      $('.pill-jobfile-air-update #purch_order_no-air').val(purchaseno);
-			      $('.pill-jobfile-air-update #dt_req_budget-air').val(date_req_budget);
-			      $('.pill-jobfile-air-update #ref_due_dt-air').val(rfpduedate);
-
-			       $('.pill-jobfile-air-update #ref_due_dt-air').val(rfpduedate);
-
-			      
-			        $.ajax({	
-						  		method: "POST",
-								  url: "<?php echo base_url('Job/get_country_air');?>",
-						  		data: { jobfile:jobfile
-						  		}
-							})
-					  		.done(function(data) {
-						  			$(".pill-jobfile-air-update .origin-air-update select").val(data);
-							});
-			      
-			       $.ajax({
-						  		method: "POST",
-								  url: "<?php echo base_url('Job/get_country_name_air');?>",
-						  		data: { jobfile:jobfile
-						  		}
-							})
-					  		.done(function(data) {
-						  			$(".pill-jobfile-air-update .origcity-air").val(data);
-							});
-
-
+			
 							
 	});
 	$(document).on('click','.update_container_air', function(){

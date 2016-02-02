@@ -1,4 +1,4 @@
-				    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob "  style="width:5000px;">
+				    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob "  >
 				        <thead>
 				             <tr>
 								          <th > No. </th>
@@ -32,26 +32,16 @@
 								          <th >Registry</th>
 
 								          <th >Origin</th>  
-
-								          <th class="hidden"> value date received Arrival notice</th>
-
+								      
 								          <th >Date Received Arrival Notice from Client/s</th>
-
-								          <th class="hidden"> value date pick up received 0-BL</th>
-
+								         
 								          <th >Date Pick-up/Received O-BL</th>
-
-								          <th class="hidden"> value date pick up other docs</th>
          								 
          								  <th >Date Pick-up/Received other Documents</th>
 							   	
 							   		      <th >Broker</th>
 
-							   		      <th class="hidden"> value date req budget</th>
-
 							   		      <th >Date Request Budget to GL</th>
-
-							   		      <th class="hidden"> value ref due date</th>
 
 										  <th >Reference Due Date</th>
 
@@ -123,6 +113,10 @@
 								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
 								             }
 
+								          $broke= $row->Broker;
+								          $broker=reduce_multiples($broke," ");
+								          $broker = trim($broker);
+
 
 				        				?>
 				            <tr>
@@ -155,16 +149,16 @@
  									      <td><?php echo stripslashes($row->Registry); ?></td>
 										 
 								           <td><?php echo stripslashes($row->Origin); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($DateReceivedNoticeFromClients) ?></td>
+								           	
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfBL) ?></td>
+								          	
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
-								          	<td class="hidden"><?php echo stripcslashes($DateReceivedOfOtherDocs) ?></td>
+								          	
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
- 										  <td><?php echo stripslashes($row->Broker); ?></td>
- 										  	<td class="hidden"><?php echo stripcslashes($DateRequestBudgetToGL) ?></td>
+ 										  <td><?php echo stripslashes($broker); ?></td>
+ 										  	
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
-								           	<td class="hidden"><?php echo stripcslashes($RFPDueDate) ?></td>
+								           	
 								          <td><?php echo stripslashes($row->RFPDueDate); ?></td>
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
@@ -451,7 +445,9 @@ $(".btn-Vessel").click(function(){
 	$(document).ready(function(){
 
 		$("th").css("vertical-align","middle");
-
+		$("tbody td").css("white-space","nowrap");
+		$("tbody td").css("min-width","60px");
+		$("thead th").css("white-space","nowrap");
 
 	 $(document).on('click','.btn-Update',function(){
 
@@ -459,7 +455,6 @@ $(".btn-Vessel").click(function(){
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
 			      var jobfileID  = $(this).closest('tr').children('td:eq(30)').text();
 
-			     /* alert(jobfileID);*/
 					      $.ajax({	
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country');?>",
@@ -470,71 +465,7 @@ $(".btn-Vessel").click(function(){
 						  			$(".origin-update select").val(data);
 							});
 
-							
-
-
-			     var color_stages  = $(this).closest('tr').children('td:eq(3)').text();
-			     var ShipperName    = $(this).closest('tr').children('td:eq(4)').text();
-
-			     var ConsigneeName  = $(this).closest('tr').children('td:eq(5)').text();
-			     var PurchaseOrderNo= $(this).closest('tr').children('td:eq(9)').text();
-					
-				 var HouseBillLadingNo      = $(this).closest('tr').children('td:eq(10)').text();
-			     var MasterBillLadingNo     = $(this).closest('tr').children('td:eq(11)').text();
-				 var MasterBillLadingNo2    = $(this).closest('tr').children('td:eq(12)').text();
-			     var LetterCreditFromBank   = $(this).closest('tr').children('td:eq(13)').text();
-		
-			     var registry   = $(this).closest('tr').children('td:eq(14)').text();
-
-			     var DateReceivedNoticeFromClients     = $(this).closest('tr').children('td:eq(16)').text();
-			     var date_rcvd_bl     = $(this).closest('tr').children('td:eq(18)').text();
-			     var date_rcvd_other_docs    = $(this).closest('tr').children('td:eq(20)').text();
-			     var broker    = $(this).closest('tr').children('td:eq(22)').text();
-			     var date_req_budget    = $(this).closest('tr').children('td:eq(23)').text();
-			     var rfpduedate    = $(this).closest('tr').children('td:eq(25)').text();
-			     var color_selectivity    = $(this).closest('tr').children('td:eq(27)').text();
-
-
-			     $('.jobfiles-update').val(jobfileNo);
-			     $('.monitoring_type_id').val(jobfileID);
-			     
-			      $(".broker-update option").filter(function() {
-				    return this.text == broker; 
-				}).attr('selected', 'selected');
-
-			     $(".shipper-update option").filter(function() {
-				    return this.text == ShipperName; 
-				}).attr('selected', 'selected');
-
-			     $(".consignee-update option").filter(function() {
-				    return this.text == ConsigneeName; 
-				}).attr('selected', 'selected');
-
-			      $(".colsel-update option").filter(function() {
-				    return this.text == color_stages; 
-				}).attr('selected', 'selected');
-
-			      $('.hbl-update').val(HouseBillLadingNo);
-			      $('.mbl-update').val(MasterBillLadingNo);
-			      $('.mbl2-update').val(MasterBillLadingNo2);
-			      $('.bank-update').val(LetterCreditFromBank);
-			      $('.registry-update').val(registry);
-
-			      $('.dtRcvd-update').val(DateReceivedNoticeFromClients);
-			      $('.dt_pickup_obl-update').val(date_rcvd_bl);
-			      $('.dt_pickup_docs-update').val(date_rcvd_other_docs);
-
-			     
-
-			      $('.purch_order_no_update').val(PurchaseOrderNo);
-			      $('.dt-req-update').val(date_req_budget);
-			      $('.rfp-update').val(rfpduedate);
-
-			      $(".color-select-update option").filter(function() {
-				    return this.text == color_selectivity; 
-				}).attr('selected', 'selected');
-
-			      $.ajax({
+					  	 $.ajax({
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country_name');?>",
 						  		data: { jobfile:jobfileNo
@@ -543,6 +474,82 @@ $(".btn-Vessel").click(function(){
 					  		.done(function(data) {
 						  			$(".origcity-update").val(data);
 							});
+							
+
+							$.ajax({
+								method: "POST",
+								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								data: {
+									jobfile : jobfileNo,
+									monType : 1
+								} 
+							}).done(function(data){
+								 var fills = JSON.parse(data);
+							     var ShipperName    = fills[0].ShipperName;
+							     var ConsigneeName  = fills[0].ConsigneeName;
+							     var PurchaseOrderNo= fills[0].PurchaseOrderNo;
+								 var color_stages  = fills[0].StatusName;
+								 var HouseBillLadingNo      = fills[0].HouseBillLadingNo;
+							     var MasterBillLadingNo     = fills[0].MasterBillLadingNo;
+								 var MasterBillLadingNo2    = fills[0].MasterBillLadingNo2;
+							     var LetterCreditFromBank   = fills[0].LetterCreditFromBank;
+						
+							     var registry   = fills[0].Registry;
+
+							     var DateReceivedNoticeFromClients     = fills[0].DateReceivedNoticeFromClients;
+							     var date_rcvd_bl     = fills[0].DateReceivedOfBL;
+							     var date_rcvd_other_docs    = fills[0].DateReceivedOfOtherDocs;
+							     var broker    = fills[0].BrokerId;
+							     var date_req_budget    = fills[0].DateRequestBudgetToGL;
+							     var rfpduedate    = fills[0].RFPDueDate;
+							     var color_selectivity    = fills[0].ColorSelectivityName;
+
+							      $('.jobfiles-update').val(jobfileNo);
+							     $('.monitoring_type_id').val(jobfileID);
+							     
+							      $(".broker-update").val(broker);
+
+							     $(".shipper-update option").filter(function() {
+								    return this.text == ShipperName; 
+								}).attr('selected', 'selected');
+
+							     $(".consignee-update option").filter(function() {
+								    return this.text == ConsigneeName; 
+								}).attr('selected', 'selected');
+
+							      $(".colsel-update option").filter(function() {
+								    return this.text == color_stages; 
+								}).attr('selected', 'selected');
+
+							      $('.hbl-update').val(HouseBillLadingNo);
+							      $('.mbl-update').val(MasterBillLadingNo);
+							      $('.mbl2-update').val(MasterBillLadingNo2);
+							      $('.bank-update').val(LetterCreditFromBank);
+							      $('.registry-update').val(registry);
+
+							      $('.dtRcvd-update').val(DateReceivedNoticeFromClients);
+							      $('.dt_pickup_obl-update').val(date_rcvd_bl);
+							      $('.dt_pickup_docs-update').val(date_rcvd_other_docs);
+
+							     
+
+							      $('.purch_order_no_update').val(PurchaseOrderNo);
+							      $('.dt-req-update').val(date_req_budget);
+							      $('.rfp-update').val(rfpduedate);
+
+							      $(".color-select-update option").filter(function() {
+								    return this.text == color_selectivity; 
+								}).attr('selected', 'selected');
+
+			     
+
+			});
+
+
+			   
+				
+
+			    
 			     
 
 			 }); 
@@ -558,6 +565,7 @@ $(".btn-Vessel").click(function(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
 
 

@@ -1,5 +1,5 @@
       
-        <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort_search" style="width:5500px;">
+        <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort_search">
             <thead>
                  <tr style="cursor:w-resize ;">
 
@@ -113,6 +113,10 @@
                        }else{
                            $ATA = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ATA));
                        }
+                          $broke= $row->Broker;
+                          $broker=reduce_multiples($broke," ");
+                          $broker = trim($broker);
+
 
                 ?>
                   <tr>
@@ -136,17 +140,17 @@
                   <td><?php echo stripslashes($row->Forwarder); ?></td>
                   <td><?php echo stripslashes($row->Warehouse); ?></td>
                   <td><?php echo stripslashes($row->Aircraft); ?></td>
-                    <td class="hidden"><?php echo stripslashes($ETD); ?></td>
+                   
                   <td><?php echo stripslashes($row->ETD); ?></td>
-                    <td class="hidden"><?php echo stripslashes($ETA); ?></td>
+                   
                   <td><?php echo stripslashes($row->ETA); ?></td>
-                    <td class="hidden"><?php echo stripslashes($ATA); ?></td>
+                   
                   <td><?php echo stripslashes($row->ATA); ?></td>
                   <td><?php echo stripslashes($row->DateReceivedArrivalFromALine); ?></td>
                  <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
                   <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
                   <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
-                  <td><?php echo stripslashes($row->Broker); ?></td>
+                  <td><?php echo stripslashes($broker); ?></td>
                   <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
                   <td><?php echo stripslashes($row->RFPDueDate); ?></td>
                   <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
@@ -167,6 +171,11 @@
 
 
           <script>
+            //table fixed
+      $("th").css("vertical-align","middle");
+    $("tbody td").css("white-space","nowrap");
+    $("tbody td").css("min-width","60px");
+    $("thead th").css("white-space","nowrap"); 
 /*add New jobfile*/
    var myBackup_jobfile_air = $('#myModal-3-2').clone();
     
@@ -306,11 +315,14 @@ $('.btn-Add-Report-air').click(function(){
 });
 </script>
 
-          </script>
-
-
-      <!-- Pick a theme, load the plugin & initialize plugin -->
+       
+  <!-- Pick a theme, load the plugin & initialize plugin -->
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+
+
+
+  
