@@ -94,10 +94,10 @@ $('.new_manila_jobfile').click(function(){
 	$('.new_manila_jobfile').empty();
 });
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	 $('.sea_manila_tab').trigger('click');
 });
-
+*/
 
 
 

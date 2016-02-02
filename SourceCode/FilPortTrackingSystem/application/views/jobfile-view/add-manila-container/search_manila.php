@@ -453,7 +453,7 @@ $(".btn-Vessel").click(function(){
 
 
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
-			      var jobfileID  = $(this).closest('tr').children('td:eq(30)').text();
+			
 
 					      $.ajax({	
 						  		method: "POST",
@@ -503,9 +503,10 @@ $(".btn-Vessel").click(function(){
 							     var date_req_budget    = fills[0].DateRequestBudgetToGL;
 							     var rfpduedate    = fills[0].RFPDueDate;
 							     var color_selectivity    = fills[0].ColorSelectivityName;
+							     var JobFileId            = fills[0].JobFileId;
 
 							      $('.jobfiles-update').val(jobfileNo);
-							     $('.monitoring_type_id').val(jobfileID);
+							     $('.monitoring_type_id').val(JobFileId);
 							     
 							      $(".broker-update").val(broker);
 

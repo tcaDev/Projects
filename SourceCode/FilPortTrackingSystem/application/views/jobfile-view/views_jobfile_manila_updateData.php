@@ -251,6 +251,8 @@ $(document).on('click','.update_jobfiles',function(){
  var ref_due_dt     =   $('.rfp-update').val();
  var color_selectivity     =   $('.color-select-update').val();
    
+
+/*   console.log('jbfl:'+jbfl+ " " + "montype:"+jbid);*/
  
 /*alert(jbid);*/
 		 	$.ajax({

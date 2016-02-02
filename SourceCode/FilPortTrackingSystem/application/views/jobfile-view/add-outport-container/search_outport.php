@@ -422,7 +422,7 @@ $(".btn-Vessel-outport").click(function(){
 
 
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
-			      var jobfileID  = $(this).closest('tr').children('td:eq(30)').text();
+		
 
 			     /* alert(jobfileID);*/
 					      $.ajax({	
@@ -463,9 +463,10 @@ $(".btn-Vessel-outport").click(function(){
 							     var date_req_budget    = fills[0].DateRequestBudgetToGL;
 							     var rfpduedate    = fills[0].RFPDueDate;
 							     var color_selectivity    = fills[0].ColorSelectivityName;
+							     var JobFileId            = fills[0].JobFileId;
 
 							     $('.jobfiles-update-outport').val(jobfileNo);
-							     $('.monitoring_type_id-outport').val(jobfileID);
+							     $('.monitoring_type_id-outport').val(JobFileId);
 							     
 							      $(".broker-update-outport").val(broker);
 

@@ -11,13 +11,13 @@
 					  		<div class="col-lg-4" >	
 					
 					           <input type="hidden" value="3" name="monitoring_type" class="monitoring_type-air"/>
-
-
+					             <input type="hidden"  class="monitoring_type_id-air"/>
+                                    
 					           	<div class="required-fields-air-update">
 					           		<div class="form-group">
 					              <!--check if jofile is already exists -->
 					           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span id="check_jobfiles-air"></span></label> 
-									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl" onkeyup="myjob_air(this.value)">
+									 <input type="text" class="form-control input-sm jobfiles-air" name="jbfl" id="jbfl"> <!--  onkeyup="myjob_air(this.value)" -->
 									 <i class="jobfile-msg-air" style="color:red;"></i>
 					           </div>
 					  				
@@ -283,9 +283,12 @@ var jbs_air;
 								 var date_req_budget =  fills[0].DateRequestBudgetToGL;
 								 var rfpduedate =  fills[0].RFPDueDate;
 								 var color_selectivity = fills[0].ColorSelectivityName;
+								 var JobFileId         = fills[0].JobFile_AirId;
+
 								
 								
 						      $('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
+						       $('.monitoring_type_id-air').val(JobFileId);
 						      $('.pill-jobfile-air-update .hbl-air').val(hbl);
 						      $('.pill-jobfile-air-update .mbl-air').val(mbl);
 							  $('.pill-jobfile-air-update .flight-air').val(flightno);
@@ -385,7 +388,8 @@ var jbs_air;
       var  ref_due_dt_air 	  = $(".ref_due_dt-air").val();
  	  var  color_select_air   = $(".color-select-air").val();
 
-  
+      
+      console.log("j_new" + j_new + " " + "jbs_air" + jbs_air );
 
  	  			 $.ajax({
 			  		method: "POST",
