@@ -78,7 +78,7 @@
 			        	</div>
 			        	
 			        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
-			        		<tr>
+			        	<tr>
 			        			<a class="loading-consignee" style="font-size:24px;"></a>
 			        			<i class="result-count" style="font-size:24px;"> </i>
 			        		</tr>
@@ -356,6 +356,8 @@
 				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
 			  			}
 					});
+
+	$('.reports-table').css('cursor','pointer');
     });
 		$(document).on('dblclick','.tableRow',function(){
 			$('.tab-clear').removeClass('active');

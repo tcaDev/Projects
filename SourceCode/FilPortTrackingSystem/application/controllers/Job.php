@@ -1452,7 +1452,7 @@ function get_jobfile_global_search(){
       }
        $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
                       <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
-                      <script src="' .  base_url("resources/table_sort/tablesortFilport.js") . '"></script>';
+                      <script src="' .  base_url("resources/table_sort/tableSort_.js") . '"></script>';
       /*$dispOutput = $jobfiles;
       $dispCount = 0;*/
       $dispCount =  $rowCt ;
@@ -4073,14 +4073,16 @@ function get_audit_charges_air(){
       $jbfl = $this->input->post('jobfile');
       $montype = $this->input->post("monType");
       $jobID ="";
-      if($montype != 3){
-      $jobfileContent = $this->Jobdata->contentJobfileID($jbfl);
+     
+      $jobfileContent = $this->Jobdata->contentJobfileID($jbfl,$montype);
        foreach ($jobfileContent as $row) {
-         $jobID = $row->JobFileId;
+       	if($montype == 3){
+       	     $jobID = $row->JobFile_AirId;
+       	}else{
+       		 $jobID = $row->JobFileId;
+       	}
        }
-      }else{
-        $jobID = $jbfl;
-      }
+    
         $jobfileContent_ = $this->Jobdata->contentJobfile($jobID,$montype);
         echo json_encode($jobfileContent_);
     }

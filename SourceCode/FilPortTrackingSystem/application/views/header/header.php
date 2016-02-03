@@ -99,7 +99,6 @@
 									    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 									  </ul>
 								</div>
-								 
 							</div>
 						</div>
 					</div>

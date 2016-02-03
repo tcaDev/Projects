@@ -551,7 +551,7 @@ if(isset($_SESSION['success'])){
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 		
  <!-- 
 <script src="<?php //echo base_url('resources/js/get_datas.js');?>"></script>
@@ -653,7 +653,7 @@ function search_shipper(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 		
  <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
  <link href="<?php// echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
@@ -824,7 +824,7 @@ function search_vessel(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 		
 <!-- 
 <script src="<?php //echo base_url('resources/js/higlight.js');?>"></script>	
@@ -938,7 +938,7 @@ $this->message();
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 
 <!-- 
 <script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	
@@ -1306,7 +1306,7 @@ function search_product(){
 					  
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 		
 <!-- 					  
   <script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	

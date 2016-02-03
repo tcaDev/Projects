@@ -409,3 +409,7 @@ $(document).on('dblclick','.commodity-audit-list .commodityRow',function(){
 });
 </script>
 
+
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>

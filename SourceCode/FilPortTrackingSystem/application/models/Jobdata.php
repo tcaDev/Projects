@@ -337,8 +337,15 @@ function get_jobfile_air_audit($jobfile){
     return $query->result();
   }
 
-    function contentJobfileID($jobfile){
-     $query = $this->db->query("select JobFileId from vw_JobFile where JobFileNo ='$jobfile' ");
+    function contentJobfileID($jobfile,$montype){
+      if($montype == 3){
+        $query = $this->db->query("select JobFile_AirId from vw_JobFileAir where JobFileNo ='$jobfile'");
+        $q = "select JobFile_AirId from vw_JobFileAir where JobFileNo ='$jobfile'";
+      }else{
+        $query = $this->db->query("select JobFileId from vw_JobFile where JobFileNo ='$jobfile' ");
+        $q = "select JobFileId from vw_JobFile where JobFileNo ='$jobfile'";
+      }
+
     return $query->result();
   }
 
@@ -346,7 +353,7 @@ function get_jobfile_air_audit($jobfile){
     if($montype != 3){
       $query = $this->db->query("select * from vw_JobFile where JobFileId ='$jobfile'");
     }else{
-      $query = $this->db->query("select * from vw_JobFileAir where JobFileNo ='$jobfile'");
+      $query = $this->db->query("select * from vw_JobFileAir where JobFile_AirId ='$jobfile'");
     }
     return $query->result();
   }
