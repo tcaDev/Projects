@@ -6,7 +6,10 @@
 
  		<!--For  pagination start -->		
 		<script type="text/javascript">
-	
+		$('.air_freight_tab').click(function(){
+			jbfl='';
+           search_airs(jbfl);
+
 				$(document).ready(function() {
 				    $(".air_pagination").load(content_air);  //initial page number to load
 				    $(".air_pages").bootpag({
@@ -29,13 +32,11 @@
 				    }).on("page", function(e, num){
 				        e.preventDefault();
 				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				         $('.air_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				        $(".air_pagination").load(content_air, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
 				    });
 				});
+        });
 
 
        </script>
@@ -311,10 +312,7 @@
 
 
 <script>
-$('.air_freight_tab').click(function(){
- jbfl='';
- search_airs(jbfl);
-});
+
 
 /*add New jobfile*/
 	 var myBackup_jobfile_air = $('#myModal-3-2').clone();

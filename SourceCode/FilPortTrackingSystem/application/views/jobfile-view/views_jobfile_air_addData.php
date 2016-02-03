@@ -149,11 +149,11 @@
 										  <input type="text" class="form-control input-sm bank-air" name="bank">
 										</div>
 
-										<div class="form-group">
+										<!-- <div class="form-group">
 										  <label for="registry">Registry:</label>
 										  <input type="text" class="form-control input-sm registry-air">
 										</div>
-
+ -->
 										<div class="form-group ">
 											<label>Origin Country</label>
 												<select  class="form-control origin-air" name="countries">

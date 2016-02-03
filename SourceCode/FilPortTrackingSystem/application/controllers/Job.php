@@ -3285,7 +3285,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
        echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit-air" style="width:4000px;cursor:pointer;">
+            <table class="table table-bordered table-condensed order-table-audit-air" style="width:4500px;cursor:pointer;">
                 <thead>
                   <tr>
                       <th>Jobfile No</th>

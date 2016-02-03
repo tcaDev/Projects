@@ -175,6 +175,10 @@
 
 <script>
 $(document).ready(function(){
+	    $("th").css("vertical-align","middle");
+		$("tbody td").css("white-space","nowrap");
+		$("tbody td").css("min-width","60px");
+		$("thead th").css("white-space","nowrap");
 
 /*Refresh Modal When Close*/
 
@@ -444,10 +448,7 @@ $(".btn-Vessel").click(function(){
 
 	$(document).ready(function(){
 
-		$("th").css("vertical-align","middle");
-		$("tbody td").css("white-space","nowrap");
-		$("tbody td").css("min-width","60px");
-		$("thead th").css("white-space","nowrap");
+		
 
 	 $(document).on('click','.btn-Update',function(){
 

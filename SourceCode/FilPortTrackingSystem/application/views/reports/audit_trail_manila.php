@@ -234,6 +234,9 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 	  		}
 		})
   		.done(function(data) {
+  				$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
+	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
+	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
 	  				 $(".table-audit-manila").html(data); 
 		});
 
@@ -409,7 +412,3 @@ $(document).on('dblclick','.commodity-audit-list .commodityRow',function(){
 });
 </script>
 
-
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>

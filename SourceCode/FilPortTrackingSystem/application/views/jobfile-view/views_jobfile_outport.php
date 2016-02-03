@@ -6,7 +6,10 @@
 
  		<!--For  pagination start -->		
 		<script type="text/javascript">
-	
+	$('.sea_outport_tab').click(function(){
+		 jbfl='';
+		 search_outport(jbfl);
+		
 				$(document).ready(function() {
 				    $(".outport_pagination").load(content_outport);  //initial page number to load
 				    $(".out_pages").bootpag({
@@ -29,13 +32,12 @@
 				    }).on("page", function(e, num){
 				        e.preventDefault();
 				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.outport_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				        $(".outport_pagination").load(content_outport, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
 				});
+    });
 
 
        </script>
@@ -113,7 +115,7 @@
 
 
 
-			<div class="wrapper" style= "overflow-y:auto; height :485px; width:100%;position:relative;">
+			<div class="wrapper" style= "overflow-y:auto;height :485px;width:100%;position:relative;">
 				<div class="job-outport outport_pagination"></div>
 			 </div>
 			 <div class="out_pages"></div>
@@ -507,10 +509,7 @@ var jbfl_outport;
 					 </div>
       
 <script>
-$('.sea_outport_tab').click(function(){
- jbfl='';
- search_outport(jbfl);
-});
+
 	//for search
 	function search_outport(jbfl){
 

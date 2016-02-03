@@ -141,7 +141,10 @@ $(document).on('click','#collapse2 #audit-air',function(){
 			  beforeSend: function() {
 		              $('.table-audit-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
-	  		success: function(response){                    
+	  		success: function(response){              
+	  			$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
+	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
+	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
             $(".table-audit-air").html(response); 
             
        		 }

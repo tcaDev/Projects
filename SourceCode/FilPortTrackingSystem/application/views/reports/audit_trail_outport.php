@@ -235,6 +235,9 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 	  		}
 		})
   		.done(function(data) {
+  				$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
+	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
+	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
 	  				 $(".table-audit-outport").html(data); 
 		});
 

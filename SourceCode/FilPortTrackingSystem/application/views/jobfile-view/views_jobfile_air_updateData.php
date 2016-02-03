@@ -136,10 +136,10 @@
 										  <input type="text" class="form-control input-sm bank-air" name="bank">
 										</div>
 
-										<div class="form-group">
+										<!-- <div class="form-group">
 										  <label for="registry">Registry:</label>
 										  <input type="text" class="form-control input-sm registry-air">
-										</div>
+										</div> -->
 
 										<div class="form-group origin-air-update">
 											<label>Origin Country</label><i style="color:red;">*</i>

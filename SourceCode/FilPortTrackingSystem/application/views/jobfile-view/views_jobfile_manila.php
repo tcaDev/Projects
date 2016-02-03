@@ -8,6 +8,7 @@
 		<script type="text/javascript">
 	
 				$(document).ready(function() {
+					$('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				    $(".manila_pagination").load(content_manila);  //initial page number to load
 				    $(".man_pages").bootpag({
 				        total:total_manila_page, // total number of pages
@@ -29,10 +30,8 @@
 				    }).on("page", function(e, num){
 				        e.preventDefault();
 				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				        $(".manila_pagination").load(content_manila, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
 				});
@@ -40,7 +39,7 @@
 
        </script>
 <div class="row">
-		<div class="container-fluid"> 
+		<div class="container-fluid">
 		  		 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 10px; margin-bottom: -15px;">
 
 			 	<div class="form-group col-lg-4 col-md-4 col-sm-4" >
@@ -123,7 +122,7 @@
 			
 				
 
-			  <div class="wrapper" style= "overflow-y:auto; height :485px; width:100%;">
+			  <div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
 				    <div class="job-manila manila_pagination"></div>
 				   
 			  </div> 
@@ -361,6 +360,7 @@ var jbfl;
      var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
      var bpi  = $('#runchar .bpi').val().replace(/,/g,'');
      var reefer    = $('#runchar .reefer').val().replace(/,/g,'');
+
 
 		 	$.ajax({
 		           method: "POST",
