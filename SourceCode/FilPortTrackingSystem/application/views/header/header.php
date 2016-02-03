@@ -79,8 +79,8 @@
 								 <div class="btn-group" >
 									<!-- Username -->
 									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); text-align:right;">
-									  	<span class="pull-right" style = "font-family:Century Gothic;font-size:18px;">		
 									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?><br>
+									  	<span class="pull-right" style = "font-family:Century Gothic;font-size:14px;">		
 									  <b>	  	<?php foreach($roleName as $row){
 									  			echo $row->My_RoleName;
 									  		  }?>
