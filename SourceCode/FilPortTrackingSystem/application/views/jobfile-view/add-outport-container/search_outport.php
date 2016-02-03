@@ -449,6 +449,7 @@ $(".btn-Vessel-outport").click(function(){
 							     var ConsigneeName  = fills[0].ConsigneeName;
 							     var PurchaseOrderNo= fills[0].PurchaseOrderNo;
 								 var color_stages  = fills[0].StatusName;
+								 var color_stages_id  = fills[0].StatusId;
 								 var HouseBillLadingNo      = fills[0].HouseBillLadingNo;
 							     var MasterBillLadingNo     = fills[0].MasterBillLadingNo;
 								 var MasterBillLadingNo2    = fills[0].MasterBillLadingNo2;
@@ -481,6 +482,14 @@ $(".btn-Vessel-outport").click(function(){
 							    $(".colsel-update-outport option").filter(function() {
 								    return this.text == color_stages; 
 								}).attr('selected', 'selected');
+
+								 var status = $('.colsel-update-outport').val();
+								  var color = $('.colsel-update-outport option:selected').attr('data-color');
+								    if(status==1){
+								    	$('.colsel-update-outport').css({ 'color': 'red','background-color':'white' });
+								    }else{
+								     $('.colsel-update-outport').css({'background-color': color,'color': 'white'});
+								  	}
 
 							     $('.hbl-update-outport').val(HouseBillLadingNo);
 							     $('.mbl-update-outport').val(MasterBillLadingNo);

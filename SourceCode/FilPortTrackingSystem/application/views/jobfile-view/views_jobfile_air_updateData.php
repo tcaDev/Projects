@@ -51,7 +51,7 @@
 
 					           	<div class="form-group">
 									<label>Color Stages</label> 									
-										<select name="colors" class="form-control colsel-air input-sm" >
+										<select name="colors" class="form-control colsel-air-update input-sm" >
 										  	<option value="0" disabled selected>Jobfile Status</option>
 											<?php  foreach($color_data as $row){ 
 											   $status = $row->StatusId;
@@ -243,10 +243,29 @@
 	</div>
 </div>
 
+
+
+<script type="text/javascript">
+//FOR COLOR SELECT DROPDOWN
+	$('.colsel-air-update').change(function(){
+  var status = $(this).val();
+  var color = $('.colsel-air-update option:selected').attr('data-color');
+    if(status==1){
+    	$('.colsel-air-update').css({ 'color': 'red','background-color':'white' });
+    }else{
+     $('.colsel-air-update').css({'background-color': color,'color': 'white'});
+  	}
+ });
+
+</script>
 <script>
+
+
 var jbs_air;
 
 	$(document).on('click','.btn-Update-air', function(){
+
+
 		var jobfile =  $(this).closest('tr').children('td:eq(2)').text();
 		jbs_air=jobfile;
 		$.ajax({
@@ -260,6 +279,7 @@ var jbs_air;
 								 var fills = JSON.parse(data);
 								
 								 var color_stages =  fills[0].StatusName;
+								 var color_stages_id =  fills[0].StatusId;
 								 var shipper =  fills[0].ShipperName;
 								 var consignee = fills[0].ConsigneeName;
 								 var cartons =  fills[0].NoOfCartons;
@@ -307,9 +327,21 @@ var jbs_air;
 
 						       $(".pill-jobfile-air-update .broker-air").val(broker);
 
-						        $(".pill-jobfile-air-update .color-select-air option").filter(function() {
+						        $(".pill-jobfile-air-update .colsel-select-air option").filter(function() {
 							    return this.text == color_selectivity; 
 							}).attr('selected', 'selected');
+
+						        $(".pill-jobfile-air-update .colsel-air-update option").filter(function() {
+							    return this.text == color_stages; 
+							}).attr('selected', 'selected');
+
+						         var status = $('.colsel-air-update').val();
+								  var color = $('.colsel-air-update option:selected').attr('data-color');
+								    if(status==1){
+								    	$('.colsel-air-update').css({ 'color': 'red','background-color':'white' });
+								    }else{
+								     $('.colsel-air-update').css({'background-color': color,'color': 'white'});
+								  	}
 
 						        $(".pill-jobfile-air-update .shipper-air option").filter(function() {
 							    return this.text == shipper; 
@@ -345,6 +377,7 @@ var jbs_air;
 								  		.done(function(data) {
 									  			$(".pill-jobfile-air-update .origcity-air").val(data);
 										});
+
 
 
 
