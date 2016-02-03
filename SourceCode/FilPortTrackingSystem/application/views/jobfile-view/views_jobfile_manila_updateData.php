@@ -15,7 +15,7 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span class="check_jobfiles-update"></span></label> 
+				           		 <label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span class="check_jobfiles-update"></span></label> 
 								 <input type="text" class="form-control input-sm jobfiles-update" name="jbfl" id="jbfl" onkeyup="check_jobfile_avi(this.value)">
 								 <i class="jobfile-msg" style="color:red;"></i>
 				           </div>
@@ -214,21 +214,31 @@
 
 
 <script>
-function check_jobfile_avi(jobfile){
-/*    var id = $('.monitoring_type_id').val(); 
-    alert(id);
+
+$(document).on('show.bs.modal','body',function(){
+	$('.check_jobfiles-update').html('<span class="check_jobfiles-update"></span>');
+});
+
+$(document).on('keyup','.jobfiles-update',function(){
+	var id = $('.monitoring_type_id').val(); 
+	var num = $('.jobfiles-update').val();
     		 	$.ajax({
-		           method: "GET",
-	 		       url: "<?php echo base_url('Job/check_jobfiless');?>",
-			  	   data: {
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job/check_jobfiles_update');?>",
+	 		       beforeSend:function(){
+	 		       	$('.check_jobfiles-update').html('<span class="fa fa-spinner fa-spin" style="font-size:12px;"></span>Please Wait...');
+	 		       },
+			   	   data: {
 			  	   			   jbid 		       :id,
-			  	   	           jobfile   		   :jobfile,
+			  	   	           jobfile   		   :num,
+			  	   	           mon 				   :1
 			  	   		 }
 	              })
 					.done(function(data) {
 						$('.check_jobfiles-update').html(data);
-	    		    });*/
-}
+	    		    });
+
+});
 </script>
 
 <script>
@@ -238,8 +248,6 @@ function check_jobfile_avi(jobfile){
 		
 
 	 $(document).on('click','.btn-Update',function(){
-
-
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
 			
 
@@ -267,6 +275,15 @@ function check_jobfile_avi(jobfile){
 							$.ajax({
 								method: "POST",
 								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								beforeSend:function(){
+									 dia =	$.dialog({
+							 	  	    icon: 'fa fa-spinner fa-spin',
+							 	  	    closeIcon: false,
+						        		title: 'Jobfile',
+						        		backgroundDismiss: false,
+						        		content: 'Preparing Jobfile Information',
+						   			});
+								},
 								data: {
 									jobfile : jobfileNo,
 									monType : 1
@@ -341,9 +358,7 @@ function check_jobfile_avi(jobfile){
 							      $(".color-select-update option").filter(function() {
 								    return this.text == color_selectivity; 
 								}).attr('selected', 'selected');
-
-			     
-
+			     				dia.close();
 			});
 
 
@@ -386,7 +401,13 @@ $(document).on('click','.update_jobfiles',function(){
 /*   console.log('jbfl:'+jbfl+ " " + "montype:"+jbid);*/
  
 /*alert(jbid);*/
-		 	$.ajax({
+	if($('.check_jobfiles-update').text().trim() == "Jobfile Already Exists"){
+							 $.alert({
+				        		title: 'Update!',
+				        		content: 'Cannot Proceed with the Update <br> Please Check your inputs if there are Errors',
+				   			   });
+	}else{
+			$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job_manila_update/jobfile_update');?>",
 	 		       beforeSend: function() {
@@ -434,6 +455,8 @@ $(document).on('click','.update_jobfiles',function(){
 				        	    }
 				   			   });
 	    		    })
+	}
+		 
 
 
  

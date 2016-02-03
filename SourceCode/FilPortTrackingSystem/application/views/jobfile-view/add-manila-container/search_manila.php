@@ -194,8 +194,6 @@ $(document).ready(function(){
     }); 
 
 
-
-
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
     

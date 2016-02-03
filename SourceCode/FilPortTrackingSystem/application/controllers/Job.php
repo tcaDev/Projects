@@ -111,6 +111,19 @@ class Job extends CI_Controller {
   
   }
 
+  function check_jobfiles_update(){
+      $jobfile =  $this->input->post('jobfile');
+      $jbid =  $this->input->post('jbid');
+      $mon =  $this->input->post('mon');
+
+      $files = $this->Jobdata->check_jobfile_update_data($jbid, $jobfile, $mon);
+      if(count($files) > 0){
+         echo  "<i style='color:red;'>Jobfile Already Exists </i>";     
+      }else{
+        echo "<i style='color:green;'>Jobfile Available</i>"; 
+      }
+  }
+
 
     function check_jobfiless(){
       //$dt = Date("Y/m/d H:i:s");
@@ -135,8 +148,9 @@ class Job extends CI_Controller {
           }else{
              echo "<i style='color:green;'>Jobfile available</i>"; 
           }
+       }else{
+        echo "Go mo lang";
        }
-
     }
 
 

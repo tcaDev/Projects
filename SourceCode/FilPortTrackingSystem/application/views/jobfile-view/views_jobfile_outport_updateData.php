@@ -16,8 +16,8 @@
 				           	<div class="required-fields">
 				           		<div class="form-group">
 				              <!--check if jofile is already exists -->
-				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span class="check_jobfiles-update"></span></label> 
-								 <input type="text" class="form-control input-sm jobfiles-update-outport" name="jbfl" id="jbfl" onkeyup="check_jobfile_avi(this.value)">
+				           		<label for="jbfl">JobFile No.:<i style="color:red;">*</i> <span class="check_jobfiles-update-outport"></span></label> 
+								 <input type="text" class="form-control input-sm jobfiles-update-outport" name="jbfl" id="jbfl">
 								 <i class="jobfile-msg-outport" style="color:red;"></i>
 				           </div>
 				  				
@@ -201,38 +201,161 @@
 <script type="text/javascript">
 //FOR COLOR SELECT DROPDOWN
 	$('.colsel-update-outport').change(function(){
-  var status = $(this).val();
-  var color = $('.colsel-update-outport option:selected').attr('data-color');
-    if(status==1){
-    	$('.colsel-update-outport').css({ 'color': 'red','background-color':'white' });
-    }else{
-     $('.colsel-update-outport').css({'background-color': color,'color': 'white'});
-  	}
+	  var status = $(this).val();
+	  var color = $('.colsel-update-outport option:selected').attr('data-color');
+	    if(status==1){
+	    	$('.colsel-update-outport').css({ 'color': 'red','background-color':'white' });
+	    }else{
+	     $('.colsel-update-outport').css({'background-color': color,'color': 'white'});
+	  	}
  });
 
 </script>
 
-
-
 <script>
-function check_jobfile_avi(jobfile){
-/*    var id = $('.monitoring_type_id').val(); 
-    alert(id);
+
+
+$(document).on('show.bs.modal','body',function(){
+	$('.check_jobfiles-update-outport').html('<span class="check_jobfiles-update-outport"></span>');
+});
+
+$(document).ready(function(){
+ 	$(document).on('click','.btn-Update-outport',function(){
+ 				     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
+			     /* alert(jobfileID);*/
+					      $.ajax({	
+						  		method: "POST",
+								  url: "<?php echo base_url('Job/get_country');?>",
+						  		data: { jobfile:jobfileNo
+						  		}
+							})
+					  		.done(function(data) {
+						  			$(".origin-update-outport select").val(data);
+							});
+
+
+						    $.ajax({
+								method: "POST",
+								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								beforeSend:function(){
+										 dia_outport =	$.dialog({
+								 	  	    icon: 'fa fa-spinner fa-spin',
+								 	  	    closeIcon: false,
+							        		title: 'Jobfile',
+							        		backgroundDismiss: false,
+							        		content: 'Preparing Jobfile Information',
+							   			});
+								},
+								data: {
+									jobfile : jobfileNo,
+									monType : 1
+								} 
+							}).done(function(data){
+
+								 var fills = JSON.parse(data);
+							     var ShipperName    = fills[0].ShipperName;
+							     var ConsigneeName  = fills[0].ConsigneeName;
+							     var PurchaseOrderNo= fills[0].PurchaseOrderNo;
+								 var color_stages  = fills[0].StatusName;
+								 var color_stages_id  = fills[0].StatusId;
+								 var HouseBillLadingNo      = fills[0].HouseBillLadingNo;
+							     var MasterBillLadingNo     = fills[0].MasterBillLadingNo;
+								 var MasterBillLadingNo2    = fills[0].MasterBillLadingNo2;
+							     var LetterCreditFromBank   = fills[0].LetterCreditFromBank;
+						
+							     var registry   = fills[0].Registry;
+
+							     var DateReceivedNoticeFromClients     = fills[0].DateReceivedNoticeFromClients;
+							     var date_rcvd_bl     = fills[0].DateReceivedOfBL;
+							     var date_rcvd_other_docs    = fills[0].DateReceivedOfOtherDocs;
+							     var broker    = fills[0].BrokerId;
+							     var date_req_budget    = fills[0].DateRequestBudgetToGL;
+							     var rfpduedate    = fills[0].RFPDueDate;
+							     var color_selectivity    = fills[0].ColorSelectivityName;
+							     var JobFileId            = fills[0].JobFileId;
+
+							     $('.jobfiles-update-outport').val(jobfileNo);
+							     $('.monitoring_type_id-outport').val(JobFileId);
+							     
+							      $(".broker-update-outport").val(broker);
+
+							     $(".shipper-update-outport option").filter(function() {
+								    return this.text == ShipperName; 
+								}).attr('selected', 'selected');
+
+							    $(".consignee-update-outport option").filter(function() {
+								    return this.text == ConsigneeName; 
+								}).attr('selected', 'selected');
+
+							    $(".colsel-update-outport option").filter(function() {
+								    return this.text == color_stages; 
+								}).attr('selected', 'selected');
+
+								 var status = $('.colsel-update-outport').val();
+								  var color = $('.colsel-update-outport option:selected').attr('data-color');
+								    if(status==1){
+								    	$('.colsel-update-outport').css({ 'color': 'red','background-color':'white' });
+								    }else{
+								     $('.colsel-update-outport').css({'background-color': color,'color': 'white'});
+								  	}
+
+							     $('.hbl-update-outport').val(HouseBillLadingNo);
+							     $('.mbl-update-outport').val(MasterBillLadingNo);
+							     $('.mbl2-update-outport').val(MasterBillLadingNo2);
+							     $('.bank-update-outport').val(LetterCreditFromBank);
+							     $('.registry-update-outport').val(registry);
+
+							    $('.dtRcvd-update-outport').val(DateReceivedNoticeFromClients);
+							    $('.dt_pickup_obl-update-outport').val(date_rcvd_bl);
+							    $('.dt_pickup_docs-update-outport').val(date_rcvd_other_docs);
+
+							     
+
+							      $('.purch_order_no_update-outport').val(PurchaseOrderNo);
+							      $('.dt-req-update-outport').val(date_req_budget);
+							      $('.rfp-update-outport').val(rfpduedate);
+
+							      $(".color-select-update-outport option").filter(function() {
+								    return this.text == color_selectivity; 
+								}).attr('selected', 'selected');
+
+							    $.ajax({
+								 	method: "POST",
+								    url: "<?php echo base_url('Job/get_country_name');?>",
+									data: { jobfile:jobfileNo
+								  		}
+								})
+							  	.done(function(data) {
+										$(".origcity-update-outport").val(data);
+								});
+							 dia_outport.close();
+	     		  });
+			 }); 
+ });
+
+$(document).on('keyup','.jobfiles-update-outport',function(){
+	var id = $('.monitoring_type_id-outport').val(); 
+	var num = $('.jobfiles-update-outport').val();
     		 	$.ajax({
-		           method: "GET",
-	 		       url: "<?php echo base_url('Job/check_jobfiless');?>",
-			  	   data: {
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job/check_jobfiles_update');?>",
+	 		       beforeSend:function(){
+	 		       	$('.check_jobfiles-update-outport').html('<span class="fa fa-spinner fa-spin" style="font-size:12px;"></span>Please Wait...');
+	 		       },
+			   	   data: {
 			  	   			   jbid 		       :id,
-			  	   	           jobfile   		   :jobfile,
+			  	   	           jobfile   		   :num,
+			  	   	           mon 				   :2
 			  	   		 }
 	              })
 					.done(function(data) {
-						$('.check_jobfiles-update').html(data);
-	    		    });*/
-}
+						$('.check_jobfiles-update-outport').html(data);
+	    		    });
+
+});
 $(document).on('click','.update_jobfiles-outport',function(){
 	
- var montype 			=   $('.monitoring_type-outport').val();
+ var montype 		=   $('.monitoring_type-outport').val();
  var jbfl 			=   $('.jobfiles-update-outport').val();
  var jbid           =   $('.monitoring_type_id-outport').val();
  var shipper        =   $('.shipper-update-outport').val();
@@ -253,10 +376,13 @@ $(document).on('click','.update_jobfiles-outport',function(){
  var dtReq_budge_gl =   $('.dt-req-update-outport').val();
  var ref_due_dt     =   $('.rfp-update-outport').val();
  var color_selectivity     =   $('.color-select-update-outport').val();
-
-/* console.log('jbfl:'+jbfl+ " " + "montype:"+jbid);*/
-
-		 	$.ajax({
+	if($('.check_jobfiles-update-outport').text().trim() == "Jobfile Already Exists"){
+							 $.alert({
+				        		title: 'Update!',
+				        		content: 'Cannot Proceed with the Update <br> Please Check your inputs if there are Errors',
+				   			   });
+	}else{
+		$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Job_manila_update/jobfile_update');?>",
 	 		       beforeSend: function() {
@@ -301,17 +427,10 @@ $(document).on('click','.update_jobfiles-outport',function(){
 									dia_jobfile.close();
 									window.location.hash="#outport";
 									location.reload();
-									
-				        		
 				        	    }
 				   			   });
 	    		    })
-
-
- 
- 
- 
-
+	}
  
 });
 </script>

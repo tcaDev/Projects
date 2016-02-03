@@ -358,6 +358,15 @@ function get_jobfile_air_audit($jobfile){
     return $query->result();
   }
 
+  function check_jobfile_update_data($jbId, $jobfile, $montype){
+     if($montype != 3){
+      $query = $this->db->query("select * from vw_JobFile where JobFileId <> '$jbId' AND JobFileNo = '$jobfile' AND MonitoringTypeId = '$montype'");
+      }else{
+        $query = $this->db->query("select * from vw_JobFileAir where JobFile_AirId <>'$jbId' AND JobFileNo = '$jobfile'");
+      }
+    return $query->result();
+  }
+
 }
 
 

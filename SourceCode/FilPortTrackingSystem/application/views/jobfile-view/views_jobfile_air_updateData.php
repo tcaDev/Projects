@@ -263,14 +263,49 @@
 
 var jbs_air;
 
+$(document).on('show.bs.modal','body',function(){
+	$('#check_jobfiles-air').html('<span id="check_jobfiles-air"></span>');
+});
+
+$(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
+	var id = $('.pill-jobfile-air-update .jobfiles-air').val(); 
+	var num = $('.pill-jobfile-air-update .monitoring_type_id-air').val();
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Job/check_jobfiles_update');?>",
+	 		       beforeSend : function(){
+	 		       	$('.pill-jobfile-air-update #check_jobfiles-air').html('<span id="check_jobfiles-air" class="fa fa-spinner fa-spinn"></span>Please Wait...');
+	 		       },
+			   	   data: {
+			  	   			   jbid 		       :num,
+			  	   	           jobfile   		   :id,
+			  	   	           mon 				   :3
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.pill-jobfile-air-update #check_jobfiles-air').html(data);
+	    		    });
+
+});
+
 	$(document).on('click','.btn-Update-air', function(){
 
 
 		var jobfile =  $(this).closest('tr').children('td:eq(2)').text();
 		jbs_air=jobfile;
+
 		$.ajax({
 								method: "POST",
 								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
+								beforeSend: function(){
+									 dia_air =	$.dialog({
+							 	  	    icon: 'fa fa-spinner fa-spin',
+							 	  	    closeIcon: false,
+						        		title: 'Jobfile',
+						        		backgroundDismiss: false,
+						        		content: 'Preparing Jobfile Information',
+						   			});
+								},
 								data: {
 									jobfile : jbs_air,
 									monType : 3
@@ -305,8 +340,6 @@ var jbs_air;
 								 var color_selectivity = fills[0].ColorSelectivityName;
 								 var JobFileId         = fills[0].JobFile_AirId;
 
-								
-								
 						      $('.pill-jobfile-air-update .jobfiles-air').val(jobfile);
 						       $('.monitoring_type_id-air').val(JobFileId);
 						      $('.pill-jobfile-air-update .hbl-air').val(hbl);
@@ -377,10 +410,7 @@ var jbs_air;
 								  		.done(function(data) {
 									  			$(".pill-jobfile-air-update .origcity-air").val(data);
 										});
-
-
-
-
+								 dia_air.close();
 	     		  });
 						
 		
@@ -420,8 +450,13 @@ var jbs_air;
       var  dt_req_budget_air  = $(".dt_req_budget-air").val();
       var  ref_due_dt_air 	  = $(".ref_due_dt-air").val();
  	  var  color_select_air   = $(".color-select-air").val();
+      if($('.pill-jobfile-air-update #check_jobfiles-air').text().trim() == "Jobfile Already Exists"){
+							 $.alert({
+				        		title: 'Update!',
+				        		content: 'Cannot Proceed with the Update <br> Please Check your inputs if there are Errors',
+				   			   });
+	   }else{
 
-      
       console.log("j_new" + j_new + " " + "jbs_air" + jbs_air );
 
  	  			 $.ajax({
@@ -481,6 +516,8 @@ var jbs_air;
 				        	    }
 				   			});   	  
 	    	     });
+
+		}
 		
     });
 	
