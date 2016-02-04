@@ -181,6 +181,24 @@ Class Update_jobfile extends CI_Model
 
   }
 
+  function update_reports($hisid,$report){
+     $data = array(
+        'StatusDescription'    => $report
+       );
+        $this->db->where('HistoricalStatusId', $hisid);
+        $this->db->update('HistoricalStatus', $data);
+
+  }
+
+  function update_reports_air($hisid,$report){
+     $data = array(
+        'StatusDescription'    => $report
+       );
+        $this->db->where('HistoricalStatus_AirId', $hisid);
+        $this->db->update('HistoricalStatus_Air', $data);
+
+  }
+
 
 
 }

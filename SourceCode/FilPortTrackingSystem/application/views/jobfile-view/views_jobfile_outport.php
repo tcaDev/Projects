@@ -530,5 +530,12 @@ var jbfl_outport;
     }
 </script>
 
+<!--for reports update -->
+<div class="modal fade " id="updateReport-outport" role="dialog">
+    <div class="modal-dialog modal-lg">		      
+		<?php $this->load->view('jobfile-view/add-outport-container/update_Report_outport'); ?>
+    </div>
+ </div>
+
 
 

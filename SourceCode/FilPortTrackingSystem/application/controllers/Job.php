@@ -1137,18 +1137,21 @@ function get_jobfile_global_search(){
                           
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status($status);
-
+      $href = $this->input->post('href');
+      $btn = $this->input->post('btn');
     if($charges == NULL){
           echo    '<center><span style="color:red">No Reports Yet </span></center>';
     }else{
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
+                   <th>No.</th>
+                   <th>Update</th>
                    <th style='width:20%;'>Date Added</th>
                     <th>Status Description</th>
               </tr>";
-     // $i=0;
+      $i=0;
       foreach ($charges as $row) {
-        //$i++;
+        $i++;
          $description = $row->StatusDescription;
 /*         if($description==''){
          ?>
@@ -1158,6 +1161,10 @@ function get_jobfile_global_search(){
          <?php 
          }*/
        echo " <tr class='remove_tr'>
+                 <td class='hidden'>".$row->JobFileNo." </td>
+                 <td class='hidden'>".$row->HistoricalStatusId." </td>
+                 <td>".$i."</td>
+                 <td><button type='button' class='btn btn-default ".$btn."' data-toggle='modal' href='".$href."' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>
                  <td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
@@ -1179,12 +1186,14 @@ function get_jobfile_global_search(){
     }else{
       echo "<table class='table-bordered table table-striped table-hover table-condensed'>
               <tr>
-                    <th style='width:20%;'>Date Added</th>
+                    <th>No.</th>
+                   <th>Update</th>
+                   <th style='width:20%;'>Date Added</th>
                     <th>Status Description</th>
               </tr>";
-     // $i=0;
+      $i=0;
       foreach ($charges as $row) {
-       // $i++;
+        $i++;
          $description = $row->StatusDescription;
     /*   if($description==''){
          ?>
@@ -1194,6 +1203,10 @@ function get_jobfile_global_search(){
          <?php 
          }*/
        echo " <tr class='remove_tr'>
+                 <td class='hidden'>".$row->JobFileNo." </td>
+                 <td class='hidden'>".$row->HistoricalStatus_AirId." </td>
+                 <td>".$i."</td>
+                 <td><button type='button' class='btn btn-default btn-update-report-air' data-toggle='modal' href='#updateReport-air' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>
                  <td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>

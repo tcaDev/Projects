@@ -340,12 +340,17 @@ $(document).ready(function(){
 
 
  $('.reports').click(function(){	
+
+ 	var href = "#updateReport-mnla";
+ 	var btn = "btn-update-report";
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/status_report');?>",
 				  		data: { id:ids,
+				  				href:href,
+				  				btn:btn,
 				  		}
 					})
 			  		.done(function(data) {

@@ -595,6 +595,13 @@ $('#select').change(function(){
   </div>
 
 
+<!--for reports update -->
+<div class="modal fade " id="updateReport-mnla" role="dialog">
+    <div class="modal-dialog modal-lg">		      
+		<?php $this->load->view('jobfile-view/add-manila-container/update_Report_manila'); ?>
+    </div>
+ </div>
+
 
 
 

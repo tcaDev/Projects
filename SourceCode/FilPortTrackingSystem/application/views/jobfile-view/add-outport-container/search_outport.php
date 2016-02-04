@@ -315,12 +315,16 @@
         
         /*View Reports*/
         $('.reports-outport').click(function(){	
+        	var href = "#updateReport-outport";
+        	var btn = "btn-update-report-outport";
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
 	 		  $.ajax({
                                         method: "POST",
                                           url: "<?php echo base_url('Job/status_report');?>",
                                         data: { id:jobfileno,
-                                        }
+                                        			href:href,
+                                        			btn:btn,
+                                        }		
                                     })
                                     .done(function(data) {
                                             $('.list_status_outport').html(data);

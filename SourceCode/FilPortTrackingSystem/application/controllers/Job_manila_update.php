@@ -221,6 +221,11 @@ class Job_manila_update extends CI_Controller {
 
 
     }
+    function update_reports(){
+      $hisid   =  $this->input->post('hisid');
+      $report  =  $this->input->post('report');
+       $this->Update_jobfile->update_reports($hisid,$report);
+    }
 
 }
 ?>

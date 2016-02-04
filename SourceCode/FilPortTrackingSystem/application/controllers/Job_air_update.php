@@ -302,7 +302,12 @@ function jobfile_add_charge_air(){
 
 
 
-
+ function update_reports(){
+      $hisid   =  $this->input->post('hisid');
+      $report  =  $this->input->post('report');
+      $this->load->model('Update_jobfile');
+      $this->Update_jobfile->update_reports_air($hisid,$report);
+    }
 
 
  }

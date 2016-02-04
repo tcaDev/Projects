@@ -541,4 +541,10 @@ function search_airs(jbfl){
 
 </script>
 
+<!--for reports update -->
+<div class="modal fade " id="updateReport-air" role="dialog">
+    <div class="modal-dialog modal-lg">		      
+		<?php $this->load->view('jobfile-view/add-air-product/update_Report_air'); ?>
+    </div>
+ </div>
 

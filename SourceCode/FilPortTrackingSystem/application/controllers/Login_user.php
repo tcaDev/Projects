@@ -1027,9 +1027,7 @@ function select_country(){
  
  <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
   				  
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
+
 		
 	<?php	
 	}
