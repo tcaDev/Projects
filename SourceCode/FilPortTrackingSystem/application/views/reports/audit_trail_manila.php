@@ -13,7 +13,10 @@
         	</div>     		
     	</div>
 
-    	<div class="table-audit-manila" ></div>
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
+    		<div class="table-audit-manila" ></div>
+    	</div>
+    		
 
 </div>	
 
@@ -202,7 +205,6 @@
 
 
 <script>
-$("table").css('cursor','pointer');
 
 
 $(document).on('click','#collapse2',function(){
@@ -236,8 +238,15 @@ $(document).on('click','#collapse2 #audit-manila',function(){
   		.done(function(data) {
   				$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
 	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
+	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>");
 	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
-	  				 $(".table-audit-manila").html(data); 
+
+  				$(".table-audit-manila").html(data);
+  				$("table").css('cursor','pointer');
+				$("th").css("vertical-align","middle");
+				$("tbody td").css("white-space","nowrap");
+				$("tbody td").css("min-width","60px");
+				$("thead th").css("white-space","nowrap"); 
 		});
 
 
@@ -249,10 +258,10 @@ $(document).on('click','#collapse2 #audit-manila',function(){
 
  $(document).on('dblclick','.table-audit-manila .rowTable',function(){
  	
- 		var jbNum2 = $(this).closest('tr').children('td:eq(1)').text(); 
- 	 var jbNum = $(this).closest('tr').children('td:eq(0)').text(); 
- 	 var shipper = $(this).closest('tr').children('td:eq(3)').text(); 
- 	 var consignee = $(this).closest('tr').children('td:eq(4)').text(); 
+ 		var jbNum2 = $(this).closest('tr').children('td:eq(0)').text(); 
+ 	 var jbNum = $(this).closest('tr').children('td:eq(18)').text(); 
+ 	 var shipper = $(this).closest('tr').children('td:eq(2)').text(); 
+ 	 var consignee = $(this).closest('tr').children('td:eq(3)').text(); 
 
  	$('.auditTrail-mnila').text(jbNum2);
  	$('.auditTrail-mnila-shipper').text(shipper);

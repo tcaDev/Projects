@@ -440,7 +440,7 @@ $(function(){
 			sortRestart    : true,
 			widgetOptions: {
 	      // jQuery selector or object to attach sticky header to
-	      scroller_height : 400,
+	      scroller_height : 440,
 	      // scroll tbody to top after sorting
 	      scroller_upAfterSort: true,
 	      // pop table header into view while scrolling up the page

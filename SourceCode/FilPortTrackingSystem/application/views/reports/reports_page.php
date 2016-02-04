@@ -77,15 +77,21 @@
 				        	</div>     		
 			        	</div>
 			        	
-			        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
-			        	<tr>
-			        			<a class="loading-consignee" style="font-size:24px;"></a>
-			        			<i class="result-count" style="font-size:24px;"> </i>
-			        		</tr>
-			        		<tr class="tableRow">
+			        			<table> 
+			        				<tr>
+					        			<a class="loading-consignee" style="font-size:24px;"></a>
+					        			<i class="result-count" style="font-size:24px;"> </i>
+					        		</tr>
+			        			</table>
+			        			
+			        		<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">
+					        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
+					        	
+					        		<tr class="tableRow">
 
-			        		</tr>
-						</table>
+					        		</tr>
+								</table>
+							</div>
 						</div>	
 					</div>
 			</div>

@@ -713,10 +713,12 @@ th{
     top: 24.3%;
     left: 26%;
     width: 71%;
-    height: 73%;
+     height: 540px;
     border: 1px solid #d4d4d4;
     background-color: rgba(255, 255, 255, 0.4);
     overflow: auto;
+
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
 
 }
 
@@ -1403,7 +1405,7 @@ th{
 
     width: 21.5%;
 
-    height: 73%;
+    height: 540px;
 
     border: 1px solid #0166bc;
 
@@ -1413,6 +1415,8 @@ th{
     padding-top: 20px;
 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+
+    margin-bottom: 10px;
 }
 
 
@@ -1423,13 +1427,14 @@ th{
     top: 24.3%;
     left: 25%;
     width: 70%;
-    height: 73%;
+     height: 540px;
     border: 1px solid #828383;
     background-color: rgba(255,255,255,1);
-    overflow: auto;
-    overflow-x:hidden;
+    /*overflow: auto;
+    overflow-x:hidden;*/
 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    margin-bottom: 10px;
 }
 
 

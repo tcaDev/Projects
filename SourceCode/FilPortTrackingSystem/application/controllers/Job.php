@@ -248,6 +248,11 @@ function get_jobfile_global_search(){
      }
   }
  }
+
+ $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
+                      ';
  $output = array(
       array(
           "disp" => $dispOutput,
@@ -1466,7 +1471,8 @@ function get_jobfile_global_search(){
       }
        $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
                       <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
-                      <script src="' .  base_url("resources/table_sort/tableSort_.js") . '"></script>';
+                      <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
+                      ';
       /*$dispOutput = $jobfiles;
       $dispCount = 0;*/
       $dispCount =  $rowCt ;
@@ -3299,7 +3305,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
        echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit-air" style="width:4500px;cursor:pointer;">
+            <table class="table table-bordered table-condensed order-table-audit-air" style="cursor:pointer;">
                 <thead>
                   <tr>
                       <th>Jobfile No</th>
@@ -3370,7 +3376,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
                 echo '
                 <tr class="airRow">
-                    <td class="hidden">'.$row->JobFile_AirId.'</td>
+                    
                     <td>'.$jfNO.'</td>';
                 echo $pick1;
                 echo '
@@ -3397,6 +3403,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                     <td>'.$dt_recvd_budget.'</td>
                     <td>'.$rfpduedate.'</td>
                     <td>'.$color_select.'</td>
+                    <td class="hidden">'.$row->JobFile_AirId.'</td>
                 </tr>
                 ';
 
@@ -3424,7 +3431,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed " style="width:4000px;">
+            <table class="table table-bordered table-condensed " style="width:4500px;">
                 <thead>
                   <tr>
                       <th>Date Updated</th>
@@ -3753,7 +3760,7 @@ function get_audit_charges_air(){
          echo '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit" style="width:4000px;cursor:pointer;">
+            <table class="table table-bordered table-condensed order-table-audit" style="cursor:pointer;">
                 <thead>
                   <tr>
                       <th>Jobfile Number</th>
@@ -3791,7 +3798,7 @@ function get_audit_charges_air(){
 
             echo '
             <tr class="rowTable">
-                <td class="hidden">'.$row->JobFileId.'</td>
+               
                 <td>'.$row->JobFileNo.'</td>';
             echo $pick1;
             echo' <td>'.$row->ShipperName.'</td>
@@ -3810,6 +3817,7 @@ function get_audit_charges_air(){
                   <td>'.$row->DateRequestBudgetToGL.'</td>
                   <td>'.$row->RFPDueDate.'</td>
                   <td>'.$row->ColorSelectivityName.'</td>
+                  <td class="hidden">'.$row->JobFileId.'</td>
             </tr>
             ';
           }

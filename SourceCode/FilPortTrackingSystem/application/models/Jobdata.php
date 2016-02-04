@@ -297,7 +297,7 @@ function get_commodity_air_audit_history($commodityID){
 
 /*end*/
 function get_jobfile_air_audit($jobfile){
-  $query = $this->db->query("select * from vw_JobFileAirHistory where JobFile_AirId ='$jobfile' ORDER BY JobFileAirHistoryId desc");
+  $query = $this->db->query("select * from vw_JobFileAirHistory where JobFile_AirId ='$jobfile' ORDER BY JobFile_AirHistoryId desc");
     return $query->result();
 }
 

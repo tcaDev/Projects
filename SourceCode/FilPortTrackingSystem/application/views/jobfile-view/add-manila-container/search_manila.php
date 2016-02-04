@@ -442,19 +442,7 @@ $(".btn-Vessel").click(function(){
 
 		<!--end -->
 
-<script>
 
-	$(document).ready(function(){
-
-		
-
-	 
-
-
-
-});
-
-</script>
 
 
 	<!-- Pick a theme, load the plugin & initialize plugin -->

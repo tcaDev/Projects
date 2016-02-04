@@ -115,7 +115,7 @@
 
 
 
-			<div class="wrapper" style= "overflow-y:auto;height :485px;width:100%;position:relative;">
+			<div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
 				<div class="job-outport outport_pagination"></div>
 			 </div>
 			 <div class="out_pages"></div>

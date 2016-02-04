@@ -62,21 +62,30 @@ class Login_user extends CI_Controller {
 		     $sess_array = array();
 		     foreach($result as $row)
 		     {
-		       $sess_array = array(
-		         'email'     =>   $row->EmailAddress,
-		         'username'  =>   $row->UserName,
-		         'fname'     =>   $row->FirstName,
-		         'mname'     =>   $row->MiddleName,
-		         'lname'     =>   $row->LastName,
-		         'uid'		 =>	  $row->UserId,
-		         'roleID'	 =>   $row->RoleId,
-		         'cID' 		 =>   $row->ConsigneeId,
-		         'img'		 =>	  $row->ProfileImageSource,
-		         'bdate'		 =>	  $row->BirthDate
-		       );
-		       $this->session->set_userdata('logged_in', $sess_array);
+		      $active =   $row->IsActive;
+				      if(!$active){
+				      	$this->form_validation->set_message('check_database','User account is not activated');
+				         return false;
+				      }else{
+
+
+							       $sess_array = array(
+							         'email'     =>   $row->EmailAddress,
+							         'username'  =>   $row->UserName,
+							         'fname'     =>   $row->FirstName,
+							         'mname'     =>   $row->MiddleName,
+							         'lname'     =>   $row->LastName,
+							         'uid'		 =>	  $row->UserId,
+							         'roleID'	 =>   $row->RoleId,
+							         'cID' 		 =>   $row->ConsigneeId,
+							         'img'		 =>	  $row->ProfileImageSource,
+							         'bdate'     =>	  $row->BirthDate
+							       );
+							       $this->session->set_userdata('logged_in', $sess_array);
+							         return TRUE;
+					 }
 		     }
-		     return TRUE;
+		   
 		   }
 		   else
 		   {

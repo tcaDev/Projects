@@ -46,18 +46,24 @@
 				        	</div>     		
 			        	</div>
 			        	
-			        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
-			        		<tr>
-			        			<a class="loading-consignee" style="font-size:24px;"></a>
-			        			<i class="result-count" style="font-size:24px;"> </i>
-			        		</tr>
-			        		<thead>
-                              <th><center> JobfileNumber </center> </th>
-                              <th><center> Shipper </center></th>
-                              <th><center> Consignee </center></th>
-                              <th id="HBL"><center> House Airway Bill# </center></th>
-                        	</thead>
-         		 	</table>
+			        		<table>
+			        			<tr>
+				        			<a class="loading-consignee" style="font-size:24px;"></a>
+				        			<i class="result-count" style="font-size:24px;"> </i>
+				        		</tr>
+			        		</table>
+
+			        	<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">	
+				        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
+				        		
+				        		<thead>
+	                              <th><center> JobfileNumber </center> </th>
+	                              <th><center> Shipper </center></th>
+	                              <th><center> Consignee </center></th>
+	                              <th id="HBL"><center> House Airway Bill# </center></th>
+	                        	</thead>
+	         		 		</table>
+	         		 	</div>
 						</div>	
 					</div>
 					<hidden class="conName" id="<?php echo stripslashes($jobfiles); ?>"></hidden>

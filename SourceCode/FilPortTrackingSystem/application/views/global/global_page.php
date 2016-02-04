@@ -45,8 +45,10 @@
 	 	</h3>
 	 	<i class="result-count" style="font-size:24px;"> </i>
 	 	<!-- <a class="loading-consignee"></a> -->
-	 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
-		 </table>
+		 	<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">
+			 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
+				 </table>
+			</div>
 	 </span>
 	 	
 	 </div>

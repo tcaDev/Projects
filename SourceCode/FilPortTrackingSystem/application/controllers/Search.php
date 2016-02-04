@@ -661,7 +661,7 @@ function search_shipper(){
 	$(document).ready(function() { 
         $("#table_shipper").tablesorter();}); 
  </script>
-	 -->
+	
 				<script>
 
 					

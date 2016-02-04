@@ -97,10 +97,7 @@
 									  <input type="text" class="form-control input-sm warehouse-air" >
 									 </div>
 
-									 <div class="form-group">
-									  <label for="mbl">Air Craft No. :</label>
-									  <input type="text" class="form-control input-sm aircraft-air" >
-									 </div>
+									
 
 
 									
@@ -109,6 +106,10 @@
 							</div>
 
 						<div class="col-lg-4">
+								 <div class="form-group">
+									  <label for="mbl">Air Craft No. :</label>
+									  <input type="text" class="form-control input-sm aircraft-air" >
+									 </div>
 
 									 <div class="form-group">
 										  	<label for="dtClrd">Estimated Departure</label>
