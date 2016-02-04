@@ -477,8 +477,6 @@ if(isset($_SESSION['success'])){
    	 $broker  =  $this->User->findlimit_broker($item_per_page,$page_position);	
    } 	
 
-
-  
 		echo '      <table class="table fixed_headers table-bordered" id="table_broker">
 					    <thead>
 					      <tr>
@@ -538,7 +536,7 @@ if(isset($_SESSION['success'])){
 						    <td class="hidden">'.stripslashes($row->FirstName).' </td>
 						    <td class="hidden">'.stripslashes($row->MiddleName).' </td>
 						    <td class="hidden">'.stripslashes($row->LastName).' </td>		
-					         <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+					        <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 					        
 					      
 					      </tr>';}
@@ -551,17 +549,60 @@ if(isset($_SESSION['success'])){
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/tableReportSort.js');?>"></script>
 		
- <!-- 
-<script src="<?php //echo base_url('resources/js/get_datas.js');?>"></script>
-   <script src="<?php //echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
-  <link href="<?php //echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
 <script>
 	$(document).ready(function() { 
         $("#table_broker").tablesorter();}); 
+
+	 $('.get_broker_datas').click(function(){
+	 		 	 var id     	    = $(this).closest('tr').children('td:eq(0)').text();
+			     var fname   	    = $(this).closest('tr').children('td:eq(11)').text();
+			     var mname          = $(this).closest('tr').children('td:eq(12)').text();
+			     var lname          = $(this).closest('tr').children('td:eq(13)').text();
+			     var hbldg          = $(this).closest('tr').children('td:eq(2)').text();
+			     var brgy           = $(this).closest('tr').children('td:eq(3)').text();
+			     var town           = $(this).closest('tr').children('td:eq(4)').text();
+			     var countryid      = $(this).closest('tr').children('td:eq(10)').text();
+			     var country 		= $(this).closest('tr').children('td:eq(5)').text();
+			     var con1    	    = $(this).closest('tr').children('td:eq(6)').text();
+			     var con2 			= $(this).closest('tr').children('td:eq(7)').text();
+			     var stat  			= $(this).closest('tr').children('td:eq(8)').text();
+
+			     $('.broker_id').val(id);
+			     $('.broker_fname').val(fname);
+			     $('.broker_mname').val(mname);
+			     $('.broker_lname').val(lname);
+			     $('.broker_houseno').val(hbldg);
+			     $('.broker_village').val(brgy);
+			     $('.broker_city').val(town);
+			     $('.broker_c1').val(con1);
+			     $('.broker_c2').val(con2);
+
+
+			      if(stat==1){
+			      $('.activate').prop('checked', true);
+			  	  }else{
+			  	  	   $('.deactivate').prop('checked', true);
+			  	  }
+
+			       if(id!=0){
+			  	  	$.ajax({
+						  method: "POST",
+					 	  url:"<?php echo base_url('Login_user/select_country');?>",
+					  	  data: { countryid:countryid,
+					  		  conname:country 	  		  
+					  		}
+						})
+						  .done(function(data) {
+					  		$('.change_select').html(data);
+					      
+					}); 
+				 }
+
+	 });
 </script>
- -->
+
 <?php
 	}
 
@@ -653,20 +694,14 @@ function search_shipper(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
-		
- <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php// echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
+<script src="<?php echo base_url('resources/table_sort/tableReportSort.js');?>"></script>	
+
  <script>
 	$(document).ready(function() { 
         $("#table_shipper").tablesorter();}); 
  </script>
 	
 				<script>
-
-					
-
-				
 				$('.add_contact').click(function(){
 				  var id= $(this).closest('tr').children('td:eq(0)').text();
 				  $('.shipper_id').val(id);
@@ -674,7 +709,8 @@ function search_shipper(){
 
 				});
 
-				 $('.get__shipper_datas').click(function(){
+				$(document).on('click','.get__shipper_datas',function(){
+				
 			     var id     	    = $(this).closest('tr').children('td:eq(0)').text();
 			     var name   	    = $(this).closest('tr').children('td:eq(1)').text();
 			     var hosno          = $(this).closest('tr').children('td:eq(2)').text();
@@ -826,15 +862,12 @@ function search_vessel(){
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 		
-<!-- 
-<script src="<?php //echo base_url('resources/js/higlight.js');?>"></script>	
- <script src="<?php// echo base_url('resources/js/jquery.tablesorter.min.js');?>"></script>
- <link href="<?php //echo base_url('resources/css/tabl_sort.css');?>" rel="stylesheet" />
  <script>
 	$(document).ready(function() { 
         $("#table_vessel").tablesorter();}); 
+
  </script>
- -->
+
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
 	 	 $('.update_vessels').click(function(){
