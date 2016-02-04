@@ -51,7 +51,7 @@
 						  <div class="input-group">
      						 <input type="text" class="form-control" id="search_manila" placeholder="Search for...">
      						  <span class="input-group-btn">
-      						     <button class="btn btn-default search_manila_jobfile" type="button">Go!</button>
+      						     <button class="btn btn-default search_manila_jobfile" type="button"><span class="fa fa-search fa-fw"></span></button>
 						      </span>
 						   </div>
 

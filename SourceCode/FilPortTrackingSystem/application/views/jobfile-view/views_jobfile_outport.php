@@ -57,7 +57,7 @@
 					         <div class="input-group">
      						   <input type="text" class="form-control" id="search_outport" placeholder="Search for...">
      						     <span class="input-group-btn">
-      						     <button class="btn btn-default search_outport_jobfile" type="button">Go!</button>
+      						     <button class="btn btn-default search_outport_jobfile" type="button"><span class="fa fa-search fa-fw"></span></button>
 						      </span>
 						   </div>
 			 		</div>
