@@ -267,6 +267,42 @@ $(document).on('show.bs.modal','body',function(){
 	$('#check_jobfiles-air').html('<span id="check_jobfiles-air"></span>');
 });
 
+function clear_air_data(){
+	      $('.pill-jobfile-air-update .jobfiles-air').val('');
+		  $('.monitoring_type_id-air').val('');
+		  $('.pill-jobfile-air-update .hbl-air').val('');
+		  $('.pill-jobfile-air-update .mbl-air').val('');
+		  $('.pill-jobfile-air-update .flight-air').val('');
+		  $('.pill-jobfile-air-update .aircraft-air').val('');
+		  $('.pill-jobfile-air-update .forwarder-air').val('');
+		  $('.pill-jobfile-air-update .warehouse-air').val('');
+		  $('.pill-jobfile-air-update .edt-air').val('');
+		  $('.pill-jobfile-air-update .eat-air').val('');
+		  $('.pill-jobfile-air-update .aat-air').val('');
+		  $('.pill-jobfile-air-update .cartons-air').val('');
+		  $('.pill-jobfile-air-update .bank-air').val('');
+		  $('.pill-jobfile-air-update .dtRcvd-airline-air').val('');
+		  $('.pill-jobfile-air-update .dtRcvd-air').val('');
+		  $('.pill-jobfile-air-update .dt_pickup_obl-air').val('');
+		  $('.pill-jobfile-air-update .dt_pickup_docs-air').val('');
+
+		 $(".pill-jobfile-air-update .broker-air").val('');
+
+		$(".pill-jobfile-air-update .shipper-air option").filter(function() {
+		    return this.text == ''; 
+		}).attr('selected', 'selected');
+
+		$(".pill-jobfile-air-update .consignee-air option").filter(function() {
+		    return this.text == ''; 
+		}).attr('selected', 'selected');
+
+		 $('.pill-jobfile-air-update #purch_order_no-air').val('');
+		 $('.pill-jobfile-air-update #dt_req_budget-air').val('');
+		 $('.pill-jobfile-air-update #ref_due_dt-air').val('');
+
+		$('.pill-jobfile-air-update #ref_due_dt-air').val('');
+}
+
 $(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
 	var id = $('.pill-jobfile-air-update .jobfiles-air').val(); 
 	var num = $('.pill-jobfile-air-update .monitoring_type_id-air').val();
@@ -298,6 +334,7 @@ $(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
 								method: "POST",
 								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
 								beforeSend: function(){
+									clear_air_data();
 									 dia_air =	$.dialog({
 							 	  	    icon: 'fa fa-spinner fa-spin',
 							 	  	    closeIcon: false,

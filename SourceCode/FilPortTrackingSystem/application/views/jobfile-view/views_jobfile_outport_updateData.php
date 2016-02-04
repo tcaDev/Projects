@@ -219,10 +219,44 @@ $(document).on('show.bs.modal','body',function(){
 	$('.check_jobfiles-update-outport').html('<span class="check_jobfiles-update-outport"></span>');
 });
 
+function clear_outport_data(){
+	$('.jobfiles-update-outport').val('');
+	$('.monitoring_type_id-outport').val('');
+							     
+	$(".broker-update-outport").val('');
+
+	 $(".shipper-update-outport option").filter(function() {
+	    return this.text == ''; 
+	}).attr('selected', 'selected');
+
+	 $(".consignee-update-outport option").filter(function() {
+	    return this.text == ''; 
+	}).attr('selected', 'selected');
+
+	 $(".colsel-update-outport option").filter(function() {
+	    return this.text == ''; 
+	}).attr('selected', 'selected');
+
+
+	 $('.hbl-update-outport').val('');
+	 $('.mbl-update-outport').val('');
+	 $('.mbl2-update-outport').val('');
+	 $('.bank-update-outport').val('');
+	 $('.registry-update-outport').val('');
+
+	$('.dtRcvd-update-outport').val('');
+	$('.dt_pickup_obl-update-outport').val('');
+	$('.dt_pickup_docs-update-outport').val('');
+
+	$('.purch_order_no_update-outport').val('');
+	$('.dt-req-update-outport').val('');
+	$('.rfp-update-outport').val('');
+
+  }
+
 $(document).ready(function(){
  	$(document).on('click','.btn-Update-outport',function(){
  				     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
-			     /* alert(jobfileID);*/
 					      $.ajax({	
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country');?>",
@@ -238,6 +272,7 @@ $(document).ready(function(){
 								method: "POST",
 								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
 								beforeSend:function(){
+									clear_outport_data();
 										 dia_outport =	$.dialog({
 								 	  	    icon: 'fa fa-spinner fa-spin',
 								 	  	    closeIcon: false,
@@ -245,6 +280,7 @@ $(document).ready(function(){
 							        		backgroundDismiss: false,
 							        		content: 'Preparing Jobfile Information',
 							   			});
+									
 								},
 								data: {
 									jobfile : jobfileNo,

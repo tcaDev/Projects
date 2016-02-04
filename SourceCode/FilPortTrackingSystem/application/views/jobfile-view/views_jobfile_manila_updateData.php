@@ -243,14 +243,61 @@ $(document).on('keyup','.jobfiles-update',function(){
 
 <script>
 
+function clearData(){
+
+	  $('.jobfiles-update').val('');
+	  $('.monitoring_type_id').val('');
+	  
+	   $(".broker-update").val('');
+
+		 $(".shipper-update option").filter(function() {
+								    return this.text == ''; 
+		}).attr('selected', 'selected');
+
+		 $(".consignee-update option").filter(function() {
+								    return this.text == ''; 
+		}).attr('selected', 'selected');
+
+		 $(".colsel-update option").filter(function() {
+								    return this.text == ''; 
+		}).attr('selected', 'selected');
+
+		  var status = $('.colsel-update').val();
+		  var color = $('.colsel-update option:selected').attr('data-color');
+		   if(status==1){
+		    	$('.colsel-update').css({ 'color': 'red','background-color':'white' });
+		    }else{
+		     $('.colsel-update').css({'background-color': color,'color': 'white'});
+		  	}
+
+
+		  $('.hbl-update').val('');
+		  $('.mbl-update').val('');
+		  $('.mbl2-update').val('');
+		  $('.bank-update').val('');
+		  $('.registry-update').val('');
+
+		  $('.dtRcvd-update').val('');
+		  $('.dt_pickup_obl-update').val('');
+		  $('.dt_pickup_docs-update').val('');
+
+							     
+
+			$('.purch_order_no_update').val('');
+			$('.dt-req-update').val('');
+			$('.rfp-update').val('');
+
+			  $(".color-select-update option").filter(function() {
+			    return this.text == ''; 
+			}).attr('selected', 'selected');
+	}
+
 	$(document).ready(function(){
 
-		
+
 
 	 $(document).on('click','.btn-Update',function(){
 			     var jobfileNo  = $(this).closest('tr').children('td:eq(2)').text();
-			
-
 					      $.ajax({	
 						  		method: "POST",
 								  url: "<?php echo base_url('Job/get_country');?>",
@@ -276,6 +323,7 @@ $(document).on('keyup','.jobfiles-update',function(){
 								method: "POST",
 								url : "<?php echo base_url('Job/get_jobcontent_manila');?>",
 								beforeSend:function(){
+									clearData();
 									 dia =	$.dialog({
 							 	  	    icon: 'fa fa-spinner fa-spin',
 							 	  	    closeIcon: false,
@@ -313,7 +361,7 @@ $(document).on('keyup','.jobfiles-update',function(){
 
 							     console.log(color_stages_id);
 
-							      $('.jobfiles-update').val(jobfileNo);
+							     $('.jobfiles-update').val(jobfileNo);
 							     $('.monitoring_type_id').val(JobFileId);
 							     
 							      $(".broker-update").val(broker);
@@ -361,14 +409,7 @@ $(document).on('keyup','.jobfiles-update',function(){
 			     				dia.close();
 			});
 
-
-			   
-				
-
-			    
-			     
-
-			 }); 
+	 }); 
 
 
 
