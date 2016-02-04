@@ -48,7 +48,12 @@
 
 			 			<label for="search_manila">Search:</label>
 
-						<input type="search" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm light-table-filter"  id="search_manila"   onkeyup="search_manila(this.value)">
+						  <div class="input-group">
+     						 <input type="text" class="form-control" id="search_manila" placeholder="Search for...">
+     						  <span class="input-group-btn">
+      						     <button class="btn btn-default search_manila_jobfile" type="button">Go!</button>
+						      </span>
+						   </div>
 
 						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
 						<input type="hidden" class="manila_total_new">
@@ -526,6 +531,18 @@ var jbfl;
 
 
 <script>
+$('.search_manila_jobfile').click(function(){
+ var jbfl  = $('#search_manila').val();
+  search_manila(jbfl);
+});
+
+//trigger on key enter
+$(document).on('keydown','#search_manila',function(e){
+			 if (e.keyCode == 13){
+   	  	  $('.search_manila_jobfile').click();
+		  	 }
+});
+
 $('.sea_manila_tab').click(function(){
  jbfl='';
  search_manila(jbfl);

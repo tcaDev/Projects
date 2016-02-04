@@ -52,8 +52,14 @@
 
 			 			<label for="search_outport">Search:</label>
 
-					  	<input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm" id="search_outport" onkeyup="search_outport(this.value)">	
+					  
 					  	<input type="hidden" class="outport_total">
+					         <div class="input-group">
+     						   <input type="text" class="form-control" id="search_outport" placeholder="Search for...">
+     						     <span class="input-group-btn">
+      						     <button class="btn btn-default search_outport_jobfile" type="button">Go!</button>
+						      </span>
+						   </div>
 			 		</div>
 
 				</div>
@@ -509,7 +515,17 @@ var jbfl_outport;
 					 </div>
       
 <script>
+$('.search_outport_jobfile').click(function(){
+ var jbfl = $('#search_outport').val();
+ search_outport(jbfl);
+});
 
+//trigger on key enter
+$(document).on('keydown','#search_outport',function(e){
+			 if (e.keyCode == 13){
+   	  	  $('.search_outport_jobfile').click();
+		  	 }
+});
 	//for search
 	function search_outport(jbfl){
 

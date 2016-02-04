@@ -51,8 +51,12 @@
 
 			 		  	<label for="search_air">Search:</label>
 
-				  		<input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm" id="search_air" 	   onkeyup="search_airs(this.value)" >	
-
+				  			<div class="input-group">
+     						   <input type="text" class="form-control" id="search_air" placeholder="Search for...">
+     						     <span class="input-group-btn">
+      						     <button class="btn btn-default search_air_jobfile" type="button">Go!</button>
+						      </span>
+						   </div>
 			 		</div>
 
 				</div>
@@ -438,6 +442,18 @@ var jbfl;
 
 
 //air search
+$('.search_air_jobfile').click(function(){
+ jbfl =  $('#search_air').val();
+  search_airs(jbfl);
+});
+
+//trigger on key enter
+$(document).on('keydown','#search_air',function(e){
+			 if (e.keyCode == 13){
+   	  	  $('.search_air_jobfile').click();
+		  	 }
+});
+
 function search_airs(jbfl){
 
     		 	$.ajax({
