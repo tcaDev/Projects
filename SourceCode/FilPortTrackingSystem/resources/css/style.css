@@ -531,7 +531,7 @@ th{
 
     width: 95%;
 
-    height: 62%;
+    height: 540px;
 
     padding-right: 10px;
 
@@ -539,7 +539,7 @@ th{
 
     background-color: #F5F5F5;
 
-    overflow: auto;
+/*    overflow: auto;*/
     
 }
 

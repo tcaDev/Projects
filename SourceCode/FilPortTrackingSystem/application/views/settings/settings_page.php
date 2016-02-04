@@ -32,9 +32,11 @@
  </script>
 		<!--For  pagination start -->		
 		<script type="text/javascript">
-	
+	var loader = '<span style="font-size:18px;"><span class="fa fa-spinner fa-spin pull-left" style="top:25px;"></span>Please Wait...</span>';
 				$(document).ready(function() {
-				    $(".consigneepage").load(content_consignee);  //initial page number to load
+					$('.consigneepage').html(loader);
+				    $(".consigneepage").load(content_consignee);
+				      //initial page number to load
 				    $(".pagination_consignee").bootpag({
 				        total:total_consignee, // total number of pages
 				        page: 1, //initial page
@@ -57,6 +59,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.consigneepage').html(loader);
 				        $(".consigneepage").load(content_consignee, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -67,6 +70,7 @@
 				});
 
 				$(document).ready(function() {
+					$('.brokerpage').html(loader);
 				    $(".brokerpage").load(content_broker);  //initial page number to load
 				    $(".pagination_broker").bootpag({
 				        total:total_broker, // total number of pages
@@ -90,6 +94,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				       	$('.brokerpage').html(loader);
 				        $(".brokerpage").load(content_broker, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -101,6 +106,7 @@
 
 			 $(document).ready(function() {
 				    $(".shipperpage").load(content_shipper);  //initial page number to load
+				    $('.shipperpage').html(loader);
 				    $(".pagination_shipper").bootpag({
 				        total:total_shipper, // total number of pages
 				        page: 1, //initial page
@@ -123,6 +129,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.shipperpage').html(loader);
 				        $(".shipperpage").load(content_shipper, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    });
@@ -134,6 +141,7 @@
 			});
 
 		 $(document).ready(function() {
+		 			$('.vesselpage').html(loader);
 				    $(".vesselpage").load(content_vessel);  //initial page number to load
 				    $(".pagination_vessel").bootpag({
 				        total:total_vessel, // total number of pages
@@ -157,6 +165,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.vesselpage').html(loader);
 				        $(".vesselpage").load(content_vessel, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -170,6 +179,7 @@
 			});
 			
 				 $(document).ready(function() {
+				 	$('.haulerpage').html(loader);
 				    $(".haulerpage").load(content_hauler);  //initial page number to load
 				    $(".pagination_hauler").bootpag({
 				        total:total_hauler, // total number of pages
@@ -193,6 +203,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				        $('.haulerpage').html(loader);
 				        $(".haulerpage").load(content_hauler, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -206,6 +217,7 @@
 
 				
 			$(document).ready(function() {
+					$('.legendpage').html(loader);
 				    $(".legendpage").load(content_legend);  //initial page number to load
 				    $(".pagination_legend").bootpag({
 				        total:total_legend, // total number of pages
@@ -229,6 +241,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				       	$('.legendpage').html(loader);
 				        $(".legendpage").load(content_legend, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -243,6 +256,7 @@
 
 
 			$(document).ready(function() {
+					$('.prodpage').html(loader);
 				    $(".prodpage").load(content_product);  //initial page number to load
 				    $(".pagination_prod").bootpag({
 				        total:total_product, // total number of pages
@@ -266,6 +280,7 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				       	$('.prodpage').html(loader);
 				        $(".prodpage").load(content_product, {'page':num});
 				        //$(".loading-div").hide(); //show loading element
 				    	
@@ -311,35 +326,47 @@
                <!--FOr consignee data view  start--> 
                   <div class="consignee tab-pane fade in active"> 
                   <div class="pagination_consignee pull-right"></div>
-                  <div class="consigneepage" > </div>
+
+                 <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+                 	<div class="consigneepage" > </div>	
+                 </div>
+                  
                   </div>
 			    <!--FOr consignee data view  end-->
 
 			    <!--FOr BROKER data view  start--> 
 			    <div class="tab-pane fade broker">
 			      <div class="pagination_broker pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			      <div class="brokerpage"> </div>
+			      </div>
 			    </div>
 			     <!--FOr BROKER data view  END-->
 
 			      <!--FOr vessel data view  start--> 
 			    <div  class="vessel tab-pane fade">
 			      <div class="pagination_vessel pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="vesselpage"> </div>
+			 	  </div>
 			    </div>
 			       <!--FOr vessel data view  end--> 
 
 				 <!--FOr Hauler data view  start--> 
 			    <div  class="haulers tab-pane fade">
 			      <div class="pagination_hauler pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="haulerpage"> </div>
+			 	  </div>
 			    </div>
 			       <!--FOr Hauler data view  end--> 
 
 			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
 			      <div class="pagination_forward pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="forwardpage"> </div>
+			 	  </div>
 			    </div>
 			       <!--FOr forward data view  end--> 
 
@@ -347,14 +374,18 @@
 			    <!--FOr legend data view  start--> 
 			    <div  class="legendss tab-pane fade">
 			      <div class="pagination_legend pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="legendpage"> </div>
+			 	  </div>
 			    </div>
 			       <!--FOr legend data view  end--> 
 
 			    <!--FOr Products data view  start--> 
 			    <div  class="prod tab-pane fade">
 			      <div class="pagination_prod pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="prodpage"> </div>
+			 	  </div>
 			    </div>
 			       <!--FOr Products data view  end--> 
 
@@ -362,7 +393,9 @@
 		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
 			      <div class="pagination_shipper pull-right"> </div>
+			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
 				  <div class="shipperpage"> </div>
+				  </div>
 			    </div>
 			     <!--FOr shipper data view  end-->
 

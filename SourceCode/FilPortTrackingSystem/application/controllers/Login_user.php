@@ -904,7 +904,7 @@ function select_country(){
 	
    }
   
-			echo	  '<table class="table table-bordered table_consignee tablesorter" id="table_consignee"> 
+			echo '<table class="table table-bordered table_consignee tablesorter" id="table_consignee"> 
 					    <thead>
 					      <tr>
 					        <th>Consignee Name <span class="glyphicon glyphicon-sort"></span></th>

@@ -426,6 +426,11 @@
                               <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" />
                             </div>
 
+                            <div class="form-group">
+									<label>Other Fees</label>
+									<input type="text" name="reefer" class="form-control input-sm checkDec" id="otherFee-air"/>
+							</div>
+
 
                           </div>
  
