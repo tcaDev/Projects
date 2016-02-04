@@ -603,10 +603,10 @@
 									<label>Plug In for Reefer</label>
 									<input type="text" name="reefer" class="form-control input-sm checkDec" id="reefer-outport"/>
 								</div>
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label>Other Fees</label>
 									<input type="text" name="reefer" class="form-control input-sm checkDec" id="otherFee-outport"/>
-								</div>
+								</div> -->
 						</div>
 					</div>
 				</div>
