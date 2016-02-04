@@ -51,7 +51,7 @@
 
 			 		  	<label for="search_air">Search:</label>
 
-				  		<input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm" id="search_air" >		<!--   onkeyup="search_airs(this.value)" -->
+				  		<input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" class="form-control input-sm" id="search_air" 	   onkeyup="search_airs(this.value)" >	
 
 			 		</div>
 
