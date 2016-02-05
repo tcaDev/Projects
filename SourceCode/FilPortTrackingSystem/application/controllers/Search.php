@@ -439,9 +439,9 @@ if(isset($_SESSION['success'])){
 
 		<script>
 
-		$('.add_shipper').click(function(){
+		/*$('.add_shipper').click(function(){
 			alert('aaaa');
-		});
+		});*/
 
 	$('.contacts_shipper').click(function(){
 		
@@ -933,7 +933,7 @@ $this->message();
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
  
-	$id = $this->input->post('CarrierId');
+	$id = $this->input->post('hauler_id');
 	   if(isset($id)){
 	        $haulers = $this->User->search_hauler($id);
 	   }else{
@@ -1303,7 +1303,7 @@ function search_product(){
 	//get starting position to fetch the records
 	$page_position = (($page_number-1) * $item_per_page);
  
-	$id = $this->input->post('product_id');
+	$id = $this->input->post('prod_id');
    if(isset($id)){
            $vessel = $this->User->search_product($id);
    }else{
