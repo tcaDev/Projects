@@ -364,21 +364,24 @@ Class User extends CI_Model
    MiddleName LIKE '%$search_broker%' or LastName LIKE '%$search_broker%'   order by FirstName AND MiddleName AND LastName  ");
    return $query->result();
   }
-    function search_shipper($search_shipper){
+  
+  function search_shipper($search_shipper){
    $query = $this->db->query("select * from vw_shipper_full_info WHERE ShipperName LIKE '%$search_shipper%' order by ShipperId  ");
    return $query->result();
   }
-      function search_vessel($search_vessel){
+
+  function search_vessel($search_vessel){
    $query = $this->db->query("select * from Carrier WHERE CarrierName LIKE '%$search_vessel%' order by CarrierId  ");
    return $query->result();
   }
-     function search_hauler($search_hauler){
-   $query = $this->db->query("select * from HaulerOrTruck WHERE HaulerOrTruckId LIKE '%$search_hauler%' order by HaulerOrTruckId  ");
+
+  function search_hauler($search_hauler){
+   $query = $this->db->query("select * from HaulerOrTruck WHERE HaulerOrTruck LIKE '%$search_hauler%' order by HaulerOrTruckId  ");
    return $query->result();
   }
 
    function search_product($search_product){
-   $query = $this->db->query("select * from Products WHERE ProductId LIKE '%$search_product%' order by ProductId  ");
+   $query = $this->db->query("select * from Products WHERE ProductName LIKE '%$search_product%' order by ProductId  ");
    return $query->result();
   }
 /*     function search_forward($search_forward){
@@ -386,7 +389,7 @@ Class User extends CI_Model
    return $query->result();
   }*/
     function search_legend($search_status){
-   $query = $this->db->query("select * from Status WHERE StatusName LIKE '%$search_status%' order by StatusId  ");
+   $query = $this->db->query("select * from Status WHERE Description LIKE '%$search_status%' order by StatusId  ");
    return $query->result();
   }
     function search_container($search_container){
