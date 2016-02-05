@@ -113,9 +113,7 @@
                        }else{
                            $ATA = strftime('%Y-%m-%dT%H:%M:%S', strtotime($row->ATA));
                        }
-                          $broke= $row->Broker;
-                          $broker=reduce_multiples($broke," ");
-                          $broker = trim($broker);
+     
 
 
                 ?>
@@ -150,7 +148,7 @@
                  <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
                   <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
                   <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
-                  <td><?php echo stripslashes($broker); ?></td>
+                  <td><?php echo stripslashes($row->Broker); ?></td>
                   <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
                   <td><?php echo stripslashes($row->RFPDueDate); ?></td>
                   <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
@@ -183,7 +181,7 @@
     $('body').on('hidden.bs.modal','#myModal-3-2',function() {
         $('#myModal-3-2').modal('hide').remove();
         var myClone_jobfile_air = myBackup_jobfile_air.clone();
-        $('body').append(myClone_jobfile_air);
+        $('#myModal-3-2').html(myClone_jobfile_air);
         i=0;
     }); 
 
@@ -240,6 +238,8 @@ var jbfl;
    });
 
        $(document).on('click','.runchar-air',function(){
+        var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+         $('.jbNo-air').html(' <span class="jbNo-air">' + jobfileno + '</span> ');
 
       $('.list_charges_air').html('<div class="list_charges_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
 
@@ -264,7 +264,7 @@ var jbfl;
 
      /*View Reports*/
         $('.reports-air').click(function(){ 
-    var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+        var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
 
         $.ajax({
                             method: "POST",
@@ -280,9 +280,9 @@ var jbfl;
 
          /*View Charges*/
         $('.view_charges-air').click(function(){  
-    var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+          var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
     jbfl = jobfileno;
-
+       
         $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_charges_air');?>",

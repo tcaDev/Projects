@@ -122,9 +122,7 @@
 								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
 								             }
 
-								          $broke= $row->Broker;
-								          $broker=reduce_multiples($broke," ");
-								          $broker = trim($broker);
+	
 
 
 
@@ -163,7 +161,7 @@
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
 								          
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
- 										  <td><?php echo stripslashes($broker); ?></td>
+ 										  <td><?php echo stripslashes($row->Broker); ?></td>
  									
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
 								        
@@ -200,7 +198,7 @@
     $('body').on('hidden.bs.modal','#myModal-2-2',function() {
         $('#myModal-2-2').modal('hide').remove();
         var myClone_jobfile_outport = myBackup_jobfile_outport.clone();
-        $('body').append(myClone_jobfile_outport);
+        $('#myModal-2-2').html(myClone_jobfile_outport);
         i=0;
     }); 
     

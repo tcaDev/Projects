@@ -2557,7 +2557,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
      $email = addslashes($this->input->post('email'));
     $pass = addslashes($this->input->post('pass'));
     $passconf = addslashes($this->input->post('passconf'));
-    $activation = addslashes($this->input->post('activation'));
+    $activation = 0;
     $role = addslashes($this->input->post('role'));
 
     $photo = "user.png";
@@ -2589,17 +2589,34 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
       $this->db->insert('User',$data);
     }
+
+
+
+      /*update user*/
+
+      function user_update(){
+          $uid = $this->input->post('uid');
+          $status = $this->input->post('status');
+
+           $data = array(
+              'IsActive' => $stat
+           );
+          $this->db->where('UserId', $uid);
+          $this->db->update('User', $data);
+      }
       
 
       function get_User_list(){
         $User_list = $this->Jobdata->get_user();
 
         echo '
-            <div class="col-lg-12" style="height:450px;overflow:auto;">
+            <div class="col-lg-12">
             <table class=" table-bordered table-condensed " style="width:2000px;">
                 <thead>
                   <tr>
                       <th>No.</th>
+                      <th>Status</th>
+                      <th>Action</th>
                       <th>Username</th>
                       <th>FirstName</th>
                       <th>MiddleName</th>
@@ -2620,6 +2637,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         $i=0;
         foreach ($User_list as $row) {
           $i++;
+          $uid = $row->UserId;
           $uname = $row->UserName;
           $fname = $row->FirstName;
           $mname = $row->MiddleName;
@@ -2632,9 +2650,22 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           $brgy = $row->BarangarOrVillage;
           $towncity = $row->TownOrCityProvince;
 
+          $active= $row->IsActive;
+            if($active==1){ 
+              $stat = 'activated';
+              $mystat = '1';
+            }else{
+              $stat = 'deactivated';
+              $mystat= '0';
+            }
+
            echo '
             <tr>
               <td>'.$i.'</td>
+              <td class="hidden">'.$uid.'</td>
+              <td class="hidden">'.$mystat.'</td>
+              <td>'.$stat.' </td>
+              <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
               <td>'.$uname.'</td>
               <td>'.$fname.'</td>
               <td>'.$mname.'</td>
@@ -2658,7 +2689,17 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         
           ';
 
+           echo '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableSort_.js") . '"></script>
+                      ';
+
+
+
       }
+
+
 
 /*History THIS*/
       function get_manila_audit(){

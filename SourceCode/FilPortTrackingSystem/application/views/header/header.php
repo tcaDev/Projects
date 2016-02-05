@@ -120,6 +120,20 @@
   </div>
 </div>
 
+btn-Update-user
+
+
+<!-- Modal -->
+<div id="myModal_updateUser" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    
+    <?php $this->load->view('register/update_user'); ?>
+    
+  </div>
+</div>
+
 	<script>
 
 	 $(document).ready(function(){

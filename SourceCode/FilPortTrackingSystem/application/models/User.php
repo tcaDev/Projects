@@ -772,6 +772,7 @@ function get_jobfile_outport(){
     $this->db->select('*');
     $this->db->from('vw_JobFile');
     $this->db->where('MonitoringTypeId',1);
+    $this->db->order_by('JobFileId', 'desc');
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
       return $query->result();
@@ -783,6 +784,7 @@ function get_jobfile_outport(){
     $this->db->select('*');
     $this->db->from('vw_JobFile');
     $this->db->where('MonitoringTypeId',$montype);
+ /*   $this->db->order_by('JobFileId', 'desc');*/
     $this->db->like('JobFileNo',$jobfile);
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
@@ -794,6 +796,7 @@ function get_jobfile_outport(){
     $this->db->select('*');
     $this->db->from('vw_JobFile');
     $this->db->where('MonitoringTypeId',2);
+    $this->db->order_by('JobFileId', 'desc');
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
       return $query->result();
@@ -805,6 +808,7 @@ function get_jobfile_outport(){
   {
     $this->db->select('*');
     $this->db->from('vw_JobFileAir');
+    $this->db->order_by('JobFile_AirId', 'desc');
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
       return $query->result();

@@ -123,7 +123,7 @@
                             <!-- List of User Account -->
 
                             <div id="listUser" class="tab-pane fade">
-                                <div class="table_UserList"></div>
+                                <div class="table_UserList" style="width:100%;position:relative;overflow-y:auto;"></div>
                             </div>
 
 

@@ -367,6 +367,15 @@ function get_jobfile_air_audit($jobfile){
     return $query->result();
   }
 
+  function update_user($uid,$status){
+
+     $data = array(
+        'IsActive' => $status
+        );
+          $this->db->where('UserId', $uid);
+          $this->db->update('User', $data);
+  }
+
 }
 
 

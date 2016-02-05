@@ -113,9 +113,7 @@
 								                 $RFPDueDate = strftime('%Y-%m-%d', strtotime($row->RFPDueDate));
 								             }
 
-								          $broke= $row->Broker;
-								          $broker=reduce_multiples($broke," ");
-								          $broker = trim($broker);
+				
 
 
 				        				?>
@@ -155,7 +153,7 @@
 								          <td><?php echo stripslashes($row->DateReceivedOfBL); ?></td>
 								          	
 								          <td><?php echo stripslashes($row->DateReceivedOfOtherDocs); ?></td>
- 										  <td><?php echo stripslashes($broker); ?></td>
+ 										  <td><?php echo stripslashes($row->Broker); ?></td>
  										  	
 								          <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
 								           	
@@ -174,6 +172,19 @@
 				    </table>
 
 <script>
+
+/*add New jobfile*/
+
+  var myBackup_jobfile_manila = $('#myModal-manila').clone();
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-manila',function() {
+        $('#myModal-manila').modal('hide').remove();
+        var myClone_jobfile_manila = myBackup_jobfile_manila.clone();
+        $('#myModal-manila').html(myClone_jobfile_manila);
+        i=0;
+    }); 
+
+
 $(document).ready(function(){
 	    $("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
@@ -182,17 +193,7 @@ $(document).ready(function(){
 
 /*Refresh Modal When Close*/
 
-	/*add New jobfile*/
-	 var myBackup_jobfile = $('#myModal-1-2-1').clone();
-    
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#myModal-1-2-1',function() {
-        $('#myModal-1-2-1').modal('hide').remove();
-        var myClone_jobfile = myBackup_jobfile.clone();
-        $('body').append(myClone_jobfile);
-        i=0;
-    }); 
-
+	
 
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
@@ -233,6 +234,8 @@ $(document).ready(function(){
         var myClone_report = myBackup_report.clone();
         $('body').append(myClone_report);
     });
+
+
 
 
 /*Update Reset Data Modal*/

@@ -585,7 +585,7 @@
  <!--     <button type="button" class="btn btn-danger container_insert">test insert</button> -->
       <button type="button" class="btn btn-danger btn-Next">Next</button>
       <button type="submit" class="hidden btn btn-danger test_data container_insert" >Save</button>
-      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-danger btn-cancel-manila" data-dismiss="modal">Cancel</button>
     </div>
   </div>
 
@@ -595,6 +595,10 @@
 <!-- Form Restriction -->
 
 <script>
+
+$('.btn-cancel-manila').click(function(){
+	$('#mymodal-manila').modal('hide');
+});
 	
 	/*$(document).ready(function(){
 		 $('.btn-Next').attr('disabled', 'disabled');

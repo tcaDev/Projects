@@ -20,6 +20,7 @@ var suc;
 		});
 
 		$(document).on('click','.btn-cancel-mnla',function(){
+			$('#myModal-manila').modal('hide');
 			 location.reload();
 		});
 		});

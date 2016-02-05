@@ -98,13 +98,13 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2-1" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-manila" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-1-2-1" data-backdrop="static" data-keyboard="false" role="dialog">
+					  <div class="modal fade" id="myModal-manila" data-backdrop="static" data-keyboard="false" role="dialog">
 
 					    <div class="modal-dialog">
 
@@ -255,6 +255,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Running Charges</h4>
+				          	<h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_charges"> </div>
@@ -290,6 +291,7 @@
    		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
    });
        $(document).on('click','.runchar',function(){
+
    		$('.list_charges').html('<div class="list_charges"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');
    });
 
@@ -298,6 +300,8 @@ var jbfl;
 	$(document).on('click','.runchar',function(){
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl = jobfile;
+			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
+			
 	});
 
 	$(document).on('click','.btn-close-mnila',function(){
