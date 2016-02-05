@@ -6,7 +6,8 @@
 
  		<!--For  pagination start -->		
 		<script type="text/javascript">
-	
+	       	if((location.hash!="#outport")&&(location.hash!="#air")){
+		       	
 				$(document).ready(function() {
 					$('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				    $(".manila_pagination").load(content_manila);  //initial page number to load
@@ -35,6 +36,7 @@
 				    	
 				    });
 				});
+            }
 
 
        </script>

@@ -2597,9 +2597,11 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
       function user_update(){
           $uid = $this->input->post('uid');
           $status = $this->input->post('status');
+         
+           $stats = (int)$status;
 
            $data = array(
-              'IsActive' => $stat
+              'IsActive' => $stats
            );
           $this->db->where('UserId', $uid);
           $this->db->update('User', $data);
