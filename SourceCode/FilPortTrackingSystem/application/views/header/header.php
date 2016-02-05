@@ -120,9 +120,6 @@
   </div>
 </div>
 
-btn-Update-user
-
-
 <!-- Modal -->
 <div id="myModal_updateUser" class="modal fade" role="dialog">
   <div class="modal-dialog">
