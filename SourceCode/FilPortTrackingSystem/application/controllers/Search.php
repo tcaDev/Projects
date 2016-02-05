@@ -146,6 +146,15 @@ if(isset($_SESSION['success'])){
 				$.ajax({
 			  		method: "POST",
 					  url: "<?php echo base_url('Update/update_consigneecon');?>",
+					  beforeSend: function(){
+					  	 dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Update',
+				        		backgroundDismiss: false,
+				        		content: 'Updating Contact Information ',
+				   			});
+					  },
 			  		data: { c_id:cid,
 			  			    fname:fname, 
 			  			    mname:mname,
@@ -158,9 +167,10 @@ if(isset($_SESSION['success'])){
 		  			$(this).closest('tr').addClass('.mycolor');
 		   		 /* $('#modal_shippercontacts').html(data); 
 		   		  $('#modal_shippercontacts').click();*/
+		   		  dia.close();
 		   		 	    $.alert({
 								    title: 'Alert!',
-								    content: 'Data has been Updated!',
+								    content: 'Data Successfully Updated',
 								    confirm: function(){
 								    
 								    }
@@ -178,21 +188,23 @@ if(isset($_SESSION['success'])){
                                     confirmButton: 'Yes',
                                     confirmButtonClass: 'btn-info',
                                     cancelButton: 'No',
-                                    confirm: function () {            
-               						
-						
-									
-
-
-                                        $.post( "<?php echo base_url('Delete_datas/del_consignee_con');?>", 
+                                    confirm: function () { 
+                                    		 dia =	$.dialog({
+										 	  	    icon: 'fa fa-spinner fa-spin',
+										 	  	    closeIcon: false,
+									        		title: 'Delete',
+									        		backgroundDismiss: false,
+									        		content: 'Deleting Contact Information ',
+									   			});           
+                                        $.post( "<?php echo base_url('Delete_datas/del_consignee_con');?>",
                                         	{ 
                                         	  id:delete_id
                                         	})
 										  .done(function( data ) {
-	
+										  	dia.close();
 										    $.alert({
 													    title: 'Alert!',
-													    content: 'Data has been deleted!',
+													    content: 'Data Successfully Deleted',
 													    confirm: function(){
 					  									   /*$('#modal_shippercontacts').html(data); */
 		   												 $('.close').click();	
@@ -286,6 +298,15 @@ if(isset($_SESSION['success'])){
 				$.ajax({
 			  		method: "POST",
 					  url: "<?php echo base_url('Update/update_shippercon');?>",
+					  beforeSend: function(){
+					  	 dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Update',
+				        		backgroundDismiss: false,
+				        		content: 'Updating Contact Information ',
+				   			});
+					  },
 			  		data: { ship_id:ship_id,
 			  			    fname:fname, 
 			  			    mname:mname,
@@ -298,19 +319,17 @@ if(isset($_SESSION['success'])){
 		  			$(this).closest('tr').addClass('.mycolor');
 		   		 /* $('#modal_shippercontacts').html(data); 
 		   		  $('#modal_shippercontacts').click();*/
-		   		 	    $.alert({
+		   		  dia.close();
+		   		 	  		  $.alert({
 								    title: 'Alert!',
-								    content: 'Data has been Updated!',
+								    content: 'Data Successfully Updated',
 								    confirm: function(){
-								    
 								    }
 								});
 				});
 		});
 		$('.delete_contacts').click(function(){
 			  var delete_id = $(this).closest('tr').children('td:eq(0)').text();
-
-
                                   $.confirm({
                                     title: 'Delete the information?',
                                     content: 'You have 6 seconds to make a choice',
@@ -319,24 +338,25 @@ if(isset($_SESSION['success'])){
                                     confirmButtonClass: 'btn-info',
                                     cancelButton: 'No',
                                     confirm: function () {            
-               						
-						
-									
-
-
+               							 dia =	$.dialog({
+								 	  	    icon: 'fa fa-spinner fa-spin',
+								 	  	    closeIcon: false,
+							        		title: 'Delete',
+							        		backgroundDismiss: false,
+							        		content: 'Deleting Contact Information ',
+							   			});
                                         $.post( "<?php echo base_url('Delete_datas/del_shipper_con');?>", 
                                         	{ 
                                         	  id:delete_id
                                         	})
 										  .done(function( data ) {
-	
+											dia.close();
 										    $.alert({
 													    title: 'Alert!',
-													    content: 'Data has been deleted!',
+													    content: 'Data Successfully Deleted',
 													    confirm: function(){
 					  									   /*$('#modal_shippercontacts').html(data); */
 		   												 $('.close').click();	
-		   												
 													   }
 													});
 										    
