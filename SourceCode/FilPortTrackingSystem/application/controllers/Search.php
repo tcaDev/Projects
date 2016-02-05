@@ -650,7 +650,6 @@ function search_shipper(){
     	echo '      <table class="table table-bordered" id="table_shipper">
 					    <thead>
 					      <tr>
-
 					        <th>Shipper Name</th>
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
@@ -831,7 +830,7 @@ function search_vessel(){
 	  echo '	      <table class="table table-bordered" id = "table_vessel">
 					    <thead>
 					      <tr>
-					        <th>Shipping Line ID</th>
+					        <th hidden>Shipping Line ID</th>
 					        <th>Shipping Line Name</th>
 					        <th>Address</th>
 					        <th>Office Number</th>
@@ -864,7 +863,7 @@ function search_vessel(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.stripslashes($row->CarrierId).'</td>
+							        <td hidden>'.stripslashes($row->CarrierId).'</td>
 							        <td>'.stripslashes($row->CarrierName).'</td>    
 							        <td>'.stripslashes($row->Address).'</td>
 							        <td>'.stripslashes($row->OfficeNo).'</td>  
@@ -942,7 +941,7 @@ $this->message();
 	echo '<table class="table table-bordered" id ="table_hauler">
 		    <thead>
 		      <tr>
-		      	<th>Hauler ID</th>
+		      	<th hidden>Hauler ID</th>
 		        <th>Hauler/Truck Name</th>
 		         <th>Address</th>
 		         <th>Tin</th>
@@ -975,7 +974,7 @@ $this->message();
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.stripslashes($row->HaulerOrTruckId).'</td>
+							        <td hidden>'.stripslashes($row->HaulerOrTruckId).'</td>
 							        <td>'.stripslashes($row->HaulerOrTruck).'</td>
 							        <td>'.stripslashes($row->Address).'</td>
 							        <td>'.stripslashes($row->TIN).'</td>
@@ -1314,7 +1313,7 @@ function search_product(){
 	  echo '	      <table class="table table-bordered" id ="table_product">
 					    <thead>
 					      <tr>
-					        <th>Commodity ID</th>
+					        <th hidden>Commodity ID</th>
 					        <th>Commodity</th>
 					        <th>Status</th>
 					        <th colspan="2">Update</th>
@@ -1345,7 +1344,7 @@ function search_product(){
 					      			$mystats = '1';
 					         	}
 					    echo  '<tr>
-							        <td>'.stripslashes($row->ProductId).'</td>
+							        <td hidden>'.stripslashes($row->ProductId).'</td>
 							        <td>'.stripslashes($row->ProductName).'</td>      
 							        <td>'.stripslashes($stat) .'</td>
 						    		<td  class="hidden">'. stripslashes($mystat) .'</td>  
