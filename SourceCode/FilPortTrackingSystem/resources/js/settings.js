@@ -560,8 +560,6 @@ function search_vessel(vessel){
 					})
 					  .done(function(data) {
 					   $('.vesselpage').html(data);
-
-					      
 					  }); 
 
 
@@ -569,7 +567,6 @@ function search_vessel(vessel){
 
 
 function search_hauler(hauler){
-
  		    $.ajax({
 					  method: "POST",
 					  url: link + "/Search/search_hauler/",
@@ -634,8 +631,6 @@ function search_container(container){
 }
 
 function search_product(product){
-
-
  		    $.ajax({
 					  method: "POST",
 					  url:link + "/Search/search_product/",
