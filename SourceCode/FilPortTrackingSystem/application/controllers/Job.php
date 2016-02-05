@@ -3316,9 +3316,9 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
       }else{
 
        echo '
-             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="col-lg-12">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit-air" style="cursor:pointer;">
+            <table class="table table-bordered table-condensed order-table-audit-air" style="cursor:pointer;width:4400px;">
                 <thead>
                   <tr>
                       <th>Jobfile No</th>
@@ -3429,6 +3429,12 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           </div>
         </div>
           ';
+
+          echo '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableSort_.js") . '"></script>
+                      ';
 
     }
   }
@@ -3771,9 +3777,9 @@ function get_audit_charges_air(){
     }else{
 
          echo '
-             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="col-lg-12">
              <div class="row">
-            <table class="table table-bordered table-condensed order-table-audit" style="cursor:pointer;">
+            <table class="table table-bordered table-condensed order-table-audit" style="cursor:pointer;width:4000px;">
                 <thead>
                   <tr>
                       <th>Jobfile Number</th>
@@ -3841,6 +3847,12 @@ function get_audit_charges_air(){
           </div>
         </div>
             ';
+
+              echo '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableSort_.js") . '"></script>
+                      ';
 
     }
   }

@@ -1,6 +1,6 @@
 
 
-	var startFixedColumns = 1;
+	var startFixedColumns = 0;
 $(function(){
 	$('table').tablesorter({
 		    widthFixed : true,

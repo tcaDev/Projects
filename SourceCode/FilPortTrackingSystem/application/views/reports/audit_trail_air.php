@@ -142,17 +142,10 @@ $(document).on('click','#collapse2 #audit-air',function(){
 		              $('.table-audit-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
 	  		success: function(response){              
-	  			$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
-	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
-	  				$.getScript("<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>");
-	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
+	  			
             $(".table-audit-air").html(response); 
 
-            $("table").css('cursor','pointer');
-					$("th").css("vertical-align","middle");
-					$("tbody td").css("white-space","nowrap");
-					$("tbody td").css("min-width","60px");
-					$("thead th").css("white-space","nowrap"); 
+       
             
        		 }
         });

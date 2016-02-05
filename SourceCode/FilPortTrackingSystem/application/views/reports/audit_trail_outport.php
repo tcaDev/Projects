@@ -237,16 +237,9 @@ $(document).on('click','#collapse2 #audit-outport',function(){
 	  		}
 		})
   		.done(function(data) {
-  				$.getScript('<?php echo base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js");?>');      
-	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>");
-	  			$.getScript("<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>");
-	  			$.getScript("<?php echo base_url('resources/table_sort/tableSort_.js');?>");
+  			
 	  				$(".table-audit-outport").html(data); 
-	  				$("table").css('cursor','pointer');
-					$("th").css("vertical-align","middle");
-					$("tbody td").css("white-space","nowrap");
-					$("tbody td").css("min-width","60px");
-					$("thead th").css("white-space","nowrap"); 
+	  			
 		});
 
 
