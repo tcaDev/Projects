@@ -327,7 +327,7 @@
                   <div class="consignee tab-pane fade in active"> 
                   <div class="pagination_consignee pull-right"></div>
 
-                 <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+                 <div class="report_header-consignee" style="width:100%;position:relative;overflow-y:auto;height:440px;">
                  	<div class="consigneepage" > </div>	
                  </div>
                   
@@ -337,7 +337,7 @@
 			    <!--FOr BROKER data view  start--> 
 			    <div class="tab-pane fade broker">
 			      <div class="pagination_broker pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			      <div class="brokerpage"> </div>
 			      </div>
 			    </div>
@@ -346,7 +346,7 @@
 			      <!--FOr vessel data view  start--> 
 			    <div  class="vessel tab-pane fade">
 			      <div class="pagination_vessel pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-vessel" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="vesselpage"> </div>
 			 	  </div>
 			    </div>
@@ -355,7 +355,7 @@
 				 <!--FOr Hauler data view  start--> 
 			    <div  class="haulers tab-pane fade">
 			      <div class="pagination_hauler pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-hauler" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="haulerpage"> </div>
 			 	  </div>
 			    </div>
@@ -364,7 +364,7 @@
 			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
 			      <div class="pagination_forward pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header"  style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="forwardpage"> </div>
 			 	  </div>
 			    </div>
@@ -374,7 +374,7 @@
 			    <!--FOr legend data view  start--> 
 			    <div  class="legendss tab-pane fade">
 			      <div class="pagination_legend pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-legend" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="legendpage"> </div>
 			 	  </div>
 			    </div>
@@ -383,17 +383,16 @@
 			    <!--FOr Products data view  start--> 
 			    <div  class="prod tab-pane fade">
 			      <div class="pagination_prod pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-prod" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 			 	  <div class="prodpage"> </div>
 			 	  </div>
 			    </div>
 			       <!--FOr Products data view  end--> 
 
-
 		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
 			      <div class="pagination_shipper pull-right"> </div>
-			       <div style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-shipper" style="width:100%;position:relative;overflow-y:auto;height:440px;">
 				  <div class="shipperpage"> </div>
 				  </div>
 			    </div>

@@ -1,6 +1,6 @@
-<div class="modal-content" style="width:180%;right:40%;padding: 10px;">
+<div class="modal-content " style="width:180%;right:40%;padding: 10px;">
 	<div class="modal-header" style="background-color: deepskyblue;">
-		<button type="button" class="close btn-close" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
 		<h4 class="modal-title text-uppercase ">Add Data Form</h4>
 </div>
 
@@ -678,6 +678,8 @@
  		}
  	});
 });
+
+
 
 
 //check  if num or not

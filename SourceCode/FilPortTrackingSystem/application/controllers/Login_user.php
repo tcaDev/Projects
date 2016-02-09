@@ -1024,10 +1024,21 @@ function select_country(){
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>
  <script src="<?php echo base_url('resources/js/get_datas.js');?>"></script>
- 
  <script src="<?php echo base_url('resources/js/settings.js');?>"></script>
   				  
-
+<script>
+	$('#table_consignee').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     	
+	     		stickyHeaders_attachTo: '.report_header-consignee'
+	     }
+	});
+</script>
 		
 	<?php	
 	}

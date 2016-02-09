@@ -12,6 +12,6 @@ $(function(){
 	     		stickyHeaders_attachTo: '.report_header'
 	     }
 	});
+
+
 });
-
-

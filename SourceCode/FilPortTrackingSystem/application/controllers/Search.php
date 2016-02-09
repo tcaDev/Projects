@@ -569,7 +569,7 @@ if(isset($_SESSION['success'])){
 <script src="<?php echo base_url('resources/js/replacejscss.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableReportSort.js');?>"></script>
+ <script src="<?php echo base_url('resources/table_sort/tableReportSort.js');?>"></script>
 		
 <script>
 	$(document).ready(function() { 
@@ -713,13 +713,21 @@ function search_shipper(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableReportSort.js');?>"></script>	
-
- <script>
-	$(document).ready(function() { 
-        $("#table_shipper").tablesorter();}); 
- </script>
 	
+	<script>
+	$('#table_shipper').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     		
+	     		stickyHeaders_attachTo: '.report_header-shipper'
+	     }
+	});
+
+	</script>
 				<script>
 				$('.add_contact').click(function(){
 				  var id= $(this).closest('tr').children('td:eq(0)').text();
@@ -879,13 +887,22 @@ function search_vessel(){
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
-		
- <script>
-	$(document).ready(function() { 
-        $("#table_vessel").tablesorter();}); 
 
- </script>
+		
+<script>
+	$('#table_vessel').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     		
+	     		stickyHeaders_attachTo: '.report_header-vessel'
+	     }
+	});
+
+	</script>
 
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 			<script>
@@ -990,7 +1007,6 @@ $this->message();
 
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
 
 <!-- 
 <script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	
@@ -1002,6 +1018,21 @@ $this->message();
  </script>
  -->
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
+
+ <script>
+	$('#table_hauler').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     		
+	     		stickyHeaders_attachTo: '.report_header-hauler'
+	     }
+	});
+
+	</script>
 
 	<script>
 	 	 $('.update_hauler').click(function(){
@@ -1136,7 +1167,7 @@ $this->message();
 	   }else{
 	   	 $legend  =  $this->User->findlimit_legend($item_per_page,$page_position);	
 	   } 	
-	echo '<table class="table table-bordered">
+	echo '<table class="table table-bordered" id="table_legend">
 		    <thead>
 		      <tr>
 		        <th>Status Name</th>
@@ -1194,7 +1225,22 @@ $this->message();
 			    	  </tr>';}?>
     </tbody>
 </table>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
+<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
+ <script>
+	$('#table_legend').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     		
+	     		stickyHeaders_attachTo: '.report_header-legend'
+	     }
+	});
 
+	</script>
  <script src="<?php echo base_url('resources/js/higlight.js');?>"></script>	
 
 	<script>
@@ -1358,7 +1404,20 @@ function search_product(){
 					  
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
+ <script>
+	$('#table_product').tablesorter({
+		    widthFixed : true,
+			widgets        : ['zebra','stickyHeaders'],	
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true,
+			widgetOptions: {
+	     		
+	     		stickyHeaders_attachTo: '.report_header-prof'
+	     }
+	});
+
+	</script>
 		
 <!-- 					  
   <script src="<?php// echo base_url('resources/js/higlight.js');?>"></script>	

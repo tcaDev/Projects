@@ -172,28 +172,24 @@
 				    </table>
 
 <script>
-
-/*add New jobfile*/
-
-  var myBackup_jobfile_manila = $('#myModal-manila').clone();
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#myModal-manila',function() {
-        $('#myModal-manila').modal('hide').remove();
-        var myClone_jobfile_manila = myBackup_jobfile_manila.clone();
-        $('#myModal-manila').html(myClone_jobfile_manila);
-        i=0;
-    }); 
-
-
-$(document).ready(function(){
-	    $("th").css("vertical-align","middle");
+  		$("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
 		$("thead th").css("white-space","nowrap");
+/*add New jobfile*/
 
 /*Refresh Modal When Close*/
 
-	
+	 var myBackup_jobfile_mnila = $('#myModal-1-2').clone();
+    
+    // Delegated events because we make a copy, and the copied button does not exist onDomReady
+    $('body').on('hidden.bs.modal','#myModal-1-2',function() {
+        $('#myModal-1-2').modal('hide').remove();
+        var myClone_jobfile_mnila = myBackup_jobfile_mnila.clone();
+        $('body').append(myClone_jobfile_mnila);
+        i=0;
+    }); 
+
 
 	/*add New Vessel Modal*/
 	 var myBackup_vessel = $('#addVessel-mnla').clone();
@@ -235,43 +231,9 @@ $(document).ready(function(){
         $('body').append(myClone_report);
     });
 
+$(document).ready(function(){
+	 
 
-
-
-/*Update Reset Data Modal*/
-
-    /*Update Container*/
-	 var myBackup_update_container = $('#updateContainer-mnla').clone();
-    
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#updateContainer-mnla ',function() {
-        $('#updateContainer-mnla').modal('hide').remove();
-        var myClone_update_container = myBackup_update_container.clone();
-        $('body').append(myClone_update_container);
-    });	
-
-    /*Update Product Modal*/
-	 var myBackup_product_update = $('#updateProduct-mnla').clone();
-    
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#updateProduct-mnla ',function() {
-        $('#updateProduct-mnla').modal('hide').remove();
-        var myClone_product_update = myBackup_product_update.clone();
-        $('body').append(myClone_product_update);
-    });	
-
-     /*Update Vessel Modal*/
-	 var myBackup_vessel_update = $('#updateVessel-mnla').clone();
-    
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#updateVessel-mnla ',function() {
-        $('#updateVessel-mnla').modal('hide').remove();
-        var myClone_vessel_update = myBackup_vessel_update.clone();
-        $('body').append(myClone_vessel_update);
-    });	
-
-
-    $('[data-toggle="tooltip"]').tooltip();   
 
 
 	//for getting the product goods

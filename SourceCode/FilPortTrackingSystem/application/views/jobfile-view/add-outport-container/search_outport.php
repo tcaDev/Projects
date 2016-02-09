@@ -198,7 +198,7 @@
     $('body').on('hidden.bs.modal','#myModal-2-2',function() {
         $('#myModal-2-2').modal('hide').remove();
         var myClone_jobfile_outport = myBackup_jobfile_outport.clone();
-        $('#myModal-2-2').html(myClone_jobfile_outport);
+        $('body').append(myClone_jobfile_outport);
         i=0;
     }); 
     

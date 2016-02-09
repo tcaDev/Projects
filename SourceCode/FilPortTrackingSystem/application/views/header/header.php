@@ -31,11 +31,6 @@
 	<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
 	
 </head>
-
-
-
-<body>
-
 	<div class="container container-case">
 
 	<!-- Header -->

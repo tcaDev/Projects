@@ -175,17 +175,15 @@
     $("tbody td").css("min-width","60px");
     $("thead th").css("white-space","nowrap"); 
 /*add New jobfile*/
-   var myBackup_jobfile_air = $('#myModal-3-2').clone();
+   // var myBackup_jobfile_air = $('#myModal-3-2').clone();
     
-    // Delegated events because we make a copy, and the copied button does not exist onDomReady
-    $('body').on('hidden.bs.modal','#myModal-3-2',function() {
-        $('#myModal-3-2').modal('hide').remove();
-        var myClone_jobfile_air = myBackup_jobfile_air.clone();
-        $('#myModal-3-2').html(myClone_jobfile_air);
-        i=0;
-    }); 
-
-
+   //  // Delegated events because we make a copy, and the copied button does not exist onDomReady
+   //  $('body').on('hidden.bs.modal','#myModal-3-2',function() {
+   //      $('#myModal-3-2').modal('hide').remove();
+   //      var myClone_jobfile_air = myBackup_jobfile_air.clone();
+   //      $('body').append(myClone_jobfile_air);
+   //      i=0;
+   //  }); 
     /*add New jobfile*/
    var myBackup_product_air = $('#addProduct-air').clone();
     

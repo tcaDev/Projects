@@ -100,13 +100,13 @@
 
 					<!-- Trigger the modal with a button -->
 
-					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-manila" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
 
 
 
 					  <!-- Modal -->
 
-					  <div class="modal fade" id="myModal-manila" data-backdrop="static" data-keyboard="false" role="dialog">
+					  <div class="modal fade" id="myModal-1-2" data-backdrop="static" data-keyboard="false">
 
 					    <div class="modal-dialog">
 
@@ -279,6 +279,8 @@
    <!-- numeral script won't work without net -->
    <script>
    //for update charges
+
+
 
    $(document).on('click','.btn-Container',function(){
    		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
