@@ -12,7 +12,7 @@
 			</div>
 		</div>
 
-		<div class="dash-side">
+		<div class="dash-side" style="overflow-y:auto;">
 			<div class="tab-content col-lg-12">
 			
 					 <div class="tab-pane active" id="tab_a">
