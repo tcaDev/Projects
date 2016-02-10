@@ -627,10 +627,10 @@
 									<input type="text" name="reefer" class="form-control input-sm checkDec" id="reefer"/>
 								</div>
 
-							<!-- 	<div class="form-group">
+								<div class="form-group">
 									<label>Other Fees</label>
 									<input type="text" name="reefer" class="form-control input-sm checkDec" id="otherFee"/>
-								</div> -->
+								</div>
 <!-- 
 								<div style="text-align:right;">
 									<button type="button" class="btn btn-primary "><span class=" fa fa-th-list fa-fw"></span> Particular Charges</button>

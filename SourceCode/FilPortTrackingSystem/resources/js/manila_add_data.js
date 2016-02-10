@@ -1124,8 +1124,10 @@ $(document).on('click','.save_charge',function(){
 	   var get_sra_app       	  =  $('#sra-app').val();
        var get_sra_inspect    	  =  $('#sra-inspect').val();
        var get_bad_cargo 	  	  =  $('#bad-cargo').val();
-        var get_bpi    	  =  $('#bpi').val();
+       var get_bpi    	  		  =  $('#bpi').val();
        var get_reefer 	  	  =  $('#reefer').val();
+       var get_otherfees 	  	  =  $('#otherFee').val();
+
       
 
 	  
@@ -1148,10 +1150,11 @@ $(document).on('click','.save_charge',function(){
        var bad_cargo 	  =  get_bad_cargo.replace(/,/g,'');
        var bpi    =  get_bpi.replace(/,/g,'');
        var reefer 	  =  get_reefer.replace(/,/g,'');
+       var otherfee 	  =  get_otherfees.replace(/,/g,'');
 
      
 
-	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo,bpi,reefer];
+	    var totalCharges = [lodge,cont_deposit,thc_charges,arrastre,wharfage,weight,del,dispatch,storage,demurrage,detention,eic,bai_app,bai_inspect,sra_app,sra_inspect,bad_cargo,bpi,reefer,otherfee];
         var wVal = 0;
 		var len = totalCharges.length;
 		 for($x = 0 ; $x <= len ; $x++){
@@ -1209,7 +1212,8 @@ $(document).on('click','.save_charge',function(){
 			                   sra_inspect  :sra_inspect,
 			                   bad_cargo    :bad_cargo,
 			                   bpi 			:bpi,
-			                   reefer       :reefer
+			                   reefer       :reefer,
+			                   otherfee 	:otherfee
 			                   /*all_charges  :all_charges,*/
 			                   /*part_charges :part_charges*/
 			  	   		 }

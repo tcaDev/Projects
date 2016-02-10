@@ -348,6 +348,7 @@ var jbfl;
 			$('#runchar .bad-cargo').removeAttr('disabled');
 			$('#runchar .bpi').removeAttr('disabled');
 			$('#runchar .reefer').removeAttr('disabled');
+			$('#runchar .otherfee').removeAttr('disabled');
 
 			$('.asd').removeAttr('disabled');
 			$(this).attr('disabled','disabled');
@@ -373,6 +374,7 @@ var jbfl;
      var bad_cargo    = $('#runchar .bad-cargo').val().replace(/,/g,'');
      var bpi  = $('#runchar .bpi').val().replace(/,/g,'');
      var reefer    = $('#runchar .reefer').val().replace(/,/g,'');
+     var otherfee    = $('#runchar .otherfee').val().replace(/,/g,'');
 
 
 		 	$.ajax({
@@ -407,7 +409,8 @@ var jbfl;
 			                   sra_inspect  :sra_inspect,
 			                   bad_cargo    :bad_cargo,
 			                   bpi :bpi,
-			                   reefer :reefer
+			                   reefer :reefer,
+			                   otherfee : otherfee
 
 			  	   		 }
 	              })

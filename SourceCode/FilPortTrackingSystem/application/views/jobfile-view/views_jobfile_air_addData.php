@@ -426,10 +426,10 @@
                               <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" />
                             </div>
 
-                           <!--  <div class="form-group">
+                            <div class="form-group">
 									<label>Other Fees</label>
-									<input type="text" name="reefer" class="form-control input-sm checkDec" id="otherFee-air"/>
-							</div> -->
+									<input type="text" name="otherfee" class="form-control otherFee_airs input-sm checkDec" id="otherFee_airs"/>
+							</div>
 
 
                           </div>

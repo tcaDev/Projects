@@ -322,6 +322,7 @@ var jbfl_outport;
 			$('#runchar-outport .bad-cargo').removeAttr('disabled');
 			$('#runchar-outport .bpi').removeAttr('disabled');
 			$('#runchar-outport .reefer').removeAttr('disabled');
+			$('#runchar-outport .otherfee').removeAttr('disabled');
 
 			$('.update_charges-outport').removeAttr('disabled');
 			$(this).attr('disabled','disabled');
@@ -359,8 +360,9 @@ var jbfl_outport;
      var sra_app 	  = $('#runchar-outport .sra-app').val().replace(/,/g,'');
      var sra_inspect  = $('#runchar-outport .sra-inspect').val().replace(/,/g,'');
      var bad_cargo    = $('#runchar-outport .bad-cargo').val().replace(/,/g,'');
-       var bpi  = $('#runchar-outport .bpi').val().replace(/,/g,'');
+     var bpi  = $('#runchar-outport .bpi').val().replace(/,/g,'');
      var reefer    = $('#runchar-outport .reefer').val().replace(/,/g,'');
+     var otherfee    = $('#runchar-outport .otherfee').val().replace(/,/g,'');
 
 		 	$.ajax({
 		           method: "POST",
@@ -393,8 +395,9 @@ var jbfl_outport;
 			                   sra_app      :sra_app,
 			                   sra_inspect  :sra_inspect,
 			                   bad_cargo    :bad_cargo,
-			                   bpi : bpi,
-			                   reefer : reefer
+			                   bpi 			: bpi,
+			                   reefer 		: reefer,
+			                   otherfee 	: otherfee
 
 			  	   		 }
 	              })

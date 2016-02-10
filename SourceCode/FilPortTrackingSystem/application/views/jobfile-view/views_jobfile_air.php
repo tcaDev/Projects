@@ -235,6 +235,7 @@
 					$('#runchar-air .VCRC_airs').removeAttr('disabled');
 					$('#runchar-air .CNI_airs').removeAttr('disabled');
 				    $('#runchar-air .CNIU_airs').removeAttr('disabled');
+				    $('#runchar-air .otherfee_airs').removeAttr('disabled');
 		/*			$('#runchar-air .thc-charges_airs').removeAttr('disabled');
 					$('#runchar-air .arrastre_airs').removeAttr('disabled');
 					$('#runchar-air .wharfage_airs').removeAttr('disabled');
@@ -499,6 +500,7 @@ function search_airs(jbfl){
      var vrc          = $('#runchar-air .VCRC_airs').val().replace(/,/g,'');
      var cni           = $('#runchar-air .CNI_airs').val().replace(/,/g,'');
      var cniu          = $('#runchar-air .CNIU_airs').val().replace(/,/g,'');
+     var otherfee          = $('#runchar-air .otherfee_airs').val().replace(/,/g,'');
    
 		 	$.ajax({
 		           method: "POST",
@@ -520,7 +522,8 @@ function search_airs(jbfl){
 			  	   			   storage      :storage,
 			  	   			   vrc          :vrc,
 			  	   			   cni          :cni,
-			  	   			   cniu         :cniu
+			  	   			   cniu         :cniu,
+			  	   			   otherfee 	:otherfee
 /*			                   cont_deposit :cont_deposit,   
 			                   thc_charges  :thc_charges,
 			                   wharfage     :wharfage,

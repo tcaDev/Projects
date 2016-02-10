@@ -444,6 +444,7 @@ function air_add_charges(){
        var get_vrc 	  			  =  $('.pill-charges-air-add .VCRC_airs').val();
        var get_cni        		  =  $('.pill-charges-air-add .CNI_airs').val();
 	   var get_cniu       		  =  $('.pill-charges-air-add .CNIU_airs').val();
+	   var get_otherfee       	  =  $('.pill-charges-air-add .otherFee_airs').val();
 
 	   var lodge 	 	  =  get_lodge.replace(/,/g,'');
  	   var break_air      =  get_break_airs.replace(/,/g,'');
@@ -452,9 +453,9 @@ function air_add_charges(){
        var vrc 	 		  =  get_vrc.replace(/,/g,'');
        var cni            =  get_cni.replace(/,/g,'');
 	   var cniu       	  =  get_cniu.replace(/,/g,'');
+	   var otherfee       =  get_otherfee.replace(/,/g,'');
 
-	
-	    var totalCharges = [lodge,break_air,bad_cargo,storage,vrc,cni,cniu];
+	    var totalCharges = [lodge,break_air,bad_cargo,storage,vrc,cni,cniu,otherfee];
         var wVal = 0;
 		var len = totalCharges.length;
 		 for($x = 0 ; $x <= len ; $x++){
@@ -503,7 +504,8 @@ function air_add_charges(){
 			  	   			   storage      :storage,
 			  	   			   vrc          :vrc,
 			  	   			   cni          :cni,
-			  	   			   cniu         :cniu
+			  	   			   cniu         :cniu,
+			  	   			   otherfee 	:otherfee
 
 			  		}
 				})

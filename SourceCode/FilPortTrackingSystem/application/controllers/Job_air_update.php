@@ -225,6 +225,7 @@ function jobfile_add_charge_air(){
    $vrc            =  $this->input->post('vrc');
    $cni      =  $this->input->post('cni');
    $cniu        =  $this->input->post('cniu');
+   $otherfee        =  $this->input->post('otherfee');
 
       $job     = $this->Jobdata->select_jobfile_air($jobfile);
         foreach($job as $row){
@@ -247,7 +248,8 @@ function jobfile_add_charge_air(){
                'BadCargoOrderFee'      =>$bad_cargo,
                'VCRC'                  =>$vrc,
                'CNI'                   =>$cni,
-               'CNIU'                  =>$cniu
+               'CNIU'                  =>$cniu,
+               'OtherFees'                  =>$otherfee
             /*   'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges*/
             );
@@ -265,6 +267,7 @@ function jobfile_add_charge_air(){
                'VCRC'                  =>$vrc,
                'CNI'                   =>$cni,
                'CNIU'                  =>$cniu,
+               'OtherFees'             =>$otherfee,
                'DateUpdated'           =>date('Y-m-d H:i'),
                'UpdatedBy_UserId'      =>$userid
             /*   'AllCharges'       => $all_charges,

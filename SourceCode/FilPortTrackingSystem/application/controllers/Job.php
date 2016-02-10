@@ -497,6 +497,11 @@ function get_jobfile_global_search(){
                                 <label>Plug In for Reefer</label>
                                 <input type="text" name="reefer" class="form-control input-sm reefer checkDec" id="reefer" value="'.$row->PlugInForReefer.'"disabled/>
                               </div>
+
+                              <div class="form-group">
+                                <label>Other Fees</label>
+                                <input type="text" name="otherfee" class="form-control input-sm otherfee checkDec" id="otherfee" value="'.$row->OtherFees.'"disabled/>
+                              </div>
                           </div>
                         </div>';
                       }
@@ -548,6 +553,11 @@ function get_jobfile_global_search(){
                             <div class="form-group">
                               <label>CNIU</label>
                               <input type="text" name="wharfage" class="form-control input-sm CNIU_airs checkDec-air"  id="CNIU_airs" value="'.$row->CNIU.'" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                              <label>Other Fees</label>
+                              <input type="text" name="otherfee" class="form-control input-sm otherfee_airs checkDec-air"  id="otherfee_airs" value="'.$row->OtherFees.'" disabled/>
                             </div>
 
                         </div>
@@ -775,6 +785,7 @@ function get_jobfile_global_search(){
                      $total += $row->VCRC;
                      $total += $row->CNI;
                      $total += $row->CNIU;
+                     $total += $row->OtherFees;
                       echo '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
@@ -827,7 +838,10 @@ function get_jobfile_global_search(){
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                               
+                                <b> Other Fees : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->OtherFees, 2, '.', ',').'
+                                </span>
                             </td>
                           </tr>
                           <tr>
@@ -860,6 +874,7 @@ function get_jobfile_global_search(){
                   $total += $row->DispatchFee;
                   $total += $row->BadCargo;
                   $total += $row->Storage;
+                  $total += $row->OtherFees;
                       echo '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
@@ -982,7 +997,10 @@ function get_jobfile_global_search(){
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-
+                                <b>  Other Fees : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->OtherFees, 2, '.', ',').'
+                                </span>
                             </td>
                           </tr>
                           <tr>
@@ -2446,8 +2464,9 @@ foreach($job as $row){
    $sra_app           =  addslashes($this->input->post('sra_app'));   
    $sra_inspect       =  addslashes($this->input->post('sra_inspect'));
    $bad_cargo         =  addslashes($this->input->post('bad_cargo'));
-    $bpi       =  addslashes($this->input->post('bpi'));
-   $reefer         =  addslashes($this->input->post('reefer'));
+    $bpi              =  addslashes($this->input->post('bpi'));
+   $reefer            =  addslashes($this->input->post('reefer'));
+   $otherfee          =  addslashes($this->input->post('otherfee'));
 /*   $all_charges       =  addslashes($this->input->post('all_charges'));
    $part_charges      =  addslashes($this->input->post('part_charges'));
 */
@@ -2476,8 +2495,9 @@ if($query->num_rows() ==1){*/
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
-              'BPIInspection'    => $bpi,
-               'PlugInForReefer'         => $reefer
+               'BPIInspection'    => $bpi,
+               'PlugInForReefer'  => $reefer,
+               'OtherFees'        => $otherfee
 
             /*   'AllCharges'       => $all_charges,
                'ParticularCharges'=> $part_charges*/
@@ -2506,10 +2526,11 @@ $this->db->update('RunningCharges', $update_charges);
                'SRAApplication'   => $sra_app,
                'SRAInspection'    => $sra_inspect,
                'BadCargo'         => $bad_cargo,
-                'BPIInspection'    => $bpi,
-               'PlugInForReefer'    => $reefer,
+                'BPIInspection'   => $bpi,
+               'PlugInForReefer'  => $reefer,
+               'OtherFees'        => $otherfee,
                'DateUpdated'      => Date('Y-m-d H:i'),
-               'UpdatedBy_UserId'  => $userid
+               'UpdatedBy_UserId' => $userid
             );
 
 $this->db->insert('RunningChargesHistory', $update_charges_history);
@@ -3281,6 +3302,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>SRA Inspection</th>
                       <th>SRA Application</th>
                       <th>Bad Cargo</th>
+                      <th>Other Fees</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -3308,8 +3330,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
             $sra_inspect = $row->SRAInspection;
             $sra_app = $row->SRAApplication;
             $bad_cargo = $row->BadCargo;
-
-
+            $otherfee = $row->OtherFees;
 
             echo '
             <tr>
@@ -3333,6 +3354,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td>'.$sra_inspect.'</td>
               <td>'.$sra_app.'</td>
               <td>'.$bad_cargo.'</td>
+              <td>'.$otherfee.'</td>
             </tr>
             ';
           }
@@ -3640,6 +3662,7 @@ function get_audit_commodity_air(){
                       <th>Hauler/Trucker Name</th>
                       <th>Total Storage</th>
                       <th>Additional Per Day Include VAT</th>
+                      <th>Other Fees</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -3663,6 +3686,7 @@ function get_audit_commodity_air(){
                   <td>'.$row->HaulerOrTruck.'</td>
                   <td>'.$row->TotalStorage.'</td>
                   <td>'.$row->AdtlPerDayncludeVat.'</td>
+                  <td>'.$row->OtherFees.'</td>
               </tr>
             ';
           }
@@ -3772,6 +3796,7 @@ function get_audit_charges_air(){
                       <th>VCRC</th>
                       <th>CNI</th>
                       <th>CNIU</th>
+                      <th>Other Fees</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -3791,6 +3816,7 @@ function get_audit_charges_air(){
                   <td>'.$row->VCRC.'</td>
                   <td>'.$row->CNI.'</td>
                   <td>'.$row->CNIU.'</td>
+                  <td>'.$row->OtherFees.'</td>
               </tr>
             ';
           }
