@@ -321,6 +321,11 @@
 			</div>
 		</div>
 		<!-- END PRINT REPORT MANILA AND OUTPORT  -->
+		<div class="modal fade" id="jobfiles" role="dialog">
+		    <div class="modal-dialog">		      
+				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
+		    </div>
+ 		</div>
 </body>
 <script>
  var jbNo;
@@ -487,9 +492,9 @@
 				  		}
 					})
 			  		.done(function(report_charges_data){
-			  			content_charges = report_charges_data;
-			  			$('#tbl-third-report-data').html(content_charges);
-			  			$('#tbl-third-report-data-print').html(content_charges);
+			  			content_charges = JSON.parse(report_charges_data);
+			  			$('#tbl-third-report-data').html(content_charges[0].disp);
+			  			$('#tbl-third-report-data-print').html(content_charges[0].print_disp);
 				});
 			  	 $.ajax({
 				  		method: "POST",
@@ -543,6 +548,8 @@
 			changePlaceHolder(mon_Type);
 			$('#btn-search-consignee').click();
 		});
+
+
 
 		function changePlaceHolder(monType){
 			if(monType == 3){

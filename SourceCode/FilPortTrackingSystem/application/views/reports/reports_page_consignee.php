@@ -103,7 +103,9 @@
 
 				    <li><a data-toggle="tab" href="#status-reports">Status Reports</a></li>
 
-				     <li><a data-toggle="tab" href="#running-charges">Running Charges</a></li>
+				    <li><a data-toggle="tab" href="#running-charges">Running Charges</a></li>
+
+				    <li><a data-toggle="tab" href="#other-documents">Other Documents</a></li>
 
 				  </ul>
 		  
@@ -174,6 +176,31 @@
 						      </table>
 						</div>						      
 					</div>
+
+					<div id="other-documents" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-otherdocs tab-clear">
+		 				<div style="height: 300px; overflow-y: auto;">
+		 					<br>
+					  		<h4 style="padding-left: 25px;">Other Documents</h4>
+					  		<br>
+						        <?php 
+								$element = "
+									<div class='list-group gallery'>
+							            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							                <a class='thumbnail fancybox' rel='ligthbox' href='http://placehold.it/300x320.png'>
+							                    <img class='img-responsive' alt='' src='http://placehold.it/320x320' />
+							                    <div class='text-right'>
+							                        <small class='text-muted'>Report Title</small>
+							                    </div> <!-- text-right / end -->
+							                </a>
+							            </div> <!-- col-6 / end -->
+									</div>	"; 
+
+								$count = 20;
+								for ($i = 0; $i < $count; $i++) {
+								    echo $element;
+								}
+						    	?>
+						 </div>
 				</div>
 			 </div>
 			</div>
@@ -267,6 +294,11 @@
 			</div>
 		</div>
 		<!-- END PRINT REPORT MANILA AND OUTPORT  -->
+		<div class="modal fade" id="jobfiles" role="dialog">
+		    <div class="modal-dialog">		      
+				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
+		    </div>
+ 		</div>
 </body>
 <script>
  var jbNo;
@@ -436,9 +468,9 @@
 				  		}
 					})
 			  		.done(function(report_charges_data){
-			  			content_charges = report_charges_data;
-			  			$('#tbl-third-report-data').html(content_charges);
-			  			$('#tbl-third-report-data-print').html(content_charges);
+			  		    content_charges = JSON.parse(report_charges_data);
+			  			$('#tbl-third-report-data').html(content_charges[0].disp);
+			  			$('#tbl-third-report-data-print').html(content_charges[0].print_disp);
 				});
 			  	 $.ajax({
 				  		method: "POST",

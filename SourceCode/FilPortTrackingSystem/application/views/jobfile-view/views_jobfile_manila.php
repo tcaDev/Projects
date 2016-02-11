@@ -131,7 +131,6 @@
 
 			  <div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
 				    <div class="job-manila manila_pagination"></div>
-				   
 			  </div> 
 			    <div class="man_pages"></div>
 		  	</div>
@@ -574,7 +573,7 @@ $('.sea_manila_tab').click(function(){
 			  	   		 }
 	              })
 					.done(function(data) {
-						$('.job-manila').html(data);
+						$('.job-manila').html(data);	
 	  		    });
     }
 
@@ -620,7 +619,7 @@ $('#select').change(function(){
     <div class="modal-dialog">		      
 		<?php $this->load->view('jobfile-view/views_jobfiledata_manila'); ?>
     </div>
-  </div>
+ </div>
 
 
 <!--for reports update -->
