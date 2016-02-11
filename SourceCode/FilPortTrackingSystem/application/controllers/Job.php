@@ -871,6 +871,7 @@ function get_jobfile_global_search(){
                   $total += $row->SRAApplication;
                   $total += $row->DEL;
                   $total += $row->SRAInspection;
+                  $total += $row->BPIInspection;
                   $total += $row->DispatchFee;
                   $total += $row->BadCargo;
                   $total += $row->Storage;
@@ -1001,6 +1002,17 @@ function get_jobfile_global_search(){
                                 <span class="pull-right">
                                    '.number_format($row->OtherFees, 2, '.', ',').'
                                 </span>
+                            </td>
+                          </tr>
+                           <tr>
+                            <td style="border:1px solid gray;text-align: left;">
+                                <b>  BPI Inspection : </b>
+                                <span class="pull-right">
+                                   '.number_format($row->BPIInspection, 2, '.', ',').'
+                                </span>
+                            </td>
+                            <td style="border:1px solid gray;text-align: left;">
+                              
                             </td>
                           </tr>
                           <tr>
