@@ -96,15 +96,6 @@
 					</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-
 	<!-- Manila and Outport Details -->
 	 <div class="container">
 		<!-- Modal -->
@@ -139,6 +130,8 @@
 				    <li><a data-toggle="tab" href="#status-reports">Status Reports</a></li>
 
 				     <li><a data-toggle="tab" href="#running-charges">Running Charges</a></li>
+
+				     <li><a data-toggle="tab" href="#other-documents">Other Documents</a></li>
 
 				  </ul>
 		  
@@ -209,6 +202,32 @@
 						        </table>
 						</div>        
 					</div>
+
+					 <div id="other-documents" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-otherdocs tab-clear">
+		 				<div style="height: 300px; overflow-y: auto;">
+		 					<br>
+					  		<h4 style="padding-left: 25px;">Other Documents</h4>
+					  		<br>
+						        <?php 
+								$element = "
+									<div class='list-group gallery'>
+							            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							                <a class='thumbnail fancybox' rel='ligthbox' href='http://placehold.it/300x320.png'>
+							                    <img class='img-responsive' alt='' src='http://placehold.it/320x320' />
+							                    <div class='text-right'>
+							                        <small class='text-muted'>Report Title</small>
+							                    </div> <!-- text-right / end -->
+							                </a>
+							            </div> <!-- col-6 / end -->
+									</div>	"; 
+
+								$count = 20;
+								for ($i = 0; $i < $count; $i++) {
+								    echo $element;
+								}
+						    	?>
+						 </div>
+				    </div>
 				</div>
 			 </div>
 			</div>
@@ -381,10 +400,10 @@
 			/*Reload Data on Print*/
 
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
-				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li><li><a data-toggle="tab" href="#other-documents">Other Documents</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
-				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li></ul>');
+				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Containers</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li><li><a data-toggle="tab" href="#other-documents">Other Documents</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Containers</h4>');
 			}
 
