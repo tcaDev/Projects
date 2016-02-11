@@ -860,8 +860,8 @@ function get_jobfile_global_search(){
 
                       $display = '<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
-                          <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                             <td style="border:1px solid gray;text-align: left;">
+                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->LodgementFee, 2, '.', ',').'
