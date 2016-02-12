@@ -74,11 +74,12 @@ $(document).on('click','.btn-addReport-air',function(){
 
 <script>
 
-var jbfl_airs;
 
+var jbfl_airs ;
 $(document).on('click','.save_reports_air',function(){
 	$('.save_reports_air').attr('disabled','disabled');
 	var reports  = $('.report-air').val();
+	 jbfl_airs = $('.jobfile-addReport-air').val();
 
 
 /*	alert(jbfl_airs);*/
@@ -124,7 +125,7 @@ $(document).on('click','.save_reports_air',function(){
 					        		content: 'Currently Adding Report',
 					   			});
 
-		   
+	
 					       $.ajax({
 						  		method: "POST",
 								url:"<?php echo base_url('Job_air/status_reports')?>",
