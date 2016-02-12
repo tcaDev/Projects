@@ -398,7 +398,7 @@
 			
 					 $.ajax({
 				  		method: "POST",
-					url: "<?php echo base_url('Job/get_details_report');?>",
+						url: "<?php echo base_url('Job/get_details_report');?>",
 						beforeSend: function(){
 							$('.loadPre-Details').html('<a class="loadPre-Details"><i class="fa fa-spinner fa-spin pull-left" style="font-size:18px;"></i>Loading Details</a>');
 						},
