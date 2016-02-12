@@ -123,7 +123,23 @@
                             <!-- List of User Account -->
 
                             <div id="listUser" class="tab-pane fade">
-                                <div class="table_UserList" style="width:100%;position:relative;overflow-y:auto;"></div>
+                                <br>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#user_internal" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Filport User Account</a></li>
+                                <li><a data-toggle="tab" href="#client_user" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Client User Account</a></li>
+                            </ul>
+
+                              <div class="tab-content">
+                              
+                                <div id="user_internal" class="tab-pane fade in active">
+                                  <div class="table_UserList" style="width:100%;position:relative;overflow-y:auto;"></div>
+                                </div>
+
+                                <div id="client_user" class="tab-pane fade">
+                                  <div class="table_UserList_client" style="width:100%;position:relative;overflow-y:auto;"></div>
+                                </div>
+
+                              </div>
                             </div>
 
 
@@ -166,6 +182,20 @@ $('.btn-Save-AddUser').addClass('hidden');
             },               
         success: function(response){                    
             $(".table_UserList").html(response); 
+            
+        }
+
+    });
+
+    $.ajax({    //create an ajax request 
+        type: "GET",
+        url:  "<?php echo base_url('Job/get_User_list_client');?>",             
+        dataType: "html", 
+        beforeSend: function() {
+              $('.table_UserList_client').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+            },               
+        success: function(response){                    
+            $(".table_UserList_client").html(response); 
             
         }
 

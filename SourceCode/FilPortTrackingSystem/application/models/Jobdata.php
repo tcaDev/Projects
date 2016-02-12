@@ -232,7 +232,16 @@ function get_countryID_manila($jobfile){
  }
 
 function get_user(){
-    $query = $this->db->query("select * from User where RoleId = 5 OR RoleId = 2");
+    $query = $this->db->query("select * from User where RoleId = 5");
+    return $query->result();
+ }
+
+ function get_user_client(){
+    $query = $this->db->query("SELECT U.*,C.ConsigneeName,CT.CountryName
+                              FROM User U
+                              JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
+                              JOIN  Countries CT ON CT.CountryId = U.CountryId
+                              WHERE U.RoleId = 2");
     return $query->result();
  }
 
