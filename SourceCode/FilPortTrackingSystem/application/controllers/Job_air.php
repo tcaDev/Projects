@@ -149,10 +149,15 @@ function status_reports(){
           $userid = $session_data['uid'];
           $jbfl            = $this->input->post('jbfl');
           $reports         = stripslashes($this->input->post('reports'));
+
+        $job=$this->Jobdata->select_jobfile_air($jbfl);
+        foreach($job as $row){
+         $jobs =  $row->JobFile_AirId;
+        }
      if($reports!=''){
          	             $air_insert = array(
                          'StatusDescription' => $reports,
-                         'JobFile_AirId'     => $jbfl,  
+                         'JobFile_AirId'     => $jobs,  
                          'DateAdded'		     => date('Y-m-d H:i'), 
                          'AddedBy_UserId'    => $userid
                          );
