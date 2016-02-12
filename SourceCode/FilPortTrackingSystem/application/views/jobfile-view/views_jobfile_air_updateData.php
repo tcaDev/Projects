@@ -464,7 +464,7 @@ $(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
 	  var   j_new	        = $(".jobfiles-air").val();
       var  shipper_air 		= $(".shipper-air").val();
  	  var  consignee_air 	= $(".consignee-air").val();
-      var  colsel_air 	    = $(".colsel-air").val();
+      var  colsel_air 	    = $(".colsel-air-update").val();
       var  hbl_air          = $(".hbl-air").val();
       var  mbl_air 			= $(".mbl-air").val();
       var  flight_air 		= $(".flight-air").val();
