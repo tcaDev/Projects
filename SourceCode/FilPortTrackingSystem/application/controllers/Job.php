@@ -861,14 +861,14 @@ function get_jobfile_global_search(){
                       $display = '<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Lodgement Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->LodgementFee, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Break Bulk Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Break Bulk Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BreakBulkFee, 2, '.', ',').'
@@ -877,14 +877,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Storage Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b> Storage Fee : </b>
                                 <span class="pull-right">
                                    '.number_format($row->StorageFee, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Bad Cargo Order Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Bad Cargo Order Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BadCargoOrderFee, 2, '.', ',').'
@@ -893,14 +893,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="VCRC" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  VCRC : </b>
                                 <span class="pull-right">
                                    '.number_format($row->VCRC, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="CNI" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> CNI : </b>
                                 <span class="pull-right">
                                     '.number_format($row->CNI, 2, '.', ',').'
@@ -909,7 +909,7 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Other Fees" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> CNIU : </b>
                                 <span class="pull-right">
                                    '.number_format($row->CNIU, 2, '.', ',').'
@@ -1108,14 +1108,14 @@ function get_jobfile_global_search(){
                       $display = '<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Lodgement Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->LodgementFee, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Demurrage" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Demurrage : </b>
                                 <span class="pull-right">
                                     '.number_format($row->Demorage, 2, '.', ',').'
@@ -1124,14 +1124,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Container Deposit Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Container Deposit : </b>
                                 <span class="pull-right">
                                    '.number_format($row->ContainerDeposit, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Detention" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Detention : </b>
                                 <span class="pull-right">
                                     '.number_format($row->Detention, 2, '.', ',').'
@@ -1140,14 +1140,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="THC Charges" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  THC Charges : </b>
                                 <span class="pull-right">
                                    '.number_format($row->THCCharges, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="EIC" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> EIC : </b>
                                 <span class="pull-right">
                                     '.number_format($row->EIC, 2, '.', ',').'
@@ -1156,14 +1156,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="Arrastre" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Arrastre : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Arrastre, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="BAI Application" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  BAI Application : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BAIApplication, 2, '.', ',').'
@@ -1172,14 +1172,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Wharfage" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Wharfage : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Wharfage, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="BAI Inspection" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  BAI Inspection :</b> 
                                 <span class="pull-right">
                                     '.number_format($row->BAIInspection, 2, '.', ',').'
@@ -1188,14 +1188,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Weighing" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-defaultbtn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Weighing : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Weighing, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="SRA Application" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  SRA Application : </b>
                                 <span class="pull-right">
                                     '.number_format($row->SRAApplication, 2, '.', ',').'
@@ -1204,14 +1204,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="DEL" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  DEL : </b>
                                 <span class="pull-right">
                                    '.number_format($row->DEL, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="SRA Application" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  SRAInspection : </b>
                                 <span class="pull-right">
                                     '.number_format($row->SRAInspection, 2, '.', ',').'
@@ -1220,14 +1220,14 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Dispatch Fee" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Dispatch Fee : </b>
                                 <span class="pull-right">
                                    '.number_format($row->DispatchFee, 2, '.', ',').'
                                 </span>
                             </td>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Bad Cargo" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                <b> Bad Cargo : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BadCargo, 2, '.', ',').'
@@ -1236,7 +1236,7 @@ function get_jobfile_global_search(){
                           </tr>
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button  class="btn_docs" id="Storage" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                               <b>  Storage : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Storage, 2, '.', ',').'
@@ -1251,7 +1251,7 @@ function get_jobfile_global_search(){
                           </tr>
                            <tr>
                             <td style="border:1px solid gray;text-align: left;">
-                            <button type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
+                            <button class="btn_docs" id="BPI Inspection" type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default btn-docs"><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button>
                                 <b>  BPI Inspection : </b>
                                 <span class="pull-right">
                                    '.number_format($row->BPIInspection, 2, '.', ',').'
