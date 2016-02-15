@@ -4,7 +4,7 @@
 
       <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-      <h4 class="modal-title text-uppercase ">Document</h4>
+      <h4 class="modal-title text-uppercase "> <span class='ttle'> </span> Document</h4>
 
     </div>
 
