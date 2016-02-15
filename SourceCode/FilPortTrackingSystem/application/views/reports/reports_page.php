@@ -233,7 +233,7 @@
 			</div>
 		</div>
 				       <div class="modal-footer">
-				       	  <button class="btn btn-default" onclick="PrintElem('#tab-results')">Print</button>
+				       	<!--  <a href='#' id='btn_print'> --> <button class="btn btn-default" onclick="PrintElem('#tab-results')">Print</button><!--  </a> -->
 				       	 <!--  <button type="button" class="btn btn-success" id="btn-send-mail" id="btn-modal-close">E-Mail</button> -->
 				          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-close">Close</button>
 				       </div>
@@ -549,6 +549,11 @@
 			$('#btn-search-consignee').click();
 		});
 
+	
+
+		$(document).on('click','.btn_docs',function(){
+			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
+		});
 
 
 		function changePlaceHolder(monType){

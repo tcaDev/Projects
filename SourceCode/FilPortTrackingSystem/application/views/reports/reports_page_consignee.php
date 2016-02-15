@@ -573,6 +573,10 @@
 			}
 		});
 
+		$(document).on('click','.btn_docs',function(){
+			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
+		});
+
 		function changePlaceHolder(monType){
 			if(mon_Type == 3){
 					$('#HBL').html('<th id="HBL"><center> House Airway Bill# </center></th>');
