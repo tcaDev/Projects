@@ -135,7 +135,7 @@
 								</div>
 
 								<div class="col-lg-8 col-md-8 col-sm-8">
-									<span class="dshbrd">Dashboard</span>
+									<span class="dshbrd">Dashboard</span> 
 								</div>
 								
 							</div>							
