@@ -23,13 +23,18 @@
 					 	<div class="row">
 					 		<div class="col-lg-12">
 					 	   		<ul class="nav nav-tabs">
-								    <li class="active"><a data-toggle="tab" href="#home" class="sea_chart_btn">Sea Freight</a></li>
+								    <li class="active"><a data-toggle="tab" href="#home" class="sea_chart_btn">Sea Freight Manila</a></li>
+								    <li><a data-toggle="tab" href="#home2" class="sea_chart_btn_outport">Sea Freight Outport</a></li>
 								    <li><a data-toggle="tab" href="#menu1" class="air_chart_btn">Air Freight</a></li>
 								 </ul>
 
 			             	 	<div class="tab-content" style="overflow-y:auto;height: 470px;">
 			             	 		<div class="tab-pane fade in active" id="home">
 			             	 			<div class="sea-freight"></div> 
+			             	 		</div>
+
+			             	 		<div class="tab-pane fade" id="home2">
+			             	 			<div class="sea-freight-outport"></div> 
 			             	 		</div>
 
 			             	 		<div class="tab-pane fade" id="menu1">
@@ -82,6 +87,21 @@ $(document).on('click','.sea_chart_btn',function(){
 		            },  
 	  		success: function(response){              
             $(".sea-freight").html(response);
+
+       		 }
+        });
+});
+
+$(document).on('click','.sea_chart_btn_outport',function(){
+	/*Sea Frieght Legend*/
+	  $.ajax({
+	  		method: "GET",
+			  url: "<?php echo base_url('Job_availability/dashboard_legend_sea_outport');?>",
+			  beforeSend: function() {
+		              $('.sea-freight-outport').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		success: function(response){              
+            $(".sea-freight-outport").html(response);
 
        		 }
         });

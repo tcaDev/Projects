@@ -246,6 +246,15 @@ function get_User_list_admin(){
         $this->load->view('dashboard/sea_chart',$data);
       }
 
+       function dashboard_legend_sea_outport(){
+
+        $piechart =  $this->Jobdata->chart_sea_outport();
+
+        $data['piechart'] = $piechart;
+
+        $this->load->view('dashboard/sea_chart_outport',$data);
+      }
+
       function dashboard_legend_air(){
 
         $piechart =  $this->Jobdata->chart_air();

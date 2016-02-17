@@ -1,11 +1,11 @@
 
 
 
-	<div id="piechart" style="width: 900px; height: 470px;"></div>
+	<div id="piechart-outport" style="width: 900px; height: 470px;"></div>
 
 <script>
 	 $(function () {
-    $('#piechart').highcharts({
+    $('#piechart-outport').highcharts({
         colors: [<?php foreach ($piechart as $row) {
             echo  "'".$row->ColorCode."',";
         } ?>],
@@ -18,7 +18,7 @@
             }
         },
         title: {
-            text: 'Color Stages Sea Freight Manila'
+            text: 'Color Stages Sea Freight Outport'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'

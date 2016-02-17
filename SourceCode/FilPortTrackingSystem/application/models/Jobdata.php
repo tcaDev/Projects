@@ -402,6 +402,15 @@ function get_jobfile_air_audit($jobfile){
   function chart_sea(){
     $query = $this->db->query("select S.StatusName,S.ColorCode, count(*) as Ratings FROM JobFile JF
                               JOIN `Status` S On JF.StatusId = S.StatusId
+                               where JF.MonitoringTypeId = 1
+                              Group By S.StatusName ORDER BY S.StatusId");
+    return $query->result();
+ }
+
+ function chart_sea_outport(){
+   $query = $this->db->query("select S.StatusName,S.ColorCode, count(*) as Ratings FROM JobFile JF
+                              JOIN `Status` S On JF.StatusId = S.StatusId
+                              where JF.MonitoringTypeId = 2
                               Group By S.StatusName ORDER BY S.StatusId");
     return $query->result();
  }
