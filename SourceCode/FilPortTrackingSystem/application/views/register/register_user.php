@@ -239,6 +239,8 @@ function uname_check(uname){
       $('#check_uname').empty();
    }else{
        
+        $('#check_uname span').show();
+        $('#check_email span').show();
         $.ajax({
             method: "POST",
           url: "<?php echo base_url('Job/check_uname');?>",
@@ -261,6 +263,9 @@ function uname_check(uname){
       $('#check_email').empty();
    }
    else{
+
+     $('#check_uname span').show();
+     $('#check_email span').show();
        
         $.ajax({
             method: "POST",
@@ -525,8 +530,8 @@ function validateEmail(email) {
 								$('#check_uname i').text("");
 								$('#check_email i').text("");
 
-                $('#check_uname span').text("");
-                $('#check_email span').text("");
+                $('#check_uname span').hide();
+                $('#check_email span').hide();
 								$('#message').text('');
                                   
 
