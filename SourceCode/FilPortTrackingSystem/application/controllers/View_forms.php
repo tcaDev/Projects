@@ -17,9 +17,10 @@ function index(){
 echo form_open('form');*/
 
 $countries=$this->User->countries();
+   echo '<div class="consignee_existing"> </div>';
 	echo 	'<div class="consignees ">
 				<button type="button" class="con-info consig-pos btn_add_consignee"  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
-					<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog">
+					<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog" data-keyboard="false" data-backdrop="static">
 						  <div class="modal-dialog">
 						    <!-- Modal content-->
 						    <div class="modal-content">
@@ -32,8 +33,9 @@ $countries=$this->User->countries();
 								<form action="'.base_url('Add_user/add_client/').'" method="post">
 									<div class="">
 							            <div class="form-group col-md-12">
-							                <input type="text" name="cname"class="form-control clear_values_consignee" placeholder="Client Name" required/>
-							            </div>
+							               <span class="check_consignee col-md-12"> </span>
+							                <input type="text" name="cname"class="form-control clear_values_consignee" placeholder="Client Name" onkeyup="check_consignee(this.value)" required/>
+							            	</div>
 							        </div>
 							     	 <div class="">
 							            <div class="form-group col-lg-12">
@@ -81,11 +83,38 @@ $countries=$this->User->countries();
 		   	 		</form>
 			      <div class="modal-footer">
 			      </div>
+
+
 			    </div>
 			  </div>';
 
 /*echo form_close();*/
 
+
+?>
+
+<script type="text/javascript">
+//check if data is alread exists
+function check_consignee(consignee){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData');?>",
+			  	   beforeSend: function() {
+							$('.check_consignee').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				con: consignee
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_consignee').html(data);
+					});
+}
+
+</script>
+
+
+<?php
 }
  
 function broker(){
@@ -200,7 +229,8 @@ function vessel(){
 						<form action="'.base_url('Add_user/add_carrier/').'" method="post">
 
 					            <div class="form-group col-md-12">
-					                <input type="text" name="carrier" class="form-control  clear_values_vessel" placeholder="Shipping Line/Carrier" required/>
+					                <div class="check_carrier"> </div>
+					                <input type="text" name="carrier" class="form-control  clear_values_vessel" placeholder="Shipping Line/Carrier" onkeyup="check_carrier(this.value)"required/>
 					            </div>
 					             <div class="form-group col-md-12">
 					                <input type="text" name="address-carrier" class="form-control clear_values_vessel" placeholder="Address" required/>
@@ -219,6 +249,31 @@ function vessel(){
 				    </div>	
 				   </div>	
 				</div>';
+?>
+
+<script type="text/javascript">
+	
+//check if data is alread exists
+function check_carrier(carrier){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/carrier');?>",
+			  	   beforeSend: function() {
+							$('.check_carrier').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				carrier: carrier
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_carrier').html(data);
+					});
+}
+
+</script>
+
+<?php
+
 }
 
 function hauler(){
@@ -237,7 +292,9 @@ function hauler(){
 							<form action=" '.base_url('Add_user/add_hauler/').'" method="post">
 								<div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="hauler_name"class="form-control clear_values_hauler" placeholder="Hauler Name" required/>
+						                <div class="check_hauler"> </div>
+						                <input type="text" name="hauler_name"class="form-control clear_values_hauler" placeholder="Hauler Name" 
+						                 onkeyup="check_hauler(this.value)" required/>
 						            </div>
 						        </div>
 						        <div class=" col-md-12">
@@ -264,10 +321,41 @@ function hauler(){
 					    </div>
 					</div>	
 				</div>';
+
+?>
+
+
+<script type="text/javascript">
+	
+//check if data is alread exists
+function check_hauler(hauler){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/hauler');?>",
+			  	   beforeSend: function() {
+							$('.check_hauler').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				hauler: hauler
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_hauler').html(data);
+					});
+}
+
+</script>
+
+
+
+
+
+<?php
 }
 
 function shipper(){
  $countries = $this->User->countries();
+echo '<div class="consignee_existing"> </div>';
 echo'			<div class="shippers tab-pane">
 				<button type="button" class="con-info consig-pos btn_add_shipper" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
 
@@ -283,7 +371,8 @@ echo'			<div class="shippers tab-pane">
 							<form action="' .base_url('Add_user/add_shipper/').'" method="post">
 								<div class="">
 						            <div class="form-group col-md-12">
-						                <input type="text" name="shipper" class="form-control clear_values_shipper" placeholder="Shipper Name" required/>
+						                <div class="check_shipper"> </div>
+						                <input type="text" name="shipper" class="form-control clear_values_shipper" placeholder="Shipper Name" onkeyup="check_shipper(this.value)"required/>
 						            </div>
 						        </div>
 						        <div class="">
@@ -326,7 +415,30 @@ echo'			<div class="shippers tab-pane">
 			      </div>
 			    </div>
 			</div>
-		</div>';
+		</div>';?>
+
+<script type="text/javascript">
+//check if data is alread exists
+function check_shipper(shipper){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/shipper');?>",
+			  	   beforeSend: function() {
+							$('.check_shipper').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				shipper: shipper
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_shipper').html(data);
+					});
+}
+
+</script>
+
+
+<?php
 }
 
 function shippercon(){
@@ -539,7 +651,8 @@ function product(){
 							<form action=" '.base_url('Add_user/add_product/').'" method="post">
 								<div class=" col-md-12">
 						            <div class="form-group ">
-						                <input type="text" name="product_name"class="form-control clear_values_product" placeholder="Commodity Name" required/>
+						                <div class="check_commodity"> </div>
+						                <input type="text" name="product_name"class="form-control clear_values_product" placeholder="Commodity Name" onkeyup="check_commodity(this.value)" required/>
 						            </div>
 						        </div>
 						 
@@ -556,8 +669,37 @@ function product(){
 					    </div>
 					</div>	
 				</div>';
+
+?>
+<script type="text/javascript">
+	
+//check if data is alread exists
+function check_commodity(commodity){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/commodity');?>",
+			  	   beforeSend: function() {
+							$('.check_commodity').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				commodity: commodity
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_commodity').html(data);
+					});
+}
+
+</script>
+
+
+<?php
 }
 
 
 }
+
+
+
+
 ?>

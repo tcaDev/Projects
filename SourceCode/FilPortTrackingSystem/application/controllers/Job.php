@@ -4342,5 +4342,104 @@ function get_audit_charges_air(){
         $jobfileContent_ = $this->Jobdata->contentJobfile($jobID,$montype);
         echo json_encode($jobfileContent_);
     }
+
+function sendMail(){ //for Sending Email
+      $datePath = './resources/pdf/' .date('Y-m-d');
+      $filePath = './resources/pdf/' .date('Y-m-d') . '/';
+      $date = date('Y-m-d');
+      $path =  './resources/pdf/';
+      $this->load->library('m_pdf');
+      $this->load->helper('file');
+      $this->load->helper('download');
+
+       $print = $this->input->post('toPrint');
+       $jbNo = $this->input->post('jbNo');
+       $montype = $this->input->post('monType');
+
+         //generate the PDF from the given html
+          $this->m_pdf->pdf->WriteHTML($print);
+
+        //  $this->email->clear(TRUE);
+
+    //dan's code 
+/*            if(!is_dir($path)) //create the folder if it's not already exists
+            {
+              mkdir($path, 0777, TRUE);
+               if(!is_dir($datePath)){
+                mkdir($datePath, 0777, TRUE);
+                $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+                }else{
+                $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+                }
+            }else{ // if the folder already exist
+               if(!is_dir($datePath)){
+                mkdir($datePath, 0777, TRUE);
+                $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+                }else{
+                $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+                }
+            }*/
+             
+      //eli's code
+            if(!is_dir($path)){ //create the folder if it's not already exists
+              mkdir($path, 0777, TRUE);
+               if(!is_dir($datePath)){
+                   mkdir($datePath, 0777, TRUE);
+               }
+            }else{ // if the folder already exist
+               if(!is_dir($datePath)){
+                   mkdir($datePath, 0777, TRUE);
+               }
+            }
+            //download file
+
+
+            //email
+
+          if(is_dir($datePath)){
+            //you can send email again with the same date,jobfile
+            if(is_dir($datePath)){
+                  $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+       
+
+                    $consignee = $this->Jobdata->get_email_jobfile($jbNo,$montype);
+                    foreach($consignee as $row){
+                     echo "Email is send to:" . '</br>';
+                     echo "Consignee: ".$consign = $row->ConsigneeName . '</br>';
+                     echo "Email: "    .$emailadd = $row->EmailAddress;
+                    }
+
+                  //email
+                  $config['protocol']    = 'smtp';
+                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
+                  $config['smtp_port']    = '465';
+                  $config['smtp_timeout'] = '7';
+                  $config['smtp_user']    = 'eli@topconnection.asia';
+                  $config['smtp_pass']    = 'asiagroup7';
+                  $config['charset']    = 'utf-8';
+                  $config['newline']    = "\r\n";
+                  $config['mailtype'] = 'text'; // or html
+                  $config['validation'] = TRUE; // bool whether to validate email or not      
+
+                  $this->email->initialize($config);
+
+
+                  $this->email->from('eli@topconnection.asia', 'eli');
+                  $this->email->to($emailadd); 
+                //  $this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
+                  $this->email->cc('eliseo.montefalcon@gmail.com'); 
+                  $this->email->subject('Filport Testing');
+                  $this->email->message('wazap niga.'); 
+                  $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                  $this->email->send();
+            }
+          }
+
+           // echo "Please Check you email";
+
+
+       
+      }
+
   }
 ?>

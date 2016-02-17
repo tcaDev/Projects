@@ -41,7 +41,7 @@ Class User extends CI_Model
  function search_global($search,$search_Type,$search_from){
    $this -> db -> select('*');
    $this -> db -> from($search_from);
-   $this -> db -> like($search_Type, $search);
+   $this -> db -> like($search_Type, $search,'after');
    /*$this->db->limit(10);*/
    $query = $this -> db -> get();
    return $query->result();

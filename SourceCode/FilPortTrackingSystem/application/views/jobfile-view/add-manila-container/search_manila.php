@@ -1,3 +1,4 @@
+
 				    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob "  >
 				        <thead>
 				             <tr>
@@ -170,6 +171,8 @@
 								        <?php } ?>
 				        </tbody>
 				    </table>
+
+				  
 
 <script>
   		$("th").css("vertical-align","middle");

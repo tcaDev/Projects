@@ -417,8 +417,9 @@
 					      <div class="modal-body">
 						<form action="<?php echo base_url('Add_user/add_client/');?>" method="post">
 							<div class="">
-					            <div class="form-group col-lg-12">          	
-					                <input type="text" name="cname" class="cname form-control clear_values_consignee" placeholder="Client Name" required/>
+					            <div class="form-group col-lg-12">      
+					                <span class="check_consignee"></span>    	
+					                <input type="text" name="cname" onkeyup="check_consignee(this.value)" class="cname form-control clear_values_consignee" placeholder="Client Name" required/>
 					            </div>
 					        </div>
 					      	  <div class="">
@@ -485,11 +486,13 @@
 				        </div>
 				        <div class="modal-body">			          
 				         <form action="<?php echo base_url('Update/update_consignee/');?>" method="post">
-				          	  <input type="hidden" name="consig_id"      class="consignee_id" />
+
+				          	  <input type="hidden" name="consig_id"   class="consignee_id" />
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Client Name</label>
-					               <input type="text"   name="consig_name"  class="consignee_name form-control" required/>
+					            	 <div class="check_consignee_data"> </div>
+					               <input type="text"   name="consig_name"   onkeyup="check_cons(this.value)"  class="consignee_name form-control" required/>
 					            </div>
 					        </div>
 					        <div class="row">
@@ -646,7 +649,8 @@
 							<div class="row">
 					            <div class="form-group col-lg-12">
 					            	<label>Shipping Line/ Carrier</label>
-					               <input type="text"   name="ves_name"  class="vessel_name form-control" />
+					            	<div class="check_carrier_data"> </div>
+					               <input type="text"   name="ves_name"  onkeyup="cme(this.value)"class="vessel_name form-control" />
 					            </div>
 
 					            <div class="form-group col-lg-12">
@@ -703,7 +707,8 @@
 							<div class="">
 					            <div class="form-group col-lg-12">
 					            	<label>Shipper Name</label>
-					               <input type="text" name="ship_name" placeholder="Shipper Name" value="" class="shipper_name form-control" required/>
+					            	<div class="check_shipper_data"> </div>
+					               <input type="text" name="ship_name" onkeyup="check_ship(this.value)" placeholder="Shipper Name" value="" class="shipper_name form-control" required/>
 					            </div>
 					        </div>
 					 		<div class="">
@@ -950,11 +955,13 @@
 	        </div>
 	        <div class="modal-body">
 	       <?php echo form_open('Update/update_hauler/');?>
-	          	  <input type="hidden" name="hauler_id"      class="hauler_id" />
+	     
+	          	  <input type="hidden" name="hauler_id"   class="hauler_id" />
 				<div class="row">
 		            <div class="form-group col-lg-12">
 		            	<label>Hauler /Trucker</label>
-		               <input type="text"   name="hauler_name"  class="hauler_name form-control" required/>
+		            	 <div class="check_hauler_data"> </div>
+		               <input type="text"   name="hauler_name"  onkeyup="check_haul(this.value)"  class="hauler_name form-control" required/>
 		            </div>
 		            <div class="form-group col-lg-12">
 		            	<label>Address</label>
@@ -1106,7 +1113,8 @@
 					<div class="row">
 			            <div class="form-group col-lg-12">
 			            	<label>Commodity Name</label>
-			               <input type="text"   name="prod_name"  class="prod_name form-control" required/>
+			            	<div class="check_commodity_data"></div>
+			               <input type="text"   name="prod_name" onkeyup="check_commod(this.value)" class="prod_name form-control" required/>
 			            </div>
 			        </div>
 			        <div class="col-lg-12">
@@ -1177,3 +1185,116 @@
 			      </div>
 			  </div>
 		</div>
+
+<script type="text/javascript">
+//check if data is alread exists
+function check_consignee(consignee){
+ 
+
+
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData');?>",
+			  	   beforeSend: function() {
+							$('.check_consignee').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   				con: consignee
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_consignee').html(data);
+					});
+}
+
+</script>
+<script type="text/javascript">
+	
+function check_cons(consignee){
+
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData');?>",
+			  	   data: {
+			  	   				con: consignee,
+			  	   				update:1
+			  	   		 }
+	              })
+					.done(function(data) {
+
+						 $('.check_consignee_data').html(data);
+					});
+}
+
+
+//check if data is alread exists
+function cme(carrier){
+	// $('.check_carrier').empty();
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/carrier');?>",
+/*			  	   beforeSend: function() {
+							$('.check_carrier_data').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },*/
+			  	   data: {
+			  	   				carrier: carrier,
+			  	   				update:1
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_carrier_data').html(data);
+					});
+}
+
+//check if data is alread exists
+function check_commod(commodity){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/commodity');?>",
+			  	   data: {
+			  	   				commodity: commodity,
+			  	   				update:1
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_commodity_data').html(data);
+					});
+}
+
+
+function check_ship(shipper){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/shipper');?>",
+			  	   data: {
+			  	   				shipper: shipper,
+			  	   				update:1
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_shipper_data').html(data);
+					});
+}
+
+function check_haul(hauler){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('MasterData/hauler');?>",
+			  	   data: {
+			  	   				hauler: hauler,
+			  	   				update:1
+			  	   		 }
+	              })
+					.done(function(data) {
+						 $('.check_hauler_data').html(data);
+					});
+}
+
+</script>
+
+
+
+
+
+
+

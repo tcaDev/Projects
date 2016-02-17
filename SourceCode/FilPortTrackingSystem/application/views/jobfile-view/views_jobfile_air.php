@@ -1,6 +1,7 @@
  <script>
-  var content_air    = "<?php echo base_url('Pagination/pagination_air')?>";
-  var total_air_page     =  "<?php echo $count_total_air_page; ?>";
+  var content_air           = "<?php echo base_url('Pagination/pagination_air')?>";
+  var content_air_search    = "<?php echo base_url('Pagination/search_paging_air')?>";
+  var total_air_page        =  "<?php echo $count_total_air_page; ?>";
  </script>
 
 
@@ -129,7 +130,7 @@
 					   <div class="job-air  air_pagination"></div>
 				 </div>
 				 <div class="air_pages"></div>
-
+ 				 <div class="air_pages_search"></div>
 		  	</div>
 
 		  </div>
@@ -470,6 +471,37 @@ function search_airs(jbfl){
 	              })
 					.done(function(data) {
 						$('.job-air').html(data);
+						$('.air_pages').empty();
+
+									$.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".air_pages_search").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                  total:dt,
+						                  page: 1, //initial page
+						                  maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.job-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".job-air").load(content_air_search, {'page':num});
+						                  
+						                });
+		 						 });
 	  		    });
     
 }

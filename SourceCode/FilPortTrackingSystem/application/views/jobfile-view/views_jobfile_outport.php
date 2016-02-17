@@ -1,6 +1,9 @@
  <script>
-  var content_outport    = "<?php echo base_url('Pagination/pagination_outport')?>";
-  var total_outport_page     =  "<?php echo $count_total_outport_page; ?>";
+  var content_outport   		 = "<?php echo base_url('Pagination/pagination_outport')?>";
+  var content_outport_search     = "<?php echo base_url('Pagination/search_paging')?>";
+  var total_outport_page         =  "<?php echo $count_total_outport_page; ?>";
+
+  
  </script>
 
 
@@ -125,6 +128,7 @@
 				<div class="job-outport outport_pagination"></div>
 			 </div>
 			 <div class="out_pages"></div>
+			 <div class="out_pages_search"></div>
 		  	</div>
 		 </div>
 
@@ -547,6 +551,37 @@ $(document).on('keydown','#search_outport',function(e){
 	              })
 					.done(function(data) {
 						$('.job-outport').html(data);
+						$('.out_pages').empty();
+
+							   $.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".out_pages_search").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                   total:dt,
+						                   page: 1, //initial page
+						                   maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.job-outport').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".job-outport").load(content_outport_search, {'page':num});
+						                  
+						                });
+		 						 });
 	  		    });
     }
 </script>

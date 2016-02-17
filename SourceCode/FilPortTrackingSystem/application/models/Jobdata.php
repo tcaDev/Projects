@@ -385,6 +385,7 @@ function get_jobfile_air_audit($jobfile){
           $this->db->update('User', $data);
   }
 
+
   function get_email_jobfile($jbfl,$monType){
 
     if($monType != 3){
@@ -394,6 +395,40 @@ function get_jobfile_air_audit($jobfile){
     }
 
     return $jb->result();
+  }
+
+
+  function get_email_jobfile_autoemail($jbfl){
+    $jb = $this->db->query("Select * from vw_JobFile where JobFileNo in ($jbfl)");
+    return $jb->result();
+  }
+  function get_email_jobfile_autoemail_air($jbfl){
+    $jb = $this->db->query("Select * from vw_JobFileAir where JobFileNo in ($jbfl)");
+    return $jb->result();
+  }
+
+
+  function Today(){
+  $query = $this->db->query("Select DISTINCT JobFileNo,DateUpdated,ConsigneeName,EmailAddress from vw_JobFileHistory order by DateUpdated desc");
+  return $query->result();
+  }
+  function Today_air(){
+  $query = $this->db->query("select DISTINCT JobFileNo,DateUpdated,ConsigneeName,EmailAddress from vw_JobFileAirHistory order by DateUpdated desc");
+  return $query->result();
+  }
+
+
+  function get_charges_email($charges){
+    $query = $this->db->query("select * FROM vw_RunningCharges WHERE JobFileNo = '$charges'");
+    return $query->result();
+  }
+    function get_charges_email_air($charges){
+    $query = $this->db->query("select a.LodgementFee, a.BreakBulkFee, a.StorageFee, a.BadCargoOrderFee, a.VCRC, a.CNI, a.CNIU  FROM RunningCharges_Air as a, vw_JobFileAir as b WHERE a.JobFile_AirId = b.JobFile_AirId AND b.JobFileNo = '$charges'");
+    return $query->result();
+  }
+  function select_temp(){
+    $query = $this->db->query("select * FROM Tempo ");
+    return $query->result();
   }
 
 }

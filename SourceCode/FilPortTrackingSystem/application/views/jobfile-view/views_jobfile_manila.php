@@ -1,6 +1,15 @@
+
+
+
+
+
+
  <script>
   var content_manila    = "<?php echo base_url('Pagination/pagination_manila')?>";
   var total_manila_page     =  "<?php echo $count_total_manila_page; ?>";
+
+ var content_manila_search    = "<?php echo base_url('Pagination/search_paging')?>";
+  
  </script>
 
 
@@ -9,7 +18,7 @@
 	       	if((location.hash!="#outport")&&(location.hash!="#air")){
 		       	
 				$(document).ready(function() {
-					$('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+				$('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
 				    $(".manila_pagination").load(content_manila);  //initial page number to load
 				    $(".man_pages").bootpag({
 				        total:total_manila_page, // total number of pages
@@ -133,6 +142,7 @@
 				    <div class="job-manila manila_pagination"></div>
 			  </div> 
 			    <div class="man_pages"></div>
+			    <div class="man_pages_search"></div>
 		  	</div>
 		</div>
 
@@ -535,12 +545,12 @@ var jbfl;
 					 </div>
  
 
-
-
+<input type="hidden" class="paging" />
 
 
 
 <script>
+
 $('.search_manila_jobfile').click(function(){
  var jbfl  = $('#search_manila').val();
   search_manila(jbfl);
@@ -560,6 +570,8 @@ $('.sea_manila_tab').click(function(){
 	//for search
 	function search_manila(jbfl){
 
+	
+			
        
     		 	$.ajax({
 		           method: "POST",
@@ -573,8 +585,44 @@ $('.sea_manila_tab').click(function(){
 			  	   		 }
 	              })
 					.done(function(data) {
-						$('.job-manila').html(data);	
-	  		    });
+
+						$('.job-manila').html(data);
+						$('.man_pages').empty();
+
+							   $.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".man_pages_search").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                   total:dt,
+						                   page: 1, //initial page
+						                   maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".manila_pagination").load(content_manila_search, {'page':num});
+						                  
+						                });
+		 						 });
+	
+
+
+
+					    });
     }
 
 
