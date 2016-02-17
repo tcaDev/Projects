@@ -139,7 +139,7 @@ $now = $date_now[0];
               <hr>
                         <h4 class="cnt">Containers</h4>';
                   if($containers==NULL){
-                      echo '<p style="color:red">No Coontainers Yet</p>';
+                      echo '<p style="color:red">No Containers Yet</p>';
                       }else{
                          echo '<table  border="1"  style="width:100%">
                                   <th>No.</th>
@@ -394,7 +394,7 @@ $now = $date_now[0];
           })
            .done(function(data){
 
-            //alert(data);
+            alert(data);
            });
         </script>
 
@@ -803,7 +803,7 @@ $now = $date_now[0];
               }
           })
            .done(function(data){
-            alert(data);
+           alert(data);
            });
         </script>
 
@@ -826,10 +826,9 @@ $now = $date_now[0];
 
 
       
-    echo $print     =  $this->input->post('print');
-
-     $email     =  $this->input->post('email');
-    $jbNo =  $this->input->post('jbfl_send');
+      $print     =  $this->input->post('print');
+      $email     =  $this->input->post('email');
+    echo   $jbNo =  $this->input->post('jbfl_send');
 
      //$print =  '<script>document.write(p);</script>'; 
 
@@ -857,7 +856,7 @@ $now = $date_now[0];
                     $config['protocol']    = 'smtp';
                     $config['smtp_host']    = 'ssl://smtp.gmail.com';
                     $config['smtp_port']    = '465';
-                    $config['smtp_timeout'] = '7';
+                    $config['smtp_timeout'] = '20';
                     $config['smtp_user']    = 'eli@topconnection.asia';
                     $config['smtp_pass']    = 'asiagroup7';
                     $config['charset']    = 'utf-8';
@@ -870,7 +869,7 @@ $now = $date_now[0];
 
                     $this->email->from('eli@topconnection.asia', 'eli');
                     $this->email->to($email); 
-                  //  $this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
+                    $this->email->cc('daniel.tenefrancia@gmail.com'); 
                     $this->email->cc('eli_montefalcon@yahoo.com'); 
                     $this->email->subject('Filport Testing');
                     $this->email->message('Email Testing.'); 
