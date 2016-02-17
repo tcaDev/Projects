@@ -112,7 +112,6 @@
 		  	<div class="tab-content">
 		  		<!-- Containers -->
 				    <div id="conts" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-containers tab-clear">
-		 				<div style="height: 300px; overflow-y: auto;">
 		 					<br>
 					  		<h4 style="padding-left: 25px;" class="cnt">Containers</h4>
 					  		<br>
@@ -125,12 +124,10 @@
 						             		</tr>
 						                </table>
 						     </div>
-					    </div>
 				    </div>
 
 				<!-- Commodity -->
 				  <div id="commodities" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-commodity tab-clear">
-					  	<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Commodity</h4>
 					  		<br>
@@ -143,11 +140,9 @@
 						             		</tr>
 						                </table>
 						        </div>
-						</div>
 				    </div>
 
 				   <div id="running-charges" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-charges tab-clear">
-					  		<div style="height: 300px; overflow-y: auto;">
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Running Charges</h4>
 					  		<br>
@@ -158,11 +153,9 @@
 						             	</td>
 						            </tr>
 						       </table>
-						    </div>
 				    </div>
 
 					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-status tab-clear">
-					  	<div style="height: 300px; overflow-y: auto;">	
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Status Report</h4>
 					  		<h6> <i> *Double Click the Status Report to View the Full Report.</i></h6>
@@ -174,7 +167,6 @@
 						             		</td>
 						             	</tr>
 						      </table>
-						</div>						      
 					</div>
 
 					<div id="other-documents" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-otherdocs tab-clear">

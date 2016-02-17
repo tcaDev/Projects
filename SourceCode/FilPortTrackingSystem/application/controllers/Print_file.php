@@ -18,7 +18,9 @@ function index(){
        $jbNo    = $this->input->get('jbNo');
        $montype = $this->input->get('mon_Type');
        $to_print = $this->createDoc($jbNo,$montype);
-        
+
+       /* $this->m_pdf->pdf->SetWatermarkText('Confidential/Proprietory');
+        $this->m_pdf->pdf->showWatermarkText = true;*/
         $this->m_pdf->pdf->mirrorMargins  = 1;
         $this->m_pdf->pdf->WriteHTML($to_print);
         $this->m_pdf->pdf->Output();
@@ -42,8 +44,8 @@ function send_mail(){
          //generate the PDF from the given html
         $this->m_pdf->pdf->WriteHTML($toSend);
 
-      //eli's code
-            if(!is_dir($path)){ //create the folder if when it's not yet existing
+        //eli's code
+            if(!is_dir($path)){ //create the folder if it's not yet existing
               mkdir($path, 0777, TRUE);
                if(!is_dir($datePath)){
                    mkdir($datePath, 0777, TRUE);
@@ -56,7 +58,6 @@ function send_mail(){
           
 
             //email
-
           if(is_dir($datePath)){
             //you can send email again with the same date,jobfile
             if(is_dir($datePath)){
@@ -87,7 +88,7 @@ function send_mail(){
 
                   $this->email->from('eli@topconnection.asia', 'eli');
                   $this->email->to($emailadd); 
-                //  $this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
+                //$this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
                   $this->email->cc('eliseo.montefalcon@gmail.com'); 
                   $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
                   $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); 
