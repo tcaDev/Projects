@@ -525,8 +525,8 @@ function validateEmail(email) {
 								$('#check_uname i').text("");
 								$('#check_email i').text("");
 
-                $('#check_uname i span').text("");
-                $('#check_email i span').text("");
+                $('#check_uname span').text("");
+                $('#check_email span').text("");
 								$('#message').text('');
                                   
 
