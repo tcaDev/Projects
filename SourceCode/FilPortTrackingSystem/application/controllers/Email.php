@@ -859,6 +859,7 @@ $now = $date_now[0];
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
                     //email
+                    $config['useragent']   = "CodeIgniter";
                     $config['protocol']    = 'smtp';
                     $config['smtp_host']    = 'ssl://smtp.gmail.com';
                     $config['smtp_port']    = '465';
