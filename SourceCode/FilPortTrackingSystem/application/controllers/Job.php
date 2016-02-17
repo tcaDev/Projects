@@ -2664,11 +2664,39 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
       function user_update(){
           $uid = $this->input->post('uid');
           $status = $this->input->post('status');
+          $uname = $this->input->post('uname');
+          $fname = $this->input->post('fname');
+          $mname = $this->input->post('mname');
+          $lname = $this->input->post('lname');
+          $bdate = $this->input->post('bdate');
+          $email = $this->input->post('email');
+          $c1 = $this->input->post('c1');
+          $c2 = $this->input->post('c2');
+          $addr = $this->input->post('addr');
+          $brgy = $this->input->post('brgy');
+          $city = $this->input->post('city');
+          $country = $this->input->post('country');
+          $consignee = $this->input->post('consignee');
+
          
            $stats = (int)$status;
 
            $data = array(
-              'IsActive' => $stats
+              'IsActive'    => $stats,
+              'UserName'    => $uname,
+              'FirstName'   => $fname,
+              'MiddleName'  => $mname,
+              'LastName'    => $lname,
+              'BirthDate'   => $bdate,
+              'EmailAddress'=> $email,
+              'ContactNo1'  => $c1,
+              'ContactNo2'  => $c2,
+              'HouseBuildingNoStreet' => $addr,
+              'BarangarOrVillage' => $brgy,
+              'TownOrCityProvince' => $city,
+              'CountryId' => $country,
+              'ConsigneeId' => $consignee
+
            );
           $this->db->where('UserId', $uid);
           $this->db->update('User', $data);
@@ -2681,106 +2709,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         $User_list = $this->Jobdata->get_user();
 
         echo '
-            <div class="col-lg-12">
+            <div class="col-lg-12 row">
             <table class=" table-bordered table-condensed " style="width:2000px;">
                 <thead>
                   <tr>
                       <th>No.</th>
                       <th>Status</th>
-                      <th>Action</th>
-                      <th>Username</th>
-                      <th>FirstName</th>
-                      <th>MiddleName</th>
-                      <th>LastName</th>
-                      <th>BirthDate</th>
-                      <th>EmailAddress</th>
-                      <th>ContactNo1</th>
-                      <th>ContactNo2</th>
-                      <th>HouseBuildingNoStreet</th>
-                      <th>BarangarOrVillage</th>
-                      <th>TownOrCityProvince</th>
-                  </tr>
-                </thead>      
-                <tbody>
-
-
-        ';
-        $i=0;
-        foreach ($User_list as $row) {
-          $i++;
-          $uid = $row->UserId;
-          $uname = $row->UserName;
-          $fname = $row->FirstName;
-          $mname = $row->MiddleName;
-          $lname = $row->LastName;
-          $bdate = $row->BirthDate;
-          $email = $row->EmailAddress;
-          $contact1 = $row->ContactNo1;
-          $contact2 = $row->ContactNo2;
-          $addr = $row->HouseBuildingNoStreet;
-          $brgy = $row->BarangarOrVillage;
-          $towncity = $row->TownOrCityProvince;
-
-          $active= $row->IsActive;
-            if($active==1){ 
-              $stat = 'activated';
-              $mystat = '1';
-            }else{
-              $stat = 'deactivated';
-              $mystat= '0';
-            }
-
-           echo '
-            <tr>
-              <td>'.$i.'</td>
-              <td class="hidden">'.$uid.'</td>
-              <td class="hidden">'.$mystat.'</td>
-              <td>'.$stat.' </td>
-              <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td>'.$uname.'</td>
-              <td>'.$fname.'</td>
-              <td>'.$mname.'</td>
-              <td>'.$lname.'</td>
-              <td>'.$bdate.'</td>     
-              <td>'.$email.'</td>
-              <td>'.$contact1.'</td>
-              <td>'.$contact2.'</td>
-              <td>'.$addr.'</td>
-              <td>'.$brgy.'</td>
-              <td>'.$towncity.'</td>                             
-            </tr>
-           '; 
-
-        }
-
-          echo '
-               </tbody>         
-             </table>
-            </div>
-        
-          ';
-
- 
-
-
-      }
-
-      /*User Client*/
-
-      function get_User_list_client(){
-
-          
-        $User_list = $this->Jobdata->get_user_client();
-
-        echo '
-            <div class="col-lg-12">
-            <table class=" table-bordered table-condensed " style="width:2000px;">
-                <thead>
-                  <tr>
-                      <th>No.</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                      <th>Consignee</th>
+                      <th>Update</th>
+                      <th>Reset Password</th>
                       <th>Username</th>
                       <th>FirstName</th>
                       <th>MiddleName</th>
@@ -2831,7 +2767,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td class="hidden">'.$mystat.'</td>
               <td>'.$stat.' </td>
               <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td>'.$row->ConsigneeName.'</td>
+              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
               <td>'.$uname.'</td>
               <td>'.$fname.'</td>
               <td>'.$mname.'</td>
@@ -2842,8 +2778,9 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td>'.$contact2.'</td>
               <td>'.$addr.'</td>
               <td>'.$brgy.'</td>
-              <td>'.$towncity.'</td>     
-              <td>'.$row->CountryName.'</td>                  
+              <td>'.$towncity.'</td>
+              <td class="hidden">'.$row->CountryId.'</td>
+              <td>'.$row->CountryName.'</td>
             </tr>
            '; 
 
@@ -2856,10 +2793,105 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
         
           ';
 
+ 
+
+
+      }
+
+      /*User Client*/
+
+      function get_User_list_client(){
+
           
+        $User_list = $this->Jobdata->get_user_client();
+
+        echo '
+            <div class="col-lg-12 row">
+            <table class=" table-bordered table-condensed " style="width:2000px;">
+                <thead>
+                  <tr>
+                      <th>No.</th>
+                      <th>Status</th>
+                      <th>Update</th>
+                      <th>Reset Password</th>
+                      <th>Consignee</th>
+                      <th>Username</th>
+                      <th>FirstName</th>
+                      <th>MiddleName</th>
+                      <th>LastName</th>
+                      <th>BirthDate</th>
+                      <th>EmailAddress</th>
+                      <th>ContactNo1</th>
+                      <th>ContactNo2</th>
+                      <th>HouseBuildingNoStreet</th>
+                      <th>BarangarOrVillage</th>
+                      <th>TownOrCityProvince</th>
+                      <th>Country</th>
+                  </tr>
+                </thead>      
+                <tbody>
 
 
+        ';
+        $i=0;
+        foreach ($User_list as $row) {
+          $i++;
+          $uid = $row->UserId;
+          $uname = $row->UserName;
+          $fname = $row->FirstName;
+          $mname = $row->MiddleName;
+          $lname = $row->LastName;
+          $bdate = $row->BirthDate;
+          $email = $row->EmailAddress;
+          $contact1 = $row->ContactNo1;
+          $contact2 = $row->ContactNo2;
+          $addr = $row->HouseBuildingNoStreet;
+          $brgy = $row->BarangarOrVillage;
+          $towncity = $row->TownOrCityProvince;
 
+          $active= $row->IsActive;
+            if($active==1){ 
+              $stat = 'activated';
+              $mystat = '1';
+            }else{
+              $stat = 'deactivated';
+              $mystat= '0';
+            }
+
+           echo '
+            <tr>
+              <td>'.$i.'</td>
+              <td class="hidden">'.$uid.'</td>
+              <td class="hidden">'.$mystat.'</td>
+              <td>'.$stat.' </td>
+              <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
+              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
+              <td class="hidden">'.$row->ConsigneeId.'</td>
+              <td>'.$row->ConsigneeName.'</td>
+              <td>'.$uname.'</td>
+              <td>'.$fname.'</td>
+              <td>'.$mname.'</td>
+              <td>'.$lname.'</td>
+              <td>'.$bdate.'</td>     
+              <td>'.$email.'</td>
+              <td>'.$contact1.'</td>
+              <td>'.$contact2.'</td>
+              <td>'.$addr.'</td>
+              <td>'.$brgy.'</td>
+              <td>'.$towncity.'</td>     
+              <td class="hidden">'.$row->CountryId.'</td>
+              <td>'.$row->CountryName.'</td>                  
+            </tr>
+           '; 
+
+        }
+
+          echo '
+               </tbody>         
+             </table>
+            </div>
+        
+          ';
       }
 
 

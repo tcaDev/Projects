@@ -232,12 +232,25 @@ function get_countryID_manila($jobfile){
  }
 
 function get_user(){
-    $query = $this->db->query("select * from User where RoleId = 5");
+    $query = $this->db->query("select U.*, CT.CountryName, CT.CountryId 
+                                from User U
+                                JOIN Countries CT ON CT.CountryId = U.CountryId
+                               where RoleId = 5");
     return $query->result();
  }
 
+
+function get_user_admin(){
+  $query = $this->db->query("select U.*, CT.CountryName, CT.CountryId 
+                                from User U
+                                JOIN Countries CT ON CT.CountryId = U.CountryId
+                               where RoleId = 1");
+    return $query->result();
+}
+
+
  function get_user_client(){
-    $query = $this->db->query("SELECT U.*,C.ConsigneeName,CT.CountryName
+    $query = $this->db->query("SELECT U.*,C.ConsigneeName,CT.CountryName,C.ConsigneeId
                               FROM User U
                               JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
                               JOIN  Countries CT ON CT.CountryId = U.CountryId
@@ -386,6 +399,20 @@ function get_jobfile_air_audit($jobfile){
   }
 
 
+  function chart_sea(){
+    $query = $this->db->query("select S.StatusName,S.ColorCode, count(*) as Ratings FROM JobFile JF
+                              JOIN `Status` S On JF.StatusId = S.StatusId
+                              Group By S.StatusName ORDER BY S.StatusId");
+    return $query->result();
+ }
+
+function chart_air(){
+  $query = $this->db->query("select S.StatusName,S.ColorCode, count(*) as Ratings FROM JobFile_Air JFA
+                            JOIN `Status` AS S On JFA.StatusId = S.StatusId
+                            Group By S.StatusName Order By S.StatusId");
+    return $query->result();
+}
+
   function get_email_jobfile($jbfl,$monType){
 
     if($monType != 3){
@@ -431,6 +458,19 @@ function get_jobfile_air_audit($jobfile){
     return $query->result();
   }
 
+function jobfile_graph_manila(){
+  $query = $this->db->query("select count(*) as Ratings FROM JobFile where MonitoringTypeId =1");
+    return $query->result();
+}
+
+function jobfile_graph_outport(){
+  $query = $this->db->query("select count(*) as Ratings FROM JobFile where MonitoringTypeId =2");
+    return $query->result();
+}
+function jobfile_graph_air(){
+  $query = $this->db->query("select count(*) as Ratings FROM JobFile_Air");
+    return $query->result();
+}
 }
 
 

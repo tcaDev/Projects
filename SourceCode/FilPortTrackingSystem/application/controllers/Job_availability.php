@@ -125,5 +125,146 @@ function check_air(){
           }
 }
 
+function reset_password(){
+  $pass =   $this->input->post('pass');
+  $cpass =   $this->input->post('cpass');
+  $uid =   $this->input->post('uid');
+
+  $salt  = 'fwodhsljkfhnouh';
+  $salt2 = 'djaoiuelanwdoiwq';
+  $password = sha1($salt.$cpass.$salt2);
+
+   $data = array(
+              'Password'    => $password
+           );
+          $this->db->where('UserId', $uid);
+          $this->db->update('User', $data);
+  }
+
+
+function get_User_list_admin(){
+
+        $User_list = $this->Jobdata->get_user_admin();
+
+        echo '
+            <div class="col-lg-12 row">
+            <table class=" table-bordered table-condensed " style="width:2000px;">
+                <thead>
+                  <tr>
+                      <th>No.</th>
+                      <th>Status</th>
+                      <th>Update</th>
+                      <th>Reset Password</th>
+                      <th>Username</th>
+                      <th>FirstName</th>
+                      <th>MiddleName</th>
+                      <th>LastName</th>
+                      <th>BirthDate</th>
+                      <th>EmailAddress</th>
+                      <th>ContactNo1</th>
+                      <th>ContactNo2</th>
+                      <th>HouseBuildingNoStreet</th>
+                      <th>BarangarOrVillage</th>
+                      <th>TownOrCityProvince</th>
+                      <th>Country</th>
+                  </tr>
+                </thead>      
+                <tbody>
+
+
+        ';
+        $i=0;
+        foreach ($User_list as $row) {
+          $i++;
+          $uid = $row->UserId;
+          $uname = $row->UserName;
+          $fname = $row->FirstName;
+          $mname = $row->MiddleName;
+          $lname = $row->LastName;
+          $bdate = $row->BirthDate;
+          $email = $row->EmailAddress;
+          $contact1 = $row->ContactNo1;
+          $contact2 = $row->ContactNo2;
+          $addr = $row->HouseBuildingNoStreet;
+          $brgy = $row->BarangarOrVillage;
+          $towncity = $row->TownOrCityProvince;
+
+          $active= $row->IsActive;
+            if($active==1){ 
+              $stat = 'activated';
+              $mystat = '1';
+            }else{
+              $stat = 'deactivated';
+              $mystat= '0';
+            }
+
+           echo '
+            <tr>
+              <td>'.$i.'</td>
+              <td class="hidden">'.$uid.'</td>
+              <td class="hidden">'.$mystat.'</td>
+              <td>'.$stat.' </td>
+              <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
+              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
+              <td>'.$uname.'</td>
+              <td>'.$fname.'</td>
+              <td>'.$mname.'</td>
+              <td>'.$lname.'</td>
+              <td>'.$bdate.'</td>     
+              <td>'.$email.'</td>
+              <td>'.$contact1.'</td>
+              <td>'.$contact2.'</td>
+              <td>'.$addr.'</td>
+              <td>'.$brgy.'</td>
+              <td>'.$towncity.'</td>
+              <td class="hidden">'.$row->CountryId.'</td>
+              <td>'.$row->CountryName.'</td>
+            </tr>
+           '; 
+
+        }
+
+          echo '
+               </tbody>         
+             </table>
+            </div>
+        
+          ';
+
+ 
+
+
+      }
+
+
+      function dashboard_legend_sea(){
+
+        $piechart =  $this->Jobdata->chart_sea();
+
+        $data['piechart'] = $piechart;
+
+        $this->load->view('dashboard/sea_chart',$data);
+      }
+
+      function dashboard_legend_air(){
+
+        $piechart =  $this->Jobdata->chart_air();
+
+        $data['piechart'] = $piechart;
+
+        $this->load->view('dashboard/air_chart',$data);
+      }
+
+      function dashboard_jobfile(){
+        $barchart_mnila =  $this->Jobdata->jobfile_graph_manila();
+        $barchart_outport =  $this->Jobdata->jobfile_graph_outport();
+        $barchart_air =  $this->Jobdata->jobfile_graph_air();
+
+        $data['barchart_mnila'] = $barchart_mnila;
+        $data['barchart_outport'] = $barchart_outport;
+        $data['barchart_air'] = $barchart_air;
+
+        $this->load->view('dashboard/jobfile_bargraph',$data);
+      }
 }
 ?>   

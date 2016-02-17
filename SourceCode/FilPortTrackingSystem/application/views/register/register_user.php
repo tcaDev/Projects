@@ -22,6 +22,7 @@
 
                                      <label class="radio-inline"><input type="radio" value="5" name="optradio" class="filport-user" checked="checked" style="transform: scale(1.5);">Filport User</label>
                                      <label class="radio-inline"><input type="radio" value="2" name="optradio" class="client" style="transform: scale(1.5);">Client User</label>
+                                    <label class="radio-inline"><input type="radio" value="1" name="optradio" class="filport-user" style="transform: scale(1.5);">Administrator User</label>
                                      
                                 <hr>
                             </div>
@@ -95,6 +96,8 @@
                                         
                                         </div>
 
+                                   
+
                                         <div class="form-group"><span id="check_uname"></span>
                                             <input type="text" name='uname' placeholder="Username" class="form-control" data-toggle="tooltip" data-placement="left" title="Username" required onkeyup="uname_check(this.value)">
                                         </div>
@@ -124,23 +127,31 @@
 
                             <div id="listUser" class="tab-pane fade">
                                 <br>
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#user_internal" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Filport User Account</a></li>
-                                <li><a data-toggle="tab" href="#client_user" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Client User Account</a></li>
-                            </ul>
-
-                              <div class="tab-content">
                               
-                                <div id="user_internal" class="tab-pane fade in active">
-                                  <div class="table_UserList" style="width:100%;position:relative;overflow-y:auto;"></div>
+                                    <ul class="nav nav-tabs update_list">
+                                        <li class="active"><a data-toggle="tab" href="#user_internal" id="user_internal_list" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Filport User Account</a></li>
+                                        <li><a data-toggle="tab" href="#client_user" id="user_client_list" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Client User Account</a></li>
+                                        <li><a data-toggle="tab" href="#admin_user" id="user_admin_list" style="border: 0px solid #ddd !important;"><span class="fa fa-user fa-fw"></span> Admin User Account</a></li>
+                                    </ul>
+                               
+                                  
+                                      <div class="tab-content">
+                                      
+                                        <div id="user_internal" class="tab-pane fade in active">
+                                          <div class="table_UserList" style="width:100%;position:relative;overflow-y:auto;height:400px"></div>
+                                        </div>
+
+                                        <div id="client_user" class="tab-pane fade">
+                                          <div class="table_UserList_client" style="width:100%;position:relative;overflow-y:auto;height:400px"></div>
+                                        </div>
+
+                                        <div id="admin_user" class="tab-pane fade">
+                                          <div class="table_UserList_admin" style="width:100%;position:relative;overflow-y:auto;height:400px"></div>
+                                        </div>
+
+                                      </div>
                                 </div>
 
-                                <div id="client_user" class="tab-pane fade">
-                                  <div class="table_UserList_client" style="width:100%;position:relative;overflow-y:auto;"></div>
-                                </div>
-
-                              </div>
-                            </div>
 
 
                             <!-- End List Form -->          
@@ -160,7 +171,6 @@
 
 
 <script>
- var link = 'http://localhost/FilPortTrackingSystem';
 
 
  $(document).on('click','.add_User',function(){
@@ -179,7 +189,7 @@ $('.btn-Save-AddUser').addClass('hidden');
         dataType: "html", 
         beforeSend: function() {
               $('.table_UserList').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-            },               
+            },          
         success: function(response){                    
             $(".table_UserList").html(response); 
             
@@ -196,6 +206,20 @@ $('.btn-Save-AddUser').addClass('hidden');
             },               
         success: function(response){                    
             $(".table_UserList_client").html(response); 
+            
+        }
+
+    });
+
+     $.ajax({    //create an ajax request 
+        type: "GET",
+        url:  "<?php echo base_url('Job_availability/get_User_list_admin');?>",             
+        dataType: "html", 
+        beforeSend: function() {
+              $('.table_UserList_admin').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+            },               
+        success: function(response){                    
+            $(".table_UserList_admin").html(response); 
             
         }
 
@@ -284,7 +308,7 @@ $(document).ready(function(){
 
 
 
-/*Hidden Consignee If Client is User*/
+/*Hidden Consignee If Filport is User*/
 
 var legit=0;
 
@@ -292,6 +316,7 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').removeClass('hidden');
+
       legit=1;
     }
   });
@@ -300,6 +325,7 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').addClass('hidden');
+
       legit=2;
     }
   });
@@ -473,8 +499,8 @@ function validateEmail(email) {
 								 $("input[name=password]").val('');
 								 $("input[name=passconf]").val('');
 
-								$('.check_uname i').text('');
-								$('.check_email i').text('');
+								$('#check_uname i').text("");
+								$('#check_email i').text("");
 								$('#message').text('');
                                   
 

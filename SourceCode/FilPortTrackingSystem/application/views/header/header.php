@@ -117,7 +117,7 @@
 
 <!-- Modal -->
 <div id="myModal_updateUser" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     
@@ -126,6 +126,17 @@
   </div>
 </div>
 
+
+<!-- Modal -->
+<div id="myModal_resetPass" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    
+    <?php $this->load->view('register/reset_pass'); ?>
+    
+  </div>
+</div>
 	<script>
 
 	 $(document).ready(function(){
