@@ -21,7 +21,7 @@
             text: 'Color Stages Sea Freight Outport'
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.y}</b>'
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
         plotOptions: {
             pie: {
@@ -35,7 +35,7 @@
                 showInLegend: true,
                 dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.y}',
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%',
                 }
             }
         },

@@ -79,7 +79,6 @@ class Login_user extends CI_Controller {
 							         'roleID'	 =>   $row->RoleId,
 							         'cID' 		 =>   $row->ConsigneeId,
 							         'img'		 =>	  $row->ProfileImageSource,
-							         'bdate'     =>	  $row->BirthDate
 							       );
 							       $this->session->set_userdata('logged_in', $sess_array);
 							         return TRUE;
@@ -356,7 +355,6 @@ class Login_user extends CI_Controller {
 		    $data['lname'] = $session_data['lname'];
 		    $data['uid'] = $session_data['uid'];
 		    $data['img'] = $session_data['img'];
-		    $data['bdate'] = $session_data['bdate'];
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
@@ -652,8 +650,8 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
-				         'img'		 =>	  $row->ProfileImageSource,
-				         'bdate'	 =>	  $row->BirthDate
+				         'img'		 =>	  $row->ProfileImageSource
+				         
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
@@ -680,7 +678,6 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
-			    $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Photo Successfully Change !";
@@ -701,7 +698,6 @@ class Login_user extends CI_Controller {
 			    $data['fname'] = $session_data['fname'];
 			    $data['mname'] = $session_data['mname'];
 			    $data['lname'] = $session_data['lname'];
-			    $data['bdate'] = $session_data['bdate'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
 			  	$data['tab'] = "";
@@ -724,8 +720,6 @@ class Login_user extends CI_Controller {
 		$fname = $this->input->post('fname');
 		$mname = $this->input->post('mname');
 		$lname = $this->input->post('lname');
-		$bdate = $this->input->post('bdate');
-
 		$this->User->updateName($id,$fname,$mname,$lname,$bdate);
 
 
@@ -742,8 +736,7 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
-				         'img'		 =>	  $row->ProfileImageSource,
-				         'bdate'	 =>	  $row->BirthDate
+				         'img'		 =>	  $row->ProfileImageSource
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
 				     }
@@ -766,7 +759,6 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
-			    $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Name Successfully Change !";
@@ -826,7 +818,6 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
-			     $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Password Successfully Change !";
@@ -849,7 +840,6 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
-			     $data['bdate'] = $session_data['bdate'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "danger";
 				$data['msg'] = "Incorrect Current Password. Try Again.";

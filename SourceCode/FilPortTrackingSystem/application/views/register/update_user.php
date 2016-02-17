@@ -32,60 +32,75 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="bdate">Birthdate:</label>
-                    <input type="date" class="form-control input-sm bdate">
-                  </div>
-
-                  <div class="form-group">
                     <label for="fname">Email:</label>
                     <input type="text" class="form-control input-sm email">
                   </div>
 
                   <div class="form-group">
+                    <label for="fname">Title:</label>
+                    <input type="text" class="form-control input-sm title">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fname" class="department">Department:</label>
+                    <input type="text" class="form-control input-sm department_update">
+                  </div>
+
+                  
+                  <div class="form-group">
                     <label for="c1">Contact No.1:</label>
                     <input type="text" class="form-control input-sm c1">
                   </div>
-
-                 
+                
                  
       				</div>
 
       				<div class="col-lg-6">
 
-               <div class="form-group">
+                 
+
+                  <div class="form-group">
                     <label for="c2">Contact No.2:</label>
                     <input type="text" class="form-control input-sm c2">
                   </div>
 
-                  <div class="form-group">
-                    <label for="addr">House/Building No./Street:</label>
-                    <input type="text" class="form-control input-sm addr">
+                  <div class="form-group hidden addr_update" >
+                    <label for="addr">Address 1:</label>
+                    <input type="text" class="form-control input-sm addr_1">
                   </div>
 
-                  <div class="form-group">
-                    <label for="brgy">Barangay/Village:</label>
-                    <input type="text" class="form-control input-sm brgy">
+                  <div class="form-group hidden addr_update2">
+                    <label for="brgy">Address 2:</label>
+                    <input type="text" class="form-control input-sm addr_2">
                   </div>
-
-                  <div class="form-group">
-                    <label for="city">Town/City Province:</label>
-                    <input type="text" class="form-control input-sm city">
-                  </div>
-
-                  <div class="form-group">
-                   <label for="country">Country:</label>
-                    <select name="country" class="form-control country" data-placement="left">
-                      <?php 
-                        echo "<option value='0' selected='selected'>Select your Country</option>";
-                        foreach($countries as $row)
-                         echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
-                      ?>
-                    </select>
-                </div>
 
                 <div class="hidden form-group consignee_update_user">
                    <label for="consignee_update_user">Consignee:</label>
                   <select name="consignee" class="form-control consignee" data-placement="left">
+                    <?php 
+                      echo "<option value='0' selected='selected'>Select your Consignee</option>";
+                      foreach($consignee as $row)
+                       echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
+                    ?>
+                 </select>
+                </div>
+
+
+                <div class="hidden form-group consignee_update_user2">
+                   <label for="consignee_update_user">Consignee 2:</label>
+                  <select name="consignee" class="form-control consignee2" data-placement="left">
+                    <?php 
+                      echo "<option value='0' selected='selected'>Select your Consignee</option>";
+                      foreach($consignee as $row)
+                       echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
+                    ?>
+                 </select>
+                </div>
+
+
+                <div class="hidden form-group consignee_update_user3">
+                   <label for="consignee_update_user">Consignee 3:</label>
+                  <select name="consignee" class="form-control consignee3" data-placement="left">
                     <?php 
                       echo "<option value='0' selected='selected'>Select your Consignee</option>";
                       foreach($consignee as $row)
@@ -127,15 +142,36 @@ var user_admin=0;
 
   $(document).on('click',' #user_client_list',function(){
      $('.consignee_update_user').fadeIn('slow').removeClass('hidden');
+     $('.consignee_update_user2').fadeIn('slow').removeClass('hidden');
+     $('.consignee_update_user3').fadeIn('slow').removeClass('hidden');
+
+     $('.addr_update').fadeIn('slow').removeClass('hidden');
+     $('.addr_update2').fadeIn('slow').removeClass('hidden');
+
+    $('.department').text("Company:");
       user_admin=1;
   });
 
   $(document).on('click','#user_internal_list',function(){
       $('.consignee_update_user').fadeIn('slow').addClass('hidden');
+      $('.consignee_update_user2').fadeIn('slow').addClass('hidden');
+      $('.consignee_update_user3').fadeIn('slow').addClass('hidden');
+
+      $('.department').text("Department:");
+
+      $('.addr_update').fadeIn('slow').addClass('hidden');
+         $('.addr_update2').fadeIn('slow').addClass('hidden');
       user_admin=2;
   });
   $(document).on('click','#user_admin_list',function(){
       $('.consignee_update_user').fadeIn('slow').addClass('hidden');
+      $('.consignee_update_user2').fadeIn('slow').addClass('hidden');
+      $('.consignee_update_user3').fadeIn('slow').addClass('hidden');
+
+      $('.department').text("Department:");
+
+      $('.addr_update').fadeIn('slow').addClass('hidden');
+      $('.addr_update2').fadeIn('slow').addClass('hidden');
       user_admin=3;
   });
 
@@ -150,23 +186,16 @@ var user_admin=0;
 		var fname = $(this).closest('tr').children('td:eq(7)').text();
     var mname = $(this).closest('tr').children('td:eq(8)').text();
 		var lname = $(this).closest('tr').children('td:eq(9)').text();
-    var bdate = $(this).closest('tr').children('td:eq(10)').text();
+    
+    var email = $(this).closest('tr').children('td:eq(10)').text();
+     var title = $(this).closest('tr').children('td:eq(11)').text();
+    var department = $(this).closest('tr').children('td:eq(12)').text(); 
 
-    var email = $(this).closest('tr').children('td:eq(11)').text();
-    var contact1 = $(this).closest('tr').children('td:eq(12)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(13)').text();
-
-    var addr = $(this).closest('tr').children('td:eq(14)').text();
-    var brgy = $(this).closest('tr').children('td:eq(15)').text();
-    var towncity = $(this).closest('tr').children('td:eq(16)').text();
-
-    var country = $(this).closest('tr').children('td:eq(17)').text();
-
+    var contact1 = $(this).closest('tr').children('td:eq(13)').text();
+    var contact2 = $(this).closest('tr').children('td:eq(14)').text();
 
 		 uid = $(this).closest('tr').children('td:eq(1)').text();
 		var status = $(this).closest('tr').children('td:eq(2)').text();
-
-		
 
 		var statuses = parseInt(status);
 
@@ -174,17 +203,15 @@ var user_admin=0;
 		$('.fname').val(fname);
 		$('.lname').val(lname);
     $('.mname').val(mname);
-    $('.bdate').val(bdate);
+
+    $('.title').val(title);
+    $('.department_update').val(department);
+
     $('.email').val(email);
+
     $('.c1').val(contact1);
     $('.c2').val(contact2);
-    $('.addr').val(addr);
-    $('.brgy').val(brgy);
-    $('.city').val(towncity);
-    $('.country').val(country);
-
-
-
+    
 	     if(statuses==1){
 	      $('.activate_user').prop('checked', true);
 	  	 }else{
@@ -199,22 +226,22 @@ var user_admin=0;
 $(document).on('click','.btn-update-user-client',function(){
 
     var consignee = $(this).closest('tr').children('td:eq(6)').text();
-    var uname = $(this).closest('tr').children('td:eq(8)').text();
-    var fname = $(this).closest('tr').children('td:eq(9)').text();
-    var mname = $(this).closest('tr').children('td:eq(10)').text();
-    var lname = $(this).closest('tr').children('td:eq(11)').text();
-    var bdate = $(this).closest('tr').children('td:eq(12)').text();
+    var consignee2 = $(this).closest('tr').children('td:eq(8)').text();
+    var consignee3 = $(this).closest('tr').children('td:eq(10)').text();
 
-    var email = $(this).closest('tr').children('td:eq(13)').text();
-    var contact1 = $(this).closest('tr').children('td:eq(14)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(15)').text();
+    var uname = $(this).closest('tr').children('td:eq(12)').text();
+    var fname = $(this).closest('tr').children('td:eq(13)').text();
+    var mname = $(this).closest('tr').children('td:eq(14)').text();
+    var lname = $(this).closest('tr').children('td:eq(15)').text();
+    var email = $(this).closest('tr').children('td:eq(16)').text();
+      var title = $(this).closest('tr').children('td:eq(17)').text();
+    var department = $(this).closest('tr').children('td:eq(18)').text(); 
 
-    var addr = $(this).closest('tr').children('td:eq(16)').text();
-    var brgy = $(this).closest('tr').children('td:eq(17)').text();
-    var towncity = $(this).closest('tr').children('td:eq(18)').text();
+    var contact1 = $(this).closest('tr').children('td:eq(19)').text();
+    var contact2 = $(this).closest('tr').children('td:eq(20)').text();
 
-    var country = $(this).closest('tr').children('td:eq(19)').text();
-
+    var addr = $(this).closest('tr').children('td:eq(21)').text();
+    var addr2 = $(this).closest('tr').children('td:eq(22)').text();
 
      uid = $(this).closest('tr').children('td:eq(1)').text();
     var status = $(this).closest('tr').children('td:eq(2)').text();
@@ -227,14 +254,20 @@ $(document).on('click','.btn-update-user-client',function(){
     $('.fname').val(fname);
     $('.lname').val(lname);
     $('.mname').val(mname);
-    $('.bdate').val(bdate);
+    
     $('.email').val(email);
+
+    $('.title').val(title);
+    $('.department_update').val(department);
+
     $('.c1').val(contact1);
     $('.c2').val(contact2);
-    $('.addr').val(addr);
-    $('.brgy').val(brgy);
-    $('.city').val(towncity);
-    $('.country').val(country);
+
+    $('.addr_1').val(addr);
+    $('.addr_2').val(addr2);
+
+    $('.consignee2').val(consignee2);
+    $('.consignee3').val(consignee3);
     $('.consignee').val(consignee);
 
 
@@ -254,15 +287,21 @@ $(document).on('click','.btn-update-user-client',function(){
     var fname = $('.fname').val();
     var mname = $('.mname').val();
     var lname = $('.lname').val();
-    var bdate = $('.bdate').val();
+ 
     var email = $('.email').val();
+
+    var title = $('.title').val();
+    var department = $('.department_update').val();
+
     var c1 = $('.c1').val();
     var c2 = $('.c2').val();
-    var addr = $('.addr').val();
-    var brgy = $('.brgy').val();
-    var city = $('.city').val();
-    var country = $('.country').val();
-     var consignee = $('.consignee').val();
+    var addr = $('.addr_1').val();
+    var addr2 = $('.addr_2').val();
+
+    
+    var consignee = $('.consignee').val();
+    var consignee2 = $('.consignee2').val();
+    var consignee3 = $('.consignee3').val();
 
 		 $.ajax({
             method: "POST",
@@ -282,15 +321,16 @@ $(document).on('click','.btn-update-user-client',function(){
                      fname  :fname,
                      mname  :mname,
                      lname  :lname,
-                     bdate  :bdate,
                      email  :email,
+                     title : title,
+                     department : department,
                      c1     :c1,
                      c2     :c2,
                      addr   :addr,
-                     brgy   :brgy,
-                     city   :city,
-                     country:country,
+                     addr2   :addr2,
                      consignee:consignee,
+                     consignee2:consignee2,
+                     consignee3:consignee3,
                 }
         })
            .done(function(data) {

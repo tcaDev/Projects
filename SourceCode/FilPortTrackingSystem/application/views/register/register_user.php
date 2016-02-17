@@ -42,9 +42,21 @@
                                                 <input type="text" name="lname"  placeholder="Last Name" class="form-control"  data-toggle="tooltip" data-placement="left" title="Last Name" required >
                                           </div>
 
-                                           <div class="form-group">
-                                                <input placeholder="Birth Date" class="form-control" type="text" onfocus="(this.type='date')" name="bdate"  data-toggle="tooltip" data-placement="left" title="Birth Date" required>
-                                            </div>
+                                          <div class="form-group">
+                                            <input type="text" name="title" placeholder="Title" class="form-control" data-toggle="tooltip" data-placement="left" title="Title" required >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" name="department" placeholder="Department" class="form-control department" data-toggle="tooltip" data-placement="left" title="Department" required >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" name="addr" placeholder="Address 1" class="form-control hidden addr" data-toggle="tooltip" data-placement="left" title="Address 1" required >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" name="addr2" placeholder="Address 2" class="form-control hidden addr2" data-toggle="tooltip" data-placement="left" title="Address 2" required >
+                                        </div>
 
                                           <div class="form-group">
                                              <input type="text" name="contact1"  placeholder="Contact Number 1" class="form-control" min="7" max="11" data-toggle="tooltip" data-placement="left" title="Contact Number 1" required >
@@ -53,47 +65,40 @@
                                           <div class="form-group">
                                              <input type="text" name="contact2"  placeholder="Contact Number 2" class="form-control" min="7" max="11" data-toggle="tooltip" data-placement="left" title="Contact Number 2" >
                                           </div>
-
-                                          <div class="form-group">
-                                            <input type="text" name='addr' placeholder="House / Building No. / Street" class="form-control"  data-toggle="tooltip" data-placement="left" title="House / Building No. / Street"  required >
-                                        </div>
-
-                                         <div class="form-group">
-                                             <input type="text" name="brgy" placeholder="Barangay / Village" class="form-control" data-toggle="tooltip" data-placement="left" title="Barangay / Village"  required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="text" name="towncity" placeholder="Town / City Province" class="form-control" data-toggle="tooltip" data-placement="left" title="Town / City Province" required >
-                                        </div>
-
                                     </div>
 
 
                                     <!-- UserName and Password -->
                                     <div class="col-lg-6">
 
-                                         <div class="form-group">
-
-                                            <select name="country" class="form-control country_addUser" data-toggle="tooltip" data-placement="left" title="Country">
+                                        <div class="form-group">
+                                            <select name="consignee" class="form-control hidden consignee_add_user" data-toggle="tooltip" data-placement="left" title="Consignee">
                                               <?php 
-                                                echo "<option value='0' selected='selected'>Select your Country</option>";
-                                                foreach($countries as $row)
-                                                 echo "<option value=".$row->CountryId."> ".$row->CountryName."</option>"; 
+                                                echo "<option value='0' selected='selected'>Select your Consignee</option>";
+                                                foreach($consignee as $row)
+                                                 echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
                                               ?>
                                             </select>
-                                        
                                         </div>
 
                                         <div class="form-group">
+                                            <select name="consignee2" class="form-control hidden consignee_add_user2" data-toggle="tooltip" data-placement="left" title="Consignee 2">
+                                              <?php 
+                                                echo "<option value='0' selected='selected'>Select your Consignee</option>";
+                                                foreach($consignee as $row)
+                                                 echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
+                                              ?>
+                                            </select>
+                                        </div>
 
-                                          <select name="consignee" class="form-control hidden consignee_add_user" data-toggle="tooltip" data-placement="left" title="Consignee">
-                                            <?php 
-                                              echo "<option value='0' selected='selected'>Select your Consignee</option>";
-                                              foreach($consignee as $row)
-                                               echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
-                                            ?>
-                                        </select>
-                                        
+                                        <div class="form-group">
+                                            <select name="consignee3" class="form-control hidden consignee_add_user3" data-toggle="tooltip" data-placement="left" title="Consignee 3">
+                                              <?php 
+                                                echo "<option value='0' selected='selected'>Select your Consignee</option>";
+                                                foreach($consignee as $row)
+                                                 echo "<option value=".$row->ConsigneeId."> ".$row->ConsigneeName."</option>"; 
+                                              ?>
+                                            </select>
                                         </div>
 
                                    
@@ -174,8 +179,7 @@
 
 
  $(document).on('click','.add_User',function(){
-$('.btn-Save-AddUser').removeClass('hidden');
-
+    $('.btn-Save-AddUser').removeClass('hidden');
 });
 
  /*Get List Of User*/
@@ -316,6 +320,14 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').removeClass('hidden');
+      $('.consignee_add_user2').fadeIn('slow').removeClass('hidden');
+      $('.consignee_add_user3').fadeIn('slow').removeClass('hidden');
+
+      $('.addr').fadeIn('slow').removeClass('hidden');
+      $('.addr2').fadeIn('slow').removeClass('hidden');
+
+      $('.department').attr('placeholder','Company');
+      
 
       legit=1;
     }
@@ -325,6 +337,13 @@ var legit=0;
     if ($(this).is(':checked'))
     {
       $('.consignee_add_user').fadeIn('slow').addClass('hidden');
+      $('.consignee_add_user2').fadeIn('slow').addClass('hidden');
+      $('.consignee_add_user3').fadeIn('slow').addClass('hidden');
+
+      $('.addr').fadeIn('slow').addClass('hidden');
+      $('.addr2').fadeIn('slow').addClass('hidden');
+
+      $('.department').attr('placeholder','Department');
 
       legit=2;
     }
@@ -342,22 +361,25 @@ function validateEmail(email) {
     var fname = $("input[name=fname]").val();
     var mname = $("input[name=mname]").val();
     var lname = $("input[name=lname]").val();
-    var bdate = $("input[name=bdate]").val();
+
+    var title = $("input[name=title]").val();
+    var department = $("input[name=department]").val();
+    
     var contact1 = $("input[name=contact1]").val();
     var contact2 = $("input[name=contact2]").val();
-    var addr = $("input[name=addr]").val();
-    var brgy = $("input[name=brgy]").val();
-    var towncity = $("input[name=towncity]").val();
 
-    var country = $(".country_addUser option:selected").val();
+    var addr = $("input[name=addr]").val();
+    var addr2 = $("input[name=addr2]").val();
+
     var consignee = $(".consignee_add_user option:selected").val();
+    var consignee = $(".consignee_add_user2 option:selected").val();
+    var consignee = $(".consignee_add_user3 option:selected").val();
 
     var uname = $("input[name=uname]").val();
     var email = $("input[name=email]").val();
     var pass = $("input[name=password]").val();
     var passconf = $("input[name=passconf]").val();
 
-    var activation = $(".activation option:selected").val();
 
     var role = $('input[name=optradio]:checked').val();
 
@@ -371,20 +393,14 @@ function validateEmail(email) {
     else if(lname == ''){
       $("input[name=lname]").focus();
     }
-    else if(bdate == ''){
-      $("input[name=bdate]").focus();
-    }
     else if(contact1 == ''){
       $("input[name=contact1]").focus();
     }
-    else if(addr == ''){
-      $("input[name=addr]").focus();
+    else if(title == ''){
+      $("input[name=title]").focus();
     }
-    else if(brgy == ''){
-      $("input[name=brgy]").focus();
-    }
-    else if(towncity == ''){
-      $("input[name=towncity]").focus();
+    else if(department == ''){
+      $("input[name=department]").focus();
     }
     else if(uname == ''){
       $("input[name=uname]").focus();
@@ -423,15 +439,14 @@ function validateEmail(email) {
           $('#message_user').text("");
           $('#message_user_email').fadeIn('slow').text("Please Choose Consignee...");
           $('#message_user_email').fadeOut(3000);
-        } else{
+        }
+        else if(addr == ''){
+            $("input[name=addr]").focus();
+        }
+        else{
           legit =0;
           $(this).click();
         }
-    }
-    else if($('.country_addUser option:selected').val() == '0'){
-        $('#message_user').text("");
-        $('#message_user_email').fadeIn('slow').text("Please Choose Country...");
-        $('#message_user_email').fadeOut(3000);
     }
     else{
 
@@ -455,15 +470,19 @@ function validateEmail(email) {
                     fname :fname,
                     lname :lname,
                     mname :mname,
-                    bdate :bdate,
+
+                    title : title,
+                    department :department,
+
                     contact1 :contact1,
                     contact2 :contact2,
-                    addr :addr,
-                    brgy :brgy,
-                    towncity :towncity,
 
-                    country :country,
+                    addr :addr,
+                    addr2 :addr2,
+
                     consignee :consignee,
+                    consignee2 :consignee2,
+                    consignee3 :consignee3,
 
                     uname :uname,
                     email :email,
@@ -484,15 +503,14 @@ function validateEmail(email) {
 								 $("input[name=fname]").val('');
 								 $("input[name=mname]").val('');
 								 $("input[name=lname]").val('');
-								 $("input[name=bdate]").val('');
 								 $("input[name=contact1]").val('');
 								 $("input[name=contact2]").val('');
 								 $("input[name=addr]").val('');
-								 $("input[name=brgy]").val('');
-								 $("input[name=towncity]").val('');
+                 $("input[name=addr2]").val('');
 
-								 $(".country_addUser option:eq(0)").attr('selected','selected');
 								 $(".consignee_add_user option:eq(0)").attr('selected','selected');
+                 $(".consignee_add_user2 option:eq(0)").attr('selected','selected');
+                 $(".consignee_add_user3 option:eq(0)").attr('selected','selected');
 
 								 $("input[name=uname]").val('');
 								 $("input[name=email]").val('');
@@ -504,7 +522,7 @@ function validateEmail(email) {
 								$('#message').text('');
                                   
 
-                                  $('#myModal_addUser').modal('hide');
+                 $('#myModal_addUser').modal('hide');
                               }
                            });
               })

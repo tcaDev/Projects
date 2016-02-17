@@ -159,14 +159,13 @@ function get_User_list_admin(){
                       <th>FirstName</th>
                       <th>MiddleName</th>
                       <th>LastName</th>
-                      <th>BirthDate</th>
                       <th>EmailAddress</th>
+                      <th>Title</th>
+                      <th>Department</th>
                       <th>ContactNo1</th>
                       <th>ContactNo2</th>
-                      <th>HouseBuildingNoStreet</th>
-                      <th>BarangarOrVillage</th>
-                      <th>TownOrCityProvince</th>
-                      <th>Country</th>
+                      <th>Address 1</th>
+                      <th>Address 2</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -181,14 +180,12 @@ function get_User_list_admin(){
           $fname = $row->FirstName;
           $mname = $row->MiddleName;
           $lname = $row->LastName;
-          $bdate = $row->BirthDate;
           $email = $row->EmailAddress;
           $contact1 = $row->ContactNo1;
           $contact2 = $row->ContactNo2;
-          $addr = $row->HouseBuildingNoStreet;
-          $brgy = $row->BarangarOrVillage;
-          $towncity = $row->TownOrCityProvince;
-
+          $addr = $row->Address1;
+          $addr2 = $row->Address2;
+         
           $active= $row->IsActive;
             if($active==1){ 
               $stat = 'activated';
@@ -209,16 +206,14 @@ function get_User_list_admin(){
               <td>'.$uname.'</td>
               <td>'.$fname.'</td>
               <td>'.$mname.'</td>
-              <td>'.$lname.'</td>
-              <td>'.$bdate.'</td>     
+              <td>'.$lname.'</td>   
               <td>'.$email.'</td>
+              <td>'.$row->Title.'</td>
+              <td>'.$row->Department.'</td>
               <td>'.$contact1.'</td>
               <td>'.$contact2.'</td>
               <td>'.$addr.'</td>
-              <td>'.$brgy.'</td>
-              <td>'.$towncity.'</td>
-              <td class="hidden">'.$row->CountryId.'</td>
-              <td>'.$row->CountryName.'</td>
+              <td>'.$addr2.'</td>
             </tr>
            '; 
 

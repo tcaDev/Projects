@@ -232,29 +232,26 @@ function get_countryID_manila($jobfile){
  }
 
 function get_user(){
-    $query = $this->db->query("select U.*, CT.CountryName, CT.CountryId 
-                                from User U
-                                JOIN Countries CT ON CT.CountryId = U.CountryId
-                               where RoleId = 5");
+    $query = $this->db->query("select * from User where RoleId = 5");
     return $query->result();
  }
 
-
 function get_user_admin(){
-  $query = $this->db->query("select U.*, CT.CountryName, CT.CountryId 
-                                from User U
-                                JOIN Countries CT ON CT.CountryId = U.CountryId
-                               where RoleId = 1");
+  $query = $this->db->query("select * from User where RoleId = 1");
     return $query->result();
 }
 
 
  function get_user_client(){
-    $query = $this->db->query("SELECT U.*,C.ConsigneeName,CT.CountryName,C.ConsigneeId
-                              FROM User U
-                              JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
-                              JOIN  Countries CT ON CT.CountryId = U.CountryId
-                              WHERE U.RoleId = 2");
+    $query = $this->db->query(" SELECT  
+                                C2.ConsigneeName as 'C2Name',C2.ConsigneeId as C2Id,
+                                C3.ConsigneeName as C3Name,C3.ConsigneeId as C3Id,
+                                U.*,C.ConsigneeName as CName ,C.ConsigneeId as CId
+                                FROM User U
+                                LEFT JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
+                                LEFT JOIN Consignee C2 ON C2.ConsigneeId = U.ConsigneeId2
+                                LEFT JOIN Consignee C3 ON C3.ConsigneeId = U.ConsigneeId3
+                                WHERE U.RoleId = 2");
     return $query->result();
  }
 

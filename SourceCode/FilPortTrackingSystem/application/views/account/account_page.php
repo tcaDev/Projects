@@ -77,10 +77,6 @@
 						        		<input class="form-control input-sm" type="text" name="lname" value="<?php echo $lname; ?>"/>
 						        	</div>
 
-						        	<div class="form-group">
-						        		<label >Birth Date : </label>
-						        		<input class="form-control input-sm" type="date" name="bdate" value="<?php echo $bdate; ?>"/>
-						        	</div>
 						        		<hr>
 						        	<div class="form-group">
 						        		<button type="submit" class="pull-right btn btn-primary btn-sm" ><i class="fa fa-floppy-o fa-lg"></i> Save Changes</button>

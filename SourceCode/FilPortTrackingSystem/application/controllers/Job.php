@@ -2612,16 +2612,24 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
     $fname = addslashes($this->input->post('fname'));
     $mname = addslashes($this->input->post('mname'));
     $lname = addslashes($this->input->post('lname'));
-    $bdate = addslashes($this->input->post('bdate'));
+
+    $title = addslashes($this->input->post('title'));
+    $department = addslashes($this->input->post('department'));
+   
+
     $contact1 = addslashes($this->input->post('contact1'));
     $contact2 = addslashes($this->input->post('contact2'));
+
     $addr = addslashes($this->input->post('addr'));
-    $brgy = addslashes($this->input->post('brgy'));
-    $towncity = addslashes($this->input->post('towncity'));
-    $country = addslashes($this->input->post('country'));
+    $addr2 = addslashes($this->input->post('addr2'));
+
+
     $consignee = addslashes($this->input->post('consignee'));
+    $consignee2 = addslashes($this->input->post('consignee2'));
+    $consignee3 = addslashes($this->input->post('consignee3'));
+
     $uname = addslashes($this->input->post('uname'));
-     $email = addslashes($this->input->post('email'));
+    $email = addslashes($this->input->post('email'));
     $pass = addslashes($this->input->post('pass'));
     $passconf = addslashes($this->input->post('passconf'));
     $activation = 0;
@@ -2639,16 +2647,23 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               'FirstName' => $fname,
               'MiddleName' => $mname,
               'LastName' => $lname,
-              'BirthDate' => $bdate,
+
+              'Title' => $title,              
+              'Department' => $department,
+
               'EmailAddress' => $email,
               'RoleId' => $role,
+
               'ContactNo1' => $contact1,
               'ContactNo2' => $contact2,
-              'HouseBuildingNoStreet' => $addr,
-              'BarangarOrVillage' => $brgy,
-              'TownOrCityProvince' => $towncity,
-              'CountryId' => $country,
+
+              'Address1' => $addr,
+              'Address2' => $addr2,
+              
               'ConsigneeId' => $consignee,
+              'ConsigneeId2' => $consignee2,
+              'ConsigneeId3' => $consignee3,
+
               'DateAdded' => Date('Y-m-d H:i'),
               'IsActive' => $activation,
               'ProfileImageSource' => $photo,
@@ -2668,15 +2683,20 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           $fname = $this->input->post('fname');
           $mname = $this->input->post('mname');
           $lname = $this->input->post('lname');
-          $bdate = $this->input->post('bdate');
+
           $email = $this->input->post('email');
+
+          $title = $this->input->post('title');
+          $department = $this->input->post('department');
+
           $c1 = $this->input->post('c1');
           $c2 = $this->input->post('c2');
           $addr = $this->input->post('addr');
-          $brgy = $this->input->post('brgy');
-          $city = $this->input->post('city');
-          $country = $this->input->post('country');
+          $addr2 = $this->input->post('addr2');
+
           $consignee = $this->input->post('consignee');
+          $consignee2 = $this->input->post('consignee2');
+          $consignee3 = $this->input->post('consignee3');
 
          
            $stats = (int)$status;
@@ -2687,15 +2707,20 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               'FirstName'   => $fname,
               'MiddleName'  => $mname,
               'LastName'    => $lname,
-              'BirthDate'   => $bdate,
+             
+              'Title'    => $title,
+              'Department'    => $department,
+
               'EmailAddress'=> $email,
               'ContactNo1'  => $c1,
               'ContactNo2'  => $c2,
-              'HouseBuildingNoStreet' => $addr,
-              'BarangarOrVillage' => $brgy,
-              'TownOrCityProvince' => $city,
-              'CountryId' => $country,
-              'ConsigneeId' => $consignee
+
+              'Address1' => $addr,
+              'Address2' => $addr2,
+              
+              'ConsigneeId' => $consignee,
+              'ConsigneeId2' => $consignee2,
+              'ConsigneeId3' => $consignee3
 
            );
           $this->db->where('UserId', $uid);
@@ -2721,14 +2746,11 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>FirstName</th>
                       <th>MiddleName</th>
                       <th>LastName</th>
-                      <th>BirthDate</th>
                       <th>EmailAddress</th>
-                      <th>ContactNo1</th>
-                      <th>ContactNo2</th>
-                      <th>HouseBuildingNoStreet</th>
-                      <th>BarangarOrVillage</th>
-                      <th>TownOrCityProvince</th>
-                      <th>Country</th>
+                      <th>Title</th>
+                      <th>Department</th>
+                      <th>Contact No 1</th>
+                      <th>Contact No 2</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -2743,13 +2765,11 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           $fname = $row->FirstName;
           $mname = $row->MiddleName;
           $lname = $row->LastName;
-          $bdate = $row->BirthDate;
           $email = $row->EmailAddress;
           $contact1 = $row->ContactNo1;
           $contact2 = $row->ContactNo2;
-          $addr = $row->HouseBuildingNoStreet;
-          $brgy = $row->BarangarOrVillage;
-          $towncity = $row->TownOrCityProvince;
+          $title = $row->Title;
+          $department = $row->Department;
 
           $active= $row->IsActive;
             if($active==1){ 
@@ -2772,15 +2792,11 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td>'.$fname.'</td>
               <td>'.$mname.'</td>
               <td>'.$lname.'</td>
-              <td>'.$bdate.'</td>     
               <td>'.$email.'</td>
+              <td>'.$title.'</td>
+              <td>'.$department.'</td>
               <td>'.$contact1.'</td>
               <td>'.$contact2.'</td>
-              <td>'.$addr.'</td>
-              <td>'.$brgy.'</td>
-              <td>'.$towncity.'</td>
-              <td class="hidden">'.$row->CountryId.'</td>
-              <td>'.$row->CountryName.'</td>
             </tr>
            '; 
 
@@ -2815,18 +2831,20 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
                       <th>Update</th>
                       <th>Reset Password</th>
                       <th>Consignee</th>
+                      <th>Consignee 2</th>
+                      <th>Consignee 3</th>
                       <th>Username</th>
                       <th>FirstName</th>
                       <th>MiddleName</th>
                       <th>LastName</th>
-                      <th>BirthDate</th>
                       <th>EmailAddress</th>
+                      <th>Title</th>
+                      <th>Company</th>
                       <th>ContactNo1</th>
                       <th>ContactNo2</th>
-                      <th>HouseBuildingNoStreet</th>
-                      <th>BarangarOrVillage</th>
-                      <th>TownOrCityProvince</th>
-                      <th>Country</th>
+                      <th>Address 1</th>
+                      <th>Address 2</th>
+
                   </tr>
                 </thead>      
                 <tbody>
@@ -2841,14 +2859,12 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           $fname = $row->FirstName;
           $mname = $row->MiddleName;
           $lname = $row->LastName;
-          $bdate = $row->BirthDate;
           $email = $row->EmailAddress;
           $contact1 = $row->ContactNo1;
           $contact2 = $row->ContactNo2;
-          $addr = $row->HouseBuildingNoStreet;
-          $brgy = $row->BarangarOrVillage;
-          $towncity = $row->TownOrCityProvince;
-
+          $addr = $row->Address1;
+          $addr2 = $row->Address2;
+         
           $active= $row->IsActive;
             if($active==1){ 
               $stat = 'activated';
@@ -2866,21 +2882,27 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               <td>'.$stat.' </td>
               <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
               <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
-              <td class="hidden">'.$row->ConsigneeId.'</td>
-              <td>'.$row->ConsigneeName.'</td>
+              <td class="hidden">'.$row->CId.'</td>
+              <td>'.$row->CName.'</td>
+
+              <td class="hidden">'.$row->C2Id.'</td>
+              <td>'.$row->C2Name.'</td>
+
+              <td class="hidden">'.$row->C3Id.'</td>
+              <td>'.$row->C3Name.'</td>
+
               <td>'.$uname.'</td>
               <td>'.$fname.'</td>
               <td>'.$mname.'</td>
               <td>'.$lname.'</td>
-              <td>'.$bdate.'</td>     
               <td>'.$email.'</td>
+              <td>'.$row->Title.'</td>
+              <td>'.$row->Department.'</td>
               <td>'.$contact1.'</td>
               <td>'.$contact2.'</td>
               <td>'.$addr.'</td>
-              <td>'.$brgy.'</td>
-              <td>'.$towncity.'</td>     
-              <td class="hidden">'.$row->CountryId.'</td>
-              <td>'.$row->CountryName.'</td>                  
+              <td>'.$addr2.'</td>   
+                              
             </tr>
            '; 
 
