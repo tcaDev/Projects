@@ -720,7 +720,7 @@ class Login_user extends CI_Controller {
 		$fname = $this->input->post('fname');
 		$mname = $this->input->post('mname');
 		$lname = $this->input->post('lname');
-		$this->User->updateName($id,$fname,$mname,$lname,$bdate);
+		$this->User->updateName($id,$fname,$mname,$lname);
 
 
 		$update =  $this->User->get_updated_data($id);
