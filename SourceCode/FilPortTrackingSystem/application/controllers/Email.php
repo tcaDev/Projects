@@ -827,7 +827,7 @@ $now = $date_now[0];
 
       
       $print     =  $this->input->post('print');
-      $email     =  $this->input->post('email');
+    echo   $email     =  $this->input->post('email');
     echo   $jbNo =  $this->input->post('jbfl_send');
 
      //$print =  '<script>document.write(p);</script>'; 
@@ -869,8 +869,7 @@ $now = $date_now[0];
 
                     $this->email->from('eli@topconnection.asia', 'eli');
                     $this->email->to($email); 
-                    $this->email->cc('daniel.tenefrancia@gmail.com'); 
-                    $this->email->cc('eli_montefalcon@yahoo.com'); 
+                    $this->email->cc('daniel.tenefrancia@gmail.com');
                     $this->email->subject('Filport Testing');
                     $this->email->message('Email Testing.'); 
                     $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
