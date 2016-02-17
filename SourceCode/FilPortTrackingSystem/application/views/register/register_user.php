@@ -372,8 +372,8 @@ function validateEmail(email) {
     var addr2 = $("input[name=addr2]").val();
 
     var consignee = $(".consignee_add_user option:selected").val();
-    var consignee = $(".consignee_add_user2 option:selected").val();
-    var consignee = $(".consignee_add_user3 option:selected").val();
+    var consignee2 = $(".consignee_add_user2 option:selected").val();
+    var consignee3 = $(".consignee_add_user3 option:selected").val();
 
     var uname = $("input[name=uname]").val();
     var email = $("input[name=email]").val();

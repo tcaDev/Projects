@@ -266,9 +266,19 @@ $(document).on('click','.btn-update-user-client',function(){
     $('.addr_1').val(addr);
     $('.addr_2').val(addr2);
 
-    $('.consignee2').val(consignee2);
-    $('.consignee3').val(consignee3);
-    $('.consignee').val(consignee);
+    if(consignee == ""){
+        $(".consignee option:eq(0)").attr("selected","selected");
+    }else{$('.consignee').val(consignee2);}
+    
+    if(consignee2 == ""){
+        $(".consignee2 option:eq(0)").attr("selected","selected");
+    }else{$('.consignee2').val(consignee2);}
+    
+
+    if(consignee3 == ""){
+        $(".consignee option:eq(0)").attr("selected","selected");
+    }else{$('.consignee3').val(consignee3);}
+    
 
 
        if(statuses==1){
