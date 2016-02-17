@@ -859,13 +859,12 @@ $now = $date_now[0];
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
                     //email
-                    $config['useragent']   = "CodeIgniter";
                     $config['protocol']    = 'smtp';
                     $config['smtp_host']    = 'ssl://smtp.gmail.com';
                     $config['smtp_port']    = '465';
                     $config['smtp_timeout'] = '20';
-                    $config['smtp_user']    = 'eli@topconnection.asia';
-                    $config['smtp_pass']    = 'asiagroup7';
+/*                  $config['smtp_user']    = 'eli@topconnection.asia';
+                    $config['smtp_pass']    = 'asiagroup7';*/
                     $config['charset']    = 'utf-8';
                     
                     $config['newline']    = "\r\n";
@@ -875,8 +874,9 @@ $now = $date_now[0];
                     $this->email->initialize($config);
 
 
-                    $this->email->from('eli@topconnection.asia', 'eli');
+                    $this->email->from('charlie@topconnection.asia', 'charles');
                     $this->email->to($email); 
+                    $this->email->reply_to('charlie@topconnection.asia'); //User email submited in form
                     $this->email->cc('daniel.tenefrancia@gmail.com');
                     $this->email->subject('Filport Testing');
                     $this->email->message('Email Testing.'); 
