@@ -385,6 +385,17 @@ function get_jobfile_air_audit($jobfile){
           $this->db->update('User', $data);
   }
 
+  function get_email_jobfile($jbfl,$monType){
+
+    if($monType != 3){
+      $jb = $this->db->query("Select * from vw_JobFile where JobFileNo='$jbfl'");
+    }else{
+       $jb = $this->db->query("Select * from vw_JobFileAir where JobFileNo='$jbfl'");  
+    }
+
+    return $jb->result();
+  }
+
 }
 
 

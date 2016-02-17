@@ -1,3 +1,5 @@
+<?php $this->load->helper('form'); ?>
+
 <head>
 		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
 </head>
@@ -18,9 +20,9 @@
 						         <ul class="nav nav-pills nav-data nav-freights">
 									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+									  <li  value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+								 	  <li  value="8" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Accreditation<span class="hvr-icon-forward"></span></a></li>
 								</ul>
-
 						    </div>
 						  </div>
 						  <?php if($role->RoleId == "1"){ ?>
@@ -233,9 +235,9 @@
 			</div>
 		</div>
 				       <div class="modal-footer">
-				       	<!--  <a href='#' id='btn_print'> --> <button class="btn btn-default" onclick="PrintElem('#tab-results')">Print</button><!--  </a> -->
-				       	 <!--  <button type="button" class="btn btn-success" id="btn-send-mail" id="btn-modal-close">E-Mail</button> -->
-				          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-close">Close</button>
+				       	 <button type="button" class="btn btn-success" id="btn-modal-mail">E-Mail</button>
+				       	 <a href='#' id='btn_print'> <button class="btn btn-default" >Print</button> </a>
+				         <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-close">Close</button>
 				       </div>
 				      </div>
 			</div> 
@@ -277,50 +279,12 @@
 	<!-- End of Manila and Outport Details -->
 	</div> 
 
+		<div class="modal fade" id="jobfiles" role="dialog">
+		    <div class="modal-dialog">		      
+				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
+		    </div>
+ 		</div>
 
-		<!-- PRINT REPORT MANILA AND OUTPORT -->
-
-		<div id="tab-results" hidden>	
-			<div style="font-family:Century Gothic;">
-				<div style="font-size:22px;">
-				<span class="pull left"><b>  Jobfile Number </b></span> 
-				 <a id="print_jfNo"> </a> 
-				</div>
-				
-				        	<table style="font-family:Century Gothic;font-size:18px;table-layout:fixed;width:100%" id="table-pre-details-print">
-				        	</table>
-				<br>
-				<hr>
-				        	<h4 class="cnt">Containers</h4>
-								<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;font-size:12px;text-align:center;border:1px solid gray;width:100%;">
-				                </table>
-				<br>
-				<hr>        	
-				        	<h4>Commodity</h4>
-				        	<div>
-				        	<center>
-								<table id="tbl-second-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;">
-				                </table>
-				            </center>
-				            </div>
-				<br>
-				<hr>
-							<h4> Status Reports </h4>
-						      <table id="tbl-fourth-report-data-print" class="table table-striped tableOverFlow" style="cursor:pointer;width:100%">
-	    				      </table>
-	    		<br>
-				<hr>        	
-				        	<h4>Running Charges</h4>
-				        	<div>
-				        	<center>
-								<table id="tbl-third-report-data-print" class="table table-striped table-bordered table-layout:fixed;" style="cursor:pointer;width:100%;text-align:left;">
-				      		   </table>
-				            </center>
-				            </div>
-				<br>
-			</div>
-		</div>
-		<!-- END PRINT REPORT MANILA AND OUTPORT  -->
 		<div class="modal fade" id="jobfiles" role="dialog">
 		    <div class="modal-dialog">		      
 				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
@@ -398,12 +362,7 @@
 			$('#tbl-third-report-data').html('<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadCharges pull-left" style="font-size:18px;"></span></td></tr></table>');
 			$('#tbl-fourth-report-data').html('<table id="tbl-fourth-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadReports pull-left" style="font-size:18px;"></span></td></tr></table>');
 			/*Reload Data on View*/
-			$('#tbl-first-report-data-print').html('<table id="tbl-first-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
-			$('#tbl-second-report-data-print').html('<table id="tbl-second-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
-			$('#tbl-third-report-data-print').html('<table id="tbl-third-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
-			$('#tbl-fourth-report-data-print').html('<table id="tbl-fourth-report-data-print" class="table table-striped table-bordered" style="cursor:pointer;width:100%;"></table>');
-			/*Reload Data on Print*/
-
+	
 			if(mon_Type == 3){ /*SET VIEW FORMAT*/
 				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li><li><a data-toggle="tab" href="#other-documents">Other Documents</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
@@ -412,6 +371,7 @@
 				$('.cnt').html('<h4 class="cnt">Containers</h4>');
 			}
 
+			
 			jbNo	    	= $(this).closest('tr').children('td:eq(0)').text();
 			shipperName 	= $(this).closest('tr').children('td:eq(1)').text();
 			consigneeName 	= $(this).closest('tr').children('td:eq(2)').text();
@@ -419,7 +379,7 @@
 			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
-			
+			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&mon_Type=" + mon_Type + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
 					 $.ajax({
 				  		method: "POST",
 					url: "<?php echo base_url('Job/get_details_report');?>",
@@ -439,7 +399,6 @@
 			  		.done(function(report_container_data){
 			  			content_details = report_container_data;
 			  			$('#table-pre-details').html(content_details);
-			  			$('#table-pre-details-print').html(content_details);
 			  			$('.loadPre-Details').html('<a class="loadPre-Details"></a>');
 				});
 			 var loadText;
@@ -462,7 +421,6 @@
 			  		.done(function(report_container_data){
 			  			content_containers = report_container_data;
 			  			$('#tbl-first-report-data').html(content_containers);
-			  			$('#tbl-first-report-data-print').html(content_containers);
 				});
 			  $.ajax({
 				  		method: "POST",
@@ -478,7 +436,6 @@
 			  		.done(function(report_commodities_data){
 			  			content_commodities = report_commodities_data;
 			  			$('#tbl-second-report-data').html(content_commodities);
-			  			$('#tbl-second-report-data-print').html(content_commodities);
 				});
 			   $.ajax({
 				  		method: "POST",
@@ -494,7 +451,6 @@
 			  		.done(function(report_charges_data){
 			  			content_charges = JSON.parse(report_charges_data);
 			  			$('#tbl-third-report-data').html(content_charges[0].disp);
-			  			$('#tbl-third-report-data-print').html(content_charges[0].print_disp);
 				});
 			  	 $.ajax({
 				  		method: "POST",
@@ -510,8 +466,6 @@
 			  		.done(function(report_status_data) {
 			  			content_reports = report_status_data;
 			  			$('#tbl-fourth-report-data').html(content_reports);
-			  			content_status_data = content_reports.replace(/\\n/g,'<br>');
-			  			$('#tbl-fourth-report-data-print').html(content_status_data);
 				 });
 			  	$('#view-report').modal('show');
 		   });
@@ -549,20 +503,61 @@
 			$('#btn-search-consignee').click();
 		});
 
-	
 
 		$(document).on('click','.btn_docs',function(){
 			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
 		});
 
+		$(document).on('click','#btn-modal-mail',function(){
+			$.confirm({
+								closeIcon: false,
+				        		title: 'Send E-Mail',
+				        		backgroundDismiss: false,
+				        		content: 'Sending this Report File to Consignee : <b> ' + consigneeName + '</b>',
+				        		confirm: function(){
+								     $.ajax({
+								  		method: "POST",
+										url: "<?php echo base_url('Print_file/send_mail');?>",
+										beforeSend : function(){
+											  dia =	$.dialog({
+									 	  	    icon: 'fa fa-spinner fa-spin',
+									 	  	    closeIcon: false,
+								        		title: 'Please wait!',
+								        		backgroundDismiss: false,
+								        		content: 'Sending Email',
+								   			});
+										},
+										data: {
+											jbNo 	 : jbNo,
+											mon_Type : mon_Type
+										}
+									})
+							  		.done(function(send_status) {
+							  			 $.alert({
+								        		title: 'E-Mail',
+								        		backgroundDismiss: false,
+								        		content: send_status,/*'Status Report Successfully Sent'*/
+								        		confirm: function(){
+													dia.close();
+								        	    }
+								   			   });
+								 	});
+				        	}
+			})
+				
+		});
+
 
 		function changePlaceHolder(monType){
+
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 2){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 1){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+			}else{
+				$('#txt-search-consignee').attr('placeholder','Please Enter Consignee Name ');
 			}
 		}
 </script>

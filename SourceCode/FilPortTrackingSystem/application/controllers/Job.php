@@ -776,7 +776,6 @@ function get_jobfile_global_search(){
      $monitoringType    =  $this->input->post('monType');
      $charge  = $this->Jobdata->get_chargess($charges,$monitoringType);
      $display = '';
-     $printDisplay = '';
      $total = 0;
            foreach($charge as $row){
                 if($monitoringType == 3){
@@ -788,75 +787,6 @@ function get_jobfile_global_search(){
                      $total += $row->CNI;
                      $total += $row->CNIU;
                      $total += $row->OtherFees;
-                     $printDisplay = '
-                      <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Lodgement Fee : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->LodgementFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Break Bulk Fee : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->BreakBulkFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b> Storage Fee : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->StorageFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Bad Cargo Order Fee : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->BadCargoOrderFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  VCRC : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->VCRC, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> CNI : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->CNI, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> CNIU : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->CNIU, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                                <b> Other Fees : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->OtherFees, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                           
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                                <span class="pull-right">
-                                  <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                      </table>';
 
                       $display = '<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
@@ -954,157 +884,7 @@ function get_jobfile_global_search(){
                   $total += $row->BadCargo;
                   $total += $row->Storage;
                   $total += $row->OtherFees;
-                  $printDisplay = '
-                      <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Lodgement Fee : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->LodgementFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Demurrage : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->Demorage, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Container Deposit : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->ContainerDeposit, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Detention : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->Detention, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  THC Charges : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->THCCharges, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> EIC : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->EIC, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Arrastre : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->Arrastre, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  BAI Application : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->BAIApplication, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Wharfage : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->Wharfage, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  BAI Inspection :</b> 
-                                <span class="pull-right">
-                                    '.number_format($row->BAIInspection, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Weighing : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->Weighing, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  SRA Application : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->SRAApplication, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  DEL : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->DEL, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  SRAInspection : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->SRAInspection, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Dispatch Fee : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->DispatchFee, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                               <b> Bad Cargo : </b>
-                                <span class="pull-right">
-                                    '.number_format($row->BadCargo, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                              <b>  Storage : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->Storage, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                                <b>  Other Fees : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->OtherFees, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                                <b>  BPI Inspection : </b>
-                                <span class="pull-right">
-                                   '.number_format($row->BPIInspection, 2, '.', ',').'
-                                </span>
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                              
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="border:1px solid gray;text-align: left;">
-                           
-                            </td>
-                            <td style="border:1px solid gray;text-align: left;">
-                                <span class="pull-right">
-                                  <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
-                                </span>
-                            </td>
-                          </tr>
-                      </table>';
-
+               
                       $display = '<table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;">
                           <tr>
                             <td style="border:1px solid gray;text-align: left;">
@@ -1278,7 +1058,6 @@ function get_jobfile_global_search(){
             $output = array(
             array(
                "disp" => $display,
-               "print_disp" => $printDisplay
               )
             );
       
