@@ -16,6 +16,7 @@
 						            <input type="search" class="form-control input-sm light-table-filter" data-table="order-table-search-global" id="search-global" onkeyup="getText(this.value)" placeholder ="" >
 						        <button class="btn btn-danger col-lg-4 pull-right" type="submit" id="btnSearch" style="top: 5px;">
 									<span class="fa fa-search"></span>
+									
 								</button>
 						        </div>
 						        
@@ -44,7 +45,7 @@
 	 		Double Click on the Result(s) to View.
 	 	</h3>
 	 	<i class="result-count" style="font-size:24px;"> </i>
-	 	<!-- <a class="loading-consignee"></a> -->
+	 	<a class="loading-consignee"></a>
 		 	<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">
 			 	 <table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search">
 				 </table>

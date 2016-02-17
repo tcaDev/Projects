@@ -699,11 +699,11 @@ function get_jobfile_global_search(){
                 break;
               }
           }
-              $dispoOutput .=  "<tr class='tableRow'>";
-              $dispoOutput .=  "<td class='loadReports tdOverFlow'>".$i." </td>";
-              $dispoOutput .=  "<td class='loadReports tdOverFlow'>".stripslashes($row->ProductName)."</td>";
+              $dispoOutput .=  "<tr>";
+              $dispoOutput .=  "<td class='tdOverFlow'>".$i." </td>";
+              $dispoOutput .=  "<td class='tdOverFlow'>".stripslashes($row->ProductName)."</td>";
               if($monType == 1 || $monType == 2){
-              $dispoOutput .=   "<td class='loadReports tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
+              $dispoOutput .=   "<td class='tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
               }
               $dispoOutput .=  "</tr>";
          }

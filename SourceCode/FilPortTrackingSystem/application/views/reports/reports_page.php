@@ -503,13 +503,13 @@
 			$('#btn-search-consignee').click();
 		});
 
-
-		$(document).on('click','.btn_docs',function(){
+    	$(document).on('click','.btn_docs',function(){
 			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
 		});
 
 		$(document).on('click','#btn-modal-mail',function(){
 			$.confirm({
+				 				icon: 'fa fa-mail-forward',
 								closeIcon: false,
 				        		title: 'Send E-Mail',
 				        		backgroundDismiss: false,
@@ -535,6 +535,7 @@
 							  		.done(function(send_status) {
 							  			 $.alert({
 								        		title: 'E-Mail',
+								        		icon: 'fa fa-envelope-o',
 								        		backgroundDismiss: false,
 								        		content: send_status,/*'Status Report Successfully Sent'*/
 								        		confirm: function(){
