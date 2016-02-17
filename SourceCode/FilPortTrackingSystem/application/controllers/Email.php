@@ -114,21 +114,14 @@ $now = $date_now[0];
                 <tr>
                  <td class="col-md-3 ">Vessel:</td>
                   <td>
-                        <table   style="width:100%">
-                            
-                 ';
-                  foreach ($vessel as $row_vess) {
-                    $ves =    $row_vess->VesselVoyageNo;
-                    echo   '
-                              <tr>
-                                <td class="col-md-6 container">'.$ves.'</td>
-                              </tr>
-                            '; 
-                   }
-             
-   echo '
-                          
-                        </table>
+                        <table   style="width:100%">';
+                            foreach ($vessel as $row_vess) {
+                              $ves =    $row_vess->VesselVoyageNo;
+                              echo   '<tr>
+                                          <td class="col-md-6 container">'.$ves.'</td>
+                                      </tr>'; 
+                             }
+                echo '</table>
                     </td>
               </tr>
 
@@ -144,89 +137,100 @@ $now = $date_now[0];
                         </table>
               <br>
               <hr>
-                        <h4 class="cnt">Containers</h4>
-                      <table  border="1"  style="width:100%">
-                        <th>No.</th>
-                        <th>ContainerNumber</th>
-                        <th>Date File Entry to BOC</th>
-                        <th>Date Sent Pre Assessment </th>
-                        <th>Date Sent Final Assessment </th>
-                        <th>Date Paid</th>
-                        <th>Target Delivery Date</th>
-                        <th>Actual Delivery at Warehouse</th> 
+                        <h4 class="cnt">Containers</h4>';
+                  if($containers==NULL){
+                      echo '<p style="color:red">No Coontainers Yet</p>';
+                      }else{
+                         echo '<table  border="1"  style="width:100%">
+                                  <th>No.</th>
+                                  <th>ContainerNumber</th>
+                                  <th>Date File Entry to BOC</th>
+                                  <th>Date Sent Pre Assessment </th>
+                                  <th>Date Sent Final Assessment </th>
+                                  <th>Date Paid</th>
+                                  <th>Target Delivery Date</th>
+                                  <th>Actual Delivery at Warehouse</th> 
 
-                      ';
-                          
-                          $i_contain=0;
-                          foreach ($containers as $row_contain) {
-                          $i_contain++;
-                          $cont            =    $row_contain->ContainerNo;
-                          $dt_entry_boc    =    $row_contain->DateFileEntryToBOC;
-                          $dt_preassess    =    $row_contain->DateSentPreAssessment;
-                          $dt_finalassess  =    $row_contain->DateSentFinalAssessment;
-                          $dtpaid          =    $row_contain->DatePaid;
-                          $tdt             =    $row_contain->TargetDeliveryDate;
-                          $adw             =     $row_contain->ActualDeliveryAtWarehouse;
+                                ';
+                                    
+                                    $i_contain=0;
+                                    foreach ($containers as $row_contain) {
+                                    $i_contain++;
+                                    $cont            =    $row_contain->ContainerNo;
+                                    $dt_entry_boc    =    $row_contain->DateFileEntryToBOC;
+                                    $dt_preassess    =    $row_contain->DateSentPreAssessment;
+                                    $dt_finalassess  =    $row_contain->DateSentFinalAssessment;
+                                    $dtpaid          =    $row_contain->DatePaid;
+                                    $tdt             =    $row_contain->TargetDeliveryDate;
+                                    $adw             =     $row_contain->ActualDeliveryAtWarehouse;
 
-                          echo   '
-                                    <tr>
-                                      <td>'.$i_contain.'</td>
-                                      <td>'.$cont.'</td>
-                                      <td>'.$dt_entry_boc.' </td>
-                                      <td>'.$dt_preassess.' </td>
-                                      <td>'.$dt_finalassess.' </td>
-                                      <td>'.$dtpaid.' </td>
-                                      <td>'.$tdt.' </td>
-                                      <td>'.$adw.' </td>
-                                    </tr>
-                                  '; 
-                         }       
+                                    echo   '
+                                              <tr>
+                                                <td>'.$i_contain.'</td>
+                                                <td>'.$cont.'</td>
+                                                <td>'.$dt_entry_boc.' </td>
+                                                <td>'.$dt_preassess.' </td>
+                                                <td>'.$dt_finalassess.' </td>
+                                                <td>'.$dtpaid.' </td>
+                                                <td>'.$tdt.' </td>
+                                                <td>'.$adw.' </td>
+                                              </tr>
+                                            '; 
+                                   }       
 
 
-          echo         '</table>
-              <br>
+                          echo '</table>';
+                      }   
+              echo  '<br>
               <hr>          
                         <h4>Commodity</h4>
-                     <div>
-                     
-                            <table  border="1"  style="width:100%">
-                                <th>No.</th>
-                                <th>Container No.</th>
-                                <th>Commodity</th>';
+                     <div>';
+                      if($comodity==NULL){
+                          echo '<p style="color:red">No Commodity Yet</p>';
+                          }else{               
+                                  echo'<table  border="1"  style="width:100%">
+                                      <th>No.</th>
+                                      <th>Container No.</th>
+                                      <th>Commodity</th>';
 
-                                        $i_comodity=0;
-                                        foreach ($comodity as $row_comodity) {
-                                        $i_comodity++;
-                                        $contno  =    $row_comodity->ContainerNo;
-                                        $prod    =    $row_comodity->ProductName;
-
-
-                                        echo   '
-                                                  <tr>
-                                                    <td>'.$i_comodity.'</td>
-                                                    <td>'.$contno.'</td>
-                                                    <td>'.$prod.' </td>
-                                                  </tr>
-                                                '; 
-                                       }         
+                                              $i_comodity=0;
+                                              foreach ($comodity as $row_comodity) {
+                                              $i_comodity++;
+                                              $contno  =    $row_comodity->ContainerNo;
+                                              $prod    =    $row_comodity->ProductName;
 
 
-                    echo     '</table>
+                                              echo   '
+                                                        <tr>
+                                                          <td>'.$i_comodity.'</td>
+                                                          <td>'.$contno.'</td>
+                                                          <td>'.$prod.' </td>
+                                                        </tr>
+                                                      '; 
+                                             }         
+
+
+                                    echo'</table>';
+                          }
                       
-                      </div>
+                     echo'</div>
               <br>
               <hr>
-                    <h4> Status Reports </h4>
-                     <table  border="1"  style="width:100%">
+                    <h4> Status Reports </h4>';
+
+          if($status==NULL){
+              echo '<p style="color:red">No Status Reports Yet</p>';
+              }else{
+
+                 echo '<table  border="1"  style="width:100%">
                         <th>Date Added</th>
                         <th>Status Description</th>
 
 
                       ';
                           
-
                           foreach ($status as $row_status) {
-  
+
                           $dateadd           =    $row_status->DateAdded;
                           $status            =    $row_status->StatusDescription;
 
@@ -240,8 +244,9 @@ $now = $date_now[0];
                          }       
 
 
-          echo         '</table>
-                <br>
+                 echo '</table>';
+              }
+       echo        '<br>
               <hr>          
                         <h4>Running Charges</h4>
                         <div>
@@ -250,6 +255,8 @@ $now = $date_now[0];
                                   
 
                                   foreach ($charges as $row_charges) {
+
+
           
                                   $LodgementFee                =    $row_charges->LodgementFee;
                                   $ContainerDeposit            =    $row_charges->ContainerDeposit;
@@ -386,7 +393,8 @@ $now = $date_now[0];
               }
           })
            .done(function(data){
-            alert(data);
+
+            //alert(data);
            });
         </script>
 
@@ -395,7 +403,6 @@ $now = $date_now[0];
       //  $this->load->view('print/print_data',$data);
         }
 
-          
      }
           //get the consignee of air
 
@@ -559,95 +566,106 @@ $now = $date_now[0];
                  </tr>
                  </br>
                   <h4>AIR FREIGHT</h4>
-                  </br>
-                        <table  border="1" style="width:100%">
-                        <tr>
-                        <th>No.</th>
-                        <th>Aircraft</th>
-                        <th>Flight Number</th>
-                        </tr>
-                 ';
-                      $i_air=0;
-                      foreach ($jb_as as $row_airs) {
-                        $air = $row_airs->Aircraft;
-                        $FlightN = $row_airs->FlightNo;
+                  </br>';
+                    if($jb_as==NULL){
+                        echo '<p style="color:red">No Aircraft Yet</p>';
+                    }else{
+                              echo   '<table  border="1" style="width:100%">
+                                      <tr>
+                                      <th>No.</th>
+                                      <th>Aircraft</th>
+                                      <th>Flight Number</th>
+                                      </tr>
+                               ';
+                                    $i_air=0;
+                                    foreach ($jb_as as $row_airs) {
+                                      $air = $row_airs->Aircraft;
+                                      $FlightN = $row_airs->FlightNo;
 
-                     //   if(isset($airs)){
-                          if($air!=''){
-                           $i_air++; 
-                          
-                              echo  '
-                                        <td >'.$i_air.'</td>
-                                        <td >'.$air.'</td>
-                                        <td >'.$FlightN.'</td>
-                                    '; 
-                          }
-                        }
+                                        if($air!=''){
+                                         $i_air++; 
+                                        
+                                            echo  '
+                                                      <td >'.$i_air.'</td>
+                                                      <td >'.$air.'</td>
+                                                      <td >'.$FlightN.'</td>
+                                                  '; 
+                                        }
+                                      }
 
-                     // }  
-   echo '
-                        </tr> 
-                        </table>
+                                   
+                                echo '
+                                      </tr> 
+                                      </table>';
+                  }
 
-              </div>
+          echo '</div>
               <br>
               <hr>          
                         <h4>Commodity</h4>
-                     <div>
-                     
-                            <table  border="1"  style="width:100%">
-                                <th>No.</th>
-                                <th>Container No.</th>
-                                <th>Commodity</th>';
+                     <div>';
+                         if($jb_as==NULL){
+                            echo '<p style="color:red">No Aircraft Yet</p>';
+                         }else{    
+                               echo '<table  border="1"  style="width:100%">
+                                    <th>No.</th>
+                                    <th>Container No.</th>
+                                    <th>Commodity</th>';
 
-                                        $i_comodity=0;
-                                        foreach ($comodity as $row_comodity) {
-                                        $i_comodity++;
-                                        $contno  =    $row_comodity->ContainerNo;
-                                        $prod    =    $row_comodity->ProductName;
-
-
-                                        echo   '
-                                                  <tr>
-                                                    <td>'.$i_comodity.'</td>
-                                                    <td>'.$contno.'</td>
-                                                    <td>'.$prod.' </td>
-                                                  </tr>
-                                                '; 
-                                       }         
+                                            $i_comodity=0;
+                                            foreach ($comodity as $row_comodity) {
+                                            $i_comodity++;
+                                            $contno  =    $row_comodity->ContainerNo;
+                                            $prod    =    $row_comodity->ProductName;
 
 
-                    echo     '</table>
+                                            echo   '
+                                                      <tr>
+                                                        <td>'.$i_comodity.'</td>
+                                                        <td>'.$contno.'</td>
+                                                        <td>'.$prod.' </td>
+                                                      </tr>
+                                                    '; 
+                                           }         
+
+
+                              echo '</table>';
+                          }
                       
-                      </div>
+                   echo '</div>
               <br>
               <hr>
-                    <h4> Status Reports </h4>
-                     <table  border="1"  style="width:100%">
-                        <th>Date Added</th>
-                        <th>Status Description</th>
+                    <h4> Status Reports </h4>';
+                         if($jb_as==NULL){
+                            echo '<p style="color:red">No Status Report Yet</p>';
+                         }else{  
+
+                               echo'<table  border="1"  style="width:100%">
+                                  <th>Date Added</th>
+                                  <th>Status Description</th>
 
 
-                      ';
-                          
+                                ';
+                                    
 
-                          foreach ($status as $row_status) {
-  
-                          $dateadd           =    $row_status->DateAdded;
-                          $status            =    $row_status->StatusDescription;
-
-
-                          echo   '
-                                    <tr>
-                                      <td>'.$dateadd.'</td>
-                                      <td>'.$status.'</td>
-                                    </tr>
-                                  '; 
-                         }       
+                                    foreach ($status as $row_status) {
+            
+                                    $dateadd           =    $row_status->DateAdded;
+                                    $status            =    $row_status->StatusDescription;
 
 
-          echo         '</table>
-                <br>
+                                    echo   '
+                                              <tr>
+                                                <td>'.$dateadd.'</td>
+                                                <td>'.$status.'</td>
+                                              </tr>
+                                            '; 
+                                   }       
+
+
+                              echo '</table>';
+                        }     
+              echo '<br>
               <hr>          
                         <h4>Running Charges</h4>
                         <div>
@@ -835,8 +853,6 @@ $now = $date_now[0];
            
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
-
-
                     //email
                     $config['protocol']    = 'smtp';
                     $config['smtp_host']    = 'ssl://smtp.gmail.com';
