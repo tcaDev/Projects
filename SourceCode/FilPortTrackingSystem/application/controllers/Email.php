@@ -866,6 +866,7 @@ $now = $date_now[0];
                     $config['smtp_user']    = 'eli@topconnection.asia';
                     $config['smtp_pass']    = 'asiagroup7';
                     $config['charset']    = 'utf-8';
+                    
                     $config['newline']    = "\r\n";
                     $config['mailtype'] = 'text'; // or html
                     $config['validation'] = TRUE; // bool whether to validate email or not      
@@ -880,6 +881,7 @@ $now = $date_now[0];
                     $this->email->message('Email Testing.'); 
                     $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
                     $this->email->send();
+                    echo $this->email->print_debugger();
                }
             }
 
