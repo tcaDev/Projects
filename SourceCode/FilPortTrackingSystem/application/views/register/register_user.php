@@ -47,7 +47,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" name="department" placeholder="Department" class="form-control department" data-toggle="tooltip" data-placement="left" title="Department" required >
+                                            <input type="text" name="department" placeholder="Department" title="Department" class="form-control department" data-toggle="tooltip" data-placement="left"  required >
                                         </div>
 
                                         <div class="form-group">
@@ -327,7 +327,7 @@ var legit=0;
       $('.addr2').fadeIn('slow').removeClass('hidden');
 
       $('.department').attr('placeholder','Company');
-      
+      $('.department').attr('title','Company');
 
       legit=1;
     }
@@ -344,6 +344,7 @@ var legit=0;
       $('.addr2').fadeIn('slow').addClass('hidden');
 
       $('.department').attr('placeholder','Department');
+      $('.department').attr('title','Department');
 
       legit=2;
     }
@@ -503,6 +504,10 @@ function validateEmail(email) {
 								 $("input[name=fname]").val('');
 								 $("input[name=mname]").val('');
 								 $("input[name=lname]").val('');
+
+                  $("input[name=title]").val('');
+                   $("input[name=department]").val('');
+
 								 $("input[name=contact1]").val('');
 								 $("input[name=contact2]").val('');
 								 $("input[name=addr]").val('');
@@ -519,6 +524,9 @@ function validateEmail(email) {
 
 								$('#check_uname i').text("");
 								$('#check_email i').text("");
+
+                $('#check_uname i span').text("");
+                $('#check_email i span').text("");
 								$('#message').text('');
                                   
 
