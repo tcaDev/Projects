@@ -21,7 +21,7 @@
 									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li  value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
-								 	  <li  value="8" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Accreditation<span class="hvr-icon-forward"></span></a></li>
+								 	 <!--  <li  value="8" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Accreditation<span class="hvr-icon-forward"></span></a></li> -->
 								</ul>
 						    </div>
 						  </div>
