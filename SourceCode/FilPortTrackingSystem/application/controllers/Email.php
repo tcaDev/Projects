@@ -860,24 +860,25 @@ $now = $date_now[0];
            
                     //email
                     $config['protocol']    = 'smtp';
+                //    $config['protocol'] = 'sendmail'; 
                     $config['smtp_host']    = 'ssl://smtp.gmail.com';
                     $config['smtp_port']    = '465';
                     $config['smtp_timeout'] = '20';
-/*                  $config['smtp_user']    = 'eli@topconnection.asia';
-                    $config['smtp_pass']    = 'asiagroup7';*/
+                    $config['smtp_user']    = 'eli@topconnection.asia';
+                    $config['smtp_pass']    = 'asiagroup7';
                     $config['charset']    = 'utf-8';
                     
                     $config['newline']    = "\r\n";
-                    $config['mailtype'] = 'html'; // or html
-                    $config['validation'] = TRUE; // bool whether to validate email or not      
+                    $config['mailtype'] = 'text'; // or html
+                    //$config['validation'] = TRUE; // bool whether to validate email or not      
 
                     $this->email->initialize($config);
 
 
-                    $this->email->from('info@topconnection.asia', 'charles');
+                    $this->email->from('eliseo.montefalcon@gmail.com', 'eliseo pogi');
                     $this->email->to($email); 
-                    $this->email->reply_to('info@topconnection.asia'); //User email submited in form
-                    $this->email->cc('daniel.tenefrancia@gmail.com');
+                    //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
+                    //$this->email->cc('eliseo.montefalcon@gmail.com');
                     $this->email->subject('Filport Testing');
                     $this->email->message('Email Testing.'); 
                     $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
