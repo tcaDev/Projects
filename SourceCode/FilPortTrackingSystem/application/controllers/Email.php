@@ -77,10 +77,68 @@ $now = $date_now[0];
         $i++;
         echo  '  
         <div class="change_print'.$i.'"  >  
+                   <style>
+              @page {
+                size: auto;
+                 odd-header-name: html_myHeader_odd1;
+                 odd-header-name: html_myHeader_odd3;
+                 odd-header-name: html_myHeader_odd5;
+                 odd-header-name: html_myHeader_odd7;
+                 odd-header-name: html_myHeader_odd9;
 
-          <table style="width:100%">
-            <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-          </table>
+                 even-header-name: html_myHeader_even2;
+                 even-header-name: html_myHeader_even4;
+                 even-header-name: html_myHeader_even6;
+                 even-header-name: html_myHeader_even8;
+                 even-header-name: html_myHeader_even10;
+
+                 odd-footer-name: html_myFooter_odd1;
+                 odd-footer-name: html_myFooter_odd3;
+                 odd-footer-name: html_myFooter_odd5;
+                 odd-footer-name: html_myFooter_odd7;
+                 odd-footer-name: html_myFooter_odd9;
+
+                 even-footer-name: html_myFooter_even2;
+                 even-footer-name: html_myFooter_even4;
+                 even-footer-name: html_myFooter_even6;
+                 even-footer-name: html_myFooter_even8;
+                 even-footer-name: html_myFooter_even10;
+              }
+              @page chapter2 {
+                  odd-header-name: myHeader_odd1;
+                  even-header-name:myHeader_even2;
+                  odd-footer-name: myFooter_odd1;
+                  even-footer-name: myFooter_even2;
+
+                 odd-header-name: myHeader_odd1;
+                 odd-header-name: myHeader_odd3;
+                 odd-header-name: myHeader_odd5;
+                 odd-header-name: myHeader_odd7;
+                 odd-header-name: myHeader_odd9;
+
+                 even-header-name: myHeader_even2;
+                 even-header-name: myHeader_even4;
+                 even-header-name: myHeader_even6;
+                 even-header-name: myHeader_even8;
+                 even-header-name: myHeader_even10;
+
+                 odd-footer-name: myFooter_odd1;
+                 odd-footer-name: myFooter_odd3;
+                 odd-footer-name: myFooter_odd5;
+                 odd-footer-name: myFooter_odd7;
+                 odd-footer-name: myFooter_odd9;
+
+                 even-footer-name: myFooter_even2;
+                 even-footer-name: myFooter_even4;
+                 even-footer-name: myFooter_even6;
+                 even-footer-name: myFooter_even8;
+                 even-footer-name: myFooter_even10;
+
+              }
+
+
+              </style>
+
 
           <div style="font-family:Century Gothic;" class="mycontent">
               <div style="font-size:22px;" class="">
@@ -374,11 +432,50 @@ $now = $date_now[0];
                   echo         '</table>
                        </div>
               <br>
-      </div>
-          <table style="width:100%">
-            <th><span style="font-size:10px;" >Confidential | Proprietory</span></th>
-          </table>
-      </div>
+      </div>';
+            for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
+               if ($footer_header % 2) {
+  echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
+                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
+                              <table style="width:100%">
+                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
+                              </table>
+                       </htmlpageheader>
+
+                        <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
+                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;"><tr>
+                              <td width="33%"><span style="font-weight: bold; font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
+                              <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
+                              </tr></table>
+                        </htmlpagefooter>
+
+
+
+                       ';
+                  } else {
+  echo '                 <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
+                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
+                              <table style="width:100%">
+                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
+                              </table>
+                         </htmlpageheader>
+
+                        <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
+                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;"><tr>
+                              <td width="33%"><span style="font-weight: bold; font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
+                              <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
+                              </tr></table>
+                          </htmlpagefooter>
+
+
+                         ';
+                  }
+            } 
+      echo'</div>
       '?>
         
         <script> 
@@ -858,30 +955,32 @@ $now = $date_now[0];
            
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
+                    // config for godaddy na bwisit = email fixed by changing  the protocol to 'sendmail' and changing the  host to 'smtpout.secureserver.net' and changing the port to 80
+
+                  
+           
                     //email
-                    $config['protocol']    = 'smtp';
-                //    $config['protocol'] = 'sendmail'; 
-                    $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                    $config['smtp_port']    = '465';
+                   // $config['protocol']    = 'smtp';
+                    $config['protocol'] = 'sendmail'; 
+                    $config['smtp_host']    = 'smtpout.secureserver.net';
+                    $config['smtp_port']    = '80';
                     $config['smtp_timeout'] = '20';
-                    $config['smtp_user']    = 'eli@topconnection.asia';
-                    $config['smtp_pass']    = 'asiagroup7';
+/*                    $config['smtp_user']    = 'eli@topconnection.asia';
+                    $config['smtp_pass']    = 'asiagroup7';*/
                     $config['charset']    = 'utf-8';
                     
                     $config['newline']    = "\r\n";
                     $config['mailtype'] = 'text'; // or html
-                    //$config['validation'] = TRUE; // bool whether to validate email or not      
+                    $config['validation'] = TRUE; // bool whether to validate email or not      
 
                     $this->email->initialize($config);
-
-
-                    $this->email->from('eliseo.montefalcon@gmail.com', 'eliseo pogi');
-                    $this->email->to($email); 
+                    $this->email->from('eli@topconnection.asia', 'eliseo pogi');
+                    $this->email->to('eliseo.montefalcon@gmail.com'); 
                     //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
-                    //$this->email->cc('eliseo.montefalcon@gmail.com');
+                    $this->email->cc('eliseo.montefalcon@gmail.com');
                     $this->email->subject('Filport Testing');
                     $this->email->message('Email Testing.'); 
-                    $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
                     $this->email->send();
                     echo $this->email->print_debugger();
                }

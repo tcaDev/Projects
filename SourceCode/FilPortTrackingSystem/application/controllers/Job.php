@@ -4463,29 +4463,32 @@ function sendMail(){ //for Sending Email
                      echo "Email: "    .$emailadd = $row->EmailAddress;
                     }
 
-                  //email
-                  $config['protocol']    = 'smtp';
-                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                  $config['smtp_port']    = '465';
-                  $config['smtp_timeout'] = '7';
-                  $config['smtp_user']    = 'eli@topconnection.asia';
-                  $config['smtp_pass']    = 'asiagroup7';
-                  $config['charset']    = 'utf-8';
-                  $config['newline']    = "\r\n";
-                  $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not      
+                    //email fixed by changing  the protocol to 'sendmail' and changing the  host to 'smtpout.secureserver.net' and changing the port to 80
+           
+                    //email
+                   // $config['protocol']    = 'smtp';
+                    $config['protocol'] = 'sendmail'; 
+                    $config['smtp_host']    = 'smtpout.secureserver.net';
+                    $config['smtp_port']    = '80';
+                    $config['smtp_timeout'] = '20';
+/*                    $config['smtp_user']    = 'eli@topconnection.asia';
+                    $config['smtp_pass']    = 'asiagroup7';*/
+                    $config['charset']    = 'utf-8';
+                    
+                    $config['newline']    = "\r\n";
+                    $config['mailtype'] = 'text'; // or html
+                    $config['validation'] = TRUE; // bool whether to validate email or not      
 
-                  $this->email->initialize($config);
-
-
-                  $this->email->from('eli@topconnection.asia', 'eli');
-                  $this->email->to($emailadd); 
-                //  $this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
-                  $this->email->cc('eliseo.montefalcon@gmail.com'); 
-                  $this->email->subject('Filport Testing');
-                  $this->email->message('wazap niga.'); 
-                  $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
-                  $this->email->send();
+                    $this->email->initialize($config);
+                    $this->email->from('eli@topconnection.asia', 'eliseo pogi');
+                    $this->email->to($email); 
+                    //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
+                    $this->email->cc('eliseo.montefalcon@gmail.com');
+                    $this->email->subject('Filport Testing');
+                    $this->email->message('Email Testing.'); 
+                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                    $this->email->send();
+                    echo $this->email->print_debugger();
             }
           }
 
