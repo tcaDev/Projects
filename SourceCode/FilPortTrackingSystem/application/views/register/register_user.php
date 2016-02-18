@@ -240,7 +240,6 @@ function uname_check(uname){
    }else{
        
         $('#check_uname span').show();
-        $('#check_email span').show();
         $.ajax({
             method: "POST",
           url: "<?php echo base_url('Job/check_uname');?>",
@@ -264,7 +263,6 @@ function uname_check(uname){
    }
    else{
 
-     $('#check_uname span').show();
      $('#check_email span').show();
        
         $.ajax({

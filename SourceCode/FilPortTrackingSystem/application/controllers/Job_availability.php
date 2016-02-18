@@ -164,8 +164,6 @@ function get_User_list_admin(){
                       <th>Department</th>
                       <th>ContactNo1</th>
                       <th>ContactNo2</th>
-                      <th>Address 1</th>
-                      <th>Address 2</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -183,8 +181,7 @@ function get_User_list_admin(){
           $email = $row->EmailAddress;
           $contact1 = $row->ContactNo1;
           $contact2 = $row->ContactNo2;
-          $addr = $row->Address1;
-          $addr2 = $row->Address2;
+
          
           $active= $row->IsActive;
             if($active==1){ 
@@ -212,8 +209,6 @@ function get_User_list_admin(){
               <td>'.$row->Department.'</td>
               <td>'.$contact1.'</td>
               <td>'.$contact2.'</td>
-              <td>'.$addr.'</td>
-              <td>'.$addr2.'</td>
             </tr>
            '; 
 
