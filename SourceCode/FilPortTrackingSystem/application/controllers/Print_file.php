@@ -73,10 +73,10 @@ function send_mail(){
 
                   //email
 
-                  $config['protocol']    = 'smtp';
-                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                  $config['smtp_port']    = '465';
-                  $config['smtp_timeout'] = '7';
+                  $config['protocol'] = 'sendmail'; 
+                  $config['smtp_host']    = 'smtpout.secureserver.net';
+                  $config['smtp_port']    = '80';
+                  $config['smtp_timeout'] = '20';
                   $config['smtp_user']    = 'eli@topconnection.asia';
                   $config['smtp_pass']    = 'asiagroup7';
                   $config['charset']    = 'utf-8';
