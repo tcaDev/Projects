@@ -3859,7 +3859,6 @@ function get_audit_commodity_air(){
                       <th>Hauler/Trucker Name</th>
                       <th>Total Storage</th>
                       <th>Additional Per Day Include VAT</th>
-                      <th>Other Fees</th>
                   </tr>
                 </thead>      
                 <tbody>
@@ -3883,7 +3882,6 @@ function get_audit_commodity_air(){
                   <td>'.$row->HaulerOrTruck.'</td>
                   <td>'.$row->TotalStorage.'</td>
                   <td>'.$row->AdtlPerDayncludeVat.'</td>
-                  <td>'.$row->OtherFees.'</td>
               </tr>
             ';
           }

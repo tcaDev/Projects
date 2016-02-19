@@ -17,7 +17,6 @@ class Audit_Contacts extends CI_Controller {
        	$settings = $this->input->post('get_settings');
 
 
-
        	 if($settings == '1'){
        	 	$text = "Consignee";
        	 	$contacts =  $this->Jobfile->get_contacts_history($settings_ids);
