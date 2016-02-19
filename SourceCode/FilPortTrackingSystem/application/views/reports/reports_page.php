@@ -357,7 +357,6 @@
  var txt;
  var montype = 1;
 
-
  var content_commodities;
  var content_containers;
  var content_reports;

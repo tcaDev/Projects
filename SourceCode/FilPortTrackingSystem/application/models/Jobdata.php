@@ -486,13 +486,11 @@ function get_consignees_report($consigneeName){
 function get_accreditations($monitoringType){
   if($monitoringType != 3){
     $query = $this->db->query("SELECT JobFileId,JobFileNo, ConsigneeName, DateReceivedNoticeFromClients, DateReceivedOfOtherDocs from vw_JobFile WHERE MonitoringTypeId = '$monitoringType' ORDER BY ConsigneeName");
+   // $q = "SELECT JobFileId,JobFileNo, ConsigneeName, DateReceivedNoticeFromClients, DateReceivedOfOtherDocs from vw_JobFile WHERE MonitoringTypeId = '$monitoringType' ORDER BY ConsigneeName";
   }else{
     $query = $this->db->query("SELECT JobFile_AirId As 'JobFileId',JobFileNo, ConsigneeName, DateReceivedArrivalFromClient AS 'DateReceivedNoticeFromClients', DatePickUpOtherDocs AS 'DateReceivedOfOtherDocs' from vw_JobFileAir ORDER BY ConsigneeName");
+    //$q = "SELECT JobFile_AirId As 'JobFileId',JobFileNo, ConsigneeName, DateReceivedArrivalFromClient AS 'DateReceivedNoticeFromClients', DatePickUpOtherDocs AS 'DateReceivedOfOtherDocs' from vw_JobFileAir ORDER BY ConsigneeName";
   }
-  /*$query = $this->db->query("SELECT JobFileId,JobFileNo, ConsigneeName, DateReceivedNoticeFromClients, DateReceivedOfOtherDocs from vw_JobFile
-                             UNION ALL
-                             SELECT JobFile_AirId As 'JobFileId',JobFileNo, ConsigneeName, DateReceivedArrivalFromClient AS 'DateReceivedNoticeFromClients', DatePickUpOtherDocs AS 'DateReceivedOfOtherDocs' from vw_JobFileAir ORDER BY ConsigneeName
-                             ");*/
   return $query->result();
 }
 

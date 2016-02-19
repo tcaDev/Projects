@@ -113,7 +113,7 @@
 		</div>
 
 <script>
-var montype = 2;
+var montype_outport = 2;
 		$("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
@@ -123,9 +123,6 @@ var montype = 2;
 /*Get List Of Manila History*/
 
 $(document).on('click','#collapse3 #accreditation-outport',function(){
-
-	
-
     $.ajax({
 	  		method: "POST",
 			  url: "<?php echo base_url('Job_availability/loadAccreditations');?>",
@@ -133,7 +130,7 @@ $(document).on('click','#collapse3 #accreditation-outport',function(){
 		              $('.table-accreditations-outport').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_outport,
 	  		}
 		})
   		.done(function(data) {
@@ -157,7 +154,7 @@ $(document).on('click','.table-accreditations-outport .btn-show-commodity',funct
 							});
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_outport,
 	  			jbNo : jbNo
 	  		}
 		})
@@ -209,7 +206,7 @@ $(document).on('click','.table-accreditations-outport .btn-status-report',functi
  					  	},
 				  		data: { 
 				  			id      :jbNo,
-				  			monType : montype
+				  			monType : montype_outport
 				  		}
 					})
 			  		.done(function(report_status_data) {

@@ -115,7 +115,8 @@
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
 		$("thead th").css("white-space","nowrap");
-var montype = 1;
+
+var montype_manila = 1;
 
 $(document).on('click','#collapse3',function(){
 	$('.accreditations').removeClass('hidden');
@@ -148,7 +149,7 @@ $(document).on('click','#collapse3 #accreditation-manila',function(){
 		              $('.table-accreditations-manila').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_manila,
 	  		}
 		})
   		.done(function(data) {
@@ -172,7 +173,7 @@ $(document).on('click','.table-accreditations-manila .btn-show-commodity',functi
 							});
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_manila,
 	  			jbNo : jbNo
 	  		}
 		})
@@ -224,7 +225,7 @@ $(document).on('click','.table-accreditations-manila .btn-status-report',functio
  					  	},
 				  		data: { 
 				  			id      :jbNo,
-				  			monType : montype
+				  			monType : montype_manila
 				  		}
 					})
 			  		.done(function(report_status_data) {

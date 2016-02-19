@@ -361,7 +361,7 @@ function get_User_list_admin(){
                 $dispOutput .= '</table></div></div>';
           }
           $dispCount = $ct; 
-
+          //$dispOutput = $jobfiles;
            $dispOutput .=  '<script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js") . '"></script>
                             <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
                             <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>

@@ -112,7 +112,7 @@
 		</div>
 
 <script>
-var montype = 3;
+var montype_air = 3;
 
 		$("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
@@ -133,7 +133,7 @@ $(document).on('click','#collapse3 #accreditation-air',function(){
 		              $('.table-accreditations-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_air,
 	  		}
 		})
   		.done(function(data) {
@@ -158,7 +158,7 @@ $(document).on('click','.table-accreditations-air .btn-show-commodity',function(
 							});
 		            },  
 	  		data: { 
-	  			montype:montype,
+	  			montype:montype_air,
 	  			jbNo : jbNo
 	  		}
 		})
@@ -210,7 +210,7 @@ $(document).on('click','.table-accreditations-air .btn-status-report',function()
  					  	},
 				  		data: { 
 				  			id      :jbNo,
-				  			monType : montype
+				  			monType : montype_air
 				  		}
 					})
 			  		.done(function(report_status_data) {
