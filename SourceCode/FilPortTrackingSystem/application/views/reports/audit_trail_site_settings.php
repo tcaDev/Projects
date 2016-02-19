@@ -179,7 +179,7 @@ $(document).on('dblclick','.rowTable-settings',function(){
 
 $(document).on('dblclick','.row_contacts',function(){
 
-     ids = $(this).closest('tr').children('td:eq(1)').text(); 
+     ids = $(this).closest('tr').children('td:eq(0)').text(); 
 
      site_settings_contacts(ids,get_settings);
 
