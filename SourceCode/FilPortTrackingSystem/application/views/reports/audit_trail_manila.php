@@ -209,13 +209,21 @@
 
 $(document).on('click','#collapse2',function(){
 	$('.audit-trail').removeClass('hidden');
+	$('.site-settings').addClass('hidden');
 	$('.search-consignee').addClass('hidden');
 });
 
 
 $(document).on('click','#collapse1',function(){
 	$('.audit-trail').addClass('hidden');
+	$('.site-settings').addClass('hidden');
 	$('.search-consignee').removeClass('hidden');
+});
+
+$(document).on('click','#collapse3',function(){
+	$('.audit-trail').addClass('hidden');
+	$('.site-settings').removeClass('hidden');
+	$('.search-consignee').addClass('hidden');
 });
 
 
