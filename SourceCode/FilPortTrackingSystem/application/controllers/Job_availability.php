@@ -267,7 +267,7 @@ function get_User_list_admin(){
       }
 
 
-      function accreditations(){
+     /* function accreditations(){
         $consignee_name    =  $this->input->post('consignee_name');  
         $monitoringType    =  $this->input->post('monType');
         $rowCt = 0;
@@ -313,7 +313,7 @@ function get_User_list_admin(){
                 );
               
              echo json_encode($output);
-      }
+      }*/
 
       function loadAccreditations(){
         // $consignee_name    =  $this->input->post('consignee_name');  

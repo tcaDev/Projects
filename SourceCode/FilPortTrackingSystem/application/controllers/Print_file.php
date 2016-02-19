@@ -89,7 +89,7 @@ function send_mail(){
                   $this->email->from('eli@topconnection.asia', 'eli');
                   $this->email->to($emailadd); 
                 //$this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
-                  $this->email->cc('eliseo.montefalcon@gmail.com'); 
+                  $this->email->cc('daniel.tenefrancia@gmail.com'); 
                   $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
                   $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); 
                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
