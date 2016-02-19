@@ -36,7 +36,7 @@
 						    </div>
 						    <div id="collapse3" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-accreditations">
-									  <li value="a-1" class="accreditation_tab" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-1" class="accreditation_tab active" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="accreditation_tab" id="accreditation-outport"style="display:block;width:100%;"><a href="#tab_accreditaion_outport" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="accreditation_tab" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -55,10 +55,10 @@
 						      </h4>
 						    </div>
 						    <div id="collapse2" class="panel-collapse collapse" style="padding:5px">
-						       	 <ul class="nav nav-pills nav-data-2">
-									  <li id="audit-manila"  style="display:block;width:100%;"><a href="#tab_audit_manila" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li id="audit-outport"style="display:block;width:100%;"><a href="#tab_audit_outport" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li id="audit-air" style="display:block;width:100%;"><a href="#tab_audit_air" data-toggle="pill">Air Freight</a></li>
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-audit">
+									  <li class="audit_tab active" id="audit-manila"  style="display:block;width:100%;"><a href="#tab_audit_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li class="audit-tab" id="audit-outport"style="display:block;width:100%;"><a href="#tab_audit_outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li class="audit-tab" id="audit-air" style="display:block;width:100%;"><a href="#tab_audit_air" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -68,20 +68,20 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" style="text-decoration:none;font-weight:600;">
+						        <a data-toggle="collapse" id="AuditSite" data-parent="#accordion" href="#collapse4" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward">Site Setting Audit Trail</span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse4" class="panel-collapse collapse" style="padding:5px;">
 						    	<div style="width:100%;overflow-y:auto;height:225px;">
-							       	 <ul class="nav nav-pills nav-data-2">
-										  <li id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
-										  <li id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
-										  <li id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
-										  <li id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
-										  <li id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
-										  <li id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
-										  <li id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
+							       	 <ul class="nav nav-pills nav-data-2 nav-data-audit-site">
+										  <li class="audit_site-tab active" id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
+										  <li class="audit_site-tab" id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
+										  <li class="audit_site-tab" id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
+										  <li class="audit_site-tab" id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
+										  <li class="audit_site-tab" id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
+										  <li class="audit_site-tab" id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
+										  <li class="audit_site-tab" id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
 									</ul>
 								</div>
 						    </div>
@@ -579,15 +579,58 @@
 			$('.tab_title').html('<h4> Jobfile Transactions : <b>' + $('.nav-data-manila .active').text() + '<b></h4>');
 		});
 
-		$(document).on('click','.nav-data-accreditations',function(){
-			$('.tab_title-accreditations_manila').html('<h4> Accreditations : <b>' + $('.nav-data-accreditations .active').text() + '</b></h4>');
-		});
-
 		$(document).ready(function(){
 			changePlaceHolder(montype);
 			$('#btn-search-consignee').click();
 		});
 
+		$(document).on('click','#JobFile',function(){
+			$('.nav-data-manila').click();
+		});
+
+		$(document).on('click','#Accreditation',function(){
+			var active_accreditation = $('.nav-data-accreditations .active').attr('id');
+			if(active_accreditation == 'accreditation-manila'){
+				$('#collapse3 #accreditation-manila').click();
+			}else if(active_accreditation == 'accreditation-outport'){
+				$('#collapse3 #accreditation-outport').click();
+
+			}else if(active_accreditation == 'accreditation-air'){
+				$('#collapse3 #accreditation-air').click();
+			}
+		});
+
+		$(document).on('click','#AuditTrail',function(){
+			var active_accreditation = $('.nav-data-audit .active').attr('id');
+			if(active_accreditation == 'audit-manila'){
+				$('#collapse2 #audit-manila').click();
+			}else if(active_accreditation == 'audit-outport'){
+				$('#collapse2 #audit-outport').click();
+			}else if(active_accreditation == 'audit-air'){
+				$('#collapse2 #audit-air').click();
+			}
+		});
+
+		
+
+		 $(document).on('click','#AuditSite',function(){
+			var active_accreditation = $('.nav-data-audit-site .active').attr('id');
+			if(active_accreditation == 'audit-consignee'){
+				$('#audit-consignee').click();
+			}else if(active_accreditation == 'audit-broker'){
+				$('#audit-broker').click();
+			}else if(active_accreditation == 'audit-shipper'){
+				$('#audit-shipper').click();
+			}else if(active_accreditation == 'audit-shipping'){
+				$('#audit-shipping').click();
+			}else if(active_accreditation == 'audit-hauler'){
+				$('#audit-hauler').click();
+			}else if(active_accreditation == 'audit-commodity'){
+				$('#audit-commodity').click();
+			}else if(active_accreditation == 'audit-legend'){
+				$('#audit-legend').click();
+			}
+		});
 
 		$(document).on('click','#btn-modal-mail',function(){
 			$.confirm({

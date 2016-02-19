@@ -1,4 +1,4 @@
-<div class="tab-pane active" id="tab_audit_outport">		        
+<div class="tab-pane" id="tab_audit_outport">		        
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">

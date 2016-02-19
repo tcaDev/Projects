@@ -1,4 +1,4 @@
-<div class="tab-pane accreditation_tab" id="tab_accreditaion_outport">		        
+<div class="tab-pane tab_accreditation" id="tab_accreditaion_outport">		        
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
@@ -118,27 +118,6 @@ var montype = 2;
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
 		$("thead th").css("white-space","nowrap");
-
-$(document).on('click','#collapse3',function(){
-	$('.accreditations').removeClass('hidden');
-	$('.search-consignee').addClass('hidden');
-	$('.audit-trail').addClass('hidden');
-});
-
-
-
-$(document).on('click','#collapse2',function(){
-	$('.audit-trail').removeClass('hidden');
-	$('.search-consignee').addClass('hidden');
-	$('.accreditations').addClass('hidden');
-});
-
-
-$(document).on('click','#collapse1',function(){
-	$('.search-consignee').removeClass('hidden');
-	$('.accreditations').addClass('hidden');
-	$('.audit-trail').addClass('hidden');
-});
 
 	
 /*Get List Of Manila History*/

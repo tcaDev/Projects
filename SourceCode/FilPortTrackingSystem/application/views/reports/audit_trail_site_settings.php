@@ -98,7 +98,7 @@ var get_settings = 0;
      });
 
      $('#audit-hauler').click(function(){
-        $('.active-tab').html('<b> Hau;er / Trucker</b>');
+        $('.active-tab').html('<b> Hauler / Trucker</b>');
         get_settings = 5;
         site_settings_get_data(get_settings);
      });

@@ -1,4 +1,4 @@
-<div class="tab-pane active" id="tab_accreditaion_manila">	
+<div class="tab-pane tab_accreditation active" id="tab_accreditaion_manila">	
 
     	<div class="col-md-12 ">
         	<div class="row">
