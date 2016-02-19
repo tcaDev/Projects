@@ -1,5 +1,4 @@
 
-
 $(function(){
 	$('table').tablesorter({
 		    widthFixed : true,
@@ -8,10 +7,8 @@ $(function(){
 			sortReset      : true,
 			sortRestart    : true,
 			widgetOptions: {
-	     		
 	     		stickyHeaders_attachTo: '.report_header'
 	     }
 	});
-
 
 });

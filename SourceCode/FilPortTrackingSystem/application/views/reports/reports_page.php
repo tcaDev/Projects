@@ -13,15 +13,16 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
-						        <span class="hvr-icon-forward"> Jobfile Transaction </span></a>
+						        <a data-toggle="collapse" id="JobFile" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
+						        <span class="hvr-icon-forward">Jobfile Transaction </span>
+						        </a>
 						      </h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
-						         <ul class="nav nav-pills nav-data nav-freights">
-									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
+						         <ul class="nav nav-pills nav-data nav-freights nav-data-manila">
+									  <li id="search_manila"  value="1" class="nav-manila active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li id="search_outport" value="2" class="nav-manila"  style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li id="search_air"     value="3" class="nav-manila"  style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -29,15 +30,15 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
+						        <a data-toggle="collapse" id="Accreditation" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward"> Accreditation</span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse3" class="panel-collapse collapse" style="padding:5px">
-						       	 <ul class="nav nav-pills nav-data-2">
-									  <li value="a-1" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li value="a-2" id="accreditation-outport"style="display:block;width:100%;"><a href="#tab_accreditaion_outport" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li value="a-3" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-accreditations">
+									  <li value="a-1" class="accreditation_tab" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" class="accreditation_tab" id="accreditation-outport"style="display:block;width:100%;"><a href="#tab_accreditaion_outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" class="accreditation_tab" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -49,7 +50,7 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="text-decoration:none;font-weight:600;">
+						        <a data-toggle="collapse" id="AuditTrail" data-parent="#accordion" href="#collapse2" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward">Jobfile Audit Trail</span></a>
 						      </h4>
 						    </div>
@@ -128,19 +129,20 @@
 			        	<div class="col-md-12 ">
 				        	<div class="row">
 				        			<div class="tools-bar">
-									    <div class="input-group col-lg-8">
+				        				<div class="col-md-6">
+				        			 	 <span style="padding-bottom: 10px;"> <h3 class="tab_title"> </h3></span>
+				        				</div>
+									    <div class="input-group col-md-6">
 									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
 									      <span class="input-group-btn">
 									        <button class="btn btn-danger" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
 									      </span>
 									    </div>
 								 	</div>
-				        		
 				        	</div>     		
 			        	</div>
 			        	<a class="loading-consignee" style="font-size:24px;"></a>
 			        	<table >
-								
 					        	<i class="result-count" style="font-size:24px;"> </i>
 			        	</table>
 			        	
@@ -328,24 +330,6 @@
 	<!-- End of Manila and Outport Details -->
 	</div> 
 
-		<!-- <div class="modal fade" id="view-accreditations" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
-				    <div class="modal-dialog">
-				   		 <div class="modal-content">
-				   			<div class="modal-header">
-				   				<h3>Contact Person</h3>
-				   			</div>
-				   			<div class="modal-body">
-				   				<div id="accreditations-body">
-
-				   				</div>
-				   			</div>
-				   			<div class="modal-footer">
-				   				 <button type="button" class="btn btn-danger" data-dismiss="modal" id = "btn-close-report-desc">Close</button>
-				   			</div>
-				   		 </div>
-				    </div>
-		</div> -->
-
 		<div class="modal fade" id="jobfiles" role="dialog">
 		    <div class="modal-dialog">		      
 				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
@@ -371,7 +355,7 @@
 
  var statusData;
  var txt;
- var mon_Type = 1;
+ var montype = 1;
 
 
  var content_commodities;
@@ -384,9 +368,10 @@
  //var myCloneview_report;
 	$('#btn-search-consignee').on('click',function(){
 		var direct;
+		$('.nav-data-manila').click();
 		txt = $('#txt-search-consignee').val();
 		//$('.reports-table').html();
-		if(mon_Type != 8){
+		if(montype != 8){
 			direct = "<?php echo base_url('Job/get_consignee_status_report');?>";
 		}else{
 			direct = "<?php echo base_url('Job_availability/loadAccreditations');?>";
@@ -401,26 +386,26 @@
 						},
 				  		data: { 
 				  			consignee_name:txt,
-				  			monType : mon_Type
+				  			monType : montype
 				  		}
 					})
 			  		.done(function(consignee_data) {
 			  			var result = JSON.parse(consignee_data);
-			  			if(result[0].result_count == 0 && mon_Type == 1){
+			  			if(result[0].result_count == 0 && montype == 1){
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data from Sea Freight Transactions <br><center> Please Check Air Freight </center>"
 			  				});
 			  				$('.reports-table').html(result[0].disp);
 			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
-			  			}else if(result[0].result_count == 0 && mon_Type == 2){
+			  			}else if(result[0].result_count == 0 && montype == 2){
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data from Sea Freight Transactions <br> <center> Please Check Air Freight </center>"
 			  				});
 			  				$('.reports-table').html(result[0].disp);
 			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
-			  			}else if(result[0].result_count == 0 && mon_Type == 3){
+			  			}else if(result[0].result_count == 0 && montype == 3){
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center>"
@@ -428,7 +413,7 @@
 			  				$('.reports-table').html(result[0].disp);
 			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
 			  			}
-			  			else if(result[0].result_count == 0 && mon_Type == 8){
+			  			else if(result[0].result_count == 0 && montype == 8){
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data of Accreditations"
@@ -442,9 +427,9 @@
 				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
 			  			}
 					});
-
-	$('.reports-table').css('cursor','pointer');
+		$('.reports-table').css('cursor','pointer');
     });
+
 		$(document).on('dblclick','.tableRow',function(){
 			$('.tab-clear').removeClass('active');
 			$('.tab-containers').attr('class','col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-containers tab-clear');
@@ -455,7 +440,7 @@
 			$('#tbl-fourth-report-data').html('<table id="tbl-fourth-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;"><tr><td><span class="loadReports pull-left" style="font-size:18px;"></span></td></tr></table>');
 			/*Reload Data on View*/
 	
-			if(mon_Type == 3){ /*SET VIEW FORMAT*/
+			if(montype == 3){ /*SET VIEW FORMAT*/
 				$('.nav-ins-menu').html('<ul class="nav nav-pills nav-ins-menu"><li class="active"><a data-toggle="tab" href="#conts">Aircraft</a></li><li class="commodities"><a data-toggle="tab" href="#commodities">Commodities</a></li><li class="reports"><a data-toggle="tab" href="#status-reports">Status Reports</a></li><li class="charges"><a data-toggle="tab" href="#running-charges">Running Charges</a></li><li><a data-toggle="tab" href="#other-documents">Other Documents</a></li></ul>');
 				$('.cnt').html('<h4 class="cnt">Aircraft</h4>');
 			}else{
@@ -471,7 +456,7 @@
 			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
-			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&mon_Type=" + mon_Type + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
+			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&montype=" + montype + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
 					 $.ajax({
 				  		method: "POST",
 					url: "<?php echo base_url('Job/get_details_report');?>",
@@ -480,7 +465,7 @@
 						},
 				  		data: { 
 				  			consignee_name		: txt,
-				  			monType 			: mon_Type,
+				  			monType 			: montype,
 				  			shipperName 		: shipperName,
 				  			consigneeName 		: consigneeName,
 				  			dateRcvdOther_Docs  : rcvdOfOtherDocs,
@@ -494,7 +479,7 @@
 			  			$('.loadPre-Details').html('<a class="loadPre-Details"></a>');
 				});
 			 var loadText;
-			 if(mon_Type == 3){
+			 if(montype == 3){
 			 	loadText = "Loading Aircrafts ...";
 			 }else{
 			 	loadText = "Loading Containers ...";
@@ -507,7 +492,7 @@
 						},
 				  		data: { 
 				  			id		:jbNo,
-				  			monType : mon_Type
+				  			monType : montype
 				  		}
 					})
 			  		.done(function(report_container_data){
@@ -522,7 +507,7 @@
 						},
 				  		data: { 
 				  			id:jbNo,
-				  			monType : mon_Type
+				  			monType : montype
 				  		}
 					})
 			  		.done(function(report_commodities_data){
@@ -537,7 +522,7 @@
 						},
 				  		data: { 
 				  			id:jbNo,
-				  			monType : mon_Type
+				  			monType : montype
 				  		}
 					})
 			  		.done(function(report_charges_data){
@@ -552,7 +537,7 @@
  					  	},
 				  		data: { 
 				  			id:jbNo,
-				  			monType : mon_Type
+				  			monType : montype
 				  		}
 					})
 			  		.done(function(report_status_data) {
@@ -582,22 +567,27 @@
 			});
 
 			$(document).on('click','.nav-freights li',function(){
-					mon_Type = $('.nav-data .active').val();
+					montype = $('.nav-data .active').val();
 					$('.loading-consignee').html('<a class="loading-consignee"></a>');
 					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 				    $('#btn-search-consignee').click();
-					changePlaceHolder(mon_Type);
+					changePlaceHolder(montype);
 			});
 
+		$(document).on('click','.nav-data-manila',function(){
+			$('.tab_title').html('<h4> Jobfile Transactions : <b>' + $('.nav-data-manila .active').text() + '<b></h4>');
+		});
+
+		$(document).on('click','.nav-data-accreditations',function(){
+			$('.tab_title-accreditations_manila').html('<h4> Accreditations : <b>' + $('.nav-data-accreditations .active').text() + '</b></h4>');
+		});
+
 		$(document).ready(function(){
-			changePlaceHolder(mon_Type);
+			changePlaceHolder(montype);
 			$('#btn-search-consignee').click();
 		});
 
-    	$(document).on('click','.btn_docs',function(){
-			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
-		});
 
 		$(document).on('click','#btn-modal-mail',function(){
 			$.confirm({
@@ -621,7 +611,7 @@
 										},
 										data: {
 											jbNo 	 : jbNo,
-											mon_Type : mon_Type
+											montype : montype
 										}
 									})
 							  		.done(function(send_status) {
@@ -642,7 +632,7 @@
 
 
 		function changePlaceHolder(monType){
-
+			$('#tab_title').html();
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 2){
@@ -653,6 +643,7 @@
 				$('#txt-search-consignee').attr('placeholder','Please Enter Consignee Name ');
 			}
 		}
+
 </script>
 <style>
 	 .tableOverFlow{
@@ -669,7 +660,3 @@
 	</style>
 </html>
 
-
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
-<script src="<?php echo base_url('resources/table_sort/tablesortFilport.js');?>"></script>

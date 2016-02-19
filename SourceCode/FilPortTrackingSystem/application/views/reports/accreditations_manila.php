@@ -1,22 +1,23 @@
-<div class="tab-pane active" id="tab_accreditaion_manila">		        
+<div class="tab-pane active" id="tab_accreditaion_manila">	
+
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
-					    <div class="input-group col-lg-8">
-					      <input type="text" class="form-control light-table-filter" data-table="order-table-audit" id="txt-accreditations" placeholder='Search Consignee'>
-					      <span class="input-group-btn">
-					        <button class="btn btn-danger" id="btn-accreditations" type="button"><span class="fa fa-search fa-fw"></span></button>
-					      </span>
-					    </div>
+				        				<div class="col-md-6">
+				        			 	 <span style="padding-bottom: 10px;"> <h4> Accreditations : <b> Sea Freight Manila </b></h4></span>
+				        				</div>
+									    <div class="input-group col-md-6">
+									       <input type="text" class="form-control light-table-filter" data-table="order-table-accreditations" id="txt-accreditations" placeholder='Search Consignee Accreditation'>
+									      <span class="input-group-btn">
+									       <button class="btn btn-danger" id="btn-accreditations" type="button"><span class="fa fa-search fa-fw"></span></button>
+									      </span>
+									    </div>
 				 	</div>
-        		
         	</div>     		
     	</div>
-
-    	<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
     		<div class="table-accreditations-manila" ></div>
     	</div>
-
 </div>	
 
 	<div class="modal fade" id="view-accreditations-manila-commodity" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
@@ -110,6 +111,10 @@
 
 		
 <script>
+		$("th").css("vertical-align","middle");
+		$("tbody td").css("white-space","nowrap");
+		$("tbody td").css("min-width","60px");
+		$("thead th").css("white-space","nowrap");
 var montype = 1;
 
 $(document).on('click','#collapse3',function(){
@@ -132,8 +137,7 @@ $(document).on('click','#collapse1',function(){
 	$('.audit-trail').addClass('hidden');
 });
 
-
-
+		
 /*Get List Of Manila History*/
 
 $(document).on('click','#collapse3 #accreditation-manila',function(){
@@ -141,7 +145,7 @@ $(document).on('click','#collapse3 #accreditation-manila',function(){
 	  		method: "POST",
 			  url: "<?php echo base_url('Job_availability/loadAccreditations');?>",
 			  beforeSend: function() {
-		              $('.table-audit-manila').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		              $('.table-accreditations-manila').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
 		            },  
 	  		data: { 
 	  			montype:montype,

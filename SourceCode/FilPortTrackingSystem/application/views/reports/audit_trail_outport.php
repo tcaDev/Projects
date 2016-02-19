@@ -2,12 +2,15 @@
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
-					    <div class="input-group col-lg-8">
-					      <input type="text" class="form-control light-table-filter" data-table="order-table-audit" id="txt-audit-trail" placeholder='Search...'>
-					      <span class="input-group-btn">
-					        <button class="btn btn-danger" id="btn-audit-trail" type="button"><span class="fa fa-search fa-fw"></span></button>
-					      </span>
-					    </div>
+        								<div class="col-md-6">
+				        			 	 <span style="padding-bottom: 10px;"> <h4> Jobfile Audit Trail : <b> Sea Freight Outport </b></h4></span>
+				        				</div>
+									    <div class="input-group col-md-6">
+									           <input type="text" class="form-control light-table-filter" data-table="order-table-audit" id="txt-audit-trail" placeholder='Search...'>
+									      <span class="input-group-btn">
+									           <button class="btn btn-danger" id="btn-audit-trail" type="button"><span class="fa fa-search fa-fw"></span></button>
+									      </span>
+										</div>
 				 	</div>
         		
         	</div>     		

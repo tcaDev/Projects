@@ -325,7 +325,7 @@ function get_User_list_admin(){
             $dispOutput = '
              <div class="col-lg-12" style="overflow-x:auto;">
              <div class="row">
-             <table class="tablesorter tableReports table table-bordered table-striped table-condensed order-table">';
+             <table class="tablesorter tableReports table table-bordered table-striped table-condensed order-table order-table-accreditations" style="width:100%">';
             $dispOutput .= '
                           <thead>
                              <tr>
@@ -364,7 +364,8 @@ function get_User_list_admin(){
 
            $dispOutput .=  '<script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js") . '"></script>
                             <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
-                            <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
+                            <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>
+                            <script src="' .  base_url("resources/table_sort/tableAccreditationSort.js") . '"></script>
                       ';
 
                       $output = array(
@@ -462,7 +463,7 @@ function get_User_list_admin(){
       $status    =  $this->input->post('id');   
       $monType   = $this->input->post('monType');
       $charges   = $this->Jobdata->report_get_status($status,$monType);
-      
+
       if(count($charges)){
          echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
                 <tr>

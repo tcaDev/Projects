@@ -2,12 +2,15 @@
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
-					    <div class="input-group col-lg-8">
-					      <input type="text" class="form-control light-table-filter" data-table="order-table-site-settings" id="txt-audit-trail" placeholder='Search...'>
-					      <span class="input-group-btn">
-					        <button class="btn btn-danger" id="btn-site-setings" type="button"><span class="fa fa-search fa-fw"></span></button>
-					      </span>
-					    </div>
+              <div class="col-md-6">
+                         <span style="padding-bottom: 10px;"> <h4> Site Setting Audit Trail : <b class='active-tab'> Air Freight </b></h4></span>
+                        </div>
+                      <div class="input-group col-md-6">
+                             <input type="text" class="form-control light-table-filter" data-table="order-table-site-settings" id="txt-audit-trail" placeholder='Search...'>
+                        <span class="input-group-btn">
+                           <button class="btn btn-danger" id="btn-site-setings" type="button"><span class="fa fa-search fa-fw"></span></button>
+                        </span>
+              </div>
 				 	</div>
         		
         	</div>     		
@@ -70,36 +73,44 @@
 
 var get_settings = 0;
      $('#audit-consignee').click(function(){
+        $('.active-tab').html('<b> Consignee</b>');
         get_settings = 1;
         site_settings_get_data(get_settings);
+
      });
 
      $('#audit-broker').click(function(){
+        $('.active-tab').html('<b> Broker</b>');
         get_settings = 2;
         site_settings_get_data(get_settings);
      });
 
      $('#audit-shipper').click(function(){
+        $('.active-tab').html('<b> Shipper</b>');
         get_settings = 3;
         site_settings_get_data(get_settings);
      });
 
      $('#audit-shipping').click(function(){
+        $('.active-tab').html('<b> Shipping Line / Carrier</b>');
         get_settings = 4;
         site_settings_get_data(get_settings);
      });
 
      $('#audit-hauler').click(function(){
+        $('.active-tab').html('<b> Hau;er / Trucker</b>');
         get_settings = 5;
         site_settings_get_data(get_settings);
      });
 
      $('#audit-commodity').click(function(){
+        $('.active-tab').html('<b> Commodity</b>');
         get_settings = 6;
         site_settings_get_data(get_settings);
      });
 
      $('#audit-legend').click(function(){
+        $('.active-tab').html('<b> Legend</b>');
         get_settings = 7;
         site_settings_get_data(get_settings);
      });
