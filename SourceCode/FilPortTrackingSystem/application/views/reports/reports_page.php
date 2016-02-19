@@ -286,7 +286,7 @@
 			</div>
 		</div>
 				       <div class="modal-footer">
-				       	 <button type="button" class="btn btn-success" id="btn-modal-mail">E-Mail</button>
+				       	 <button type="button" class="btn btn-success hidden" id="btn-modal-mail">E-Mail</button>
 				       	 <a href='#' id='btn_print'> <button class="btn btn-default" >Print</button> </a>
 				         <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-modal-close">Close</button>
 				       </div>
