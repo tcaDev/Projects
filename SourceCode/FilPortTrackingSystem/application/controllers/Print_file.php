@@ -16,7 +16,7 @@ class Print_file extends CI_Controller {
 
 function index(){
        $jbNo    = $this->input->get('jbNo');
-       $montype = $this->input->get('mon_Type');
+       $montype = $this->input->get('montype');
        $to_print = $this->createDoc($jbNo,$montype);
 
        /* $this->m_pdf->pdf->SetWatermarkText('Confidential/Proprietory');
@@ -30,10 +30,20 @@ function index(){
 function send_mail(){
 
   $jbNo    = $this->input->post('jbNo');
-  $montype = $this->input->post('mon_Type');
+  $montype = $this->input->post('montype');
 
   $toSend = $this->createDoc($jbNo,$montype);
   $dateSend =  date('Y-m-d H:i:s a');
+
+  $ccJobFileManila = ['daniel.tenefrancia@gmail.com','reinen@topconnection.asia'];
+  $ccJobFileOutport = ['',''];
+  $ccJobFileAir = ['',''];
+
+  /*if($montype == 1){
+    for($x = 0 ; $x <= count($ccJobFileManila) ; $x++ ){
+
+    }
+  }*/
   
   $datePath = './resources/pdf/' .date('Y-m-d');
      
@@ -72,8 +82,8 @@ function send_mail(){
 
 
                   //email
-
-                  $config['protocol'] = 'sendmail'; 
+                  /*ONLINE*/
+                /*  $config['protocol'] = 'sendmail'; 
                   $config['smtp_host']    = 'smtpout.secureserver.net';
                   $config['smtp_port']    = '80';
                   $config['smtp_timeout'] = '20';
@@ -82,14 +92,26 @@ function send_mail(){
                   $config['charset']    = 'utf-8';
                   $config['newline']    = "\r\n";
                   $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not      
+                  $config['validation'] = TRUE; // bool whether to validate email or not     */
+
+                  /*LOCALHOST*/
+                  $config['protocol']    = 'smtp';
+                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
+                  $config['smtp_port']    = '465';
+                  $config['smtp_timeout'] = '7';
+                  $config['smtp_user']    = 'eli@topconnection.asia';
+                  $config['smtp_pass']    = 'asiagroup7';
+                  $config['charset']    = 'utf-8';
+                  $config['newline']    = "\r\n";
+                  $config['mailtype'] = 'text'; // or html
+                  $config['validation'] = TRUE; // bool whether to validate email or not       
 
                   $this->email->initialize($config);
 
                   $this->email->from('eli@topconnection.asia', 'eli');
                   $this->email->to($emailadd); 
                 //$this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
-                  $this->email->cc('daniel.tenefrancia@gmail.com'); 
+                  $this->email->cc($ccJobFileManila); 
                   $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
                   $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); 
                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
