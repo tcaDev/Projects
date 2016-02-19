@@ -67,20 +67,22 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward">Site Setting Audit Trail</span></a>
 						      </h4>
 						    </div>
-						    <div id="collapse3" class="panel-collapse collapse" style="padding:5px;">
-						       	 <ul class="nav nav-pills nav-data-2">
-									  <li id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
-									  <li id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
-									  <li id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
-									  <li id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
-									  <li id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
-									  <li id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
-									  <li id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
-								</ul>
+						    <div id="collapse4" class="panel-collapse collapse" style="padding:5px;">
+						    	<div style="width:100%;overflow-y:auto;height:225px;">
+							       	 <ul class="nav nav-pills nav-data-2">
+										  <li id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
+										  <li id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
+										  <li id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
+										  <li id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
+										  <li id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
+										  <li id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
+										  <li id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
+									</ul>
+								</div>
 						    </div>
 						  </div>
 

@@ -211,6 +211,7 @@ $(document).on('click','#collapse2',function(){
 	$('.audit-trail').removeClass('hidden');
 	$('.site-settings').addClass('hidden');
 	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
 });
 
 
@@ -218,9 +219,17 @@ $(document).on('click','#collapse1',function(){
 	$('.audit-trail').addClass('hidden');
 	$('.site-settings').addClass('hidden');
 	$('.search-consignee').removeClass('hidden');
+	$('.accreditations').addClass('hidden');
 });
 
 $(document).on('click','#collapse3',function(){
+	$('.audit-trail').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').removeClass('hidden');
+});
+
+$(document).on('click','#collapse4',function(){
 	$('.audit-trail').addClass('hidden');
 	$('.site-settings').removeClass('hidden');
 	$('.search-consignee').addClass('hidden');
