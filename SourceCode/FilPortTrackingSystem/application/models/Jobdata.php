@@ -477,7 +477,30 @@ function jobfile_graph_air(){
   $query = $this->db->query("select count(*) as Ratings FROM JobFile_Air");
     return $query->result();
 }
+
+function get_consignees_report($consigneeName){
+  $query = $this->db->query("select * FROM Consignee WHERE ConsigneeName LIKE '%$consigneeName%'");
+  return $query->result();
 }
 
+function get_accreditations($monitoringType){
+  if($monitoringType != 3){
+    $query = $this->db->query("SELECT JobFileId,JobFileNo, ConsigneeName, DateReceivedNoticeFromClients, DateReceivedOfOtherDocs from vw_JobFile WHERE MonitoringTypeId = '$monitoringType' ORDER BY ConsigneeName");
+  }else{
+    $query = $this->db->query("SELECT JobFile_AirId As 'JobFileId',JobFileNo, ConsigneeName, DateReceivedArrivalFromClient AS 'DateReceivedNoticeFromClients', DatePickUpOtherDocs AS 'DateReceivedOfOtherDocs' from vw_JobFileAir ORDER BY ConsigneeName");
+  }
+  /*$query = $this->db->query("SELECT JobFileId,JobFileNo, ConsigneeName, DateReceivedNoticeFromClients, DateReceivedOfOtherDocs from vw_JobFile
+                             UNION ALL
+                             SELECT JobFile_AirId As 'JobFileId',JobFileNo, ConsigneeName, DateReceivedArrivalFromClient AS 'DateReceivedNoticeFromClients', DatePickUpOtherDocs AS 'DateReceivedOfOtherDocs' from vw_JobFileAir ORDER BY ConsigneeName
+                             ");*/
+  return $query->result();
+}
 
+function get_consignee_contacts($conName){
+  $query = $this->db->query("SELECT  CONCAT(a.FirstName , ' ' , a.MiddleName, ' ' ,a.LastName) AS ConsigneeName, a.ContactNo1, a.ContactNo2 FROM ConsigneeContacts AS a , Consignee AS c WHERE a.ConsigneeId = c.ConsigneeId AND c.ConsigneeName = '$conName'");
+  return $query->result();
+}  
+
+
+}
 ?>

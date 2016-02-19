@@ -19,12 +19,28 @@
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-freights">
 									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
-									  <li  value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
-								 	 <!--  <li  value="8" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Accreditation<span class="hvr-icon-forward"></span></a></li> -->
+									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
+
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Accreditation</span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse3" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2">
+									  <li value="a-1" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" id="accreditation-outport"style="display:block;width:100%;"><a href="#tab_accreditaion_outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
 						  <?php if($role->RoleId == "1"){ ?>
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
@@ -42,6 +58,7 @@
 						    </div>
 						  </div>
 						  <?php }else{} ?>
+
 						</div>
 			<!-- End Accordion -->
 		</div>
@@ -59,6 +76,15 @@
 					<?php $this->load->view('reports/audit_trail_outport'); ?>
 
 					<?php $this->load->view('reports/audit_trail_air'); ?>
+			</div>
+
+			<div class="hidden accreditations tab-content">
+
+					<?php $this->load->view('reports/accreditations_manila'); ?>
+
+					<?php $this->load->view('reports/accreditations_outport'); ?>
+
+					<?php $this->load->view('reports/accreditations_air'); ?>
 			</div>
 					
 
@@ -78,17 +104,14 @@
 				        		
 				        	</div>     		
 			        	</div>
+			        	<a class="loading-consignee" style="font-size:24px;"></a>
+			        	<table >
+								
+					        	<i class="result-count" style="font-size:24px;"> </i>
+			        	</table>
 			        	
-			        			<table> 
-			        				<tr>
-					        			<a class="loading-consignee" style="font-size:24px;"></a>
-					        			<i class="result-count" style="font-size:24px;"> </i>
-					        		</tr>
-			        			</table>
-			        			
 			        		<div class="report_header" style="width:100%;overflow-y:auto;position:relative;height:440px;">
 					        	<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse; " class="table table-bordered order-table reports-table" style="cursor:pointer;">
-					        	
 					        		<tr class="tableRow">
 
 					        		</tr>
@@ -271,6 +294,24 @@
 	<!-- End of Manila and Outport Details -->
 	</div> 
 
+		<!-- <div class="modal fade" id="view-accreditations" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
+				    <div class="modal-dialog">
+				   		 <div class="modal-content">
+				   			<div class="modal-header">
+				   				<h3>Contact Person</h3>
+				   			</div>
+				   			<div class="modal-body">
+				   				<div id="accreditations-body">
+
+				   				</div>
+				   			</div>
+				   			<div class="modal-footer">
+				   				 <button type="button" class="btn btn-danger" data-dismiss="modal" id = "btn-close-report-desc">Close</button>
+				   			</div>
+				   		 </div>
+				    </div>
+		</div> -->
+
 		<div class="modal fade" id="jobfiles" role="dialog">
 		    <div class="modal-dialog">		      
 				<?php $this->load->view('jobfile-view/views_jobfiledata_reports'); ?>
@@ -284,6 +325,10 @@
  		</div>
 </body>
 <script>
+		$("th").css("vertical-align","middle");
+		$("tbody td").css("white-space","nowrap");
+		$("tbody td").css("min-width","60px");
+		$("thead th").css("white-space","nowrap");
  var jbNo;
  var consigneeName;
  var shipperName;
@@ -304,13 +349,20 @@
 
  //var myCloneview_report;
 	$('#btn-search-consignee').on('click',function(){
+		var direct;
 		txt = $('#txt-search-consignee').val();
+		//$('.reports-table').html();
+		if(mon_Type != 8){
+			direct = "<?php echo base_url('Job/get_consignee_status_report');?>";
+		}else{
+			direct = "<?php echo base_url('Job_availability/loadAccreditations');?>";
+		}
 			 $.ajax({
 				  		method: "POST",
-						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
+						url: direct,
 						beforeSend: function(){
+							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
-							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
 						},
 				  		data: { 
@@ -319,12 +371,18 @@
 				  		}
 					})
 			  		.done(function(consignee_data) {
-
 			  			var result = JSON.parse(consignee_data);
-			  			if(result[0].result_count == 0 && mon_Type != 3){
+			  			if(result[0].result_count == 0 && mon_Type == 1){
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data from Sea Freight Transactions <br><center> Please Check Air Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}else if(result[0].result_count == 0 && mon_Type == 2){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data from Sea Freight Transactions <br> <center> Please Check Air Freight </center>"
 			  				});
 			  				$('.reports-table').html(result[0].disp);
 			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
@@ -332,6 +390,14 @@
 			  				$.alert({
 			  					title: "Reports",
 			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center>"
+			  				});
+			  				$('.reports-table').html(result[0].disp);
+			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
+			  			}
+			  			else if(result[0].result_count == 0 && mon_Type == 8){
+			  				$.alert({
+			  					title: "Reports",
+			  					content: "You have No Data of Accreditations"
 			  				});
 			  				$('.reports-table').html(result[0].disp);
 			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
@@ -483,10 +549,10 @@
 
 			$(document).on('click','.nav-freights li',function(){
 					mon_Type = $('.nav-data .active').val();
-				    $('#btn-search-consignee').click();
 					$('.loading-consignee').html('<a class="loading-consignee"></a>');
 					$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
 					$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+				    $('#btn-search-consignee').click();
 					changePlaceHolder(mon_Type);
 			});
 

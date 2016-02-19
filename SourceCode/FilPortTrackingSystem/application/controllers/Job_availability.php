@@ -265,5 +265,226 @@ function get_User_list_admin(){
 
         $this->load->view('dashboard/jobfile_bargraph',$data);
       }
+
+
+      function accreditations(){
+        $consignee_name    =  $this->input->post('consignee_name');  
+        $monitoringType    =  $this->input->post('monType');
+        $rowCt = 0;
+        
+        $dispOutput = ""; 
+        $dispCount = 0;
+        $jobfiles= $this->Jobdata->get_consignees_report($consignee_name);
+         $ct = count($jobfiles);
+          if($ct > 0){
+          $dispOutput = '<table  class="tablesorter tableReports table table-bordered table-striped table-condensed order-table">';
+          $dispOutput .= '
+                        <thead>
+                           <tr>
+                              <th><center> Consignee Name </center> </th>
+                            </tr>
+                        </thead>
+                      ';
+
+           $dispOutput .='<tbody>';
+          foreach($jobfiles as $row){
+              $dispOutput .='
+                        <tr class="accreditations-row">
+                              <td>'.stripslashes($row->ConsigneeName).'</td>
+                        </tr>
+                      
+              ';
+          }
+              $dispOutput .='</tbody>';
+              $dispOutput .= '</table>';
+        }
+          $rowCt = $ct;
+           $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
+                      ';
+
+              $dispCount =  $rowCt ;
+              $output = array(
+                array(
+                   "disp" => $dispOutput,
+                   "result_count" => $dispCount
+                  )
+                );
+              
+             echo json_encode($output);
+      }
+
+      function loadAccreditations(){
+        // $consignee_name    =  $this->input->post('consignee_name');  
+          $monitoringType    =  $this->input->post('montype');
+          $jobfiles= $this->Jobdata->get_accreditations($monitoringType);
+           $ct = count($jobfiles);
+           $i = 0;
+            if($ct > 0){
+            $dispOutput = '
+             <div class="col-lg-12" style="overflow-x:auto;">
+             <div class="row">
+             <table class="tablesorter tableReports table table-bordered table-striped table-condensed order-table">';
+            $dispOutput .= '
+                          <thead>
+                             <tr>
+                                <th><center> No </center> </th>
+                                <th><center> JobFile No </center> </th>
+                                <th><center> Client </center> </th>
+                                <th><center> Commodity </center> </th>
+                                <th><center> Contact Person </center> </th>
+                                <th><center> Date Received Notice From Clients </center> </th>
+                                <th><center> Date Received of Other Documents </center> </th>
+                                <th><center> Status Reports </center> </th>
+                              </tr>
+                          </thead>
+                        ';
+
+             $dispOutput .='<tbody>';
+            foreach($jobfiles as $row){
+              $i = $i + 1;
+                $dispOutput .='
+                          <tr class="accreditations-row">
+                                <td>'. $i .'</td>
+                                <td>'.stripslashes($row->JobFileNo).'</td>
+                                <td>'.stripslashes($row->ConsigneeName).'</td>
+                                <td> <button class="btn btn-success btn-show-commodity" id="'.stripslashes($row->JobFileId).'"> Commodity </button></td>
+                                <td> <button class="btn btn-success btn-show-contact-person"> Contact Person </button></td>
+                                <td>'.stripslashes($row->DateReceivedNoticeFromClients).'</td>
+                                <td>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                                <td> <button class="btn btn-success btn-status-report" id="'.stripslashes($row->JobFileId).'"> Status Reports </button></td>
+                          </tr>                  
+                ';
+            }
+                $dispOutput .='</tbody>';
+                $dispOutput .= '</table></div></div>';
+          }
+          $dispCount = $ct; 
+
+           $dispOutput .=  '<script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.min.js") . '"></script>
+                            <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                            <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
+                      ';
+
+                      $output = array(
+                          array(
+                              "disp" => $dispOutput,
+                              "ct" => $dispCount,
+                            )
+                      );
+                      echo json_encode($output);
+      }
+
+      function accreditaions_get_commodity(){
+            $jbID    =  $this->input->post('jbNo');  
+            $monitoringType    =  $this->input->post('montype');
+            $dispOutput = '';
+            if($monitoringType == 1 || $monitoringType == 2){
+            $product  = $this->Jobdata->get_goods($jbID);
+            }else if($monitoringType == 3){
+               $product  = $this->Jobdata->get_goods_air($jbID);
+            }
+             if($product==NULL){
+                   $dispOutput .= '<center><span style="color:red">No Commodities Yet </span></center>';
+              }else{
+                    $dispOutput .=  "<table id='tbl-commodities' class='table table-striped tableOverFlow'>
+                        <tr>
+                             <th>No.</th>
+                             <th>Commodity</th>";
+                             if($monitoringType == 1 || $monitoringType == 2){
+                               $dispOutput .= "<th> Container No  </th>";
+                             }          
+                         $dispOutput .= "</tr>";
+
+                    $i=0;
+                   foreach($product as $row){
+                    $i++;
+                    if($i==1){
+                       if($row->ProductName==''){
+                           $dispOutput .=  "</table>";
+                           $dispOutput .=     '<center><span style="color:red">No Goods Yet </span></center>';
+                          break;
+                        }
+                    }else{
+                        if($row->ProductName==''){
+                          break;
+                        }
+                    }
+                        $dispOutput .=  "<tr>";
+                        $dispOutput .=  "<td class='tdOverFlow'>".$i." </td>";
+                        $dispOutput .=  "<td class='tdOverFlow'>".stripslashes($row->ProductName)."</td>";
+                        if($monitoringType == 1 || $monitoringType == 2){
+                        $dispOutput .=   "<td class='tdOverFlow'>".stripslashes($row->ContainerNo) ."</td>";
+                        }
+                        $dispOutput .=  "</tr>";
+                   }
+                    $dispOutput .=  "</table>";
+              }
+
+
+        echo $dispOutput;
+      }
+
+      function accreditations_get_contacts(){
+          $conName           =  $this->input->post('conName');  
+          $monitoringType    =  $this->input->post('montype');
+          $dispOutput = '';
+          $contacts = $this->Jobdata->get_consignee_contacts($conName);
+          $dispOutput .=  "<table id='tbl-contact-person' class='table table-striped tableOverFlow'>
+                        <tr>
+                             <th>Consignee Name</th>
+                             <th>Contact No </th>
+                             <th>E-mail Address</th>
+                        </tr>";
+
+                    $i=0;
+                    if(count($contacts) > 0){
+                       foreach($contacts as $row){
+                        $dispOutput .=  "<tr>";
+                        $dispOutput .=  "<td class='tdOverFlow'>".stripslashes($row->ConsigneeName)."</td>";
+                        $dispOutput .=   "<td class='tdOverFlow'>".stripslashes($row->ContactNo1) ."</td>";
+                        $dispOutput .=   "<td class='tdOverFlow'>".stripslashes($row->ContactNo2) ."</td>";
+                        $dispOutput .=  "</tr>";
+                      }
+                    }else{
+                           $dispOutput .=  "</table>";
+                           $dispOutput .=     '<center><span style="color:red">No Data of Contact Information from this Consignee </span></center>';
+                    }
+                  
+                $dispOutput .=  "</table>";
+
+
+                echo $dispOutput;
+      }
+
+      function accreditations_get_status_report(){
+      $status    =  $this->input->post('id');   
+      $monType   = $this->input->post('monType');
+      $charges   = $this->Jobdata->report_get_status($status,$monType);
+      
+      if(count($charges)){
+         echo "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;'>
+                <tr>
+                      <th style='border: 1px solid gray'>Date Added.</th>
+                      <th style='border: 1px solid gray'>Status Description</th>
+                </tr>";
+        $i=0;
+        foreach ($charges as $row) {
+          $i++;
+         $description = $row->StatusDescription;
+         echo " <tr>
+                   <td class='loadaccreditation-reports tdOverFlow' id='loadaccreditation-reports' style='border: 1px solid gray'>".$row->DateAdded."</td>
+                   <td class='loadaccreditation-reports tdOverFlow' id='loadaccreditation-reports' style='border: 1px solid gray'>". $description ."</td>
+                </tr>
+              ";
+        }
+         echo "</table>";
+      }else{
+        echo '<center><span style="color:red">No Record of Status Report </span></center>';
+      }
+   }
+
+
 }
 ?>   

@@ -1458,6 +1458,8 @@ function get_jobfile_global_search(){
       $monitoringType    =  $this->input->post('monType');
       $rowCt = 0;
       $jobfiles= $this->Jobdata->getJobFiles_Consignee($consignee_name,$monitoringType);
+       $dispOutput = "";
+       $dispCount = 0;
       if($monitoringType == 3){
           $ct = count($jobfiles);
           if($ct > 0){
@@ -1494,7 +1496,7 @@ function get_jobfile_global_search(){
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search</span></center>';
           }
-      }else{
+      }else if($monitoringType == 1 || $monitoringType == 2){
          $ct = count($jobfiles);
           if($ct > 0){
           $dispOutput = '<table  class="tablesorter tableReports table table-bordered table-striped table-condensed order-table">';
@@ -1545,11 +1547,12 @@ function get_jobfile_global_search(){
           }else{
             $dispOutput = '<center><span style="color:red">No Data Matches Your Search </span></center>';
           }
-      }
+  }
        $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
                       <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
                       <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
                       ';
+
       /*$dispOutput = $jobfiles;
       $dispCount = 0;*/
       $dispCount =  $rowCt ;
