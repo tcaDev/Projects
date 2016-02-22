@@ -195,10 +195,11 @@
 		var mon_Type = 4;
 		var jbID;
 		var searchItem;
+		var defUser;
 		$(document).ready(function(){
-			$('#btnSearch').click();
 			getSearchItem();
-			if(searchItem == ""){	
+			search();
+			if(defUser == ""){	
 				$("#search-global").attr('placeholder','Jobfile No / Shipper Name / Consignee ');
 			}else{
 				$("#search-global").attr('placeholder','Jobfile No / Shipper Name');
@@ -209,9 +210,39 @@
 			var item = $('.conName').attr('id');
 			if(item.trim() == ""){
 				searchItem = $('#search-global').val();
+				defUser = '';
 			}else{
 				searchItem = item;
+				defUser = item;
 			}	
+		}
+
+		function search(){
+			var direct;
+				getSearchItem();
+				if(defUser != ""){
+					direct = "<?php echo base_url('Job_reports/get_jobfile_global_search_consignee');?>";
+				}else{
+					direct = "<?php echo base_url('Job/get_jobfile_global_search');?>";
+				}
+			 	$.ajax({
+				  		method: "POST",
+						url: direct,
+						beforeSend: function(){
+							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
+							$('#tbl-global-search').html('<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search"></table>');
+							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
+						},
+				  		data: { 
+				  			search  : searchItem,
+				  			monType : mon_Type
+				  		}
+					})
+			  		.done(function(consignee_data) {
+			  			var result = JSON.parse(consignee_data);
+			  			$('#tbl-global-search').html(result[0].disp);
+			  			$('.loading-consignee').html('<a class="loading-consignee"></a>');
+					});
 		}
 			$(document).on('dblclick','.tableRow',function(){
 				$('#tbl-status-reports').html('<table id="tbl-status-reports" class="table table-striped tableOverFlow" style="width:100%;cursor:pointer;"><tr><td class="loadReports"></td></tr></table>');
@@ -274,31 +305,10 @@
 			});
 
 			$('#btnSearch').on('click',function(){
-				getSearchItem();
-			 	$.ajax({
-				  		method: "POST",
-						url: "<?php echo base_url('Job/get_jobfile_global_search');?>",
-						beforeSend: function(){
-							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
-							$('#tbl-global-search').html('<table class="table table_manila table-bordered table-condensed order-table-search-global" style="width:100%;cursor:pointer" id="tbl-global-search"></table>');
-							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
-						},
-				  		data: { 
-				  			search  : searchItem,
-				  			monType : mon_Type
-				  		}
-					})
-			  		.done(function(consignee_data) {
-			  			var result = JSON.parse(consignee_data);
-			  			$('#tbl-global-search').html(result[0].disp);
-			  			/*if(result[0].ct <= 1){
-			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Result</i>');	
-			  			}else{
-			  				$('.result-count').html('<i class="result-count" style="font-size:24px;"> Found ('+ result[0].ct +') Results</i>');	
-			  			}*/
-			  			$('.loading-consignee').html('<a class="loading-consignee"></a>');
-			  			
-					});
+				if(defUser == ""){
+					search();
+				}else{
+				}
 			});
 
 			$(document).on('dblclick','#loadReports',function(){
@@ -325,7 +335,7 @@
 
 			$(document).on('click','.nav-data li',function(){
 				mon_Type = $('.nav-data .active').val();
-			   	$('#btnSearch').click();
+			   	search();
 			});
 			
 			function getText(a){

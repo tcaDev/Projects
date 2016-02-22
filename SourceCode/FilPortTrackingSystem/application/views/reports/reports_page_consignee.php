@@ -267,7 +267,11 @@
  var content_status_data;
 
  var con_name = $('.conName').attr('id');
-	$('#btn-search-consignee').on('click',function(){
+/*	$('#btn-search-consignee').on('click',function(){
+
+    });
+*/
+	function search(){
 		if(con_name == "" || con_name == null){
 				$.alert({
 					title: "Search",
@@ -276,7 +280,7 @@
 			}else{
 					 $.ajax({
 				  		method: "POST",
-						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
+						url: "<?php echo base_url('Job_reports/get_consignee_status_report');?>",
 						beforeSend: function(){
 							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
 							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
@@ -311,7 +315,8 @@
 			  			}
 					});
 			}
-    });
+	}
+
 		$(document).on('dblclick','.tableRow',function(){
 			$('.tab-clear').removeClass('active');
 			$('.tab-containers').attr('class','col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-containers tab-clear');
@@ -450,7 +455,7 @@
 				 if (e.keyCode == 13){
 				 	if($('#txt-search-consignee').val().trim().length > 0){
 				 	}else{
-				   	 $('#btn-search-consignee').click();
+				   		search();
 				 	}
 			 	}
 			     $('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
@@ -458,7 +463,7 @@
 
 			$(document).on('click','.nav-freights li',function(){
 				mon_Type = $('.nav-data .active').val();
-			   $('#btn-search-consignee').click();
+			 	search();
 				changePlaceHolder(mon_Type);
 			});
 
@@ -468,49 +473,7 @@
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
-			if(con_name == "" || con_name == null){
-				$.alert({
-					title: "Search",
-					content: "This Account doesn't have any records"
-				})
-			}else{
-					 $.ajax({
-				  		method: "POST",
-						url: "<?php echo base_url('Job/get_consignee_status_report');?>",
-						beforeSend: function(){
-							$('.loading-consignee').html('<a class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</a>');
-							$('.reports-table').html('<table style="background-color:#fff; border:1px solid #000; border-collapse: collapse;cursor:pointer; " class="table table-bordered order-table reports-table"><tr><a class="loading-consignee" style="font-size:24px;"></a><i class="result-count" style="font-size:24px;"> </i></tr><tr class="tableRow"></tr></table>');
-							$('.result-count').html('<i class="result-count" style="font-size:24px;"> </i>');
-						},
-				  		data: { 
-				  			consignee_name:con_name,
-				  			monType : mon_Type
-				  		}
-					})
-			  		.done(function(consignee_data) {
-			  			var result = JSON.parse(consignee_data);
-			  			if(result[0].result_count == 0 && mon_Type != 3){
-			  				$.alert({
-			  					title: "Reports",
-			  					content: "You have No Data from Sea Freight Transactions <br> <center> Please Check Air Freight </center>"
-			  				});
-			  				$('.reports-table').html(result[0].disp);
-			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
-			  			}else if(result[0].result_count == 0 && mon_Type == 3){
-			  				$.alert({
-			  					title: "Reports",
-			  					content: "You have No Data from Air Freight Transactions <br> <center> Please Check Sea Freight </center> "
-			  				});
-			  				$('.reports-table').html(result[0].disp);
-			  				$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
-			  			}
-			  			else{
-			  				$('.reports-table').html(result[0].disp);
-				  			$('.result-count').html('<i class="result-count" style="font-size:24px;">Found (' + result[0].result_count + ') Data Match(es)</i>');
-				  			$('.loading-consignee').html('<a class="loading-consignee" style="font-size:24px;"> </a>');
-			  			}
-					});
-			}
+			search();
 		});
 
 		$(document).on('click','.btn_docs',function(){
@@ -518,7 +481,7 @@
 		});
 
 		function changePlaceHolder(monType){
-			if(mon_Type == 3){
+			if(monType == 3){
 					$('#HBL').html('<th id="HBL"><center> House Airway Bill# </center></th>');
 				}else{
 					$('#HBL').html('<th id="HBL"><center> HBL# </center></th>');

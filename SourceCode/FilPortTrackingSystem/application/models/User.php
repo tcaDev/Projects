@@ -18,14 +18,21 @@ Class User extends CI_Model
  }
 
 
- function getAccessType($uID,$roleID , $consigneeID){
-    if($consigneeID == 0){
-      $query = $this->db->query("SELECT c.UserName, a.RoleName AS My_RoleName FROM Role AS a , User as c WHERE c.RoleId = a.RoleId AND c.UserId = '$uID'");
-      $q = "SELECT c.UserName, a.RoleName FROM Role AS a , User as c WHERE c.RoleId = a.RoleId AND c.UserId = '$uID'";
-    }else{
-      $query = $this->db->query("SELECT c.UserName, a.RoleName , b.ConsigneeName AS My_RoleName FROM Role AS a , Consignee AS b , User as c WHERE c.RoleId = a.RoleId AND c.ConsigneeId = b.ConsigneeId AND c.UserId = '$uID'");
-      $q = "SELECT c.UserName, a.RoleName , b.ConsigneeName AS My_RoleName FROM Role AS a , Consignee AS b , User as c WHERE c.RoleId = a.RoleId AND c.ConsigneeId = b.ConsigneeId AND c.UserId = '$uID'";
-    }
+ function getAccessType($uID,$roleID){
+ /* if($roleID != 2){
+     $query = $this->db->query("SELECT  
+                                C2.ConsigneeName AS 'ConsigneeName_2',C2.ConsigneeId AS 'ConsigneeID_2',
+                                C3.ConsigneeName AS 'ConsigneeName_3',C3.ConsigneeId AS 'ConsigneeID_3',
+                                U.ConsigneeId, U.ConsigneeId2, U.ConsigneeId3,C.ConsigneeName as 'ConsigneeName_1' ,C.ConsigneeId as 'ConsigneeID_1'
+                                FROM User U
+                                LEFT JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
+                                LEFT JOIN Consignee C2 ON C2.ConsigneeId = U.ConsigneeId2
+                                LEFT JOIN Consignee C3 ON C3.ConsigneeId = U.ConsigneeId3
+                                WHERE U.UserId =  '$uID'");
+  }else{*/
+    $query = $this->db->query("SELECT a.RoleDescription AS MyRole FROM Role AS a , User AS b WHERE a.RoleId = b.RoleId AND b.UserId = '$uID'");
+  //}
+     
     return $query->result();
  }
 

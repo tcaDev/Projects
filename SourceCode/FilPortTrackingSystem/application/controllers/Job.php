@@ -183,6 +183,7 @@ function get_jobfile_global_search(){
   $monitoringType =  $this->input->post('monType');
   $dispOutput = "";
   $dispCount = 0;
+  $err;
  
  $jobfiles = $this->Jobdata->getJobFiles_Consignee($search,$monitoringType);
  if(count($jobfiles) > 0){
@@ -253,6 +254,8 @@ function get_jobfile_global_search(){
                       <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
                       <script src="' .  base_url("resources/table_sort/tableReportSort.js") . '"></script>
                       ';
+
+//$dispOutput = $jobfiles;
  $output = array(
       array(
           "disp" => $dispOutput,

@@ -76,8 +76,12 @@
 									  <a class="btn btn-primary" href="<?= base_url('Login_user/account') ?>" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); text-align:right;">
 									  	<i class="fa fa-user fa-fw"></i><?php echo " ".$fname." ".$lname."";?><br>
 									  	<span class="pull-right" style = "font-family:Century Gothic;font-size:14px;">		
-									  <b>	  	<?php foreach($roleName as $row){
-									  			echo $row->My_RoleName;
+									  <b>	  
+									  	      <?php foreach($roleName as $row){
+									  			/*echo $row->ConsigneeName_1 . '<br>';
+									  			echo $row->ConsigneeName_2 . '<br>';
+									  			echo $row->ConsigneeName_3 . '<br>';*/
+									  			echo $row->MyRole . '<br>';
 									  		  }?>
 									  </b>
 								</span>

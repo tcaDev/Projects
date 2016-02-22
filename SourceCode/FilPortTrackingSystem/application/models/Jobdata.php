@@ -192,24 +192,65 @@ function get_countryID_manila($jobfile){
 
     if($monitoringType == 1 || $monitoringType == 2){
          $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'");
-         //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
      }else if($monitoringType == 4){
          $query = $this->db->query("SELECT JobFileId, JobFileNo, ConsigneeName, ShipperName, IsBackGround, ColorCode, StatusName from vw_JobFile WHERE ConsigneeName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%'
                                     UNION ALL
                                     select JobFile_AirId AS 'JobFileId', JobFileNo, ConsigneeName, ShipperName, IsBackGround, ColorCode, StatusName from vw_JobFileAir WHERE ConsigneeName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%'");
-         //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'";
      }else if($monitoringType == 5){
        $query = $this->db->query("select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
-      // $q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'";
      }
      else{
          $query = $this->db->query("select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%'");
-         // $q = "select * FROM vw_JobFileAir where ConsigneeName LIKE '%$consigneeName%'";
     }
-    //return $q . " MT : " . $monitoringType;
     //return "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%' OR ShipperName LIKE '%$consigneeName%' OR JobFileNo LIKE '%$consigneeName%' AND MonitoringTypeId = '$monitoringType'";
     return $query->result();
  }
+
+ function getJobfiles_Reports_Consignee($uID,$monitoringType){
+  $userID = $uID;
+ // echo $uID . '  //// ' . $monitoringType . ' <br>';
+   if($monitoringType == 1 || $monitoringType == 2){
+         $query = $this->db->query("SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");
+     
+    }else if($monitoringType == 4){
+         $query = $this->db->query("SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION ALL
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'
+                                    UNION
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'
+                                    UNION
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");
+         //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'";
+    } else{
+       $query = $this->db->query("SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    UNION
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");
+    }
+ return $query->result();
+ }
+
 
  function getCarriers_Consignee($consigneeName,$monitoringType,$jbNo){
      if($monitoringType != 3){
@@ -321,7 +362,15 @@ function get_jobfile_air_audit($jobfile){
 }
 
  function get_consignee_name($uid){
-   $query=$this->db->query("SELECT a.ConsigneeName FROM Consignee as a , User as b WHERE UserId = '$uid' AND a.ConsigneeId = b.ConsigneeId");
+   $query=$this->db->query("    SELECT  
+                                C2.ConsigneeName AS 'ConsigneeName_2',C2.ConsigneeId AS 'ConsigneeID_2',
+                                C3.ConsigneeName AS 'ConsigneeName_3',C3.ConsigneeId AS 'ConsigneeName_3',
+                                U.ConsigneeId, U.ConsigneeId2, U.ConsigneeId3,C.ConsigneeName as 'ConsigneeName_1' ,C.ConsigneeId as 'ConsigneeID_1'
+                                FROM User U
+                                LEFT JOIN Consignee C ON C.ConsigneeId = U.ConsigneeId
+                                LEFT JOIN Consignee C2 ON C2.ConsigneeId = U.ConsigneeId2
+                                LEFT JOIN Consignee C3 ON C3.ConsigneeId = U.ConsigneeId3
+                                WHERE U.UserId =  '$uid'");
    return $query->row();
  }
 
