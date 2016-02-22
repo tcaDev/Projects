@@ -27,6 +27,7 @@ function index(){
   }
 
 
+
 function send_mail(){
 
   $jbNo    = $this->input->post('jbNo');
@@ -35,15 +36,7 @@ function send_mail(){
   $toSend = $this->createDoc($jbNo,$montype);
   $dateSend =  date('Y-m-d H:i:s a');
 
-  $ccJobFileManila = ['daniel.tenefrancia@gmail.com','reinen@topconnection.asia'];
-  $ccJobFileOutport = ['',''];
-  $ccJobFileAir = ['',''];
 
-  /*if($montype == 1){
-    for($x = 0 ; $x <= count($ccJobFileManila) ; $x++ ){
-
-    }
-  }*/
   
   $datePath = './resources/pdf/' .date('Y-m-d');
      
@@ -83,19 +76,19 @@ function send_mail(){
 
                   //email
                   /*ONLINE*/
-                /*  $config['protocol'] = 'sendmail'; 
+                  $config['protocol'] = 'sendmail'; 
                   $config['smtp_host']    = 'smtpout.secureserver.net';
                   $config['smtp_port']    = '80';
                   $config['smtp_timeout'] = '20';
-                  $config['smtp_user']    = 'eli@topconnection.asia';
-                  $config['smtp_pass']    = 'asiagroup7';
+  /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
+                  $config['smtp_pass']    = 'asiagroup7';*/
                   $config['charset']    = 'utf-8';
                   $config['newline']    = "\r\n";
                   $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not     */
+                  $config['validation'] = TRUE; // bool whether to validate email or not     
 
                   /*LOCALHOST*/
-                  $config['protocol']    = 'smtp';
+/*                  $config['protocol']    = 'smtp';
                   $config['smtp_host']    = 'ssl://smtp.gmail.com';
                   $config['smtp_port']    = '465';
                   $config['smtp_timeout'] = '7';
@@ -104,14 +97,26 @@ function send_mail(){
                   $config['charset']    = 'utf-8';
                   $config['newline']    = "\r\n";
                   $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not       
+                  $config['validation'] = TRUE; // bool whether to validate email or not   */    
 
                   $this->email->initialize($config);
 
-                  $this->email->from('eli@topconnection.asia', 'eli');
+                  $this->email->from('filportsupport@topconnection.com','Filport');
                   $this->email->to($emailadd); 
-                //$this->email->cc('daniel.tenefrancia@gmail.com','reinen@topconnection.asia','eliseo.montefalcon@gmail.com'); 
-                  $this->email->cc($ccJobFileManila); 
+
+                  $alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
+                  if($montype==1){
+                    //manila
+                      array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
+                  }elseif ($montype==2) {
+                    //outport
+                      array_push($alwaysCc,'jcgalang@filport.com');
+                  }else{
+                    //air
+                      array_push($alwaysCc,'jfcanindo@filport.com');
+                  }
+
+                  $this->email->cc($alwaysCc); 
                   $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
                   $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); 
                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
