@@ -105,10 +105,10 @@ function send_mail(){
                   $this->email->to($emailadd); 
 
                   $alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
-                  if($montype==1){
+                  if($montype=='1'){
                     //manila
                       array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
-                  }elseif ($montype==2) {
+                  }elseif ($montype=='2') {
                     //outport
                       array_push($alwaysCc,'jcgalang@filport.com');
                   }else{
