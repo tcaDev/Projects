@@ -296,8 +296,9 @@
 	     <!--For  pagination end -->
 
 			<div class="con-shiptxt col-lg-12">
+
 				<div class="col-lg-10">
-					<ul class="nav nav-pills pull-left">
+					<ul class="nav nav-pills pull-left nav-settings">
 				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
 				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
 				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
@@ -310,19 +311,21 @@
 		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 				  </ul>
 				</div>
-				  <div class="col-lg-2">
-				  	<div class="input-group pull-right">
+				  
+		    </div>
+
+            <div class="con-ship tab-content"> 
+            	<div class="col-lg-4">
+            	<br>
+				  	<div class="input-group pull-left">
 			            <input type="text" class="form-control consignee_tab"    id="search" placeholder="Search" />
 			            <span class="input-group-btn">
-			                <button class="btn" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
+			                <button class="btn btn-success" type="button"  onclick="search()" class="submit_consignee" id="submit_search">
 			                    <span class=" glyphicon glyphicon-search"></span>
 			                </button>
 			            </span>
 			        </div>
 			      </div>  
-		    </div>
-
-            <div class="con-ship tab-content"> 
                <!--FOr consignee data view  start--> 
                   <div class="consignee tab-pane fade in active"> 
                   <div class="pagination_consignee pull-right"></div>
