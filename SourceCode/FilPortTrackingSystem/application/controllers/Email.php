@@ -977,10 +977,23 @@ $now = $date_now[0];
                     $this->email->from('eli@topconnection.asia', 'eliseo pogi');
                     $this->email->to('eliseo.montefalcon@gmail.com'); 
                     //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
-                    $this->email->cc('eliseo.montefalcon@gmail.com');
-                    $this->email->subject('Filport Testing');
-                    $this->email->message('Email Testing.'); 
-                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                      $alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
+                      if($montype=='1'){
+                        //manila
+                          array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
+                      }elseif ($montype=='2') {
+                        //outport
+                          array_push($alwaysCc,'jcgalang@filport.com');
+                      }else{
+                        //air
+                          array_push($alwaysCc,'jfcanindo@filport.com');
+                      }
+                    $this->email->cc($alwaysCc); 
+/*                    $this->email->subject('Filport Testing');
+                    $this->email->message('Email Testing.'); */
+                    $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
+                    $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $date); 
+                    $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
                     $this->email->send();
                     echo $this->email->print_debugger();
                }
