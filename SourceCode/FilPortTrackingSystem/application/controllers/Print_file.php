@@ -101,24 +101,47 @@ function send_mail(){
 
                   $this->email->initialize($config);
 
-                  $this->email->from('filportsupport@topconnection.com','Filport');
-                  $this->email->to($emailadd); 
-
-                  $alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
+                  $always = $this->Jobdata->get_allways_email();
+                  $ccme = array();
+                       foreach($always as $row){
+                        $ccme[] =  $row->EmailAddress;
+                       }
+                  
+                  //$alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
                   if($montype=='1'){
                     //manila
-                      array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
+                       $get_manila= $this->Jobdata->get_email_manila();
+                        foreach($get_manila as $row){
+                          $man_email =  $row->EmailAddress;
+                           array_push($ccme,$man_email);
+                        }
+                    //  array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
                   }elseif ($montype=='2') {
                     //outport
-                      array_push($alwaysCc,'jcgalang@filport.com');
+                       $get_outport = $this->Jobdata->get_email_outport();
+                       foreach($get_outport as $row){
+                         $out_email = $row->EmailAddress;
+                         array_push($ccme,$out_email);
+                       }
+                     // array_push($alwaysCc,'jcgalang@filport.com');
                   }else{
                     //air
-                      array_push($alwaysCc,'jfcanindo@filport.com');
+                       $get_air = $this->Jobdata->get_email_air();
+                        foreach($get_air as $row){
+                         $air_email =  $row->EmailAddress;
+                         array_push($ccme,$air_email);
+                        }
+                      //array_push($alwaysCc,'jfcanindo@filport.com');
                   }
-
-                  $this->email->cc($alwaysCc); 
-                  $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
-                  $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); 
+                  $this->email->from('eli@topconnection.asia','Topconnection Asia');
+                  //$this->email->to($emailadd);
+                  $this->email->to('eliseo.montefalcon@gmail.com','eli@topconnection.asia');
+                  $this->email->cc($ccme); 
+                  $this->email->reply_to('eli@topconnection.asia','Topconnection Asia');
+                 $this->email->subject('Filport Email Testing');
+               /*   $this->email->subject('Filport Document  Jobfile No : ' . $jbNo);*/
+                  $this->email->message('Please reply if you recieved this email for confirmation,Thanks!');
+                /*  $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); */
                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
                   $this->email->send();
             }
