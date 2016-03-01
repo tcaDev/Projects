@@ -834,7 +834,7 @@ $output_print .=  '
       return $output_print;
   }
 
-     function eli(){
+     function eli_me(){
                $this->load->library('email');
                   $config['protocol'] = 'sendmail'; 
                   $config['smtp_host']    = 'smtpout.secureserver.net';
