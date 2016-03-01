@@ -834,6 +834,45 @@ $output_print .=  '
       return $output_print;
   }
 
+     function eli(){
+               $this->load->library('email');
+
+            $config['protocol']    = 'smtp';
+
+            $config['smtp_host']    = ' smtpout.secureserver.net';
+
+            $config['smtp_port']    = '80';
+
+            $config['smtp_timeout'] = '7';
+
+            $config['smtp_user']    = 'eli@topconnection.asia';
+
+            $config['smtp_pass']    = 'asiagroup7';
+
+            $config['charset']    = 'utf-8';
+
+            $config['newline']    = "\r\n";
+
+            $config['mailtype'] = 'text'; // or html
+
+            $config['validation'] = TRUE; // bool whether to validate email or not      
+
+            $this->email->initialize($config);
+
+
+            $this->email->from('eli@topconnection.asia', 'eli');
+            $this->email->to('eliseo.montefalcon@gmail.com'); 
+
+
+            $this->email->subject('Email Test');
+
+            $this->email->message('hoy eli !! haha.');  
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+   }
+
 }
 
 ?>
