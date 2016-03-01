@@ -836,26 +836,16 @@ $output_print .=  '
 
      function eli(){
                $this->load->library('email');
-
-            $config['protocol']    = 'smtp';
-
-            $config['smtp_host']    = ' smtpout.secureserver.net';
-
-            $config['smtp_port']    = '25';
-
-            $config['smtp_timeout'] = '0';
-
-/*            $config['smtp_user']    = 'eli@topconnection.asia';
-
-            $config['smtp_pass']    = 'asiagroup7';*/
-
-            $config['charset']    = 'utf-8';
-
-            $config['newline']    = "\r\n";
-
-            $config['mailtype'] = 'text'; // or html
-
-            $config['validation'] = TRUE; // bool whether to validate email or not      
+                  $config['protocol'] = 'sendmail'; 
+                  $config['smtp_host']    = 'smtpout.secureserver.net';
+                  $config['smtp_port']    = '465';
+                  $config['smtp_timeout'] = '20';
+  /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
+                  $config['smtp_pass']    = 'asiagroup7';*/
+                  $config['charset']    = 'utf-8';
+                  $config['newline']    = "\r\n";
+                  $config['mailtype'] = 'text'; // or html
+                  $config['validation'] = TRUE; // bool whether to validate email or not        
 
             $this->email->initialize($config);
 
