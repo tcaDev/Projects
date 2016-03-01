@@ -839,9 +839,9 @@ $output_print .=  '
 
             $config['protocol']    = 'smtp';
 
-/*            $config['smtp_host']    = ' smtpout.secureserver.net';*/
+            $config['smtp_host']    = ' smtpout.secureserver.net';
 
-/*            $config['smtp_port']    = '80';*/
+            $config['smtp_port']    = '25';
 
             $config['smtp_timeout'] = '0';
 
