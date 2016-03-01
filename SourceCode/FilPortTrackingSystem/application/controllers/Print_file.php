@@ -30,7 +30,62 @@ function index(){
 
 function send_mail(){
 
-echo "Testttttttttt";
+  $jbNo    = $this->input->post('jbNo');
+  $montype = $this->input->post('montype');
+
+  $toSend = $this->createDoc($jbNo,$montype);
+  $dateSend =  date('Y-m-d H:i:s a');
+
+
+  
+  $datePath = './resources/pdf/' .date('Y-m-d');
+     
+      $filePath = './resources/pdf/' .date('Y-m-d') . '/';
+      $date = date('Y-m-d');
+      $path =  './resources/pdf/';
+
+         //generate the PDF from the given html
+        $this->m_pdf->pdf->WriteHTML($toSend);
+
+        //eli's code
+            if(!is_dir($path)){ //create the folder if it's not yet existing
+              mkdir($path, 0777, TRUE);
+               if(!is_dir($datePath)){
+                   mkdir($datePath, 0777, TRUE);
+               }
+            }else{ // if the folder already exist
+               if(!is_dir($datePath)){
+                   mkdir($datePath, 0777, TRUE);
+               }
+            }
+          
+
+            //email
+          if(is_dir($datePath)){
+            //you can send email again with the same date,jobfile
+            if(is_dir($datePath)){
+                  $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
+
+                    $consignee = $this->Jobdata->get_email_jobfile($jbNo,$montype);
+                    foreach($consignee as $row){
+                     echo "Email Successfully Sent to " . '</br>';
+                     echo "Consignee: ".$consign = $row->ConsigneeName . '</br>';
+                     echo "Email: "    .$emailadd = $row->EmailAddress;
+                    }
+                  $this->email->from('eli@topconnection.asia','Topconnection Asia');
+                  //$this->email->to($emailadd);
+                  $this->email->to('eliseo.montefalcon@gmail.com','eli@topconnection.asia');
+                 // $this->email->cc($ccme); 
+                 // $this->email->reply_to('eli@topconnection.asia','Topconnection Asia');
+                 $this->email->subject('Filport Email Testing');
+               /*   $this->email->subject('Filport Document  Jobfile No : ' . $jbNo);*/
+                  $this->email->message('Please reply if you recieved this email for confirmation,Thanks!');
+                /*  $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); */
+                  $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                  $this->email->send();
+            }
+          }
+
 } 
 
 
