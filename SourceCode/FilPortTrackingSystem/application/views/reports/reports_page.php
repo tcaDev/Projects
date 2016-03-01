@@ -27,6 +27,8 @@
 						    </div>
 						  </div>
 
+						  
+
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
@@ -97,6 +99,18 @@
 
 		<div class="dash-side" >
 
+
+		<!-- Accreditations -->
+			<div class="hidden accreditations tab-content">
+
+					<?php $this->load->view('reports/accreditations_manila'); ?>
+
+					<?php $this->load->view('reports/accreditations_outport'); ?>
+
+					<?php $this->load->view('reports/accreditations_air'); ?>
+			</div>
+
+
 		<!-- Audit trail -->
 
 			<div class="hidden audit-trail tab-content">
@@ -108,16 +122,9 @@
 					<?php $this->load->view('reports/audit_trail_air'); ?>
 			</div>
 
-			<div class="hidden accreditations tab-content">
-
-					<?php $this->load->view('reports/accreditations_manila'); ?>
-
-					<?php $this->load->view('reports/accreditations_outport'); ?>
-
-					<?php $this->load->view('reports/accreditations_air'); ?>
-			</div>
-					
+			
 		<!-- Site Settings Audit Trail -->
+
 
 			<div class="hidden site-settings tab-content">
 					<?php $this->load->view('reports/audit_trail_site_settings'); ?>
@@ -674,7 +681,7 @@
 
 
 		function changePlaceHolder(monType){
-			$('#tab_title').html();
+			//$('#tab_title').html();
 			if(monType == 3){
 				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
 			}else if(monType == 2){

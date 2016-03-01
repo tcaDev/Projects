@@ -10,18 +10,35 @@
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
-						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
+						        <a data-toggle="collapse" data-parent="#accordion" id="JobFile" href="#collapse1" style="text-decoration:none;font-weight:600;">
 						        <span class="hvr-icon-forward"> Jobfile Transaction </span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
-						         <ul class="nav nav-pills nav-data nav-freights">
+						         <ul class="nav nav-pills nav-data nav-freights nav-charges">
 									  <li id="search_manila" value="1" class="active" style="display:block;width:100%;"><a href="#tab_a" data-toggle="pill">Sea Freight Manila</a></li>
-									  <li  value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="2" style="display:block;width:100%;"><a href="#tab_b" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" style="display:block;width:100%;"><a href="#tab_c" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
+
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" id="RunningCharges" data-parent="#accordion" href="#collapse5" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Running Charges</span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse5" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-runningcharges">
+									  <li value="running-charges" class="runningcharges-jobfile-manila active" id="runningcharges-jobfile-manila"  style="display:block;width:100%;"><a href="#tab_runningcharges_manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="running-charges" class="runningcharges-jobfile-outport" 	   id="runningcharges-jobfile-outport" style="display:block;width:100%;"><a href="#tab_runningcharges_outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="running-charges" class="runningcharges-jobfile-air"           id="runningcharges-jobfile-air"     style="display:block;width:100%;"><a href="#tab_runningcharges_air" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
 						</div>
 			<!-- End Accordion -->
 		</div>
@@ -29,7 +46,14 @@
 </div>
 
 		<div class="dash-side" >
-			<div class="tab-content">
+
+			<div class="hidden runningcharges tab-content">
+					<?php $this->load->view('reports/running_charges_jobfile_manila'); ?>
+					<?php $this->load->view('reports/running_charges_jobfile_outport'); ?>
+					<?php $this->load->view('reports/running_charges_jobfile_air'); ?>
+			</div>
+
+			<div class="tab-content reports-consignee">
 			        <div class="repcon-table tab-pane active" id="tab_a">		        
 			        	<div class="col-md-12 ">
 				        	<div class="row">
@@ -66,8 +90,8 @@
 	         		 	</div>
 						</div>	
 					</div>
-					<hidden class="conName" id="<?php echo stripslashes($jobfiles); ?>"></hidden>
 			</div>
+			<hidden class="conName" id="<?php echo stripslashes($jobfiles); ?>"></hidden>
 		</div>
 
 	<!-- Manila and Outport Details -->
@@ -474,6 +498,25 @@
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
 			search();
+		});
+
+		$(document).on('click','#JobFile',function(){
+			$('.nav-charges').click();
+		});
+
+		$(document).on('click','#RunningCharges',function(){
+			var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
+			if(active_accreditation == 'runningcharges-jobfile-manila'){
+				$('#txt-table-runningcharges-manila').val('');
+				$('#btn-runningcharges-manila').click();
+			}else if(active_accreditation == 'runningcharges-jobfile-outport'){
+				$('#txt-table-runningcharges-outport').val('');
+				$('#btn-runningcharges-outport').click();
+			}else if(active_accreditation == 'runningcharges-jobfile-air'){
+				$('#txt-table-runningcharges-air').val('');
+				$('#btn-runningcharges-air').click();
+			}
+			$('#collapse5').click();
 		});
 
 		$(document).on('click','.btn_docs',function(){

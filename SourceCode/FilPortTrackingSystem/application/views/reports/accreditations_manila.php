@@ -118,25 +118,49 @@
 
 var montype_manila = 1;
 
-$(document).on('click','#collapse3',function(){
-	$('.accreditations').removeClass('hidden');
-	$('.search-consignee').addClass('hidden');
-	$('.audit-trail').addClass('hidden');
-});
-
-
-$(document).on('click','#collapse2',function(){
-	$('.audit-trail').removeClass('hidden');
-	$('.search-consignee').addClass('hidden');
-	$('.accreditations').addClass('hidden');
-});
 
 
 $(document).on('click','#collapse1',function(){
 	$('.search-consignee').removeClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+});
+
+$(document).on('click','#collapse2',function(){
+	$('.audit-trail').removeClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+});
+
+
+$(document).on('click','#collapse3',function(){
+	$('.accreditations').removeClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+});
+
+$(document).on('click','#collapse4',function(){
+	$('.site-settings').removeClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+});
+
+$(document).on('click','#collapse5',function(){
+	$('.runningcharges').removeClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
 	$('.accreditations').addClass('hidden');
 	$('.audit-trail').addClass('hidden');
 });
+
 
 		
 /*Get List Of Manila History*/
