@@ -837,16 +837,14 @@ $output_print .=  '
      function eli(){
                $this->load->library('email');
 
-     /*       $config['protocol']    = 'smtp';
+            $config['protocol']    = 'smtp';
 
-            $config['smtp_host']    = ' smtpout.secureserver.net';
+/*            $config['smtp_host']    = ' smtpout.secureserver.net';*/
 
-            $config['smtp_port']    = '80';*/
+/*            $config['smtp_port']    = '80';*/
 
-            $config['protocol'] = 'sendmail'; 
-            $config['smtp_port']    = '80';
-            $config['smtp_timeout'] = '20';
             $config['smtp_timeout'] = '0';
+
 /*            $config['smtp_user']    = 'eli@topconnection.asia';
 
             $config['smtp_pass']    = 'asiagroup7';*/
