@@ -30,123 +30,7 @@ function index(){
 
 function send_mail(){
 
-  $jbNo    = $this->input->post('jbNo');
-  $montype = $this->input->post('montype');
-
-  $toSend = $this->createDoc($jbNo,$montype);
-  $dateSend =  date('Y-m-d H:i:s a');
-
-
-  
-  $datePath = './resources/pdf/' .date('Y-m-d');
-     
-      $filePath = './resources/pdf/' .date('Y-m-d') . '/';
-      $date = date('Y-m-d');
-      $path =  './resources/pdf/';
-
-         //generate the PDF from the given html
-        $this->m_pdf->pdf->WriteHTML($toSend);
-
-        //eli's code
-            if(!is_dir($path)){ //create the folder if it's not yet existing
-              mkdir($path, 0777, TRUE);
-               if(!is_dir($datePath)){
-                   mkdir($datePath, 0777, TRUE);
-               }
-            }else{ // if the folder already exist
-               if(!is_dir($datePath)){
-                   mkdir($datePath, 0777, TRUE);
-               }
-            }
-          
-
-            //email
-          if(is_dir($datePath)){
-            //you can send email again with the same date,jobfile
-            if(is_dir($datePath)){
-                  $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
-
-                    $consignee = $this->Jobdata->get_email_jobfile($jbNo,$montype);
-                    foreach($consignee as $row){
-                     echo "Email Successfully Sent to " . '</br>';
-                     echo "Consignee: ".$consign = $row->ConsigneeName . '</br>';
-                     echo "Email: "    .$emailadd = $row->EmailAddress;
-                    }
-
-
-                  //email
-                  /*ONLINE*/
-                  $config['protocol'] = 'sendmail'; 
-                  $config['smtp_host']    = 'smtpout.secureserver.net';
-                  $config['smtp_port']    = '80';
-                  $config['smtp_timeout'] = '20';
-  /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
-                  $config['smtp_pass']    = 'asiagroup7';*/
-                  $config['charset']    = 'utf-8';
-                  $config['newline']    = "\r\n";
-                  $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not     
-
-                  /*LOCALHOST*/
-/*                  $config['protocol']    = 'smtp';
-                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                  $config['smtp_port']    = '465';
-                  $config['smtp_timeout'] = '7';
-                  $config['smtp_user']    = 'eli@topconnection.asia';
-                  $config['smtp_pass']    = 'asiagroup7';
-                  $config['charset']    = 'utf-8';
-                  $config['newline']    = "\r\n";
-                  $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not   */    
-
-                  $this->email->initialize($config);
-
-                  $always = $this->Jobdata->get_allways_email();
-                  $ccme = array();
-                       foreach($always as $row){
-                        $ccme[] =  $row->EmailAddress;
-                       }
-                  
-                  //$alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
-                  if($montype=='1'){
-                    //manila
-                       $get_manila= $this->Jobdata->get_email_manila();
-                        foreach($get_manila as $row){
-                          $man_email =  $row->EmailAddress;
-                           array_push($ccme,$man_email);
-                        }
-                    //  array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
-                  }elseif ($montype=='2') {
-                    //outport
-                       $get_outport = $this->Jobdata->get_email_outport();
-                       foreach($get_outport as $row){
-                         $out_email = $row->EmailAddress;
-                         array_push($ccme,$out_email);
-                       }
-                     // array_push($alwaysCc,'jcgalang@filport.com');
-                  }else{
-                    //air
-                       $get_air = $this->Jobdata->get_email_air();
-                        foreach($get_air as $row){
-                         $air_email =  $row->EmailAddress;
-                         array_push($ccme,$air_email);
-                        }
-                      //array_push($alwaysCc,'jfcanindo@filport.com');
-                  }
-                  $this->email->from('eli@topconnection.asia','Topconnection Asia');
-                  //$this->email->to($emailadd);
-                  $this->email->to('eliseo.montefalcon@gmail.com','eli@topconnection.asia');
-                  $this->email->cc($ccme); 
-                  $this->email->reply_to('eli@topconnection.asia','Topconnection Asia');
-                 $this->email->subject('Filport Email Testing');
-               /*   $this->email->subject('Filport Document  Jobfile No : ' . $jbNo);*/
-                  $this->email->message('Please reply if you recieved this email for confirmation,Thanks!');
-                /*  $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); */
-                  $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
-                  $this->email->send();
-            }
-          }
-
+echo "Testttttttttt";
 } 
 
 
@@ -836,12 +720,12 @@ $output_print .=  '
 
      function eli_me(){
                $this->load->library('email');
-                  $config['protocol'] = 'sendmail'; 
+                  $config['protocol'] = 'smtp'; 
                   $config['smtp_host']    = 'smtpout.secureserver.net';
                   $config['smtp_port']    = '465';
                   $config['smtp_timeout'] = '20';
-  /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
-                  $config['smtp_pass']    = 'asiagroup7';*/
+                  $config['smtp_user']    = 'eli@topconnection.asia';
+                  $config['smtp_pass']    = 'asiagroup7';
                   $config['charset']    = 'utf-8';
                   $config['newline']    = "\r\n";
                   $config['mailtype'] = 'text'; // or html
