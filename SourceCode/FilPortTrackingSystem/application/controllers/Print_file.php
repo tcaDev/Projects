@@ -851,10 +851,10 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 'relay-hosting.secureserver.net',
-                'port'       => 465,
-                'username'   => 'eli@topconnection.asia',
-                'password'   => 'asiagroup7',
+                'host'       => 'smtp.sendgrid.net',
+                'port'       => 587,
+                'username'   => 'eliseo1234',
+                'password'   => 'jgi82kfetf1cace',
                 'encryption' => 'ssl'
                 );
         //Create the message
