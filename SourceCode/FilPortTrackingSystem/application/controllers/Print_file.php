@@ -1,6 +1,7 @@
 <?php
 
  date_default_timezone_set('Asia/Manila');
+ require_once APPPATH.'libraries/swift_mailer/swift_required.php';
 class Print_file extends CI_Controller {
 
      public function __construct()
@@ -72,17 +73,78 @@ function send_mail(){
                      echo "Consignee: ".$consign = $row->ConsigneeName . '</br>';
                      echo "Email: "    .$emailadd = $row->EmailAddress;
                     }
-                  $this->email->from('eli@topconnection.asia','Topconnection Asia');
-                  //$this->email->to($emailadd);
-                  $this->email->to('eliseo.montefalcon@gmail.com','eli@topconnection.asia');
-                 // $this->email->cc($ccme); 
-                 // $this->email->reply_to('eli@topconnection.asia','Topconnection Asia');
+
+
+                  //email
+                  /*ONLINE*/
+                  $config['protocol'] = 'sendmail'; 
+                  $config['smtp_host']    = 'aspmx.l.google.com';
+                  $config['smtp_port']    = '80';
+                  $config['smtp_timeout'] = '20';
+  /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
+                  $config['smtp_pass']    = 'asiagroup7';*/
+                  $config['charset']    = 'utf-8';
+                  $config['newline']    = "\r\n";
+                  $config['mailtype'] = 'text'; // or html
+                  $config['validation'] = TRUE; // bool whether to validate email or not     
+
+                  /*LOCALHOST*/
+/*                  $config['protocol']    = 'smtp';
+                  $config['smtp_host']    = 'ssl://smtp.gmail.com';
+                  $config['smtp_port']    = '465';
+                  $config['smtp_timeout'] = '7';
+                  $config['smtp_user']    = 'eli@topconnection.asia';
+                  $config['smtp_pass']    = 'asiagroup7';
+                  $config['charset']    = 'utf-8';
+                  $config['newline']    = "\r\n";
+                  $config['mailtype'] = 'text'; // or html
+                  $config['validation'] = TRUE; // bool whether to validate email or not   */    
+
+                  $this->email->initialize($config);
+
+                  $always = $this->Jobdata->get_allways_email();
+                  $ccme = array();
+                       foreach($always as $row){
+                        $ccme[] =  $row->EmailAddress;
+                       }
+                  
+                  //$alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
+                  if($montype=='1'){
+                    //manila
+                       $get_manila= $this->Jobdata->get_email_manila();
+                        foreach($get_manila as $row){
+                          $man_email =  $row->EmailAddress;
+                           array_push($ccme,$man_email);
+                        }
+                    //  array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
+                  }elseif ($montype=='2') {
+                    //outport
+                       $get_outport = $this->Jobdata->get_email_outport();
+                       foreach($get_outport as $row){
+                         $out_email = $row->EmailAddress;
+                         array_push($ccme,$out_email);
+                       }
+                     // array_push($alwaysCc,'jcgalang@filport.com');
+                  }else{
+                    //air
+                       $get_air = $this->Jobdata->get_email_air();
+                        foreach($get_air as $row){
+                         $air_email =  $row->EmailAddress;
+                         array_push($ccme,$air_email);
+                        }
+                      //array_push($alwaysCc,'jfcanindo@filport.com');
+                  }
+                  $this->email->from('noreply@topconnection.com','Topconnection Asia');
+                  $this->email->to('eliseo.montefalcon@gmail.com');
+                  $this->email->cc('eliseo.montefalcon@gmail.com'); 
+                  //$this->email->reply_to('eli@topconnection.asia','Topconnection Asia');
                  $this->email->subject('Filport Email Testing');
                /*   $this->email->subject('Filport Document  Jobfile No : ' . $jbNo);*/
                   $this->email->message('Please reply if you recieved this email for confirmation,Thanks!');
                 /*  $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $dateSend); */
                   $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
                   $this->email->send();
+                  echo $this->email->print_debugger();
             }
           }
 
@@ -773,34 +835,48 @@ $output_print .=  '
       return $output_print;
   }
 
-     function eli_me(){
-               $this->load->library('email');
-                  $config['protocol'] = 'smtp'; 
-                  $config['smtp_host']    = 'smtpout.secureserver.net';
-                  $config['smtp_port']    = '465';
-                  $config['smtp_timeout'] = '20';
-                  $config['smtp_user']    = 'eli@topconnection.asia';
-                  $config['smtp_pass']    = 'asiagroup7';
-                  $config['charset']    = 'utf-8';
-                  $config['newline']    = "\r\n";
-                  $config['mailtype'] = 'text'; // or html
-                  $config['validation'] = TRUE; // bool whether to validate email or not        
 
-            $this->email->initialize($config);
+    function eli() {
+        //Create the Transport
+        $transport = Swift_MailTransport::newInstance();
 
+        /*
+        You could alternatively use a different transport such as Sendmail or Mail:
 
-            $this->email->from('eli@topconnection.asia', 'eli');
-            $this->email->to('eliseo.montefalcon@gmail.com'); 
+        //Sendmail
+        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
 
+        //Mail
+        $transport = Swift_MailTransport::newInstance();
+        */
 
-            $this->email->subject('Email Test');
+  /*              $transport = Swift_SmtpTransport::newInstance('relay-hosting.secureserver.net', 465)
+               ->setUsername('eli@topconnection.asia')
+               ->setPassword('asiagroup7');
+  */
+        //Create the message
+        $message = Swift_Message::newInstance();
 
-            $this->email->message('hoy eli !! haha.');  
+        //Give the message a subject
+        $message->setSubject('Your subject')
+                ->setFrom('eli@topconnection.asia')
+                ->setTo('eliseo.montefalcon@gmail.com')
+                ->setBody('Here is the message itself')
+                ->addPart('<q>Here is the message itself</q>', 'text/html')
+        ;
 
-            $this->email->send();
+        //Create the Mailer using your created Transport
+        $mailer = Swift_Mailer::newInstance($transport);
 
-            echo $this->email->print_debugger();
-   }
+        //Send the message
+        $result = $mailer->send($message);
+
+        if ($result) {
+            echo "Email sent successfully";
+        } else {
+            echo "Email failed to send";
+        }
+    }
 
 }
 
