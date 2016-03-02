@@ -850,10 +850,10 @@ $output_print .=  '
         $transport = Swift_MailTransport::newInstance();
         */
 
-  /*              $transport = Swift_SmtpTransport::newInstance('relay-hosting.secureserver.net', 465)
+                $transport = Swift_SmtpTransport::newInstance('relay-hosting.secureserver.net', 465)
                ->setUsername('eli@topconnection.asia')
                ->setPassword('asiagroup7');
-  */
+  
         //Create the message
         $message = Swift_Message::newInstance();
 
