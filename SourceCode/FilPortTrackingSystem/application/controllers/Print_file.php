@@ -878,8 +878,18 @@ $output_print .=  '
             echo "Email sent successfully";
         } else {
             echo "Email failed to send";
-            print_r($result);
         }
+
+                // Or to use the Echo Logger
+            // Or to use the Echo Logger
+  $logger = new Swift_Plugins_Loggers_EchoLogger();
+  $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+
+// Dump the log contents
+// NOTE: The EchoLogger dumps in realtime so dump() does nothing for it
+echo $logger->dump();
+
+
     }
 
 }
