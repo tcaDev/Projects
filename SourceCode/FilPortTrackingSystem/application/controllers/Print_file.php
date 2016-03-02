@@ -878,6 +878,7 @@ $output_print .=  '
             echo "Email sent successfully";
         } else {
             echo "Email failed to send";
+            print_r($result);
         }
     }
 
