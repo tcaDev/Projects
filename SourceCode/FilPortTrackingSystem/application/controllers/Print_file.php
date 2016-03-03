@@ -836,61 +836,36 @@ $output_print .=  '
   }
 
 
-    function eli() {
-        //Create the Transport
-        $transport = Swift_MailTransport::newInstance();
 
-        /*
-        You could alternatively use a different transport such as Sendmail or Mail:
 
-        //Sendmail
-        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+    function phpmail(){
+        $this->load->library('My_PHPMailer');
+        $mail = new PHPMailer();
+        $mail->IsSMTP(); // we are going to use SMTP
+        $mail->SMTPAuth   = true; // enabled SMTP authentication
+        $mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
+        $mail->Host       = "smtp.gmail.com";      // setting GMail as our SMTP server
+        $mail->Port       = 465;                   // SMTP port to connect to GMail
+        $mail->Username   = "eli@topconnection.asia";  // user email address
+        $mail->Password   = "asiagroup7";            // password in GMail
+        $mail->SetFrom('eli@topconnection.asia', 'ELiseo Montefalcon');  //Who is sending the email
+        $mail->AddReplyTo("eliseo.montefalcon@gmail.com","Pogi na gwapo pa");  //email address that receives the response
+        $mail->Subject    = "Email subject";
+        $mail->Body      = "HTML message";
+        $mail->AltBody    = "Plain text message";
+        $destino = "eli_montefalcon@yahoo.com"; // Who is addressed the email to
+        $mail->AddAddress($destino, "elias");
 
-        //Mail
-        $transport = Swift_MailTransport::newInstance();
-        */
-
-               $app['swiftmailer.options'] = array(
-                'host'       => 'smtp.sendgrid.net',
-                'port'       => 587,
-                'username'   => 'eliseo1234',
-                'password'   => 'jgi82kfetf1cace',
-                'encryption' => 'ssl'
-                );
-        //Create the message
-        $message = Swift_Message::newInstance();
-
-        //Give the message a subject
-        $message->setSubject('Your subject')
-                ->setFrom('eli@topconnection.asia')
-                ->setTo('eliseo.montefalcon@gmail.com')
-                ->setBody('Here is the message itself')
-                ->addPart('<q>Here is the message itself</q>', 'text/html')
-        ;
-
-        //Create the Mailer using your created Transport
-        $mailer = Swift_Mailer::newInstance($transport);
-
-        //Send the message
-        $result = $mailer->send($message);
-
-        if ($result) {
-            echo "Email sent successfully";
+        //$mail->AddAttachment("images/phpmailer.gif");      // some attached files
+        //$mail->AddAttachment("images/phpmailer_mini.gif"); // as many as you want
+        if(!$mail->Send()) {
+            echo "Error: " . $mail->ErrorInfo;
         } else {
-            echo "Email failed to send";
+            echo "Message sent correctly!";
         }
-
-                // Or to use the Echo Logger
-            // Or to use the Echo Logger
-  $logger = new Swift_Plugins_Loggers_EchoLogger();
-  $mailer->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
-
-// Dump the log contents
-// NOTE: The EchoLogger dumps in realtime so dump() does nothing for it
-echo $logger->dump();
-
-
+        //$this->load->view('sent_mail',$data);
     }
+    
 
 }
 
