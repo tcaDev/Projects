@@ -891,7 +891,7 @@ $output_print .=  '
         $mail->IsSMTP(); // we are going to use SMTP
         $mail->SMTPAuth   = true; // enabled SMTP authentication
         $mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
-        $mail->Host       = "smtp.gmail.com";      // setting GMail as our SMTP server
+        $mail->Host       = "relay-hosting.secureserver.net";      // setting GMail as our SMTP server
         $mail->Port       = 465;                   // SMTP port to connect to GMail
         $mail->Username   = "eli@topconnection.asia";  // user email address
         $mail->Password   = "asiagroup7";            // password in GMail
