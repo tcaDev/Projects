@@ -851,7 +851,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 'relay-hosting.secureserver.net',
+                'host'       => 'localhost',
                 'port'       => 465,
                 'username'   => 'eli_montefalcon@yahoo.com',
                 'password'   => 'asiagroup7',
