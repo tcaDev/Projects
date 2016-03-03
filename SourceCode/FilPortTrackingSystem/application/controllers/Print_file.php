@@ -836,7 +836,7 @@ $output_print .=  '
   }
 
 
-    function eli() {
+  function eli() {
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
 
@@ -851,8 +851,8 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 's104-238-101-216.secureserver.net',
-                'port'       => 2525,
+                'host'       => 'localhost',
+                'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
                 'encryption' => 'ssl'
@@ -884,55 +884,7 @@ $output_print .=  '
 
 
     }
-
-        function elis() {
-        //Create the Transport
-        $transport = Swift_MailTransport::newInstance();
-
-        /*
-        You could alternatively use a different transport such as Sendmail or Mail:
-
-        //Sendmail
-        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
-
-        //Mail
-        $transport = Swift_MailTransport::newInstance();
-        */
-
-               $app['swiftmailer.options'] = array(
-                'host'       => 's104-238-101-216.secureserver.net',
-                'port'       => 2525,
-                'username'   => 'eli@topconnection.asia',
-                'password'   => 'asiagroup7',
-                'encryption' => 'tls'
-                );
-        //Create the message
-        $message = Swift_Message::newInstance();
-
-        //Give the message a subject
-        $message->setSubject('Your subject')
-                ->setFrom('eli@topconnection.asia')
-                ->setTo('eliseo.montefalcon@gmail.com')
-                ->setBody('Here is the message itself')
-                ->addPart('<q>Here is the message itself</q>', 'text/html')
-        ;
-
-        //Create the Mailer using your created Transport
-        $mailer = Swift_Mailer::newInstance($transport);
-
-        //Send the message
-        $result = $mailer->send($message);
-
-        if ($result) {
-            echo "Email sent successfully";
-        } else {
-            echo "Email failed to send";
-        }
-
-
-
-
-    }
+ 
 
     function phpmail(){
         $this->load->library('My_PHPMailer');
@@ -940,7 +892,7 @@ $output_print .=  '
         $mail->IsSMTP(); // we are going to use SMTP
         $mail->SMTPAuth   = true; // enabled SMTP authentication
         $mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
-        $mail->Host       = "s104-238-101-216.secureserver.net";      // setting GMail as our SMTP server
+        $mail->Host       = "localhost";      // setting GMail as our SMTP server
         $mail->Port       = 2525;                   // SMTP port to connect to GMail
         $mail->Username   = "eli@topconnection.asia";  // user email address
         $mail->Password   = "asiagroup7";            // password in GMail
