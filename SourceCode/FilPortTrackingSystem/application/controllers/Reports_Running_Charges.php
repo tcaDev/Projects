@@ -52,20 +52,26 @@ class Reports_Running_Charges extends CI_Controller {
 		          								}
 		          					$dispOutput .=	'</div>
 	          				</div>		
-	          				<br>
 	          				<hr>
-          						<div class="col-md-6">
-          							<span class="pull-left"><u style="font-size:18px;">Receipted Charges Only</u>
-          								<br>
-          								<br>
-          								' . $charge . '
-          							</span>
+	          					<div class="col-md-12">
+	          						<div class="col-md-6">
+	          							<span class="pull-left"><u style="font-size:16px;">Receipted Charges Only</u>
+	          								<br>
+	          								<br>
+	          								' . $charge . '
+	          							</span>
+	          						</div>
+	          						<div class="col-md-6">
+	          							<span class="pull-left"><u style="font-size:16px;">Containers</u>
+	          								<br>
+	          								' . $commodity . '
+	          							</span>
+	          						</div>
           						</div>
-          						<div class="col-md-6">
-          							<span class="pull-left"><u style="font-size:18px;">Containers</u>
-          								<br>
-          								' . $commodity . '
-          							</span>
+          						<div class="col-md-12">
+	          						<div style="font-size:14px;margin-top:5px;">
+	          							<u><i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</u></i>
+	          						</div>
           						</div>
           					</div>';
           }else{
@@ -79,6 +85,121 @@ class Reports_Running_Charges extends CI_Controller {
                       echo json_encode($output);
           
       }
+
+
+     function loadVolumeDetails(){
+     	  $ataFrom              =  $this->input->post('frm');  
+     	  $ataTo	            =  $this->input->post('to');  
+          $monitoringType       =  $this->input->post('montype');
+          $userID       		=  $this->input->post('userID');
+          $dispOutput = '';
+          $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$ataFrom,$ataTo);
+          $dispOutput .= '<div class="table-volume-manila">';
+          
+          if(count($reportsVolume) > 0){
+          	if($monitoringType == 1 || $monitoringType == 2){
+          		 	$dispOutput .='<table class ="table-condensed table-bordered" style="width:200%;">
+          					<thead>
+          					<tr>
+          						<th>Jobfile No</th>
+          						<th>Actual Arrival Time</th>
+          						<th>List of Containers Per Jobfile</th>
+          						<th>Commodity</th>
+          						<th>Lodgement Fee</th>
+          						<th>THC Charges</th>
+          						<th>Arrastre</th>
+          						<th>Wharfage</th>
+          						<th>Weighing</th>
+          						<th>Dispatch Fee</th>
+          						<th>DEL</th>
+          						<th>SRA Application</th>
+          						<th>SRA Inspection</th>
+          						<th>BAI Application</th>
+          						<th>BAI Inspection Fee</th>
+          						<th>BPI Inspection Fee</th>
+          					</tr>
+          					</thead>
+          					<tbody>';
+
+			          	foreach ($reportsVolume as $row) {
+			          		$dispOutput .= "<tr>";
+			          		$dispOutput .= "<td>" . $row->JobFileNo . "</td>";
+			          		$dispOutput .= "<td>" . $row->ActualArrivalTime . "</td>";
+			          		$dispOutput .= "<td>" . $row->ContainerNo . "</td>";
+			          		$dispOutput .= "<td>" . $row->ProductName . "</td>";
+			          		$dispOutput .= "<td>" . $row->LodgementFee . "</td>";
+			          		$dispOutput .= "<td>" . $row->THCCharges . "</td>";
+			          		$dispOutput .= "<td>" . $row->Arrastre . "</td>";
+			          		$dispOutput .= "<td>" . $row->Wharfage . "</td>";
+			          		$dispOutput .= "<td>" . $row->Weighing . "</td>";
+			          		$dispOutput .= "<td>" . $row->DispatchFee . "</td>";
+			          		$dispOutput .= "<td>" . $row->SRAApplication . "</td>";
+			          		$dispOutput .= "<td>" . $row->SRAInspection . "</td>";
+			          		$dispOutput .= "<td>" . $row->BAIApplication . "</td>";
+			          		$dispOutput .= "<td>" . $row->BAIInspection . "</td>";
+			          		$dispOutput .= "<td>" . $row->BPIInspection . "</td>";
+			          		$dispOutput .= "</tr>";
+			          	}
+          	}else{
+          		 	$dispOutput .='<table class ="table-condensed table-bordered" style="width:200%;">
+          					<thead>
+          					<tr>
+          						<th>Jobfile No</th>
+          						<th>Actual Arrival Time</th>
+          						<th>Aircraft</th>
+          						<th>Commodity</th>
+          						<th>Lodgement Fee</th>
+          						<th>Break Bulk Fee</th>
+          						<th>Storage Fee</th>
+          						<th>Bad Cargo Order Fee</th>
+          						<th>VCRC</th>
+          						<th>CNI</th>
+          						<th>CNIU</th>
+          						<th>Other Fees</th>
+          					</tr>
+          					</thead>
+          					<tbody>';
+
+          	foreach ($reportsVolume as $row) {
+          		$dispOutput .= "<tr>";
+          		$dispOutput .= "<td>" . $row->JobFileNo . "</td>";
+          		$dispOutput .= "<td>" . $row->ATA . "</td>";
+          		$dispOutput .= "<td>" . $row->Aircraft . "</td>";
+          		$dispOutput .= "<td>" . $row->ProductName . "</td>";
+          		$dispOutput .= "<td>" . $row->LodgementFee . "</td>";
+          		$dispOutput .= "<td>" . $row->BreakBulkFee . "</td>";
+          		$dispOutput .= "<td>" . $row->StorageFee . "</td>";
+          		$dispOutput .= "<td>" . $row->BadCargoOrderFee . "</td>";
+          		$dispOutput .= "<td>" . $row->VCRC . "</td>";
+          		$dispOutput .= "<td>" . $row->CNI . "</td>";
+          		$dispOutput .= "<td>" . $row->CNIU . "</td>";
+          		$dispOutput .= "<td>" . $row->OtherFees . "</td>";
+          		$dispOutput .= "</tr>";
+          	}
+          	}
+         
+
+		     $dispOutput .= '
+		    			</tbody>
+		     		</table>
+		     	</div>';
+
+			 $dispOutput .= '<script src="' .  base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js') . '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/dist/js/widgets/widget-scroller.min.js"). '"></script>
+                      <script src="' .  base_url("resources/table_sort/tableSortVolume.js") . '"></script>
+		                      ';
+
+          }else{
+          	$dispOutput .= '
+		    			<center> <h2 style="font-color:red"> No Data Matches Your Search </h2> </center> 
+		     	</div>';
+          }
+
+       
+
+		echo $dispOutput;                      
+     } 
 
     function getCharges($jbNo, $monitoringType){
         $charges = $this->Charges->getRunningCharges($monitoringType, $jbNo);

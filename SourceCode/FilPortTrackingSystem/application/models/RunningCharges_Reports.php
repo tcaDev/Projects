@@ -65,6 +65,127 @@ Class RunningCharges_Reports extends CI_Model
 		return $ct;
 	}
 
+	function getReportsVolume($monType,$userID,$ataFrom,$ataTo){
+		if($monType == 1 || $monType == 2){
+			$query = $this->db->query("SELECT 
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
+							FROM 
+							User  con1,
+							JobFile a
+							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
+							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
+							WHERE 
+							con1.ConsigneeId = a.ConsigneeId 
+							AND
+							b.ActualArrivalTime >= '$ataFrom' 
+							AND
+							b.ActualArrivalTime <= '$ataTo'
+							AND 
+							con1.UserId = '$userID'
+							AND 
+							a.MonitoringTypeId = '$monType'
+							UNION
+							SELECT 
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
+							FROM 
+							User  con1,
+							JobFile a
+							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
+							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
+							WHERE 
+							con1.ConsigneeId2 = a.ConsigneeId 
+							AND
+							b.ActualArrivalTime >= '$ataFrom' 
+							AND
+							b.ActualArrivalTime <= '$ataTo'
+							AND 
+							con1.UserId = '$userID'
+							AND 
+							a.MonitoringTypeId = '$monType'
+							UNION
+							SELECT 
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
+							FROM 
+							User  con1,
+							JobFile a
+							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
+							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
+							WHERE 
+							con1.ConsigneeId3 = a.ConsigneeId 
+							AND
+							b.ActualArrivalTime >= '$ataFrom' 
+							AND
+							b.ActualArrivalTime <= '$ataTo'
+							AND 
+							con1.UserId = '$userID'
+							AND 
+							a.MonitoringTypeId = '$monType'");
+		}else{
+			$query = $this->db->query("SELECT 
+										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*
+										FROM
+										User  con1,
+										JobFile_Air a
+										LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId
+										LEFT JOIN Products 	  AS c ON b.ProductId = c.ProductId
+										LEFT JOIN RunningCharges_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+										WHERE 
+										con1.ConsigneeId3 = a.ConsigneeId 
+										AND 
+										a.ATA >= '$ataFrom'
+										AND
+										a.ATA <= '$ataTo'
+										AND 
+										con1.UserId = '$userID'
+										UNION
+										SELECT 
+										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*
+										FROM
+										User  con1,
+										JobFile_Air a
+										LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId
+										LEFT JOIN Products 	  AS c ON b.ProductId = c.ProductId
+										LEFT JOIN RunningCharges_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+										WHERE 
+										con1.ConsigneeId2 = a.ConsigneeId 
+										AND 
+										a.ATA >= '$ataFrom'
+										AND
+										a.ATA <= '$ataTo'
+										AND 
+										con1.UserId = '$userID'
+										UNION
+										SELECT 
+										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*
+										FROM
+										User  con1,
+										JobFile_Air a
+										LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId
+										LEFT JOIN Products 	  AS c ON b.ProductId = c.ProductId
+										LEFT JOIN RunningCharges_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+										WHERE 
+										con1.ConsigneeId = a.ConsigneeId 
+										AND 
+										a.ATA >= '$ataFrom'
+										AND
+										a.ATA <= '$ataTo'
+										AND 
+										con1.UserId = '$userID'
+									");
+		}
+		
+		return $query->result();
+	}
+
 
 }
 

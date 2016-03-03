@@ -27,7 +27,7 @@
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
 						        <a data-toggle="collapse" id="RunningCharges" data-parent="#accordion" href="#collapse5" style="text-decoration:none;font-weight:600;">
-						       <span class="hvr-icon-forward"> Running Charges</span></a>
+						       <span class="hvr-icon-forward"> Running Charges </span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse5" class="panel-collapse collapse" style="padding:5px">
@@ -38,6 +38,23 @@
 								</ul>
 						    </div>
 						  </div>
+
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" id="Volume" href="#collapse6" style="text-decoration:none;font-weight:600;">
+						        <span class="hvr-icon-forward"> Reports Volume </span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse6" class="panel-collapse collapse" style="padding:5px">
+						         <ul class="nav nav-pills nav-data nav-volume">
+									  <li value="1" class="reports-volume-manila active" id="reports-volume-manila"  style="display:block;width:100%;"><a href="#tab_reports_volume-manila" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="2" class="reports-volume-outport" 		 id="reports-volume-outport" style="display:block;width:100%;"><a href="#tab_reports_volume-outport" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" class="reports-volume-air" 			 id="reports-volume-air"     style="display:block;width:100%;"><a href="#tab_reports_volume-air" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
 
 						</div>
 			<!-- End Accordion -->
@@ -51,6 +68,12 @@
 					<?php $this->load->view('reports/running_charges_jobfile_manila'); ?>
 					<?php $this->load->view('reports/running_charges_jobfile_outport'); ?>
 					<?php $this->load->view('reports/running_charges_jobfile_air'); ?>
+			</div>
+
+			<div class="hidden volume tab-content">
+					<?php $this->load->view('reports/reports_volume_manila'); ?>
+					<?php $this->load->view('reports/reports_volume_outport'); ?>
+					<?php $this->load->view('reports/reports_volume_air'); ?>
 			</div>
 
 			<div class="tab-content reports-consignee">
@@ -491,9 +514,9 @@
 				changePlaceHolder(mon_Type);
 			});
 
-			$(document).on('click','#btn-modal-close',function(){
+		/*	$(document).on('click','#btn-modal-close',function(){
 				myBackUpViewReport.data('null');
-			});
+			});*/
 
 		$(document).ready(function(){
 			changePlaceHolder(mon_Type);
@@ -517,6 +540,23 @@
 				$('#btn-runningcharges-air').click();
 			}
 			$('#collapse5').click();
+		});
+		$(document).on('click','#Volume',function(){
+			var active_accreditation = $('.nav-volume .active').attr('id');
+			if(active_accreditation == 'reports-volume-manila'){
+				$('#dtpATAFrom-manila').val('');
+				$('#dtpATATo-manila').val('');
+				$('#btn-volume-manila').click();
+			}else if(active_accreditation == 'reports-volume-outport'){
+				$('#dtpATAFrom-outport').val('');
+				$('#dtpATATo-outport').val('');
+				$('#btn-volume-outport').click();
+			}else if(active_accreditation == 'reports-volume-air'){
+				$('#dtpATAFrom-air').val('');
+				$('#dtpATATo-air').val('');
+				$('#btn-volume-air').click();
+			}
+			$('#collapse6').click();
 		});
 
 		$(document).on('click','.btn_docs',function(){
