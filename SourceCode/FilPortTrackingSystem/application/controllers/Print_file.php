@@ -852,7 +852,7 @@ $output_print .=  '
 
                $app['swiftmailer.options'] = array(
                 'host'       => 'localhost',
-                'port'       => 25,
+                'port'       => 2525,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
                 'encryption' => 'ssl'
@@ -892,7 +892,7 @@ $output_print .=  '
         $mail->IsSMTP(); // we are going to use SMTP
         $mail->SMTPAuth   = true; // enabled SMTP authentication
         $mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
-        $mail->Host       = "localhost";      // setting GMail as our SMTP server
+        $mail->Host       = "relay-hosting.secureserver.net";      // setting GMail as our SMTP server
         $mail->Port       = 2525;                   // SMTP port to connect to GMail
         $mail->Username   = "eli@topconnection.asia";  // user email address
         $mail->Password   = "asiagroup7";            // password in GMail
