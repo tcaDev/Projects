@@ -78,8 +78,8 @@ function send_mail(){
                   //email
                   /*ONLINE*/
                   $config['protocol'] = 'sendmail'; 
-                  $config['smtp_host']    = 'aspmx.l.google.com';
-                  $config['smtp_port']    = '80';
+                  $config['smtp_host']    = ' s104-238-101-216.secureserver.net';
+                  $config['smtp_port']    = '26';
                   $config['smtp_timeout'] = '20';
   /*                $config['smtp_user']    = 'filportsupport@topconnection.com';
                   $config['smtp_pass']    = 'asiagroup7';*/
@@ -852,10 +852,59 @@ $output_print .=  '
 
                $app['swiftmailer.options'] = array(
                 'host'       => 's104-238-101-216.secureserver.net',
-                'port'       => 26,
-                'username'   => 'eli_montefalcon@yahoo.com',
+                'port'       => 2525,
+                'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
                 'encryption' => 'ssl'
+                );
+        //Create the message
+        $message = Swift_Message::newInstance();
+
+        //Give the message a subject
+        $message->setSubject('Your subject')
+                ->setFrom('eli@topconnection.asia')
+                ->setTo('eliseo.montefalcon@gmail.com')
+                ->setBody('Here is the message itself')
+                ->addPart('<q>Here is the message itself</q>', 'text/html')
+        ;
+
+        //Create the Mailer using your created Transport
+        $mailer = Swift_Mailer::newInstance($transport);
+
+        //Send the message
+        $result = $mailer->send($message);
+
+        if ($result) {
+            echo "Email sent successfully";
+        } else {
+            echo "Email failed to send";
+        }
+
+
+
+
+    }
+
+        function elis() {
+        //Create the Transport
+        $transport = Swift_MailTransport::newInstance();
+
+        /*
+        You could alternatively use a different transport such as Sendmail or Mail:
+
+        //Sendmail
+        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+
+        //Mail
+        $transport = Swift_MailTransport::newInstance();
+        */
+
+               $app['swiftmailer.options'] = array(
+                'host'       => 's104-238-101-216.secureserver.net',
+                'port'       => 2525,
+                'username'   => 'eli@topconnection.asia',
+                'password'   => 'asiagroup7',
+                'encryption' => 'tls'
                 );
         //Create the message
         $message = Swift_Message::newInstance();
@@ -892,15 +941,15 @@ $output_print .=  '
         $mail->SMTPAuth   = true; // enabled SMTP authentication
         $mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
         $mail->Host       = "s104-238-101-216.secureserver.net";      // setting GMail as our SMTP server
-        $mail->Port       = 26;                   // SMTP port to connect to GMail
+        $mail->Port       = 2525;                   // SMTP port to connect to GMail
         $mail->Username   = "eli@topconnection.asia";  // user email address
         $mail->Password   = "asiagroup7";            // password in GMail
-        $mail->SetFrom('eli@topconnection.asia', 'ELiseo Montefalcon');  //Who is sending the email
+        $mail->SetFrom('dev.tracking-filport.com', 'ELiseo Montefalcon');  //Who is sending the email
         $mail->AddReplyTo("eliseo.montefalcon@gmail.com","Pogi na gwapo pa");  //email address that receives the response
         $mail->Subject    = "Email subject";
         $mail->Body      = "HTML message";
         $mail->AltBody    = "Plain text message";
-        $destino = "eli_montefalcon@yahoo.com"; // Who is addressed the email to
+        $destino = "eli@topconnection.asia"; // Who is addressed the email to
         $mail->AddAddress($destino, "elias");
 
         //$mail->AddAttachment("images/phpmailer.gif");      // some attached files
@@ -912,6 +961,7 @@ $output_print .=  '
         }
         //$this->load->view('sent_mail',$data);
     }
+
     
 
 }
