@@ -836,7 +836,54 @@ $output_print .=  '
   }
 
 
+    function eli() {
+        //Create the Transport
+        $transport = Swift_MailTransport::newInstance();
 
+        /*
+        You could alternatively use a different transport such as Sendmail or Mail:
+
+        //Sendmail
+        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+
+        //Mail
+        $transport = Swift_MailTransport::newInstance();
+        */
+
+               $app['swiftmailer.options'] = array(
+                'host'       => 'relay-hosting.secureserver.net',
+                'port'       => 465,
+                'username'   => 'eli_montefalcon@yahoo.com',
+                'password'   => 'asiagroup7',
+                'encryption' => 'ssl'
+                );
+        //Create the message
+        $message = Swift_Message::newInstance();
+
+        //Give the message a subject
+        $message->setSubject('Your subject')
+                ->setFrom('eli@topconnection.asia')
+                ->setTo('eliseo.montefalcon@gmail.com')
+                ->setBody('Here is the message itself')
+                ->addPart('<q>Here is the message itself</q>', 'text/html')
+        ;
+
+        //Create the Mailer using your created Transport
+        $mailer = Swift_Mailer::newInstance($transport);
+
+        //Send the message
+        $result = $mailer->send($message);
+
+        if ($result) {
+            echo "Email sent successfully";
+        } else {
+            echo "Email failed to send";
+        }
+
+
+
+
+    }
 
     function phpmail(){
         $this->load->library('My_PHPMailer');
