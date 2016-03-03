@@ -837,6 +837,9 @@ $output_print .=  '
 
 
   function eli() {
+    ini_set('SMTP','localhost' ); 
+/*    ini_set('smtp_port ', '25');*/
+    ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
 
