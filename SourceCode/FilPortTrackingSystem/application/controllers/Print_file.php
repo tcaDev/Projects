@@ -837,7 +837,7 @@ $output_print .=  '
 
 
   function eli() {
-    ini_set('SMTP','localhost' ); 
+    ini_set('SMTP','email.sercureserver.net' ); 
     ini_set('smtp_port ', '25');
     ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
@@ -854,7 +854,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 'localhost',
+                'host'       => 'email.sercureserver.net',
                 'port'       => '25',
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
@@ -889,9 +889,9 @@ $output_print .=  '
     }
 
       function elis() {
-    ini_set('SMTP','104.238.101.216' ); 
+/*    ini_set('SMTP','localhost' ); 
     ini_set('smtp_port ', '25');
-    ini_set('sendmail_from', 'eli@topconnection.asia');
+    ini_set('sendmail_from', 'eli@topconnection.asia');*/
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
 
@@ -906,7 +906,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => '104.238.101.216',
+                'host'       => 'email.sercureserver.net',
                 'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
@@ -940,9 +940,9 @@ $output_print .=  '
 
     }
        function elise() {
-/*    ini_set('SMTP','localhost' ); 
+    ini_set('SMTP','localhost' ); 
     ini_set('smtp_port ', 25);
-    ini_set('sendmail_from', 'eli@topconnection.asia');*/
+    ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
 
@@ -957,7 +957,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => '104.238.101.216',
+                'host'       => 'localhost',
                 'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
@@ -1042,9 +1042,9 @@ $output_print .=  '
 
     }
  
-        function eliseom() {
+        function eliseo() {
     ini_set('SMTP','relay-hosting.secureserver.net' ); 
-    ini_set('smtp_port ', 587);
+    ini_set('smtp_port ', 25);
     ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
@@ -1061,7 +1061,7 @@ $output_print .=  '
 
                $app['swiftmailer.options'] = array(
                 'host'       => 'relay-hosting.secureserver.net',
-                'port'       => 587,
+                'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
                 'encryption' => 'ssl'
@@ -1144,58 +1144,8 @@ $output_print .=  '
 
 
     }
-             function eliseoals() {
-    ini_set('SMTP','relay-hosting.secureserver.net' ); 
-    ini_set('smtp_port ', '587');
-    ini_set('sendmail_from', 'eli@topconnection.asia');
-        //Create the Transport
-        $transport = Swift_MailTransport::newInstance();
-
-        /*
-        You could alternatively use a different transport such as Sendmail or Mail:
-
-        //Sendmail
-        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
-
-        //Mail
-        $transport = Swift_MailTransport::newInstance();
-        */
-
-               $app['swiftmailer.options'] = array(
-                'host'       => 'relay-hosting.secureserver.net',
-                'port'       => '587',
-                'username'   => 'eli@topconnection.asia',
-                'password'   => 'asiagroup7',
-                'encryption' => 'ssl'
-                );
-        //Create the message
-        $message = Swift_Message::newInstance();
-
-        //Give the message a subject
-        $message->setSubject('Your subject')
-                ->setFrom('eli@topconnection.asia')
-                ->setTo('eliseo.montefalcon@gmail.com')
-                ->setBody('Here is the message itself')
-                ->addPart('<q>Here is the message itself</q>', 'text/html')
-        ;
-
-        //Create the Mailer using your created Transport
-        $mailer = Swift_Mailer::newInstance($transport);
-
-        //Send the message
-        $result = $mailer->send($message);
-
-        if ($result) {
-            echo "Email sent successfully";
-        } else {
-            echo "Email failed to send";
-        }
-
-
-
-
-    }
-/*    function phpmail(){
+    
+    function phpmail(){
         $this->load->library('My_PHPMailer');
         $mail = new PHPMailer();
         $mail->IsSMTP(); // we are going to use SMTP
@@ -1221,7 +1171,7 @@ $output_print .=  '
             echo "Message sent correctly!";
         }
         //$this->load->view('sent_mail',$data);
-    }*/
+    }
 
     
 
