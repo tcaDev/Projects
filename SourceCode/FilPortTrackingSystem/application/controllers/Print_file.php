@@ -1042,9 +1042,9 @@ $output_print .=  '
 
     }
  
-        function eliseo() {
+        function eliseom() {
     ini_set('SMTP','relay-hosting.secureserver.net' ); 
-    ini_set('smtp_port ', 25);
+    ini_set('smtp_port ', 587);
     ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
@@ -1061,7 +1061,7 @@ $output_print .=  '
 
                $app['swiftmailer.options'] = array(
                 'host'       => 'relay-hosting.secureserver.net',
-                'port'       => 25,
+                'port'       => 587,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
                 'encryption' => 'ssl'
