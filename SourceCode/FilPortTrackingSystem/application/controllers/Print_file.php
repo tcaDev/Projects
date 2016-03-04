@@ -889,7 +889,7 @@ $output_print .=  '
     }
 
       function elis() {
-    ini_set('SMTP','localhost' ); 
+    ini_set('SMTP','104.238.101.216' ); 
     ini_set('smtp_port ', '25');
     ini_set('sendmail_from', 'eli@topconnection.asia');
         //Create the Transport
@@ -906,7 +906,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 'localhost',
+                'host'       => '104.238.101.216',
                 'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
@@ -940,9 +940,9 @@ $output_print .=  '
 
     }
        function elise() {
-    ini_set('SMTP','localhost' ); 
+/*    ini_set('SMTP','localhost' ); 
     ini_set('smtp_port ', 25);
-    ini_set('sendmail_from', 'eli@topconnection.asia');
+    ini_set('sendmail_from', 'eli@topconnection.asia');*/
         //Create the Transport
         $transport = Swift_MailTransport::newInstance();
 
@@ -957,7 +957,7 @@ $output_print .=  '
         */
 
                $app['swiftmailer.options'] = array(
-                'host'       => 'localhost',
+                'host'       => '104.238.101.216',
                 'port'       => 25,
                 'username'   => 'eli@topconnection.asia',
                 'password'   => 'asiagroup7',
@@ -1195,7 +1195,7 @@ $output_print .=  '
 
 
     }
-    function phpmail(){
+/*    function phpmail(){
         $this->load->library('My_PHPMailer');
         $mail = new PHPMailer();
         $mail->IsSMTP(); // we are going to use SMTP
@@ -1221,7 +1221,7 @@ $output_print .=  '
             echo "Message sent correctly!";
         }
         //$this->load->view('sent_mail',$data);
-    }
+    }*/
 
     
 
