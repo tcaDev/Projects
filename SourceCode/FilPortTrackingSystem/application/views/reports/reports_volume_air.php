@@ -3,30 +3,32 @@
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
-				        				<div class="col-md-5">
+				        				<div class="col-md-12">
 				        			 	 <span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Sea Freight Air </b></h4></span>
 				        				</div>
-									    <div class="input-group col-md-7">
-									    	<b>ATA : </b>
-									      <div class="row">
+									    <div class="input-group col-md-12">
+									    	<div class="col-md-12">
+									    		<span><b>Actual Time of Arrival : </b></span>
+									    	</div>
+									      <div class="">
 
 									    	<div class="col-md-5">
 									    		<div class="">
-									    			<input placeholder="FROM :" class="textbox-n form-control" id="dtpATAFrom-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+									    			<input placeholder="From :" class="textbox-n form-control" id="dtpATAFrom-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
 									    		</div>
 									    		
 									    	</div>
 
 									    	<div class="col-md-5">
 									    		<div class="">
-									    			<input placeholder="TO :" class="textbox-n form-control" id="dtpATATo-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+									    			<input placeholder="To :" class="textbox-n form-control" id="dtpATATo-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
 									    		</div>
 									    	</div>
 
 									    	<div class="col-md-2">
 									    		<div class="row">
 									    				<span class="input-group-btn">
-									    					<button class="btn btn-danger" type="button" id="btn-volume-air"><span class="fa fa-search fa-fw"></span></button>
+									    					<button class="btn btn-danger col-md-12" type="button" id="btn-volume-air"><span class="fa fa-search fa-fw"></span></button>
 									    				</span>
 									    		</div>
 									    	</div>
@@ -38,7 +40,7 @@
 				 	</div>
         	</div>     		
     	</div>
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
     		<div class="table-volume-air" ></div>
     	</div>
 </div>	

@@ -3,19 +3,19 @@
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar" style="margin-top: 20%;">
-				        				<div class="col-md-6">
-				        			 	 <span style="padding-bottom: 10px;"> <h4> Running Charges Jobfile : <b> Sea Freight Manila </b></h4></span>
-				        				</div>
-									    <div class="input-group col-md-6">
-									       <input type="text" class="form-control light-table-filter" data-table="order-table-runningcharges-manila" id="txt-table-runningcharges-manila" placeholder='Search by Purchase Order Number'>
-									      <span class="input-group-btn">
-									       <button class="btn btn-danger" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
-									      </span>
-									    </div>
+	        				<div class="col-md-12">
+	        			 	 <span style="padding-bottom: 10px;"> <h4> Running Charges Reports : <b> Sea Freight Manila </b></h4></span>
+	        				</div>
+						    <div class="input-group col-md-12">
+						       <input type="text" class="form-control light-table-filter" data-table="order-table-runningcharges-manila" id="txt-table-runningcharges-manila" placeholder='Search by Purchase Order Number'>
+						      <span class="input-group-btn">
+						       <button class="btn btn-danger" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
+						      </span>
+						    </div>
 				 	</div>
         	</div>     		
     	</div>
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
     		<div class="table-runningcharges-manila" ></div>
     	</div>
 </div>	
@@ -77,7 +77,9 @@ $(document).on('click','#btn-runningcharges-manila',function(){
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-manila").html(resultData[0].disp);
-  				$(".tools-bar").animate({marginTop:'0%'});
+  				$(".tools-bar").animate({
+  					marginTop:'0%',
+  				});
 
 		});
 	}

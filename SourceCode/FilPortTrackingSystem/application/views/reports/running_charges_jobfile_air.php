@@ -3,10 +3,10 @@
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar">
-				        				<div class="col-md-6">
+				        				<div class="col-md-12">
 				        			 	 <span style="padding-bottom: 10px;"> <h4> Running Charges Jobfile : <b> Sea Freight Air </b></h4></span>
 				        				</div>
-									    <div class="input-group col-md-6">
+									    <div class="input-group col-md-12">
 									       <input type="text" class="form-control light-table-filter" data-table="order-table-runningcharges-air" id="txt-table-runningcharges-air" placeholder='Search by Purchase Order Number'>
 									      <span class="input-group-btn">
 									       <button class="btn btn-danger" id="btn-runningcharges-air" type="button"><span class="fa fa-search fa-fw"></span></button>
@@ -15,7 +15,7 @@
 				 	</div>
         	</div>     		
     	</div>
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
     		<div class="table-runningcharges-air" ></div>
     	</div>
 </div>	
