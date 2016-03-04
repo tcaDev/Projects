@@ -1,6 +1,6 @@
 <?php
 
-
+ require_once APPPATH.'libraries/swift_mailer/swift_required.php';
 class Email extends CI_Controller {
      public function __construct()
        {
@@ -918,7 +918,24 @@ $now = $date_now[0];
 
 
  function autoemail(){
+           if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+          }
 
+        // Access-Control headers are received during OPTIONS requests
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+            exit(0);
+        }
+  $this->load->library('My_PHPMailer');
 
     $this->email->clear(TRUE);
       $datePath = './resources/pdf/' .date('Y-m-d');
@@ -930,8 +947,8 @@ $now = $date_now[0];
 
       
       $print     =  $this->input->post('print');
-    echo   $email     =  $this->input->post('email');
-    echo   $jbNo =  $this->input->post('jbfl_send');
+       $email     =  $this->input->post('email');
+       $jbNo =  $this->input->post('jbfl_send');
 
      //$print =  '<script>document.write(p);</script>'; 
 
@@ -946,57 +963,81 @@ $now = $date_now[0];
                    mkdir($datePath, 0777, TRUE);
                }
             }else{ // if the folder already exist
-               if(!is_dir($datePath)){
-                   mkdir($datePath, 0777, TRUE);
-            }
+                   if(!is_dir($datePath)){
+                       mkdir($datePath, 0777, TRUE);
+                   }
 
-                                    //download file
-
-           
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
-                    // config for godaddy na bwisit = email fixed by changing  the protocol to 'sendmail' and changing the  host to 'smtpout.secureserver.net' and changing the port to 80
+                                          //Create the Transport
+                        $transport = Swift_MailTransport::newInstance();
 
-                  
-           
-                    //email
-                   // $config['protocol']    = 'smtp';
-                    $config['protocol'] = 'sendmail'; 
-                    $config['smtp_host']    = 'smtpout.secureserver.net';
-                    $config['smtp_port']    = '80';
-                    $config['smtp_timeout'] = '20';
-/*                    $config['smtp_user']    = 'eli@topconnection.asia';
-                    $config['smtp_pass']    = 'asiagroup7';*/
-                    $config['charset']    = 'utf-8';
-                    
-                    $config['newline']    = "\r\n";
-                    $config['mailtype'] = 'text'; // or html
-                    $config['validation'] = TRUE; // bool whether to validate email or not      
+                        //always cc
+                          $alwaysCc = array();
+                          $always= $this->Jobdata->get_allways_email();
+                          foreach($always as $mycc){
+                             $alwaysCc[] = $mycc->EmailAddress;
+                           }
 
-                    $this->email->initialize($config);
-                    $this->email->from('eli@topconnection.asia', 'eliseo pogi');
-                    $this->email->to('eliseo.montefalcon@gmail.com'); 
-                    //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
-                      $alwaysCc=array('mbtreyes@filport.com','ecnunga@filport.com');
-                      if($montype=='1'){
+                       if($montype=='1'){
                         //manila
-                          array_push($alwaysCc,'jdmendoza@filport.com','zsdemesa@filport.com');
+                         $man= $this->Jobdata->get_email_manila();
+                           foreach($man as $manila){
+                            $manilas = $manila->EmailAddress;
+                             array_push($alwaysCc,$manilas);
+                           }
+                         
                       }elseif ($montype=='2') {
                         //outport
-                          array_push($alwaysCc,'jcgalang@filport.com');
+                           $out= $this->Jobdata->get_allways_email();
+                           foreach($out as $outport){
+                             $outports = $outport->EmailAddress;
+                             array_push($alwaysCc,$outports);
+                           }
+                       
                       }else{
                         //air
-                          array_push($alwaysCc,'jfcanindo@filport.com');
+                           $a= $this->Jobdata->get_allways_email();
+                           foreach($a as $air){
+                             $airs = $air->EmailAddress;
+                             array_push($alwaysCc,$airs);
+                           }
                       }
-                    $this->email->cc($alwaysCc); 
-/*                    $this->email->subject('Filport Testing');
-                    $this->email->message('Email Testing.'); */
-                    $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
-                    $this->email->message("Status Report of \r\nJobfile No : " . $jbNo . "\r\nSent: " . $date); 
-                    $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
-                    $this->email->send();
-                    echo $this->email->print_debugger();
-               }
+
+                               $app['swiftmailer.options'] = array(
+                                'host'       => 'relay-hosting.secureserver.net',
+                                'port'       => 465,
+                                'username'   => 'eli@topconnection.asia',
+                                'password'   => 'asiagroup7',
+                                'encryption' => 'ssl'
+                                );
+
+                        //Create the message
+                        $message = Swift_Message::newInstance();
+
+
+
+                        //Give the message a subject
+                        $message->setSubject('Filport Document Jobfile No : ' . $jbNo)
+                                ->setFrom('eli@topconnection.asia')
+                                ->setTo($email)
+                                ->setCc($alwaysCc)
+                                ->setBody('Status Report of \r\nJobfile No : ' . $jbNo . '\r\nSent: ' . $date)
+                                ->addPart('<q>Private Documents</q>', 'text/html')
+                                ->attach(Swift_Attachment::fromPath($filePath.$jbNo."-" . $date ."-report.pdf",'F'));
+                        
+                        //Create the Mailer using your created Transport
+                        $mailer = Swift_Mailer::newInstance($transport);
+
+                        //Send the message
+                        $result = $mailer->send($message);
+
+                        if ($result) {
+                            echo "Email sent successfully";
+                        } else {
+                            echo "Email failed to send";
+                        }
+                }
             }
 
 
@@ -1004,11 +1045,5 @@ $now = $date_now[0];
 
 
 
-
-        //if($checker==1){
-
-           // $checker=0;
-      //  }
-// }
 }
 ?>
