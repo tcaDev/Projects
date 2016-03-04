@@ -110,6 +110,7 @@ $(document).on('click','#btn-volume-outport',function(){
 		})
   		.done(function(data) {
   				$(".table-volume-outport").html(data);
+  				$(".tools-bar").animate({marginTop:'0%'});
 		});
 	}
 });

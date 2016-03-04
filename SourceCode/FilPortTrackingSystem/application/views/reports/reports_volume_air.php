@@ -111,6 +111,7 @@ $(document).on('click','#btn-volume-air',function(){
 		})
   		.done(function(data) {
   				$(".table-volume-air").html(data);
+  				$(".tools-bar").animate({marginTop:'0%'});
 		});
 	}
 });

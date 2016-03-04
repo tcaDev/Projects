@@ -2,7 +2,7 @@
 
     	<div class="col-md-12 ">
         	<div class="row">
-        			<div class="tools-bar">
+        			<div class="tools-bar" style="margin-top: 20%;">
 				        				<div class="col-md-6">
 				        			 	 <span style="padding-bottom: 10px;"> <h4> Running Charges Jobfile : <b> Sea Freight Manila </b></h4></span>
 				        				</div>
@@ -77,6 +77,8 @@ $(document).on('click','#btn-runningcharges-manila',function(){
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-manila").html(resultData[0].disp);
+  				$(".tools-bar").animate({marginTop:'0%'});
+
 		});
 	}
 });

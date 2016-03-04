@@ -67,6 +67,7 @@ $(document).on('click','#btn-runningcharges-air',function(){
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-air").html(resultData[0].disp);
+  				$(".tools-bar").animate({marginTop:'0%'});
 		});
   	}
 });

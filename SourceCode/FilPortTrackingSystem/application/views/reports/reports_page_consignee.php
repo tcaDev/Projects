@@ -531,40 +531,78 @@
 			var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
 			if(active_accreditation == 'runningcharges-jobfile-manila'){
 				$('#txt-table-runningcharges-manila').val('');
-				$('#btn-runningcharges-manila').click();
+				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
 			}else if(active_accreditation == 'runningcharges-jobfile-outport'){
 				$('#txt-table-runningcharges-outport').val('');
-				$('#btn-runningcharges-outport').click();
+				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
 			}else if(active_accreditation == 'runningcharges-jobfile-air'){
 				$('#txt-table-runningcharges-air').val('');
-				$('#btn-runningcharges-air').click();
+				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
 			}
 			$('#collapse5').click();
 		});
+/*button Running Charges*/
+$(document).on('click','#runningcharges-jobfile-manila',function(){
+			$('.tab_runningcharges_manila .tools-bar').css('marginTop', '20%');
+			$('.table-runningcharges-manila').empty();
+			$('#txt-table-runningcharges-manila').val('');
+		});
+
+$(document).on('click','#runningcharges-jobfile-outport',function(){
+			$('.tab_runningcharges_outport .tools-bar').css('marginTop', '20%');
+			$('.table-runningcharges-outport').empty();
+			$('#txt-table-runningcharges-outport').val('');
+		});
+
+$(document).on('click','#runningcharges-jobfile-air',function(){
+			$('.tab_runningcharges_air .tools-bar').css('marginTop', '20%');
+			$('.table-runningcharges-air').empty();
+			$('#txt-table-runningcharges-air').val('');
+		});
+
+
+
+
 		$(document).on('click','#Volume',function(){
 			var active_accreditation = $('.nav-volume .active').attr('id');
 			if(active_accreditation == 'reports-volume-manila'){
 				$('#dtpATAFrom-manila').val('');
 				$('#dtpATATo-manila').val('');
-				$('.tools-bar').css('marginTop', '20%');
+				$('.tab_reports_volume-manila .tools-bar').css('marginTop', '20%');
 			}else if(active_accreditation == 'reports-volume-outport'){
 				$('#dtpATAFrom-outport').val('');
 				$('#dtpATATo-outport').val('');
-				$('#btn-volume-outport').click();
+				$('.tab_reports_volume-outport .tools-bar').css('marginTop', '20%');
 			}else if(active_accreditation == 'reports-volume-air'){
 				$('#dtpATAFrom-air').val('');
 				$('#dtpATATo-air').val('');
-				$('#btn-volume-air').click();
+				$('.tab_reports_volume-air .tools-bar').css('marginTop', '20%');
 			}
 			$('#collapse6').click();
 		});
-
+/*Button Volume*/
 		$(document).on('click','#reports-volume-manila',function(){
 			$('.tab_reports_volume-manila .tools-bar').css('marginTop', '20%');
 			$('.table-volume-manila').empty();
 			$('#dtpATAFrom-manila').val('');
 			$('#dtpATATo-manila').val('');
 		});
+
+		$(document).on('click','#reports-volume-outport',function(){
+			$('.tab_reports_volume-outport .tools-bar').css('marginTop', '20%');
+			$('.table-volume-outport').empty();
+			$('#dtpATAFrom-outport').val('');
+			$('#dtpATATo-outport').val('');
+		});
+
+		$(document).on('click','#reports-volume-air',function(){
+			$('.tab_reports_volume-air .tools-bar').css('marginTop', '20%');
+			$('.table-volume-air').empty();
+			$('#dtpATAFrom-air').val('');
+			$('#dtpATATo-air').val('');
+		});
+
+		
 
 		$(document).on('click','.btn_docs',function(){
 			$('.ttle').html('<span class="ttle">' + $(this).attr('id') + '</span> ');
