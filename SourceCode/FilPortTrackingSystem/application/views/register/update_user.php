@@ -119,6 +119,21 @@
                      <label class="radio-inline"><input type="radio" value="0" name="update_activate" class="deactivate_user" style="transform: scale(1.5);">Deactivate</label>
 			      			</div>
       				</div>
+              <div class="col-md-12">
+               <div class=" col-md-12">     
+                    <hr>
+                </div>
+                  <h4>Type Of User :</h4>
+                 
+                  <div class="col-md-6">
+                    <select class="form-control user_type update_user">
+
+                    </select>
+                  </div>
+                  <div class=" col-md-12">     
+                    <hr>
+                </div>
+                </div>
       			</div>
       		</div>
       			
@@ -133,49 +148,6 @@
   </div>
 </div>
 
-
-
-<script>
-
-/*Hidden Consignee If Filport is User*/
-var user_admin=0;
-
-  $(document).on('click',' #user_client_list',function(){
-     $('.consignee_update_user').fadeIn('slow').removeClass('hidden');
-     $('.consignee_update_user2').fadeIn('slow').removeClass('hidden');
-     $('.consignee_update_user3').fadeIn('slow').removeClass('hidden');
-
-     $('.addr_update').fadeIn('slow').removeClass('hidden');
-     $('.addr_update2').fadeIn('slow').removeClass('hidden');
-
-    $('.department').text("Company:");
-      user_admin=1;
-  });
-
-  $(document).on('click','#user_internal_list',function(){
-      $('.consignee_update_user').fadeIn('slow').addClass('hidden');
-      $('.consignee_update_user2').fadeIn('slow').addClass('hidden');
-      $('.consignee_update_user3').fadeIn('slow').addClass('hidden');
-
-      $('.department').text("Department:");
-
-      $('.addr_update').fadeIn('slow').addClass('hidden');
-         $('.addr_update2').fadeIn('slow').addClass('hidden');
-      user_admin=2;
-  });
-  $(document).on('click','#user_admin_list',function(){
-      $('.consignee_update_user').fadeIn('slow').addClass('hidden');
-      $('.consignee_update_user2').fadeIn('slow').addClass('hidden');
-      $('.consignee_update_user3').fadeIn('slow').addClass('hidden');
-
-      $('.department').text("Department:");
-
-      $('.addr_update').fadeIn('slow').addClass('hidden');
-      $('.addr_update2').fadeIn('slow').addClass('hidden');
-      user_admin=3;
-  });
-
-</script>
 
 <script>
 	var uid;
@@ -211,6 +183,7 @@ var user_admin=0;
 
     $('.c1').val(contact1);
     $('.c2').val(contact2);
+    $('.update_user').val(role);
     
 	     if(statuses==1){
 	      $('.activate_user').prop('checked', true);
@@ -266,18 +239,26 @@ $(document).on('click','.btn-update-user-client',function(){
     $('.addr_1').val(addr);
     $('.addr_2').val(addr2);
 
+     $('.update_user').val(role);
+
     if(consignee == ""){
         $(".consignee option:eq(0)").attr("selected","selected");
-    }else{$('.consignee').val(consignee2);}
+    }else{
+      $('.consignee').val(consignee);
+    }
     
     if(consignee2 == ""){
         $(".consignee2 option:eq(0)").attr("selected","selected");
-    }else{$('.consignee2').val(consignee2);}
+    }else{
+      $('.consignee2').val(consignee2);
+    }
     
 
     if(consignee3 == ""){
-        $(".consignee option:eq(0)").attr("selected","selected");
-    }else{$('.consignee3').val(consignee3);}
+        $(".consignee3 option:eq(0)").attr("selected","selected");
+    }else{
+      $('.consignee3').val(consignee3);
+    }
     
 
 
@@ -313,6 +294,8 @@ $(document).on('click','.btn-update-user-client',function(){
     var consignee2 = $('.consignee2').val();
     var consignee3 = $('.consignee3').val();
 
+    var role = $('.update_user').val();
+
 		 $.ajax({
             method: "POST",
             url: "<?php echo base_url('Job/user_update');?>",
@@ -341,6 +324,7 @@ $(document).on('click','.btn-update-user-client',function(){
                      consignee:consignee,
                      consignee2:consignee2,
                      consignee3:consignee3,
+                     role:role,
                 }
         })
            .done(function(data) {
@@ -351,7 +335,7 @@ $(document).on('click','.btn-update-user-client',function(){
                               confirm: function(){
                                   dia.close();
                                   $('#myModal_updateUser').modal('hide');
-                                  $('.get_list').trigger('click');
+                                  userList(role);
                               }
                            });
               })

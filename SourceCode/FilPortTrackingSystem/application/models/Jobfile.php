@@ -149,6 +149,11 @@ Class Jobfile extends CI_Model
 									ORDER BY DateUpdated desc");
    	 return $query->result();
 	}
+
+	function user_types(){
+		$query = $this->db->query(" select * from Role where RoleId != 6 ");
+   	 return $query->result();
+	}
 }
 
 

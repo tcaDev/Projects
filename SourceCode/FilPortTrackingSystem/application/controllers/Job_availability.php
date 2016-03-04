@@ -9,6 +9,7 @@ class Job_availability extends CI_Controller {
             parent::__construct();
             date_default_timezone_set('Asia/Manila');
             $this->load->model('Jobdata');
+            $this->load->model('Jobfile');
        }
 
 
@@ -141,90 +142,6 @@ function reset_password(){
           $this->db->update('User', $data);
   }
 
-
-function get_User_list_admin(){
-
-        $User_list = $this->Jobdata->get_user_admin();
-
-        echo '
-            <div class="col-lg-12 row">
-            <table class=" table-bordered table-condensed " style="width:2000px;">
-                <thead>
-                  <tr>
-                      <th>No.</th>
-                      <th>Status</th>
-                      <th>Update</th>
-                      <th>Reset Password</th>
-                      <th>Username</th>
-                      <th>FirstName</th>
-                      <th>MiddleName</th>
-                      <th>LastName</th>
-                      <th>EmailAddress</th>
-                      <th>Title</th>
-                      <th>Department</th>
-                      <th>ContactNo1</th>
-                      <th>ContactNo2</th>
-                  </tr>
-                </thead>      
-                <tbody>
-
-
-        ';
-        $i=0;
-        foreach ($User_list as $row) {
-          $i++;
-          $uid = $row->UserId;
-          $uname = $row->UserName;
-          $fname = $row->FirstName;
-          $mname = $row->MiddleName;
-          $lname = $row->LastName;
-          $email = $row->EmailAddress;
-          $contact1 = $row->ContactNo1;
-          $contact2 = $row->ContactNo2;
-
-         
-          $active= $row->IsActive;
-            if($active==1){ 
-              $stat = 'activated';
-              $mystat = '1';
-            }else{
-              $stat = 'deactivated';
-              $mystat= '0';
-            }
-
-           echo '
-            <tr>
-              <td>'.$i.'</td>
-              <td class="hidden">'.$uid.'</td>
-              <td class="hidden">'.$mystat.'</td>
-              <td>'.$stat.' </td>
-              <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
-              <td>'.$uname.'</td>
-              <td>'.$fname.'</td>
-              <td>'.$mname.'</td>
-              <td>'.$lname.'</td>   
-              <td>'.$email.'</td>
-              <td>'.$row->Title.'</td>
-              <td>'.$row->Department.'</td>
-              <td>'.$contact1.'</td>
-              <td>'.$contact2.'</td>
-            </tr>
-           '; 
-
-        }
-
-          echo '
-               </tbody>         
-             </table>
-            </div>
-        
-          ';
-
- 
-
-
-      }
 
 
       function dashboard_legend_sea(){
@@ -486,6 +403,18 @@ function get_User_list_admin(){
       }
    }
 
+    function user_type(){
+      $types = $this->Jobfile->user_types();
+
+      $output = '';
+      $output .= '<i><option value="0" disabled selected>Select User</option></i>';
+      foreach ($types as $row) {
+        $output .='<option value="'.$row->RoleId.'">'.$row->RoleName.'</option>';
+      }
+
+      echo $output;
+      
+    }
 
 }
 ?>   

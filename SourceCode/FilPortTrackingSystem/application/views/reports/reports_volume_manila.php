@@ -2,40 +2,39 @@
 
     	<div class="col-md-12 ">
         	<div class="row">
-        			<div class="tools-bar">
-				        				<div class="col-md-5">
-				        			 	 <span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Sea Freight Manila </b></h4></span>
-				        				</div>
-									    <div class="input-group col-md-7">
-									    	<b>ATA : </b>
-									      <div class="row">
+        			<div class="tools-bar" style="margin-top:20%;">
+			        				<div class="col-md-5">
+			        			 	 <span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Sea Freight Manila </b></h4></span>
+			        				</div>
+								    <div class="input-group col-md-7">
+								    	<b>ATA : </b>
+								      <div class="row">
 
-									    	<div class="col-md-5">
-									    		<div class="">
-									    			<input placeholder="FROM :" class="textbox-n form-control" id="dtpATAFrom-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-									    		</div>
-									    		
-									    	</div>
+								    	<div class="col-md-5">
+								    		<div class="">
+								    			<input placeholder="FROM :" class="textbox-n form-control" id="dtpATAFrom-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+								    		</div>
+								    		
+								    	</div>
 
-									    	<div class="col-md-5">
-									    		<div class="">
-									    			<input placeholder="TO :" class="textbox-n form-control" id="dtpATATo-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-									    		</div>
-									    	</div>
+								    	<div class="col-md-5">
+								    		<div class="">
+								    			<input placeholder="TO :" class="textbox-n form-control" id="dtpATATo-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+								    		</div>
+								    	</div>
 
-									    	<div class="col-md-2">
-									    		<div class="row">
-									    				<span class="input-group-btn">
-									    					<button class="btn btn-danger" type="button" id="btn-volume-manila"><span class="fa fa-search fa-fw"></span></button>
-									    				</span>
-									    		</div>
-									    	</div>
-									    </div>
-									      
-									    
+								    	<div class="col-md-2">
+								    		<div class="row">
+								    				<span class="input-group-btn">
+								    					<button class="btn btn-danger" type="button" id="btn-volume-manila"><span class="fa fa-search fa-fw"></span></button>
+								    				</span>
+								    		</div>
+								    	</div>
+								    </div>
+								</div>
+			 	</div>
 
-									    </div>
-				 	</div>
+
         	</div>     		
     	</div>
     	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
@@ -53,6 +52,9 @@
 
 		
 <script>
+
+
+
 		$("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
@@ -110,7 +112,8 @@ $(document).on('click','#btn-volume-manila',function(){
 		})
   		.done(function(data) {
   				$(".table-volume-manila").html(data);
-		});
+  				$(".tools-bar").animate({marginTop:'0%'});
+		});	
 	}
 });
 /*

@@ -115,7 +115,7 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
 							        <td contenteditable="true">'.stripslashes( $row->ContactNo2). '</td>
 							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="btn delete_contacts_consignee"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							  			</td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>
@@ -266,7 +266,7 @@ if(isset($_SESSION['success'])){
 							        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
 							        <td contenteditable="true">'.stripslashes($row->ContactNo2). '</td>
 							        <td><button class="update_contacts" type="button"  data-toggle="modal" data-target="#modal_update_shipercontacts"><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			<button class="delete_contacts"><span class="glyphicon glyphicon-trash"></span></button></td>						        
+							  			</button></td>						        
 					     		 </tr>';
 					    } ?>
 					     </tbody>

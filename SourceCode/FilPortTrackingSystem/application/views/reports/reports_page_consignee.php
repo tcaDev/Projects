@@ -546,7 +546,7 @@
 			if(active_accreditation == 'reports-volume-manila'){
 				$('#dtpATAFrom-manila').val('');
 				$('#dtpATATo-manila').val('');
-				$('#btn-volume-manila').click();
+				$('.tools-bar').css('marginTop', '20%');
 			}else if(active_accreditation == 'reports-volume-outport'){
 				$('#dtpATAFrom-outport').val('');
 				$('#dtpATATo-outport').val('');
@@ -557,6 +557,13 @@
 				$('#btn-volume-air').click();
 			}
 			$('#collapse6').click();
+		});
+
+		$(document).on('click','#reports-volume-manila',function(){
+			$('.tab_reports_volume-manila .tools-bar').css('marginTop', '20%');
+			$('.table-volume-manila').empty();
+			$('#dtpATAFrom-manila').val('');
+			$('#dtpATATo-manila').val('');
 		});
 
 		$(document).on('click','.btn_docs',function(){

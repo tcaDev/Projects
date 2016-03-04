@@ -272,13 +272,8 @@ function get_countryID_manila($jobfile){
     return $query->result();
  }
 
-function get_user(){
-    $query = $this->db->query("select * from User where RoleId = 5");
-    return $query->result();
- }
-
-function get_user_admin(){
-  $query = $this->db->query("select * from User where RoleId = 1");
+function get_user_admin($role){
+  $query = $this->db->query("select * from User where RoleId = '$role' ");
     return $query->result();
 }
 

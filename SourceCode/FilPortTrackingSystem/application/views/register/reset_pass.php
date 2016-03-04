@@ -122,7 +122,7 @@ $(document).on('click','.btn-ResetPass',function(){
                               content: 'Password Change.!',
                               confirm: function(){
                                   dia.close();
-                                  $('.get_list').trigger('click');
+                                  userList(role);
                                   $('#myModal_resetPass').modal('hide');
                               }
                            });

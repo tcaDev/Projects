@@ -4,7 +4,7 @@ var startFixedColumns = 0;
 $(function(){
 	$('table').tablesorter({
 		    widthFixed : true,
-			widgets        : ['zebra', 'columns','scroller'],	
+			widgets        : ['zebra','scroller'],	
 			usNumberFormat : false,
 			sortReset      : true,
 			sortRestart    : true,

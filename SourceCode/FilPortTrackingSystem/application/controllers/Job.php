@@ -2704,6 +2704,8 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
           $consignee2 = $this->input->post('consignee2');
           $consignee3 = $this->input->post('consignee3');
 
+          $role = $this->input->post('role');
+
          
            $stats = (int)$status;
 
@@ -2726,203 +2728,14 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
               
               'ConsigneeId' => $consignee,
               'ConsigneeId2' => $consignee2,
-              'ConsigneeId3' => $consignee3
+              'ConsigneeId3' => $consignee3,
+              'RoleId' => $role
 
            );
           $this->db->where('UserId', $uid);
           $this->db->update('User', $data);
       }
       
-
-      function get_User_list(){
-
-
-        $User_list = $this->Jobdata->get_user();
-
-        echo '
-            <div class="col-lg-12 row">
-            <table class=" table-bordered table-condensed " style="width:2000px;">
-                <thead>
-                  <tr>
-                      <th>No.</th>
-                      <th>Status</th>
-                      <th>Update</th>
-                      <th>Reset Password</th>
-                      <th>Username</th>
-                      <th>FirstName</th>
-                      <th>MiddleName</th>
-                      <th>LastName</th>
-                      <th>EmailAddress</th>
-                      <th>Title</th>
-                      <th>Department</th>
-                      <th>Contact No 1</th>
-                      <th>Contact No 2</th>
-                  </tr>
-                </thead>      
-                <tbody>
-
-
-        ';
-        $i=0;
-        foreach ($User_list as $row) {
-          $i++;
-          $uid = $row->UserId;
-          $uname = $row->UserName;
-          $fname = $row->FirstName;
-          $mname = $row->MiddleName;
-          $lname = $row->LastName;
-          $email = $row->EmailAddress;
-          $contact1 = $row->ContactNo1;
-          $contact2 = $row->ContactNo2;
-          $title = $row->Title;
-          $department = $row->Department;
-
-          $active= $row->IsActive;
-            if($active==1){ 
-              $stat = 'activated';
-              $mystat = '1';
-            }else{
-              $stat = 'deactivated';
-              $mystat= '0';
-            }
-
-           echo '
-            <tr>
-              <td>'.$i.'</td>
-              <td class="hidden">'.$uid.'</td>
-              <td class="hidden">'.$mystat.'</td>
-              <td>'.$stat.' </td>
-              <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
-              <td>'.$uname.'</td>
-              <td>'.$fname.'</td>
-              <td>'.$mname.'</td>
-              <td>'.$lname.'</td>
-              <td>'.$email.'</td>
-              <td>'.$title.'</td>
-              <td>'.$department.'</td>
-              <td>'.$contact1.'</td>
-              <td>'.$contact2.'</td>
-            </tr>
-           '; 
-
-        }
-
-          echo '
-               </tbody>         
-             </table>
-            </div>
-        
-          ';
-
- 
-
-
-      }
-
-      /*User Client*/
-
-      function get_User_list_client(){
-
-          
-        $User_list = $this->Jobdata->get_user_client();
-
-        echo '
-            <div class="col-lg-12 row">
-            <table class=" table-bordered table-condensed " style="width:2000px;">
-                <thead>
-                  <tr>
-                      <th>No.</th>
-                      <th>Status</th>
-                      <th>Update</th>
-                      <th>Reset Password</th>
-                      <th>Consignee</th>
-                      <th>Consignee 2</th>
-                      <th>Consignee 3</th>
-                      <th>Username</th>
-                      <th>FirstName</th>
-                      <th>MiddleName</th>
-                      <th>LastName</th>
-                      <th>EmailAddress</th>
-                      <th>Title</th>
-                      <th>Company</th>
-                      <th>ContactNo1</th>
-                      <th>ContactNo2</th>
-                      <th>Address 1</th>
-                      <th>Address 2</th>
-
-                  </tr>
-                </thead>      
-                <tbody>
-
-
-        ';
-        $i=0;
-        foreach ($User_list as $row) {
-          $i++;
-          $uid = $row->UserId;
-          $uname = $row->UserName;
-          $fname = $row->FirstName;
-          $mname = $row->MiddleName;
-          $lname = $row->LastName;
-          $email = $row->EmailAddress;
-          $contact1 = $row->ContactNo1;
-          $contact2 = $row->ContactNo2;
-          $addr = $row->Address1;
-          $addr2 = $row->Address2;
-         
-          $active= $row->IsActive;
-            if($active==1){ 
-              $stat = 'activated';
-              $mystat = '1';
-            }else{
-              $stat = 'deactivated';
-              $mystat= '0';
-            }
-
-           echo '
-            <tr>
-              <td>'.$i.'</td>
-              <td class="hidden">'.$uid.'</td>
-              <td class="hidden">'.$mystat.'</td>
-              <td>'.$stat.' </td>
-              <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
-              <td class="hidden">'.$row->CId.'</td>
-              <td>'.$row->CName.'</td>
-
-              <td class="hidden">'.$row->C2Id.'</td>
-              <td>'.$row->C2Name.'</td>
-
-              <td class="hidden">'.$row->C3Id.'</td>
-              <td>'.$row->C3Name.'</td>
-
-              <td>'.$uname.'</td>
-              <td>'.$fname.'</td>
-              <td>'.$mname.'</td>
-              <td>'.$lname.'</td>
-              <td>'.$email.'</td>
-              <td>'.$row->Title.'</td>
-              <td>'.$row->Department.'</td>
-              <td>'.$contact1.'</td>
-              <td>'.$contact2.'</td>
-              <td>'.$addr.'</td>
-              <td>'.$addr2.'</td>   
-                              
-            </tr>
-           '; 
-
-        }
-
-          echo '
-               </tbody>         
-             </table>
-            </div>
-        
-          ';
-      }
-
-
 
 /*History THIS*/
       function get_manila_audit(){

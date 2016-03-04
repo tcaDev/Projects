@@ -77,13 +77,13 @@
 						    <div id="collapse4" class="panel-collapse collapse" style="padding:5px;">
 						    	<div style="width:100%;overflow-y:auto;height:225px;">
 							       	 <ul class="nav nav-pills nav-data-2 nav-data-audit-site">
-										  <li class="audit_site-tab active" id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
-										  <li class="audit_site-tab" id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
-										  <li class="audit_site-tab" id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
-										  <li class="audit_site-tab" id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
-										  <li class="audit_site-tab" id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
-										  <li class="audit_site-tab" id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
-										  <li class="audit_site-tab" id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
+										  <li class="audit_site-tab active" id="audit-consignee"  style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
+										  <li class="audit_site-tab" id="audit-broker"style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
+										  <li class="audit_site-tab" id="audit-shipper" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
+										  <li class="audit_site-tab" id="audit-shipping" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
+										  <li class="audit_site-tab" id="audit-hauler" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
+										  <li class="audit_site-tab" id="audit-commodity" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
+										  <li class="audit_site-tab" id="audit-legend" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
 									</ul>
 								</div>
 						    </div>
