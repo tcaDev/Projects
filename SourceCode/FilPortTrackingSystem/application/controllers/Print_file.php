@@ -1144,7 +1144,7 @@ $output_print .=  '
 
 
     }
-             function eliseoa() {
+             function eliseoals() {
     ini_set('SMTP','relay-hosting.secureserver.net' ); 
     ini_set('smtp_port ', '587');
     ini_set('sendmail_from', 'eli@topconnection.asia');
