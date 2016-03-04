@@ -544,5 +544,23 @@ function get_consignee_contacts($conName){
 }  
 
 
+function get_allways_email(){
+ $query = $this->db->query("select EmailAddress from User where UserId IN (38)"); 
+  return $query->result();
+}
+function get_email_manila(){
+ $query = $this->db->query("select EmailAddress from User where UserId IN (4)"); 
+  return $query->result();
+}
+function get_email_outport(){
+ $query = $this->db->query("select EmailAddress from User where UserId IN (1)"); 
+  return $query->result();
+}
+function get_email_air(){
+ $query = $this->db->query("select EmailAddress from User where UserId IN (3)"); 
+  return $query->result();
+}
+
+
 }
 ?>
