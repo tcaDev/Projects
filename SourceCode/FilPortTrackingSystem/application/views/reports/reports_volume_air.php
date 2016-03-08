@@ -4,8 +4,20 @@
         	<div class="row">
         			<div class="tools-bar">
 				        				<div class="col-md-12">
-				        			 	 <span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Sea Freight Air </b></h4></span>
+				        					<div class="row">
+				        						<div class="col-md-6">
+					        						<span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Air Freight  </b></h4></span>
+					        					</div>
+					        			 	 	
+					        			 	 	<div class="col-md-6">
+									    			<select class="form-control">
+									    				<option disabled selected>Select Consignee</option>
+									    				<option class="reports_consignee_volume_air"></option><!-- Todo Ajax Call Query to display Data -->
+									    			</select>  
+								    			</div>
+				        					</div>
 				        				</div>
+				        				
 									    <div class="input-group col-md-12">
 									    	<div class="col-md-12">
 									    		<span><b>Actual Time of Arrival : </b></span>
@@ -37,6 +49,7 @@
 									    
 
 									    </div>
+									  
 				 	</div>
         	</div>     		
     	</div>
