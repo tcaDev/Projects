@@ -935,9 +935,7 @@ $now = $date_now[0];
 
             exit(0);
         }
-  $this->load->library('My_PHPMailer');
 
-    $this->email->clear(TRUE);
       $datePath = './resources/pdf/' .date('Y-m-d');
       $filePath = './resources/pdf/' .date('Y-m-d') . '/';
       $date = date('Y-m-d');
@@ -1003,9 +1001,34 @@ $now = $date_now[0];
                              array_push($alwaysCc,$airs);
                            }
                       }
+                           $this->load->library('email');
+                            $config['protocol']    = 'smtp';
+                            $config['smtp_host']    = 'ssl://smtp.gmail.com';
+                            $config['smtp_port']    = '465';
+                            $config['smtp_timeout'] = '7';
+                            $config['smtp_user']    = 'eli@topconnection.asia';
+                            $config['smtp_pass']    = 'asiagroup7';
+                            $config['charset']    = 'utf-8';
+                            $config['newline']    = "\r\n";
+                            $config['mailtype'] = 'text'; // or html
+                            $config['validation'] = TRUE; // bool whether to validate email or not      
+                            $this->email->initialize($config);
 
-                               $app['swiftmailer.options'] = array(
-                                'host'       => 'relay-hosting.secureserver.net',
+
+                            $this->email->from('eli@topconnection.asia', 'eli');
+                            $this->email->to('eli@topconnection.asia'); 
+                            $this->email->cc($alwaysCc);
+                            $this->email->subject('Filport');
+                            $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
+                            $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+
+                            $this->email->send();
+
+                           // echo $this->email->print_debugger();
+                    //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
+
+/*                               $app['swiftmailer.options'] = array(
+                                'host'       => 'ssl://smtp.gmail.com',
                                 'port'       => 465,
                                 'username'   => 'eli@topconnection.asia',
                                 'password'   => 'asiagroup7',
@@ -1020,8 +1043,8 @@ $now = $date_now[0];
                         //Give the message a subject
                         $message->setSubject('Filport Document Jobfile No : ' . $jbNo)
                                 ->setFrom('eli@topconnection.asia')
-                                ->setTo($email)
-                                ->setCc($alwaysCc)
+                                ->setTo('eliseo.montefalcon@gmail.com')
+                                //->setCc($alwaysCc)
                                 ->setBody('Status Report of \r\nJobfile No : ' . $jbNo . '\r\nSent: ' . $date)
                                 ->addPart('<q>Private Documents</q>', 'text/html')
                                 ->attach(Swift_Attachment::fromPath($filePath.$jbNo."-" . $date ."-report.pdf",'F'));
@@ -1036,9 +1059,40 @@ $now = $date_now[0];
                             echo "Email sent successfully";
                         } else {
                             echo "Email failed to send";
-                        }
+                        }*/
                 }
             }
+
+
+        function ee(){
+
+    
+           $this->load->library('email');
+            $config['protocol']    = 'smtp';
+            $config['smtp_host']    = 'ssl://smtp.gmail.com';
+            $config['smtp_port']    = '465';
+            $config['smtp_timeout'] = '7';
+            $config['smtp_user']    = 'eli@topconnection.asia';
+            $config['smtp_pass']    = 'asiagroup7';
+            $config['charset']    = 'utf-8';
+            $config['newline']    = "\r\n";
+            $config['mailtype'] = 'text'; // or html
+            $config['validation'] = TRUE; // bool whether to validate email or not      
+            $this->email->initialize($config);
+
+
+            $this->email->from('eli@topconnection.asia', 'eli');
+            $this->email->to('eli@topconnection.asia'); 
+
+
+            $this->email->subject('Email Test');
+
+            $this->email->message('hoy eli !! haha.');  
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+        }
 
 
 
