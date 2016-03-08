@@ -64,16 +64,15 @@ th{
 
     left : 5%;
 
-    width: 30%;
+    /*width: 30%;*/
 
     height: 160px !important;
 
-    position: relative;
+    /*position: relative;*/
 
     float: left;
 
-    /*opacity: 0.8;*/      
-
+    /*opacity: 0.8;*/  
 }
 
 

@@ -16,6 +16,8 @@
 										   
 										  <th >Consignee</th>
 
+										  <th data-sorter="false">Vessel/Voyage</th>
+
 								          <th data-sorter="false">Container No.</th>
 
 								          <th data-sorter="false">Description of Goods</th>
@@ -32,27 +34,17 @@
 
 								          <th >Registry</th>
 
-								          <th data-sorter="false">Vessel/Voyage</th>
-
 								          <th >Origin</th>  
-
-								          
 
 								          <th >Date Received Arrival Notice from Client/s</th>
 
-
 								          <th >Date Pick-up/Received O-BL</th>
-
-								         
          								 
          								  <th >Date Pick-up/Received other Documents</th>
 							   	
 							   		      <th >Broker</th>
 
-							   		
-
 							   		      <th >Date Request Budget to GL</th>
-
 							   		      
 										  <th >Reference Due Date</th>
 
@@ -136,6 +128,10 @@
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName);?></td>
+								           <td>
+									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport btn-sm" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success btn-sm" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  </td>
 								          <td>
 								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport btn-sm"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
 								          		<button type="button" class="btn btn-Add-Container-outport btn-success btn-sm" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
@@ -150,10 +146,7 @@
 								          <td><?php echo stripslashes($row->MasterBillLadingNo2); ?></td>
 										  <td><?php echo stripslashes($row->LetterCreditFromBank); ?></td>
  									      <td><?php echo stripslashes($row->Registry);?></td>
-										  <td>
-									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport btn-sm" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
-									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success btn-sm" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
-										  </td>
+										 
 								           <td><?php echo stripslashes($row->Origin); ?></td>
 								           	
 								          <td><?php echo stripslashes($row->DateReceivedNoticeFromClients); ?></td>
@@ -379,7 +372,7 @@
 					var  products = values.join(',');
 			    /*	$.ajax({
 				  		method: "POST",
-						  url: "<?php echo base_url('Job_availability/commodity_check');?>",
+						  url: "<?php// echo base_url('Job_availability/commodity_check');?>",
 				  		data: { jbfl:jobfile_mnla,
 				  			    products:products
 				  		}
