@@ -55,6 +55,22 @@
 						    </div>
 						  </div>
 
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" id="Truck" href="#collapse7" style="text-decoration:none;font-weight:600;">
+						        <span class="hvr-icon-forward"> Truck </span></a>
+						      </h4>
+						    </div>
+						    <div id="collapse7" class="panel-collapse collapse" style="padding:5px">
+						         <ul class="nav nav-pills nav-data nav-truck">
+									  <li value="1" class="reports-truck-manila active"  id="reports-truck-manila"  style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="2" class="reports-truck-outport" 		 id="reports-truck-outport" style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="3" class="reports-truck-air" 			 id="reports-truck-air"     style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
 
 						</div>
 			<!-- End Accordion -->
@@ -74,6 +90,10 @@
 					<?php $this->load->view('reports/reports_volume_manila'); ?>
 					<?php $this->load->view('reports/reports_volume_outport'); ?>
 					<?php $this->load->view('reports/reports_volume_air'); ?>
+			</div>
+
+			<div class="hidden truck tab-content">
+					<?php $this->load->view('reports/truck_reports/truck_mnila'); ?>
 			</div>
 
 			<div class="tab-content reports-consignee">

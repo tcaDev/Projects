@@ -88,18 +88,28 @@ $(document).on('click','#collapse1',function(){
 	$('.reports-consignee').removeClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.volume').addClass('hidden');
+	$('.truck').addClass('hidden');
 });
 
 $(document).on('click','#collapse5',function(){
 	$('.reports-consignee').addClass('hidden');
 	$('.runningcharges').removeClass('hidden');
 	$('.volume').addClass('hidden');
+	$('.truck').addClass('hidden');
 });
 
 $(document).on('click','#collapse6',function(){
 	$('.reports-consignee').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.volume').removeClass('hidden');
+	$('.truck').addClass('hidden');
+});
+
+$(document).on('click','#collapse7',function(){
+	$('.reports-consignee').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+	$('.volume').addClass('hidden');
+	$('.truck').removeClass('hidden');
 });
 
 /*
