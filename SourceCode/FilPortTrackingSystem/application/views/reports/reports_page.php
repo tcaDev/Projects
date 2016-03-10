@@ -269,6 +269,7 @@
 					  		<br>
 					  		<h4 style="padding-left: 25px;">Running Charges</h4>
 					  		<br>
+					  		<div style="height: 300px; overflow-y: auto;">
 						       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%;text-align:left;">
 						       		<tr>
 						             	<td>
@@ -276,6 +277,7 @@
 						             	</td>
 						            </tr>
 						       </table>
+						    </div>
 				    </div>
 
 					<div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade tab-status tab-clear">
@@ -283,6 +285,7 @@
 					  		<h4 style="padding-left: 25px;">Status Report</h4>
 					  		<h6> <i> *Double Click the Status Report to View the Full Report.</i></h6>
 					  		<br>
+					  		<div style="height: 300px; overflow-y: auto;">
 						      <table id="tbl-fourth-report-data" class="table table-striped tableOverFlow" style="cursor:pointer;">
 						             	<tr>
 						             		<td class="loadReports tdOverFlow" style="width:100%;" id="loadReports">
@@ -290,13 +293,14 @@
 						             		</td>
 						             	</tr>
 						        </table>
+						     </div>
 					</div>
 
 					 <div id="other-documents" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active tab-otherdocs tab-clear">
-		 				<div style="height: 300px; overflow-y: auto;">
 		 					<br>
 					  		<h4 style="padding-left: 25px;">Other Documents</h4>
 					  		<br>
+					  		<div style="height: 300px; overflow-y: auto;">
 						        <?php 
 								$element = "
 									<div class='list-group gallery'>
