@@ -9,10 +9,9 @@
                           </div>
                           
                           <div class="col-md-6">
-                          <select class="form-control">
-                            <option disabled selected>Select Consignee</option>
-                            <option class="reports_consignee_truck_manila"></option><!-- Todo Ajax Call Query to display Data -->
-                          </select>  
+                               <select class="form-control reports_consignee_truck">
+                              
+                              </select>  <!-- Todo Ajax Call Query to display Data -->
                         </div>
                         </div>
                         
@@ -26,21 +25,21 @@
 
                       <div class="col-md-5">
                         <div class="">
-                          <input placeholder="From :" class="textbox-n form-control" id="dtpTDDFrom-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+                          <input placeholder="From :" class="textbox-n form-control" id="dtpTDDFrom" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
                         </div>
                         
                       </div>
 
                       <div class="col-md-5">
                         <div class="">
-                          <input placeholder="To :" class="textbox-n form-control" id="dtpTDDTo-manila" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
+                          <input placeholder="To :" class="textbox-n form-control" id="dtpTDDTo" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
                         </div>
                       </div>
 
                       <div class="col-md-2">
                         <div class="row">
                             <span class="input-group-btn">
-                              <button class="btn btn-danger col-md-12" type="button" id="btn-truck-manila"><span class="fa fa-search fa-fw"></span></button>
+                              <button class="btn btn-danger col-md-12" type="button" id="btn-truck"><span class="fa fa-search fa-fw"></span></button>
                             </span>
                         </div>
                       </div>
@@ -64,16 +63,67 @@
 
   $('#reports-truck-manila').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Manila</b>');
-        get_truck = 1;
+      loadConsigneeNames();
+      get_truck = 1;
   });
 
   $('#reports-truck-outport').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Outport</b>');
-        get_truck = 2;
+      loadConsigneeNames();
+      get_truck = 2;
   });
 
   $('#reports-truck-air').click(function(){
       $('.active-tab-truck').html('<b>Air Freight</b>');
-        get_truck = 3;
+      loadConsigneeNames();
+       get_truck = 3;
+  });
+
+
+$(document).ready(function(){
+  loadConsigneeNames();
+});
+
+
+function loadConsigneeNames(){
+   $.ajax({
+    url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+    type : "POST",
+    data : {
+      userID : con_name
+    },
+    success : function(suc){
+      $('.reports_consignee_truck').html(suc);
+    }
+  });
+}
+
+
+  $(document).on('click','#btn-truck',function(){
+      var con_id   = $('.reports_consignee_truck option:selected').attr('id');
+      var con_name = $('.reports_consignee_truck option:selected').text();
+      var frm    = $('#dtpTDDFrom').val();
+      var to     = $('#dtpTDDTo').val();
+      if(frm == '' && to == ''){
+        $(".table-truck-reports").html('<div class="table-truck-reports" ></div>');
+      }else{
+          $.ajax({
+            method: "POST",
+            url: "<?php echo base_url('Reports_Running_Charges/loadTruckDetails');?>",
+            beforeSend: function() {
+                      $('.table-truck-reports').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+                    },  
+            data: { 
+              montype   : get_truck,
+              con_id    : con_id,
+              frm       : frm,
+              to        : to
+            }
+        })
+          .done(function(data) {
+              $(".table-truck-reports").html(data);
+              $(".tools-bar").animate({marginTop:'0%'});
+        }); 
+      }
   });
 </script>

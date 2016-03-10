@@ -29,12 +29,13 @@ Class RunningCharges_Reports extends CI_Model
 		return $query->row();
 	}
 
-	function getCharges_Truck($monType , $cID , $ataFrom , $ataTo){
-		$query = $this->db->query("SELECT a.JobFileNo , b.CarrierByJobFileId, c.TargetDeliveryDate, c.ContainerNo, e.ProductName, c.GateInAtPort , c.GateOutAtPort, c.ActualDeliveryAtWarehouse, f.Storage, f.Demorage, (COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  +  COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + COALESCE(f.OtherFees,0)) AS Total_Charges
+	function getCharges_Truck($monType,$cID,$ataFrom,$ataTo){
+		if($monType == 1 || $monType == 2){
+			$query = $this->db->query("SELECT a.JobFileNo , b.CarrierByJobFileId, c.TargetDeliveryDate, c.ContainerNo, e.ProductName, c.GateInAtPort , c.GateOutAtPort, c.ActualDeliveryAtWarehouse, f.Storage, f.Demorage, (COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  +  COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + COALESCE(f.OtherFees,0)) AS Total_Charges
 									FROM JobFile AS a
-									LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
-									LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
-									LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+									LEFT JOIN CarrierByJobFile    	AS b ON a.JobFileId = b.JobFileId
+									LEFT JOIN ContainerByCarrier  	AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+									LEFT JOIN ProductsByContainer 	AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
 									LEFT JOIN Products 				AS e ON d.ProductId = e.ProductId
 									LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
 									WHERE 
@@ -42,11 +43,25 @@ Class RunningCharges_Reports extends CI_Model
 									AND 
 									c.TargetDeliveryDate <= '$ataTo'
 									AND 
-									a.ConsigneeId = '$cID',
+									a.ConsigneeId = '$cID'
 									AND 
-									a.MonitoringTypeId = '$monType'
-									");
-
+									a.MonitoringTypeId = '$monType'");
+		
+		}else{
+			$query = $this->db->query("SELECT 
+										a.JobFile_AirId AS JobFileId , a.JobFileNo,a.ConsigneeId , b.TargetDeliveryDate, a.Aircraft, c.ProductName, f.StorageFee , (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges
+										FROM JobFile_Air AS a
+										LEFT JOIN Products_Air AS b ON a.JobFile_AirId = b.JobFile_AirId
+										LEFT JOIN Products AS c ON b.ProductId = c.ProductId									
+										LEFT JOIN RunningCharges_Air AS f ON a.JobFile_AirId = f.JobFile_AirId
+										WHERE 
+										b.TargetDeliveryDate >= '$ataFrom'
+										AND 
+										b.TargetDeliveryDate <= '$ataTo' 
+										AND 
+										a.ConsigneeId = '$cID'");
+		}
+		
 		return $query->result();
 	}
 
@@ -168,68 +183,6 @@ Class RunningCharges_Reports extends CI_Model
 							a.ConsigneeId = '$userID'
 							AND 
 							a.MonitoringTypeId = '$monType'");
-			/*$query = $this->db->query("SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
-							FROM 
-							User  con1,
-							JobFile a
-							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
-							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
-							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
-							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
-							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
-							WHERE 
-							con1.ConsigneeId = a.ConsigneeId 
-							AND
-							b.ActualArrivalTime >= '$ataFrom' 
-							AND
-							b.ActualArrivalTime <= '$ataTo'
-							AND 
-							con1.UserId = '$userID'
-							AND 
-							a.MonitoringTypeId = '$monType'
-							UNION
-							SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
-							FROM 
-							User  con1,
-							JobFile a
-							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
-							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
-							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
-							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
-							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
-							WHERE 
-							con1.ConsigneeId2 = a.ConsigneeId 
-							AND
-							b.ActualArrivalTime >= '$ataFrom' 
-							AND
-							b.ActualArrivalTime <= '$ataTo'
-							AND 
-							con1.UserId = '$userID'
-							AND 
-							a.MonitoringTypeId = '$monType'
-							UNION
-							SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
-							FROM 
-							User  con1,
-							JobFile a
-							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
-							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
-							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
-							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
-							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
-							WHERE 
-							con1.ConsigneeId3 = a.ConsigneeId 
-							AND
-							b.ActualArrivalTime >= '$ataFrom' 
-							AND
-							b.ActualArrivalTime <= '$ataTo'
-							AND 
-							con1.UserId = '$userID'
-							AND 
-							a.MonitoringTypeId = '$monType'");*/
 		}else{
 			$query = $this->db->query("SELECT 
 										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*

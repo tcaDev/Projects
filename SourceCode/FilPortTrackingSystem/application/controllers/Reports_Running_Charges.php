@@ -111,7 +111,7 @@ class Reports_Running_Charges extends CI_Controller {
       	$dispOutput = "";
       	$dispOutput = "<option disabled selected>Select Consignee</option>";
       	foreach($consigneeNames as $rows){
-      		$dispOutput .= '<option class="reports_consignee_volume_manila" id="' . $rows->ConsigneeId . '">' . $rows->ConsigneeName . '</option>';
+      		$dispOutput .= '<option class="reports_consignee_volume" id="' . $rows->ConsigneeId . '">' . $rows->ConsigneeName . '</option>';
       	}
       	echo $dispOutput;
       }
@@ -140,6 +140,30 @@ class Reports_Running_Charges extends CI_Controller {
 
 		echo $dispOutput;  
      } 
+
+     function loadTruckDetails(){
+     	  $ataFrom              =  $this->input->post('frm');  
+     	  $ataTo	            =  $this->input->post('to');  
+          $monitoringType       =  $this->input->post('montype');
+          $cID       			=  $this->input->post('con_id');
+          $dispOutput = '';
+          $reportsTruck = $this->Charges->getCharges_Truck($monitoringType,$cID,$ataFrom,$ataTo);
+          $dispOutput .= '<div class="table-reports-truck">';
+          if(count($reportsTruck) > 0){
+          	$dispOutput = '<script type="text/javascript" language="javascript"> 
+						  window.open("' . base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '");
+						  </script>';  
+          }
+          else{
+          	$dispOutput .= '
+		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
+		     	</div>';
+          }
+
+       
+
+		echo $dispOutput;  
+     }
 
     function getCharges($jbNo, $monitoringType){
         $charges = $this->Charges->getRunningCharges($monitoringType, $jbNo);

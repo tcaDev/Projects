@@ -10,10 +10,9 @@
 					        					</div>
 					        			 	 	
 					        			 	 	<div class="col-md-6">
-									    			<select class="form-control">
-									    				<option disabled selected>Select Consignee</option>
-									    				<option class="reports_consignee_volume_air"></option><!-- Todo Ajax Call Query to display Data -->
-									    			</select>  
+									    			<select class="form-control reports_consignee_volume_air">
+								    			
+								    				</select>  
 								    			</div>
 				        					</div>
 				        				</div>
@@ -103,8 +102,23 @@ $(document).on('click','#runningcharges-jobfile-air',function(){
 	}
 });*/
 
+
+$(document).ready(function(){
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+		type : "POST",
+		data : {
+			userID : con_name
+		},
+		success : function(suc){
+			$('.reports_consignee_volume_manila_air').html(suc);
+		}
+	})
+});
+
 $(document).on('click','#btn-volume-air',function(){
-	var con_name = $('.conName').attr('id');
+	var con_id = $('.reports_consignee_volume_air option:selected').attr('id');
+	var c_name = $('.reports_consignee_volume_air option:selected').text();
 	var frm 	 = $('#dtpATAFrom-air').val();
 	var to 		 = $('#dtpATATo-air').val();
 
@@ -119,7 +133,7 @@ $(document).on('click','#btn-volume-air',function(){
 		            },  
 	  		data: { 
 	  			montype   : montype_volume_air,
-	  			userID    : con_name,
+	  			userID    : c_name,
 	  			frm 	  : frm,
 	  			to 		  : to
 	  		}

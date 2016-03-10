@@ -10,10 +10,9 @@
 					        					</div>
 					        			 	 	
 					        			 	 	<div class="col-md-6">
-									    			<select class="form-control">
-									    				<option disabled selected>Select Consignee</option>
-									    				<option class="reports_consignee_volume_outport"></option><!-- Todo Ajax Call Query to display Data -->
-									    			</select>  
+									    			<select class="form-control reports_consignee_volume_outport">
+								    			
+								    			</select>  
 							    				</div>
 				        					</div>
 				        					
@@ -93,7 +92,18 @@ $(document).on('click','#collapse6',function(){
 	$('.runningcharges').addClass('hidden');
 	$('.volume').removeClass('hidden');
 });
-
+$(document).ready(function(){
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+		type : "POST",
+		data : {
+			userID : con_name
+		},
+		success : function(suc){
+			$('.reports_consignee_volume_manila_outport').html(suc);
+		}
+	})
+});
 /*
 $(document).on('click','#runningcharges-jobfile-outport',function(){
 	var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
@@ -103,8 +113,10 @@ $(document).on('click','#runningcharges-jobfile-outport',function(){
 	}
 });*/
 
+
 $(document).on('click','#btn-volume-outport',function(){
-	var con_name = $('.conName').attr('id');
+	var con_id = $('.reports_consignee_volume_outport option:selected').attr('id');
+	var con_name = $('.reports_consignee_volume_outport option:selected').text();
 	var frm 	 = $('#dtpATAFrom-outport').val();
 	var to 		 = $('#dtpATATo-outport').val();
 	if(frm == '' && to == ''){
