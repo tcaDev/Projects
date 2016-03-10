@@ -31,7 +31,7 @@
 				 	</div>
         	</div>     		
     	</div>
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
+    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:420px;">
     		<div class="table-runningcharges-admin" ></div>
     	</div>
 </div>	
