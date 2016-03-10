@@ -1055,27 +1055,42 @@ $now = $date_now[0];
 
   function ems(){
 
-                                $config = Array(    
-                                    'protocol' => 'smtp',
-                                    'smtp_host' => 'smtpout.secureserver.net',
-                                    'smtp_port' => 80,
-                                    'smtp_user' => 'eli@topconnection.asia',
-                                    'smtp_pass' => 'asiagroup7',
-                                    'smtp_timeout' => '4',
-                                    'mailtype'  => 'text', 
-                                    'charset'   => 'iso-8859-1'
-                                );
-                                  $this->load->library('email', $config);
 
-                                        $this->email->from('eli@topconnection.asia', 'eli');
-                                        $this->email->to('eli@topconnection.asia', 'eli'); 
-                                        $this->email->cc($alwaysCc);    
-                                        $this->email->subject('Filport Document Jobfile No : ');
-                                        $this->email->message('Status Report');  
-                                        $this->email->send();
+        //Create the Transport
+        $transport = Swift_MailTransport::newInstance();
 
-                                        $this->email->print_debugger();
-                                        $this->email->set_newline("\r\n");
+        /*
+        You could alternatively use a different transport such as Sendmail or Mail:
+
+        //Sendmail
+        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
+
+        //Mail
+        $transport = Swift_MailTransport::newInstance();
+        */
+
+        //Create the message
+        $message = Swift_Message::newInstance();
+
+        //Give the message a subject
+        $message->setSubject('Your subject')
+                ->setFrom('eliseo.montefalcon@gmail.com')
+                ->setTo('eli@topconnection.asia')
+                ->setBody('Here is the message itself')
+                ->addPart('<q>Here is the message itself</q>', 'text/html')
+        ;
+
+        //Create the Mailer using your created Transport
+        $mailer = Swift_Mailer::newInstance($transport);
+
+        //Send the message
+        $result = $mailer->send($message);
+
+        if ($result) {
+            echo "Email sent successfully";
+        } else {
+            echo "Email failed to send";
+        }
   }
 
 
