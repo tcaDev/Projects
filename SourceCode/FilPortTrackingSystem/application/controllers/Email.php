@@ -11,6 +11,24 @@ class Email extends CI_Controller {
             $this->load->library('m_pdf');
             $this->load->helper('file');
             $this->load->helper('download');
+
+              if (isset($_SERVER['HTTP_ORIGIN'])) {
+                header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+                header('Access-Control-Allow-Credentials: true');
+                header('Access-Control-Max-Age: 86400');    // cache for 1 day
+              }
+
+            // Access-Control headers are received during OPTIONS requests
+            if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                    header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+                exit(0);
+            }
        }
 
 
@@ -932,23 +950,7 @@ $now = $date_now[0];
 
 
  function autoemail(){
-           if (isset($_SERVER['HTTP_ORIGIN'])) {
-            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-            header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
-          }
 
-        // Access-Control headers are received during OPTIONS requests
-        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-            exit(0);
-        }
 
       $datePath = './resources/pdf/' .date('Y-m-d');
       $filePath = './resources/pdf/' .date('Y-m-d') . '/';
@@ -1036,7 +1038,7 @@ $now = $date_now[0];
                             $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
                             $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
 
-                            //echo $email;
+                            echo $email;
                             $this->email->send();
 
                            // echo $this->email->print_debugger();
