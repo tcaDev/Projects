@@ -1024,6 +1024,8 @@ $now = $date_now[0];
 
                             $this->email->send();
 
+                            echo $email;
+
                            // echo $this->email->print_debugger();
                     //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
 
