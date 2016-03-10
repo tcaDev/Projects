@@ -43,7 +43,7 @@
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
 						        <a data-toggle="collapse" data-parent="#accordion" id="Volume" href="#collapse6" style="text-decoration:none;font-weight:600;">
-						        <span class="hvr-icon-forward"> Reports Volume </span></a>
+						        <span class="hvr-icon-forward"> Volume </span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse6" class="panel-collapse collapse" style="padding:5px">

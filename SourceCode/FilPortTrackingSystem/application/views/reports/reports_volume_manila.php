@@ -1,4 +1,4 @@
-<div class="tab-pane tab_reports_volume-manila active" id="tab_reports_volume-manila">	
+	<div class="tab-pane tab_reports_volume-manila active" id="tab_reports_volume-manila">	
 
     	<div class="col-md-12 ">
         	<div class="row">
@@ -10,9 +10,8 @@
 				        					</div>
 				        			 	 	
 				        			 	 	<div class="col-md-6">
-								    			<select class="form-control">
-								    				<option disabled selected>Select Consignee</option>
-								    				<option class="reports_consignee_volume_manila"></option><!-- Todo Ajax Call Query to display Data -->
+								    			<select class="form-control reports_consignee_volume_manila">
+								    			
 								    			</select>  
 							    			</div>
 			        					</div>
@@ -121,8 +120,22 @@ $(document).on('click','#runningcharges-jobfile-manila',function(){
 	}
 });*/
 
+$(document).ready(function(){
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+		type : "POST",
+		data : {
+			userID : con_name
+		},
+		success : function(suc){
+			$('.reports_consignee_volume_manila').html(suc);
+		}
+	})
+});
+
 $(document).on('click','#btn-volume-manila',function(){
-	var con_name = $('.conName').attr('id');
+	var con_id = $('.reports_consignee_volume_manila option:selected').attr('id');
+	var con_name = $('.reports_consignee_volume_manila option:selected').text();
 	var frm 	 = $('#dtpATAFrom-manila').val();
 	var to 		 = $('#dtpATATo-manila').val();
 	if(frm == '' && to == ''){
@@ -136,7 +149,7 @@ $(document).on('click','#btn-volume-manila',function(){
 		            },  
 	  		data: { 
 	  			montype   : montype_volume_manila,
-	  			userID    : con_name,
+	  			userID    : con_id,
 	  			frm 	  : frm,
 	  			to 		  : to
 	  		}
