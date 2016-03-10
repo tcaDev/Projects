@@ -1,5 +1,6 @@
 <?php
 
+
  require_once APPPATH.'libraries/swift_mailer/swift_required.php';
 class Email extends CI_Controller {
      public function __construct()
@@ -8,27 +9,9 @@ class Email extends CI_Controller {
 
             $this->load->model('Jobdata');  
             $this->load->library('email');
-            $this->load->library('M_pdf');
+            $this->load->library('m_pdf');
             $this->load->helper('file');
             $this->load->helper('download');
-
-            if (isset($_SERVER['HTTP_ORIGIN'])) {
-            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-            header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
-           }
-
-            // Access-Control headers are received during OPTIONS requests
-            if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-
-                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                    header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-                exit(0);
-            }
        }
 
 
@@ -454,17 +437,10 @@ $now = $date_now[0];
             for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                        <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
-                              color: #000000; font-weight: bold; font-style: italic;">
-                              <tr>
-                                 <td width="33%" style="text-align: center; ">
-                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
-                              </tr>
-                        </table>
+                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
+                              <table style="width:100%">
+                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
+                              </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -481,12 +457,10 @@ $now = $date_now[0];
                        ';
                   } else {
   echo '                 <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                           <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
-                              color: #000000; font-weight: bold; font-style: italic;">
-                              <tr>
-                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
-                              </tr>
-                           </table>
+                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
+                              <table style="width:100%">
+                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
+                              </table>
                          </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
@@ -871,17 +845,10 @@ $now = $date_now[0];
           for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                         <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
-                              color: #000000; font-weight: bold; font-style: italic;">
-                              <tr>
-                                 <td width="33%" style="text-align: center; ">
-                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
-                              </tr>
-                         </table>
+                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
+                              <table style="width:100%">
+                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
+                              </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -953,6 +920,23 @@ $now = $date_now[0];
 
 
  function autoemail(){
+           if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+          }
+
+        // Access-Control headers are received during OPTIONS requests
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+            exit(0);
+        }
 
     $this->email->clear(TRUE);
       $datePath = './resources/pdf/' .date('Y-m-d');
@@ -964,14 +948,13 @@ $now = $date_now[0];
 
       
       $print     =  $this->input->post('print');
-       $email     =  $this->input->post('email');
-        $jbNo =  $this->input->post('jbfl_send');
+     echo  $email     =  $this->input->post('email');
+     echo   $jbNo =  $this->input->post('jbfl_send');
 
      //$print =  '<script>document.write(p);</script>'; 
 
       //generate the PDF from the given html
 
-          $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($print);
            //eli's code
             if(!is_dir($path)){ //create the folder if it's not already exists
@@ -986,8 +969,8 @@ $now = $date_now[0];
 
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
-                                   
-             
+                                          //Create the Transport
+                        $transport = Swift_MailTransport::newInstance();
 
                         //always cc
                           $alwaysCc = array();
@@ -1021,77 +1004,44 @@ $now = $date_now[0];
                            }
                       }
 
-                            $config = Array(    
-                                    'protocol' => 'smtp',
-/*                                    'smtp_host' => 'smtpout.secureserver.net',
-                                    'smtp_port' => 80,*/
-                                    'smtp_host' => 'ssl://smtp.googlemail.com',
-                                    'smtp_port' => 465,
-                                    'smtp_user' => 'eli@topconnection.asia',
-                                    'smtp_pass' => 'asiagroup7',
-                                    'smtp_timeout' => '4',
-                                    'mailtype'  => 'html', 
-                                    'charset'   => 'iso-8859-1'
+                               $app['swiftmailer.options'] = array(
+                                'host'       => 'smtp.gmail.com',
+                                'port'       => 465,
+                                'username'   => 'eliseo.montefalcon@gmail.com',
+                                'password'   => 'jgi82kfetf1cace',
+                                'encryption' => 'ssl'
                                 );
-                                  $this->load->library('email', $config);
 
-                                        $this->email->from('eli@topconnection.asia', 'eli');
-                                        $this->email->to($email); 
-                                        $this->email->cc($alwaysCc);    
-                                        $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
-                                        $this->email->message('Status Report');  
-                                        $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
-                                        $this->email->send();
+                        //Create the message
+                        $message = Swift_Message::newInstance();
 
-                                        $this->email->print_debugger();
-                                        $this->email->set_newline("\r\n");
 
-                                        echo $email;
+
+                        //Give the message a subject
+                        $message->setSubject('Filport Document Jobfile No : ' . $jbNo)
+                                ->setFrom('eli@topconnection.asia')
+                                ->setTo($email)
+                                ->setCc($alwaysCc)
+                                ->setBody('Status Report of \r\nJobfile No : ' . $jbNo . '\r\nSent: ' . $date)
+                                ->addPart('<q>Private Documents</q>', 'text/html')
+                                ->attach(Swift_Attachment::fromPath($filePath.$jbNo."-" . $date ."-report.pdf",'F'));
+                        
+                        //Create the Mailer using your created Transport
+                        $mailer = Swift_Mailer::newInstance($transport);
+
+                        //Send the message
+                        $result = $mailer->send($message);
+
+                        if ($result) {
+                            echo "Jobfile#:" .$jbNo. "  successfully send to" . " " .$email  ;
+                        } else {
+                           echo "Jobfile#:" .$jbNo. "  failed to send" . " " .$email  ;
+                        }
 
                 }
-                                                                      
-  }
-  
-
-  function ems(){
+            }
 
 
-        //Create the Transport
-        $transport = Swift_MailTransport::newInstance();
-
-        /*
-        You could alternatively use a different transport such as Sendmail or Mail:
-
-        //Sendmail
-        $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail -bs');
-
-        //Mail
-        $transport = Swift_MailTransport::newInstance();
-        */
-
-        //Create the message
-        $message = Swift_Message::newInstance();
-
-        //Give the message a subject
-        $message->setSubject('Your subject')
-                ->setFrom('eliseo.montefalcon@gmail.com')
-                ->setTo('eli@topconnection.asia')
-                ->setBody('Here is the message itself')
-                ->addPart('<q>Here is the message itself</q>', 'text/html')
-        ;
-
-        //Create the Mailer using your created Transport
-        $mailer = Swift_Mailer::newInstance($transport);
-
-        //Send the message
-        $result = $mailer->send($message);
-
-        if ($result) {
-            echo "Email sent successfully";
-        } else {
-            echo "Email failed to send";
-        }
-  }
 
 
 
