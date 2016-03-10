@@ -8,9 +8,27 @@ class Email extends CI_Controller {
 
             $this->load->model('Jobdata');  
             $this->load->library('email');
-            $this->load->library('m_pdf');
+            $this->load->library('M_pdf');
             $this->load->helper('file');
             $this->load->helper('download');
+
+            if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Max-Age: 86400');    // cache for 1 day
+           }
+
+            // Access-Control headers are received during OPTIONS requests
+            if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+                    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+                if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+                    header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+                exit(0);
+            }
        }
 
 
@@ -436,10 +454,17 @@ $now = $date_now[0];
             for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                              <table style="width:100%">
-                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-                              </table>
+                        <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;">
+                              <tr>
+                                 <td width="33%" style="text-align: center; ">
+                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
+                              </tr>
+                        </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -456,10 +481,12 @@ $now = $date_now[0];
                        ';
                   } else {
   echo '                 <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                              <table style="width:100%">
-                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-                              </table>
+                           <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;">
+                              <tr>
+                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
+                              </tr>
+                           </table>
                          </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
@@ -844,10 +871,17 @@ $now = $date_now[0];
           for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                              <table style="width:100%">
-                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-                              </table>
+                         <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;">
+                              <tr>
+                                 <td width="33%" style="text-align: center; ">
+                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
+                              </tr>
+                         </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -907,6 +941,7 @@ $now = $date_now[0];
           })
            .done(function(data){
            alert(data);
+             window.close();
            });
         </script>
 
@@ -918,24 +953,8 @@ $now = $date_now[0];
 
 
  function autoemail(){
-           if (isset($_SERVER['HTTP_ORIGIN'])) {
-            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-            header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
-          }
 
-        // Access-Control headers are received during OPTIONS requests
-        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
-
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-            exit(0);
-        }
-
+    $this->email->clear(TRUE);
       $datePath = './resources/pdf/' .date('Y-m-d');
       $filePath = './resources/pdf/' .date('Y-m-d') . '/';
       $date = date('Y-m-d');
@@ -946,7 +965,7 @@ $now = $date_now[0];
       
       $print     =  $this->input->post('print');
        $email     =  $this->input->post('email');
-       $jbNo =  $this->input->post('jbfl_send');
+        $jbNo =  $this->input->post('jbfl_send');
 
      //$print =  '<script>document.write(p);</script>'; 
 
@@ -967,8 +986,8 @@ $now = $date_now[0];
 
                     $this->m_pdf->pdf->Output($filePath.$jbNo."-" . $date ."-report.pdf",'F');
            
-                                          //Create the Transport
-                        $transport = Swift_MailTransport::newInstance();
+                                   
+             
 
                         //always cc
                           $alwaysCc = array();
@@ -987,7 +1006,7 @@ $now = $date_now[0];
                          
                       }elseif ($montype=='2') {
                         //outport
-                           $out= $this->Jobdata->get_allways_email();
+                           $out= $this->Jobdata->get_email_outport();
                            foreach($out as $outport){
                              $outports = $outport->EmailAddress;
                              array_push($alwaysCc,$outports);
@@ -995,104 +1014,67 @@ $now = $date_now[0];
                        
                       }else{
                         //air
-                           $a= $this->Jobdata->get_allways_email();
+                           $a= $this->Jobdata->get_email_air();
                            foreach($a as $air){
                              $airs = $air->EmailAddress;
                              array_push($alwaysCc,$airs);
                            }
                       }
-                           $this->load->library('email');
-                            $config['protocol']    = 'smtp';
-                            $config['smtp_host']    = 'ssl://smtp.gmail.com';
-                            $config['smtp_port']    = '465';
-                            $config['smtp_timeout'] = '7';
-                            $config['smtp_user']    = 'eli@topconnection.asia';
-                            $config['smtp_pass']    = 'asiagroup7';
-                            $config['charset']    = 'utf-8';
-                            $config['newline']    = "\r\n";
-                            $config['mailtype'] = 'text'; // or html
-                            $config['validation'] = TRUE; // bool whether to validate email or not      
-                            $this->email->initialize($config);
 
-
-                            $this->email->from('eli@topconnection.asia', 'eli');
-                            $this->email->to('eli@topconnection.asia'); 
-                            $this->email->cc($alwaysCc);
-                            $this->email->subject('Filport');
-                            $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
-                            $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
-
-                            $this->email->send();
-
-                           // echo $this->email->print_debugger();
-                    //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
-
-/*                               $app['swiftmailer.options'] = array(
-                                'host'       => 'ssl://smtp.gmail.com',
-                                'port'       => 465,
-                                'username'   => 'eli@topconnection.asia',
-                                'password'   => 'asiagroup7',
-                                'encryption' => 'ssl'
+                            $config = Array(    
+                                    'protocol' => 'smtp',
+                                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                                    'smtp_port' => 465,
+                                    'smtp_user' => 'eli@topconnection.asia',
+                                    'smtp_pass' => 'asiagroup7',
+                                    'smtp_timeout' => '4',
+                                    'mailtype'  => 'html', 
+                                    'charset'   => 'iso-8859-1'
                                 );
+                                  $this->load->library('email', $config);
 
-                        //Create the message
-                        $message = Swift_Message::newInstance();
+                                        $this->email->from('eli@topconnection.asia', 'eli');
+                                        $this->email->to($email); 
+                                        $this->email->cc($alwaysCc);    
+                                        $this->email->subject('Filport Document Jobfile No : ' . $jbNo);
+                                        $this->email->message('Status Report');  
+                                        $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
+                                        $this->email->send();
 
+                                        $this->email->print_debugger();
+                                        $this->email->set_newline("\r\n");
 
+                                        echo $email;
 
-                        //Give the message a subject
-                        $message->setSubject('Filport Document Jobfile No : ' . $jbNo)
-                                ->setFrom('eli@topconnection.asia')
-                                ->setTo('eliseo.montefalcon@gmail.com')
-                                //->setCc($alwaysCc)
-                                ->setBody('Status Report of \r\nJobfile No : ' . $jbNo . '\r\nSent: ' . $date)
-                                ->addPart('<q>Private Documents</q>', 'text/html')
-                                ->attach(Swift_Attachment::fromPath($filePath.$jbNo."-" . $date ."-report.pdf",'F'));
-                        
-                        //Create the Mailer using your created Transport
-                        $mailer = Swift_Mailer::newInstance($transport);
-
-                        //Send the message
-                        $result = $mailer->send($message);
-
-                        if ($result) {
-                            echo "Email sent successfully";
-                        } else {
-                            echo "Email failed to send";
-                        }*/
                 }
-            }
+                                                                      
+  }
+  
 
+  function ems(){
 
-        function ee(){
+                                $config = Array(    
+                                    'protocol' => 'smtp',
+                                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                                    'smtp_port' => 465,
+                                    'smtp_user' => 'eli@topconnection.asia',
+                                    'smtp_pass' => 'asiagroup7',
+                                    'smtp_timeout' => '4',
+                                    'mailtype'  => 'text', 
+                                    'charset'   => 'iso-8859-1'
+                                );
+                                  $this->load->library('email', $config);
 
-    
-           $this->load->library('email');
-            $config['protocol']    = 'smtp';
-            $config['smtp_host']    = 'ssl://smtp.gmail.com';
-            $config['smtp_port']    = '465';
-            $config['smtp_timeout'] = '7';
-            $config['smtp_user']    = 'eli@topconnection.asia';
-            $config['smtp_pass']    = 'asiagroup7';
-            $config['charset']    = 'utf-8';
-            $config['newline']    = "\r\n";
-            $config['mailtype'] = 'text'; // or html
-            $config['validation'] = TRUE; // bool whether to validate email or not      
-            $this->email->initialize($config);
+                                        $this->email->from('eli@topconnection.asia', 'eli');
+                                        $this->email->to('eli@topconnection.asia', 'eli'); 
+                                        $this->email->cc($alwaysCc);    
+                                        $this->email->subject('Filport Document Jobfile No : ');
+                                        $this->email->message('Status Report');  
+                                        $this->email->send();
 
-
-            $this->email->from('eli@topconnection.asia', 'eli');
-            $this->email->to('eli@topconnection.asia'); 
-
-
-            $this->email->subject('Email Test');
-
-            $this->email->message('hoy eli !! haha.');  
-
-            $this->email->send();
-
-            echo $this->email->print_debugger();
-        }
+                                        $this->email->print_debugger();
+                                        $this->email->set_newline("\r\n");
+  }
 
 
 
