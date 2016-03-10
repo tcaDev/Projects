@@ -100,7 +100,7 @@ $(document).ready(function(){
 			userID : con_name
 		},
 		success : function(suc){
-			$('.reports_consignee_volume_manila_outport').html(suc);
+			$('.reports_consignee_volume_outport').html(suc);
 		}
 	})
 });

@@ -111,7 +111,7 @@ $(document).ready(function(){
 			userID : con_name
 		},
 		success : function(suc){
-			$('.reports_consignee_volume_manila_air').html(suc);
+			$('.reports_consignee_volume_air').html(suc);
 		}
 	})
 });
