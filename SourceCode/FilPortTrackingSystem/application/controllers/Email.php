@@ -1016,7 +1016,7 @@ $now = $date_now[0];
 
 
                             $this->email->from('eli@topconnection.asia', 'eli');
-                            $this->email->to('eli@topconnection.asia'); 
+                            $this->email->to($email); 
                             $this->email->cc($alwaysCc);
                             $this->email->subject('Filport');
                             $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
@@ -1084,7 +1084,7 @@ $now = $date_now[0];
 
 
             $this->email->from('eli@topconnection.asia', 'eli');
-            $this->email->to('eli@topconnection.asia'); 
+            $this->email->to('charlie@topconnection.asia'); 
 
 
             $this->email->subject('Email Test');
