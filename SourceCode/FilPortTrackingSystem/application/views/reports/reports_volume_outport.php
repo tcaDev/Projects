@@ -130,7 +130,7 @@ $(document).on('click','#btn-volume-outport',function(){
 		            },  
 	  		data: { 
 	  			montype   : montype_volume_outport,
-	  			userID    : con_name,
+	  			userID    : con_id,
 	  			frm 	  : frm,
 	  			to 		  : to
 	  		}

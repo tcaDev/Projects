@@ -133,7 +133,7 @@ $(document).on('click','#btn-volume-air',function(){
 		            },  
 	  		data: { 
 	  			montype   : montype_volume_air,
-	  			userID    : c_name,
+	  			userID    : con_id,
 	  			frm 	  : frm,
 	  			to 		  : to
 	  		}

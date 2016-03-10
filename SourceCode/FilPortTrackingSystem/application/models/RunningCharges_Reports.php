@@ -224,6 +224,7 @@ Class RunningCharges_Reports extends CI_Model
 							a.ConsigneeId = '$userID'
 							AND 
 							a.MonitoringTypeId = '$monType'");
+			
 		}else{
 			$query = $this->db->query("SELECT 
 										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*
@@ -276,8 +277,8 @@ Class RunningCharges_Reports extends CI_Model
 										AND 
 										a.ConsigneeId = '$userID'
 									");
+			
 		}
-		
 		return $query->result();
 	}
 
