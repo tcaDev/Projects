@@ -217,6 +217,7 @@ $(document).on('click','#collapse1',function(){
 	$('.site-settings').addClass('hidden');
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
 });
 
 $(document).on('click','#collapse2',function(){
@@ -225,6 +226,7 @@ $(document).on('click','#collapse2',function(){
 	$('.search-consignee').addClass('hidden');
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
 });
 
 
@@ -234,6 +236,7 @@ $(document).on('click','#collapse3',function(){
 	$('.site-settings').addClass('hidden');
 	$('.search-consignee').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
 });
 
 $(document).on('click','#collapse4',function(){
@@ -242,6 +245,7 @@ $(document).on('click','#collapse4',function(){
 	$('.search-consignee').addClass('hidden');
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
 });
 
 $(document).on('click','#collapse5',function(){
@@ -250,6 +254,17 @@ $(document).on('click','#collapse5',function(){
 	$('.search-consignee').addClass('hidden');
 	$('.accreditations').addClass('hidden');
 	$('.audit-trail').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
+});
+
+
+$(document).on('click','#admin_RunningCharges',function(){
+	$('.runningcharges').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.admin_runninCharges').removeClass('hidden');
 });
 
 

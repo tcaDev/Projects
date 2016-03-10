@@ -3,20 +3,24 @@
 <head>
 		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
 </head>
-
+<style>
+ .dash-subtitle .panel-title{
+ 	font-size: 12px !important;
+ }
+</style>
 <div class="dash-cont">
 	<div class="dash-title"><h3>REPORTS</h3></div>
-		<div class="dash-subtitle">
+		<div class="dash-subtitle" style="overflow-y:auto;height: 400px !important;padding: 5px;">
 			<!-- Start Accordion -->
 				
 						<div class="panel-group" id="accordion">
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
-						      <h4 class="panel-title">
+						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="JobFile" data-parent="#accordion" href="#collapse1" style="text-decoration:none;font-weight:600;">
 						        <span class="hvr-icon-forward">Jobfile Transaction </span>
 						        </a>
-						      </h4>
+						      </h6>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-freights nav-data-manila">
@@ -31,16 +35,32 @@
 
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
-						      <h4 class="panel-title">
+						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="Accreditation" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward"> Accreditation</span></a>
-						      </h4>
+						      </h6>
 						    </div>
 						    <div id="collapse3" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-accreditations">
 									  <li value="a-1" class="accreditation_tab active" id="accreditation-manila"  style="display:block;width:100%;"><a href="#tab_accreditaion_manila" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="accreditation_tab" id="accreditation-outport"style="display:block;width:100%;"><a href="#tab_accreditaion_outport" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="accreditation_tab" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+	<!-- Running Charges  -->
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h6 class="panel-title">
+						        <a data-toggle="collapse" id="admin_RunningCharges" data-parent="#accordion" href="#running_collapse" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Running Charges</span></a>
+						      </h6>
+						    </div>
+						    <div id="running_collapse" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-running-admin">
+									  <li value="a-1" class="admin_running_tab" id="admin_running-manila"  style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" class="admin_running_tab" id="admin_running-outport"style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" class="admin_running_tab" id="admin_running-air" style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
 						  </div>
@@ -51,10 +71,10 @@
 
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
-						      <h4 class="panel-title">
+						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="AuditTrail" data-parent="#accordion" href="#collapse2" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward">Jobfile Audit Trail</span></a>
-						      </h4>
+						      </h6>
 						    </div>
 						    <div id="collapse2" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-audit">
@@ -69,27 +89,29 @@
 
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
-						      <h4 class="panel-title">
+						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="AuditSite" data-parent="#accordion" href="#collapse4" style="text-decoration:none;font-weight:600;">
 						       <span class="hvr-icon-forward">Site Setting Audit Trail</span></a>
-						      </h4>
+						      </h6>
 						    </div>
 						    <div id="collapse4" class="panel-collapse collapse" style="padding:5px;">
-						    	<div style="width:100%;overflow-y:auto;height:225px;">
+						    	
 							       	 <ul class="nav nav-pills nav-data-2 nav-data-audit-site">
-										  <li class="audit_site-tab active" id="audit-consignee"  style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
-										  <li class="audit_site-tab" id="audit-broker"style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
-										  <li class="audit_site-tab" id="audit-shipper" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
-										  <li class="audit_site-tab" id="audit-shipping" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
-										  <li class="audit_site-tab" id="audit-hauler" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
-										  <li class="audit_site-tab" id="audit-commodity" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
-										  <li class="audit_site-tab" id="audit-legend" style="display:block;width:90%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
+										  <li class="audit_site-tab active" id="audit-consignee"  style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Consignee</a></li>
+										  <li class="audit_site-tab" id="audit-broker"style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Broker</a></li>
+										  <li class="audit_site-tab" id="audit-shipper" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipper</a></li>
+										  <li class="audit_site-tab" id="audit-shipping" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Shipping Line/Carrier</a></li>
+										  <li class="audit_site-tab" id="audit-hauler" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Hauler/Trucker</a></li>
+										  <li class="audit_site-tab" id="audit-commodity" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Commodity</a></li>
+										  <li class="audit_site-tab" id="audit-legend" style="display:block;width:100%;"><a href="#tab_site_settings" data-toggle="pill">Legend</a></li>
 									</ul>
-								</div>
+								
 						    </div>
 						  </div>
 
 						  <?php }else{} ?>
+
+
 
 						</div>
 			<!-- End Accordion -->
@@ -128,6 +150,13 @@
 
 			<div class="hidden site-settings tab-content">
 					<?php $this->load->view('reports/audit_trail_site_settings'); ?>
+			</div>
+
+		<!-- Running Charges -->
+
+
+			<div class="hidden admin_runninCharges tab-content">
+					<?php $this->load->view('reports/running_charges_admin/running_charges'); ?>
 			</div>
 
 		<!-- Search Consignee -->
@@ -637,6 +666,8 @@
 				$('#audit-legend').click();
 			}
 		});
+
+		
 
 		$(document).on('click','#btn-modal-mail',function(){
 			$.confirm({

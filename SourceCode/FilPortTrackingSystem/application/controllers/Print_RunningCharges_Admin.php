@@ -2,7 +2,7 @@
 
  date_default_timezone_set('Asia/Manila');
  require_once APPPATH.'libraries/swift_mailer/swift_required.php';
-class Print_Report extends CI_Controller {
+class Print_RunningCharges_Admin extends CI_Controller {
 
      public function __construct()
        {
@@ -16,19 +16,20 @@ class Print_Report extends CI_Controller {
        }
 
   function index(){
-          $PO_Number            =  $this->input->get('po_num');  
-          $monitoringType       =  $this->input->get('montype');
-          $userID               =  $this->input->get('userId');
+          $PO_Number          =  $this->input->get('po_num');  
+          $monitoringType     =  $this->input->get('montype');
+          $consigneeID        =  $this->input->get('consigneeId');
 
-          $documnt = $this->loadDoc($monitoringType,$PO_Number,$userID);
+          $documnt = $this->loadDoc($monitoringType,$PO_Number,$consigneeID);
           $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
 
-   function loadDoc($monitoringType,$PO_Number,$userID){
+   function loadDoc($monitoringType,$PO_Number,$consigneeID){
           
-          $pre_details         =  $this->Charges->getPre_Details_RunningCharges($monitoringType,$PO_Number,$userID);
+          $pre_details = $this->Charges->get_PO($monitoringType,$PO_Number,$consigneeID);
+
           $dispOutput = '';
           $ct = count($pre_details);
           if($ct > 0){
@@ -152,49 +153,49 @@ class Print_Report extends CI_Controller {
                 <div class="change_print'.$i.'"  >  
 
                 ' . $footer . '
-
+                <br>
                 <div style="font-family:Century Gothic;" class="mycontent">
-                    <div style="font-size:22px;" class="">
+                    <div style="font-size:20px;" class="">
               
                 </br>
                 <h5>'.$monHeader.'</h5>
                 <div class="col-md-12">
                       <div class="col-md-12" style="font-size:14px;">
                         <div class="col-md-6">
-                         <span class="pull-left" style="font-size:16px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                         <span class="pull-left" style="font-size:14px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
+                          <span>'
                               . $pre_details->ConsigneeName .
-                          '</u>
+                          '</span>
                         </div>
                         <div class="col-md-6">
-                           <span class="pull-left" style="font-size:16px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                           <span class="pull-left" style="font-size:14px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
+                          <span>'
                               . $pre_details->JobFileNo .
-                          '</u>
+                          '</span>
                         </div>
                     </div>    
                       <div class="col-md-12" style="font-size:14px;">
 
                         <div class="col-md-6">
-                          <span class="pull-left" style="font-size:16px;"><b>PI / PO Number : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                          <span class="pull-left" style="font-size:14px;"><b>PI / PO Number : </b> &nbsp;&nbsp;</span>
+                          <span>'
                               . $PO_Number .
-                          '</u>
+                          '</span>
                         </div>
                         <div class="col-md-6">';
                           if($monitoringType == 1 || $monitoringType ==2 ){
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:16px;"><b>Volume : </b> </span>
-                                        <u>'
+                                        <span class="pull-left" style="font-size:14px;"><b>Volume : </b> </span>
+                                        <span>'
                                         . $volume .
-                                        '</u>
+                                        '</span>
                                         ';
                               }else{
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:16px;"><b>Gross Weight(kg) : </b> </span>
-                                        <u>'
+                                        <span class="pull-left" style="font-size:14px;"><b>Gross Weight(kg) : </b> </span>
+                                        <span>'
                                         . $volume .
-                                        ' kg </u>
+                                        ' kg </span>
                                         ';
                               }
                         $dispOutput .=  '</div>
@@ -202,28 +203,23 @@ class Print_Report extends CI_Controller {
                     <hr>
                       <div class="col-md-12">
                         <div class="col-md-6">
-                          <span class="pull-left"><b style="font-size:16px;">Receipted Charges Only</b>
+                          <span class="pull-left"><b style="font-size:14px;">Receipted Charges Only</b>
                             <br>
                             <br>
                             ' . $charge . '
                           </span>
                         </div>
                       </div>
-                      <div class="col-md-12">
-                          <div style="font-size:12px;margin-top:5px;">
-                            <u><i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</u></i>
-                          </div>
-                          <div class="col-md-6"> 
-                      </div>
+                     
                       <br>
                       <hr>
                       <br>
                       <div class="col-md-6">
                           <div class="col-md-6">'; 
                             if($monitoringType == 1 || $monitoringType == 2){
-                              $dispOutput .= '<span class="pull-left"><b style="font-size:16px;">Containers</b>';
+                              $dispOutput .= '<span class="pull-left"><b style="font-size:14px;">Containers</b>';
                             }
-                            $dispOutput .=  '<br>
+                            $dispOutput .=  '<br><br>
                                 ' . $commodity . '
                               </span>
                          </div>

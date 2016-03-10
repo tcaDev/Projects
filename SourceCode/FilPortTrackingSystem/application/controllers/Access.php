@@ -46,6 +46,7 @@ class Access extends CI_Controller {
 
        }
 
+
        function get_userList(){
        		$role = $this->input->post('role');
 

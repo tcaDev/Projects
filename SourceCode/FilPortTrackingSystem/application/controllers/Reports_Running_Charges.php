@@ -408,7 +408,7 @@ class Reports_Running_Charges extends CI_Controller {
 
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
-										VRC <span class="pull-right"> : </span>
+										VCRC <span class="pull-right"> : </span>
 									</td>
 									<td>
 										<span class="pull-right">' . $charges->VCRC . ' </span>
@@ -502,6 +502,37 @@ class Reports_Running_Charges extends CI_Controller {
       }
 
 
+/*Admin / Filport User View Reports Running Charges*/
+
+	function get_PO_admin(){
+		  $PO_Number            =  $this->input->post('po_number');  
+          $monitoringType       =  $this->input->post('montype');
+          $consigneeID       	=  $this->input->post('consigneeId');
+
+          $po = $this->Charges->get_PO($monitoringType,$PO_Number,$consigneeID);
+         
+
+         
+
+          if($po == NULL){
+          	echo "<i style='color:red;'> No Purchase Order Number Found</i>";
+          }
+          else{
+          	 $volume = $this->Charges->getVolume($monitoringType,$po->JobFileNo);
+         	 $charges = $this->Charges->getRunningCharges($monitoringType, $po->JobFileNo);
+         	 $goods = $this->Charges->getCommodities($monitoringType,$po->JobFileNo);
+
+          	  $data['montype'] = $monitoringType;
+	          $data['consigneeId'] = $consigneeID;
+	          $data['PONum'] = $po;
+	          $data['vol'] = $volume;
+	          $data['charges'] = $charges;
+	          $data['goods'] = $goods;
+
+          	  $this->load->view('reports/running_charges_admin/view_running_charges_admin' , $data);
+          }
+
+	}
 
 }
 

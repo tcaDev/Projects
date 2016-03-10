@@ -20,7 +20,7 @@
     	</div>
 </div>	
 
-	<div class="modal fade" id="view-runningcharges-manila-commodity" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
+		<div class="modal fade" id="view-runningcharges-manila-commodity" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
 				    <div class="modal-dialog">
 				   		 <div class="modal-content">
 				   			
