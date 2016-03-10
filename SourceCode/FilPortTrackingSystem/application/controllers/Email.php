@@ -1022,9 +1022,10 @@ $now = $date_now[0];
                             $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
                             $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
 
+                            echo $email;
                             $this->email->send();
 
-                            echo $email;
+                            
 
                            // echo $this->email->print_debugger();
                     //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
