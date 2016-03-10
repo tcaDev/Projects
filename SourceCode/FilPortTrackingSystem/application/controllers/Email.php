@@ -1023,6 +1023,8 @@ $now = $date_now[0];
 
                             $config = Array(    
                                     'protocol' => 'smtp',
+/*                                    'smtp_host' => 'smtpout.secureserver.net',
+                                    'smtp_port' => 80,*/
                                     'smtp_host' => 'ssl://smtp.googlemail.com',
                                     'smtp_port' => 465,
                                     'smtp_user' => 'eli@topconnection.asia',
@@ -1055,8 +1057,8 @@ $now = $date_now[0];
 
                                 $config = Array(    
                                     'protocol' => 'smtp',
-                                    'smtp_host' => 'ssl://smtp.googlemail.com',
-                                    'smtp_port' => 465,
+                                    'smtp_host' => 'smtpout.secureserver.net',
+                                    'smtp_port' => 80,
                                     'smtp_user' => 'eli@topconnection.asia',
                                     'smtp_pass' => 'asiagroup7',
                                     'smtp_timeout' => '4',
