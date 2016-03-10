@@ -54,6 +54,14 @@ class Print_Report_Volume extends CI_Controller {
           
          $oldJBNo = '';
          $newJBNo = '';
+         $monHeader = '';
+           if($monitoringType == 1){
+            $monHeader = 'Sea Freight Manila';
+           }else if ($monitoringType == 2){
+            $monHeader = 'Sea Freight Outport';
+           }else{
+            $monHeader = 'Air Freight';
+           }
 
          $dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
          $footer ='';
@@ -169,6 +177,13 @@ class Print_Report_Volume extends CI_Controller {
                 <div>
                 <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
                   <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                      <tr>
+                        <th>
+                         <span class="pull-left">
+                           ' . $monHeader . '
+                          </span>
+                        </th>
+                      </tr>
                       <tr>
                         <th>
                          <span class="pull-left">
