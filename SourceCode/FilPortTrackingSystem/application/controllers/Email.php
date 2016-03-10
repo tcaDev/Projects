@@ -436,10 +436,17 @@ $now = $date_now[0];
             for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                              <table style="width:100%">
-                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-                              </table>
+                         <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;">
+                              <tr>
+                                 <td width="33%" style="text-align: center; ">
+                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
+                              </tr>
+                         </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -844,10 +851,17 @@ $now = $date_now[0];
           for ($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
   echo '               <htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                              <table style="width:100%">
-                                 <th><span style="font-size:10px;">FILPORT  DOCUMENT</span></th>
-                              </table>
+                         <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                              color: #000000; font-weight: bold; font-style: italic;">
+                              <tr>
+                                 <td width="33%" style="text-align: center; ">
+                                   <image src="http://topconnection.asia/uat.filport/resources/img/logo.png" height="80" weight="80" />
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td width="33%" align="center" style="font-weight: bold; font-style: italic;">FILPORT DOCUMENT</span></td>
+                              </tr>
+                         </table>
                        </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
@@ -1016,16 +1030,14 @@ $now = $date_now[0];
 
 
                             $this->email->from('eli@topconnection.asia', 'eli');
-                            $this->email->to($email); 
+                            $this->email->to('eli@topconnection.asia'); 
                             $this->email->cc($alwaysCc);
                             $this->email->subject('Filport');
                             $this->email->message('Status Report of Jobfile No : ' . $jbNo . 'Sent: ' . $date); 
                             $this->email->attach($filePath.$jbNo."-" . $date ."-report.pdf",'F'); 
 
-                            echo $email;
+                            //echo $email;
                             $this->email->send();
-
-                            
 
                            // echo $this->email->print_debugger();
                     //$this->email->reply_to('info@topconnection.asia'); //User email submited in form
@@ -1085,7 +1097,7 @@ $now = $date_now[0];
 
 
             $this->email->from('eli@topconnection.asia', 'eli');
-            $this->email->to('charlie@topconnection.asia'); 
+            $this->email->to('eli@topconnection.asia'); 
 
 
             $this->email->subject('Email Test');
