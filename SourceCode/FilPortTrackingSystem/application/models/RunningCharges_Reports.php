@@ -302,6 +302,36 @@ Class RunningCharges_Reports extends CI_Model
 		return $query->row();
 	}
 
+	function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo){
+		if($monitoringType == 1 || $monitoringType == 2){
+				$query = $this->db->query(" select J.JobFileNo , CBJ.ActualArrivalTime , CBC.ContainerNo , PBC.ProductId ,P.ProductName , RC.*
+
+					from JobFile J 
+					
+					JOIN CarrierByJobFile CBJ ON CBJ.JobFileId = J.JobFileId
+					JOIN ContainerByCarrier CBC ON CBC.CarrierByJobFileId = CBJ.CarrierByJobFileId
+					JOIN ProductsByContainer PBC ON PBC.ContainerByCarrierId = CBC.ContainerByCarrierId
+					JOIN Products P ON P.ProductId = PBC.ProductId
+					JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId
+					
+					where J.ConsigneeId = '$consigneeID' 
+					AND CBJ.ActualArrivalTime >= '$ataFrom' 
+					AND CBJ.ActualArrivalTime <= '$ataTo' 
+					AND J.MonitoringTypeId = '$monitoringType'
+											");
+		}else{
+			$query = $this->db->query(" select J.JobFileNo ,J.Aircraft,J.ATA , PA.Products_AirId , PA.ProductId ,RC.*
+				from JobFile_Air J 
+				LEFT JOIN Products_Air PA ON PA.JobFile_AirId = J.JobFile_AirId
+				LEFT JOIN RunningCharges_Air RC ON RC.JobFile_AirId = J.JobFile_AirId
+
+				where J.ConsigneeId = '$consigneeID'  AND J.ATA >= '$ataFrom' AND J.ATA <= '$ataTo'
+											");
+		}
+				
+		return $query->result();
+	}
+
 }
 
 ?>

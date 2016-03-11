@@ -65,6 +65,57 @@
 						    </div>
 						  </div>
 
+	<!-- Volume  -->
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h6 class="panel-title">
+						        <a data-toggle="collapse" id="admin_Volume" data-parent="#accordion" href="#volume_collapse" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Volume</span></a>
+						      </h6>
+						    </div>
+						    <div id="volume_collapse" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-volume-admin">
+									  <li value="a-1" class="admin_volume_tab" id="admin_volume-manila"  style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" class="admin_volume_tab" id="admin_volume-outport"style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" class="admin_volume_tab" id="admin_volume-air" style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
+		<!-- Truck  -->
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h6 class="panel-title">
+						        <a data-toggle="collapse" id="admin_Truck" data-parent="#accordion" href="#truck_collapse" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Truck</span></a>
+						      </h6>
+						    </div>
+						    <div id="truck_collapse" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-truck-admin">
+									  <li value="a-1" class="admin_truck_tab" id="admin_truck-manila"  style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" class="admin_truck_tab" id="admin_truck-outport"style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" class="admin_truck_tab" id="admin_truck-air" style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
+		<!-- Consolidate  -->
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h6 class="panel-title">
+						        <a data-toggle="collapse" id="admin_Consolidate" data-parent="#accordion" href="#consolidate_collapse" style="text-decoration:none;font-weight:600;">
+						       <span class="hvr-icon-forward"> Consolidate </span></a>
+						      </h6>
+						    </div>
+						    <div id="consolidate_collapse" class="panel-collapse collapse" style="padding:5px">
+						       	 <ul class="nav nav-pills nav-data-2 nav-data-consolidate-admin">
+									  <li value="a-1" class="admin_consolidate_tab" id="admin_consolidate-manila"  style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-2" class="admin_consolidate_tab" id="admin_consolidate-outport"style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Sea Freight Outport</a></li>
+									  <li value="a-3" class="admin_consolidate_tab" id="admin_consolidate-air" style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Air Freight</a></li>
+								</ul>
+						    </div>
+						  </div>
+
 						  <?php if($role->RoleId == "1"){ ?>
 
 		<!-- Audit Trail JobFile -->
@@ -157,6 +208,28 @@
 
 			<div class="hidden admin_runninCharges tab-content">
 					<?php $this->load->view('reports/running_charges_admin/running_charges'); ?>
+			</div>
+
+		<!-- Volume -->
+
+
+			<div class="hidden admin_volume tab-content">
+					<?php $this->load->view('reports/volume_admin/volume'); ?>
+			</div>
+
+
+		<!-- Truck -->
+
+
+			<div class="hidden admin_truck tab-content">
+					<?php $this->load->view('reports/truck_admin/truck'); ?>
+			</div>
+
+		<!-- consolidate -->
+
+
+			<div class="hidden admin_consolidate tab-content">
+					<?php $this->load->view('reports/consolidate_admin/consolidate'); ?>
 			</div>
 
 		<!-- Search Consignee -->

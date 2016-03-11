@@ -218,6 +218,9 @@ $(document).on('click','#collapse1',function(){
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
 });
 
 $(document).on('click','#collapse2',function(){
@@ -227,6 +230,9 @@ $(document).on('click','#collapse2',function(){
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
 });
 
 
@@ -237,6 +243,9 @@ $(document).on('click','#collapse3',function(){
 	$('.search-consignee').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
 });
 
 $(document).on('click','#collapse4',function(){
@@ -246,6 +255,9 @@ $(document).on('click','#collapse4',function(){
 	$('.accreditations').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
 });
 
 $(document).on('click','#collapse5',function(){
@@ -255,6 +267,9 @@ $(document).on('click','#collapse5',function(){
 	$('.accreditations').addClass('hidden');
 	$('.audit-trail').addClass('hidden');
 	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
 });
 
 
@@ -265,6 +280,46 @@ $(document).on('click','#admin_RunningCharges',function(){
 	$('.accreditations').addClass('hidden');
 	$('.audit-trail').addClass('hidden');
 	$('.admin_runninCharges').removeClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
+});
+
+$(document).on('click','#admin_Volume',function(){
+	$('.runningcharges').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').removeClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
+});
+
+$(document).on('click','#admin_Truck',function(){
+	$('.runningcharges').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').removeClass('hidden');
+	$('.admin_consolidate').addClass('hidden');
+});
+
+$(document).on('click','#admin_Consolidate',function(){
+	$('.runningcharges').addClass('hidden');
+	$('.site-settings').addClass('hidden');
+	$('.search-consignee').addClass('hidden');
+	$('.accreditations').addClass('hidden');
+	$('.audit-trail').addClass('hidden');
+	$('.admin_runninCharges').addClass('hidden');
+	$('.admin_volume').addClass('hidden');
+	$('.admin_truck').addClass('hidden');
+	$('.admin_consolidate').removeClass('hidden');
+
 });
 
 

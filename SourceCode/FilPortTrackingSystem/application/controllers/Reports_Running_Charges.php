@@ -534,6 +534,80 @@ class Reports_Running_Charges extends CI_Controller {
 
 	}
 
+
+	/*Volume Admin /Filport USer*/
+	function get_Volume(){
+     	  $ataFrom              =  $this->input->post('frm');  
+     	  $ataTo	            =  $this->input->post('to');  
+          $monitoringType       =  $this->input->post('montype');
+          $consigneeID       		=  $this->input->post('consigneeID');
+          $dispOutput = '';
+          $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo);
+          $dispOutput .= '<div class="table-volume-admin">';
+          if(count($reportsVolume) > 0){
+          	$dispOutput = '<script type="text/javascript" language="javascript"> 
+						  window.open("' . base_url("Print_Report_Volume_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&consigneeID='. $consigneeID . '&montype=' . $monitoringType . '");
+						  </script>';  
+          }
+          else{
+          	$dispOutput .= '
+		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
+		     	</div>';
+          }
+
+          echo $dispOutput;  
+      }
+
+      function get_truck(){
+     	  $ataFrom              =  $this->input->post('frm');  
+     	  $ataTo	            =  $this->input->post('to');  
+          $monitoringType       =  $this->input->post('montype');
+          $cID       			=  $this->input->post('con_id');
+          $dispOutput = '';
+          $reportsTruck = $this->Charges->getCharges_Truck($monitoringType,$cID,$ataFrom,$ataTo);
+          $dispOutput .= '<div class="table-reports-truck">';
+          if(count($reportsTruck) > 0){
+          	$dispOutput = '<script type="text/javascript" language="javascript"> 
+						  window.open("' . base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '");
+						  </script>';  
+          }
+          else{
+          	$dispOutput .= '
+		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
+		     	</div>';
+          }
+
+       
+
+		echo $dispOutput;  
+     }
+
+     function get_consolidate(){
+     	  $ataFrom              =  $this->input->post('frm');  
+     	  $ataTo	            =  $this->input->post('to');  
+          $monitoringType       =  $this->input->post('montype');
+          $cID       			=  $this->input->post('con_id');
+          $poNum       			=  $this->input->post('poNum');
+          $dispOutput = '';
+          $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
+          $dispOutput .= '<div class="table-consolidate-reports">';
+          if(count($reportsTruck) > 0){
+          	$dispOutput = '<script type="text/javascript" language="javascript"> 
+						  window.open("' . base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum . '");
+						  </script>';  
+          }
+          else{
+          	$dispOutput .= '
+		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
+		     	</div>';
+          }
+
+       
+
+		echo $dispOutput;  
+     }
+     
+
 }
 
 
