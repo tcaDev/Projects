@@ -22,6 +22,8 @@ class Print_Report_Volume extends CI_Controller {
           $userID               =  $this->input->get('userID');
           $documnt = $this->createDocToPrint($monitoringType,$userID,$ataFrom,$ataTo);
           //$this->m_pdf->pdf->AddPage('L');
+          ini_set("memory_limit", "256M"); 
+          (set_time_limit(300000));
           $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();

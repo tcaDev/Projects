@@ -75,13 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'TopConnection.asia',
+	'hostname' => 'tracking-filport.com',
 	'username' => 'FilportAdmin',
 	'password' => 'TO_MP8^1N8(=',
 	'database' => 'dev_FilportTrackingSystem',
-	/*'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	/*'hostname' => 'topconnection.asia',
+	'username' => 'FilportAdmin',
+	'password' => 'TO_MP8^1N8(=',
 	'database' => 'dev_FilportTrackingSystem',*/
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

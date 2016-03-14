@@ -22,6 +22,8 @@ class Print_Report_Volume_Admin extends CI_Controller {
           $consigneeID               =  $this->input->get('consigneeID');
           $documnt = $this->createDocToPrint($monitoringType,$consigneeID,$ataFrom,$ataTo);
           //$this->m_pdf->pdf->AddPage('L');
+          ini_set("memory_limit", "256M"); 
+          (set_time_limit(600000));
           $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();

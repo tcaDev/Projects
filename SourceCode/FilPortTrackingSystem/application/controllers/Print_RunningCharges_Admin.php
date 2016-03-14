@@ -21,6 +21,8 @@ class Print_RunningCharges_Admin extends CI_Controller {
           $consigneeID        =  $this->input->get('consigneeId');
 
           $documnt = $this->loadDoc($monitoringType,$PO_Number,$consigneeID);
+            ini_set("memory_limit", "256M"); 
+          (set_time_limit(600000));
           $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
