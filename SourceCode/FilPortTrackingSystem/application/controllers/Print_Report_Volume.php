@@ -22,16 +22,17 @@ class Print_Report_Volume extends CI_Controller {
           $userID               =  $this->input->get('userID');
           $documnt = $this->createDocToPrint($monitoringType,$userID,$ataFrom,$ataTo);
           //$this->m_pdf->pdf->AddPage('L');
-          ini_set("memory_limit", "256M"); 
-          (set_time_limit(300000));
-          $this->m_pdf->pdf->mirrorMargins  = 1;
+/*           ini_set("memory_limit", "1000M");
+          ini_set('max_execution_time', 300);*/
+          $mpdf->useSubstitutions=false;
+          $mpdf->simpleTables = true;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
 
   function createDocToPrint($monitoringType,$userID,$ataFrom,$ataTo){
-         $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$ataFrom,$ataTo);
-         $cName = $this->Charges->getcName($userID);
+         $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo);
+         $cName = $this->Charges->getcName($consigneeID);
          $dispOutput = '';
          $content ='';
          $lodgementFee = 0;
@@ -108,7 +109,15 @@ class Print_Report_Volume extends CI_Controller {
               
               <body>
                  <style>
-                  
+
+                    table {
+                        border-collapse: collapse;
+                    }
+
+                    table, td, th {
+                        border: 1px solid black;
+                    }
+                                      
                     @page {
                       size: auto;
                        odd-header-name: html_myHeader_odd1;
@@ -217,25 +226,25 @@ class Print_Report_Volume extends CI_Controller {
                 if($monitoringType == 1 || $monitoringType == 2){
                 foreach ($reportsVolume as $row) {
                     $content .= "<tr>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->JobFileNo . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->ActualArrivalTime . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->ContainerNo . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->ProductName . "</td>";
+                    $content .= "<td>" . $row->JobFileNo . "</td>";
+                    $content .= "<td>" . $row->ActualArrivalTime . "</td>";
+                    $content .= "<td>" . $row->ContainerNo . "</td>";
+                    $content .= "<td>" . $row->ProductName . "</td>";
                    
                     if($oldJBNo != $row->JobFileNo){
-                        $content .= "<td style='border:1px solid gray'>" . $row->LodgementFee . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->THCCharges . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->Arrastre . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->Wharfage . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->Weighing . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->DispatchFee . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->DEL . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->SRAApplication . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->SRAInspection . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->BAIApplication . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->BAIInspection . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->BPIInspection . "</td>";
-                        $content .= "<td style='border:1px solid gray'>" . $row->OtherFees . "</td>";
+                        $content .= "<td>" . $row->LodgementFee . "</td>";
+                        $content .= "<td>" . $row->THCCharges . "</td>";
+                        $content .= "<td>" . $row->Arrastre . "</td>";
+                        $content .= "<td>" . $row->Wharfage . "</td>";
+                        $content .= "<td>" . $row->Weighing . "</td>";
+                        $content .= "<td>" . $row->DispatchFee . "</td>";
+                        $content .= "<td>" . $row->DEL . "</td>";
+                        $content .= "<td>" . $row->SRAApplication . "</td>";
+                        $content .= "<td>" . $row->SRAInspection . "</td>";
+                        $content .= "<td>" . $row->BAIApplication . "</td>";
+                        $content .= "<td>" . $row->BAIInspection . "</td>";
+                        $content .= "<td>" . $row->BPIInspection . "</td>";
+                        $content .= "<td>" . $row->OtherFees . "</td>";
                             $lodgementFee   += $row->LodgementFee;
                             $thcCharges     += $row->THCCharges;
                             $arrastre       += $row->Arrastre;
@@ -249,19 +258,19 @@ class Print_Report_Volume extends CI_Controller {
                             $baiInspection  += $row->BAIInspection;
                             $otherfees      += $row->OtherFees;
                     }else{
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
-                        $content .= "<td style='border:1px solid gray'></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
+                        $content .= "<td></td>";
                     }
                 $content .='</tr>';
 
@@ -270,44 +279,44 @@ class Print_Report_Volume extends CI_Controller {
                   }
 
                   $total = "<tr>
-                            <td style='border:1px solid gray'><b>TOTAL </b></td>
-                            <td style='border:1px solid gray'> </td>
-                            <td style='border:1px solid gray'> </td>
-                            <td style='border:1px solid gray'></td>
-                            <td style='border:1px solid gray'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($thcCharges, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($arrastre, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($wharfage, 2, '.', ','). "</td>
-                            <td style='border:1px solid gray'>" . number_format($weighing, 2, '.', ','). "</td>
-                            <td style='border:1px solid gray'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($del, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($sraApplication, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($sraInspection, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($baiApplication, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($baiInspection, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
-                            <td style='border:1px solid gray'>" . number_format($otherfees, 2, '.', ',') . "</td> 
+                            <td ><b>TOTAL </b></td>
+                            <td > </td>
+                            <td > </td>
+                            <td ></td>
+                            <td >" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td >" . number_format($thcCharges, 2, '.', ',') . "</td>
+                            <td >" . number_format($arrastre, 2, '.', ',') . "</td>
+                            <td >" . number_format($wharfage, 2, '.', ','). "</td>
+                            <td >" . number_format($weighing, 2, '.', ','). "</td>
+                            <td >" . number_format($dispatchFee, 2, '.', ',') . "</td>
+                            <td >" . number_format($del, 2, '.', ',') . "</td>
+                            <td >" . number_format($sraApplication, 2, '.', ',') . "</td>
+                            <td >" . number_format($sraInspection, 2, '.', ',') . "</td>
+                            <td >" . number_format($baiApplication, 2, '.', ',') . "</td>
+                            <td >" . number_format($baiInspection, 2, '.', ',') . "</td>
+                            <td >" . number_format($bpiInspection, 2, '.', ',') . "</td> 
+                            <td >" . number_format($otherfees, 2, '.', ',') . "</td> 
                             </tr>";
-                $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray'>
+                $dispOutput .="<table class ='table-condensed table-bordered'  >
                     <thead>
                     <tr>
-                      <th style='border:1px solid gray'>Jobfile No</th>
-                      <th style='border:1px solid gray'>Actual Arrival Time</th>
-                      <th style='border:1px solid gray'>List of Containers Per Jobfile</th>
-                      <th style='border:1px solid gray'>Commodity</th>
-                      <th style='border:1px solid gray'>Lodgement Fee</th>
-                      <th style='border:1px solid gray'>THC Charges</th>
-                      <th style='border:1px solid gray'>Arrastre</th>
-                      <th style='border:1px solid gray'>Wharfage</th>
-                      <th style='border:1px solid gray'>Weighing</th>
-                      <th style='border:1px solid gray'>Dispatch Fee</th>
-                      <th style='border:1px solid gray'>DEL</th>
-                      <th style='border:1px solid gray'>SRA Application</th>
-                      <th style='border:1px solid gray'>SRA Inspection</th>
-                      <th style='border:1px solid gray'>BAI Application</th>
-                      <th style='border:1px solid gray'>BAI Inspection Fee</th>
-                      <th style='border:1px solid gray'>BPI Inspection Fee</th>
-                      <th style='border:1px solid gray'>Other Fees</th>
+                      <th >Jobfile No</th>
+                      <th >Actual Arrival Time</th>
+                      <th >List of Containers Per Jobfile</th>
+                      <th >Commodity</th>
+                      <th >Lodgement Fee</th>
+                      <th >THC Charges</th>
+                      <th >Arrastre</th>
+                      <th >Wharfage</th>
+                      <th >Weighing</th>
+                      <th >Dispatch Fee</th>
+                      <th >DEL</th>
+                      <th >SRA Application</th>
+                      <th >SRA Inspection</th>
+                      <th >BAI Application</th>
+                      <th >BAI Inspection Fee</th>
+                      <th >BPI Inspection Fee</th>
+                      <th >Other Fees</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -317,20 +326,20 @@ class Print_Report_Volume extends CI_Controller {
             }else{
               foreach ($reportsVolume as $row) {
                   $content .= "<tr>";
-                  $content .= "<td style='border:1px solid gray'>" . $row->JobFileNo . "</td>";
-                  $content .= "<td style='border:1px solid gray'>" . $row->ATA . "</td>";
-                  $content .= "<td style='border:1px solid gray'>" . $row->Aircraft . "</td>";
-                  $content .= "<td style='border:1px solid gray'>" . $row->ProductName . "</td>";
+                  $content .= "<td >" . $row->JobFileNo . "</td>";
+                  $content .= "<td >" . $row->ATA . "</td>";
+                  $content .= "<td >" . $row->Aircraft . "</td>";
+                  $content .= "<td >" . $row->ProductName . "</td>";
 
                   if($oldJBNo != $row->JobFileNo){
-                    $content .= "<td style='border:1px solid gray'>" . $row->LodgementFee . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->BreakBulkFee . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->StorageFee . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->BadCargoOrderFee . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->VCRC . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->CNI . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->CNIU . "</td>";
-                    $content .= "<td style='border:1px solid gray'>" . $row->OtherFees . "</td>";
+                    $content .= "<td >" . $row->LodgementFee . "</td>";
+                    $content .= "<td >" . $row->BreakBulkFee . "</td>";
+                    $content .= "<td >" . $row->StorageFee . "</td>";
+                    $content .= "<td >" . $row->BadCargoOrderFee . "</td>";
+                    $content .= "<td >" . $row->VCRC . "</td>";
+                    $content .= "<td >" . $row->CNI . "</td>";
+                    $content .= "<td >" . $row->CNIU . "</td>";
+                    $content .= "<td >" . $row->OtherFees . "</td>";
                     $lodgementFee += $row->LodgementFee;
                     $breakbulkfee += $row->BreakBulkFee;
                     $storagefee   += $row->StorageFee;
@@ -340,49 +349,49 @@ class Print_Report_Volume extends CI_Controller {
                     $cniu         += $row->cniu;
                     $otherfees    += $row->OtherFees;
                   }else{
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
-                      $content .= "<td style='border:1px solid gray'></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
+                      $content .= "<td ></td>";
                      
                   }
                   $content .= "</tr>";
                   $oldJBNo = $row->JobFileNo;
              }
              $total = "<tr>
-                            <td style='border:1px solid gray'><b>TOTAL </b></td>
-                            <td style='border:1px solid gray'> </td>
-                            <td style='border:1px solid gray'> </td>
-                            <td style='border:1px solid gray'> </td>
-                            <td style='border:1px solid gray'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($breakbulkfee, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($storagefee, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($badcargofee, 2, '.', ','). "</td>
-                            <td style='border:1px solid gray'>" . number_format($vcrc, 2, '.', ','). "</td>
-                            <td style='border:1px solid gray'>" . number_format($cni, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($cniu, 2, '.', ',') . "</td>
-                            <td style='border:1px solid gray'>" . number_format($otherfees, 2, '.', ',') . "</td>
+                            <td ><b>TOTAL </b></td>
+                            <td > </td>
+                            <td > </td>
+                            <td > </td>
+                            <td >" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
+                            <td >" . number_format($storagefee, 2, '.', ',') . "</td>
+                            <td >" . number_format($badcargofee, 2, '.', ','). "</td>
+                            <td >" . number_format($vcrc, 2, '.', ','). "</td>
+                            <td >" . number_format($cni, 2, '.', ',') . "</td>
+                            <td >" . number_format($cniu, 2, '.', ',') . "</td>
+                            <td >" . number_format($otherfees, 2, '.', ',') . "</td>
                             </tr>";
 
-                $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray'>
+                $dispOutput .="<table class ='table-condensed table-bordered'  >
                     <thead>
                     <tr>
-                      <th style='border:1px solid gray'>Jobfile No</th>
-                      <th style='border:1px solid gray'>Actual Arrival Time</th>
-                      <th style='border:1px solid gray'>Aircraft</th>
-                      <th style='border:1px solid gray'>Commodity</th>
-                      <th style='border:1px solid gray'>Lodgement Fee</th>
-                      <th style='border:1px solid gray'>Break Bulk Fee</th>
-                      <th style='border:1px solid gray'>Storage Fee</th>
-                      <th style='border:1px solid gray'>Bad Cargo Order Fee</th>
-                      <th style='border:1px solid gray'>VCRC</th>
-                      <th style='border:1px solid gray'>CNI</th>
-                      <th style='border:1px solid gray'>CNIU</th>
-                      <th style='border:1px solid gray'>Other Fees</th>
+                      <th >Jobfile No</th>
+                      <th >Actual Arrival Time</th>
+                      <th >Aircraft</th>
+                      <th >Commodity</th>
+                      <th >Lodgement Fee</th>
+                      <th >Break Bulk Fee</th>
+                      <th >Storage Fee</th>
+                      <th >Bad Cargo Order Fee</th>
+                      <th >VCRC</th>
+                      <th >CNI</th>
+                      <th >CNIU</th>
+                      <th >Other Fees</th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
