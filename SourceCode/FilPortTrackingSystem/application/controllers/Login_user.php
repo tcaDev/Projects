@@ -786,6 +786,7 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
+				         'roleID'	 =>	  $row->RoleId,
 				         'img'		 =>	  $row->ProfileImageSource
 				       );
 				       $this->session->set_userdata('logged_in', $sess_array);
@@ -801,7 +802,11 @@ class Login_user extends CI_Controller {
 	---------------------------------
 	*/
 	function updated_name(){
+
+
 				$session_data = $this->session->userdata('logged_in');
+				$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    	$data['roleName'] = $logInDetails;
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];
@@ -809,9 +814,16 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
+			    $data['roleID'] = $session_data['roleID'];
+			  	$data['tab'] = "";
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Name Successfully Change !";
+			    
+			    $data['countries']=$this->User->countries();
+		        $data['questions'] =$this->User->question();
+                $data['consignee'] =$this->User->dropdown_consignee();
+                $data['role'] = $this->User->get_role($session_data['uid']);
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
@@ -860,7 +872,7 @@ class Login_user extends CI_Controller {
 ---------------------------------
 */
 	function updated_pass(){
-				$session_data = $this->session->userdata('logged_in');
+/*				$session_data = $this->session->userdata('logged_in');
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];
@@ -873,6 +885,30 @@ class Login_user extends CI_Controller {
 				$data['msg'] = "Password Successfully Change !";
 
 				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);*/
+
+				$session_data = $this->session->userdata('logged_in');
+				$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    	$data['roleName'] = $logInDetails;
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			    $data['roleID'] = $session_data['roleID'];
+			  	$data['tab'] = "";
+			  	$data['tab'] = "";
+			  	$data['alert'] = "success";
+				$data['msg'] = "Password Successfully Change !";
+			    
+			    $data['countries']=$this->User->countries();
+		        $data['questions'] =$this->User->question();
+                $data['consignee'] =$this->User->dropdown_consignee();
+                $data['role'] = $this->User->get_role($session_data['uid']);
+
+				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
 	}		
 
@@ -882,7 +918,7 @@ class Login_user extends CI_Controller {
 ---------------------------------
 */
 	function not_success_pass(){
-				$session_data = $this->session->userdata('logged_in');
+/*				$session_data = $this->session->userdata('logged_in');
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];
@@ -895,7 +931,31 @@ class Login_user extends CI_Controller {
 				$data['msg'] = "Incorrect Current Password. Try Again.";
 
 				$this->load->view('header/header',$data);
+				$this->load->view('account/account_page',$data);*/
+
+				$session_data = $this->session->userdata('logged_in');
+				$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    	$data['roleName'] = $logInDetails;
+			    $data['username'] = $session_data['username'];
+			    $data['email'] =  $session_data['email'];
+			    $data['fname'] = $session_data['fname'];
+			    $data['mname'] = $session_data['mname'];
+			    $data['lname'] = $session_data['lname'];
+			    $data['uid'] = $session_data['uid'];
+			    $data['img'] = $session_data['img'];
+			    $data['roleID'] = $session_data['roleID'];
+			  	$data['tab'] = "";
+			  	$data['alert'] = "danger";
+				$data['msg'] = "Incorrect Current Password. Try Again.";
+			    
+			    $data['countries']=$this->User->countries();
+		        $data['questions'] =$this->User->question();
+                $data['consignee'] =$this->User->dropdown_consignee();
+                $data['role'] = $this->User->get_role($session_data['uid']);
+
+				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
+
 	}		
 
 
