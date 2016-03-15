@@ -28,7 +28,7 @@ class Reports_Running_Charges extends CI_Controller {
           	$dispOutput .= '
           	<div class="panel panel-primary" style="padding:5px;">
           				<div class="col-md-12 panel-heading">
-          					<br>
+          					
 
           						<div class="col-md-12" style="font-size:14px;">
           							<div class="col-md-6" style="border-right: 1px solid #ddd;">

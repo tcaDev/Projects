@@ -2,58 +2,88 @@
 
     	<div class="col-md-12 ">
         	<div class="row">
-        			<div class="tools-bar">
-				        				<div class="col-md-12">
-				        					<div class="row">
-				        						<div class="col-md-6">
-					        						<span style="padding-bottom: 10px;"> <h4>Reports Volume : <b> Air Freight  </b></h4></span>
-					        					</div>
-					        			 	 	
-					        			 	 	<div class="col-md-6">
-									    			<select class="form-control reports_consignee_volume_air">
-								    			
-								    				</select>  
-								    			</div>
-				        					</div>
-				        				</div>
-				        				
-									    <div class="input-group col-md-12">
-									    	<div class="col-md-12">
-									    		<span><b>Actual Time of Arrival : </b></span>
-									    	</div>
-									      <div class="">
+    			<div class="tools-bar col-md-12">
+    				<div class="col-md-12">
+    					<div class="row">
+    						<div class="col-md-6">
+        						<span style="padding-bottom: 10px;"> <h4>Reports-Volume : <b> Air Freight  </b></h4></span>
+        					</div>
+    					</div>
+    				</div>		  
+			 	</div>
+        	</div>    
+        	<div class="col-md-12" style="margin-top:10px;">
+        			<ul class="nav nav-tabs">
+					    <li class="active"><a data-toggle="tab" href="#comm-client-air">Search By Commodity</a></li>
+					    <li><a data-toggle="tab" href="#ata-client-air">Search By Actual Arrival Time</a></li>
+					 </ul>
 
-									    	<div class="col-md-5">
-									    		<div class="">
-									    			<input placeholder="From :" class="textbox-n form-control" id="dtpATAFrom-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-									    		</div>
-									    		
-									    	</div>
+					 <div class="tab-content"  style="margin-top:10px;">
+	<!--  Commodity NO. -->
+				 		<div id="comm-client-air" class="tab-pane fade in active" >
+				 			<h5>Search : </h5>
 
-									    	<div class="col-md-5">
-									    		<div class="">
-									    			<input placeholder="To :" class="textbox-n form-control" id="dtpATATo-air" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-									    		</div>
-									    	</div>
+					       <div class="col-md-12">
+						       	<div class="col-md-6">
+						       		<div class="form-group">
+						       			<h5>Commodity : </h5>
+							       		<select class="form-control input-sm">
+							       			
+							       		</select>
+						       		</div>
+						       	</div>
 
-									    	<div class="col-md-2">
-									    		<div class="row">
-									    				<span class="input-group-btn">
-									    					<button class="btn btn-danger col-md-12" type="button" id="btn-volume-air"><span class="fa fa-search fa-fw"></span></button>
-									    				</span>
-									    		</div>
-									    	</div>
-									    </div>
-									      
-									    
+						       	<div class="col-md-6">
+						       		<div class="form-group">
+						       			<h5>Consignee: </h5>
+							       		<select class="form-control input-sm reports_consignee_volume_air">
+							       			
+							       		</select>
+						       		</div>
+						       	</div>
 
-									    </div>
-									  
+						       	<div class="col-md-12">
+						       		<button type="button" class="btn btn-primary btn-sm col-md-3 pull-right"><span class="fa fa-search fa-fw"></span> Search</button>
+						       	</div>
+					       </div>
+
+					       <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
+					    		<div class="table-volume-air" ></div>
+					    	</div>
+				 		</div>
+
+		<!-- ATA -->
+						<div id="ata-client-air" class="tab-pane fade">
+							<h5>Search : </h5>
+
+					       <div class="col-md-6 col-md-offset-3">
+						       	<div class="col-md-12">
+						       		<h5>Actual Arrival Date : </h5>
+									<div class="form-group">
+										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" id="dtpATAFrom-air"/>	
+									</div>
+
+									<div class="form-group">
+										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-air"/>	
+									</div>
+						       	</div>
+
+						       	<div class="col-md-12">
+						       		<div class="form-group">
+						       			<h5>Consignee: </h5>
+							       		<select class="form-control input-sm reports_consignee_volume_air">
+							       			
+							       		</select>
+						       		</div>
+						       	</div>
+
+						       	<div class="col-md-12">
+						       		<button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-volume-air"><span class="fa fa-search fa-fw"></span> Search</button>
+						       	</div>
+					       </div>
+						</div>
 				 	</div>
-        	</div>     		
-    	</div>
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
-    		<div class="table-volume-air" ></div>
+        		</div>   		
     	</div>
 </div>	
 

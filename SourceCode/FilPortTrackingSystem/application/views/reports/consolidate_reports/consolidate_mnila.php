@@ -1,61 +1,51 @@
 <div class="tab-pane active" id="tab_reports_consolidate">		        
     	<div class="col-md-12 ">
         	<div class="row">
-        			<div class="tools-bar" style="margin-top:20%;">
-                    <div class="col-md-12">
-                      <span style="padding-bottom: 10px;"> <h4> Consolidated Reports : <b class='active-tab-consolidate'> Air Freight </b></h4></span>
+        			<div class="tools-bar col-md-12">
+                  <div class="col-md-12">
+                    <span style="padding-bottom: 10px;"> <h4> Reports-Consolidated : <b class='active-tab-consolidate'> Air Freight </b></h4></span>
+                   </div>
+				   	  </div>
+        	</div>  
+
+          <div class="col-md-12" style="margin-top: 15px;">
+            <div class="row">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Search :</div>
+                  <div class="panel-body">
+                   
+
+                     <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <h5>Purchase Order No.: </h5>
+                              <input type="text" class="form-control input-sm" placeholder="PI/PO Number" id="txtPONumber" />
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <h5>Actual Delivery Date : </h5>
+                          <div class="form-group">
+                            <input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" id="dtpTDDFrom_consolidate"/> 
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" id="dtpTDDTo_consolidate"/> 
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate"><span class="fa fa-search fa-fw"></span> Search</button>
+                        </div>
+
+                          <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:110px;">
+                            <div class="table-consolidate-reports" ></div>
+                          </div>
                      </div>
-
-                     <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-6">
-                             <input type="text" class="form-control input-sm" placeholder="PI/PO Number" id="txtPONumber" />
-                        </div>
-                       <div class="col-md-6">
-                               <select class="form-control reports_consignee_consolidate">
-                              
-                              </select>  <!-- Todo Ajax Call Query to display Data -->
-                        </div>
-                      </div>
-                         
-                     </div>
-                      
-
-                    <div class="input-group col-md-12">
-                      <div class="col-md-12">
-                          <span><b>Target Delivery Date : </b></span>
-                        </div>
-                        <div class="">
-
-                      <div class="col-md-5">
-                        <div class="">
-                          <input placeholder="From :" class="textbox-n form-control" id="dtpTDDFrom_consolidate" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-                        </div>
-                        
-                      </div>
-
-                      <div class="col-md-5">
-                        <div class="">
-                          <input placeholder="To :" class="textbox-n form-control" id="dtpTDDTo_consolidate" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-                        </div>
-                      </div>
-
-                      <div class="col-md-2">
-                        <div class="row">
-                            <span class="input-group-btn">
-                              <button class="btn btn-danger col-md-12" type="button" id="btn-consolidate"><span class="fa fa-search fa-fw"></span></button>
-                            </span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-				   	</div>
-
-        	</div>     		
-    	</div>
-
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
-    		<div class="table-consolidate-reports" ></div>
+                  </div>
+                </div>  
+            </div>
+          </div> 		
     	</div>
     		
 </div>
@@ -119,7 +109,6 @@
         })
           .done(function(data) {
               $(".table-consolidate-reports").html(data);
-              $(".tools-bar").animate({marginTop:'0%'});
         }); 
       }
   });

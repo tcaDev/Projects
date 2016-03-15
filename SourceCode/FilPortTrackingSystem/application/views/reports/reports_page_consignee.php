@@ -68,7 +68,7 @@
 						    </div>
 						    <div id="collapse7" class="panel-collapse collapse" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-truck">
-									  <li value="1" class="reports-truck-manila active"  id="reports-truck-manila"  style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="1" class="reports-truck-manila"  id="reports-truck-manila"  style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="2" class="reports-truck-outport" 		 id="reports-truck-outport" style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" class="reports-truck-air" 			 id="reports-truck-air"     style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -85,7 +85,7 @@
 						    </div>
 						    <div id="collapse8" class="panel-collapse collapse" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-Consolidated">
-									  <li value="1" class="reports-Consolidated-manila active"  id="reports-consolidate-manila"  style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="1" class="reports-Consolidated-manila "  id="reports-consolidate-manila"  style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="2" class="reports-Consolidated-outport" 		 id="reports-consolidate-outport" style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" class="reports-Consolidated-air" 			 id="reports-consolidate-air"     style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -617,35 +617,35 @@ $(document).on('click','#runningcharges-jobfile-air',function(){
 			if(active_accreditation == 'reports-volume-manila'){
 				$('#dtpATAFrom-manila').val('');
 				$('#dtpATATo-manila').val('');
-				$('.tab_reports_volume-manila .tools-bar').css('marginTop', '20%');
+				
 			}else if(active_accreditation == 'reports-volume-outport'){
 				$('#dtpATAFrom-outport').val('');
 				$('#dtpATATo-outport').val('');
-				$('.tab_reports_volume-outport .tools-bar').css('marginTop', '20%');
+				
 			}else if(active_accreditation == 'reports-volume-air'){
 				$('#dtpATAFrom-air').val('');
 				$('#dtpATATo-air').val('');
-				$('.tab_reports_volume-air .tools-bar').css('marginTop', '20%');
+				
 			}
 			$('#collapse6').click();
 		});
 /*Button Volume*/
 		$(document).on('click','#reports-volume-manila',function(){
-			$('.tab_reports_volume-manila .tools-bar').css('marginTop', '20%');
+			
 			$('.table-volume-manila').empty();
 			$('#dtpATAFrom-manila').val('');
 			$('#dtpATATo-manila').val('');
 		});
 
 		$(document).on('click','#reports-volume-outport',function(){
-			$('.tab_reports_volume-outport .tools-bar').css('marginTop', '20%');
+			
 			$('.table-volume-outport').empty();
 			$('#dtpATAFrom-outport').val('');
 			$('#dtpATATo-outport').val('');
 		});
 
 		$(document).on('click','#reports-volume-air',function(){
-			$('.tab_reports_volume-air .tools-bar').css('marginTop', '20%');
+		
 			$('.table-volume-air').empty();
 			$('#dtpATAFrom-air').val('');
 			$('#dtpATATo-air').val('');

@@ -4,7 +4,7 @@
         	<div class="row">
         			<div class="tools-bar col-md-12">
 	        				<div class="col-md-12">
-	        			 	 	<span style="padding-bottom: 10px;"> <h4> Running Charges Reports : <b> Sea Freight Manila </b></h4></span>
+	        			 	 	<span style="padding-bottom: 10px;"> <h4>  Reports-Running Charges : <b> Sea Freight Manila </b></h4></span>
 	        				</div>
 						   
 				 	</div>
@@ -27,7 +27,7 @@
 							    <div class="input-group">
 							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-manila" placeholder='Enter Purchase Order Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-danger btn-sm" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -43,7 +43,7 @@
 							    <div class="input-group">
 							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-manila" placeholder='Enter House Bill Lading Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-danger btn-sm" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-manila" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -75,7 +75,7 @@
 
 							</div>
 
-							<div class="col-md-12">
+							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
 								<div class="form-group">
 									<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" />	
@@ -114,7 +114,7 @@
 										<option>BPI Inspection Fee</option>
 									</select>
 								</div>
-								<button type="button" class="btn btn-danger col-md-12 btn-sm"><span class="fa fa-search fa-fw"></span> Search</button>
+								<button type="button" class="btn btn-primary col-md-12 btn-sm" id="btn-runningcharges-manila"><span class="fa fa-search fa-fw"></span> Search</button>
 							</div>
 							
 							
