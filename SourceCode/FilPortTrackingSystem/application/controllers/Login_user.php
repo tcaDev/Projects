@@ -238,6 +238,19 @@ class Login_user extends CI_Controller {
 		}
 	}
 
+
+	function new_jobfile(){
+		$this->load->library('pagination');
+			$config['base_url'] = 'http://localhost/FilPortTrackingSystem/Login_user/new_jobfile/';
+			$config['per_page'] = 20; 
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+
+			$this->pagination->initialize($config); 
+
+			echo $this->pagination->create_links();
+	}
+
 	function clientjobfile(){
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){		
@@ -318,6 +331,7 @@ class Login_user extends CI_Controller {
 		    $data['fname'] = $session_data['fname'];
 		    $data['mname'] = $session_data['mname'];
 		    $data['lname'] = $session_data['lname'];
+		    $data['roleID'] = $session_data['roleID'];
 		    $data['img'] = $session_data['img'];
 		    $data['countries']=$this->User->countries();
 		    $data['questions'] =$this->User->question();
@@ -345,7 +359,7 @@ class Login_user extends CI_Controller {
 
 			$session_data = $this->session->userdata('logged_in');
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
-		   	$data['roleName'] = $logInDetails;
+		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
 		    $data['email'] =  $session_data['email'];
 		    $data['fname'] = $session_data['fname'];
@@ -604,6 +618,34 @@ class Login_user extends CI_Controller {
 			
 	function upload_photo(){
 
+
+
+		    $session_data = $this->session->userdata('logged_in');
+			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    $data['roleName'] = $logInDetails;
+		    $data['username'] = $session_data['username'];
+		    $data['email'] =  $session_data['email'];
+		    $data['fname'] = $session_data['fname'];
+		    $data['mname'] = $session_data['mname'];
+		    $data['lname'] = $session_data['lname'];
+		    $data['uid'] = $session_data['uid'];
+		    $data['img'] = $session_data['img'];
+		    $data['countries']=$this->User->countries();
+		    $data['questions'] =$this->User->question();
+            $data['consignee'] =$this->User->dropdown_consignee();
+
+            $data['role'] = $this->User->get_role($session_data['uid']);
+
+		  	$data['tab'] = "";
+		  	$data['msg'] = "";
+		  	$data['alert'] = "";
+
+		 
+
+
+
+
+
 		$status ="";
 		$msg = "";
 		$imageName = "img-file";
@@ -647,6 +689,7 @@ class Login_user extends CI_Controller {
 				         'mname'     =>   $row->MiddleName,
 				         'lname'     =>   $row->LastName,
 				         'uid'		 =>	  $row->UserId,
+				         'roleID'	 =>   $row->RoleId,
 				         'img'		 =>	  $row->ProfileImageSource
 				         
 				       );
@@ -667,7 +710,8 @@ class Login_user extends CI_Controller {
 		*/
 	function updated_photo(){
 				$session_data = $this->session->userdata('logged_in');
-				
+				$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    	$data['roleName'] = $logInDetails;
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];
@@ -675,9 +719,15 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
+			    $data['roleID'] = $session_data['roleID'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "success";
 				$data['msg'] = "Photo Successfully Change !";
+			    
+			    $data['countries']=$this->User->countries();
+		        $data['questions'] =$this->User->question();
+                $data['consignee'] =$this->User->dropdown_consignee();
+                $data['role'] = $this->User->get_role($session_data['uid']);
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
@@ -690,6 +740,8 @@ class Login_user extends CI_Controller {
 		*/
 	function not_updated_photo(){
 				$session_data = $this->session->userdata('logged_in');
+				$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
+		    	$data['roleName'] = $logInDetails;
 			    $data['username'] = $session_data['username'];
 			    $data['email'] =  $session_data['email'];
 			    $data['fname'] = $session_data['fname'];
@@ -697,6 +749,7 @@ class Login_user extends CI_Controller {
 			    $data['lname'] = $session_data['lname'];
 			    $data['uid'] = $session_data['uid'];
 			    $data['img'] = $session_data['img'];
+			    $data['roleID'] = $session_data['roleID'];
 			  	$data['tab'] = "";
 			  	$data['alert'] = "danger";
 				$data['msg'] = "Your photos couldn't be uploaded. Photos should be saved as JPG or PNG files.";
