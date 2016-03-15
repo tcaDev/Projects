@@ -32,8 +32,8 @@
 						  </div>
 
 						  
-
-						  <div class="panel panel-default">
+	<!-- Accreditation -->
+						  <!-- <div class="panel panel-default">
 						    <div class="panel-heading">
 						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="Accreditation" data-parent="#accordion" href="#collapse3" style="text-decoration:none;font-weight:600;">
@@ -47,7 +47,8 @@
 									  <li value="a-3" class="accreditation_tab" id="accreditation-air" style="display:block;width:100%;"><a href="#tab_accreditaion_air" data-toggle="pill">Air Freight</a></li>
 								</ul>
 						    </div>
-						  </div>
+						  </div> -->
+
 	<!-- Running Charges  -->
 						  <div class="panel panel-default">
 						    <div class="panel-heading">

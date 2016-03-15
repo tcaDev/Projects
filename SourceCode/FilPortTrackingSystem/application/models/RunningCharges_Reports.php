@@ -4,26 +4,27 @@ Class RunningCharges_Reports extends CI_Model
 {
 
 	function getPre_Details_RunningCharges($monType,$po_num,$userID){
+		
 		if($monType == 1 || $monType == 2){
-		  $query = $this->db->query("SELECT a.* FROM JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+		  $query = $this->db->query("SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     AND a.MonitoringTypeId = '$monType'
                                     UNION
-                                    SELECT a.* FROM JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     AND a.MonitoringTypeId = '$monType'
                                     UNION
-                                    SELECT a.* FROM JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     AND a.MonitoringTypeId = '$monType'");	
 		}else{
-		  $query = $this->db->query("SELECT a.* FROM JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+		  $query = $this->db->query("SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     UNION
-                                    SELECT a.* FROM JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     UNION
-                                    SELECT a.* FROM JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'");	
 		}
 		return $query->row();

@@ -65,7 +65,7 @@ $(document).on('click','#btn-runningcharges-outport',function(){
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-outport").html(resultData[0].disp);
-  				$(".tools-bar").animate({marginTop:'0%'});
+  			
 		});
   	}
 });

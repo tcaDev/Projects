@@ -15,6 +15,9 @@
 				 	</div>
         	</div>     		
     	</div>
+
+    	
+		
     	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
     		<div class="table-runningcharges-air" ></div>
     	</div>
@@ -67,7 +70,7 @@ $(document).on('click','#btn-runningcharges-air',function(){
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-air").html(resultData[0].disp);
-  				$(".tools-bar").animate({marginTop:'0%'});
+  				
 		});
   	}
 });

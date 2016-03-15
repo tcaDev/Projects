@@ -31,26 +31,28 @@ class Reports_Running_Charges extends CI_Controller {
           					<br>
 
           						<div class="col-md-12" style="font-size:14px;">
-          							<div class="col-md-6">
-          								<span class="pull-left" style="font-size:16px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
-          								<u>'
+          							<div class="col-md-6" style="border-right: 1px solid #ddd;">
+          								<h5 class="text-center" ><span class="" style="font-size:15px;">Jobfile Number :
+          								<b>'
 		          								. $pre_details->JobFileNo .
-		          						'</u>
+		          						'</b></span></h5>
           							</div>
-          							<div class="col-md-6">';
+          							<div class="col-md-6" >';
           								if($monitoringType == 1 || $monitoringType ==2 ){
 		          									$dispOutput .= '
-							          								<span class="pull-left" style="font-size:16px;"><b>Volume : </b> </span>
-							          								<u>'
+							          								<h5 class="text-center"><span class="" style="font-size:15px;">Volume : 
+							          								<b>'
 							          								. $volume .
-							          								'</u>
+							          								'</b>
+							          								</span>	</h5>
 							          								';
 		          								}else{
 		          									$dispOutput .= '
-							          								<span class="pull-left" style="font-size:16px;"><b>Gross Weight(kg) : </b> </span>
-							          								<u>'
+							          								<h5 class="text-center"><span class="" style="font-size:15px;">Gross Weight(kg) :
+							          								<b>'
 							          								. $volume .
-							          								' kg </u>
+							          								' kg </b>
+							          								</span></h5>
 							          								';
 		          								}
 		          					$dispOutput .=	'</div>
@@ -60,32 +62,30 @@ class Reports_Running_Charges extends CI_Controller {
 	          				<hr>
 
 	          					<div class="col-md-12">
-	          						<div class="col-md-6">
-	          							<span class="pull-left"><u style="font-size:16px;">Receipted Charges Only</u>
-	          								<br>
-	          								<br>
-	          								' . $charge . '
-	          							</span>
+	          					<br>
+	          						<div class="col-md-6" style="border-right: 1px solid #ddd;">
+	          							<h5><b>Receipted Charges Only : </b></h5>
+	          							' . $charge . '
 	          						</div>
 	          						<div class="col-md-6">'; 
 	          						if($monitoringType == 1 || $monitoringType == 2){
-	          							$dispOutput .= '<span class="pull-left"><u style="font-size:16px;">Containers</u>';
+	          							$dispOutput .= '<h5><b>Containers :</b></h5>';
 	          						}
-	          						$dispOutput .= 	'<br>
+	          						$dispOutput .= 	'
 	          								' . $commodity . '
 	          							</span>
 	          						</div>
           						</div>
           						<div class="col-md-12">
-	          						<div style="font-size:14px;margin-top:5px;">
-	          							<u><i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</u></i>
+	          						<div style="font-size:13px;margin-top:5px;">
+	          							<i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</i>
 	          						</div>
 	          						<div class="col-md-6">
 	          							
 	          						</div>
 	          						<div class="col-md-6">
 	          							<span class="pull-right" style="margin-bottom:5px;">
-	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'" target="blank" "><input type="button" value="Print" class="btn btn-primary"/></a>
+	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Print</a>
 		          							</span>
 		          					</div>
 	          					</div>
@@ -93,7 +93,7 @@ class Reports_Running_Charges extends CI_Controller {
           				</div>
           			</div>';
           }else{
-          	$dispOutput = "<center style='font-color:RED;'> No PO Number From your Accounts Matches Your Search </center>";
+          	$dispOutput = "<center style='font-color:red;'> No PO Number From your Accounts Matches Your Search </center>";
           }
                $output = array(
                           array(
@@ -210,8 +210,8 @@ class Reports_Running_Charges extends CI_Controller {
 		     	 $total += $charges->BAIInspection;
 		     	 $total += $charges->BPIInspection;
 
-				$chargesOutput = '<div style="width:100%;">
-									<table style="margin-left:35px; width:100%; font-size:14px;">';     
+				$chargesOutput = '<div style="width:100%;" >
+									<table class = "table table-condensed table-bordered" style="width:100%; font-size:14px;">';     
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
 										Lodgement Fee <span class="pull-right"> : </span>
@@ -233,6 +233,9 @@ class Reports_Running_Charges extends CI_Controller {
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
 										Local Charges <span class="pull-right"> : </span>
+									</td>
+									<td> 
+										<span class="pull-right"></span>
 									</td>
 								  </tr>';
 				$chargesOutput .= '<tr>
@@ -343,6 +346,9 @@ class Reports_Running_Charges extends CI_Controller {
 								  </tr>';			
 
 				$chargesOutput .= '<tr>
+									<td style="text-align:left;">
+										<hidden>
+									</td>
 									<td style="text-align:left;">
 										<hidden>
 									</td>
@@ -470,7 +476,7 @@ class Reports_Running_Charges extends CI_Controller {
       	$commoditiesOutput = '';
       	  if(count($goods) > 0 ){
       		 $commoditiesOutput .=  "<div style='width:100%;'>
-			      		 	<table id='tbl-charges-commodities' style='width:100%;margin-left:35px;font-size:14px;'>
+			      		 	<table class='table table-bordered table-condensed' id='tbl-charges-commodities' style='width:100%;font-size:14px;'>
 					              <tr>";
 					                  if($monitoringType == 1 || $monitoringType == 2){
 					                  	 $commoditiesOutput .= "<td><span class='pull-left'><b>Container No. </b></span></td>";

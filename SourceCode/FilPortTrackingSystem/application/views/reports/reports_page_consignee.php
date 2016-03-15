@@ -1,7 +1,11 @@
 <head>
 		<script type="text/javascript" src="<?php echo base_url('resources/js/print.js'); ?>"></script>
 </head>
-
+<style>
+ .dash-subtitle .panel-title{
+ 	font-size: 12px !important;
+ }
+</style>
 <div class="dash-cont">
 	<div class="dash-title"><h3>REPORTS</h3></div>
 		<div class="dash-subtitle">
@@ -9,10 +13,10 @@
 						<div class="panel-group" id="accordion">
 						  <div class="panel panel-default">
 						    <div class="panel-heading">
-						      <h4 class="panel-title">
+						      <h6 class="panel-title">
 						        <a data-toggle="collapse" data-parent="#accordion" id="JobFile" href="#collapse1" style="text-decoration:none;font-weight:600;">
 						        <span class="hvr-icon-forward"> Jobfile Transaction </span></a>
-						      </h4>
+						      </h6>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-freights nav-charges">
@@ -59,7 +63,7 @@
 						    <div class="panel-heading">
 						      <h4 class="panel-title">
 						        <a data-toggle="collapse" data-parent="#accordion" id="Truck" href="#collapse7" style="text-decoration:none;font-weight:600;">
-						        <span class="hvr-icon-forward"> Truck </span></a>
+						        <span class="hvr-icon-forward"> Truck Booking </span></a>
 						      </h4>
 						    </div>
 						    <div id="collapse7" class="panel-collapse collapse" style="padding:5px">
@@ -576,31 +580,31 @@
 			var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
 			if(active_accreditation == 'runningcharges-jobfile-manila'){
 				$('#txt-table-runningcharges-manila').val('');
-				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
+				
 			}else if(active_accreditation == 'runningcharges-jobfile-outport'){
 				$('#txt-table-runningcharges-outport').val('');
-				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
+				
 			}else if(active_accreditation == 'runningcharges-jobfile-air'){
 				$('#txt-table-runningcharges-air').val('');
-				$('.tab_runningcharges_manila-manila .tools-bar').css('marginTop', '20%');
+				
 			}
 			$('#collapse5').click();
 		});
 /*button Running Charges*/
 $(document).on('click','#runningcharges-jobfile-manila',function(){
-			$('.tab_runningcharges_manila .tools-bar').css('marginTop', '20%');
+			
 			$('.table-runningcharges-manila').empty();
 			$('#txt-table-runningcharges-manila').val('');
 		});
 
 $(document).on('click','#runningcharges-jobfile-outport',function(){
-			$('.tab_runningcharges_outport .tools-bar').css('marginTop', '20%');
+			
 			$('.table-runningcharges-outport').empty();
 			$('#txt-table-runningcharges-outport').val('');
 		});
 
 $(document).on('click','#runningcharges-jobfile-air',function(){
-			$('.tab_runningcharges_air .tools-bar').css('marginTop', '20%');
+			
 			$('.table-runningcharges-air').empty();
 			$('#txt-table-runningcharges-air').val('');
 		});
