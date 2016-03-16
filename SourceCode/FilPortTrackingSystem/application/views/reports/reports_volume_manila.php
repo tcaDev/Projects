@@ -13,52 +13,38 @@
 			 		</div>		 		
         		</div>
 
-        		<div class="col-md-12" style="margin-top:10px;">
-        			<ul class="nav nav-tabs">
-					    <li class="active"><a data-toggle="tab" href="#comm-client">Search By Commodity</a></li>
-					    <li><a data-toggle="tab" href="#ata-client">Search By Actual Arrival Time</a></li>
-					 </ul>
+        		<div class="panel panel-default" style="margin-top: 15px;">
+				  <div class="panel-heading"><h5>Search : </h5></div>
+				  <div class="panel-body">
+				  		<div class="col-md-6 col-md-offset-3">
+				  			<!-- Search by Commodity  -->
 
-					 <div class="tab-content"  style="margin-top:10px;">
-	<!--  Commodity NO. -->
-				 		<div id="comm-client" class="tab-pane fade in active" >
-				 			<h5>Search : </h5>
 
-					       <div class="col-md-12">
-						       	<div class="col-md-6">
-						       		<div class="form-group">
-						       			<h5>Commodity : </h5>
-							       		<select class="form-control input-sm">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
+				  			<div class="col-md-12">
+				  				<div class="form-group">
+					       			<h5>Consignee: </h5>
+						       		<select class="form-control input-sm reports_consignee_volume_manila">
+						       			
+						       		</select>
+					       		</div>
+				  			</div>
 
-						       	<div class="col-md-6">
-						       		<div class="form-group">
-						       			<h5>Consignee: </h5>
-							       		<select class="form-control input-sm reports_consignee_volume_manila">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
+				  			<div class="col-md-12" style="border-top: 1px solid #ddd;">
+					       		<div class="form-group">
+					       			<h5>Commodity : </h5>
+						       		<select class="form-control input-sm">
+						       			
+						       		</select>
+					       		</div>
+				  			</div>
 
-						       	<div class="col-md-12">
-						       		<button type="button" class="btn btn-primary btn-sm col-md-3 pull-right"><span class="fa fa-search fa-fw"></span> Search</button>
-						       	</div>
-					       </div>
+				  			<!-- OR  -->
+				  			<div class="col-md-12">
+				  				<span><h6 style="text-align: center;">-Or-</h6></span>
+				  			</div>
 
-					       <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
-					    		<div class="table-volume-manila" ></div>
-					    	</div>
-				 		</div>
-
-		<!-- ATA -->
-						<div id="ata-client" class="tab-pane fade">
-							<h5>Search : </h5>
-
-					       <div class="col-md-6 col-md-offset-3">
-						       	<div class="col-md-12">
+							<div class="col-md-12" >
+				  				
 						       		<h5>Actual Arrival Date : </h5>
 									<div class="form-group">
 										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" id="dtpATAFrom-manila"/>	
@@ -67,26 +53,18 @@
 									<div class="form-group">
 										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-manila"/>	
 									</div>
-						       	</div>
-
-						       	<div class="col-md-12">
-						       		<div class="form-group">
-						       			<h5>Consignee: </h5>
-							       		<select class="form-control input-sm reports_consignee_volume_manila">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
-
-						       	<div class="col-md-12">
+				  			</div>
+				  			<!-- ATA -->
+				  			
+				  			<div class="col-md-12" style="margin-bottom:10px;">
+				  				<div class="form-group">
 						       		<button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-volume-manila"><span class="fa fa-search fa-fw"></span> Search</button>
 						       	</div>
-					       </div>
-						</div>
-				 	</div>
+				  			</div>
 
-
-        		</div>    		
+				  		</div>
+				  </div>
+			</div> 		
     	</div>
     	
 </div>	
@@ -160,6 +138,11 @@ $(document).on('click','#runningcharges-jobfile-manila',function(){
 		$('#btn-runningcharges-manila').click();
 	}
 });*/
+
+$(document).on('change','.reports_consignee_volume_manila',function(){
+	alert($('.reports_consignee_volume_manila option:selected').attr('id'));
+	var con_id = $('.reports_consignee_volume_manila option:selected').attr('id');
+});
 
 $(document).ready(function(){
 	$.ajax({

@@ -192,6 +192,10 @@ class Reports_Running_Charges extends CI_Controller {
 		echo $dispOutput;  
      }
 
+     function get_commodity_consignee($conId){
+     	
+     }
+
     function getCharges($jbNo, $monitoringType){
         $charges = $this->Charges->getRunningCharges($monitoringType, $jbNo);
       
