@@ -157,6 +157,7 @@ class Login_user extends CI_Controller {
 	 function jobfile(){
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){		
+			$this->output->cache(10);
 
 			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');
@@ -229,7 +230,8 @@ class Login_user extends CI_Controller {
 		  	$page_o = ceil($a/$item_per_page);
 		  	$data['count_total_air_page'] = $page_o;
 
-		 
+
+
 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
