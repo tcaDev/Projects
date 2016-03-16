@@ -12,11 +12,17 @@ class Reports_Running_Charges extends CI_Controller {
        }
 
       function loadPO(){
-          $PO_Number            =  $this->input->post('po_number');  
+          $PO_Number            =  $this->input->post('po_number');
           $monitoringType       =  $this->input->post('montype');
           $userID       		=  $this->input->post('userID');
-          
-          $pre_details 			=  $this->Charges->getPre_Details_RunningCharges($monitoringType,$PO_Number,$userID);
+          $searchBy 			=  $this->input->post('frm');
+          $pre_details;
+          if($searchBy == 'PO'){
+          	   $pre_details =  $this->Charges->getPre_Details_RunningCharges_PO($monitoringType,$PO_Number,$userID);
+          }else{
+          	   $pre_details =  $this->Charges->getPre_Details_RunningCharges_HBL($monitoringType,$PO_Number,$userID);
+          }
+       
           $dispOutput = '';
           $ct = count($pre_details);
           if($ct > 0){
@@ -85,7 +91,7 @@ class Reports_Running_Charges extends CI_Controller {
 	          						</div>
 	          						<div class="col-md-6">
 	          							<span class="pull-right" style="margin-bottom:5px;">
-	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Print</a>
+	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Print</a>
 		          							</span>
 		          					</div>
 	          					</div>
@@ -117,27 +123,24 @@ class Reports_Running_Charges extends CI_Controller {
       }
 
      function loadVolumeDetails(){
+
      	  $ataFrom              =  $this->input->post('frm');  
      	  $ataTo	            =  $this->input->post('to');  
           $monitoringType       =  $this->input->post('montype');
           $userID       		=  $this->input->post('userID');
+          $consigneeId 			=  $this->input->post('con_id');
+          $charges 				=  $this->input->post('charges');
           $dispOutput = '';
-          $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$ataFrom,$ataTo);
-          $dispOutput .= '<div class="table-volume-manila">';
+          $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$consigneeId,$ataFrom,$ataTo,$charges);
+          //var_dump($reportsVolume);
           if(count($reportsVolume) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Volume/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&userID='. $userID . '&montype=' . $monitoringType . '");
-						  </script>';  
+          	$dispOutput =  base_url("Print_Report_Volume/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&userID='. $userID . '&montype=' . $monitoringType . '&consigneeId=' . $consigneeId . '&charges=' . $charges ;  
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput .= 0;
           }
 
-       
-
-		echo $dispOutput;  
+          echo $dispOutput;
      } 
 
      function loadTruckDetails(){
@@ -376,7 +379,7 @@ class Reports_Running_Charges extends CI_Controller {
 		     	 $total += $charges->OtherFees;
 
 				$chargesOutput = '<div style="width:100%;">
-									<table style="margin-left:35px; width:100%; font-size:14px;">';     
+									<table class="table table-bordered table-condensed"  width:100%; font-size:14px;">';     
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
 										Lodgement Fee <span class="pull-right"> : </span>
@@ -456,7 +459,7 @@ class Reports_Running_Charges extends CI_Controller {
 									  <b> Total </b> <span class="pull-right"> : </span>
 									</td>
 									<td> 
-										<span class="pull-right">' . $total . '</span>
+										<span class="pull-right">' . number_format($total, 2, '.', ',') . '</span>
 									</td>
 								  </tr>
 								  </table>

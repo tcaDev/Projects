@@ -22,9 +22,8 @@ class Print_Report_Truck extends CI_Controller {
           $cID                  =  $this->input->get('cID');
           $documnt = $this->createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo);
           //$this->m_pdf->pdf->AddPage('L');
-          ini_set("memory_limit", "256M"); 
-          (set_time_limit(600000));
-          $this->m_pdf->pdf->mirrorMargins  = 1;
+          $mpdf->useSubstitutions=false;
+          $mpdf->simpleTables = true;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }

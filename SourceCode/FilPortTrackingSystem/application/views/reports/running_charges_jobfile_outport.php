@@ -23,9 +23,9 @@
 				       <div class="col-md-12">
 					       	<div class="col-md-5">
 							    <div class="input-group">
-							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport" placeholder='Enter Purchase Order Number..'>
+							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport-po" placeholder='Enter Purchase Order Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-outport" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-outport-po" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -39,9 +39,9 @@
 					       
 					       	<div class="col-md-5">
 							    <div class="input-group">
-							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport" placeholder='Enter House Bill Lading Number..'>
+							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport-hbl" placeholder='Enter House Bill Lading Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-outport" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-outport-hbl" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -60,7 +60,7 @@
 					       	<div class="col-md-12">
 					       		<div class="form-group">
 					       			<h5> Consignee Name : </h5>
-									<select class="form-control input-sm">
+									<select class="form-control input-sm reports_consignee_name_outport">
 										
 									</select>    
 					       		</div>
@@ -76,43 +76,42 @@
 							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
 								<div class="form-group">
-									<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" />	
+									<input type="text" class="form-control input-sm dtpTo_RunningCharges-outport" onfocus="(this.type='date')" placeholder="From :" />	
 								</div>
 
 								<div class="form-group">
-									<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" />	
+									<input type="text" class="form-control input-sm dtpTo_RunningCharges-outport" onfocus="(this.type='date')" placeholder="To :" />	
 								</div>
 
 
 							</div>
 
 							<div class="col-md-12 ">
-								<div class="form-group">
-									<h5>Charges :</h5>
-									<select class="form-control input-sm">
-										<option disabled selected value="0"> Select Charges</option>
-										<option>All Charges</option>
-										<option>Lodgement Fee</option>
-										<option>OLRS Fee</option>
-										<option>Local Charges</option>
-										<option>Arrestre</option>
-										<option>Wharfage</option>
-										<option>Weighing</option>
-										<option>Dispatch Fee</option>
-										<option>DEL</option>	
-										<option>Spotcheck</option>
-										<option>Storage Fee</option>
-										<option>Demurrage Fee</option>
-										<option>Detention Fee</option>
-										<option>SRA Application</option>
-										<option>SRA Processing Fee</option>
-										<option>BAI Application</option>
-										<option>BAI Inspection Fee</option>
-										<option>BPI Applciaiton Fee</option>
-										<option>BPI Inspection Fee</option>
+									<div class="form-group">
+									<h5>Select Charges :</h5>
+									<select class="form-control input-sm cbo-charges-outport">
+										<option id="*">All Charges</option>
+										<option id="LodgementFee">Lodgement Fee</option>
+										<option id="THCCharges">THC Charges</option>
+										<!-- <option>OLRS Fee</option> -->
+										<option id="Arrastre">Arrastre</option>
+										<option id="Wharfage">Wharfage</option>
+										<option id="Weighing">Weighing</option>
+										<option id="DispatchFee">Dispatch Fee</option>
+										<option id="DEL">DEL</option>	
+										<!-- <option>Spotcheck</option> -->
+										<option id="Storage">Storage Fee</option>
+										<option id="Demorage">Demurrage Fee</option>
+										<option id="Detention">Detention Fee</option>
+										<option id="SRAApplication">SRA Application</option>
+										<!-- <option>SRA Processing Fee</option> -->
+										<option id="BAIApplication">BAI Application</option>
+										<option id="BAIInspection">BAI Inspection Fee</option>
+										<!-- <option>BPI Applciaiton Fee</option> -->
+										<option id="BPIInspection">BPI Inspection Fee</option>
 									</select>
 								</div>
-								<button type="button" class="btn btn-primary col-md-12 btn-sm " id="btn-runningcharges-outport"><span class="fa fa-search fa-fw"></span> Search</button>
+								<button type="button" class="btn btn-primary col-md-12 btn-sm  btn-search-byConName-outport" ><span class="fa fa-search fa-fw"></span> Search</button>
 							</div>
 							
 							
@@ -140,21 +139,89 @@
 		$("thead th").css("white-space","nowrap");
 
 var montype_rr_outport = 2;
-$(document).on('click','#runningcharges-jobfile-air',function(){
-	var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
-	if(active_accreditation.trim() == 'runningcharges-jobfile-outport'){
-		$('#txt-table-runningcharges-air').val('');
-		$('#btn-runningcharges-air').click();
+
+function loadConsigneeNames(){
+   var con_name = $('.conName').attr('id');
+   $.ajax({
+    url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+    type : "POST",
+    data : {
+      userID : con_name
+    },
+    success : function(suc){
+      $('.reports_consignee_name_outport').html(suc);
+    }
+  });
+}
+
+loadConsigneeNames();
+
+
+$(document).on('click','.btn-search-byConName-outport',function(){
+	var charges	 = $('.cbo-charges-outport option:selected').attr('id');
+	var user_id  = $('.conName').attr('id');
+	var con_id 	 = $('.reports_consignee_name_outport option:selected').attr('id');
+	var frm 	 = $('.dtpFrom_RunningCharges-outport').val();
+	var to 		 = $('.dtpTo_RunningCharges-outport').val();
+	if(con_id == "" && frm == "" && to == ""){
+
+	}else{
+		$.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Reports_Running_Charges/loadVolumeDetails');?>",
+			  beforeSend: function() {
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Searching Your Files',
+				   			});
+		      },  
+	  		data: { 
+	  			montype   : montype_volume_outport,
+	  			userID    : user_id,
+	  			con_id	  : con_id,
+	  			frm 	  : frm,
+	  			to 		  : to,
+	  			charges   : charges
+	  		}
+		}).done(function(data){
+			dia.close();
+						if(data == 0){
+							dia_2 = $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        	dia_2.close();
+					       	 }
+							});
+							
+						}else{
+							window.open(data);
+						}
+		});
 	}
 });
+$(document).on('keydown','#txt-table-runningcharges-outport',function(e){
+	if(e.keyCode == 13){
+		$('#btn-runningcharges-outport').click();
+	}
+})	
 
-$(document).on('click','#btn-runningcharges-outport',function(){
-	var po_number = $('#txt-table-runningcharges-outport').val();
+
+
+$(document).on('click','#btn-runningcharges-outport-po',function(){
+	var po_number = $('#txt-table-runningcharges-outport-po').val();
 	var con_name = $('.conName').attr('id');
+	//alert(po_number + ' ' + con_name + ' ' + montype_rr_outport);
 	if(po_number.trim() == ''){
-		$(".table-runningcharges-outport").html('<div class="table-runningcharges-manila" ></div>');
+		$(".table-runningcharges-outport").html('<div class="table-runningcharges-outport" ></div>');
 	}else{
- 	$.ajax({
+			$.ajax({
 	  		method: "POST",
 			  url: "<?php echo base_url('Reports_Running_Charges/loadPO');?>",
 			  beforeSend: function() {
@@ -163,22 +230,45 @@ $(document).on('click','#btn-runningcharges-outport',function(){
 	  		data: { 
 	  			po_number : po_number,
 	  			montype   : montype_rr_outport,
-	  			userID    : con_name
+	  			userID    : con_name,
+	  			frm 	  : 'PO'
 	  		}
 		})
   		.done(function(data) {
   				var resultData = JSON.parse(data);
   				$(".table-runningcharges-outport").html(resultData[0].disp);
   			
+
 		});
-  	}
-});
-$(document).on('keydown','#txt-table-runningcharges-outport',function(e){
-	if(e.keyCode == 13){
-		$('#btn-runningcharges-outport').click();
 	}
-})	
+});
 	
+
+$(document).on('click','#btn-runningcharges-outport-hbl',function(){
+	var hbl = $('#txt-table-runningcharges-outport-hbl').val();
+	var con_name = $('.conName').attr('id');
+	if(hbl.trim() == ''){
+		$(".table-runningcharges-outport").html('<div class="table-runningcharges-outport" ></div>');
+	}else{
+			$.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Reports_Running_Charges/loadPO');?>",
+			  beforeSend: function() {
+		              $('.table-runningcharges-outport').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		data: { 
+	  			po_number : hbl,
+	  			montype   : montype_rr_outport,
+	  			userID    : con_name,
+	  			frm 	  : 'HBL'
+	  		}
+		})
+  		.done(function(data) {
+  				var resultData = JSON.parse(data);
+  				$(".table-runningcharges-outport").html(resultData[0].disp);
+		});
+	}
+});
 
 </script>
 

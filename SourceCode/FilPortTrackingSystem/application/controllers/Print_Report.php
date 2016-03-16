@@ -19,8 +19,9 @@ class Print_Report extends CI_Controller {
           $PO_Number            =  $this->input->get('po_num');  
           $monitoringType       =  $this->input->get('montype');
           $userID               =  $this->input->get('userId');
+          $searchBy             =  $this->input->get('type');
 
-          $documnt = $this->loadDoc($monitoringType,$PO_Number,$userID);
+          $documnt = $this->loadDoc($monitoringType,$PO_Number,$userID,$searchBy);
            ini_set("memory_limit", "256M"); 
           (set_time_limit(600000));
           $this->m_pdf->pdf->mirrorMargins  = 1;
@@ -28,9 +29,13 @@ class Print_Report extends CI_Controller {
           $this->m_pdf->pdf->Output();
   }
 
-   function loadDoc($monitoringType,$PO_Number,$userID){
+   function loadDoc($monitoringType,$PO_Number,$userID,$searchBy){
           
-          $pre_details         =  $this->Charges->getPre_Details_RunningCharges($monitoringType,$PO_Number,$userID);
+          if($searchBy == 'PO'){
+               $pre_details =  $this->Charges->getPre_Details_RunningCharges_PO($monitoringType,$PO_Number,$userID);
+          }else{
+               $pre_details =  $this->Charges->getPre_Details_RunningCharges_HBL($monitoringType,$PO_Number,$userID);
+          }
           $dispOutput = '';
           $ct = count($pre_details);
           if($ct > 0){

@@ -23,9 +23,9 @@
 				       <div class="col-md-12">
 					       	<div class="col-md-5">
 							    <div class="input-group">
-							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-air" placeholder='Enter Purchase Order Number..'>
+							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-air-po" placeholder='Enter Purchase Order Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-air" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-air-po" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -39,9 +39,9 @@
 					       
 					       	<div class="col-md-5">
 							    <div class="input-group">
-							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-air" placeholder='Enter House Bill Lading Number..'>
+							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-air-hbl" placeholder='Enter House Bill Lading Number..'>
 							      <span class="input-group-btn">
-							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-air" type="button"><span class="fa fa-search fa-fw"></span></button>
+							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-air-hbl" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
 							    </div>
 							</div>
@@ -60,7 +60,7 @@
 					       	<div class="col-md-12">
 					       		<div class="form-group">
 					       			<h5> Consignee Name : </h5>
-									<select class="form-control input-sm">
+									<select class="form-control input-sm reports_consignee_name_air">
 										
 									</select>    
 					       		</div>
@@ -76,11 +76,11 @@
 							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
 								<div class="form-group">
-									<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" />	
+									<input type="text" class="form-control input-sm dtpFrom_RunningCharges-air" onfocus="(this.type='date')" placeholder="From :" />	
 								</div>
 
 								<div class="form-group">
-									<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" />	
+									<input type="text" class="form-control input-sm dtpTo_RunningCharges-air" onfocus="(this.type='date')" placeholder="To :" />	
 								</div>
 
 
@@ -89,20 +89,19 @@
 							<div class="col-md-12 ">
 								<div class="form-group">
 									<h5>Charges :</h5>
-									<select class="form-control input-sm">
-										<option disabled selected value="0"> Select Charges</option>
-										<option>All Charges</option>
-										<option>Lodgement Fee</option>
-										<option>Break Bulk Fee</option>
-										<option>Storage Fee</option>
-										<option>Bad Cargo Order Fee</option>
-										<option>VCRC</option>
-										<option>CNI</option>
-										<option>CNIU</option>
-										<option>Other Fees</option>	
+									<select class="form-control input-sm cbo-charges-air">
+										<option id="*"> All Charges</option>
+										<option id="LodgementFee">Lodgement Fee</option>
+										<option id="BreakBulkFee">Break Bulk Fee</option>
+										<option id="StorageFee">Storage Fee</option>
+										<option id="BadCargoOrderFee">Bad Cargo Order Fee</option>
+										<option id="VCRC">VCRC</option>
+										<option id="CNI">CNI</option>
+										<option id="CNIU">CNIU</option>
+										<option id="OtherFees">Other Fees</option>	
 									</select>
 								</div>
-								<button type="button" class="btn btn-primary col-md-12 btn-sm" id="btn-runningcharges-air"><span class="fa fa-search fa-fw"></span> Search</button>
+								<button type="button" class="btn btn-primary col-md-12 btn-sm  btn-search-byConName-air" id="btn-runningcharges-air"><span class="fa fa-search fa-fw"></span> Search</button>
 							</div>
 							
 							
@@ -133,39 +132,73 @@
 
 var montype_rr_air = 3;
 
-$(document).on('click','#runningcharges-jobfile-air',function(){
-	var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
-	if(active_accreditation.trim() == 'runningcharges-jobfile-air'){
-		$('#txt-table-runningcharges-air').val('');
-		$('#btn-runningcharges-air').click();
-	}	
-});
+
+function loadConsigneeNames(){
+   var con_name = $('.conName').attr('id');
+   $.ajax({
+    url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+    type : "POST",
+    data : {
+      userID : con_name
+    },
+    success : function(suc){
+      $('.reports_consignee_name_air').html(suc);
+    }
+  });
+}
+
+loadConsigneeNames();
 
 
-$(document).on('click','#btn-runningcharges-air',function(){
-	var po_number = $('#txt-table-runningcharges-air').val();
-	var con_name = $('.conName').attr('id');
-	if(po_number.trim() == ''){
-		$(".table-runningcharges-air").html('<div class="table-runningcharges-manila" ></div>');
+$(document).on('click','.btn-search-byConName-air',function(){
+	var charges	 = $('.cbo-charges-air option:selected').attr('id');
+	var user_id  = $('.conName').attr('id');
+	var con_id 	 = $('.reports_consignee_name_air option:selected').attr('id');
+	var frm 	 = $('.dtpFrom_RunningCharges-air').val();
+	var to 		 = $('.dtpTo_RunningCharges-air').val();
+alert(montype_rr_air);
+	if(con_id == "" && frm == "" && to == ""){
+
 	}else{
- 	$.ajax({
+		$.ajax({
 	  		method: "POST",
-			  url: "<?php echo base_url('Reports_Running_Charges/loadPO');?>",
+			  url: "<?php echo base_url('Reports_Running_Charges/loadVolumeDetails');?>",
 			  beforeSend: function() {
-		              $('.table-runningcharges-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-		            },  
+					 	  dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Searching Your Files',
+				   			});
+		      },  
 	  		data: { 
-	  			po_number : po_number,
 	  			montype   : montype_rr_air,
-	  			userID    : con_name
+	  			userID    : user_id,
+	  			con_id	  : con_id,
+	  			frm 	  : frm,
+	  			to 		  : to,
+	  			charges   : charges
 	  		}
-		})
-  		.done(function(data) {
-  				var resultData = JSON.parse(data);
-  				$(".table-runningcharges-air").html(resultData[0].disp);
-  				
+		}).done(function(data){
+			dia.close();
+						if(data == 0){
+							dia_2 = $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        	dia_2.close();
+					       	 }
+							});
+							
+						}else{
+							window.open(data);
+						}
 		});
-  	}
+	}
 });
 
 $(document).on('keydown','#txt-table-runningcharges-air',function(e){
@@ -175,6 +208,62 @@ $(document).on('keydown','#txt-table-runningcharges-air',function(e){
 })	
 	
 
+
+$(document).on('click','#btn-runningcharges-air-po',function(){
+	var po_number = $('#txt-table-runningcharges-air-po').val();
+	var con_name = $('.conName').attr('id');
+	//alert(po_number + ' ' + con_name + ' ' + montype_rr_air);
+	if(po_number.trim() == ''){
+		$(".table-runningcharges-air").html('<div class="table-runningcharges-air" ></div>');
+	}else{
+			$.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Reports_Running_Charges/loadPO');?>",
+			  beforeSend: function() {
+		              $('.table-runningcharges-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		data: { 
+	  			po_number : po_number,
+	  			montype   : montype_rr_air,
+	  			userID    : con_name,
+	  			frm 	  : 'PO'
+	  		}
+		})
+  		.done(function(data) {
+  				var resultData = JSON.parse(data);
+  				$(".table-runningcharges-air").html(resultData[0].disp);
+  			
+
+		});
+	}
+});
+	
+
+$(document).on('click','#btn-runningcharges-air-hbl',function(){
+	var hbl = $('#txt-table-runningcharges-air-hbl').val();
+	var con_name = $('.conName').attr('id');
+	if(hbl.trim() == ''){
+		$(".table-runningcharges-air").html('<div class="table-runningcharges-air" ></div>');
+	}else{
+			$.ajax({
+	  		method: "POST",
+			  url: "<?php echo base_url('Reports_Running_Charges/loadPO');?>",
+			  beforeSend: function() {
+		              $('.table-runningcharges-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		data: { 
+	  			po_number : hbl,
+	  			montype   : montype_rr_air,
+	  			userID    : con_name,
+	  			frm 	  : 'HBL'
+	  		}
+		})
+  		.done(function(data) {
+  				var resultData = JSON.parse(data);
+  				$(".table-runningcharges-air").html(resultData[0].disp);
+		});
+	}
+});
 </script>
 
 

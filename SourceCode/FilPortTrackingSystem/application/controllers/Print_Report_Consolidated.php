@@ -23,9 +23,8 @@ class Print_Report_Consolidated extends CI_Controller {
           $poNum                 =  $this->input->get('poNum');
 
           $documnt = $this->createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
-           ini_set("memory_limit", "256M"); 
-          (set_time_limit(600000));
-          $this->m_pdf->pdf->AddPage('L');
+          $mpdf->useSubstitutions=false;
+          $mpdf->simpleTables = true;
           $this->m_pdf->pdf->mirrorMargins  = 1;
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();

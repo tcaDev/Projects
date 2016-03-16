@@ -3,7 +3,7 @@
 Class RunningCharges_Reports extends CI_Model
 {
 
-	function getPre_Details_RunningCharges($monType,$po_num,$userID){
+	function getPre_Details_RunningCharges_PO($monType,$po_num,$userID){
 		
 		if($monType == 1 || $monType == 2){
 		  $query = $this->db->query("SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
@@ -18,14 +18,40 @@ Class RunningCharges_Reports extends CI_Model
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     AND a.MonitoringTypeId = '$monType'");	
 		}else{
-		  $query = $this->db->query("SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+		  $query = $this->db->query("SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     UNION
-                                    SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'
                                     UNION
-                                    SELECT a.* FROM vw_JobFile_Air AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.PurchaseOrderNo = '$po_num'");	
+		}
+		return $query->row();
+	}
+
+	function getPre_Details_RunningCharges_HBL($monType, $po_num, $userID){
+		if($monType == 1 || $monType == 2){
+		  $query = $this->db->query("SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'
+                                    AND a.MonitoringTypeId = '$monType'
+                                    UNION
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'
+                                    AND a.MonitoringTypeId = '$monType'
+                                    UNION
+                                    SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'
+                                    AND a.MonitoringTypeId = '$monType'");	
+		}else{
+		  $query = $this->db->query("SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'
+                                    UNION
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'
+                                    UNION
+                                    SELECT a.* FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' AND a.HouseBillLadingNo = '$po_num'");	
 		}
 		return $query->row();
 	}
@@ -161,45 +187,98 @@ Class RunningCharges_Reports extends CI_Model
 		return $q->row();
 	}
 
-	function getReportsVolume($monType,$userID,$ataFrom,$ataTo){
-		if($monType == 1 || $monType == 2){
-			$query   = $this->db->query("SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.ContainerNo, d.ProductId, e.ProductName, f.*
-							FROM 
-							User  con1,
-							JobFile a
-							LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
-							LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
-							LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
-							LEFT JOIN Products				AS e ON d.ProductId = e.ProductId
-							LEFT JOIN RunningCharges 		AS f ON a.JobFileId = f.JobFileId
-							WHERE 
-							b.ActualArrivalTime >= '$ataFrom' 
-							AND
-							b.ActualArrivalTime <= '$ataTo'
-							AND 
-							a.ConsigneeId = '$userID'
-							AND 
-							a.MonitoringTypeId = '$monType'
-							");
-		}else{
-			$query = $this->db->query("SELECT 
-										a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, a.Aircraft, b.ProductId, c.ProductName, d.*
-										FROM
-										User  con1,
-										JobFile_Air a
-										LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId
-										LEFT JOIN Products 	  AS c ON b.ProductId = c.ProductId
-										LEFT JOIN RunningCharges_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
-										WHERE 
-										a.ATA >= '$ataFrom'
-										AND
-										a.ATA <= '$ataTo'
-										AND 
-										a.ConsigneeId = '$userID'
-									");
+	function getReportsVolume($monType,$userID,$consigneeId,$ataFrom,$ataTo,$charges){
+		$conditions = '';
+		$execQuery = '';
+		$preQuery = '';
 		
+
+		if($monType == 1 || $monType == 2){
+
+			if($charges != "*"){
+				$preQuery = "SELECT 
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f." . $charges ." AS RCharges ";
+			}else{
+				$preQuery = "SELECT 
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f." . $charges . " ";
+			}
+
+			if($consigneeId == ""){
+				$conditions .= "
+								LEFT JOIN User AS con1 ON a.ConsigneeId = con1.ConsigneeId 
+											           OR a.ConsigneeId = con1.ConsigneeId2 
+											           OR a.ConsigneeId = con1.ConsigneeId3
+								WHERE 
+								con1.UserId = '$userID'";
+			}else{
+				$conditions .= "
+				WHERE
+				a.ConsigneeId = '$consigneeId'";
+			}
+
+			if($ataFrom != "" && $ataTo != ""){
+				$conditions .= "
+				AND
+				b.ActualArrivalTime >= '$ataFrom'
+				AND
+				b.ActualArrivalTime <= '$ataTo'";
+			}
+
+			 $execQuery = $preQuery . "
+						FROM 
+						JobFile a
+						LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+						LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+						LEFT JOIN RunningCharges 	  AS f ON a.JobFileId = f.JobFileId " . $conditions . "
+						AND a.MonitoringTypeId = '$monType'";
+
+			$query   = $this->db->query($execQuery);
+		}else{
+
+			if($charges != "*"){
+				$preQuery = "SELECT 
+							 a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, b.TargetDeliveryDate, a.Aircraft, d." . $charges ." AS RCharges
+							 FROM 
+							 JobFile_Air a
+							 LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId 
+							 ";
+			}else{
+				$preQuery = "SELECT 
+							 a.JobFileNo , a.JobFile_AirId AS JobFileId, a.ATA, b.TargetDeliveryDate, a.Aircraft, d." . $charges . "
+							 FROM 
+							 JobFile_Air a
+							 LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId 
+							 ";
+			}	
+
+			if($consigneeId == ""){
+				$conditions .= "
+								LEFT JOIN User AS con1 ON a.ConsigneeId = con1.ConsigneeId 
+											           OR a.ConsigneeId = con1.ConsigneeId2 
+											           OR a.ConsigneeId = con1.ConsigneeId3
+								WHERE 
+								con1.UserId = '$userID'";
+			}else{
+				$conditions .= "
+				WHERE
+				a.ConsigneeId = '$consigneeId'";
+			}
+
+			if($ataFrom != "" && $ataTo != ""){
+				$conditions .= "
+				AND
+				a.ATA >= '$ataFrom'
+				AND
+				a.ATA <= '$ataTo'";
+			}
+
+			$execQuery = $preQuery . "
+						LEFT JOIN RunningCharges_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+						" . $conditions;
+
+			$query = $this->db->query($execQuery);
 		}
+		//echo $execQuery;
 		return $query->result();
 	}
 
@@ -210,7 +289,7 @@ Class RunningCharges_Reports extends CI_Model
 										from JobFile J
 										JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId 
 										where J.PurchaseOrderNo = '$PO_Number' AND MonitoringTypeId = '$monitoringType' limit 1
-											");
+										");
 		}else{
 			$query = $this->db->query(" select J.* , RC.* 
 											from JobFile_Air J
@@ -225,9 +304,7 @@ Class RunningCharges_Reports extends CI_Model
 	function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo){
 		if($monitoringType == 1 || $monitoringType == 2){
 				$query = $this->db->query(" select J.JobFileNo , CBJ.ActualArrivalTime , CBC.ContainerNo , PBC.ProductId ,P.ProductName , RC.*
-
 					from JobFile J 
-					
 					JOIN CarrierByJobFile CBJ ON CBJ.JobFileId = J.JobFileId
 					JOIN ContainerByCarrier CBC ON CBC.CarrierByJobFileId = CBJ.CarrierByJobFileId
 					JOIN ProductsByContainer PBC ON PBC.ContainerByCarrierId = CBC.ContainerByCarrierId
@@ -238,7 +315,7 @@ Class RunningCharges_Reports extends CI_Model
 					AND CBJ.ActualArrivalTime >= '$ataFrom' 
 					AND CBJ.ActualArrivalTime <= '$ataTo' 
 					AND J.MonitoringTypeId = '$monitoringType'
-											");
+					");
 		}else{
 			$query = $this->db->query(" select J.JobFileNo ,J.Aircraft,J.ATA , PA.Products_AirId , PA.ProductId ,RC.*
 				from JobFile_Air J 
