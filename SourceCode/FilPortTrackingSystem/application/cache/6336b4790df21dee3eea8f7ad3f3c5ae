@@ -1,4 +1,4 @@
-a:2:{s:6:"expire";i:1458124346;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charset="utf-8">
+a:2:{s:6:"expire";i:1458125116;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charset="utf-8">
 
 	<title>FilPort</title>
 	<link rel="stylesheet" href="" >
@@ -929,7 +929,7 @@ if(!isChrome){
 
  <script>
   var content_manila    = "http://localhost/FilPortTrackingSystem/Pagination/pagination_manila";
-  var total_manila_page     =  "9";
+  var total_manila_page     =  "10";
 
  var content_manila_search    = "http://localhost/FilPortTrackingSystem/Pagination/search_paging";
   
@@ -989,7 +989,7 @@ if(!isChrome){
 						      </span>
 						   </div>
 
-						<input type="hidden" class="manila_total" value="180">
+						<input type="hidden" class="manila_total" value="181">
 						<input type="hidden" class="manila_total_new">
 				
 			

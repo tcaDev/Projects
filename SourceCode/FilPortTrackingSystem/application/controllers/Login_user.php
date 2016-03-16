@@ -156,7 +156,8 @@ class Login_user extends CI_Controller {
 
 	 function jobfile(){
 	 	 //check if the user is already login
-		if($this->session->userdata('logged_in')){		
+		if($this->session->userdata('logged_in')){	
+	    	//$this->db->cache_delete_all();	
 			$this->output->cache(10);
 
 			$data['tab'] = "JobFile Monitoring";
