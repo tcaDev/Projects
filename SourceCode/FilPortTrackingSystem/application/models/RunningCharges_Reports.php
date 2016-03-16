@@ -206,18 +206,16 @@ Class RunningCharges_Reports extends CI_Model
 
 	function get_PO($monitoringType,$PO_Number,$consigneeID){
 		if($monitoringType == 1 || $monitoringType == 2){
-			$query = $this->db->query(" select J.* , RC.* , C.ConsigneeName
+			$query = $this->db->query(" select J.* , RC.*
 										from JobFile J
 										JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId 
-										JOIN Consignee C ON C.ConsigneeId = J.ConsigneeId
-										where J.ConsigneeID = '$consigneeID' AND J.PurchaseOrderNo = '$PO_Number' AND MonitoringTypeId = '$monitoringType' limit 1
+										where J.PurchaseOrderNo = '$PO_Number' AND MonitoringTypeId = '$monitoringType' limit 1
 											");
 		}else{
-			$query = $this->db->query(" select J.* , RC.* , C.ConsigneeName
+			$query = $this->db->query(" select J.* , RC.* 
 											from JobFile_Air J
 											JOIN RunningCharges_Air RC ON RC.JobFile_AirId = J.JobFile_AirId 
-											JOIN Consignee C ON C.ConsigneeId = J.ConsigneeId
-											where J.ConsigneeID = '$consigneeID' AND J.PurchaseOrderNo = '$PO_Number' limit 1
+											where J.PurchaseOrderNo = '$PO_Number' limit 1
 											");
 		}
 				

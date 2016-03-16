@@ -205,9 +205,18 @@
 			</table>
 		</div>
 
-		<div class="col-md-6">
-			<a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$consigneeId ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>
-		</div>
+		
 		
     </div>
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <div style="font-size:13px;margin-top:5px;">
+                    <i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</i>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$consigneeId ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>
+            </div>
+        </div>
+        
   </div>
