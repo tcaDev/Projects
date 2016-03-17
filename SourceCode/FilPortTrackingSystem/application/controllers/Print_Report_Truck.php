@@ -21,11 +21,12 @@ class Print_Report_Truck extends CI_Controller {
           $monitoringType       =  $this->input->get('montype');
           $cID                  =  $this->input->get('cID');
           $documnt = $this->createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo);
-          //$this->m_pdf->pdf->AddPage('L');
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
+          $this->m_pdf->pdf->AddPage('L');
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
+          //echo $documnt;
   }
 
   function createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo){
@@ -208,10 +209,13 @@ class Print_Report_Truck extends CI_Controller {
                       <th style='border:1px solid gray'>Jobfile No</th>
                       <th style='border:1px solid gray'>Container No</th>
                       <th style='border:1px solid gray'>Commodity</th>
+                      <th style='border:1px solid gray'>Origin</th>
                       <th style='border:1px solid gray'>Gate In (Date/Time)</th>
                       <th style='border:1px solid gray'>Gate Out (Date/Time)</th>
                       <th style='border:1px solid gray'>Actual Date Delivered</th>
+                      <th style='border:1px solid gray'>Start Of Storage</th>
                       <th style='border:1px solid gray'>Total Storage</th>
+                      <th style='border:1px solid gray'>Start Of Demurrage</th>
                       <th style='border:1px solid gray'>Total Demurrage</th>
                       <th style='border:1px solid gray'>Running Charges</th>
                     </tr>
@@ -224,12 +228,15 @@ class Print_Report_Truck extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ContainerNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ProductName . "</th>
+                                <th style='border:1px solid gray'>" . $row->Origin . "</th>
                                 <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
                                 <th style='border:1px solid gray'>" . $row->GateOutAtPort . ")</th>
                                 <th style='border:1px solid gray'>" . $row->ActualDeliveryAtWarehouse . "</th>
-                                <th style='border:1px solid gray'>" . $row->Storage . "</th>
-                                <th style='border:1px solid gray'>" . $row->Demorage . "</th>
-                                <th style='border:1px solid gray'>" . $row->Total_Charges . "</th>
+                                <th style='border:1px solid gray'>" . $row->StartOfStorage . "</th>
+                                <th style='border:1px solid gray'>" . number_format($row->Storage,2,',','.') . "</th>
+                                <th style='border:1px solid gray'>" . $row->StartOfDemorage . "</th>
+                                <th style='border:1px solid gray'>" . number_format($row->Demorage,2,',','.'). "</th>
+                                <th style='border:1px solid gray'>" . number_format($row->Total_Charges,2,',','.') . "</th>
                               </tr>";
           }
           $dispOutput .= "</tbody>";
