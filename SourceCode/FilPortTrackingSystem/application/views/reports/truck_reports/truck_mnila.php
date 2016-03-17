@@ -11,14 +11,12 @@
                   </div>
 				   	</div>
         	</div>  
-
           <div class="col-md-12" style="margin-top: 15px;">
             <div class="row">
                 <div class="panel panel-default">
                   <div class="panel-heading">LCL Shipments :</div>
                   <div class="panel-body">
                    <h5>Search : </h5>
-
                      <div class="col-md-6 col-md-offset-3">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -107,25 +105,29 @@ function loadConsigneeNames(){
       var con_name = $('.reports_consignee_truck option:selected').text();
       var frm    = $('#dtpTDDFrom').val();
       var to     = $('#dtpTDDTo').val();
-      if(frm == '' && to == ''){
-        $(".table-truck-reports").html('<div class="table-truck-reports" ></div>');
-      }else{
-          $.ajax({
-            method: "POST",
-            url: "<?php echo base_url('Reports_Running_Charges/loadTruckDetails');?>",
-            beforeSend: function() {
-                      $('.table-truck-reports').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-                    },  
-            data: { 
-              montype   : get_truck,
-              con_id    : con_id,
-              frm       : frm,
-              to        : to
-            }
-        })
-          .done(function(data) {
-              $(".table-truck-reports").html(data);
-        }); 
+      if(con_id == '' || con_id == null){
+      }
+      else{
+            if(frm == '' || frm == null && to == '' || to == null){
+              $(".table-truck-reports").html('<div class="table-truck-reports" ></div>');
+            }else{
+              $.ajax({
+                method: "POST",
+                url: "<?php echo base_url('Reports_Running_Charges/loadTruckDetails');?>",
+                beforeSend: function() {
+                          $('.table-truck-reports').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+                        },  
+                data: { 
+                  montype   : get_truck,
+                  con_id    : con_id,
+                  frm       : frm,
+                  to        : to
+                }
+            })
+              .done(function(data) {
+                  $(".table-truck-reports").html(data);
+            }); 
+          }
       }
   });
 </script>

@@ -13,8 +13,6 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">Search :</div>
                   <div class="panel-body">
-                   
-
                      <div class="col-md-6 col-md-offset-3">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -70,7 +68,6 @@
       loadConsigneeNames_consolidate();
        get_consolidate = 3;
   });
-
   function loadConsigneeNames_consolidate(){
       $.ajax({
         url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
@@ -85,7 +82,7 @@
   }
 
    $(document).on('click','#btn-consolidate',function(){
-      var con_id   = $('.reports_consignee_consolidate option:selected').attr('id');
+      var u_id   = $('.conName').attr('id');
       var c_name = $('.reports_consignee_consolidate option:selected').text();
       var frm    = $('#dtpTDDFrom_consolidate').val();
       var to     = $('#dtpTDDTo_consolidate').val();
@@ -101,7 +98,7 @@
                     },  
             data: { 
               montype   : get_consolidate,
-              con_id    : con_id,
+              con_id    : u_id,
               frm       : frm,
               to        : to,
               poNum     : po_num

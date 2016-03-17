@@ -25,7 +25,7 @@ class Print_Report_Consolidated extends CI_Controller {
           $documnt = $this->createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
-          $this->m_pdf->pdf->mirrorMargins  = 1;
+          $this->m_pdf->pdf->AddPage('L');
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
@@ -215,6 +215,7 @@ class Print_Report_Consolidated extends CI_Controller {
                             <th style='border:1px solid gray'>BL No.</th>
                             <th style='border:1px solid gray'>Date Received Docs</th>
                             <th style='border:1px solid gray'>Commodity</th>
+                            <th style='border:1px solid gray'>Origin</th>
                             <th style='border:1px solid gray'>Final Assessment Date</th>
                             <th style='border:1px solid gray'>Gate In (Date/Time)</th>
                             <th style='border:1px solid gray'>Gate Out (Date/Time)</th>
@@ -238,6 +239,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateReceivedOfOtherDocs . "</th>
                                       <th style='border:1px solid gray'>" . $row->ProductName . "</th>
+                                      <th style='border:1px solid gray'>" . $row->Origin . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
                                       <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
                                       <th style='border:1px solid gray'>" . $row->GateOutAtPort . ")</th>
@@ -247,7 +249,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'>" . $row->StartOfDemorage . "</th>
                                       <th style='border:1px solid gray'>" . $row->Demorage . "</th>
                                       <th style='border:1px solid gray'>" . $row->Total_Charges . "</th>
-                                      <th style='border:1px solid gray'>" . $row->StatusDescription . "</th>
+                                      <th style='border:1px solid gray'>" . $row->Description . "</th>
                                     </tr>";
                 }
                 $dispOutput .= "</tbody>";
