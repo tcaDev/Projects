@@ -20,6 +20,7 @@ class Login_user extends CI_Controller {
 		  //check if the user is already login
 		if($this->session->userdata('logged_in'))
 		{
+
 			$this->menu();
 		}
 		else{
@@ -98,6 +99,7 @@ class Login_user extends CI_Controller {
 				//$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
             	//$data["jobfiles"] = $cName->ConsigneeName;
 		if($this->session->userdata('logged_in')){
+			  $this->output->cache(5);
 		  	$data['tab'] = "Main Menu";
 		  	$session_data = $this->session->userdata('logged_in');
 		  	$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -158,7 +160,7 @@ class Login_user extends CI_Controller {
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){	
 	    	//$this->db->cache_delete_all();	
-			$this->output->cache(10);
+			$this->output->cache(2);
 
 			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');
@@ -280,6 +282,8 @@ class Login_user extends CI_Controller {
 
  	 function logout()
 	 {
+	  $this->output->clear_path_cache('Login_user');
+	   $this->db->cache_delete_all();
 	   $this->session->unset_userdata('logged_in');
 	   session_destroy();
 	   $this->index();
@@ -288,8 +292,10 @@ class Login_user extends CI_Controller {
 
 	function reports()
 	{	
+	
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
+		    $this->output->cache(5);
 			$data['tab'] = "REPORTS";
 			$session_data = $this->session->userdata('logged_in');
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -395,7 +401,7 @@ class Login_user extends CI_Controller {
 	{
 	//check if the user is already login
 	 if($this->session->userdata('logged_in')){		
-
+	 	$this->output->cache(2);
 
 	 	 $item_per_page = 10;
 
@@ -496,6 +502,7 @@ class Login_user extends CI_Controller {
 	}
 	 function search()
 	{	
+		$this->output->cache(2);
 			//check if the user is already login
 		 if($this->session->userdata('logged_in')){		
 			$data['tab'] = "GLOBAL SEARCH";
@@ -534,6 +541,7 @@ class Login_user extends CI_Controller {
 	{
 		//check if the user is already login
 		 if($this->session->userdata('logged_in')){	
+		    $this->output->cache(5);
 			$data['tab'] = "USER MANUAL";
 			$session_data = $this->session->userdata('logged_in');
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -585,6 +593,7 @@ class Login_user extends CI_Controller {
 	}
 	function dashboard()
 	{
+		$this->output->cache(2);
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "Charts";

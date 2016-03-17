@@ -1,4 +1,4 @@
-a:2:{s:6:"expire";i:1458125116;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charset="utf-8">
+a:2:{s:6:"expire";i:1458186556;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charset="utf-8">
 
 	<title>FilPort</title>
 	<link rel="stylesheet" href="" >
@@ -71,14 +71,14 @@ a:2:{s:6:"expire";i:1458125116;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charse
 					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 30px;">
 						<div class="row">
 							<div class=" img-user pull-right">
-								<img class="img-responsive" src="http://localhost/FilPortTrackingSystem/upload/user/592382bed79ee08767d90c36ae1f71d6.PNG" />	
+								<img class="img-responsive" src="http://localhost/FilPortTrackingSystem/upload/user/59d525331b4f75ac09230edf962d9020.PNG" />	
 							</div> 
 
 							<div class="pull-right" style="padding: 10px; color : #FFF;">
 								 <div class="btn-group" >
 									<!-- Username -->
 									  <a class="btn btn-primary" href="http://localhost/FilPortTrackingSystem/Login_user/account" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); text-align:right;">
-									  	<i class="fa fa-user fa-fw"></i> eli montefalcon<br>
+									  	<i class="fa fa-user fa-fw"></i> eliseo montefalcon<br>
 									  	<span class="pull-right" style = "font-family:Century Gothic;font-size:14px;">		
 									  <b>	  
 									  	      Filport Adminstrator<br>									  </b>
@@ -193,17 +193,17 @@ a:2:{s:6:"expire";i:1458125116;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charse
 
                                         <div class="form-group">
                                             <select name="consignee" class="form-control hidden consignee_add_user" data-toggle="tooltip" data-placement="left" title="Consignee">
-                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
+                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
                                         </div>
 
                                         <div class="form-group">
                                             <select name="consignee2" class="form-control hidden consignee_add_user2" data-toggle="tooltip" data-placement="left" title="Consignee 2">
-                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
+                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
                                         </div>
 
                                         <div class="form-group">
                                             <select name="consignee3" class="form-control hidden consignee_add_user3" data-toggle="tooltip" data-placement="left" title="Consignee 3">
-                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
+                                              <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                                            </select>
                                         </div>
 
                                         <div class="form-group"><span id="check_uname"></span>
@@ -395,21 +395,21 @@ a:2:{s:6:"expire";i:1458125116;s:7:"headers";a:0:{}}ENDCI---> <!-- 	<meta charse
                 <div class="hidden form-group consignee_update_user">
                    <label for="consignee_update_user">Consignee:</label>
                   <select name="consignee" class="form-control consignee" data-placement="left">
-                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
+                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
                 </div>
 
 
                 <div class="hidden form-group consignee_update_user2">
                    <label for="consignee_update_user">Consignee 2:</label>
                   <select name="consignee" class="form-control consignee2" data-placement="left">
-                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
+                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
                 </div>
 
 
                 <div class="hidden form-group consignee_update_user3">
                    <label for="consignee_update_user">Consignee 3:</label>
                   <select name="consignee" class="form-control consignee3" data-placement="left">
-                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=15> Equilibrium Intertrade Corp.</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
+                    <option value='0' selected='selected'>Select your Consignee</option><option value=5> 101 Cargo Solutions Logistics</option><option value=32> 101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.</option><option value=41> 456565</option><option value=43> 5345345</option><option value=45> 53453453hgfh</option><option value=6> Aguacate Marketing Corporation</option><option value=7> Altus Communications Inc.</option><option value=38> asd</option><option value=8> Busco Sugar Milling Company Inc.</option><option value=9> Casco Commodity Inc.</option><option value=37> charlie</option><option value=10> Cocopalm Agri Group Inc.</option><option value=11> Dizon Farms Produce Inc.</option><option value=12> Dumaguete Coconut Mills Inc.</option><option value=13> Dumaguete Suy Inc.</option><option value=14> E-Blue Holdings and Trading Corp.</option><option value=4> Eccosential Foods Corporation</option><option value=39> eli</option><option value=40> elis</option><option value=15> Equilibrium Intertrade Corp.</option><option value=42> fdfggg</option><option value=46> fdsfsdfsdfsdfsd</option><option value=44> fgdfhfghfgh</option><option value=16> Global Fresh Products Inc.</option><option value=36> IBM</option><option value=31> Jerbylyn Agtutubo</option><option value=17> Leyte Agri Corp</option><option value=18> LG Petro Prime Corp</option><option value=19> Malinta Corrugated Boxes Mfg. Corp.</option><option value=20> Open Communications Inc.</option><option value=34> Powerdrive Gear Motors Inc.</option><option value=35> S.N.N.P International Co.Ltd</option>                 </select>
                 </div>
 
 
@@ -1161,6 +1161,15 @@ if(!isChrome){
 							                <option value="32">
 							                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.							                </option> 
 							             	 
+							                <option value="41">
+							                456565							                </option> 
+							             	 
+							                <option value="43">
+							                5345345							                </option> 
+							             	 
+							                <option value="45">
+							                53453453hgfh							                </option> 
+							             	 
 							                <option value="6">
 							                Aguacate Marketing Corporation							                </option> 
 							             	 
@@ -1200,8 +1209,20 @@ if(!isChrome){
 							                <option value="39">
 							                eli							                </option> 
 							             	 
+							                <option value="40">
+							                elis							                </option> 
+							             	 
 							                <option value="15">
 							                Equilibrium Intertrade Corp.							                </option> 
+							             	 
+							                <option value="42">
+							                fdfggg							                </option> 
+							             	 
+							                <option value="46">
+							                fdsfsdfsdfsdfsd							                </option> 
+							             	 
+							                <option value="44">
+							                fgdfhfghfgh							                </option> 
 							             	 
 							                <option value="16">
 							                Global Fresh Products Inc.							                </option> 
@@ -2377,6 +2398,15 @@ $(document).on('click','.update_jobfiles',function(){
 							                <option value="32">
 							                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.							                </option> 
 							             	 
+							                <option value="41">
+							                456565							                </option> 
+							             	 
+							                <option value="43">
+							                5345345							                </option> 
+							             	 
+							                <option value="45">
+							                53453453hgfh							                </option> 
+							             	 
 							                <option value="6">
 							                Aguacate Marketing Corporation							                </option> 
 							             	 
@@ -2416,8 +2446,20 @@ $(document).on('click','.update_jobfiles',function(){
 							                <option value="39">
 							                eli							                </option> 
 							             	 
+							                <option value="40">
+							                elis							                </option> 
+							             	 
 							                <option value="15">
 							                Equilibrium Intertrade Corp.							                </option> 
+							             	 
+							                <option value="42">
+							                fdfggg							                </option> 
+							             	 
+							                <option value="46">
+							                fdsfsdfsdfsdfsd							                </option> 
+							             	 
+							                <option value="44">
+							                fgdfhfghfgh							                </option> 
 							             	 
 							                <option value="16">
 							                Global Fresh Products Inc.							                </option> 
@@ -7154,7 +7196,7 @@ $('#select').change(function(){
 			  	 <script>
   var content_outport   		 = "http://localhost/FilPortTrackingSystem/Pagination/pagination_outport";
   var content_outport_search     = "http://localhost/FilPortTrackingSystem/Pagination/search_paging";
-  var total_outport_page         =  "8";
+  var total_outport_page         =  "9";
 
   
  </script>
@@ -7382,6 +7424,15 @@ $('#select').change(function(){
 							                <option value="32">
 							                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.							                </option> 
 							             	 
+							                <option value="41">
+							                456565							                </option> 
+							             	 
+							                <option value="43">
+							                5345345							                </option> 
+							             	 
+							                <option value="45">
+							                53453453hgfh							                </option> 
+							             	 
 							                <option value="6">
 							                Aguacate Marketing Corporation							                </option> 
 							             	 
@@ -7421,8 +7472,20 @@ $('#select').change(function(){
 							                <option value="39">
 							                eli							                </option> 
 							             	 
+							                <option value="40">
+							                elis							                </option> 
+							             	 
 							                <option value="15">
 							                Equilibrium Intertrade Corp.							                </option> 
+							             	 
+							                <option value="42">
+							                fdfggg							                </option> 
+							             	 
+							                <option value="46">
+							                fdsfsdfsdfsdfsd							                </option> 
+							             	 
+							                <option value="44">
+							                fgdfhfghfgh							                </option> 
 							             	 
 							                <option value="16">
 							                Global Fresh Products Inc.							                </option> 
@@ -8557,6 +8620,15 @@ $(document).on('click','.update_jobfiles-outport',function(){
 							                <option value="32">
 							                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.							                </option> 
 							             	 
+							                <option value="41">
+							                456565							                </option> 
+							             	 
+							                <option value="43">
+							                5345345							                </option> 
+							             	 
+							                <option value="45">
+							                53453453hgfh							                </option> 
+							             	 
 							                <option value="6">
 							                Aguacate Marketing Corporation							                </option> 
 							             	 
@@ -8596,8 +8668,20 @@ $(document).on('click','.update_jobfiles-outport',function(){
 							                <option value="39">
 							                eli							                </option> 
 							             	 
+							                <option value="40">
+							                elis							                </option> 
+							             	 
 							                <option value="15">
 							                Equilibrium Intertrade Corp.							                </option> 
+							             	 
+							                <option value="42">
+							                fdfggg							                </option> 
+							             	 
+							                <option value="46">
+							                fdsfsdfsdfsdfsd							                </option> 
+							             	 
+							                <option value="44">
+							                fgdfhfghfgh							                </option> 
 							             	 
 							                <option value="16">
 							                Global Fresh Products Inc.							                </option> 
@@ -13186,6 +13270,15 @@ $(document).on('keydown','#search_outport',function(e){
 								                <option value="32">
 								                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.								                </option> 
 								             	 
+								                <option value="41">
+								                456565								                </option> 
+								             	 
+								                <option value="43">
+								                5345345								                </option> 
+								             	 
+								                <option value="45">
+								                53453453hgfh								                </option> 
+								             	 
 								                <option value="6">
 								                Aguacate Marketing Corporation								                </option> 
 								             	 
@@ -13225,8 +13318,20 @@ $(document).on('keydown','#search_outport',function(e){
 								                <option value="39">
 								                eli								                </option> 
 								             	 
+								                <option value="40">
+								                elis								                </option> 
+								             	 
 								                <option value="15">
 								                Equilibrium Intertrade Corp.								                </option> 
+								             	 
+								                <option value="42">
+								                fdfggg								                </option> 
+								             	 
+								                <option value="46">
+								                fdsfsdfsdfsdfsd								                </option> 
+								             	 
+								                <option value="44">
+								                fgdfhfghfgh								                </option> 
 								             	 
 								                <option value="16">
 								                Global Fresh Products Inc.								                </option> 
@@ -14449,6 +14554,15 @@ $(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
 								                <option value="32">
 								                101 Cargo Solutions Logistics FAO AGC Flat Glass Phils. Inc.								                </option> 
 								             	 
+								                <option value="41">
+								                456565								                </option> 
+								             	 
+								                <option value="43">
+								                5345345								                </option> 
+								             	 
+								                <option value="45">
+								                53453453hgfh								                </option> 
+								             	 
 								                <option value="6">
 								                Aguacate Marketing Corporation								                </option> 
 								             	 
@@ -14488,8 +14602,20 @@ $(document).on('keyup','.pill-jobfile-air-update .jobfiles-air',function(){
 								                <option value="39">
 								                eli								                </option> 
 								             	 
+								                <option value="40">
+								                elis								                </option> 
+								             	 
 								                <option value="15">
 								                Equilibrium Intertrade Corp.								                </option> 
+								             	 
+								                <option value="42">
+								                fdfggg								                </option> 
+								             	 
+								                <option value="46">
+								                fdsfsdfsdfsdfsd								                </option> 
+								             	 
+								                <option value="44">
+								                fgdfhfghfgh								                </option> 
 								             	 
 								                <option value="16">
 								                Global Fresh Products Inc.								                </option> 

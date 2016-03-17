@@ -9,6 +9,7 @@ class Job extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
+            $this->db->cache_delete_all();
             date_default_timezone_set('Asia/Manila');
             $this->load->model('Jobdata');
             $this->load->library('email');
@@ -19,7 +20,7 @@ class Job extends CI_Controller {
   //adding a data in form 
      function index(){
   
-     $data =  $this->input->post('ship_id');
+     $data =  $this->input->post('sh$this->db->cache_delete_all();ip_id');
     if(isset($data)){
      $shipper = addslashes($this->Jobdata->get_vessel($data));
 
