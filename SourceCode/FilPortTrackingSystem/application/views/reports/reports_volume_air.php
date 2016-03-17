@@ -1,102 +1,91 @@
-<div class="tab-pane tab_reports_volume-air" id="tab_reports_volume-air">	
+	<div class="tab-pane tab_reports_volume-air" id="tab_reports_volume-air">	
 
     	<div class="col-md-12 ">
         	<div class="row">
-    			<div class="tools-bar col-md-12">
-    				<div class="col-md-12">
-    					<div class="row">
-    						<div class="col-md-6">
-        						<span style="padding-bottom: 10px;"> <h4>Reports-Volume : <b> Air Freight  </b></h4></span>
+        			<div class="tools-bar col-md-12">
+        				<div class="col-md-12">
+        					<div class="row">
+        						<div class="col-md-6">
+	        						<span style="padding-bottom: 10px;"> <h4>Reports-Volume : <b> Sea Freight Air </b></h4></span>
+	        					</div>
         					</div>
-    					</div>
-    				</div>		  
-			 	</div>
-        	</div>    
-        	<div class="col-md-12" style="margin-top:10px;">
-        			<ul class="nav nav-tabs">
-					    <li class="active"><a data-toggle="tab" href="#comm-client-air">Search By Commodity</a></li>
-					    <li><a data-toggle="tab" href="#ata-client-air">Search By Actual Arrival Time</a></li>
-					 </ul>
+        				</div>
+			 		</div>		 		
+        		</div>
 
-					 <div class="tab-content"  style="margin-top:10px;">
-	<!--  Commodity NO. -->
-				 		<div id="comm-client-air" class="tab-pane fade in active" >
-				 			<h5>Search : </h5>
+        		<div class="panel panel-default" style="margin-top: 15px;">
+				  <div class="panel-heading"><h5>Search : </h5></div>
+				  <div class="panel-body">
+				  		<div class="col-md-6 col-md-offset-3">
+				  			<!-- Search by Commodity  -->
 
-					       <div class="col-md-12">
-						       	<div class="col-md-6">
-						       		<div class="form-group">
-						       			<h5>Commodity : </h5>
-							       		<select class="form-control input-sm">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
 
-						       	<div class="col-md-6">
-						       		<div class="form-group">
-						       			<h5>Consignee: </h5>
-							       		<select class="form-control input-sm reports_consignee_volume_air">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
+				  			<div class="col-md-12">
+				  				<div class="form-group">
+					       			<div class="col-md-6">
+					       				<h5>Consignee : </h5>
+					       			</div>
+					       			<div class="col-md-6">
+					       				<span class="pull-right"><h6 class="loadConsignee-air"></h6></span>
+					       			</div>
+						       		<select class="form-control input-sm reports_consignee_volume_air">
+						       			
+						       		</select>
+					       		</div>
+				  			</div>
 
-						       	<div class="col-md-12">
-						       		<button type="button" class="btn btn-primary btn-sm col-md-3 pull-right"><span class="fa fa-search fa-fw"></span> Search</button>
-						       	</div>
-					       </div>
+				  			<div class="col-md-12" style="border-top: 1px solid #ddd;">
+					       		<div class="form-group">
+					       			<div class="col-md-6">
+					       				<h5>Commodity : </h5>
+					       			</div>
+					       			<div class="col-md-6">
+					       				<span class="pull-right"><h6 class="loadCommodities-air"></h6></span>
+					       			</div>
+						       		<select class="form-control input-sm cbo-commodities-air">
+						       			
+						       		</select>
+					       		</div>
+				  			</div>
 
-					       <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:440px;">
-					    		<div class="table-volume-air" ></div>
-					    	</div>
-				 		</div>
+				  			<!-- OR  -->
+				  			<div class="col-md-12">
+				  				<span><h6 style="text-align: center;">-Or-</h6></span>
+				  			</div>
 
-		<!-- ATA -->
-						<div id="ata-client-air" class="tab-pane fade">
-							<h5>Search : </h5>
-
-					       <div class="col-md-6 col-md-offset-3">
-						       	<div class="col-md-12">
+							<div class="col-md-12" >
+				  				
 						       		<h5>Actual Arrival Date : </h5>
 									<div class="form-group">
-										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" id="dtpATAFrom-air"/>	
+										<input type="text" class="form-control input-sm dtpFrom-commodityVolume-air" onfocus="(this.type='date')" placeholder="From :" id="dtpATAFrom-air"/>	
 									</div>
 
 									<div class="form-group">
-										<input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-air"/>	
+										<input type="text" class="form-control input-sm dtpTo-commodityVolume-air" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-air"/>	
 									</div>
+				  			</div>
+				  			<!-- ATA -->
+				  			
+				  			<div class="col-md-12" style="margin-bottom:10px;">
+				  				<div class="form-group">
+						       		<button type="button" class="btn btn-primary btn-sm col-md-12 pull-right btn-volume-air" id="btn-volume-air"><span class="fa fa-search fa-fw"></span> Search</button>
 						       	</div>
+				  			</div>
 
-						       	<div class="col-md-12">
-						       		<div class="form-group">
-						       			<h5>Consignee: </h5>
-							       		<select class="form-control input-sm reports_consignee_volume_air">
-							       			
-							       		</select>
-						       		</div>
-						       	</div>
-
-						       	<div class="col-md-12">
-						       		<button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-volume-air"><span class="fa fa-search fa-fw"></span> Search</button>
-						       	</div>
-					       </div>
-						</div>
-				 	</div>
-        		</div>   		
+				  		</div>
+				  </div>
+			</div> 		
     	</div>
+    	
 </div>	
+<div class="subOutput">
 
-	<div class="modal fade" id="view-volume-air-commodity" role="dialog" data-keyboard="false" data-backdrop="static" style="top:20%;">
-				    <div class="modal-dialog">
-				   		 <div class="modal-content">
-				   			
-				   		 </div>
-				    </div>
-	</div>
-
+</div>
 		
 <script>
+
+
+
 		$("th").css("vertical-align","middle");
 		$("tbody td").css("white-space","nowrap");
 		$("tbody td").css("min-width","60px");
@@ -109,77 +98,126 @@ $(document).on('click','#collapse1',function(){
 	$('.reports-consignee').removeClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.volume').addClass('hidden');
+	$('.truck').addClass('hidden');
+	$('.consolidate_reports').addClass('hidden');
 });
 
 $(document).on('click','#collapse5',function(){
 	$('.reports-consignee').addClass('hidden');
 	$('.runningcharges').removeClass('hidden');
 	$('.volume').addClass('hidden');
+	$('.truck').addClass('hidden');
+	$('.consolidate_reports').addClass('hidden');
 });
 
 $(document).on('click','#collapse6',function(){
 	$('.reports-consignee').addClass('hidden');
 	$('.runningcharges').addClass('hidden');
 	$('.volume').removeClass('hidden');
+	$('.truck').addClass('hidden');
+	$('.consolidate_reports').addClass('hidden');
 });
 
-/*
-$(document).on('click','#runningcharges-jobfile-air',function(){
-	var active_accreditation = $('.nav-data-runningcharges .active').attr('id');
-	if(active_accreditation.trim() == 'runningcharges-jobfile-air'){
-		$('#txt-table-runningcharges-air').val('');
-		$('#btn-runningcharges-air').click();
-	}
-});*/
+$(document).on('click','#collapse7',function(){
+	$('.reports-consignee').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+	$('.volume').addClass('hidden');
+	$('.truck').removeClass('hidden');
+	$('.consolidate_reports').addClass('hidden');
+});
 
+$(document).on('click','#collapse8',function(){
+	$('.reports-consignee').addClass('hidden');
+	$('.runningcharges').addClass('hidden');
+	$('.volume').addClass('hidden');
+	$('.truck').addClass('hidden');
+	$('.consolidate_reports').removeClass('hidden');
+});
+
+
+$(document).on('change','.reports_consignee_volume_air',function(){
+	var con_id = $('.reports_consignee_volume_air option:selected').attr('id');
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/get_commodity_consignee');?>",
+		type : "POST",
+		beforeSend : function(){
+			$('.loadCommodities-air').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
+		},
+		data : {
+			con_id : con_id,
+			montype : montype_volume_air
+		},
+		success : function(suc){
+			$('.cbo-commodities-air').html(suc);
+			$('.loadCommodities-air').html('');
+		}
+	})
+});
 
 $(document).ready(function(){
 	$.ajax({
 		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
 		type : "POST",
+		beforeSend : function(){
+			$('.loadConsignee-air').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
+		},
 		data : {
 			userID : con_name
 		},
 		success : function(suc){
 			$('.reports_consignee_volume_air').html(suc);
+			$('.loadConsignee-air').html('');
 		}
-	})
+	});
 });
 
-$(document).on('click','#btn-volume-air',function(){
-	var con_id = $('.reports_consignee_volume_air option:selected').attr('id');
-	var c_name = $('.reports_consignee_volume_air option:selected').text();
-	var frm 	 = $('#dtpATAFrom-air').val();
-	var to 		 = $('#dtpATATo-air').val();
 
-	if(frm == '' && to == ''){
-		$(".table-runningcharges-air").html('<div class="table-runningcharges-air" ></div>');
-	}else{
-			$.ajax({
-	  		method: "POST",
-			  url: "<?php echo base_url('Reports_Running_Charges/loadVolumeDetails');?>",
-			  beforeSend: function() {
-		              $('.table-volume-air').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-		            },  
-	  		data: { 
-	  			montype   : montype_volume_air,
-	  			userID    : con_id,
-	  			frm 	  : frm,
-	  			to 		  : to
-	  		}
-		})
-  		.done(function(data) {
-  				$(".table-volume-air").html(data);
-  				$(".tools-bar").animate({marginTop:'0%'});
-		});
-	}
+$(document).on('click','.btn-volume-air',function(){
+	var con_id   = $('.reports_consignee_volume_air option:selected').attr('id');
+	var prod_id  = $('.cbo-commodities-air option:selected').attr('id');
+	var ataFrom  = $('.dtpFrom-commodityVolume-air').val();
+	var ataTo 	 = $('.dtpTo-commodityVolume-air').val();
+
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getCommodityVolume');?>",
+		type : "POST",
+		beforeSend : function(){
+			dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Searching Your Files',
+				   	  });
+		},
+		data : {
+			con_id 	: con_id,
+			prod_id : prod_id,
+			frm 	: ataFrom,
+			to 		: ataTo,
+			montype : montype_volume_air
+		},
+		success : function(data){
+			dia.close();
+						if(data == 0){
+							dia_2 = $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        	dia_2.close();
+					       	 }
+							});
+							
+						}else{
+							window.open(data);
+						}
+		}
+	});
+
 });
-/*
-$(document).on('keydown','#txt-table-runningcharges-air',function(e){
-	if(e.keyCode == 13){
-		$('#btn-runningcharges-air').click();
-	}
-})	*/
 
 </script>
 

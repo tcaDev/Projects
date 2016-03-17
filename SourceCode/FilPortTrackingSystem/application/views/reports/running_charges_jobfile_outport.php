@@ -76,7 +76,7 @@
 							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
 								<div class="form-group">
-									<input type="text" class="form-control input-sm dtpTo_RunningCharges-outport" onfocus="(this.type='date')" placeholder="From :" />	
+									<input type="text" class="form-control input-sm dtpFrom_RunningCharges-outport" onfocus="(this.type='date')" placeholder="From :" />	
 								</div>
 
 								<div class="form-group">

@@ -156,7 +156,6 @@ $(document).on('click','.btn-search-byConName-air',function(){
 	var con_id 	 = $('.reports_consignee_name_air option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-air').val();
 	var to 		 = $('.dtpTo_RunningCharges-air').val();
-alert(montype_rr_air);
 	if(con_id == "" && frm == "" && to == ""){
 
 	}else{

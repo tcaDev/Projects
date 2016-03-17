@@ -192,8 +192,38 @@ class Reports_Running_Charges extends CI_Controller {
 		echo $dispOutput;  
      }
 
-     function get_commodity_consignee($conId){
+     function get_commodity_consignee(){
+     	$con_id    =  $this->input->post('con_id');  
+     	$montype  =  $this->input->post('montype');  
+     	$dispOutput = '';
+		$dispOutput = "<option disabled selected>Select Commodity</option>";
+     	$commodities = $this->Charges->get_commodities($con_id,$montype);
+     	foreach($commodities as $row){
+     		if($row->ProductName != ""){
+     			$dispOutput .= '<option id="' . $row->ProductId . '">' . stripslashes($row->ProductName) . '</option>';
+     		}
+     	}
+
+     	echo $dispOutput;
+     }
+
+     function getCommodityVolume(){
+     	$montype =  $this->input->post('montype');  
+     	$con_id  =  $this->input->post('con_id');  
+     	$prod_id =  $this->input->post('prod_id');
+     	$frm 	 =  $this->input->post('frm');  
+     	$to		 =  $this->input->post('to');  
+
+     	$dispOutput = '';
+
+     	$commodityVolume = $this->Charges->getCommodityVolume($con_id,$prod_id,$frm,$to,$montype);
      	
+     	if(count($commodityVolume) > 0){
+     		$dispOutput =  base_url("Print_Report_CommodityVolume/") . '?frm=' . $frm . '&to=' . $to .'&cID='. $con_id . '&montype=' . $montype . '&pID=' . $prod_id; 
+		}else{
+			$dispOutput = 0;
+		}
+		echo $dispOutput;
      }
 
     function getCharges($jbNo, $monitoringType){

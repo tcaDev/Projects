@@ -138,6 +138,102 @@ Class RunningCharges_Reports extends CI_Model
 		return $query->result();
 	}
 
+	function getCommodityVolume($cID,$prodId,$frm,$to,$monType){
+		$conditions = '';
+		$execQuery = '';
+		$preQuery = '';
+		
+		if($monType == 1 || $monType == 2){
+			$preQuery = "SELECT a.JobFileNo, b.ActualArrivalTime, e.ProductName, e.ProductId,(COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  +  COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + COALESCE(f.OtherFees,0)) AS Total_Charges
+						 FROM 
+						 JobFile a
+						 LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+						 LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+						 LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+						 LEFT JOIN Products 		   AS e ON d.ProductId = e.ProductId
+						 LEFT JOIN RunningCharges 	   AS f ON a.JobFileId = f.JobFileId
+						 WHERE
+						 a.ConsigneeId = '$cID'";
+						
+			if($frm != "" && $to != ""){
+				$conditions .= "
+								AND 
+								b.ActualArrivalTime >= '$frm'
+								AND
+								b.ActualArrivalTime <= '$to'";
+			}
+
+			if($prodId != ""){
+				$conditions .= "
+								AND 
+								e.ProductId = '$prodId'";
+			}
+
+			$execQuery = $preQuery . $conditions . "
+						 							ORDER BY e.ProductId";
+
+		$query = $this->db->query($execQuery);						 						
+
+		}else{
+				$preQuery = "SELECT a.JobFileNo, a.ATA, c.ProductName, c.ProductId,(COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges
+							 FROM JobFile_Air AS a
+							 LEFT JOIN Products_Air AS b ON a.JobFile_AirId = b.JobFile_AirId
+							 LEFT JOIN Products AS c ON b.ProductId = c.ProductId
+							 LEFT JOIN RunningCharges_Air AS f ON a.JobFile_AirId = f.JobFile_AirId
+							 WHERE
+							 a.ConsigneeId = '$cID'";
+						
+			if($frm != "" && $to != ""){
+				$conditions .= "
+								AND 
+								a.ATA >= '$frm'
+								AND
+								a.ATA <= '$to'";
+			}
+
+			if($prodId != ""){
+				$conditions .= "
+								AND 
+								c.ProductId = '$prodId'";
+			}
+
+			$execQuery = $preQuery . $conditions . "
+						 							ORDER BY c.ProductId";
+
+			$query = $this->db->query($execQuery);		
+		}
+		return $query->result();
+	}
+
+	function get_commodities($con_id,$monitoringType){
+		$query = '';
+		if($monitoringType == 1 || $monitoringType == 2 ){
+			$query = $this->db->query("SELECT DISTINCT e.ProductName, e.ProductId
+									FROM 
+									JobFile a
+									LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+									LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+									LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+									LEFT JOIN Products 			   AS e ON d.ProductId = e.ProductId
+									WHERE
+									a.ConsigneeId = '$con_id' 
+									AND
+									a.MonitoringTypeId = '$monitoringType'
+									ORDER BY e.ProductId");
+		}else{
+			$query = $this->db->query("SELECT DISTINCT e.ProductName, e.ProductId
+									   FROM 
+									   JobFile_Air a
+									   LEFT JOIN Products_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+									   LEFT JOIN Products 	   AS e ON d.ProductId = e.ProductId
+									   WHERE
+									   a.ConsigneeId = '$con_id' 
+									   ORDER BY e.ProductId");
+		}
+		
+		return $query->result();
+	}
+
 	function getRunningCharges($monType, $jbNo){
 		if($monType == 1 || $monType == 2){
 			$query = $this->db->query("SELECT * FROM vw_RunningCharges WHERE JobFileNo = '$jbNo'");
