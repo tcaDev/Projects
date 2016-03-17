@@ -41,11 +41,11 @@
     			<tbody>
     				<tr>
     					<td>Lodgement Fee :</td>
-    					<td><?php echo $charges->LodgementFee ?></td>
+    					<td><?php echo number_format($charges->LodgementFee ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>THC Charges :</td>
-    					<td><?php echo $charges->THCCharges ?></td>
+    					<td><?php echo number_format($charges->THCCharges ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Local Charges :</td>
@@ -53,59 +53,59 @@
     				</tr>
     				<tr>
     					<td>Arrestre :</td>
-    					<td><?php echo $charges->Arrastre ?></td>
+    					<td><?php echo number_format( $charges->Arrastre ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Wharfage :</td>
-    					<td><?php echo $charges->Wharfage ?></td>
+    					<td><?php echo number_format($charges->Wharfage ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Weighing :</td>
-    					<td><?php echo $charges->Weighing ?></td>
+    					<td><?php echo number_format($charges->Weighing ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Dispatch Fee :</td>
-    					<td><?php echo $charges->DispatchFee ?></td>
+    					<td><?php echo number_format($charges->DispatchFee ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>DEL :</td>
-    					<td><?php echo $charges->DEL ?></td>
+    					<td><?php echo number_format($charges->DEL ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Storage Fee :</td>
-    					<td><?php echo $charges->Storage ?></td>
+    					<td><?php echo number_format($charges->Storage ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Demurrage Fee :</td>
-    					<td><?php echo $charges->Demorage ?></td>
+    					<td><?php echo number_format($charges->Demorage ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Detention Fee:</td>
-    					<td><?php echo $charges->Detention ?></td>    				
+    					<td><?php echo number_format($charges->Detention ,2,'.',',');?></td>    				
     				</tr>
     				<tr>
     					<td>SRA Application :</td>
-    					<td><?php echo $charges->SRAApplication ?></td> 
+    					<td><?php echo number_format($charges->SRAApplication ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>SRA Processing Fee :</td>
-    					<td><?php echo $charges->SRAInspection ?></td> 
+    					<td><?php echo number_format($charges->SRAInspection ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>BAI Application :</td>
-    					<td><?php echo $charges->BAIApplication ?></td> 
+    					<td><?php echo number_format($charges->BAIApplication ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>BAI Inspection Fee :</td>
-    					<td><?php echo $charges->BAIInspection ?></td> 
+    					<td><?php echo number_format($charges->BAIInspection ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>BAI Inspection Fee :</td>
-    					<td><?php echo $charges->BAIInspection ?></td> 
+    					<td><?php echo number_format($charges->BAIInspection ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td><b>Total :</b></td>
-    					<td><b><?php echo $total ?></b></td> 
+    					<td><b><?php echo number_format($total ,2,'.',','); ?></b></td> 
     				</tr>
 
     			</tbody>	
@@ -126,40 +126,40 @@
     			<tbody>
     				<tr>
     					<td>Lodgement Fee :</td>
-    					<td><?php echo $charges->LodgementFee ?></td>
+    					<td><?php echo number_format($charges->LodgementFee ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Break Bulk Fee :</td>
-    					<td><?php echo $charges->BreakBulkFee ?></td>
+    					<td><?php echo number_format($charges->BreakBulkFee ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>Storage Fee :</td>
-    					<td><?php echo $charges->StorageFee ?></td>
+    					<td><?php echo number_format($charges->StorageFee ,2,'.',',');?></td>
     				</tr>
 
     				<tr>
     					<td>Bad Cargo Fee :</td>
-    					<td><?php echo $charges->BadCargoOrderFee ?></td>
+    					<td><?php echo number_format($charges->BadCargoOrderFee ,2,'.',',');?></td>
     				</tr>
     				<tr>
     					<td>VCRC :</td>
-    					<td><?php echo $charges->VCRC ?></td>    				
+    					<td><?php echo number_format($charges->VCRC ,2,'.',',');?></td>    				
     				</tr>
     				<tr>
     					<td>CNI :</td>
-    					<td><?php echo $charges->CNI ?></td> 
+    					<td><?php echo  number_format($charges->CNI ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>CNIU :</td>
-    					<td><?php echo $charges->CNIU ?></td> 
+    					<td><?php echo  number_format($charges->CNIU ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td>Other Fees :</td>
-    					<td><?php echo $charges->OtherFees ?></td> 
+    					<td><?php echo  number_format($charges->OtherFees ,2,'.',',');?></td> 
     				</tr>
     				<tr>
     					<td><b>TOTAL :</b></td>
-    					<td><?php echo $total ?></td> 
+    					<td><?php echo number_format($total ,2,'.',','); ?></td> 
     				</tr>
 
     			</tbody>	
@@ -211,11 +211,11 @@
         <div class="col-md-12">
             <div class="col-md-8">
                 <div style="font-size:13px;margin-top:5px;">
-                    <i>Note: Brokerage Fees, Delivery Charges and other Customs related fees are not included</i>
+                    <i><b>Note:</b> Brokerage Fees, Delivery Charges and other Customs related fees are not included</i>
                 </div>
             </div>
             <div class="col-md-4">
-                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$consigneeId ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>
+                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>
             </div>
         </div>
         

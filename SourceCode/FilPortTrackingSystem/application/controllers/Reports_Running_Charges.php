@@ -551,14 +551,24 @@ class Reports_Running_Charges extends CI_Controller {
 		  $PO_Number            =  $this->input->post('po_number');  
           $monitoringType       =  $this->input->post('montype');
           $consigneeID       	=  $this->input->post('consigneeId');
+          $btn  		     	=  $this->input->post('btn');
+          $message;
 
-          $po = $this->Charges->get_PO($monitoringType,$PO_Number,$consigneeID);
+          if($btn == 1){
+          	 $po = $this->Charges->get_PO($monitoringType,$PO_Number,$consigneeID);
+
+          	 $message = "<i style='color:red;'> No Purchase Order Number Found</i>";
+          	}else{
+          	 $po = $this->Charges->get_PO_hbl($monitoringType,$PO_Number,$consigneeID);
+          	 $message = "<i style='color:red;'> No House Bill Lading Number Found</i>";
+          	}
+         
          
 
          
 
           if($po == NULL){
-          	echo "<i style='color:red;'> No Purchase Order Number Found</i>";
+          	echo $message;
           }
           else{
           	 $volume = $this->Charges->getVolume($monitoringType,$po->JobFileNo);
@@ -581,21 +591,18 @@ class Reports_Running_Charges extends CI_Controller {
 	/*Volume Admin /Filport USer*/
 	function get_Volume(){
      	  $ataFrom              =  $this->input->post('frm');  
+     	  $charges              =  $this->input->post('charges');  
      	  $ataTo	            =  $this->input->post('to');  
           $monitoringType       =  $this->input->post('montype');
-          $consigneeID       		=  $this->input->post('consigneeID');
+          $consigneeID       		=  $this->input->post('con_id');
           $dispOutput = '';
-          $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo);
-          $dispOutput .= '<div class="table-volume-admin">';
-          if(count($reportsVolume) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Volume_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&consigneeID='. $consigneeID . '&montype=' . $monitoringType . '");
-						  </script>';  
+          $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charges);
+          //$dispOutput .= '<div class="table-volume-admin">';
+           if(count($reportsVolume) > 0){
+          	$dispOutput =  base_url("Print_Report_Volume_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&montype=' . $monitoringType . '&consigneeId=' . $consigneeID . '&charges=' . $charges ;  
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput .= 0;
           }
 
           echo $dispOutput;  
@@ -610,14 +617,10 @@ class Reports_Running_Charges extends CI_Controller {
           $reportsTruck = $this->Charges->getCharges_Truck($monitoringType,$cID,$ataFrom,$ataTo);
           $dispOutput .= '<div class="table-reports-truck">';
           if(count($reportsTruck) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '");
-						  </script>';  
+          	$dispOutput =  base_url("Print_Report_Truck_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType ;
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput = 0;
           }
 
        
@@ -632,17 +635,13 @@ class Reports_Running_Charges extends CI_Controller {
           $cID       			=  $this->input->post('con_id');
           $poNum       			=  $this->input->post('poNum');
           $dispOutput = '';
-          $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
+          $reportsTruck = $this->Charges->getConsolidated($monitoringType,$ataFrom,$ataTo,$poNum);
           $dispOutput .= '<div class="table-consolidate-reports">';
           if(count($reportsTruck) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum . '");
-						  </script>';  
+          	$dispOutput = base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput .= 0;
           }
 
        

@@ -166,7 +166,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                         <div class="col-md-6">
                          <span class="pull-left" style="font-size:14px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
                           <span>'
-                              . $pre_details->ConsigneeName .
+                              . $pre_details->ConsigneeName.
                           '</span>
                         </div>
                         <div class="col-md-6">

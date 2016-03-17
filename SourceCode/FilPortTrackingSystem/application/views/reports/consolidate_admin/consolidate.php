@@ -1,68 +1,53 @@
 <div class="tab-pane " id="tab_admin_consolidate">		        
     	<div class="col-md-12 ">
         	<div class="row">
-        			<div class="tools-bar" style="margin-top:20%;">
-                    <div class="col-md-12">
-                      <span style="padding-bottom: 10px;"> <h4> Consolidated Reports : <b class='active-tab-consolidate-admin'> Air Freight </b></h4></span>
-                     </div>
-
-                     <div class="col-md-12">
-                      <div class="row">
-                        <div class="col-md-6">
-                             <input type="text" class="form-control input-sm" placeholder="PI/PO Number" id="txtPONumber-admin" />
-                        </div>
-                       <div class="col-md-6">
-                              <select class="form-control input-sm consolidate_consignee">
-                              <option disabled selected value="0">Select Consignee</optio>
-                                  <?php  foreach($consignee as $row){  ?> 
-                                    <option value="<?php echo $row->ConsigneeId ?>">
-                                    <?php echo stripslashes($row->ConsigneeName) ?>
-                                    </option> 
-                                  <?php }?>
-                                </select>   <!-- Todo Ajax Call Query to display Data -->
-                        </div>
-                      </div>
-                         
-                     </div>
-                      
-
-                    <div class="input-group col-md-12">
-                      <div class="col-md-12">
-                          <span><b>Target Delivery Date : </b></span>
-                        </div>
-                        <div class="">
-
-                      <div class="col-md-5">
-                        <div class="">
-                          <input placeholder="From :" class="textbox-n form-control" id="dtpTDDFrom_consolidate-admin" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-                        </div>
-                        
-                      </div>
-
-                      <div class="col-md-5">
-                        <div class="">
-                          <input placeholder="To :" class="textbox-n form-control" id="dtpTDDTo_consolidate-admin" type="text" onfocus="(this.type='date')" onchange="(this.type='text')"> 
-                        </div>
-                      </div>
-
-                      <div class="col-md-2">
-                        <div class="row">
-                            <span class="input-group-btn">
-                              <button class="btn btn-danger col-md-12" type="button" id="btn-consolidate-admin"><span class="fa fa-search fa-fw"></span></button>
-                            </span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-				   	</div>
-
+        			<div class="tools-bar col-md-12">
+                <div class="col-md-12">
+                  <span style="padding-bottom: 10px;"> <h4> Consolidated Reports : <b class='active-tab-consolidate-admin'> Air Freight </b></h4></span>
+                 </div>
+				   	  </div>
         	</div>     		
+
+          <div class="col-md-12" style="margin-top: 15px;">
+            <div class="row">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Search :</div>
+                  <div class="panel-body">
+                   
+
+                     <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <h5>Purchase Order No.: </h5>
+                              <input type="text" class="form-control input-sm" placeholder="PI/PO Number" id="txtPONumber-admin" />
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <h5>Actual Delivery Date : </h5>
+                          <div class="form-group">
+                            <input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="From :" id="dtpTDDFrom_consolidate-admin"/> 
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" class="form-control input-sm" onfocus="(this.type='date')" placeholder="To :" id="dtpTDDTo_consolidate-admin"/> 
+                          </div>
+                        </div>
+
+                        <div class="col-md-12">
+                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate"><span class="fa fa-search fa-fw"></span> Search</button>
+                        </div>
+
+                          <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:110px;">
+                            <div class="table-consolidate-reports-admin" ></div>
+                          </div>
+                     </div>
+                  </div>
+                </div>  
+            </div>
+          </div>    
     	</div>
 
-    	<div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;">
-    		<div class="table-consolidate-reports-admin" ></div>
-    	</div>
-    		
 </div>
 
 
@@ -87,8 +72,6 @@ var get_consolidate = 0;
 
 
    $(document).on('click','#btn-consolidate-admin',function(){
-      var con_id   = $('.consolidate_consignee').val();
-      var c_name = $('.reports_consignee_consolidate option:selected').text();
       var frm    = $('#dtpTDDFrom_consolidate-admin').val();
       var to     = $('#dtpTDDTo_consolidate-admin').val();
       var po_num = $('#txtPONumber-admin').val();
@@ -98,20 +81,39 @@ var get_consolidate = 0;
           $.ajax({
             method: "POST",
             url: "<?php echo base_url('Reports_Running_Charges/get_consolidate');?>",
-            beforeSend: function() {
-                      $('.table-consolidate-reports-admin').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-                    },  
+           beforeSend: function() {
+              dia = $.dialog({
+                    icon: 'fa fa-spinner fa-spin',
+                    closeIcon: false,
+                    title: 'Please wait!',
+                    backgroundDismiss: false,
+                    content: 'Currently Searching Your Files',
+                });
+          },    
             data: { 
               montype   : get_consolidate,
-              con_id    : con_id,
               frm       : frm,
               to        : to,
               poNum     : po_num
             }
         })
           .done(function(data) {
-              $(".table-consolidate-reports-admin").html(data);
-              $(".tools-bar").animate({marginTop:'0%'});
+              dia.close();
+            if(data == 0){
+              dia_2 = $.alert({
+              icon: 'fa fa-exclamation-triangle-o',
+              closeIcon: false,
+                  title: 'No Data Match',
+                  backgroundDismiss: false,
+                  content: 'Sorry ! Data not Found ',
+                  confirm : function(){
+                    dia_2.close();
+                   }
+              });
+              
+            }else{
+              window.open(data);
+            }
         }); 
       }
   });

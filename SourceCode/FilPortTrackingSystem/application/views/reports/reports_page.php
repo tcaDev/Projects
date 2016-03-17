@@ -88,7 +88,7 @@
 						    <div class="panel-heading">
 						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="admin_Truck" data-parent="#accordion" href="#truck_collapse" style="text-decoration:none;font-weight:600;">
-						       <span class="hvr-icon-forward"> Truck</span></a>
+						       <span class="hvr-icon-forward"> Truck Booking</span></a>
 						      </h6>
 						    </div>
 						    <div id="truck_collapse" class="panel-collapse collapse" style="padding:5px">
@@ -105,7 +105,7 @@
 						    <div class="panel-heading">
 						      <h6 class="panel-title">
 						        <a data-toggle="collapse" id="admin_Consolidate" data-parent="#accordion" href="#consolidate_collapse" style="text-decoration:none;font-weight:600;">
-						       <span class="hvr-icon-forward"> Consolidate </span></a>
+						       <span class="hvr-icon-forward"> Consolidated </span></a>
 						      </h6>
 						    </div>
 						    <div id="consolidate_collapse" class="panel-collapse collapse" style="padding:5px">
