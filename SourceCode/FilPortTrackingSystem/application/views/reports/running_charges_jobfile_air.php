@@ -156,7 +156,7 @@ $(document).on('click','.btn-search-byConName-air',function(){
 	var con_id 	 = $('.reports_consignee_name_air option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-air').val();
 	var to 		 = $('.dtpTo_RunningCharges-air').val();
-	if(con_id == "" && frm == "" && to == ""){
+	if(con_id == "" || con_id == null && frm == "" || frm == null && to == "" || to == null){
 
 	}else{
 		$.ajax({

@@ -163,7 +163,7 @@ $(document).on('click','.btn-search-byConName-manila',function(){
 	var con_id 	 = $('.reports_consignee_name_manila option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-manila').val();
 	var to 		 = $('.dtpTo_RunningCharges-manila').val();
-	if(con_id == "" && frm == "" && to == ""){
+	if(con_id == "" || con_id == null && frm == "" || frm == null && to == "" || to == null){
 
 	}else{
 		$.ajax({

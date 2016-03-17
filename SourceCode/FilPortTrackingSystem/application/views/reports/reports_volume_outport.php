@@ -177,45 +177,48 @@ $(document).on('click','.btn-volume-outport',function(){
 	var prod_id  = $('.cbo-commodities-outport option:selected').attr('id');
 	var ataFrom  = $('.dtpFrom-commodityVolume-outport').val();
 	var ataTo 	 = $('.dtpTo-commodityVolume-outport').val();
-
-	$.ajax({
-		url  : "<?php echo base_url('Reports_Running_Charges/getCommodityVolume');?>",
-		type : "POST",
-		beforeSend : function(){
-			dia =	$.dialog({
-					 	  	    icon: 'fa fa-spinner fa-spin',
-					 	  	    closeIcon: false,
-				        		title: 'Please wait!',
-				        		backgroundDismiss: false,
-				        		content: 'Currently Searching Your Files',
-				   	  });
-		},
-		data : {
-			con_id 	: con_id,
-			prod_id : prod_id,
-			frm 	: ataFrom,
-			to 		: ataTo,
-			montype : montype_volume_outport
-		},
-		success : function(data){
-			dia.close();
-						if(data == 0){
-							dia_2 = $.alert({
-							icon: 'fa fa-exclamation-triangle-o',
-						 	closeIcon: false,
-					        title: 'No Data Match',
-					        backgroundDismiss: false,
-					        content: 'Sorry ! Data not Found ',
-					        confirm : function(){
-					        	dia_2.close();
-					       	 }
-							});
-							
-						}else{
-							window.open(data);
-						}
-		}
-	});
+	if(con_id == "" || con_id == null){
+		
+	}else{
+		$.ajax({
+			url  : "<?php echo base_url('Reports_Running_Charges/getCommodityVolume');?>",
+			type : "POST",
+			beforeSend : function(){
+				dia =	$.dialog({
+						 	  	    icon: 'fa fa-spinner fa-spin',
+						 	  	    closeIcon: false,
+					        		title: 'Please wait!',
+					        		backgroundDismiss: false,
+					        		content: 'Currently Searching Your Files',
+					   	  });
+			},
+			data : {
+				con_id 	: con_id,
+				prod_id : prod_id,
+				frm 	: ataFrom,
+				to 		: ataTo,
+				montype : montype_volume_outport
+			},
+			success : function(data){
+				dia.close();
+							if(data == 0){
+								dia_2 = $.alert({
+								icon: 'fa fa-exclamation-triangle-o',
+							 	closeIcon: false,
+						        title: 'No Data Match',
+						        backgroundDismiss: false,
+						        content: 'Sorry ! Data not Found ',
+						        confirm : function(){
+						        	dia_2.close();
+						       	 }
+								});
+								
+							}else{
+								window.open(data);
+							}
+			}
+		});
+	}
 
 });
 

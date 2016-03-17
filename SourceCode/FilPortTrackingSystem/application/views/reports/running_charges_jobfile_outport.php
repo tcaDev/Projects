@@ -163,7 +163,7 @@ $(document).on('click','.btn-search-byConName-outport',function(){
 	var con_id 	 = $('.reports_consignee_name_outport option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-outport').val();
 	var to 		 = $('.dtpTo_RunningCharges-outport').val();
-	if(con_id == "" && frm == "" && to == ""){
+	if(con_id == "" || con_id == null && frm == "" || frm == null && to == "" || to == null){
 
 	}else{
 		$.ajax({
