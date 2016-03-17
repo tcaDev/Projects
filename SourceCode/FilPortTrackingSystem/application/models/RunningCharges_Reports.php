@@ -520,6 +520,44 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 
 	}
 
+	function get_Consolidated($monType,$ataFrom,$ataTo,$poNum){
+		if($monType == 1 || $monType == 2){
+			$query = $this->db->query("SELECT a.JobFileNo, b.CarrierByJobFileId, c.ContainerNo, c.TargetDeliveryDate, c.DateSentPreAssessment, c.DatePaid, b.EstArrivalTime, b.ActualArrivalTime , a.HouseBillLadingNo, a.DateReceivedOfOtherDocs, e.ProductName,c.DateSentFinalAssessment , c.GateInAtPort , c.GateOutAtPort, c.ActualDeliveryAtWarehouse, c.StartOfStorage, f.Storage, c.StartOfDemorage, f.Demorage, (COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  +  COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
+										FROM JobFile AS a
+										LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+										LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+										LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+										LEFT JOIN Products 			  AS e ON d.ProductId = e.ProductId
+										LEFT JOIN RunningCharges 	  AS f ON a.JobFileId = f.JobFileId
+										LEFT JOIN Status 			  AS h ON a.StatusId = h.StatusId
+										
+										WHERE 
+										c.ActualDeliveryAtWarehouse >= '$ataFrom' 
+										AND 
+										c.ActualDeliveryAtWarehouse <= '$ataTo'
+										AND
+										a.MonitoringTypeId = '$monType'
+										AND
+										a.PurchaseOrderNo = '$poNum'");
+		}else{
+			$query = $this->db->query("SELECT 
+									   a.JobFileNo, a.ATA, a.HouseBillLadingNo, c.ProductName, a.DatePickUpOtherDocs, b.DateSentPreAssessment, b.DateSentFinalAssessment, b.DatePaid, b.TargetDeliveryDate, b.DateReceivedAtWhse, f.StorageFee, (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
+									   FROM JobFile_Air AS a
+									   LEFT JOIN Products_Air        AS b ON a.JobFile_AirId = b.JobFile_AirId
+									   LEFT JOIN Products 			 AS c ON b.ProductId = c.ProductId									
+									   LEFT JOIN RunningCharges_Air  AS f ON a.JobFile_AirId = f.JobFile_AirId
+									   LEFT JOIN Status 		     AS h ON a.StatusId = h.StatusId
+										WHERE 
+										b.TargetDeliveryDate >= '$ataFrom'
+									 	AND 
+										b.TargetDeliveryDate <= '$ataTo'
+										AND 
+										a.PurchaseOrderNo = '$poNum'");
+		}
+
+		return $query->result();
+	}
+
 }
 
 ?>

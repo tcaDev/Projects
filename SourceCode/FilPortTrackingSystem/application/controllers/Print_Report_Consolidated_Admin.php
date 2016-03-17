@@ -2,7 +2,7 @@
 
  date_default_timezone_set('Asia/Manila');
  require_once APPPATH.'libraries/swift_mailer/swift_required.php';
-class Print_Report_Consolidated extends CI_Controller {
+class Print_Report_Consolidated_Admin extends CI_Controller {
 
      public function __construct()
        {
@@ -19,10 +19,9 @@ class Print_Report_Consolidated extends CI_Controller {
           $ataFrom              =  $this->input->get('frm');  
           $ataTo                =  $this->input->get('to');  
           $monitoringType       =  $this->input->get('montype');
-          $cID                  =  $this->input->get('cID');
           $poNum                 =  $this->input->get('poNum');
           
-          $documnt = $this->createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
+          $documnt = $this->createDocToPrint($monitoringType,$ataFrom,$ataTo,$poNum);
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
           $this->m_pdf->pdf->AddPage('L');
@@ -31,8 +30,8 @@ class Print_Report_Consolidated extends CI_Controller {
           //echo $documnt;
   }
 
-  function createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo,$poNum){
-         $consolidations = $this->loadConsolidatedDocs($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
+  function createDocToPrint($monitoringType,$ataFrom,$ataTo,$poNum){
+         $consolidations = $this->loadConsolidatedDocs($monitoringType,$ataFrom,$ataTo,$poNum);
          $dispOutput = '';
          $monHeader = '';
            if($monitoringType == 1){
@@ -95,8 +94,8 @@ class Print_Report_Consolidated extends CI_Controller {
       return $dispOutput;
   }
 
-  function loadConsolidatedDocs($monitoringType,$cID,$ataFrom,$ataTo,$poNum){
-       $consolidateReport = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
+  function loadConsolidatedDocs($monitoringType,$ataFrom,$ataTo,$poNum){
+       $consolidateReport = $this->Charges->get_Consolidated($monitoringType,$ataFrom,$ataTo,$poNum);
        $oldJBNo = '';
          if($monitoringType == 1 || $monitoringType == 2){
             if(count($consolidateReport) > 0){
@@ -231,8 +230,8 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'>" . $row->DatePaid . "</th>
                                       <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateReceivedAtWhse . "</th>
-                                      <th style='border:1px solid gray'>" . $row->StorageFee . "</th>
-                                      <th style='border:1px solid gray'>" . $row->Total_Charges . "</th>
+                                      <th style='border:1px solid gray'>" . number_format($row->StorageFee,2,'.',','). "</th>
+                                      <th style='border:1px solid gray'>" . number_format($row->Total_Charges,2,'.',',') . "</th>
                                       <th style='border:1px solid gray'>" . $row->Description . "</th>
                                     </tr>";
                     }else{

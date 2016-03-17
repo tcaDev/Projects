@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-md-12">
-                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate"><span class="fa fa-search fa-fw"></span> Search</button>
+                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate-admin"><span class="fa fa-search fa-fw"></span> Search</button>
                         </div>
 
                           <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:110px;">
@@ -58,16 +58,25 @@ var get_consolidate = 0;
     $('#admin_consolidate-manila').click(function(){
       $('.active-tab-consolidate-admin').html('<b>Sea Freight Manila</b>');
       get_consolidate = 1;
+      $('#txtPONumber-admin').val('');
+      $('#dtpTDDFrom_consolidate-admin').val('');
+      $('#dtpTDDTo_consolidate-admin').val('');
   });
 
   $('#admin_consolidate-outport').click(function(){
       $('.active-tab-consolidate-admin').html('<b>Sea Freight Outport</b>');
       get_consolidate = 2;
+      $('#txtPONumber-admin').val('');
+      $('#dtpTDDFrom_consolidate-admin').val('');
+      $('#dtpTDDTo_consolidate-admin').val('');
   });
 
   $('#admin_consolidate-air').click(function(){
       $('.active-tab-consolidate-admin').html('<b>Air Freight</b>');
        get_consolidate = 3;
+       $('#txtPONumber-admin').val('');
+      $('#dtpTDDFrom_consolidate-admin').val('');
+      $('#dtpTDDTo_consolidate-admin').val('');
   });
 
 
@@ -76,7 +85,7 @@ var get_consolidate = 0;
       var to     = $('#dtpTDDTo_consolidate-admin').val();
       var po_num = $('#txtPONumber-admin').val();
       if(frm == '' && to == ''){
-        $(".table-consolidate-reports-admin").html('<div class="table-consolidate-reports" ></div>');
+       
       }else{
           $.ajax({
             method: "POST",
