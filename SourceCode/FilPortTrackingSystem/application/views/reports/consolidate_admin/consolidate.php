@@ -3,7 +3,7 @@
         	<div class="row">
         			<div class="tools-bar col-md-12">
                 <div class="col-md-12">
-                  <span style="padding-bottom: 10px;"> <h4> Consolidated Reports : <b class='active-tab-consolidate-admin'> Air Freight </b></h4></span>
+                  <span style="padding-bottom: 10px;"> <h4> Reports-Consolidated : <b class='active-tab-consolidate-admin'> Air Freight </b></h4></span>
                  </div>
 				   	  </div>
         	</div>     		

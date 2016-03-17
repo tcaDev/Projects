@@ -35,9 +35,9 @@
 				  			</div>
 
 				  			<div class="col-md-12" style="border-top: 1px solid #ddd;">
-					       		<div class="form-group">
+					       		<div class="form-group ">
 					       			<h5>Commodity : </h5>
-						       		<select class="form-control input-sm">
+						       		<select class="form-control input-sm cbo-commodities-admin">
 						       			
 						       		</select>
 					       		</div>
@@ -83,6 +83,7 @@ $('#admin_volume-manila').click(function(){
 	volume = 1;
 	$('.table-volume-admin').empty();
 	$('.volume_consignee').val(0);
+	$('.cbo-commodities-admin').empty();
 	$('#dtpATAFrom-manila-volume').val('');
 	$('#dtpATATo-manila-volume').val('');
 });
@@ -92,6 +93,7 @@ $('#admin_volume-outport').click(function(){
 	volume = 2;
 	$('.table-volume-admin').empty();
 	$('.volume_consignee').val(0);
+	$('.cbo-commodities-admin').empty();
 	$('#dtpATAFrom-manila-volume').val('');
 	$('#dtpATATo-manila-volume').val('');
 });
@@ -101,8 +103,29 @@ $('#admin_volume-air').click(function(){
 	volume = 3;
 	$('.table-volume-admin').empty();
 	$('.volume_consignee').val(0);
+	$('.cbo-commodities-admin').empty();
 	$('#dtpATAFrom-manila-volume').val('');
 	$('#dtpATATo-manila-volume').val('');
+});
+
+
+$(document).on('change','.volume_consignee',function(){
+	var con_id = $('.volume_consignee').val();
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/get_commodity_consignee');?>",
+		type : "POST",
+		beforeSend : function(){
+			$('.cbo-commodities-admin').html('<option><span class="fa fa-spinner fa-pulse"></span><i>Loading Commodities...</i></option>');
+		},
+		data : {
+			con_id  : con_id,
+			montype : volume
+		},
+		success : function(suc){
+			$('.cbo-commodities-admin').html(suc);
+		
+		}
+	})
 });
 
 $(document).on('click','#btn-volume-admin',function(){
@@ -110,25 +133,44 @@ $(document).on('click','#btn-volume-admin',function(){
 	var con_name = $('.volume_consignee option:selected').text();
 	var frm 	 = $('#dtpATAFrom-manila-volume').val();
 	var to 		 = $('#dtpATATo-manila-volume').val();
-	if(frm == '' && to == ''){
-		$(".table-volume-admin").html('<div class="table-runningcharges-manila" ></div>');
-	}else{
-			$.ajax({
-	  		method: "POST",
-			  url: "<?php echo base_url('Reports_Running_Charges/get_Volume');?>",
-			  beforeSend: function() {
-		              $('.table-volume-admin').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-		            },  
-	  		data: { 
-	  			montype   : volume,
-	  			consigneeID    : con_id,
-	  			frm 	  : frm,
-	  			to 		  : to
-	  		}
-		})
-  		.done(function(data) {
-  				$(".table-volume-admin").html(data);
-		});	
-	}
+	var prod_id = $('.cbo-commodities-admin option:selected').attr('id');
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getCommodityVolume');?>",
+		type : "POST",
+		beforeSend : function(){
+			dia =	$.dialog({
+					 	  	    icon: 'fa fa-spinner fa-spin',
+					 	  	    closeIcon: false,
+				        		title: 'Please wait!',
+				        		backgroundDismiss: false,
+				        		content: 'Currently Searching Your Files',
+				   	  });
+		},
+		data : {
+			con_id 	: con_id,
+			prod_id : prod_id,
+			frm 	: frm,
+			to 		: to,
+			montype : volume
+		},
+		success : function(data){
+			dia.close();
+						if(data == 0){
+							dia_2 = $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        	dia_2.close();
+					       	 }
+							});
+							
+						}else{
+							window.open(data);
+						}
+		}
+	});
 });
 </script>

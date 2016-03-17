@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="col-md-12">
-                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate"><span class="fa fa-search fa-fw"></span> Search</button>
+                          <button type="button" class="btn btn-primary btn-sm col-md-12 pull-right" id="btn-consolidate-dan"><span class="fa fa-search fa-fw"></span> Search</button>
                         </div>
 
                           <div class="stickyHeader" style="width:100%;overflow-y:auto;position:relative;height:110px;">
@@ -81,12 +81,13 @@
       });
   }
 
-   $(document).on('click','#btn-consolidate',function(){
+   $(document).on('click','#btn-consolidate-dan',function(){
       var u_id   = $('.conName').attr('id');
       var c_name = $('.reports_consignee_consolidate option:selected').text();
       var frm    = $('#dtpTDDFrom_consolidate').val();
       var to     = $('#dtpTDDTo_consolidate').val();
       var po_num = $('#txtPONumber').val();
+      //alert(u_id);
       if(frm == '' && to == ''){
         $(".table-consolidate-reports").html('<div class="table-consolidate-reports" ></div>');
       }else{

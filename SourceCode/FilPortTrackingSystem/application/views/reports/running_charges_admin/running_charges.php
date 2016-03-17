@@ -6,7 +6,7 @@
 	        		<div class="col-md-12">
 	        			 <div class="row">
 		        			<div class="col-md-6">
-			        			<span style="padding-bottom: 10px;"> <h4> Running Charges Reports : <b class='active-tabRun'> Sea Freight Manila </b></h4></span>
+			        			<span style="padding-bottom: 10px;"> <h4> Reports-Running Charges : <b class='active-tabRun'> Sea Freight Manila </b></h4></span>
 			        		</div>
 		        		</div>
 	        		</div>

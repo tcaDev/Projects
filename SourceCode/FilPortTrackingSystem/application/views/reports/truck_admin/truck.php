@@ -6,7 +6,7 @@
     				<div class="col-md-12">
     					<div class="row">
     						<div class="col-md-6">
-        						<span style="padding-bottom: 10px;"> <h4>Truck : <b class="active-truck"> Sea Freight Manila </b></h4></span>
+        						<span style="padding-bottom: 10px;"> <h4>Reports-Truck Booking : <b class="active-truck"> Sea Freight Manila </b></h4></span>
         					</div>
     					</div>
     				</div>

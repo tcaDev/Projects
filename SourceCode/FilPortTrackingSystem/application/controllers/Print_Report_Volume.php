@@ -87,15 +87,15 @@ class Print_Report_Volume extends CI_Controller {
                 <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
                   <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
                       <tr>
-                        <th>
-                         <span class="pull-left">
+                        <th style="text-align:left">
+                         <span class="">
                            ' . $monHeader . '
                           </span>
                         </th>
                       </tr>
                       <tr>
-                        <th>
-                          <span class="pull-left"> 
+                        <th style="text-align:left">
+                          <span class=""> 
                           Actual Arrival Time :
                           </span>
                         </th>
@@ -159,7 +159,7 @@ class Print_Report_Volume extends CI_Controller {
                          $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                          $content .= "<td style='border: 1px solid gray'><center>" . $volume. "</center></td>";
                          $tVolume += $volume;
-                        $content .= "<td style='border: 1px solid gray'>" . $row->RCharges . "</td>";
+                        $content .= "<td style='border: 1px solid gray'>" .number_format($row->RCharges, 2, '.', ',')."</td>";
                             $rCharges   += $row->RCharges;
                         }
                   }

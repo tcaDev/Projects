@@ -210,9 +210,14 @@ class Print_Report_Truck_Admin extends CI_Controller {
                       <th style='border:1px solid gray'>Jobfile No</th>
                       <th style='border:1px solid gray'>Container No</th>
                       <th style='border:1px solid gray'>Commodity</th>
-                      <th style='border:1px solid gray'>Gate In (Date/Time)</th>
-                      <th style='border:1px solid gray'>Gate Out (Date/Time)</th>
-                      <th style='border:1px solid gray'>Actual Delivery Date</th>
+                      <th style='border:1px solid gray'>Origin</th>
+                    ";
+                    if($monitoringType == 1){
+                      $dispOutput .=" <th style='border:1px solid gray'>Gate In (Date/Time)</th>
+                                    <th style='border:1px solid gray'>Gate Out (Date/Time)</th>";
+                    }
+          
+                     $dispOutput .=" <th style='border:1px solid gray'>Actual Delivery Date</th>
                       <th style='border:1px solid gray'>Shipping Line</th>
                       <th style='border:1px solid gray'>Trucking Company</th>
                     </tr>
@@ -225,8 +230,13 @@ class Print_Report_Truck_Admin extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ContainerNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
-                                <th style='border:1px solid gray'>" . $row->GateOutAtPort . "</th>
+                                <th style='border:1px solid gray'>" . $row->Origin . "</th> ";
+
+                    if($monitoringType == 1){
+                      $dispOutput .=" <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
+                                <th style='border:1px solid gray'>" . $row->GateOutAtPort . "</th>";
+                    }
+                $dispOutput .= "
                                 <th style='border:1px solid gray'>" . $row->ActualDeliveryAtWarehouse . "</th>
                                 <th style='border:1px solid gray'>" . $row->CarrierName . "</th>
                                 <th style='border:1px solid gray'>" . $row->HaulerOrTruck . "</th>
@@ -260,7 +270,7 @@ class Print_Report_Truck_Admin extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->NoOfCartons . "</th>
                                 <th style='border:1px solid gray'>" . $row->GrossWeight . "</th>
                                 <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->OriginCity . "</th>
+                                <th style='border:1px solid gray'>" . $row->Origin . "</th>
                                 <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                 <th style='border:1px solid gray'>" . $row->Forwarder . "</th>
                               </tr>";
