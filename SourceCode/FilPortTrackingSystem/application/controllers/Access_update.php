@@ -24,7 +24,7 @@ class Access_update extends CI_Controller {
 
        		$data = array(
                array(
-               	    'RoleId'            => $role,
+               	  'RoleId'            => $role,
                		'SystemSubModuleId' => 1,
                		'AccessTypesId'     => $jobfile
                		),
@@ -34,12 +34,12 @@ class Access_update extends CI_Controller {
                		'AccessTypesId'     => $mnila_list
                		),
                array(
-               	   'RoleId'             => $role,
+               	  'RoleId'             => $role,
                		'SystemSubModuleId' => 3,
                		'AccessTypesId'     => $outport_list
                		), 
                array(
-               	    'RoleId'            => $role,
+               	  'RoleId'            => $role,
                		'SystemSubModuleId' => 4,
                		'AccessTypesId'     => $air_list
                		)
@@ -48,13 +48,13 @@ class Access_update extends CI_Controller {
        		$this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
-			if($result->num_rows() > 0){
-				$this->db->where('RoleId',$role);
-				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
-			}
-			else{
-				$this->db->insert_batch('RoleAccess',$data);
-			}
+    			if($result->num_rows() > 0){
+    				$this->db->where('RoleId',$role);
+    				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
+    			}
+    			else{
+    				$this->db->insert_batch('RoleAccess',$data);
+    			}
        }
 
         function site_update_access(){
@@ -114,13 +114,13 @@ class Access_update extends CI_Controller {
            $this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
-			if($result->num_rows() > 0){
-				$this->db->where('RoleId',$role);
-				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
-			}
-			else{
-				$this->db->insert_batch('RoleAccess',$data);
-			}
+        	if($result->num_rows() > 0){
+        		$this->db->where('RoleId',$role);
+        		$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
+        	}
+        	else{
+        		$this->db->insert_batch('RoleAccess',$data);
+        	}
         }
 
         function global_update_access(){
@@ -138,13 +138,13 @@ class Access_update extends CI_Controller {
             $this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
-			if($result->num_rows() > 0){
-				$this->db->where('RoleId',$role);
-				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
-			}
-			else{
-				$this->db->insert_batch('RoleAccess',$data);
-			}
+    			if($result->num_rows() > 0){
+    				$this->db->where('RoleId',$role);
+    				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
+    			}
+    			else{
+    				$this->db->insert_batch('RoleAccess',$data);
+    			}
         }
 
         function report_update_access(){
@@ -180,13 +180,13 @@ class Access_update extends CI_Controller {
        		$this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
-			if($result->num_rows() > 0){
-				$this->db->where('RoleId',$role);
-				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
-			}
-			else{
-				$this->db->insert_batch('RoleAccess',$data);
-			}
+    			if($result->num_rows() > 0){
+    				$this->db->where('RoleId',$role);
+    				$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
+    			}
+    			else{
+    				$this->db->insert_batch('RoleAccess',$data);
+    			}
        }
 
      

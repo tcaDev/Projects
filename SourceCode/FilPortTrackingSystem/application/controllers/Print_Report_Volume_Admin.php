@@ -306,7 +306,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
                       <th >Jobfile No</th>
                       <th >Actual Arrival Time</th>
                       <th >Delivery Date</th>
-                      <th >Volume</th>
+                      <th >Weight(kgs)</th>
                       <th >Lodgement Fee</th>
                       <th >Break Bulk Fee</th>
                       <th >Storage Fee</th>
@@ -325,7 +325,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
                       <th >Jobfile No</th>
                       <th >Actual Arrival Time</th>
                       <th >Delivery Date</th>
-                      <th >Volume</th>
+                      <th >Weight(kgs)</th>
                       <th > " . $charges . " </th>
                     </tr>
                     </thead>
