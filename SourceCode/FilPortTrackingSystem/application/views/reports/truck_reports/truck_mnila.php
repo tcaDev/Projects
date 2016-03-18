@@ -14,7 +14,7 @@
           <div class="col-md-12" style="margin-top: 15px;">
             <div class="row">
                 <div class="panel panel-default">
-                  <div class="panel-heading">LCL Shipments :</div>
+                  <div class="panel-heading"><span class="shipments-client">FCL Shipments :</span></div>
                   <div class="panel-body">
                    <h5>Search : </h5>
                      <div class="col-md-6 col-md-offset-3">
@@ -75,6 +75,7 @@
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');
       get_truck = 1;
+      $('.shipments-client').html('<span>FCL Shipments :</span>');
   });
 
   $('#reports-truck-outport').click(function(){
@@ -85,6 +86,7 @@
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');
       get_truck = 2;
+      $('.shipments-client').html('<span>FCL Shipments :</span>');
   });
 
   $('#reports-truck-air').click(function(){
@@ -95,6 +97,7 @@
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');
        get_truck = 3;
+       $('.shipments-client').html('<span>LCL Shipments :</span>');
   });
 
 

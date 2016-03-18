@@ -77,7 +77,7 @@
 
 
 <script>
-	var volume = 0;
+	var volume = 1;
 $('#admin_volume-manila').click(function(){
 	$('.active-volume').html('<b> Sea Freight Manila</b>');
 	volume = 1;

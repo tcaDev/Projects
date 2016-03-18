@@ -375,7 +375,7 @@ function getValue_check_report(){
 	var air = [];
 	
 	/* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
-	$(".rep_mnila_access:checked").each(function() {
+	$(".rep_mnila_access").each(function() {
 		if($(this).is(':checked')){
 			mnila.push($(this).val());
 		}else{
@@ -383,7 +383,7 @@ function getValue_check_report(){
 		}
 	});
 
-	$(".rep_outport_access:checked").each(function() {
+	$(".rep_outport_access").each(function() {
 		if($(this).is(':checked')){
 			outport.push($(this).val());
 		}else{
@@ -391,7 +391,7 @@ function getValue_check_report(){
 		}
 	});
 
-	$(".rep_air_access:checked").each(function() {
+	$(".rep_air_access").each(function() {
 		if($(this).is(':checked')){
 			air.push($(this).val());
 		}else{
