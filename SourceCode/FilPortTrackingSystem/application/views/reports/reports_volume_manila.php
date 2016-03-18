@@ -222,7 +222,6 @@ $(document).on('click','.btn-volume-manila',function(){
 										}
 						}
 					});
-			
 	}
 });
 

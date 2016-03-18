@@ -163,6 +163,8 @@ Class RunningCharges_Reports extends CI_Model
 						 LEFT JOIN Products 		   AS e ON d.ProductId = e.ProductId
 						 LEFT JOIN RunningCharges 	   AS f ON a.JobFileId = f.JobFileId
 						 WHERE
+						 a.MonitoringTypeId = '$monType' 
+						 And
 						 a.ConsigneeId = '$cID'";
 						
 			if($frm != "" && $to != ""){
