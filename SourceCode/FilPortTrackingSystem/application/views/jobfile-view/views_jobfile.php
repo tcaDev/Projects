@@ -7,7 +7,7 @@
 				<div  class="container-tab" id="tabs">
 			  <ul class="nav nav-tabs ">
 
-			 <?php if($rolemanila[2] == '4') ?>   <li class="active"><a data-toggle="tab" href="#manila" class="sea_manila_tab" >SEA FREIGHT MANILA <span class="fa fa-ship fa-lg"></span></a> </li> <?php } else{} ?>
+			    <li class="active"><a data-toggle="tab" href="#manila" class="sea_manila_tab" >SEA FREIGHT MANILA <span class="fa fa-ship fa-lg"></span></a> </li>
 
 			    <li><a data-toggle="tab" href="#outport" class="sea_outport_tab">SEA FREIGHT OUTPORT <span class="fa fa-ship fa-lg"></span></a> </li>
 
