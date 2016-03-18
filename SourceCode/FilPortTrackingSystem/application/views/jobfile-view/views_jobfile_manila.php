@@ -9,6 +9,8 @@
   var total_manila_page     =  "<?php echo $count_total_manila_page; ?>";
 
  var content_manila_search    = "<?php echo base_url('Pagination/search_paging')?>";
+ var content_manila_search_color    = "<?php echo base_url('Pagination/search_paging_color')?>";
+
   
  </script>
 
@@ -66,12 +68,25 @@
 						      </span>
 						   </div>
 
+
+
 						<input type="hidden" class="manila_total" value="<?php echo $count_total_manila;?>">
 						<input type="hidden" class="manila_total_new">
 				
 			
 			 		</div>	
 
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4">
+				  <label>Color Stages:</label>
+					<select class="selectpicker form-control color_select " name="color_select" width="250" style="width: 250px" >
+					       <option disabled selected>Select Color Stages</option>
+						<?php 
+							foreach($status as $row){
+								echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
+						    }?>
+					</select>
 				</div>
 
 
@@ -143,6 +158,8 @@
 			  </div> 
 			    <div class="man_pages"></div>
 			    <div class="man_pages_search"></div>
+			    <div class="man_pages_search_color"></div>
+			    
 		  	</div>
 		</div>
 
@@ -570,9 +587,6 @@ $('.sea_manila_tab').click(function(){
 	//for search
 	function search_manila(jbfl){
 
-	
-			
-       
     		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Pagination/pagination_manila');?>",
@@ -585,9 +599,12 @@ $('.sea_manila_tab').click(function(){
 			  	   		 }
 	              })
 					.done(function(data) {
-
+ 					   defaults='Select Color Stages';
+     					$("select.color_select").val(defaults);
 						$('.job-manila').html(data);
 						$('.man_pages').empty();
+					    $('.man_pages_search_color').empty();
+						
 
 							   $.get(link + "/Pagination/select_temp/",function(data_ko){
 
@@ -626,15 +643,84 @@ $('.sea_manila_tab').click(function(){
     }
 
 
+
+
 </script>
 
+<script type="text/javascript">
+	
+$(function(){
+   $('.color_select').change(function(){
+       var color = $('select[name="color_select"]').val();
+       color_select_manila(color);
+
+   });	
+});
+
+
+function color_select_manila(color){
+   		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Pagination/pagination_manila');?>",
+			  	   beforeSend: function() {
+							$('.job-manila').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   			   montype  		   :1,
+			  	   	           color_stages   	   :color,
+			  	   		 }
+	              })
+					.done(function(data) {
+
+						$('.job-manila').html(data);
+						$('.man_pages').empty();
+						$('.man_pages_search').empty();
+
+							   $.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".man_pages_search_color").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                   total:dt,
+						                   page: 1, //initial page
+						                   maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.manila_pagination').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".manila_pagination").load(content_manila_search_color, {'page':num});
+						                  
+						                });
+		 						 });
+	
+
+
+
+					    });
+
+}
+
+
+</script>
+
+
+
+
+
 <script>
-
-
-
-
-
-
 $('#select').change(function(){
   if($(this).val() == 'A'){ 
     $("select").css('background-color', 'white');

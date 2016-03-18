@@ -160,7 +160,7 @@ class Login_user extends CI_Controller {
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){	
 	    	//$this->db->cache_delete_all();	
-			$this->output->cache(2);
+			//$this->output->cache(2);
 
 			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');

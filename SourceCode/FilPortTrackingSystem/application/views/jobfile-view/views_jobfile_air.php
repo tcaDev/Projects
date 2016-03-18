@@ -1,6 +1,7 @@
  <script>
   var content_air           = "<?php echo base_url('Pagination/pagination_air')?>";
   var content_air_search    = "<?php echo base_url('Pagination/search_paging_air')?>";
+  var content_air_search_color    = "<?php echo base_url('Pagination/search_paging_color_air')?>";
   var total_air_page        =  "<?php echo $count_total_air_page; ?>";
  </script>
 
@@ -61,6 +62,18 @@
 			 		</div>
 
 				</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4">
+					   <label>Color Stages:</label>
+						<select id="color_select_a"class="selectpicker form-control color_select_a " name="color_select_a" width="250" style="width: 250px" >
+						       <option disabled selected>Select Color Stages</option>
+							<?php 
+								foreach($status as $row){
+									echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
+							    }?>
+						</select>
+					</div>
+
 
 				<div class="col-lg-6 col-md-6 col-sm-6 pull-right" style="padding: 20px;">
 
@@ -131,6 +144,8 @@
 				 </div>
 				 <div class="air_pages"></div>
  				 <div class="air_pages_search"></div>
+	 		     <div class="air_pages_search_color"></div>
+ 				 
 		  	</div>
 
 		  </div>
@@ -237,21 +252,6 @@
 					$('#runchar-air .CNI_airs').removeAttr('disabled');
 				    $('#runchar-air .CNIU_airs').removeAttr('disabled');
 				    $('#runchar-air .otherfee_airs').removeAttr('disabled');
-		/*			$('#runchar-air .thc-charges_airs').removeAttr('disabled');
-					$('#runchar-air .arrastre_airs').removeAttr('disabled');
-					$('#runchar-air .wharfage_airs').removeAttr('disabled');
-					$('#runchar-air .weight_airs').removeAttr('disabled');
-					$('#runchar-air .del_airs').removeAttr('disabled');
-					$('#runchar-air .dispatch_airs').removeAttr('disabled');
-					$('#runchar-air .storage_airs').removeAttr('disabled');
-					$('#runchar-air .demurrage_airs').removeAttr('disabled');
-					$('#runchar-air .detention_airs').removeAttr('disabled');			
-					$('#runchar-air .EIC_airs').removeAttr('disabled');
-					$('#runchar-air .bai-app_airs').removeAttr('disabled');
-					$('#runchar-air .bai-inspect_airs').removeAttr('disabled');
-					$('#runchar-air .sra-app_airs').removeAttr('disabled');
-					$('#runchar-air .sra-inspect_airs').removeAttr('disabled');
-					$('#runchar-air .bad-cargo_airs').removeAttr('disabled');*/
 
 					$('.update_charges-air').removeAttr('disabled');
 					$(this).attr('disabled','disabled');
@@ -471,7 +471,11 @@ function search_airs(jbfl){
 	              })
 					.done(function(data) {
 						$('.job-air').html(data);
+						 defaults='Select Color Stages';
+     					 $("select#color_select_a").val(defaults);
 						$('.air_pages').empty();
+						$('.air_pages_search_color').empty();
+						
 
 									$.get(link + "/Pagination/select_temp/",function(data_ko){
 
@@ -505,25 +509,78 @@ function search_airs(jbfl){
 	  		    });
     
 }
+</script>
+
+
+<script>
+$(function(){
+   $('.color_select_a').change(function(){
+       var color = $('select[name="color_select_a"]').val();
+       color_select_air(color);
+
+   });	
+});
+function color_select_air(color){
+
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Pagination/pagination_air');?>",
+			  	   beforeSend: function() {
+							$('.job-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   	           color_stages  :color
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.job-air').html(data);
+						$('.air_pages').empty();
+					    $('.air_pages_search').empty();
+						
+
+									$.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".air_pages_search_color").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                  total:dt,
+						                  page: 1, //initial page
+						                  maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.job-air').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".job-air").load(content_air_search_color, {'page':num});
+						                  
+						                });
+		 						 });
+	  		    });
+    
+}	
+
+
+</script>
+
+
+
+
+
+
+<script>
    $(document).on('click','.update_charges-air',function(){
-/*     var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
-     var cont_deposit = $('#runchar-air .cont-deposit_airs').val().replace(/,/g,'');
-     var thc_charges  = $('#runchar-air .thc-charges_airs').val().replace(/,/g,'');
-     var arrastre     = $('#runchar-air .arrastre_airs').val().replace(/,/g,'');
-     var wharfage     = $('#runchar-air .wharfage_airs').val().replace(/,/g,'');
-     var weight       = $('#runchar-air .weight_airs').val().replace(/,/g,'');
-     var del          = $('#runchar-air .del_airs').val().replace(/,/g,'');
-     var dispatch     = $('#runchar-air .dispatch_airs').val().replace(/,/g,'');
-     var storage      = $('#runchar-air .storage_airs').val().replace(/,/g,'');
-     var demurrage    = $('#runchar-air .demurrage_airs').val().replace(/,/g,'');
-     var detention    = $('#runchar-air .detention_airs').val().replace(/,/g,'');
-     var eic 		  = $('#runchar-air .EIC_airs').val().replace(/,/g,'');
-     var bai_app 	  = $('#runchar-air .bai-app_airs').val().replace(/,/g,'');
-     var bai_inspect  = $('#runchar-air .bai-inspect_airs').val().replace(/,/g,'');
-     var sra_app 	  = $('#runchar-air .sra-app_airs').val().replace(/,/g,'');
-     var sra_inspect  = $('#runchar-air .sra-inspect_airs').val().replace(/,/g,'');
-     var bad_cargo    = $('#runchar-air .bad-cargo_airs').val().replace(/,/g,'');
-*/
 
      var lodge        = $('#runchar-air .lodge_airs').val().replace(/,/g,'');
      var break_airs   = $('#runchar-air .break_airs').val().replace(/,/g,'');
@@ -556,23 +613,6 @@ function search_airs(jbfl){
 			  	   			   cni          :cni,
 			  	   			   cniu         :cniu,
 			  	   			   otherfee 	:otherfee
-/*			                   cont_deposit :cont_deposit,   
-			                   thc_charges  :thc_charges,
-			                   wharfage     :wharfage,
-			                   arrastre     :arrastre,
-			                   weight	    :weight,
-			                   del			:del,
-			                   dispatch     :dispatch,
-			                   storage      :storage,
-			                   demurrage    :demurrage,
-			                   detention    :detention,
-			                   eic          :eic,
-			                   bai_app      :bai_app,
-			                   bai_inspect  :bai_inspect,
-			                   sra_app      :sra_app,
-			                   sra_inspect  :sra_inspect,
-			                   bad_cargo    :bad_cargo*/
-
 			  	   		 }
 	              })
 					.done(function(data) {

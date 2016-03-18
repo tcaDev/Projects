@@ -1,6 +1,7 @@
  <script>
   var content_outport   		 = "<?php echo base_url('Pagination/pagination_outport')?>";
   var content_outport_search     = "<?php echo base_url('Pagination/search_paging')?>";
+  var content_outport_search_color    = "<?php echo base_url('Pagination/search_paging_color')?>";
   var total_outport_page         =  "<?php echo $count_total_outport_page; ?>";
 
   
@@ -67,6 +68,18 @@
 
 				</div>
 
+				<div class="col-lg-4 col-md-4 col-sm-4">
+				  <label>Color Stages:</label>
+					<select class="selectpicker form-control color_select_outport" name="color_select_outport" width="250" style="width: 250px">
+					       <option value="Select Color Stages"disabled selected>Select Color Stages</option>
+						<?php 
+							foreach($status as $row){
+								echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
+						    }?>
+					</select>
+				</div>
+
+
 				<div class="col-lg-6 col-md-6 col-sm-6 pull-right" style="padding: 20px;">
 
 					<div class="row">
@@ -129,8 +142,10 @@
 			 </div>
 			 <div class="out_pages"></div>
 			 <div class="out_pages_search"></div>
+			  <div class="out_pages_search_color"></div>
 		  	</div>
 		 </div>
+
 
 
 <!--pop up for viewvessels start -->
@@ -537,7 +552,6 @@ $(document).on('keydown','#search_outport',function(e){
 });
 	//for search
 	function search_outport(jbfl){
-
     		 	$.ajax({
 		           method: "POST",
 	 		       url: "<?php echo base_url('Pagination/pagination_outport');?>",
@@ -550,8 +564,12 @@ $(document).on('keydown','#search_outport',function(e){
 			  	   		 }
 	              })
 					.done(function(data) {
+						defaults='Select Color Stages';
+     					$("select.color_select_outport").val(defaults);
 						$('.job-outport').html(data);
 						$('.out_pages').empty();
+						$('.out_pages_search_color').empty();
+						
 
 							   $.get(link + "/Pagination/select_temp/",function(data_ko){
 
@@ -595,3 +613,73 @@ $(document).on('keydown','#search_outport',function(e){
 
 
 
+
+<script type="text/javascript">
+	
+$(function(){
+   $('.color_select_outport').change(function(){
+       var color = $('select[name="color_select_outport"]').val();
+            //empty the pagination while loading
+		           $('.out_pages').empty();
+				   $('.out_pages_search_color').empty();
+ 				   $('.out_pages_search').empty();
+				   
+       color_select(color);
+
+
+   });	
+});
+
+
+function color_select(color){
+    		 	$.ajax({
+		           method: "POST",
+	 		       url: "<?php echo base_url('Pagination/pagination_outport');?>",
+			  	   beforeSend: function() {
+							$('.job-outport').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+ 					  },
+			  	   data: {
+			  	   			   montype  		   :2,
+			  	   	           color_stages   	   :color
+			  	   		 }
+	              })
+					.done(function(data) {
+						$('.job-outport').html(data);
+						$('.out_pages').empty();
+						$('.out_pages_search').empty();
+						$('.out_pages_search_color').empty();
+							   $.get(link + "/Pagination/select_temp/",function(data_ko){
+
+							   	 var dt =  data_ko.trim();
+		      		   	 			  $(".out_pages_search_color").bootpag({
+						                //    total:total_manila_page, // total number of pages
+						                   total:dt,
+						                   page: 1, //initial page
+						                   maxVisible: 5, //maximum visible links
+						                  leaps: true,
+						                  firstLastUse: true,
+						                  first: 'First',
+						                  last: 'Last',
+						                  prev: 'Previous',
+						                  next: 'Next',
+						                  wrapClass: 'pagination',
+						                  activeClass: 'active',
+						                  disabledClass: 'disabled',
+						                  nextClass: 'next',
+						                  prevClass: 'prev',
+						                  lastClass: 'last',
+						                  firstClass: 'first'
+						                }).on("page", function(e, num){
+						                    e.preventDefault();
+						                    location.hash=num;
+						                    $('.job-outport').html('<span class="loading-consignee"><i class="fa fa-spinner fa-spin"></i>Please Wait...</span>');
+						                    $(".job-outport").load(content_outport_search_color, {'page':num});
+						                  
+						                });
+		 						 });
+	  		    });
+
+}
+
+
+</script>
