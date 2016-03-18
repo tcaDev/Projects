@@ -70,6 +70,7 @@
   $('#reports-truck-manila').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Manila</b>');
       $('.reports_consignee_truck').html('');
+      $(".table-truck-reports").html('');
       loadConsigneeNames();
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');
@@ -79,6 +80,7 @@
   $('#reports-truck-outport').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Outport</b>');
       $('.reports_consignee_truck').html('');
+      $(".table-truck-reports").html('');
       loadConsigneeNames();
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');
@@ -88,6 +90,7 @@
   $('#reports-truck-air').click(function(){
       $('.active-tab-truck').html('<b>Air Freight</b>');
       $('.reports_consignee_truck').html('');
+      $(".table-truck-reports").html('');
       loadConsigneeNames();
       $('#dtpTDDFrom').val('');
       $('#dtpTDDTo').val('');

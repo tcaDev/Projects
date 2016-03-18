@@ -41,107 +41,11 @@ class Print_Report_Truck_Admin extends CI_Controller {
              $cName = $this->Charges->getcName($cID);  
              $truckReports = $this->loadReportTruck($monitoringType,$cID,$ataFrom,$ataTo);
              $dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
-            /* $footer ='';
-             for($footer_header = 1; $footer_header <= 10; $footer_header++) {
-               if ($footer_header % 2) {
-               $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                                 <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
-                                </table>
-                          </htmlpageheader>
-
-                        <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
-                          <table width="100%" style="font-family: serif; font-size: 8pt; 
-                              color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
-                              <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
-                              <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
-                              </tr></table>
-                        </htmlpagefooter>
-                       ';
-                  } else {
-                $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
-                                <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
-                               </table>
-                             </htmlpageheader>
-                        <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
-                          <table width="100%" style="font-family: serif; font-size: 8pt; 
-                              color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
-                              <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
-                              <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
-                              </tr></table>
-                          </htmlpagefooter>
-                         ';
-                  }
-            }*/
+      
             $dispOutput .= '
             <html>
               
               <body>
-                 <style>
-                  
-                    @page {
-                      size: auto;
-                       odd-header-name: html_myHeader_odd1;
-                       odd-header-name: html_myHeader_odd3;
-                       odd-header-name: html_myHeader_odd5;
-                       odd-header-name: html_myHeader_odd7;
-                       odd-header-name: html_myHeader_odd9;
-
-                       even-header-name: html_myHeader_even2;
-                       even-header-name: html_myHeader_even4;
-                       even-header-name: html_myHeader_even6;
-                       even-header-name: html_myHeader_even8;
-                       even-header-name: html_myHeader_even10;
-
-                       odd-footer-name: html_myFooter_odd1;
-                       odd-footer-name: html_myFooter_odd3;
-                       odd-footer-name: html_myFooter_odd5;
-                       odd-footer-name: html_myFooter_odd7;
-                       odd-footer-name: html_myFooter_odd9;
-
-                       even-footer-name: html_myFooter_even2;
-                       even-footer-name: html_myFooter_even4;
-                       even-footer-name: html_myFooter_even6;
-                       even-footer-name: html_myFooter_even8;
-                       even-footer-name: html_myFooter_even10;
-                    }
-                    @page chapter2 {
-                        odd-header-name: myHeader_odd1;
-                        even-header-name:myHeader_even2;
-                        odd-footer-name: myFooter_odd1;
-                        even-footer-name: myFooter_even2;
-
-                       odd-header-name: myHeader_odd1;
-                       odd-header-name: myHeader_odd3;
-                       odd-header-name: myHeader_odd5;
-                       odd-header-name: myHeader_odd7;
-                       odd-header-name: myHeader_odd9;
-
-                       even-header-name: myHeader_even2;
-                       even-header-name: myHeader_even4;
-                       even-header-name: myHeader_even6;
-                       even-header-name: myHeader_even8;
-                       even-header-name: myHeader_even10;
-
-                       odd-footer-name: myFooter_odd1;
-                       odd-footer-name: myFooter_odd3;
-                       odd-footer-name: myFooter_odd5;
-                       odd-footer-name: myFooter_odd7;
-                       odd-footer-name: myFooter_odd9;
-
-                       even-footer-name: myFooter_even2;
-                       even-footer-name: myFooter_even4;
-                       even-footer-name: myFooter_even6;
-                       even-footer-name: myFooter_even8;
-                       even-footer-name: myFooter_even10;
-
-                    }
-                    </style>
                 <div class="change_print'.$i.'"  >  
 
                 <div class="">

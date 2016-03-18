@@ -54,6 +54,7 @@
   $('#reports-consolidate-manila').click(function(){
       $('.active-tab-consolidate').html('<b>Sea Freight Manila</b>');
       $('#txtPONumber').val('');
+      $(".table-consolidate-reports").html('');
       loadConsigneeNames_consolidate();
       $('#dtpTDDFrom_consolidate').val('');
       $('#dtpTDDTo_consolidate').val('');
@@ -63,6 +64,7 @@
   $('#reports-consolidate-outport').click(function(){
       $('.active-tab-consolidate').html('<b>Sea Freight Outport</b>');
       $('#txtPONumber').val('');
+      $(".table-consolidate-reports").html('');
       loadConsigneeNames_consolidate();
       $('#dtpTDDFrom_consolidate').val('');
       $('#dtpTDDTo_consolidate').val('');
@@ -72,6 +74,7 @@
   $('#reports-consolidate-air').click(function(){
       $('.active-tab-consolidate').html('<b>Air Freight</b>');
       $('#txtPONumber').val('');
+      $(".table-consolidate-reports").html('');
       loadConsigneeNames_consolidate();
       $('#dtpTDDFrom_consolidate').val('');
       $('#dtpTDDTo_consolidate').val('');
