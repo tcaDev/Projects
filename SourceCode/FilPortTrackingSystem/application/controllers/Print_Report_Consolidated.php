@@ -137,7 +137,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'>" . $row->ActualArrivalTime . "</th>
                                       <th style='border:1px solid gray'>" . $volume . "</th>
                                       <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
+                                      <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateReceivedOfOtherDocs . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateSentPreAssessment . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
@@ -199,8 +199,8 @@ class Print_Report_Consolidated extends CI_Controller {
                                 <tr>
                                   <th style='border:1px solid gray'>Jobfile No</th>
                                   <th style='border:1px solid gray'>Actual Arrival Time</th>
-                                  <th style='border:1px solid gray'>Volume</th>
-                                  <th style='border:1px solid gray'>Bill Lading No.</th>
+                                  <th style='border:1px solid gray'>Weight(kgs)</th>
+                                  <th style='border:1px solid gray'>House Airway Bill No.</th>
                                   <th style='border:1px solid gray'>Commodity</th>
                                   <th style='border:1px solid gray'>Date Received Docs</th>
                                   <th style='border:1px solid gray'>Pre-Assessment Date</th>
@@ -224,7 +224,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'>" . $row->ATA . "</th>
                                       <th style='border:1px solid gray'>" . $volume . "</th>
                                       <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
+                                      <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
                                       <th style='border:1px solid gray'>" . $row->DatePickUpOtherDocs . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateSentPreAssessment . "</th>
                                       <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
@@ -241,7 +241,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <th style='border:1px solid gray'></th>
                                       <th style='border:1px solid gray'></th>
                                       <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
+                                      <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
                                       <th style='border:1px solid gray'></th>
                                       <th style='border:1px solid gray'></th>
                                       <th style='border:1px solid gray'></th>
