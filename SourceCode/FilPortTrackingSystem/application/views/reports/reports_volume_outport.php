@@ -61,7 +61,7 @@
 									</div>
 
 									<div class="form-group">
-										<input type="text" class="form-control input-sm dtpTo-commodityVolume-outport" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-outport"/>	
+										<input type="text" class="form-control input-sm dtpTo-commodityVolume-outport" onfocus="(this.type='date')" placeholder="To :" id="dtpATATo-outport"/>	
 									</div>
 				  			</div>
 				  			<!-- ATA -->
@@ -154,7 +154,7 @@ $(document).on('change','.reports_consignee_volume_outport',function(){
 	})
 });
 
-$(document).ready(function(){
+function loadConisngeeNamesVolume_outport(){
 	$.ajax({
 		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
 		type : "POST",
@@ -169,6 +169,10 @@ $(document).ready(function(){
 			$('.loadConsignee-outport').html('');
 		}
 	});
+}
+
+$(document).ready(function(){
+	loadConisngeeNamesVolume_outport();
 });
 
 

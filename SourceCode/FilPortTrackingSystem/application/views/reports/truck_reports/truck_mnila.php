@@ -1,4 +1,4 @@
-<div class="tab-pane in active" id="tab_reports_truck">		        
+<div class="tab-pane active" id="tab_reports_truck">		        
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar col-md-12">
@@ -20,7 +20,12 @@
                      <div class="col-md-6 col-md-offset-3">
                         <div class="col-md-12">
                           <div class="form-group">
-                            <h5>Consignee: </h5>
+                              <div class="col-md-6">
+                                <h5>Consignee : </h5>
+                              </div>
+                              <div class="col-md-6">
+                                <span class="pull-right"><h6 class="loadConsignee-truck"></h6></span>
+                              </div>
                             <select class="form-control input-sm reports_consignee_truck">
                               
                             </select>
@@ -60,29 +65,38 @@
 
 
 <script>
-  var get_truck = 0;
+  var get_truck = 1;
 
   $('#reports-truck-manila').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Manila</b>');
+      $('.reports_consignee_truck').html('');
       loadConsigneeNames();
+      $('#dtpTDDFrom').val('');
+      $('#dtpTDDTo').val('');
       get_truck = 1;
   });
 
   $('#reports-truck-outport').click(function(){
       $('.active-tab-truck').html('<b>Sea Freight Outport</b>');
+      $('.reports_consignee_truck').html('');
       loadConsigneeNames();
+      $('#dtpTDDFrom').val('');
+      $('#dtpTDDTo').val('');
       get_truck = 2;
   });
 
   $('#reports-truck-air').click(function(){
       $('.active-tab-truck').html('<b>Air Freight</b>');
+      $('.reports_consignee_truck').html('');
       loadConsigneeNames();
+      $('#dtpTDDFrom').val('');
+      $('#dtpTDDTo').val('');
        get_truck = 3;
   });
 
 
 $(document).ready(function(){
-  loadConsigneeNames();
+   loadConsigneeNames();
 });
 
 
@@ -90,11 +104,15 @@ function loadConsigneeNames(){
    $.ajax({
     url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
     type : "POST",
+    beforeSend : function(){
+      $('.loadConsignee-truck').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
+    },
     data : {
       userID : con_name
     },
     success : function(suc){
       $('.reports_consignee_truck').html(suc);
+      $('.loadConsignee-truck').html('');
     }
   });
 }

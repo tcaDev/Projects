@@ -163,6 +163,8 @@ class Print_Report_Truck extends CI_Controller {
                     <tr>
                       <th style='border:1px solid gray'>Target Delivery Date</th>
                       <th style='border:1px solid gray'>Jobfile No</th>
+                      <th style='border:1px solid gray'>Number Of Cartons</th>
+                      <th style='border:1px solid gray'>Weight(kgs)</th>
                       <th style='border:1px solid gray'>Aircraft</th>
                       <th style='border:1px solid gray'>Commodity</th>
                       <th style='border:1px solid gray'>Origin</th>
@@ -174,9 +176,12 @@ class Print_Report_Truck extends CI_Controller {
                     <tbody>
                     "; 
           foreach ($report_truck as $row){
+              $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                $dispOutput .= "<tr>
                                 <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
+                                <th style='border:1px solid gray'>" . $row->NoOfCartons . "</th>
+                                <th style='border:1px solid gray'>" . $volume . "</th>
                                 <th style='border:1px solid gray'>" . $row->Aircraft . "</th>
                                 <th style='border:1px solid gray'>" . $row->ProductName . "</th>
                                 <th style='border:1px solid gray'>" . $row->Origin . "</th>

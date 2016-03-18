@@ -68,7 +68,7 @@
 						    </div>
 						    <div id="collapse7" class="panel-collapse collapse" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-truck">
-									  <li value="1" class="reports-truck-manila"  id="reports-truck-manila"  style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="1" class="reports-truck-manila active"  id="reports-truck-manila"  style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="2" class="reports-truck-outport" 		 id="reports-truck-outport" style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" class="reports-truck-air" 			 id="reports-truck-air"     style="display:block;width:100%;"><a href="#tab_reports_truck" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -85,7 +85,7 @@
 						    </div>
 						    <div id="collapse8" class="panel-collapse collapse" style="padding:5px">
 						         <ul class="nav nav-pills nav-data nav-Consolidated">
-									  <li value="1" class="reports-Consolidated-manila "  id="reports-consolidate-manila"  style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="1" class="reports-Consolidated-manila active"  id="reports-consolidate-manila"  style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="2" class="reports-Consolidated-outport" 		 id="reports-consolidate-outport" style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="3" class="reports-Consolidated-air" 			 id="reports-consolidate-air"     style="display:block;width:100%;"><a href="#tab_reports_consolidate" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -609,12 +609,62 @@ $(document).on('click','#runningcharges-jobfile-air',function(){
 			$('#txt-table-runningcharges-air').val('');
 		});
 
+$(document).on('click','#reports-volume-manila',function(){
+				$('.reports_consignee_volume_manila').html('');
+				loadConisngeeNamesVolume_Manila();
+				$('.cbo-commodities-manila').html('');
+				$('#dtpATAFrom-manila').val('');
+				$('#dtpATATo-manila').val('');
+})
 
+$(document).on('click','#reports-volume-outport',function(){
+				$('.reports_consignee_volume_outport').html('');
+				loadConisngeeNamesVolume_outport();
+				$('.cbo-commodities-outport').html('');
+				$('#dtpATAFrom-outport').val('');
+				$('#dtpATATo-outport').val('');
+})
+
+
+$(document).on('click','#reports-volume-air',function(){
+				$('.reports_consignee_volume_air').html('');
+				loadConisngeeNamesVolume_air();
+				$('.cbo-commodities-air').html('');
+				$('#dtpATAFrom-air').val('');
+				$('#dtpATATo-air').val('');
+})
+
+$(document).on('click','#Truck',function(){
+	if(get_truck == 1){
+		 $('#reports-truck-manila').click();
+
+	}
+	if(get_truck == 2){
+		 $('#reports-truck-outport').click();
+	}
+	if(get_truck ==3 ){
+		$('#reports-truck-air').click();
+	}
+})
+
+$(document).on('click','#Consolidated',function(){
+	if(get_consolidate == 1){
+		 $('#reports-consolidate-manila').click();
+	}
+	if(get_consolidate == 2){
+		 $('#reports-consolidate-outport').click();
+	}
+	if(get_consolidate ==3 ){
+		$('#reports-consolidate-air').click();
+	}
+})
 
 
 		$(document).on('click','#Volume',function(){
 			var active_accreditation = $('.nav-volume .active').attr('id');
 			if(active_accreditation == 'reports-volume-manila'){
+				loadConisngeeNamesVolume_Manila();
+				$('.cbo-commodities-manila').html('');
 				$('#dtpATAFrom-manila').val('');
 				$('#dtpATATo-manila').val('');
 				

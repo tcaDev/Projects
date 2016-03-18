@@ -79,7 +79,7 @@ Class RunningCharges_Reports extends CI_Model
 		
 		}else{
 			$query = $this->db->query("SELECT 
-										a.JobFile_AirId AS JobFileId , a.JobFileNo,a.ConsigneeId , b.TargetDeliveryDate, a.Aircraft, c.ProductName, f.StorageFee , (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, CONCAT(TRIM(g.CountryName), ', ' , a.OriginCity) AS Origin , a.Forwarder ,b.TargetDeliveryDate ,a.NoOfCartons , b.GrossWeight
+										a.JobFile_AirId AS JobFileId , a.JobFileNo,a.ConsigneeId, a.NoOfCartons , b.TargetDeliveryDate, a.Aircraft, c.ProductName, f.StorageFee , (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, CONCAT(TRIM(g.CountryName), ', ' , a.OriginCity) AS Origin , a.Forwarder ,b.TargetDeliveryDate ,a.NoOfCartons , b.GrossWeight
 										FROM JobFile_Air AS a
 										LEFT JOIN Products_Air 		 AS b ON a.JobFile_AirId = b.JobFile_AirId
 										LEFT JOIN Products 			 AS c ON b.ProductId = c.ProductId									

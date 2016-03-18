@@ -61,7 +61,7 @@
 									</div>
 
 									<div class="form-group">
-										<input type="text" class="form-control input-sm dtpTo-commodityVolume-air" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-air"/>	
+										<input type="text" class="form-control input-sm dtpTo-commodityVolume-air" onfocus="(this.type='date')" placeholder="To :" id="dtpATATo-air"/>	
 									</div>
 				  			</div>
 				  			<!-- ATA -->
@@ -134,6 +134,22 @@ $(document).on('click','#collapse8',function(){
 	$('.consolidate_reports').removeClass('hidden');
 });
 
+function loadConisngeeNamesVolume_air(){
+	$.ajax({
+		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
+		type : "POST",
+		beforeSend : function(){
+			$('.loadConsignee-air').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
+		},
+		data : {
+			userID : con_name
+		},
+		success : function(suc){
+			$('.reports_consignee_volume_air').html(suc);
+			$('.loadConsignee-air').html('');
+		}
+	});
+}
 
 $(document).on('change','.reports_consignee_volume_air',function(){
 	var con_id = $('.reports_consignee_volume_air option:selected').attr('id');
@@ -155,20 +171,7 @@ $(document).on('change','.reports_consignee_volume_air',function(){
 });
 
 $(document).ready(function(){
-	$.ajax({
-		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
-		type : "POST",
-		beforeSend : function(){
-			$('.loadConsignee-air').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
-		},
-		data : {
-			userID : con_name
-		},
-		success : function(suc){
-			$('.reports_consignee_volume_air').html(suc);
-			$('.loadConsignee-air').html('');
-		}
-	});
+	loadConisngeeNamesVolume_air();
 });
 
 

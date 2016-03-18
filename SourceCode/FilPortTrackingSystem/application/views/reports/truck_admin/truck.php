@@ -62,8 +62,9 @@
 </div>	
 
 <script>
-	var truck = 0;
-$('#admin_truck-manila').click(function(){
+	
+ var truck = 1;
+ $('#admin_truck-manila').click(function(){
 	$('.active-truck').html('<b> Sea Freight Manila</b>');
 	truck = 1;
 	$('.table-truck-admin').empty();

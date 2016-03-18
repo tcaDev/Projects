@@ -61,7 +61,7 @@
 									</div>
 
 									<div class="form-group">
-										<input type="text" class="form-control input-sm dtpTo-commodityVolume-manila" onfocus="(this.type='date')" placeholder="To :" id="dtpATAFrom-manila"/>	
+										<input type="text" class="form-control input-sm dtpTo-commodityVolume-manila" onfocus="(this.type='date')" placeholder="To :" id="dtpATATo-manila"/>	
 									</div>
 				  			</div>
 				  			<!-- ATA -->
@@ -154,7 +154,7 @@ $(document).on('change','.reports_consignee_volume_manila',function(){
 	})
 });
 
-$(document).ready(function(){
+function loadConisngeeNamesVolume_Manila(){
 	$.ajax({
 		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
 		type : "POST",
@@ -169,6 +169,10 @@ $(document).ready(function(){
 			$('.loadConsignee-manila').html('');
 		}
 	});
+}
+
+$(document).ready(function(){
+	loadConisngeeNamesVolume_Manila();
 });
 
 
@@ -218,9 +222,8 @@ $(document).on('click','.btn-volume-manila',function(){
 										}
 						}
 					});
+			
 	}
-
-
 });
 
 </script>
