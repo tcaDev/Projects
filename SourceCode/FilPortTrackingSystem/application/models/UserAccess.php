@@ -80,6 +80,41 @@ Class UserAccess extends CI_Model
          return $query->result();
 	}
 
+	function RolesJobFile($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '1'");
+   	 	return $query->row();
+	}
+
+	function RolesSite($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '5'");
+   	 	return $query->row();
+	}
+
+	function RolesGlobal($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '13'");
+   	 	return $query->row();
+	}
+
+	function RolesDash($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '19'");
+   	 	return $query->row();
+	}
+
+	function RolesReport($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '14'");
+   	 	return $query->row();
+	}
+
+	function RolesAudit($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '18'");
+   	 	return $query->row();
+	}
+
+	function RolesUser($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '20'");
+   	 	return $query->row();
+	}
+
 }
 
 ?>

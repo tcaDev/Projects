@@ -196,7 +196,7 @@ class Reports_Running_Charges extends CI_Controller {
      	$con_id    =  $this->input->post('con_id');  
      	$montype  =  $this->input->post('montype');  
      	$dispOutput = '';
-		$dispOutput = "<option disabled selected>Select Commodity</option>";
+		$dispOutput = "<option disabled selected value='0'>Select Commodity</option>";
      	$commodities = $this->Charges->get_commodities($con_id,$montype);
      	foreach($commodities as $row){
      		if($row->ProductName != ""){

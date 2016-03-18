@@ -212,6 +212,7 @@ Class RunningCharges_Reports extends CI_Model
 
 			$query = $this->db->query($execQuery);		
 		}
+		//echo $execQuery;
 		return $query->result();
 	}
 
@@ -491,9 +492,7 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 							 ";
 			}	
 
-			if($consigneeID == ""){
-				$conditions .= "WHERE";
-			}else{
+			if($consigneeID != ""){
 				$conditions .= "
 				WHERE
 				a.ConsigneeId = '$consigneeID'";

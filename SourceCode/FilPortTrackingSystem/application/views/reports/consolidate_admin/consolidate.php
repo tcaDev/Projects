@@ -1,4 +1,4 @@
-<div class="tab-pane " id="tab_admin_consolidate">		        
+<div class="tab-pane active " id="tab_admin_consolidate">		        
     	<div class="col-md-12 ">
         	<div class="row">
         			<div class="tools-bar col-md-12">
@@ -85,7 +85,15 @@ var get_consolidate = 0;
       var to     = $('#dtpTDDTo_consolidate-admin').val();
       var po_num = $('#txtPONumber-admin').val();
       if(frm == '' && to == ''){
-       
+         $.alert({
+              icon: 'fa fa-exclamation-triangle-o',
+              closeIcon: false,
+                  title: 'No Data Match',
+                  backgroundDismiss: false,
+                  content: 'Sorry ! Data not Found ',
+                  confirm : function(){
+                   }
+              });
       }else{
           $.ajax({
             method: "POST",

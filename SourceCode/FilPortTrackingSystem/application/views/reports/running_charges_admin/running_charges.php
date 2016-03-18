@@ -1,4 +1,4 @@
-<div class="tab-pane tab_runningcharges_admin" id="tab_admin_running">	
+<div class="tab-pane tab_runningcharges_admin active" id="tab_admin_running">	
 
     	<div class="col-md-12 ">
         	<div class="row">
@@ -100,7 +100,22 @@
 								<div class="form-group">
 									<h5>Charges :</h5>
 									<select class="form-control input-sm data_charges">
-										
+										<option value='*'>All Charges</option>
+										<option value='LodgementFee'>Lodgement Fee</option>
+										<option value='THCCharges'>THC Charges</option>
+										<option value='Arrestre'>Arrestre</option>
+										<option value='Wharfage'>Wharfage</option>
+										<option value='Weighing'>Weighing</option>
+										<option value='DispatchFee'>Dispatch Fee</option>
+										<option value='DEL'>DEL</option>"
+										<option value='Spotcheck'>Spotcheck</option>
+										<option value='Storage'>Storage Fee</option>
+										<option value='Demorage'>Demurrage Fee</option>
+										<option value='Detention'>Detention Fee</option>
+										<option value='SRAApplication'>SRA Application</option>
+										<option value='BAIApplication'>BAI Application</option>
+										<option value='BAIInspection'>BAI Inspection Fee</option>
+										<option value='BPIInspection'>BPI Inspection Fee</option>
 									</select>
 								</div>
 								<button type="button" class="btn btn-primary col-md-12 btn-sm" id="btn-runningcharges-manila-consignee"><span class="fa fa-search fa-fw"></span> Search</button>
@@ -118,6 +133,7 @@
     	
 </div>	
 <script>
+
 
 var runn_char = 0;
 $('#admin_running-manila').click(function(){
@@ -258,8 +274,17 @@ $(document).on('click','#btn-runningcharges-manila-consignee',function(){
 	var frm = $('.ata-rc-admin-frm').val();
 	var to = $('.ata-rc-admin-to').val();
 	var charges = $('.data_charges').val();
-	if(rc_consignee == "" && frm == "" && to == ""){
-
+	if(rc_consignee == ""|| rc_consignee == null && frm == ""  && to == ""){
+		$.alert({
+			icon: 'fa fa-exclamation-triangle-o',
+		 	closeIcon: false,
+	        title: 'No Data Match',
+	        backgroundDismiss: false,
+	        content: 'Sorry ! Data not Found ',
+	        confirm : function(){
+	        	
+	       	 }
+			});
       }else{
          $.ajax({
 	  		method: "POST",

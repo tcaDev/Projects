@@ -8,7 +8,11 @@
         <div class="container-fluid">
 
           <ul class="nav nav-pills">
-            <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li>
+          <?php if($roleuser[0] == '1'){ 
+            ?>  <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li><?php }
+          else{
+
+            }?>
             <li><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li>
             <li><a class="get_userAccess" data-toggle="pill" href="#userRole">User Access Role</a></li>
           </ul>
@@ -16,6 +20,7 @@
 
               <div class="tab-content">
                        <!-- Add Form -->
+                           <?php if($roleuser[0] == '1'){ ?> 
                             <div id="addForm" class="tab-pane fade in active">
                               <div class="col-lg-12">
                               
@@ -137,7 +142,10 @@
                                     </div>
                             </div>
 
+                            <?php }
+                              else{
 
+                                }?>
                             <!-- List of User Account -->
 
                             <div id="listUser" class="tab-pane fade">

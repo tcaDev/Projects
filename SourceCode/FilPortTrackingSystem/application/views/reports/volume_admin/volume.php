@@ -1,4 +1,4 @@
-	<div class="tab-pane tab_reports_volume-admin" id="tab_admin_volume">	
+	<div class="tab-pane tab_reports_volume-admin active" id="tab_admin_volume">	
 
     	<div class="col-md-12 ">
         	<div class="row">
@@ -134,7 +134,20 @@ $(document).on('click','#btn-volume-admin',function(){
 	var frm 	 = $('#dtpATAFrom-manila-volume').val();
 	var to 		 = $('#dtpATATo-manila-volume').val();
 	var prod_id = $('.cbo-commodities-admin option:selected').attr('id');
-	$.ajax({
+
+	if(con_id == "" || con_id == null && frm == '' && to == ''){
+		 $.alert({
+			icon: 'fa fa-exclamation-triangle-o',
+		 	closeIcon: false,
+	        title: 'No Data Match',
+	        backgroundDismiss: false,
+	        content: 'Sorry ! Data not Found ',
+	        confirm : function(){
+	        	
+	       	 }
+			});
+	}else{
+			$.ajax({
 		url  : "<?php echo base_url('Reports_Running_Charges/getCommodityVolume');?>",
 		type : "POST",
 		beforeSend : function(){
@@ -172,5 +185,7 @@ $(document).on('click','#btn-volume-admin',function(){
 						}
 		}
 	});
+	}
 });
+
 </script>

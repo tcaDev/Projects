@@ -59,7 +59,7 @@
 						    </div>
 						    <div id="running_collapse" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-running-admin">
-									  <li value="a-1" class="admin_running_tab" id="admin_running-manila"  style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-1" class="admin_running_tab active" id="admin_running-manila"  style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="admin_running_tab" id="admin_running-outport"style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="admin_running_tab" id="admin_running-air" style="display:block;width:100%;"><a href="#tab_admin_running" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -76,7 +76,7 @@
 						    </div>
 						    <div id="volume_collapse" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-volume-admin">
-									  <li value="a-1" class="admin_volume_tab" id="admin_volume-manila"  style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-1" class="admin_volume_tab active" id="admin_volume-manila"  style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="admin_volume_tab" id="admin_volume-outport"style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="admin_volume_tab" id="admin_volume-air" style="display:block;width:100%;"><a href="#tab_admin_volume" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -93,7 +93,7 @@
 						    </div>
 						    <div id="truck_collapse" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-truck-admin">
-									  <li value="a-1" class="admin_truck_tab" id="admin_truck-manila"  style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-1" class="admin_truck_tab active" id="admin_truck-manila"  style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="admin_truck_tab" id="admin_truck-outport"style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="admin_truck_tab" id="admin_truck-air" style="display:block;width:100%;"><a href="#tab_admin_truck" data-toggle="pill">Air Freight</a></li>
 								</ul>
@@ -110,7 +110,7 @@
 						    </div>
 						    <div id="consolidate_collapse" class="panel-collapse collapse" style="padding:5px">
 						       	 <ul class="nav nav-pills nav-data-2 nav-data-consolidate-admin">
-									  <li value="a-1" class="admin_consolidate_tab" id="admin_consolidate-manila"  style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
+									  <li value="a-1" class="admin_consolidate_tab active" id="admin_consolidate-manila"  style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Sea Freight Manila</a></li>
 									  <li value="a-2" class="admin_consolidate_tab" id="admin_consolidate-outport"style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Sea Freight Outport</a></li>
 									  <li value="a-3" class="admin_consolidate_tab" id="admin_consolidate-air" style="display:block;width:100%;"><a href="#tab_admin_consolidate" data-toggle="pill">Air Freight</a></li>
 								</ul>

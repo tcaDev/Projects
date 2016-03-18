@@ -1,4 +1,4 @@
-<div class="tab-pane tab_reports_truck-admin" id="tab_admin_truck">	
+<div class="tab-pane tab_reports_truck-admin active" id="tab_admin_truck">	
 
     	<div class="col-md-12 ">
         	<div class="row">
@@ -96,9 +96,32 @@ $(document).on('click','#btn-truck-admin',function(){
       var con_name = $('.reports_consignee_truck option:selected').text();
       var frm    = $('#dtpATAFrom-truck').val();
       var to     = $('#dtpATATo-truck').val();
-      if(frm == '' && to == '' && con_id == ''){
-       
+      if(con_id == '' || con_id == null){
+       	 $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        
+					       	 }
+							});
       }else{
+
+      	if(frm == '' && to == ''){
+      		 $.alert({
+							icon: 'fa fa-exclamation-triangle-o',
+						 	closeIcon: false,
+					        title: 'No Data Match',
+					        backgroundDismiss: false,
+					        content: 'Sorry ! Data not Found ',
+					        confirm : function(){
+					        	
+					       	 }
+							});
+      	}
+      	else{
           $.ajax({
             method: "POST",
             url: "<?php echo base_url('Reports_Running_Charges/get_truck');?>",
@@ -136,6 +159,7 @@ $(document).on('click','#btn-truck-admin',function(){
 							window.open(data);
 						}
         }); 
+      	}
       }
   });
 </script>

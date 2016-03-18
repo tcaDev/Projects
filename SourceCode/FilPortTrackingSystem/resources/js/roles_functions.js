@@ -109,12 +109,21 @@ $(document).on('click','.dash_accessRole',function(){
 
 $(document).on('click','.user_accessRole',function(){
 	var user = [];
-	$(".user_access:checked").each(function() {
-		user.push($(this).val());
+	$(".user_access").each(function() {
+		if($(this).is(':checked')){
+			user.push($(this).val());
+		}else{
+			user.push('');
+		}
+
+	/*	if($(this).not(':checked') == "" || $(this).val() == null){
+			user.push(' ');
+		}else{
+			user.push($(this).val());	
+		}*/
 	});
 
 	var user_list = user.join(',') + ",";
-
 	 global_access = user_list;
 	 SystemId = 20;
 	 set_global = '.user';
@@ -181,6 +190,7 @@ function getValue_check(){
                               confirm: function(){
                                   dia.close();
                                   $('#jbfl').trigger('click');
+                                  window.location.reload();
                               }
                            });
         });
@@ -271,6 +281,7 @@ function getValue_check_sitesettings(){
                               confirm: function(){
                                   dia.close();
                                   $('.sitesettings').trigger('click');
+                                  window.location.reload();
                               }
                            });
         });
@@ -310,6 +321,7 @@ function getValue_check_global(global_access,SystemId,set_global){
                               confirm: function(){
                                   dia.close();
                                   $(set_global).trigger('click');
+                                  window.location.reload();
                               }
                            });
         });
@@ -375,6 +387,7 @@ function getValue_check_report(){
                               confirm: function(){
                                   dia.close();
                                   $('.reports').trigger('click');
+                                  window.location.reload();
                               }
                            });
         });
