@@ -115,6 +115,12 @@ Class UserAccess extends CI_Model
    	 	return $query->row();
 	}
 
+	function RolesManila($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '2'");
+   	 	return $query->row();
+	}
+
+
 }
 
 ?>

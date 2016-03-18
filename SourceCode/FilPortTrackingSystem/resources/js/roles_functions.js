@@ -137,16 +137,28 @@ function getValue_check(){
 	var air = [];
 	
 	/* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
-	$(".sea_mnila:checked").each(function() {
-		mnila.push($(this).val());
+	$(".sea_mnila").each(function() {
+		if($(this).is(':checked')){
+			mnila.push($(this).val());
+		}else{
+			mnila.push('');
+		}
 	});
 
-	$(".sea_outport:checked").each(function() {
-		outport.push($(this).val());
+	$(".sea_outport").each(function() {
+		if($(this).is(':checked')){
+			outport.push($(this).val());
+		}else{
+			outport.push('');
+		}
 	});
 
-	$(".air_freight:checked").each(function() {
-		air.push($(this).val());
+	$(".air_freight").each(function() {
+		if($(this).is(':checked')){
+			air.push($(this).val());
+		}else{
+			air.push('');
+		}
 	});
 	
 	/* we join the array separated by the comma */
@@ -208,32 +220,60 @@ function getValue_check_sitesettings(){
 	var legend = [];
 	
 	/* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
-	$(".consignee_access:checked").each(function() {
-		consignee.push($(this).val());
+	$(".consignee_access").each(function() {
+		if($(this).is(':checked')){
+			consignee.push($(this).val());
+		}else{
+			consignee.push('');
+		}
 	});
 
-	$(".broker_access:checked").each(function() {
-		broker.push($(this).val());
+	$(".broker_access").each(function() {
+		if($(this).is(':checked')){
+			broker.push($(this).val());
+		}else{
+			broker.push('');
+		}
 	});
 
-	$(".shipper_access:checked").each(function() {
-		shipper.push($(this).val());
+	$(".shipper_access").each(function() {
+		if($(this).is(':checked')){
+			shipper.push($(this).val());
+		}else{
+			shipper.push('');
+		}
 	});
 
-	$(".carrier_access:checked").each(function() {
-		carrier.push($(this).val());
+	$(".carrier_access").each(function() {
+		if($(this).is(':checked')){
+			carrier.push($(this).val());
+		}else{
+			carrier.push('');
+		}
 	});
 
-	$(".hauler_access:checked").each(function() {
-		hauler.push($(this).val());
+	$(".hauler_access").each(function() {
+		if($(this).is(':checked')){
+			hauler.push($(this).val());
+		}else{
+			hauler.push('');
+		}
 	});
 
-	$(".commodity_access:checked").each(function() {
-		commodity.push($(this).val());
+	$(".commodity_access").each(function() {
+		if($(this).is(':checked')){
+			commodity.push($(this).val());
+		}else{
+			commodity.push('');
+		}
 	});
 
-	$(".legend_access:checked").each(function() {
-		legend.push($(this).val());
+	$(".legend_access").each(function() {
+		if($(this).is(':checked')){
+			legend.push($(this).val());
+		}else{
+			legend.push('');
+		}
 	});
 
 	
@@ -336,15 +376,27 @@ function getValue_check_report(){
 	
 	/* look for all checkboes that have a class 'chk' attached to it and check if it was checked */
 	$(".rep_mnila_access:checked").each(function() {
-		mnila.push($(this).val());
+		if($(this).is(':checked')){
+			mnila.push($(this).val());
+		}else{
+			mnila.push('');
+		}
 	});
 
 	$(".rep_outport_access:checked").each(function() {
-		outport.push($(this).val());
+		if($(this).is(':checked')){
+			outport.push($(this).val());
+		}else{
+			outport.push('');
+		}
 	});
 
 	$(".rep_air_access:checked").each(function() {
-		air.push($(this).val());
+		if($(this).is(':checked')){
+			air.push($(this).val());
+		}else{
+			air.push('');
+		}
 	});
 	
 	/* we join the array separated by the comma */

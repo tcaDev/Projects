@@ -96,8 +96,9 @@
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu bullet pull-right">
 									  	<?php 
+									  	if($role->RoleId == "1"){
 									  	if($roleuser[2] == '4'){
-									  		if($role->RoleId == "1"){?>
+									  		?>
 									  	
 									    <li><a data-toggle="modal" href="#myModal_addUser"><i class="fa fa-user fa-fw"></i> Create User</a></li>
 									    <?php }else{}

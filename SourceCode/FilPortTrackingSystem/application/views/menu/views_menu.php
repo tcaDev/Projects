@@ -6,7 +6,7 @@
   	<div class="menu-container">
 
   	<!-- Access  -->
-  		<?php if($rolejobfile->AccessTypesId == '4'){ ?>
+  		<?php //if($rolejobfile->AccessTypesId == '4'){ ?>
   	  <!-- Job File -->
   		<a href="<?php echo base_url('Login_user/jobfile')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -36,13 +36,13 @@
 				</div>
 			</div>
 		</a>
-		<?php }else{
+		<?php //}else{
 
-			} ?>
+			//} ?>
 		
 
 	<!-- Access  -->
-  		<?php if($rolesite->AccessTypesId == '4'){ ?>
+  		<?php //if($rolesite->AccessTypesId == '4'){ ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/settings')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -72,12 +72,12 @@
 				</div>
 			</div>
 		</a>
-		<?php }else{
+		<?php //}else{
 
-			} ?>
+			//} ?>
 
 	<!-- Access  -->
-  		<?php if($roleglobal->AccessTypesId == '4'){ ?>
+  		<?php //if($roleglobal->AccessTypesId == '4'){ ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/search')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -107,12 +107,12 @@
 				</div>
 			</div>
 		</a>
-		<?php  }else{
+		<?php // }else{
 
-			} ?>
+			//} ?>
 
 		<!-- Access  -->
-  		<?php if(($rolereport->AccessTypesId == '4') || ($roleaudit->AccessTypesId == '4')){ ?>
+  		<?php //if(($rolereport->AccessTypesId == '4') || ($roleaudit->AccessTypesId == '4')){ ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/reports')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -142,12 +142,12 @@
 				</div>
 			</div>
 		</a>
-		<?php  }else{
+		<?php // }else{
 
-			} ?>
+			//} ?>
 
 <!-- Access  -->
-  		<?php if($roledash->AccessTypesId == '4'){ ?>
+  		<?php //if($roledash->AccessTypesId == '4'){ ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/dashboard')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -177,9 +177,9 @@
 				</div>
 			</div>
 		</a>
-		<?php  }else{
+		<?php // }else{
 
-			} ?>
+			//} ?>
 
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/help')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
