@@ -133,8 +133,8 @@ class Print_Report_Truck_Admin extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ContainerNo . "</th>
-                                <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->Origin . "</th> ";
+                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th> ";
 
                     if($monitoringType == 1){
                       $dispOutput .=" <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
@@ -173,8 +173,8 @@ class Print_Report_Truck_Admin extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->NoOfCartons . "</th>
                                 <th style='border:1px solid gray'>" . $row->GrossWeight . "</th>
-                                <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->Origin . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th>
                                 <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                 <th style='border:1px solid gray'>" . $row->Forwarder . "</th>
                               </tr>";

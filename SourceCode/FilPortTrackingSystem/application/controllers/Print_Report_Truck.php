@@ -125,7 +125,7 @@ class Print_Report_Truck extends CI_Controller {
                       <th style='border:1px solid gray'>Total Storage</th>
                       <th style='border:1px solid gray'>Start Of Demurrage</th>
                       <th style='border:1px solid gray'>Total Demurrage</th>
-                      <th style='border:1px solid gray'>Running Charges</th>
+                      <th style='border:1px solid gray'>Total Running Charges</th>
                       <th style='border:1px solid gray'>Shipping Line</th>
                     </tr>
                     </thead>
@@ -136,8 +136,8 @@ class Print_Report_Truck extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->ContainerNo . "</th>
-                                <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->Origin . "</th>";
+                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th>";
                   if($monitoringType == 1){
                $dispOutput .= " <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
                                 <th style='border:1px solid gray'>" . $row->GateOutAtPort . ")</th>";
@@ -165,11 +165,10 @@ class Print_Report_Truck extends CI_Controller {
                       <th style='border:1px solid gray'>Jobfile No</th>
                       <th style='border:1px solid gray'>Number Of Cartons</th>
                       <th style='border:1px solid gray'>Weight(kgs)</th>
-                      <th style='border:1px solid gray'>Aircraft</th>
                       <th style='border:1px solid gray'>Commodity</th>
                       <th style='border:1px solid gray'>Origin</th>
                       <th style='border:1px solid gray'>Total Storage</th>
-                      <th style='border:1px solid gray'>Running Charges</th>
+                      <th style='border:1px solid gray'>Total Running Charges</th>
                       <th style='border:1px solid gray'>Airline/Forwarder</th>
                     </tr>
                     </thead>
@@ -182,9 +181,8 @@ class Print_Report_Truck extends CI_Controller {
                                 <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
                                 <th style='border:1px solid gray'>" . $row->NoOfCartons . "</th>
                                 <th style='border:1px solid gray'>" . $volume . "</th>
-                                <th style='border:1px solid gray'>" . $row->Aircraft . "</th>
-                                <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                <th style='border:1px solid gray'>" . $row->Origin . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
+                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th>
                                 <th style='border:1px solid gray'>" . number_format($row->StorageFee,2, '.' , ',') . "</th>
                                 <th style='border:1px solid gray'>" . number_format($row->Total_Charges,2, '.' , ',') . "</th>
                                 <th style='border:1px solid gray'>" . $row->Forwarder . "</th>
