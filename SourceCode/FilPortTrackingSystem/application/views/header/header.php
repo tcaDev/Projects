@@ -211,7 +211,7 @@ if(!isChrome){
 	  						$.alert({
 	  							backgroundDismiss: false, 	
 				        		title: 'Warning!',
-				        		content: 'We Recommend you to use Google Chrome for system compatibility',
+				        		content: 'We highly Recommend Google Chrome due to compatibility issues! ',
 				        		confirm: function(){
 				        	    }
 				   			 });
