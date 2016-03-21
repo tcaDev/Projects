@@ -91,7 +91,7 @@
 
 
 
-				<div class="col-lg-6 col-md-6 col-sm-6 pull-right" style="padding: 20px;">
+				<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding: 20px;">
 
 					<div class="row">
 
