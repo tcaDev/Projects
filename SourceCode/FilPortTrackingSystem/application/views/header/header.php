@@ -95,9 +95,13 @@
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu bullet pull-right">
-									  	<?php if($role->RoleId == "1"){?>
+									  	<?php 
+									  	if($role->RoleId == "1"){
+									  		if($roleuser[2] == "4"){?>
+									    
 									    <li><a data-toggle="modal" href="#myModal_addUser"><i class="fa fa-user fa-fw"></i> Create User</a></li>
-									    <?php }else{}?>
+									    <?php }else{}
+									    }else{}?>
 									    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
 									    <li class="divider"></li>
 									    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>

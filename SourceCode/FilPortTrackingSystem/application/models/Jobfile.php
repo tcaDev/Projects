@@ -105,6 +105,11 @@ Class Jobfile extends CI_Model
 	}
 
 	function get_contacts_shipper($settings_ids){
+		$query = $this->db->query("select *, CONCAT(FirstName,' ',MiddleName,' ',LastName) as FullName from ShipperContacts where ShipperId = '$settings_ids' ");
+   	 return $query->result();
+	}
+
+	function get_contacts_shipper_history($settings_ids){
 		$query = $this->db->query(" select S.*, CONCAT(S.FirstName,' ',S.MiddleName,' ',S.LastName) as FullName  
 									,CONCAT(U.FirstName,' ',U.MiddleName,' ',U.LastName) as UpdatedBy  
 									from ShipperContactsHistory  S

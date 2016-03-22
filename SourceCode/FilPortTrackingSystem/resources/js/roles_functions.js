@@ -172,7 +172,6 @@ function getValue_check(){
 	jobfile = $(".jobfile_access:checked").val();
 
 	/* check if there is selected checkboxes, */
-	
 	$.ajax({
             method: "POST",
               url: link + "/Access_update/jobfile_update_access/",

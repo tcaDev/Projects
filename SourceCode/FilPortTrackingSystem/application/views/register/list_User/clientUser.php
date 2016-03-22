@@ -10,8 +10,8 @@
                   <tr>
                       <th>No.</th>
                       <th>Status</th>
-                      <th >Update</th>
-                      <th>Reset Password</th>
+                   <?php if($roleuser[1] == '2') {?>  <th>Update</th>
+                      <th>Reset Password</th> <?php }else{} ?>
                       <th>Consignee</th>
                       <th>Consignee 2</th>
                       <th>Consignee 3</th>
@@ -60,8 +60,8 @@
               <td class="hidden"><?php echo $uid ?></td>
               <td class="hidden"><?php echo $mystat ?></td>
               <td><?php echo $stat ?></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td>
+               <?php if($roleuser[1] == '2') {?> <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
+              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td> <?php }else{} ?>
               <td class="hidden"><?php echo $row->CId ?></td>
               <td><?php echo $row->CName ?></td>
 

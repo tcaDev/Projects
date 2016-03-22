@@ -8,13 +8,14 @@
         <div class="container-fluid">
 
           <ul class="nav nav-pills">
-            <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li>
-            <li><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li>
+           <?php if($roleuser[0] == '1') {?> <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li> 
+            <li><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li> <?php }else{?> <li class="active"><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li><?php } ?>
             <li><a class="get_userAccess" data-toggle="pill" href="#userRole">User Access Role</a></li>
           </ul>
 
 
               <div class="tab-content">
+                       <?php if($roleuser[0] == '1') {?> 
                        <!-- Add Form -->
                             <div id="addForm" class="tab-pane fade in active">
                               <div class="col-lg-12">
@@ -136,7 +137,7 @@
                                             </div>
                                     </div>
                             </div>
-
+                           
 
                             <!-- List of User Account -->
 
@@ -161,6 +162,29 @@
 
                                   </div>
                               </div>
+                               <?php }else{ ?>   
+
+                               <!-- List of User Account -->
+                            <div id="listUser" class="tab-pane fade in active">
+                              <div class="col-md-12">
+                                    <h4>Type Of User :</h4>
+                                      <div class="col-md-6">
+                                        <select class="form-control user_type view_List">
+                                        </select>
+                                      </div>
+
+                                      <div class=" col-md-12">     
+                                          <hr>
+                                      </div>
+
+                                        <div id="list-user" class="tab-pane fade in active">
+                                          <div class="col-md-12">
+                                            <div class="list_users"></div>
+                                           <!--  <?php //$this->load->view('register/access/admin'); ?> -->
+                                          </div>
+                                        </div>
+                                  </div>
+                              </div> <?php } ?>
 
                               <!-- User Access Role -->
                                 <div id="userRole" class="tab-pane fade"> 

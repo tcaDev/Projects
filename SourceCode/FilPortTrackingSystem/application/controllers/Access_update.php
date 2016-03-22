@@ -45,8 +45,9 @@ class Access_update extends CI_Controller {
                		)
             );
 
+          $this->db->where_in('SystemSubModuleId', 1);
        		$this->db->where('RoleId',$role); 
-           $result = $this->db->get('RoleAccess');
+          $result = $this->db->get('RoleAccess');
 
     			if($result->num_rows() > 0){
     				$this->db->where('RoleId',$role);
@@ -111,6 +112,7 @@ class Access_update extends CI_Controller {
                		)
             );
 
+           $this->db->where_in('SystemSubModuleId', 5);
            $this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
@@ -135,6 +137,7 @@ class Access_update extends CI_Controller {
                		'AccessTypesId' => $global
                		)
             );
+             $this->db->where_in('SystemSubModuleId', $ids);
             $this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 
@@ -177,6 +180,7 @@ class Access_update extends CI_Controller {
                		'AccessTypesId' => $air_list
                		)
             );
+           $this->db->where_in('SystemSubModuleId', 14);
        		$this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
 

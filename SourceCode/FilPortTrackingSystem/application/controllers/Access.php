@@ -58,6 +58,15 @@ class Access extends CI_Controller {
 
        		$data['name'] = $desc_role;
 
+                     $session_data = $this->session->userdata('logged_in');
+                      //User 
+                          $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+                          if($roleuser == NULL){
+
+                          }else{
+                            $data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+                          }
+
        		if($role == 2){
        			$client = $this->Jobdata->get_user_client();
        			$data['User_list'] = $client;

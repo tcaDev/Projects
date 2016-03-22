@@ -152,10 +152,15 @@
 			 </div>
 			
 				
-
+			 <?php if($rolemnila[2] == '4'){ ?>
 			  <div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
 				    <div class="job-manila manila_pagination"></div>
 			  </div> 
+			  <?php }else{?>
+			  <div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
+			  		<span><i style="color:red">Nothing to Display...</i></span>
+			  </div>
+			  <?php } ?>
 			    <div class="man_pages"></div>
 			    <div class="man_pages_search"></div>
 			    <div class="man_pages_search_color"></div>

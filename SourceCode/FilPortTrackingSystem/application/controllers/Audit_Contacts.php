@@ -23,7 +23,7 @@ class Audit_Contacts extends CI_Controller {
             echo $this->contacts($contacts,$text);
          }else if($settings == '3'){
          	$text = "Shipper";
-            $contacts =  $this->Jobfile->get_contacts_shipper($settings_ids);
+            $contacts =  $this->Jobfile->get_contacts_shipper_history($settings_ids);
             echo $this->contacts($contacts,$text);
          }
        	

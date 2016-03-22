@@ -9,6 +9,7 @@ class Login_user extends CI_Controller {
             parent::__construct();
             $this->load->helper('html');
             $this->load->model('User');	
+            $this->load->model('UserAccess');	
             $this->load->model('Jobdata');	
             $this->load->library('form_validation');
 
@@ -99,7 +100,7 @@ class Login_user extends CI_Controller {
 				//$cName = $this->Jobdata->get_consignee_name($session_data['uid']);
             	//$data["jobfiles"] = $cName->ConsigneeName;
 		if($this->session->userdata('logged_in')){
-			  $this->output->cache(5);
+			 /* $this->output->cache(5);*/
 		  	$data['tab'] = "Main Menu";
 		  	$session_data = $this->session->userdata('logged_in');
 		  	$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -116,10 +117,70 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
             $role = $this->User->get_role($session_data['uid']);
             $data['role'] = $this->User->get_role($session_data['uid']);
+
+          	
+
+
             if($role->RoleId == 2){
 				$this->load->view('header/header',$data);
 				$this->load->view('menu/views_menu_consignee' , $data);
             }else{
+            //JobFIle
+            	$rolejobfile = $this->UserAccess->RolesJobFile($session_data['roleID']);
+	            if($rolejobfile == NULL){
+	            	
+	            	$data['rolejobfile'] = 0;
+	            }else{
+	            	$data['rolejobfile'] = $rolejobfile->AccessTypesId;
+	            }
+	        //Site Settings
+	            $rolesite= $this->UserAccess->RolesSite($session_data['roleID']);
+	             if($rolesite == NULL){
+	            	$data['rolesite'] = 0;
+	            }else{
+	            	$data['rolesite'] = $rolesite->AccessTypesId;
+	            }
+	        //global Search
+	            $roleglobal= $this->UserAccess->RolesGlobal($session_data['roleID']);
+	            if($roleglobal == NULL){
+	            	$data['roleglobal'] = 	0;
+	            }else{
+	            	$data['roleglobal'] = 	$roleglobal->AccessTypesId;
+	            }
+	        //DashBoard
+	            $roledash= $this->UserAccess->RolesDash($session_data['roleID']);
+	             if($roledash == NULL){
+	            	
+	            	$data['roledash'] = 0;
+	            }else{
+	            	$data['roledash'] = $roledash->AccessTypesId;
+	            }
+	        //Report
+	            $rolereport= $this->UserAccess->RolesReport($session_data['roleID']);
+	            if($rolereport == NULL){
+	            	
+	            	$data['rolereport'] = 	0;
+	            }else{
+	            	$data['rolereport'] = 	$rolereport->AccessTypesId;
+	            }
+	        //Audit Trail
+	            $roleaudit= $this->UserAccess->RolesAudit($session_data['roleID']);
+	             if($roleaudit == NULL){
+	            	
+	            	$data['roleaudit'] = 	0;
+	            }else{
+	            	$data['roleaudit'] = 	$roleaudit->AccessTypesId;
+	            }
+
+	        //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
+				
+
             	$this->load->view('header/header',$data);
 				$this->load->view('menu/views_menu' , $data);
             }
@@ -234,6 +295,21 @@ class Login_user extends CI_Controller {
 		  	$data['count_total_air_page'] = $page_o;
 
 
+		  	//User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
+
+	        //Manila Role
+	            $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+	            if($rolemnila == NULL){
+	            	$data['rolemnila'] = 	0;
+	            }else{
+	            	$data['rolemnila'] = explode(',', $rolemnila->AccessTypesId);
+	            }
 
 
 			$this->load->view('header/header',$data);
@@ -319,6 +395,13 @@ class Login_user extends CI_Controller {
 				$this->load->view('header/header',$data);
 				$this->load->view('reports/reports_page_consignee',$data);
             }else{
+            	//User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
           	    $this->load->view('header/header',$data);
 				$this->load->view('reports/reports_page');
             }
@@ -385,6 +468,14 @@ class Login_user extends CI_Controller {
 		  	$data['tab'] = "";
 		  	$data['msg'] = "";
 		  	$data['alert'] = "";
+
+		  	//User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('account/account_page',$data);
@@ -493,6 +584,14 @@ class Login_user extends CI_Controller {
         $data['consignee'] =$this->User->dropdown_consignee();
 
         $data['role'] = $this->User->get_role($session_data['uid']);
+
+        //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 	 
 		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
@@ -529,6 +628,13 @@ class Login_user extends CI_Controller {
 				$this->load->view('global/global_page',$data);
             }else{
             	$data["jobfiles"] = "";
+            	//User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
             	$this->load->view('header/header',$data);
 				$this->load->view('global/global_page');
             }
@@ -558,6 +664,14 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
 
             $data['role'] = $this->User->get_role($session_data['uid']);
+
+            //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('help/help_page' , $data);
@@ -612,6 +726,13 @@ class Login_user extends CI_Controller {
 		    $data['uid'] = $session_data['uid'];
 
 		    $data['role'] = $this->User->get_role($session_data['uid']);
+		    //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 		 
 			$this->load->view('header/header',$data);
 			$this->load->view('dashboard/dashboard_page' , $data);
@@ -647,6 +768,14 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
 
             $data['role'] = $this->User->get_role($session_data['uid']);
+
+            //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 
 		  	$data['tab'] = "";
 		  	$data['msg'] = "";
@@ -741,6 +870,14 @@ class Login_user extends CI_Controller {
                 $data['consignee'] =$this->User->dropdown_consignee();
                 $data['role'] = $this->User->get_role($session_data['uid']);
 
+                //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
+
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
 	}	
@@ -765,6 +902,14 @@ class Login_user extends CI_Controller {
 			  	$data['tab'] = "";
 			  	$data['alert'] = "danger";
 				$data['msg'] = "Your photos couldn't be uploaded. Photos should be saved as JPG or PNG files.";
+
+				//User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
@@ -836,6 +981,14 @@ class Login_user extends CI_Controller {
 		        $data['questions'] =$this->User->question();
                 $data['consignee'] =$this->User->dropdown_consignee();
                 $data['role'] = $this->User->get_role($session_data['uid']);
+
+                //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+	            	
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
@@ -920,6 +1073,14 @@ class Login_user extends CI_Controller {
                 $data['consignee'] =$this->User->dropdown_consignee();
                 $data['role'] = $this->User->get_role($session_data['uid']);
 
+                //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
+
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
 	}		
@@ -964,6 +1125,14 @@ class Login_user extends CI_Controller {
 		        $data['questions'] =$this->User->question();
                 $data['consignee'] =$this->User->dropdown_consignee();
                 $data['role'] = $this->User->get_role($session_data['uid']);
+
+                //User 
+	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+	            if($roleuser == NULL){
+
+	            }else{
+	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+	            }
 
 				$this->load->view('header/header',$data);
 				$this->load->view('account/account_page',$data);
