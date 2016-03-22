@@ -25,6 +25,8 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
           $this->m_pdf->pdf->AddPage('L');
+          $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+          $this->m_pdf->pdf->WriteHTML($stylesheet,1);
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
           //echo $documnt;
@@ -54,13 +56,15 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
 
                 ' . $footer . '
 
-                <div style="font-family:Century Gothic;" class="mycontent">
-                    <div style="font-size:22px;" class="">
-              <h4 class="pull-left">Consolidated Reports </h4>
+                <div  class="mycontent">
+                   <h5 style="text-align:center">Filport Document</h5>
+            
+                <div >
+              <h4 class="pull-left"><strong>Consolidated Reports</strong></h4>
              <div>
 
              <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
-                  <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                  <table>
                       <tr>
                         <th style="text-align:left">
                          <span class="">
@@ -76,7 +80,19 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                         </th>
                         <td>
                           <span class="">
-                             From :  ' . $ataFrom . ' To : ' . $ataTo . '
+                             From :  ' . $ataFrom . '
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th style="text-align:left">
+                          <span class=""> 
+       
+                          </span>
+                        </th>
+                        <td>
+                          <span class="">
+                            To : ' . $ataTo . '
                           </span>
                         </td>
                       </tr>
@@ -99,31 +115,31 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
        $oldJBNo = '';
          if($monitoringType == 1 || $monitoringType == 2){
             if(count($consolidateReport) > 0){
-               $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray;width:100%;'>
+               $dispOutput .="<table class ='table table-bordered'>
                           <thead>
                           <tr>
-                            <th style='border:1px solid gray'>Jobfile No</th>
-                            <th style='border:1px solid gray'>Actual Arrival Time</th>
-                            <th style='border:1px solid gray'>Volume</th>
-                            <th style='border:1px solid gray'>BL No.</th>
-                            <th style='border:1px solid gray'>Commodity</th>
-                            <th style='border:1px solid gray'>Date Received Docs</th>
-                            <th style='border:1px solid gray'>Pre-Assessment Date</th>
-                            <th style='border:1px solid gray'>Final Assessment Date</th>
-                            <th style='border:1px solid gray'>Date Paid</th>";
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Volume</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>BL No.</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Received Docs</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Pre-Assessment Date</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Final Assessment Date</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Paid</th>";
                             if($monitoringType == 1){
-                            $dispOutput .= "<th style='border:1px solid gray'>Gate In (Date/Time)</th>
-                                            <th style='border:1px solid gray'>Gate Out (Date/Time)</th>";
+                            $dispOutput .= "<th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gate In (Date/Time)</th>
+                                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gate Out (Date/Time)</th>";
                             }
                             
-               $dispOutput .=" <th style='border:1px solid gray'>Target Delivery Date</th>
-                            <th style='border:1px solid gray'>Actual Date Delivered</th>
-                            <th style='border:1px solid gray'>Date Start of Storage</th>
-                            <th style='border:1px solid gray'>Total Storage</th>
-                            <th style='border:1px solid gray'>Date Start of Demurrage</th>
-                            <th style='border:1px solid gray'>Total Demurrage</th>
-                            <th style='border:1px solid gray'>Running Charges</th>
-                            <th style='border:1px solid gray'>Status Report</th>
+               $dispOutput .="<th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Date Delivered</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Start of Storage</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Total Storage</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Start of Demurrage</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Total Demurrage</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Running Charges</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Status Report</th>
                           </tr>
                           </thead>
                           <tbody>
@@ -132,56 +148,56 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                       if($oldJBNo != $row->JobFileNo){
                            $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                            $dispOutput .= "<tr>
-                                      <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ActualArrivalTime . "</th>
-                                      <th style='border:1px solid gray'>" . $volume . "</th>
-                                      <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateReceivedOfOtherDocs . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentPreAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DatePaid . "</th>";
+                                      <td  style='padding:10px;'>" . $row->JobFileNo . "</td>
+                                      <td  style='padding:10px;'>" . $row->ActualArrivalTime . "</td>
+                                      <td  style='padding:10px;'>" . $volume . "</td>
+                                      <td  style='padding:10px;'>" . $row->HouseBillLadingNo . "</td>
+                                      <td  style='padding:10px;'>" . $row->ProductName . "</td>
+                                      <td  style='padding:10px;'>" . $row->DateReceivedOfOtherDocs . "</td>
+                                      <td  style='padding:10px;'>" . $row->DateSentPreAssessment . "</td>
+                                      <td  style='padding:10px;'>" . $row->DateSentFinalAssessment . "</td>
+                                      <td  style='padding:10px;'>" . $row->DatePaid . "</td>";
                                       if($monitoringType == 1){
-                                        $dispOutput .= "<th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
-                                                        <th style='border:1px solid gray'>" . $row->GateOutAtPort . "</th>";
+                                        $dispOutput .= "<td  style='padding:10px;'>" . $row->GateInAtPort . "</td>
+                                                        <td  style='padding:10px;'>" . $row->GateOutAtPort . "</td>";
                                       }
 
                                       
-                          $dispOutput .= "<th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ActualDeliveryAtWarehouse . "</th>
-                                      <th style='border:1px solid gray'>" . $row->StartOfStorage . "</th>
-                                      <th style='border:1px solid gray'>" . number_format($row->Storage,2,'.',',') . "</th>
-                                      <th style='border:1px solid gray'>" . $row->StartOfDemorage . "</th>
-                                      <th style='border:1px solid gray'>" . number_format($row->Demorage,2,'.',',') . "</th>
-                                      <th style='border:1px solid gray'>" . number_format($row->Total_Charges,2,'.',',') . "</th>
-                                      <th style='border:1px solid gray'>" . $row->Description . "</th>
+                          $dispOutput .= "<td  style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>
+                                      <td  style='padding:10px;'>" . $row->ActualDeliveryAtWarehouse . "</td>
+                                      <td  style='padding:10px;'>" . $row->StartOfStorage . "</td>
+                                      <td  style='padding:10px;'>" . number_format($row->Storage,2,'.',',') . "</td>
+                                      <td  style='padding:10px;'>" . $row->StartOfDemorage . "</td>
+                                      <td  style='padding:10px;'>" . number_format($row->Demorage,2,'.',',') . "</td>
+                                      <td  style='padding:10px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>
+                                      <td  style='padding:10px;'>" . $row->Description . "</td>
                                     </tr>";
                       }else{
                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                            $dispOutput .= "<tr>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>";
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td  style='padding:10px;'>" . $row->ProductName . "</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>";
                                       if($monitoringType == 1){
-                                        $dispOutput .= "<th style='border:1px solid gray'></th>
-                                                       <th style='border:1px solid gray'></th>";
+                                        $dispOutput .= "<td></td>
+                                                       <td></td>";
                                       }
                                       
                            $dispOutput .= "
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
                                     </tr>";
                       }
                    
@@ -193,23 +209,23 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
               }
             }else{
               if(count($consolidateReport) > 0){
-               $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray'>
+               $dispOutput .="<table class ='table table-condensed table-bordered'>
                                 <thead>
                                 <tr>
-                                  <th style='border:1px solid gray'>Jobfile No</th>
-                                  <th style='border:1px solid gray'>Actual Arrival Time</th>
-                                  <th style='border:1px solid gray'>weight(kgs)</th>
-                                  <th style='border:1px solid gray'>House Airway Bill No.</th>
-                                  <th style='border:1px solid gray'>Commodity</th>
-                                  <th style='border:1px solid gray'>Date Received Docs</th>
-                                  <th style='border:1px solid gray'>Pre-Assessment Date</th>
-                                  <th style='border:1px solid gray'>Final Assessment Date</th>
-                                  <th style='border:1px solid gray'>Date Paid</th>
-                                  <th style='border:1px solid gray'>Target Delivery Date</th>
-                                  <th style='border:1px solid gray'>Actual Date of Delivery</th>
-                                  <th style='border:1px solid gray'>Total Storage</th>
-                                  <th style='border:1px solid gray'>Running Charges</th>
-                                  <th style='border:1px solid gray'>Status Reports</th>
+                                  <th>Jobfile No</th>
+                                  <th>Actual Arrival Time</th>
+                                  <th>weight(kgs)</th>
+                                  <th>House Airway Bill No.</th>
+                                  <th>Commodity</th>
+                                  <th>Date Received Docs</th>
+                                  <th>Pre-Assessment Date</th>
+                                  <th>Final Assessment Date</th>
+                                  <th>Date Paid</th>
+                                  <th>Target Delivery Date</th>
+                                  <th>Actual Date of Delivery</th>
+                                  <th>Total Storage</th>
+                                  <th>Running Charges</th>
+                                  <th>Status Reports</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -219,37 +235,37 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                     if($oldJBNo != $row->JobFileNo){
                           $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                           $dispOutput .= "<tr>
-                                      <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ATA . "</th>
-                                      <th style='border:1px solid gray'>" . $volume . "</th>
-                                      <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DatePickUpOtherDocs . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentPreAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DatePaid . "</th>
-                                      <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateReceivedAtWhse . "</th>
-                                      <th style='border:1px solid gray'>" . number_format($row->StorageFee,2,'.',','). "</th>
-                                      <th style='border:1px solid gray'>" . number_format($row->Total_Charges,2,'.',',') . "</th>
-                                      <th style='border:1px solid gray'>" . $row->Description . "</th>
+                                      <th >" . $row->JobFileNo . "</th>
+                                      <th>" . $row->ATA . "</th>
+                                      <th>" . $volume . "</th>
+                                      <th>" . $row->HouseBillLadingNo . "</th>
+                                      <th>" . $row->ProductName . "</th>
+                                      <th>" . $row->DatePickUpOtherDocs . "</th>
+                                      <th>" . $row->DateSentPreAssessment . "</th>
+                                      <th>" . $row->DateSentFinalAssessment . "</th>
+                                      <th>" . $row->DatePaid . "</th>
+                                      <th>" . $row->TargetDeliveryDate . "</th>
+                                      <th>" . $row->DateReceivedAtWhse . "</th>
+                                      <th>" . number_format($row->StorageFee,2,'.',','). "</th>
+                                      <th>" . number_format($row->Total_Charges,2,'.',',') . "</th>
+                                      <th>" . $row->Description . "</th>
                                     </tr>";
                     }else{
                       $dispOutput .= "<tr>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'>" . $row->ProductName . "</th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
-                                      <th style='border:1px solid gray'></th>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td>" . $row->ProductName . "</td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
                                     </tr>";
                     }
                  
