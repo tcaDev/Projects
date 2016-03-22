@@ -154,20 +154,20 @@
 
 	$(document).on('click','.btn-update-user',function(){
 
-		var uname = $(this).closest('tr').children('td:eq(6)').text();
-		var fname = $(this).closest('tr').children('td:eq(7)').text();
-    var mname = $(this).closest('tr').children('td:eq(8)').text();
-		var lname = $(this).closest('tr').children('td:eq(9)').text();
+		var uname = $(this).closest('tr').children('td:eq(4)').text();
+		var fname = $(this).closest('tr').children('td:eq(5)').text();
+    var mname = $(this).closest('tr').children('td:eq(6)').text();
+		var lname = $(this).closest('tr').children('td:eq(7)').text();
     
-    var email = $(this).closest('tr').children('td:eq(10)').text();
-     var title = $(this).closest('tr').children('td:eq(11)').text();
-    var department = $(this).closest('tr').children('td:eq(12)').text(); 
+    var email = $(this).closest('tr').children('td:eq(8)').text();
+     var title = $(this).closest('tr').children('td:eq(9)').text();
+    var department = $(this).closest('tr').children('td:eq(10)').text(); 
 
-    var contact1 = $(this).closest('tr').children('td:eq(13)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(14)').text();
+    var contact1 = $(this).closest('tr').children('td:eq(11)').text();
+    var contact2 = $(this).closest('tr').children('td:eq(12)').text();
 
-		 uid = $(this).closest('tr').children('td:eq(1)').text();
-		var status = $(this).closest('tr').children('td:eq(2)').text();
+		 uid = $(this).closest('tr').children('td:eq(13)').text();
+		var status = $(this).closest('tr').children('td:eq(14)').text();
 
 		var statuses = parseInt(status);
 
@@ -190,7 +190,6 @@
 	  	 }else{
 	  	  $('.deactivate_user').prop('checked', true);
 	  	 }
-
 	});
 
 
@@ -198,26 +197,26 @@
 
 $(document).on('click','.btn-update-user-client',function(){
 
-    var consignee = $(this).closest('tr').children('td:eq(6)').text();
-    var consignee2 = $(this).closest('tr').children('td:eq(8)').text();
-    var consignee3 = $(this).closest('tr').children('td:eq(10)').text();
+    var consignee = $(this).closest('tr').children('td:eq(20)').text();
+    var consignee2 = $(this).closest('tr').children('td:eq(21)').text();
+    var consignee3 = $(this).closest('tr').children('td:eq(22)').text();
 
-    var uname = $(this).closest('tr').children('td:eq(12)').text();
-    var fname = $(this).closest('tr').children('td:eq(13)').text();
-    var mname = $(this).closest('tr').children('td:eq(14)').text();
-    var lname = $(this).closest('tr').children('td:eq(15)').text();
-    var email = $(this).closest('tr').children('td:eq(16)').text();
-      var title = $(this).closest('tr').children('td:eq(17)').text();
-    var department = $(this).closest('tr').children('td:eq(18)').text(); 
+    var uname = $(this).closest('tr').children('td:eq(7)').text();
+    var fname = $(this).closest('tr').children('td:eq(8)').text();
+    var mname = $(this).closest('tr').children('td:eq(9)').text();
+    var lname = $(this).closest('tr').children('td:eq(10)').text();
+    var email = $(this).closest('tr').children('td:eq(11)').text();
+    var title = $(this).closest('tr').children('td:eq(12)').text();
+    var department = $(this).closest('tr').children('td:eq(13)').text(); 
 
-    var contact1 = $(this).closest('tr').children('td:eq(19)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(20)').text();
+    var contact1 = $(this).closest('tr').children('td:eq(14)').text();
+    var contact2 = $(this).closest('tr').children('td:eq(15)').text();
 
-    var addr = $(this).closest('tr').children('td:eq(21)').text();
-    var addr2 = $(this).closest('tr').children('td:eq(22)').text();
+    var addr = $(this).closest('tr').children('td:eq(16)').text();
+    var addr2 = $(this).closest('tr').children('td:eq(17)').text();
 
-     uid = $(this).closest('tr').children('td:eq(1)').text();
-    var status = $(this).closest('tr').children('td:eq(2)').text();
+     uid = $(this).closest('tr').children('td:eq(18)').text();
+    var status = $(this).closest('tr').children('td:eq(19)').text();
 
     
 
@@ -260,8 +259,6 @@ $(document).on('click','.btn-update-user-client',function(){
       $('.consignee3').val(consignee3);
     }
     
-
-
        if(statuses==1){
         $('.activate_user').prop('checked', true);
        }else{

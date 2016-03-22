@@ -6,13 +6,13 @@
            <div class="row">
            <div class="col-lg-12" style="overflow-y:auto;position:relative;">
               <div class="row">
-            <table class=" table-bordered table-condensed " style="width:2000px;">
+            <table class="tablesorter table-bordered table-condensed " style="width:2000px;">
                 <thead>
                   <tr>
                       <th>No.</th>
                       <th>Status</th>
-            <?php if($roleuser[1] == '2') {?>  <th>Update</th>
-                      <th>Reset Password</th> <?php }else{} ?>
+            <?php if($roleuser[1] == '2') {?>  <th data-sorter="false">Update</th>
+                      <th data-sorter="false">Reset Password</th> <?php }else{} ?>
                       <th>Username</th>
                       <th>FirstName</th>
                       <th>MiddleName</th>
@@ -50,8 +50,6 @@
 
             <tr>
               <td><?php echo $i ?></td>
-              <td class="hidden"><?php echo $uid ?></td>
-              <td class="hidden"><?php echo $mystat ?></td>
               <td><?php echo $stat ?></td>
               <?php if($roleuser[1] == '2') {?>  <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
               <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td><?php }else{} ?>
@@ -64,12 +62,14 @@
               <td><?php echo $department ?></td>
               <td><?php echo $contact1 ?></td>
               <td><?php echo $contact2 ?></td>
+              <td hidden><?php echo $uid ?></td>
+              <td hidden><?php echo $mystat ?></td>
             </tr>
 
         <?php } ?>
 
                </tbody>         
-             </table>
+             </table>            
             </div>
           </div>
          </div>
@@ -81,3 +81,4 @@
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.widgets.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/dist/js/widgets/widget-scroller.min.js');?>"></script>
 <script src="<?php echo base_url('resources/table_sort/tableSort_.js');?>"></script>
+

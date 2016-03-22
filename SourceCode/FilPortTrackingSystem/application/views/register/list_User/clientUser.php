@@ -5,13 +5,13 @@
            <div class="row">
            <div class="col-lg-12" style="overflow-y:auto;position:relative;">
               <div class="row">
-            <table class=" table-bordered table-condensed " style="width:2400px;">
+            <table class="tablesorter table-bordered table-condensed " style="width:2400px;">
                 <thead>
                   <tr>
                       <th>No.</th>
                       <th>Status</th>
-                   <?php if($roleuser[1] == '2') {?>  <th>Update</th>
-                      <th>Reset Password</th> <?php }else{} ?>
+                   <?php if($roleuser[1] == '2') {?>  <th data-sorter="false">Update</th>
+                      <th data-sorter="false">Reset Password</th> <?php }else{} ?>
                       <th>Consignee</th>
                       <th>Consignee 2</th>
                       <th>Consignee 3</th>
@@ -57,20 +57,14 @@
 
             <tr>
               <td><?php echo $i ?></td>
-              <td class="hidden"><?php echo $uid ?></td>
-              <td class="hidden"><?php echo $mystat ?></td>
               <td><?php echo $stat ?></td>
-               <?php if($roleuser[1] == '2') {?> <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td> <?php }else{} ?>
-              <td class="hidden"><?php echo $row->CId ?></td>
+          <?php if($roleuser[1] == '2') {?> 
+              <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
+              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td> 
+          <?php }else{} ?>
               <td><?php echo $row->CName ?></td>
-
-              <td class="hidden"><?php echo $row->C2Id ?></td>
               <td><?php echo $row->C2Name ?></td>
-
-              <td class="hidden"><?php echo $row->C3Id ?></td>
               <td><?php echo $row->C3Name ?></td>
-
               <td><?php echo $uname ?></td>
               <td><?php echo $fname ?></td>
               <td><?php echo $mname ?></td>
@@ -81,7 +75,12 @@
               <td><?php echo $contact1 ?></td>
               <td><?php echo $contact2 ?></td>
               <td><?php echo $addr ?></td>
-              <td><?php echo $addr2 ?></td>   
+              <td><?php echo $addr2 ?></td>  
+              <td class="hidden"><?php echo $uid ?></td>
+              <td class="hidden"><?php echo $mystat ?></td> 
+              <td class="hidden"><?php echo $row->CId ?></td>
+              <td class="hidden"><?php echo $row->C2Id ?></td>
+              <td class="hidden"><?php echo $row->C3Id ?></td>
                               
             </tr>
 

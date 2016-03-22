@@ -46,6 +46,8 @@ class Access extends CI_Controller {
 
        }
 
+       /*Get Uid And Stat*/
+
 
        function get_userList(){
        		$role = $this->input->post('role');
