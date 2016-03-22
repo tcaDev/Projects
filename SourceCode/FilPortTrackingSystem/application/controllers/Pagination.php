@@ -8,6 +8,7 @@ class Pagination extends CI_Controller {
        {
             parent::__construct();
             $this->load->model('User');	
+             $this->load->model('UserAccess');  
             $this->load->model('Jobdata');	
             $this->load->helper('string');
        }
@@ -52,6 +53,14 @@ class Pagination extends CI_Controller {
 	
    //}
 
+      $session_data = $this->session->userdata('logged_in');
+        //Manila Role
+              $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+              if($rolemnila == NULL){
+                $data['rolemnila'] =  0;
+              }else{
+                $data['rolemnila'] = explode(',', $rolemnila->AccessTypesId);
+              }
  
     	$this->load->view('jobfile-view/add-manila-container/search_manila',$data);
 

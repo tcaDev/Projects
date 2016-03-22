@@ -158,7 +158,8 @@
 			  </div> 
 			  <?php }else{?>
 			  <div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
-			  		<span><i style="color:red">Nothing to Display...</i></span>
+			  		<span><i style="color:red"><h5>Nothing to Display...</h5></i></span>
+			  		<span><i style="color:red"><h5>Please Contact Administration for this issue..</h5></i></span>
 			  </div>
 			  <?php } ?>
 			    <div class="man_pages"></div>

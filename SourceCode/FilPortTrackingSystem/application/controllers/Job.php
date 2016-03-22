@@ -12,6 +12,7 @@ class Job extends CI_Controller {
             $this->db->cache_delete_all();
             date_default_timezone_set('Asia/Manila');
             $this->load->model('Jobdata');
+            $this->load->model('UserAccess');
             $this->load->library('email');
        }
 
@@ -582,8 +583,22 @@ function get_jobfile_global_search(){
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
-                   <th>Update</th>
-                   <th>Vessel/Voyage No</th>
+                   ";
+
+                   $session_data = $this->session->userdata('logged_in');
+                   //Manila Role
+                    $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
+
+                   if($rolemnila[1] == '2'){ 
+                    echo "<th>Update</th>";
+                  }else{}
+                   
+             echo "<th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
                    <th class='hidden'>value Actual Arrival Time</th>
                    <th>Actual Arrival Time</th>
@@ -635,7 +650,19 @@ function get_jobfile_global_search(){
 
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
+             $session_data = $this->session->userdata('logged_in');
+                   //Manila Role
+                    $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
+
+                   if($rolemnila[1] == '2'){ 
+                    echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
+                  }else{}
+             
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->ActualArrivalTime)."</td>";

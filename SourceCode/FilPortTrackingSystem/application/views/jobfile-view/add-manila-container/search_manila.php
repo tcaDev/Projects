@@ -4,8 +4,9 @@
 				             <tr>
 								          <th > No. </th>
 
+								        
 								          <th data-sorter="false"> Update </th>
-										 
+										
 								          <th >Jobfile Number</th>
 
 								          <th >Color Stages</th>
@@ -123,7 +124,11 @@
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
 								         
 								         <td><?php echo $i;?></td>
-								          <td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								        <?php if($rolemnila[1] == '2'){ ?>  
+								        	<td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								       	<?php }else{ ?>
+								       		<td><button type="button" class="btn btn-Update btn-sm btn-default disabled"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								       	<?php } ?>
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
