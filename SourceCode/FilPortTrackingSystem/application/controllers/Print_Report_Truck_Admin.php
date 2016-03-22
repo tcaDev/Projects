@@ -2,7 +2,7 @@
 
  date_default_timezone_set('Asia/Manila');
  require_once APPPATH.'libraries/swift_mailer/swift_required.php';
-class Print_Report_Truck_Admin extends CI_Controller {
+ class Print_Report_Truck_Admin extends CI_Controller {
 
      public function __construct()
        {
@@ -24,6 +24,8 @@ class Print_Report_Truck_Admin extends CI_Controller {
           $this->m_pdf->pdf->AddPage('L');
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
+          $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+          $this->m_pdf->pdf->WriteHTML($stylesheet,1);
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
@@ -49,23 +51,23 @@ class Print_Report_Truck_Admin extends CI_Controller {
                 <div class="change_print'.$i.'"  >  
 
                 <div class="">
-                   <h5 style="text-align:center"> Filport Document</h5>
+                   <h5 style="text-align:center">Filport Document</h5>
                 </div>
-                <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
-                  <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                <div class="col-md-12">
+                  <table>
                        <tr>
-                        <th style="text-align:left">
-                         <span  style="font-size:18px;">
-                          <h4 style="text-align:left">' . $monHeader . '</h4>
+                        <th>
+                         <span>
+                          <h4>' . $monHeader . '</h4>
                           </span>
                         </th>
                         <td>
                         </td>
                       </tr>
                       <tr>
-                        <th style="text-align:left">
+                        <th>
                          <span>
-                          <h4 style="text-align:left">Consignee Name :</h4>
+                          <h4>Consignee Name :</h4>
                           </span>
                         </th>
                         <td>
@@ -75,26 +77,38 @@ class Print_Report_Truck_Admin extends CI_Controller {
                         </td>
                       </tr>
                       <tr>
-                        <th style="text-align:left">
+                        <th >
                           <span> 
-                           <h4 style="text-align:left">Target Delivery Date :</h4>
+                           <h4>Target Delivery Date :</h4>
                           </span>
                         </th>
                         <td>
-                          <span class="pull-left">
-                             From :  ' . $ataFrom . ' To : ' . $ataTo . '
+                          <span>
+                             From :  ' . $ataFrom . '
+                          </span>
+                        </td>
+                      </tr>
+                       <tr>
+                        <th >
+                          <span> 
+                           
+                          </span>
+                        </th>
+                        <td>
+                          <span>
+                           To : ' . $ataTo . '
                           </span>
                         </td>
                       </tr>
                   </table>
                 </div>
-                <div style="font-family:Century Gothic;" class="mycontent">
-                    <div style="font-size:22px;" class="">' . $truckReports;
+                <div class="mycontent">
+                    <div>' . $truckReports;
         $dispOutput .= '
               </tbody>
             </table>
           </div> 
-          </div>'  . $footer_proprietary . $footer .'
+          </div> <br>'  . $footer_proprietary . $footer .'
           </body>
       </html>';
 
@@ -107,76 +121,76 @@ class Print_Report_Truck_Admin extends CI_Controller {
   
     if($monitoringType == 1 || $monitoringType == 2){
       if(count($report_truck) > 0){
-         $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray'>
-                    <thead>
+         $dispOutput .="<br><table class ='table table-condensed table-bordered '>
+                    <thead >
                     <tr>
-                      <th style='border:1px solid gray'>Target Delivery Date</th>
-                      <th style='border:1px solid gray'>Jobfile No</th>
-                      <th style='border:1px solid gray'>Container No</th>
-                      <th style='border:1px solid gray'>Commodity</th>
-                      <th style='border:1px solid gray'>Origin</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Container No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Origin</th>
                     ";
                     if($monitoringType == 1){
-                      $dispOutput .=" <th style='border:1px solid gray'>Gate In (Date/Time)</th>
-                                    <th style='border:1px solid gray'>Gate Out (Date/Time)</th>";
+                      $dispOutput .=" <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gate In (Date/Time)</th>
+                                    <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gate Out (Date/Time)</th>";
                     }
           
-                     $dispOutput .=" <th style='border:1px solid gray'>Actual Delivery Date</th>
-                      <th style='border:1px solid gray'>Shipping Line</th>
-                      <th style='border:1px solid gray'>Trucking Company</th>
+                     $dispOutput .="<th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Shipping Line</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Trucking Company</th>
                     </tr>
                     </thead>
                     <tbody>
                     "; 
           foreach ($report_truck as $row){
                $dispOutput .= "<tr>
-                                <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
-                                <th style='border:1px solid gray'>" . $row->ContainerNo . "</th>
-                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
-                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th> ";
+                                <td style='padding:5px;'>" . $row->TargetDeliveryDate . "</td>
+                                <td style='padding:5px;'>" . $row->JobFileNo . "</td>
+                                <td style='padding:5px;'>" . $row->ContainerNo . "</td>
+                                <td style='padding:5px;'>" . stripslashes($row->ProductName) . "</td>
+                                <td style='padding:5px; '>" . stripslashes($row->Origin) . "</td> ";
 
                     if($monitoringType == 1){
-                      $dispOutput .=" <th style='border:1px solid gray'>" . $row->GateInAtPort . "</th>
-                                <th style='border:1px solid gray'>" . $row->GateOutAtPort . "</th>";
+                      $dispOutput .=" <td style='padding: 5px;'>" . $row->GateInAtPort . "</td>
+                                <td style='padding:5px;'>" . $row->GateOutAtPort . "</td>";
                     }
                 $dispOutput .= "
-                                <th style='border:1px solid gray'>" . $row->ActualDeliveryAtWarehouse . "</th>
-                                <th style='border:1px solid gray'>" . $row->CarrierName . "</th>
-                                <th style='border:1px solid gray'>" . $row->HaulerOrTruck . "</th>
+                                <td style='padding:5px;'>" . $row->ActualDeliveryAtWarehouse . "</td>
+                                <td style='padding:5px;'>" . $row->CarrierName . "</td>
+                                <td style='padding:5px;'>" . $row->HaulerOrTruck . "</td>
                               </tr>";
           }
           $dispOutput .= "</tbody>";
         }else{
-               $dispOutput = "<center style='font-color:Red;font-size:18px;'> No Records of Truck with this Span of Target Delivery Date </center>";      
+               $dispOutput = "<center style='font-color:Red;font-size:18px;'>No Records of Truck with this Span of Target Delivery Date </center>";      
         }
       }else{
         if(count($report_truck) > 0){
-         $dispOutput .="<table class ='table-condensed table-bordered'  style='border:1px solid gray'>
-                    <thead>
-                    <tr>
-                      <th style='border:1px solid gray'>Target Delivery Date</th>
-                      <th style='border:1px solid gray'>Jobfile No</th>
-                      <th style='border:1px solid gray'>No. of Cartons</th>
-                      <th style='border:1px solid gray'>Weight(kgs)</th>
-                      <th style='border:1px solid gray'>Commodity</th>
-                      <th style='border:1px solid gray'>Origin</th>
-                      <th style='border:1px solid gray'>Actual Delivery Date</th>
-                      <th style='border:1px solid gray'>Airline/Forwarder</th>
+         $dispOutput .="<table class ='table table-condensed table-bordered'>
+                    <thead >
+                    <tr >
+                      <th>Target Delivery Date</th>
+                      <th>Jobfile No</th>
+                      <th>No. of Cartons</th>
+                      <th>Weight(kgs)</th>
+                      <th>Commodity</th>
+                      <th>Origin</th>
+                      <th>Actual Delivery Date</th>
+                      <th>Airline/Forwarder</th>
                     </tr>
                     </thead>
                     <tbody>
                     "; 
           foreach ($report_truck as $row){
                $dispOutput .= "<tr>
-                                <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
-                                <th style='border:1px solid gray'>" . $row->NoOfCartons . "</th>
-                                <th style='border:1px solid gray'>" . $row->GrossWeight . "</th>
-                                <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
-                                <th style='border:1px solid gray'>" . stripslashes($row->Origin) . "</th>
-                                <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                <th style='border:1px solid gray'>" . $row->Forwarder . "</th>
+                                <td>" . $row->TargetDeliveryDate . "</td>
+                                <td>" . $row->JobFileNo . "</td>
+                                <td>" . $row->NoOfCartons . "</td>
+                                <td>" . $row->GrossWeight . "</td>
+                                <td>" . stripslashes($row->ProductName) . "</td>
+                                <td>" . stripslashes($row->Origin) . "</td>
+                                <td>" . $row->TargetDeliveryDate . "</td>
+                                <td>" . $row->Forwarder . "</td>
                               </tr>";
           }
           $dispOutput .= "</tbody>";
@@ -184,12 +198,8 @@ class Print_Report_Truck_Admin extends CI_Controller {
                $dispOutput = "<center style='font-color:Red;font-size:18px;'> No Records of Truck with this Span of Target Delivery Date </center>";      
         }
       }
-
       return $dispOutput;
-
   }
-
-
 }
 
 ?>
