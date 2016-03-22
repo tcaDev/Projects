@@ -180,6 +180,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Vessels</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_vessels"> </div>
@@ -206,7 +207,9 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
 				          <h4 class="modal-title">List of Commodity</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_products"> </div>
@@ -234,6 +237,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Status Report</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_status"> </div>
@@ -260,6 +264,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Containers</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				        	<div style='overflow-x:auto;'>	
@@ -315,15 +320,27 @@
 
    $(document).on('click','.btn-Container',function(){
    		$('.list_conts').html('<div class="list_conts"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl = jobfile;
+			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
    });
     $(document).on('click','.btn-Goods',function(){
    		$('.list_products').html('<div class="list_products"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl = jobfile;
+			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
    });
      $(document).on('click','.btn-Vessel',function(){
    		$('.list_vessels').html('<div class="list_vessels"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl = jobfile;
+			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
    });
       $(document).on('click','.btn-StatusReport',function(){
    		$('.list_status').html('<div class="list_status"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl = jobfile;
+			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
    });
        $(document).on('click','.runchar',function(){
 
@@ -336,7 +353,6 @@ var jbfl;
 			var jobfile = $(this).closest('tr').children('td:eq(2)').text();
 			jbfl = jobfile;
 			$('.jbNo').html(' <span class="jbNo">' + jbfl + '</span> ');
-			
 	});
 
 	$(document).on('click','.btn-close-mnila',function(){

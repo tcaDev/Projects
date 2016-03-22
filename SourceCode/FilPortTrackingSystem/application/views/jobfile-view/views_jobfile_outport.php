@@ -159,6 +159,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Vessels</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-outport"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_vessels_outport"> </div>
@@ -186,6 +187,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Commodity</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-outport"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_products_outport"> </div>
@@ -213,6 +215,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Status Report</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-outport"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_status_outport"> </div>
@@ -239,6 +242,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Containers</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-outport"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				        	<div style='overflow-x:auto;'>	
@@ -295,15 +299,27 @@ $(document).ready(function(){
 
    $(document).on('click','.btn-Container-outport',function(){
    		$('.list_conts_outport').html('<div class="list_conts_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Containers </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl_outport = jobfile;
+			$('.jbNo-outport').html(' <span class="jbNo-outport">' + jbfl_outport + '</span> ');
    });
     $(document).on('click','.btn-Goods-outport',function(){
    		$('.list_products_outport').html('<div class="list_products_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl_outport = jobfile;
+			$('.jbNo-outport').html(' <span class="jbNo-outport">' + jbfl_outport + '</span> ');
    });
      $(document).on('click','.btn-Vessel-outport',function(){
    		$('.list_vessels_outport').html('<div class="list_vessels_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Vessels </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl_outport = jobfile;
+			$('.jbNo-outport').html(' <span class="jbNo-outport">' + jbfl_outport + '</span> ');
    });
       $(document).on('click','.btn-StatusReport-outport',function(){
    		$('.list_status_outport').html('<div class="list_status_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+   		var jobfile = $(this).closest('tr').children('td:eq(2)').text();
+			jbfl_outport = jobfile;
+			$('.jbNo-outport').html(' <span class="jbNo-outport">' + jbfl_outport + '</span> ');
    });
        $(document).on('click','.runchar-outport',function(){
    		$('.list_charges_outport').html('<div class="list_charges_outport"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Charges </div>');

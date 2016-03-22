@@ -163,6 +163,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">List of Commodity</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-air"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 
@@ -193,6 +194,7 @@
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
 				          <h4 class="modal-title">Status Report</h4>
+				          <h2 style="font-size:18px;font-family:Segoe UI"><b> Jobfile No: </b> <span class="jbNo-air"> </span> </h2>
 				        </div>
 				        <div class="modal-body">
 				            <div class="list_status_air"> </div>
