@@ -26,6 +26,8 @@ class Print_Report_CommodityVolume extends CI_Controller {
               $mpdf->useSubstitutions=false;
               $mpdf->simpleTables = true;
               //$this->m_pdf->pdf->AddPage('L');
+              $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+              $this->m_pdf->pdf->WriteHTML($stylesheet,1);
               $this->m_pdf->pdf->WriteHTML($documnt);
               $this->m_pdf->pdf->Output();
 
@@ -57,19 +59,19 @@ class Print_Report_CommodityVolume extends CI_Controller {
                 foreach($commodityVolume as $row){
                   $content .= "<tr>";
                   if($row->JobFileNo != $oldJBNo){
-                    $content .= "<td>" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->JobFileNo . "</td>";
                     $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                    $content .= "<td>" . $volume . "</td>";
-                    $content .= "<td>" . $row->ActualArrivalTime . "</td>";
-                    $content .= "<td>" . $row->ProductName . "</td>";
-                    $content .= "<td>" . $row->Total_Charges . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $volume . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ActualArrivalTime . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->Total_Charges . "</td>";
                     $tVolume  += $volume;
                     $rCharges += $row->Total_Charges;
                   }else{
                     $content .= "<td></td>";
                     $content .= "<td></td>";
                     $content .= "<td></td>";
-                    $content .= "<td>" . $row->ProductName . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                     $content .= "<td></td>";
                   }
                   $content .= "</tr>"; 
@@ -79,19 +81,19 @@ class Print_Report_CommodityVolume extends CI_Controller {
                foreach($commodityVolume as $row){
                   $content .= "<tr>";
                   if($row->JobFileNo != $oldJBNo){
-                    $content .= "<td>" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->JobFileNo . "</td>";
                     $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                    $content .= "<td>" . $volume . "</td>";
-                    $content .= "<td>" . $row->ATA . "</td>";
-                    $content .= "<td>" . $row->ProductName . "</td>";
-                    $content .= "<td>" . $row->Total_Charges . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $volume . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ATA . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->Total_Charges . "</td>";
                     $tVolume  += $volume;
                     $rCharges += $row->Total_Charges;
                   }else{
                     $content .= "<td></td>";
                     $content .= "<td></td>";
                     $content .= "<td></td>";
-                    $content .= "<td>" . $row->ProductName . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                     $content .= "<td></td>";
                   }
                   $content .= "</tr>"; 
@@ -101,11 +103,11 @@ class Print_Report_CommodityVolume extends CI_Controller {
 
             $total .= '
                         <tr>
-                          <td> <b> TOTAL </b> </td>
-                          <td>' . $tVolume . '</td>
+                          <td style="padding:5px;"> <b> TOTAL </b> </td>
+                          <td style="padding:5px;">' . $tVolume . '</td>
                           <td> </td>
                           <td> </td>
-                          <td>' . number_format($rCharges,2,'.',',') . '</td>
+                          <td style="padding:5px;">' . number_format($rCharges,2,'.',',') . '</td>
                         </tr>
                       ';
    
@@ -212,11 +214,11 @@ class Print_Report_CommodityVolume extends CI_Controller {
                 
                 <div class="change_print'.$i.'"  >  
                 ' . $footer . '
-                <div style="font-family:Century Gothic;" class="mycontent">
-                    <div  class="">
+                <div class="mycontent">
                 <div>
-                <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
-                  <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                <div>
+                <div class="col-md-12"><br>
+                  <table>
                       <tr>
                         <th>
                          <span class="pull-left">
@@ -239,13 +241,13 @@ class Print_Report_CommodityVolume extends CI_Controller {
                 <hr>
                 <div class="table-volume-manila">';
             $dispOutput .= '
-            <table style="width:100%" border=1>
+            <table class="table-bordered table">
               <tr>
-                <th>Jobfile No</th>
-                <th>Volume</th>
-                <th>Actual Arrival Time</th>
-                <th>Commodity</th>
-                <th>Running Charges</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Jobfile No</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Volume</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Commodity</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Running Charges</th>
               <tr>' . $content . $total .' 
             </table>
             ';
