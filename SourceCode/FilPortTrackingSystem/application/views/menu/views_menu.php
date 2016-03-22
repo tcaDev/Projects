@@ -104,7 +104,7 @@
 		</a>
 		<?php }else{} ?>
 <!-- Access -->
-  		<?php if($rolereport == '4' || $roleaudit == '4'){ // 4 == View  ?>
+  		<?php if($rolereport == '4'){ // 4 == View  ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/reports')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">

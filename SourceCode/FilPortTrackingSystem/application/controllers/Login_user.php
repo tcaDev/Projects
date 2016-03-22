@@ -165,15 +165,7 @@ class Login_user extends CI_Controller {
 	            }
 	       
 	        
-	        //Audit Trail
-	            $roleaudit= $this->UserAccess->RolesAudit($session_data['roleID']);
-	             if($roleaudit == NULL){
-	            	
-	            	$data['roleaudit'] = 	0;
-	            }else{
-	            	$data['roleaudit'] = 	$roleaudit->AccessTypesId;
-	            }
-
+	        
 	        //User 
 	            $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
 	            if($roleuser == NULL){
@@ -404,6 +396,16 @@ class Login_user extends CI_Controller {
 	            }else{
 	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
 	            }
+
+	            //Audit Trail
+	            $roleaudit= $this->UserAccess->RolesAudit($session_data['roleID']);
+	             if($roleaudit == NULL){
+	            	
+	            	$data['roleaudit'] = 	0;
+	            }else{
+	            	$data['roleaudit'] = 	$roleaudit->AccessTypesId;
+	            }
+
           	    $this->load->view('header/header',$data);
 				$this->load->view('reports/reports_page');
             }
