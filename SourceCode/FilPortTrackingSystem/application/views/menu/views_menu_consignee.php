@@ -4,6 +4,9 @@
 <div class="container-fluid">
   <div class="row">
   	<div class="menu-container">
+
+  	<!-- Access -->
+  		<?php if($roleglobal == '4'){ // 4 == View  ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/search')?>" class="col-md-6 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -33,7 +36,9 @@
 				</div>
 			</div>
 		</a>
-
+		<?php }else{} ?>
+<!-- Access -->
+  		<?php if($rolereport == '4'){ // 4 == View  ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/reports')?>" class="col-md-6 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -63,7 +68,9 @@
 				</div>
 			</div>
 		</a>
-
+		<?php }else{} ?>
+<!-- Access -->
+  		<?php if($roledash == '4'){ // 4 == View  ?>
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/dashboard')?>" class="col-md-6 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
@@ -93,6 +100,7 @@
 				</div>
 			</div>
 		</a>
+		<?php }else{} ?>
 
 		<!-- Job File -->
   		<a href="<?php echo base_url('Login_user/help')?>" class="col-md-6 col-sm-12 col-xs-12" style="padding-bottom: 10px;">

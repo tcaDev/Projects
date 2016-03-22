@@ -118,7 +118,30 @@ class Login_user extends CI_Controller {
             $role = $this->User->get_role($session_data['uid']);
             $data['role'] = $this->User->get_role($session_data['uid']);
 
-          	
+          	 //global Search
+	            $roleglobal= $this->UserAccess->RolesGlobal($session_data['roleID']);
+	            if($roleglobal == NULL){
+	            	$data['roleglobal'] = 	0;
+	            }else{
+	            	$data['roleglobal'] = 	$roleglobal->AccessTypesId;
+	            }
+
+	            //DashBoard
+	            $roledash= $this->UserAccess->RolesDash($session_data['roleID']);
+	             if($roledash == NULL){
+	            	
+	            	$data['roledash'] = 0;
+	            }else{
+	            	$data['roledash'] = $roledash->AccessTypesId;
+	            }
+	        //Report
+	            $rolereport= $this->UserAccess->RolesReport($session_data['roleID']);
+	            if($rolereport == NULL){
+	            	
+	            	$data['rolereport'] = 	0;
+	            }else{
+	            	$data['rolereport'] = 	$rolereport->AccessTypesId;
+	            }
 
 
             if($role->RoleId == 2){
@@ -140,29 +163,8 @@ class Login_user extends CI_Controller {
 	            }else{
 	            	$data['rolesite'] = $rolesite->AccessTypesId;
 	            }
-	        //global Search
-	            $roleglobal= $this->UserAccess->RolesGlobal($session_data['roleID']);
-	            if($roleglobal == NULL){
-	            	$data['roleglobal'] = 	0;
-	            }else{
-	            	$data['roleglobal'] = 	$roleglobal->AccessTypesId;
-	            }
-	        //DashBoard
-	            $roledash= $this->UserAccess->RolesDash($session_data['roleID']);
-	             if($roledash == NULL){
-	            	
-	            	$data['roledash'] = 0;
-	            }else{
-	            	$data['roledash'] = $roledash->AccessTypesId;
-	            }
-	        //Report
-	            $rolereport= $this->UserAccess->RolesReport($session_data['roleID']);
-	            if($rolereport == NULL){
-	            	
-	            	$data['rolereport'] = 	0;
-	            }else{
-	            	$data['rolereport'] = 	$rolereport->AccessTypesId;
-	            }
+	       
+	        
 	        //Audit Trail
 	            $roleaudit= $this->UserAccess->RolesAudit($session_data['roleID']);
 	             if($roleaudit == NULL){
