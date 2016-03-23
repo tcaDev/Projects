@@ -23,6 +23,7 @@ function index(){
        /* $this->m_pdf->pdf->SetWatermarkText('Confidential/Proprietory');
         $this->m_pdf->pdf->showWatermarkText = true;*/
         $this->m_pdf->pdf->mirrorMargins  = 1;
+
         $this->m_pdf->pdf->WriteHTML($to_print);
         $this->m_pdf->pdf->Output();
   }
@@ -204,14 +205,14 @@ $container_content = '';
              $container_content .=     "
              <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%;'>
                   <tr>
-                        <th style='border: 1px solid gray'>No.</th>
-                        <th style='border: 1px solid gray'>Container Number</th>
-                        <th style='border: 1px solid gray'>Date File Entry to BOC</th>
-                        <th style='border: 1px solid gray'>Date Sent Pre Assessment</th>
-                        <th style='border: 1px solid gray'>Date Sent Final Assessment</th>
-                        <th style='border: 1px solid gray'>Date Paid</th>
-                        <th style='border: 1px solid gray'>Target Delivery Date</th>
-                        <th style='border: 1px solid gray'>Actual Delivery At Warehouse</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>No.</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Container Number</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;; background-color:#ddd;'>Date File Entry to BOC</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Sent Pre Assessment</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Sent Final Assessment</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Paid</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Target Delivery Date</th>
+                        <th style='border: 1px solid gray; background-color:#ddd;'>Actual Delivery At Warehouse</th>
                   </tr>";
 
               $i=0;
@@ -256,15 +257,15 @@ if($montype == 3){
           if($montype == 3){
               $product_content .= "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;border: 1px solid gray;width:100%'>
               <tr>
-                   <th style='border: 1px solid gray'><center>No.</center></th>
-                   <th style='border: 1px solid gray'><center>Commodity</center></th>
+                   <th style='border: 1px solid gray; background-color:#ddd;'><center>No.</center></th>
+                   <th style='border: 1px solid gray; background-color:#ddd;'><center>Commodity</center></th>
               </tr>";
           }else{
             $product_content .= "<table id='tbl-second-report-data' class='table table-striped table-layout:fixed' style='cursor:pointer;border: 1px solid gray;width:100%'>
               <tr>
-                   <th style='border: 1px solid gray'><center>No.</center></th>
-                   <th style='border: 1px solid gray'><center>Container No.</center></th>
-                   <th style='border: 1px solid gray'><center>Commodity</center></th>
+                   <th style='border: 1px solid gray; background-color:#ddd;'><center>No.</center></th>
+                   <th style='border: 1px solid gray; background-color:#ddd;'><center>Container No.</center></th>
+                   <th style='border: 1px solid gray; background-color:#ddd;'><center>Commodity</center></th>
               </tr>";
           }
           $i=0;
@@ -571,8 +572,8 @@ $reports   = $this->Jobdata->report_get_status($jbNo,$montype);
       if(count($reports)){
          $reports_content .= "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;border:1px solid gray;'>
                 <tr>
-                      <th style='border: 1px solid gray'>Date Added.</th>
-                      <th style='border: 1px solid gray'>Status Description</th>
+                      <th style='border: 1px solid gray; background-color:#ddd;'>Date Added.</th>
+                      <th style='border: 1px solid gray; background-color:#ddd;'>Status Description</th>
                 </tr>";
         $i=0;
         foreach ($reports as $row) {
