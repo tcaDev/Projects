@@ -4,8 +4,11 @@
 				             <tr>
 								          <th > No. </th>
 
-								        
+								        <?php if($rolemnila[1] == '2'){ ?>  
 								          <th data-sorter="false"> Update </th>
+								        <?php }else {?>
+								        	<th data-sorter="false"></th>
+								        <?php }?>
 										
 								          <th >Jobfile Number</th>
 
@@ -127,7 +130,7 @@
 								        <?php if($rolemnila[1] == '2'){ ?>  
 								        	<td><button type="button" class="btn btn-Update btn-sm btn-default" data-toggle="modal" data-target="#myModal-1-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 								       	<?php }else{ ?>
-								       		<td><button type="button" class="btn btn-Update btn-sm btn-default disabled"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								       		<td></td>
 								       	<?php } ?>
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#jobfiles" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
@@ -135,15 +138,21 @@
 								          <td><?php echo stripslashes($row->ConsigneeName); ?></td>
 								          <td>
 									  			<button type="button" class="btn btn-Vessel btn-info view_vessels btn-sm" data-toggle="modal" data-target="#viewvessels"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  		<?php if($rolemnila[0] == '1'){ ?> 
 									  			<button type="button" class="btn btn-Add-Vessel-mnla btn-success btn-sm" data-toggle="modal" data-target="#addVessel-mnla"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+									  		<?php }else{}?>
 										  </td>
 								          <td>
 								          		<button type="button" class="btn btn-Container btn-info view_containers btn-sm"  data-toggle="modal" data-target="#viewcontainers"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          	<?php if($rolemnila[0] == '1'){ ?> 
 								          		<button type="button" class="btn btn-Add-Container-mnla btn-success btn-sm" data-toggle="modal" href="#addContainer-mnla"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          	<?php }else{}?>
 								          </td>
 										  <td>
 										  		<button type="button" class="btn btn-Goods btn-info view_goods btn-sm" data-toggle="modal" data-target="#viewgoods"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+										  	<?php if($rolemnila[0] == '1'){ ?> 
 										  		<button type="button" class="btn btn-Add-Product-mnla btn-success btn-sm" data-toggle="modal" data-target="#addProduct-mnla"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  	<?php }else{}?>
 										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
@@ -167,7 +176,9 @@
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
 								          		<button type="button" class="btn btn-StatusReport btn-info reports btn-sm" data-toggle="modal" data-target="#statrepo"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          	<?php if($rolemnila[0] == '1'){ ?> 
 								          		<button type="button" class="btn btn-Add-Report-mnla btn-success btn-sm" data-toggle="modal" data-target="#addReport-mnla"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          	<?php }else{}?>
 								          </td>
 								          <td class="view_charges"><button type="button" class="btn btn-StatusReport btn-info runchar btn-sm" data-toggle="modal" data-target="#runchar"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								          <td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>

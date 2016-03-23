@@ -123,8 +123,9 @@
 					  <!-- Add -->
 
 					<!-- Trigger the modal with a button -->
-
+					<?php if($rolemnila[0] == '1'){ ?>  
 					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md btn-AddData-mnila" data-toggle="modal" href="#myModal-1-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					 <?php }else{}?>
 
 
 
