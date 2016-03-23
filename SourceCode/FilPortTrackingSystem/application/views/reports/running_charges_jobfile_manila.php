@@ -20,7 +20,6 @@
 				 <div class="tab-content"  style="margin-top:10px;">
 	<!--  PI NO. -->
 				 	<div id="pi-client" class="tab-pane fade in active" >
-				      <h5>Search : </h5>
 
 				       <div class="col-md-12">
 					       	<div class="col-md-5">
@@ -56,7 +55,6 @@
 
 	<!-- Consignee -->
 				    <div id="consignee-client-manila" class="tab-pane fade">
-				      <h5>Search : </h5>
 
 				       <div class="col-md-6 col-md-offset-3">
 					       	<div class="col-md-12">

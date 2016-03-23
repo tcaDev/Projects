@@ -85,8 +85,8 @@
 				        		<tr>
 				        			<td>
 				        				 Color Stage <span class="pull-right">:</span>
-				        			<td class="color">
-										<b><center><b class="color-stages"> </b></center><b>
+				        			<td class="color" style="text-align:left;">
+										<b><b class="color-stages"> </b><b>
 				        			</td>
 				        		</tr>
 				        		<tr>
@@ -115,7 +115,7 @@
 		      <div id="status-reports" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade">
  					<!-- <h4 style="padding-left: 25px;"> </h4> -->
  					<u><h5 style="font-family:Century Gothic">Double Click on the Status Report to View Content.</h5></u>
-				          <div style="overflow-x:auto;">
+				          <div style="overflow-x:auto;overflow-y:auto;height:230px;">
 				              <table id="tbl-status-reports" class="table table-striped tableOverFlow" style="cursor:pointer;">
 				             	<tr>
 				             		<td class="loadReports tdOverFlow" style="width:100%;" id="loadReports">
@@ -131,7 +131,7 @@
 			  <div id="commodity" class="col-lg-12 col-md-12 col-sm-12 table-content tab-pane fade in active">
 			  		<!-- <h4 style="padding-left: 25px;"> </h4> -->
 			  		<br>
-				         <div style="overflow-x:auto;">
+				         <div style="overflow-x:auto;overflow-y:auto;height:230px;">
 				              <table id="tbl-commodities" class="table table-striped tableOverFlow">
 				             	<tr>
 				             		<td class="loadCommodities tdOverFlow">
@@ -250,9 +250,12 @@
 				$('#jfNo').html($(this).attr('id'));
 				$('.consignee').html($(this).closest('tr').children('td:eq(2)').text());
 				$('.shipper').html($(this).closest('tr').children('td:eq(3)').text());
-				var color = $(this).closest('tr').children('td:eq(1)').attr('style');
+				var color_a = $(this).closest('tr').children('td:eq(1)').attr('style');
 				var color_desc = $(this).closest('tr').children('td:eq(1)').text();
-				$('.color').attr('style',color);
+				$('.color').attr('style',color_a);
+				$('.color').css({
+					textAlign : 'left'
+				});
 				$('.color-stages').html($(this).closest('tr').children('td:eq(1)').text());
 				var ids = $(this).attr('id');
 				jbID = ids;

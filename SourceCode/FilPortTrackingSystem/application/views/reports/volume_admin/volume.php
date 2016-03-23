@@ -14,7 +14,7 @@
         	</div>     	
 
         	<div class="panel panel-default" style="margin-top: 15px;">
-				  <div class="panel-heading"><h5>Search : </h5></div>
+				  <div class="panel-heading"></div>
 				  <div class="panel-body">
 				  		<div class="col-md-6 col-md-offset-3">
 				  			<!-- Search by Commodity  -->

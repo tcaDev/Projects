@@ -18,8 +18,6 @@
 	                <div class="panel panel-default">
 	                  <div class="panel-heading"><span class="shipments">FCL Shipments :</span></div>
 	                  <div class="panel-body">
-	                   <h5>Search : </h5>
-
 	                     <div class="col-md-6 col-md-offset-3">
 	                        <div class="col-md-12">
 	                          <div class="form-group">
