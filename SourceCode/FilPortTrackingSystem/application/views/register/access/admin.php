@@ -7,7 +7,7 @@
               <li class="jbfile"><a data-toggle="tab" href="#jobfile-admin" id='jbfl'>Jobfile</a></li>
               <li class="sitesettings"><a data-toggle="tab" href="#sitesettings-admin">Site Settings</a></li>
               <li class="global"><a data-toggle="tab" href="#globalsearch-admin">Global Search</a></li>
-              <li class="reports"><a data-toggle="tab" href="#reports-admin">Reports</a></li>
+              <li class="reports_admin"><a data-toggle="tab" href="#reports-admin">Reports</a></li>
               <li class="audit"><a data-toggle="tab" href="#audit-admin">Audit Trail</a></li>
               <li class="dashboard-access"><a data-toggle="tab" href="#dashboard-admin">Dashboard</a></li>
               <li class="user"><a data-toggle="tab" href="#user-admin">User</a></li>

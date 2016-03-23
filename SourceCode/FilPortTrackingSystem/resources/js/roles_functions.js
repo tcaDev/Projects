@@ -23,7 +23,7 @@ var role;
 		jobfile_admin(role,module);
 	});
 
-	$(document).on('click','.reports',function(){
+	$(document).on('click','.reports_admin',function(){
 		$('.access_admin').attr('id','reports-admin');
 		module = 4;
 		jobfile_admin(role,module);
@@ -437,7 +437,7 @@ function getValue_check_report(){
                               content: '<i>Press Okay.</i>',
                               confirm: function(){
                                   dia.close();
-                                  $('.reports').trigger('click');
+                                  $('.reports_admin').trigger('click');
                                   window.location.reload();
                               }
                            });
