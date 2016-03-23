@@ -286,9 +286,11 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
+				       	<?php if($roleoutport[1] == '2'){ ?>  
 				        	<button type="button" class="btn btn-danger update_charges-outport-qwerty">Update</button>
 
 				        	<button type="button" class="btn btn-danger update_charges-outport" disabled>Save</button>
+				        <?php }else{} ?>
 
 				          <button type="button" class="btn btn-danger btn-close-outport" data-dismiss="modal">Close</button>
 				        </div>

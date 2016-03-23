@@ -303,8 +303,10 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
-				       	 <button type="button" class="btn btn-danger qwerty">Update</button>
+				       	<?php if($rolemnila[1] == '2'){ ?>  
+				       		<button type="button" class="btn btn-danger qwerty">Update</button>
 				        	<button type="button" class="btn btn-danger asd update-charges-mnila" disabled>Save</button>
+				        <?php }else{}?>
 				          <button type="button" class="btn btn-danger btn-close-mnila" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
