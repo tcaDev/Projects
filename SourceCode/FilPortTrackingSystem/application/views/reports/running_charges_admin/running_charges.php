@@ -99,7 +99,7 @@
 										<option value='*'>All Charges</option>
 										<option value='LodgementFee'>Lodgement Fee</option>
 										<option value='THCCharges'>THC Charges</option>
-										<option value='Arrestre'>Arrestre</option>
+										<option value='Arrastre'>Arrastre</option>
 										<option value='Wharfage'>Wharfage</option>
 										<option value='Weighing'>Weighing</option>
 										<option value='DispatchFee'>Dispatch Fee</option>
@@ -144,7 +144,7 @@ $('#admin_running-manila').click(function(){
 	$('.data_charges').html("<option value='*'>All Charges</option>"+
 							"<option value='LodgementFee'>Lodgement Fee</option>"+
 							"<option value='THCCharges'>THC Charges</option>"+
-							"<option value='Arrestre'>Arrestre</option>"+
+							"<option value='Arrastre'>Arrastre</option>"+
 							"<option value='Wharfage'>Wharfage</option>"+
 							"<option value='Weighing'>Weighing</option>"+
 							"<option value='DispatchFee'>Dispatch Fee</option>"+
@@ -171,7 +171,7 @@ $('#admin_running-outport').click(function(){
 	$('.data_charges').html("<option value='*'>All Charges</option>"+
 							"<option value='LodgementFee'>Lodgement Fee</option>"+
 							"<option value='THCCharges'>THC Charges</option>"+
-							"<option value='Arrestre'>Arrestre</option>"+
+							"<option value='Arrastre'>Arrastre</option>"+
 							"<option value='Wharfage'>Wharfage</option>"+
 							"<option value='Weighing'>Weighing</option>"+
 							"<option value='DispatchFee'>Dispatch Fee</option>"+
