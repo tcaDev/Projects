@@ -8,10 +8,14 @@
 			<div class="dash-title"><h3>CHARTS</h3></div>
 			<div class="dash-subtitle">
 				<ul class="nav nav-pills nav-stacked ">
-				  <li class="active"><a href="#tab_a" data-toggle="pill">Statistics On Color Stages</a></li>
-				  <li><a href="#tab_b" data-toggle="pill" class="jbfl_chart_btn">Statistics On JobFile Transaction</a></li>
-				  <li><a href="#tab_c" data-toggle="pill">Chart C</a></li>
-				  <li><a href="#tab_d" data-toggle="pill">Chart D</a></li>
+				  <li  class="active"><a href="#tab_a" data-toggle="pill">
+					<span style=" color: #fff;">
+				  • Statistics On Color Stages</span></a></li>
+				  <li><a href="#tab_b" data-toggle="pill" class="jbfl_chart_btn">
+				  <span style=" color: #fff;">
+				  • Statistics On JobFile Transaction </span></a></li>
+<!-- 				  <li><a href="#tab_c" data-toggle="pill">Chart C</a></li>
+				  <li><a href="#tab_d" data-toggle="pill">Chart D</a></li> -->
 				</ul>
 			</div>
 		</div>
@@ -24,7 +28,7 @@
 					 		<div class="col-lg-12">
 					 	   		<ul class="nav nav-tabs">
 								    <li class="active"><a data-toggle="tab" href="#home" class="sea_chart_btn">Sea Freight Manila</a></li>
-								    <li><a data-toggle="tab" href="#home2" class="sea_chart_btn_outport">Sea Freight Outport</a></li>
+								    <li ><a data-toggle="tab" href="#home2" class="sea_chart_btn_outport">Sea Freight Outport</a></li>
 								    <li><a data-toggle="tab" href="#menu1" class="air_chart_btn">Air Freight</a></li>
 								 </ul>
 
