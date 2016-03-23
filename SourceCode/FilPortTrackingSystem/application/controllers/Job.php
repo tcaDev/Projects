@@ -575,6 +575,8 @@ function get_jobfile_global_search(){
       $vessels  = $this->Jobdata->get_vessels($vessel);
       $button_update = $this->input->post('button_update');
       $href =  $this->input->post('href');
+      $rolemnila = $this->input->post('role');
+      $RolesManila = $this->input->post('roleAccess');
 
     if($vessels==NULL){
      echo    '<center><span style="color:red">No Vessels Yet </span></center>';
@@ -587,7 +589,12 @@ function get_jobfile_global_search(){
 
                    $session_data = $this->session->userdata('logged_in');
                    //Manila Role
-                    $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   if($RolesManila == '1'){
+                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   }else{
+                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                   }
+                    
                     if($rolemnila == NULL){
                       $rolemnila=  0;
                     }else{
@@ -597,6 +604,9 @@ function get_jobfile_global_search(){
                    if($rolemnila[1] == '2'){ 
                     echo "<th>Update</th>";
                   }else{}
+
+                
+               
                    
              echo "<th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
@@ -651,8 +661,12 @@ function get_jobfile_global_search(){
              echo "<tr>";
              echo "<td> ".$i." </td>";
              $session_data = $this->session->userdata('logged_in');
-                   //Manila Role
-                    $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                    //Manila Role
+                   if($RolesManila == '1'){
+                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   }else{
+                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                   }
                     if($rolemnila == NULL){
                       $rolemnila=  0;
                     }else{
@@ -660,9 +674,9 @@ function get_jobfile_global_search(){
                     }
 
                    if($rolemnila[1] == '2'){ 
-                    echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
+                    echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' data-target='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
                   }else{}
-             
+
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";
                 echo "<td class='row hidden'>".stripslashes($row->ActualArrivalTime)."</td>";

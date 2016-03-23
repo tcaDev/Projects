@@ -120,6 +120,11 @@ Class UserAccess extends CI_Model
    	 	return $query->row();
 	}
 
+	function RolesOutport($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '3'");
+   	 	return $query->row();
+	}
+
 
 }
 

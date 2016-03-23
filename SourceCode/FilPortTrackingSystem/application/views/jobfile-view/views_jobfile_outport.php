@@ -110,8 +110,9 @@
 					  <!-- Add -->
 
 					<!-- Trigger the modal with a button -->
-
+					<?php if($roleoutport[0] == '1'){ ?> 
 					<button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-2-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+					<?php }else{} ?>
 
 					  <!-- Modal -->
 
@@ -136,13 +137,19 @@
 				
 
 
-
+			 <?php if($roleoutport[2] == '4'){ ?>
+				<div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
+					<div class="job-outport outport_pagination"></div>
+				 </div>
+			<?php }else{?>
 			<div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
-				<div class="job-outport outport_pagination"></div>
-			 </div>
-			 <div class="out_pages"></div>
-			 <div class="out_pages_search"></div>
-			  <div class="out_pages_search_color"></div>
+			  		<span><i style="color:red"><h5>Nothing to Display...</h5></i></span>
+			  		<span><i style="color:red"><h5>Please Contact Administration for this issue..</h5></i></span>
+			  </div>
+			  <?php } ?>
+			 	<div class="out_pages"></div>
+			 	<div class="out_pages_search"></div>
+			  	<div class="out_pages_search_color"></div>
 		  	</div>
 		 </div>
 

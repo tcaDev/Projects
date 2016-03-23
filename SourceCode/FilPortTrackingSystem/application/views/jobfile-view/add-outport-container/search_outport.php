@@ -6,7 +6,11 @@
 
 								          <th > No. </th>
 
+								        <?php if($roleoutport[1] == '2'){ ?>  
 								          <th data-sorter="false"> Update </th>
+								        <?php }else {?>
+								        	<th data-sorter="false"></th>
+								        <?php }?>
 										 
 								          <th >Jobfile Number</th>
 
@@ -123,22 +127,32 @@
 								         <!-- <td class="list_goods hidden"><?php// echo $row->ContainerByVesselId;?>   </td>
 								         <td class="list_containers hidden "><?php //echo $row->VesselByJobFileId;?>   </td> -->
 								          <td><?php echo stripslashes($i);?></td>
+								       <?php if($roleoutport[1] == '2'){ ?> 
 								          <td><button type="button" class="btn btn-Update-outport btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+								       <?php }else{?>
+								       	  <td></td>
+								       <?php } ?>  
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#askjd" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
 								          <td><?php echo stripslashes($row->ShipperName); ?></td>
 								          <td><?php echo stripslashes($row->ConsigneeName);?></td>
 								           <td>
 									  			<button type="button" class="btn btn-Vessel-outport btn-info view_vessels-outport btn-sm" data-toggle="modal" data-target="#viewvessels-outport"><span class="fa fa-modx fa-fw"></span> View Vessel(s)</button>
+									  		<?php if($roleoutport[0] == '1'){ ?> 
 									  			<button type="button" class="btn btn-Add-Vessel-outport btn-success btn-sm" data-toggle="modal" data-target="#addVessel-outport"  title="Add New Vessel(s)"><span class="fa fa-plus fa-fw"></span> </button>
+									  		<?php }else{} ?>
 										  </td>
 								          <td>
 								          		<button type="button" class="btn btn-Container-outport btn-info view_containers-outport btn-sm"  data-toggle="modal" data-target="#viewcontainers-outport"><span class="fa fa-modx fa-fw"></span> View Container(s)</button>
+								          	<?php if($roleoutport[0] == '1'){ ?> 	
 								          		<button type="button" class="btn btn-Add-Container-outport btn-success btn-sm" data-toggle="modal" data-target="#addContainer-outport"  title="Add New Container(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          	<?php }else{}?>
 								          </td>
 										  <td>
 										  		<button type="button" class="btn btn-Goods-outport btn-info view_goods-outport btn-sm" data-toggle="modal" data-target="#viewgoods-outport"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+										  	<?php if($roleoutport[0] == '1'){ ?> 
 										  		<button type="button" class="btn btn-Add-Product-outport btn-success btn-sm" data-toggle="modal" data-target="#addProduct-outport"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+										  	<?php }else{} ?>
 										  </td>
 										  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
  										  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
@@ -162,7 +176,9 @@
 								          <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
 								          <td>
 								          		<button type="button" class="btn btn-StatusReport-outport btn-info reports-outport btn-sm" data-toggle="modal" data-target="#statrepo-outport"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+								          	<?php if($roleoutport[0] == '1'){ ?> 
 								          		<button type="button" class="btn btn-Add-Report-outport btn-success btn-sm" data-toggle="modal" data-target="#addReport-outport"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+								          	<?php }else{}?>
 								          </td>
 								          <td ><button type="button" class="btn btn-StatusReport btn-info runchar-outport view_charges-outport btn-sm" data-toggle="modal" data-target="#runchar-outport"><span class="fa fa-modx fa-fw"></span> View Running Charges</button></td>
 								        	<td class="get_me_id hidden"><?php echo stripslashes($row->JobFileId); ?></td>
@@ -276,12 +292,16 @@
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
  		var button_update = "btn-update-vessel-outport";
  		var modal ="outport";
+ 		var role ="$roleoutport";
+ 		var roleAccess = "2";
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_vessels');?>",
                                     data: { id:jobfileno,
                                     		button_update:button_update,
                                     		href:modal,
+                                    		role:role,
+                                    		roleAccess:roleAccess,
                                     }
                                 })
                                 .done(function(data) {

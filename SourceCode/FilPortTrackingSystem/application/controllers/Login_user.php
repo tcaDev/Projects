@@ -305,6 +305,14 @@ class Login_user extends CI_Controller {
 	            	$data['rolemnila'] = explode(',', $rolemnila->AccessTypesId);
 	            }
 
+	         //Outport Role
+	            $roleoutport = $this->UserAccess->RolesOutport($session_data['roleID']);
+	            if($roleoutport == NULL){
+	            	$data['roleoutport'] = 	0;
+	            }else{
+	            	$data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
+	            }
+
 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);

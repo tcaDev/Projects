@@ -104,7 +104,15 @@ class Pagination extends CI_Controller {
 	
    //}
 
- 
+      $session_data = $this->session->userdata('logged_in');
+        //Outport Role
+              $roleoutport = $this->UserAccess->RolesOutport($session_data['roleID']);
+              if($roleoutport == NULL){
+                $data['roleoutport'] =  0;
+              }else{
+                $data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
+              }
+
         $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
 }
 	function pagination_air(){
@@ -178,11 +186,31 @@ function select_temp(){
              $this->load->view('jobfile-view/add-manila-container/search_manila',$data);*/
 
            if($montype==1){
+
+             $session_data = $this->session->userdata('logged_in');
+        //Manila Role
+              $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+              if($rolemnila == NULL){
+                $data['rolemnila'] =  0;
+              }else{
+                $data['rolemnila'] = explode(',', $rolemnila->AccessTypesId);
+              }
+ 
+ 
              $data['manila']  =  $this->User->findlimit_search($item_per_page,$page_position,$jb,$montype);
              $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
 
            }
            if($montype==2){
+              $session_data = $this->session->userdata('logged_in');
+        //Outport Role
+              $roleoutport = $this->UserAccess->RolesOutport($session_data['roleID']);
+              if($roleoutport == NULL){
+                $data['roleoutport'] =  0;
+              }else{
+                $data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
+              }
+
              $data['outport']  =  $this->User->findlimit_search($item_per_page,$page_position,$jb,$montype);
                                   $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
            }

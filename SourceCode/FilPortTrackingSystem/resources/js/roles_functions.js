@@ -194,6 +194,7 @@ function getValue_check(){
             }
         })
         .done(function(data) {
+        	 window.location.reload();
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -201,7 +202,7 @@ function getValue_check(){
                               confirm: function(){
                                   dia.close();
                                   $('#jbfl').trigger('click');
-                                  window.location.reload();
+                                 
                               }
                            });
         });
@@ -313,6 +314,7 @@ function getValue_check_sitesettings(){
             }
         })
         .done(function(data) {
+        	 window.location.reload();
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -320,7 +322,7 @@ function getValue_check_sitesettings(){
                               confirm: function(){
                                   dia.close();
                                   $('.sitesettings').trigger('click');
-                                  window.location.reload();
+                                  
                               }
                            });
         });
@@ -353,6 +355,7 @@ function getValue_check_global(global_access,SystemId,set_global){
             }
         })
         .done(function(data) {
+        	 window.location.reload();
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -360,7 +363,7 @@ function getValue_check_global(global_access,SystemId,set_global){
                               confirm: function(){
                                   dia.close();
                                   $(set_global).trigger('click');
-                                  window.location.reload();
+                                  
                               }
                            });
         });
@@ -431,6 +434,7 @@ function getValue_check_report(){
             }
         })
         .done(function(data) {
+        	 window.location.reload();
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -438,7 +442,7 @@ function getValue_check_report(){
                               confirm: function(){
                                   dia.close();
                                   $('.reports_admin').trigger('click');
-                                  window.location.reload();
+                                 
                               }
                            });
         });

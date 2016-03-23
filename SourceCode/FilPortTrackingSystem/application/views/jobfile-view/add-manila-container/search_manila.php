@@ -260,12 +260,16 @@ $(document).ready(function(){
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  		var button_update = "btn-update-vessel";
  		var modal ="mnla";
+ 		var role ="$rolemnila";
+ 		var roleAccess = "1";
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_vessels');?>",
 				  		data: { id:ids,
 				  				button_update:button_update,
                                  href:modal,
+                                 role:role,
+                                 roleAccess:roleAccess,
 				  		}
 					})
 			  		.done(function(data) {
