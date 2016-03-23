@@ -148,7 +148,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
                         $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BAIApplication . "</td>";
                         $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BAIInspection . "</td>";
                         $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BPIInspection . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->OtherFees . "</td>";
+                        $content .= "<td style='padding:10px;border:1px solid #ddd;>" . $row->OtherFees . "</td>";
                             $lodgementFee   += $row->LodgementFee;
                             $thcCharges     += $row->THCCharges;
                             $arrastre       += $row->Arrastre;
