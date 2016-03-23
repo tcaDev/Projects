@@ -229,10 +229,14 @@ var jbfl;
  });
  $(document).on('click','.btn-Goods-air',function(){
       $('.list_products_air').html('<div class="list_products_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Products </div>');
+      var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+         $('.jbNo-air').html(' <span class="jbNo-air">' + jobfileno + '</span> ');
    });  
 
    $(document).on('click','.btn-StatusReport-air',function(){
       $('.list_status_air').html('<div class="list_status_air"><br><span class="fa fa-spinner fa-spin" style="font-size: 20px;"></span> Loading Status Reports </div>');
+      var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+         $('.jbNo-air').html(' <span class="jbNo-air">' + jobfileno + '</span> ');
    });
 
        $(document).on('click','.runchar-air',function(){
