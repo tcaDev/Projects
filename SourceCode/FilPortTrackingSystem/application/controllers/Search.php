@@ -74,8 +74,7 @@ if(isset($_SESSION['success'])){
    	$cons=$this->input->post('cons');
    	$info = $this->User->consigneecon($cons);
 
-   	
-   	
+
    	    echo '	    <div class="mycontent" >  	
    	    			<div class="modal-dialog">
 				      <!-- Modal content-->
@@ -85,44 +84,43 @@ if(isset($_SESSION['success'])){
 				          <h4 class="modal-title">Consignee Contacts Information</h4>
 				        </div>
 				        <div class="modal-body" >
-		        		<div style="overflow-x:auto;">			
-						<table class="table table-bordered table_consignee">
-					    <thead>
-					      <tr>
-					        <th>FirstName</th>
-					        <th>MiddleName</th>
-					        <th>LastName</th>
-					        <th>Contact Number</th>
-					        <th>Email Address</th>
-					        <th colspan="2">Update</th>
-					      </tr>
-					    </thead>
-					    <tbody>';
-					    if($info==null){
-					    	echo '<tr>
-					    		 <center><td style="color:red">No Contacts Yet </td></center>
-					    		</tr>';
-					    }
-					    $i=0;
-					    foreach ($info as $row) {
-					    	$i++;
-					    	      echo     '<tr style="cursor:pointer;" class="values_content">
-					    		    <td  class="hidden">'.stripslashes($row->ConsigneeContactId).'</td>
-					    		     <td  class="hidden">'.$i.'</td>
-							        <td contenteditable="true">'.stripslashes($row->FirstName).'</td>
-							        <td contenteditable="true">'.stripslashes($row->MiddleName).'</td>
-							        <td contenteditable="true">'.stripslashes($row->LastName).'</td>       
-							        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
-							        <td contenteditable="true">'.stripslashes( $row->ContactNo2). '</td>
-							        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
-							  			</td>						        
-					     		 </tr>';
-					    } ?>
-					     </tbody>
-					  </table>
+		        		<div style="overflow-x:auto;">';
+				  if($info==null){
+				   	echo '	 <center><span style="color:red">No Contacts Yet </span></center>';
+				  }else{
+						    echo '<table class="table table-bordered table_consignee">
+							    <thead>
+							      <tr>
+							        <th>FirstName</th>
+							        <th>MiddleName</th>
+							        <th>LastName</th>
+							        <th>Contact Number</th>
+							        <th>Email Address</th>
+							        <th colspan="2">Update</th>
+							      </tr>
+							    </thead>
+							    <tbody>';
+							    $i=0;
+							    foreach ($info as $row) {
+							    	$i++;
+							    	      echo     '<tr style="cursor:pointer;" class="values_content">
+							    		    <td  class="hidden">'.stripslashes($row->ConsigneeContactId).'</td>
+							    		     <td  class="hidden">'.$i.'</td>
+									        <td contenteditable="true">'.stripslashes($row->FirstName).'</td>
+									        <td contenteditable="true">'.stripslashes($row->MiddleName).'</td>
+									        <td contenteditable="true">'.stripslashes($row->LastName).'</td>       
+									        <td contenteditable="true">'.stripslashes($row->ContactNo1).'</td>
+									        <td contenteditable="true">'.stripslashes( $row->ContactNo2). '</td>
+									        <td><button class="btn update_contacts_consignee" type="button"  data-toggle="modal" data-target=""><span class="fa fa-floppy-o data-toggle="modal" data-target="#myModal""></span></button>
+									  			</td>						        
+							     		 </tr>';
+							    } ?>
+							     </tbody>
+							  </table>
 					  </div>
 
 					    <?php
+ 				   }
 					echo   '
 			   	 		
 				        </div>
@@ -235,8 +233,12 @@ if(isset($_SESSION['success'])){
 				          <h4 class="modal-title">Shipper Contacts Information</h4>
 				        </div>
 				        <div class="modal-body">
-		        		<div style="overflow-x:auto;">	
-						<table class="table table-bordered table_consignee">
+		        		<div style="overflow-x:auto;">';
+			  if($info==null){
+			   	echo '	 <center><span style="color:red">No Contacts Yet </span></center>';
+			  }else{
+
+					echo'<table class="table table-bordered table_consignee">
 					    <thead>
 					      <tr>
 					        <th>FirstName</th>
@@ -248,12 +250,6 @@ if(isset($_SESSION['success'])){
 					      </tr>
 					    </thead>
 					    <tbody>';
-					    if($info==null){
-					    	echo '<tr>
-					    		 <center><td style="color:red">No Contacts Yet </td></center>
-					    		</tr>
-					    	';
-					    }
 					    $i=0;
 					    foreach ($info as $row) {
 					    	$i++;
@@ -274,6 +270,7 @@ if(isset($_SESSION['success'])){
 					  </div>
 
 						<?php
+			   }
 						echo'
 				        </div>
 				        <div class="modal-footer">
@@ -1220,6 +1217,7 @@ $this->message();
 				        '.$pick2.'
 				         <td>'.stripslashes($stat) .'</td>
 						 <td  class="hidden">'. stripslashes($mystat) .'</td> 
+						 <td  class="hidden">'.stripslashes($pick).' </td>
 				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
 				        
 			    	  </tr>';}?>
@@ -1249,7 +1247,7 @@ $this->message();
 			     var status   	  = $(this).closest('tr').children('td:eq(1)').text();
 			     var descr 		  = $(this).closest('tr').children('td:eq(2)').text();
 			     var color   	  = $(this).closest('tr').children('td:eq(4)').text();
-			     /*var bground   	  = $(this).closest('tr').children('td:eq()').text();*/
+			     var bground   	  = $(this).closest('tr').children('td:eq(7)').text();
 			     var stat   	  = $(this).closest('tr').children('td:eq(6)').text();
 
 			     /*alert(status);*/
@@ -1265,6 +1263,12 @@ $this->message();
 			      $('.activate').attr('checked', 'checked');
 			  	  }else{
 			  	  	  $('.deactivate').attr('checked', 'checked');
+			  	  }
+
+			  	  if(bground==1){
+			      $('.legend_bacg').attr('checked', 'checked');
+			  	  }else{
+			  	  	  $('.legend_font').attr('checked', 'checked');
 			  	  }
 			 });
 	</script>
