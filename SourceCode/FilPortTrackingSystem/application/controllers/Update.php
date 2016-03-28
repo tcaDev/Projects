@@ -13,14 +13,12 @@ class Update extends CI_Controller {
             $this->load->model('User');	
 
        }
-//index function is no longer use
-	  function index(){
-			$id 	   = $this->input->post('ConsigneeId');
-			$Consignee = $this->input->post('Cons');
-			$Address   = $this->input->post('Addr');
-			$stat      = $this->input->post('stat');
-			$this->User->update_cosignee($id,$Consignee,$Address,$stat);
-		}
+    //userid 
+    function userids(){
+              $session_data = $this->session->userdata('logged_in');
+             return  $userid = $session_data['uid'];
+          
+    }
 
 	function update_consignee(){
 		$id 	= 	addslashes($this->input->post('consig_id'));
@@ -47,8 +45,9 @@ class Update extends CI_Controller {
 		
           if(($query->num_rows() ==1) && ($query2->num_rows() ==1)){
               $this->session->failed= 'update_failed';
-          }else{            
-			     $this->User->update_cosignee($id,$name,$hbno,$vilage,$city,$country,$ofnum,$status);
+          }else{       
+          		 $userid = $this->userids();         
+			     $this->User->update_cosignee($id,$name,$hbno,$vilage,$city,$country,$ofnum,$status,$userid);
 			     $this->session->success= 'update_success';
 		  }
 		   redirect('Login_user/settings');
@@ -74,7 +73,8 @@ class Update extends CI_Controller {
              $this->session->failed= 'update_failed';
           } 
        else{  
-				$this->User->update_vessel($id,$name,$address_carrier,$number_carrier,$status);
+       	        $userid = $this->userids();     
+				$this->User->update_vessel($id,$name,$address_carrier,$number_carrier,$status,$userid);
 				$this->session->success= 'update_success';
 		 }
 		redirect('Login_user/settings/#vessel');
@@ -104,7 +104,8 @@ class Update extends CI_Controller {
              $this->session->failed= 'update_failed';
           } 
        else{ 
-       		$this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country,$status);
+        	  $userid = $this->userids();    
+       		 $this->User->update_shipper($id,$name,$hbno,$vilage,$city,$country,$status,$userid);
        		 $this->session->success= 'update_success';
        	   }
 		redirect('Login_user/settings/#shipper');
@@ -118,8 +119,9 @@ class Update extends CI_Controller {
 		$lname 	= 	addslashes($this->input->post('lname'));
 		$c1 	= 	addslashes($this->input->post('c1'));
 		$c2 	= 	addslashes($this->input->post('c2'));
-
-	$this->User->update_shippercon($id,$fname,$mname,$lname,$c1,$c2);
+     
+    $userid = $this->userids(); 
+	$this->User->update_shippercon($id,$fname,$mname,$lname,$c1,$c2,$userid);
 	redirect('Login_user/settings');
 	}
     function update_consigneecon(){
@@ -129,8 +131,8 @@ class Update extends CI_Controller {
 		$lname 	= 	addslashes($this->input->post('lname'));
 		$c1 	= 	addslashes($this->input->post('c1'));
 		$c2 	= 	addslashes($this->input->post('c2'));
-
-	$this->User->update_consigneecon($id,$fname,$mname,$lname,$c1,$c2);
+    $userid = $this->userids();
+	$this->User->update_consigneecon($id,$fname,$mname,$lname,$c1,$c2,$userid);
 	redirect('Login_user/settings');
 	}
 		function update_broker(){
@@ -169,9 +171,10 @@ class Update extends CI_Controller {
              $this->session->failed= 'update_failed';
           } 
        else{ 
+       	    $userid = $this->userids();
   			$this->User->update_broker($id,$broker_fname,$broker_mname,
 			$broker_lname,$broker_houseno,$broker_vil,$broker_city,
-			$broker_cid,$broker_contact1,$broker_contact2,$status_broker);
+			$broker_cid,$broker_contact1,$broker_contact2,$status_broker,$userid);
   	  		 $this->session->success= 'update_success';
   	    	}
 		redirect('Login_user/settings/#broker');
@@ -196,7 +199,8 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_hauler($id,$name,$add,$tin,$status);
+          	     $userid = $this->userids();
+			     $this->User->update_hauler($id,$name,$add,$tin,$status,$userid);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_user/settings/#hauler');
@@ -218,7 +222,8 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_forward($id,$name,$status);
+             	 $userid = $this->userids();
+			     $this->User->update_forward($id,$name,$status,$userid);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_user/settings/#forward');
@@ -245,7 +250,8 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status,$back_ground);
+          	     $userid = $this->userids();
+			     $this->User->update_legend($legend_id,$name,$description,$legend_color,$status,$back_ground,$userid);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_user/settings/#legend');
@@ -267,7 +273,8 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{
-			     $this->User->update_container($container_id,$con,$con_descrip,$con_size);
+          	     $userid = $this->userids();
+			     $this->User->update_container($container_id,$con,$con_descrip,$con_size,$userid);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_user/settings/#container');
@@ -290,7 +297,8 @@ class Update extends CI_Controller {
           if($query->num_rows() ==1){
              $this->session->failed= 'update_failed';
           }else{  
-			     $this->User->update_products($id,$name,$status);
+          	     $userid = $this->userids();
+			     $this->User->update_products($id,$name,$status,$userid);
 			     $this->session->success= 'update_success';    
 		       }
 		        redirect('Login_user/settings/#product');
