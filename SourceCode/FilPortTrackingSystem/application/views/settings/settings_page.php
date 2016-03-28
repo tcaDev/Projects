@@ -1117,7 +1117,7 @@ function loading_popup(){
 			            	<label>Choose Color</label>
 			               <input type="color"   name="legend_color"  class="legend_color form-control" required/>
 			                <label class="radio-inline">
-						      <input type="radio"  name="legend_bacg" class="legend_bacg" value="0">Font
+						      <input type="radio"  name="legend_bacg" class="legend_font" value="0">Font
 						    </label>
 						    <label class="radio-inline">
 						      <input type="radio"  name="legend_bacg" class="legend_bacg" value="1">Background
