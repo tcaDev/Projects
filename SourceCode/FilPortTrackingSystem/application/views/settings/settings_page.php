@@ -70,41 +70,44 @@
 				});
 
 				$(document).ready(function() {
-					$('.brokerpage').html(loader);
-				    $(".brokerpage").load(content_broker);  //initial page number to load
-				    $(".pagination_broker").bootpag({
-				        total:total_broker, // total number of pages
-				        page: 1, //initial page
-				        maxVisible: 5, //maximum visible links
-					    leaps: true,
-					    firstLastUse: true,
-					    first: 'First',
-					    last: 'Last',
-					    prev: 'Previous',
-					    next: 'Next',
-					    wrapClass: 'pagination',
-					    activeClass: 'active',
-					    disabledClass: 'disabled',
-					    nextClass: 'next',
-					    prevClass: 'prev',
-					    lastClass: 'last',
-					    firstClass: 'first'
-				    }).on("page", function(e, num){
-				        e.preventDefault();
-				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				       	$('.brokerpage').html(loader);
-				        $(".brokerpage").load(content_broker, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
-				    });
-				    $('.btn_add_broker').on('click',function(){
-				    	$('.clear_values_broker').val('');
-				    });
+						 $('#form_broker').click(function(){
+							$('.brokerpage').html(loader);
+						    $(".brokerpage").load(content_broker);  //initial page number to load
+						    $(".pagination_broker").bootpag({
+						        total:total_broker, // total number of pages
+						        page: 1, //initial page
+						        maxVisible: 5, //maximum visible links
+							    leaps: true,
+							    firstLastUse: true,
+							    first: 'First',
+							    last: 'Last',
+							    prev: 'Previous',
+							    next: 'Next',
+							    wrapClass: 'pagination',
+							    activeClass: 'active',
+							    disabledClass: 'disabled',
+							    nextClass: 'next',
+							    prevClass: 'prev',
+							    lastClass: 'last',
+							    firstClass: 'first'
+						    }).on("page", function(e, num){
+						        e.preventDefault();
+						        location.hash=num;
+						       // $(".loading-div").show(); //show loading element
+						        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+						       	$('.brokerpage').html(loader);
+						        $(".brokerpage").load(content_broker, {'page':num});
+						        //$(".loading-div").hide(); //show loading element
+						    	
+						    });
+						    $('.btn_add_broker').on('click',function(){
+						    	$('.clear_values_broker').val('');
+						    });
+						 });
 				});
 
 			 $(document).ready(function() {
+			 	 $('#form_shipper').click(function(){
 				    $(".shipperpage").load(content_shipper);  //initial page number to load
 				    $('.shipperpage').html(loader);
 				    $(".pagination_shipper").bootpag({
@@ -137,10 +140,12 @@
 				     $('.btn_add_shipper').on('click',function(){
 				    	$('.clear_values_shipper').val('');
 				    });
+				});
 			
 			});
 
 		 $(document).ready(function() {
+		 	   $('#form_vessel').click(function(){
 		 			$('.vesselpage').html(loader);
 				    $(".vesselpage").load(content_vessel);  //initial page number to load
 				    $(".pagination_vessel").bootpag({
@@ -175,48 +180,51 @@
 				     $('.btn_add_vessel').on('click',function(){
 				    	$('.clear_values_vessel').val('');
 				    });
-			
+				});
 			});
 			
 				 $(document).ready(function() {
-				 	$('.haulerpage').html(loader);
-				    $(".haulerpage").load(content_hauler);  //initial page number to load
-				    $(".pagination_hauler").bootpag({
-				        total:total_hauler, // total number of pages
-				        page: 1, //initial page
-				        maxVisible: 5, //maximum visible links
-					    leaps: true,
-					    firstLastUse: true,
-					    first: 'First',
-					    last: 'Last',
-					    prev: 'Previous',
-					    next: 'Next',
-					    wrapClass: 'pagination',
-					    activeClass: 'active',
-					    disabledClass: 'disabled',
-					    nextClass: 'next',
-					    prevClass: 'prev',
-					    lastClass: 'last',
-					    firstClass: 'first'
-				    }).on("page", function(e, num){
-				        e.preventDefault();
-				        location.hash=num;
-				       // $(".loading-div").show(); //show loading element
-				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
-				        $('.haulerpage').html(loader);
-				        $(".haulerpage").load(content_hauler, {'page':num});
-				        //$(".loading-div").hide(); //show loading element
-				    	
-				    });
+				    $('#form_haulers').click(function(){
+						 	$('.haulerpage').html(loader);
+						    $(".haulerpage").load(content_hauler);  //initial page number to load
+						    $(".pagination_hauler").bootpag({
+						        total:total_hauler, // total number of pages
+						        page: 1, //initial page
+						        maxVisible: 5, //maximum visible links
+							    leaps: true,
+							    firstLastUse: true,
+							    first: 'First',
+							    last: 'Last',
+							    prev: 'Previous',
+							    next: 'Next',
+							    wrapClass: 'pagination',
+							    activeClass: 'active',
+							    disabledClass: 'disabled',
+							    nextClass: 'next',
+							    prevClass: 'prev',
+							    lastClass: 'last',
+							    firstClass: 'first'
+						    }).on("page", function(e, num){
+						        e.preventDefault();
+						        location.hash=num;
+						       // $(".loading-div").show(); //show loading element
+						        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+						        $('.haulerpage').html(loader);
+						        $(".haulerpage").load(content_hauler, {'page':num});
+						        //$(".loading-div").hide(); //show loading element
+						    	
+						    });
 
-				     $('.btn_add_hauler').on('click',function(){
-				    	$('.clear_values_hauler').val('');
+						     $('.btn_add_hauler').on('click',function(){
+						    	$('.clear_values_hauler').val('');
+						    });
 				    });
 			
 			});
 
 				
 			$(document).ready(function() {
+				 $('#form_legend').click(function(){
 					$('.legendpage').html(loader);
 				    $(".legendpage").load(content_legend);  //initial page number to load
 				    $(".pagination_legend").bootpag({
@@ -251,11 +259,13 @@
 				     $('.btn_add_legend').on('click',function(){
 				    	$('.clear_values_legend').val('');
 				    });
-			
+			    });
 			});
 
 
 			$(document).ready(function() {
+			    $('#form_product').click(function(){
+				
 					$('.prodpage').html(loader);
 				    $(".prodpage").load(content_product);  //initial page number to load
 				    $(".pagination_prod").bootpag({
@@ -289,7 +299,7 @@
 				     $('.btn_add_product').on('click',function(){
 				    	$('.clear_values_product').val('');
 				    });
-			
+				});
 			});
 
 		</script>
