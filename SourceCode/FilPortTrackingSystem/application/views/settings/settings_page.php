@@ -30,14 +30,49 @@
 
 
  </script>
+<script>
+function loading_popup(){
+
+}
+
+
+</script>
+
+
+
 		<!--For  pagination start -->		
 		<script type="text/javascript">
 	var loader = '<span style="font-size:18px;"><span class="fa fa-spinner fa-spin pull-left" style="top:25px;"></span>Please Wait...</span>';
 				$(document).ready(function() {
 					$('.consigneepage').html(loader);
-				    $(".consigneepage").load(content_consignee);
+				
+						   
+
+
+				   // $(".consigneepage").load(content_consignee);	
+
+
+
+						$.ajax({
+						  url: content_consignee,
+						  beforeSend: function() {
+						     dia =	$.dialog({
+											 	  	    icon: 'fa fa-spinner fa-spin',
+											 	  	    closeIcon: false,
+										        		title: 'Please wait!',
+										        		backgroundDismiss: false,
+										        		content: 'Loading Content',
+							});
+						  }
+						})
+						  .done(function( data ) {
+							 $(".consigneepage").html(data);
+							 dia.close();	
+						  });
+
 				      //initial page number to load
 				    $(".pagination_consignee").bootpag({
+				    	
 				        total:total_consignee, // total number of pages
 				        page: 1, //initial page
 				        maxVisible: 5, //maximum visible links
@@ -59,14 +94,17 @@
 				        location.hash=num;
 				       // $(".loading-div").show(); //show loading element
 				        //$("#gallery").append('<center><div class="loading-div"><image src="assets/lib/lightbox/images/loading.gif"></div></center>');
+				       // dia.close();
 				        $('.consigneepage').html(loader);
 				        $(".consigneepage").load(content_consignee, {'page':num});
+
 				        //$(".loading-div").hide(); //show loading element
 				    	
 				    });
 				    $('.btn_add_consignee').on('click',function(){
 				    	$('.clear_values_consignee').val('');
 				    });
+
 				});
 
 				$(document).ready(function() {
