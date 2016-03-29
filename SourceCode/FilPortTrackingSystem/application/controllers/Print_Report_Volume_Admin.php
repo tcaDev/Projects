@@ -29,7 +29,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
               $mpdf->useSubstitutions=false;
               $mpdf->simpleTables = true;
               $this->m_pdf->pdf->AddPage('L');
-               $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+              $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
               $this->m_pdf->pdf->WriteHTML($stylesheet,1);
               $this->m_pdf->pdf->WriteHTML($documnt);
               $this->m_pdf->pdf->Output();
@@ -77,7 +77,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
             $monHeader = 'Air Freight';
            }
 
-         $dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
+         //$dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
             $dispOutput .= '
             <html>
               <body>
@@ -126,29 +126,29 @@ class Print_Report_Volume_Admin extends CI_Controller {
                 if($monitoringType == 1 || $monitoringType == 2){
 
                 foreach ($reportsVolume as $row) {
-
-                   
                    if($charges == "*"){
                        if($oldJBNo != $row->JobFileNo){
                         $content .= "<tr>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->JobFileNo . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->ActualArrivalTime . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->TargetDeliveryDate . "</td>";
-                        $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $volume. "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->LodgementFee . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->THCCharges . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->Arrastre . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->Wharfage . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->Weighing . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->DispatchFee . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->DEL . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->SRAApplication . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->SRAInspection . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BAIApplication . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BAIInspection . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->BPIInspection . "</td>";
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;>" . $row->OtherFees . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->JobFileNo . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->ActualArrivalTime . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->TargetDeliveryDate . "</td>";
+                                        $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $volume. "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->LodgementFee . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->THCCharges . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->Arrastre . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->Wharfage . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->Weighing . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->DispatchFee . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->DEL . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->SRAApplication . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->SRAInspection . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->BAIApplication . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->BAIInspection . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->BPIInspection . "</td>";
+                                        $content .= "<td style='padding:10px;border:1px solid #ddd;''>" . $row->OtherFees . "</td>
+                                    </tr>
+                                    ";
                             $lodgementFee   += $row->LodgementFee;
                             $thcCharges     += $row->THCCharges;
                             $arrastre       += $row->Arrastre;
@@ -172,31 +172,33 @@ class Print_Report_Volume_Admin extends CI_Controller {
                          $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                          $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $volume. "</td>";
                          $tVolume += $volume;
-                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->RCharges . "</td>";
+                        $content .= "<td style='padding:10px;border:1px solid #ddd;'>" . $row->RCharges . "</td>
+                                    </tr>";
                             $rCharges   += $row->RCharges;
                         }
+                           
                   }
-                   $content .='</tr>';
+               
                     $oldJBNo = $row->JobFileNo;
                 }
                  if($charges == "*"){
                     $total = "<tr>
-                            <td colspan=3 style='border:1px solid #ddd;padding:10px;'><b>TOTAL </b></td>
-                            <td style='border:1px solid #ddd;padding:10px;'>" . $tVolume . "</td>";
-                    $total .= "<td style='border:1px solid #ddd;padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td style='padding:10px; border:1px solid #ddd;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
-                            <td style='padding:10px; border:1px solid #ddd;'>" . number_format($arrastre, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($wharfage, 2, '.', ','). "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($weighing, 2, '.', ','). "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($del, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
-                            <td style='padding:10px;border:1px solid #ddd;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
-                            </tr>";
+                                <td colspan=3 style='border:1px solid #ddd;padding:10px;'><b>TOTAL </b></td>
+                                <td style='border:1px solid #ddd;padding:10px;'>" . $tVolume . "</td>";
+                     $total .= "<td style='border:1px solid #ddd;padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                                <td style='padding:10px; border:1px solid #ddd;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
+                                <td style='padding:10px; border:1px solid #ddd;'>" . number_format($arrastre, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($wharfage, 2, '.', ','). "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($weighing, 2, '.', ','). "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($del, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
+                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
+                              </tr>";
 
                     $tableHeader = "  <tr>
                                         <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
@@ -240,10 +242,11 @@ class Print_Report_Volume_Admin extends CI_Controller {
                        " .   $tableHeader . "
                     </thead>
                     <tbody>
-                    " . $content . $total;
+                    " . $content . $total . "</tbody>
+                    </table>"
+                    ;
 
-
-                 
+                 //$dispOutput .= $total;
             }else{
               foreach ($reportsVolume as $row) {
                   if($oldJBNo != $row->JobFileNo){
@@ -285,7 +288,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
              }
              if($charges == "*"){
                 $total = "<tr>
-                            <td ><b>TOTAL </b></td>
+                            <td><b>TOTAL </b></td>
                             <td > </td>
                             <td > </td>
                             <td >" . $tVolume . "</td>
