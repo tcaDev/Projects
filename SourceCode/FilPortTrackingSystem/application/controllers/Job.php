@@ -2198,7 +2198,29 @@ function get_jobfile_global_search(){
           }
 
 
+        //User 
+              $roleuser = $this->UserAccess->RolesUser($session_data['roleID']);  
+              if($roleuser == NULL){
 
+              }else{
+                $data['roleuser'] = explode(',', $roleuser->AccessTypesId);
+              }
+
+          //Manila Role
+              $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+              if($rolemnila == NULL){
+                $data['rolemnila'] =  0;
+              }else{
+                $data['rolemnila'] = explode(',', $rolemnila->AccessTypesId);
+              }
+
+           //Outport Role
+              $roleoutport = $this->UserAccess->RolesOutport($session_data['roleID']);
+              if($roleoutport == NULL){
+                $data['roleoutport'] =  0;
+              }else{
+                $data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
+              }
        $data['manila'] =   $this->Jobdata->update_data($monitoring_type);
        $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
    
