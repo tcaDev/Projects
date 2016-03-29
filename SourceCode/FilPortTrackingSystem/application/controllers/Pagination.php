@@ -153,7 +153,7 @@ class Pagination extends CI_Controller {
 function select_temp(){
   $temp =  $this->Jobdata->select_temp();
   foreach($temp as $row){
-   echo $tempo = $row->data_tempo;
+   echo $tempo = $row->page_number;
    
  }
 }
@@ -174,8 +174,8 @@ function select_temp(){
 
         $temp =  $this->Jobdata->select_temp();
             foreach($temp as $row){
-                  $jb= $row->jbfl;
-                  $tempo =$row->data_tempo;
+                  $jb= $row->data;
+                  $tempo =$row->page_number;
                   $montype = $row->montype;
            }
 
@@ -233,8 +233,8 @@ function select_temp(){
 
         $temp =  $this->Jobdata->select_temp();
             foreach($temp as $row){
-                  $jb= $row->jbfl;
-                  $tempo =$row->data_tempo;
+                  $jb= $row->data;
+                  $tempo =$row->page_number;
                   $montype = $row->montype;
            }
 
@@ -272,7 +272,7 @@ function select_temp(){
 
         $temp =  $this->Jobdata->select_temp();
             foreach($temp as $row){
-                  $jb= $row->jbfl;
+                  $jb= $row->data;
            }
 
       //get starting position to fetch the records
@@ -287,6 +287,8 @@ function select_temp(){
 
 
       function insert_tempodata($montype,$jobfile,$item_per_page,$color_stages){
+            $user = $this->userids();
+            $this->db->delete('Tempo', array('userid' => $user));
         $this->db->truncate('Tempo');
         if($color_stages!='blank'){
              $query = $this->db->query("SELECT  * FROM vw_JobFile where StatusName='$color_stages' and MonitoringTypeId=$montype" );
@@ -299,16 +301,18 @@ function select_temp(){
                     $datako = ceil($m2/$item_per_page);
 
                       $datas = array(
-                         'data_tempo'       => $datako,
-                         //JBFL CAN CONTAIN BLANK IF COLOR_STAGES HAS CONTENT
-                         'jbfl'              => trim($content),
-                         'montype'           => $montype
+                         'page_number'       => $datako,
+                         //data CAN CONTAIN BLANK IF COLOR_STAGES HAS CONTENT
+                         'data'              => trim($content),
+                         'montype'           => $montype,
+                         'userid'            => $user
                       );
 
                       $this->db->insert('Tempo', $datas);
   }
       function insert_tempodata_air($jobfile,$color_stages,$item_per_page){
-          $this->db->truncate('tempo');
+            $user = $this->userids();
+            $this->db->delete('Tempo', array('userid' => $user));
         if($color_stages=='blank'){
                 $query = $this->db->query("SELECT  * FROM vw_JobFileAir where JobFileNo like '%$jobfile%'");
         }else{
@@ -318,11 +322,16 @@ function select_temp(){
                       $datako = ceil($m2/$item_per_page);
 
                       $datas = array(
-                         'data_tempo'       => $datako,
-                         'jbfl'              => trim($jobfile)
+                         'page_number'       => $datako,
+                         'data'              => trim($jobfile),
+                         'userid'            => $user
                       );
 
                       $this->db->insert('Tempo', $datas);
   }
+  function userids(){
+              $session_data = $this->session->userdata('logged_in');
+             return  $userid = $session_data['uid'];       
+    }
 }
   ?>
