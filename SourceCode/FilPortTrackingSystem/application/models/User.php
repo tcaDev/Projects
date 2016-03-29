@@ -933,16 +933,16 @@ function get_jobfile_outport(){
       return $query->result();
   }
 
-    function findlimit_search_air($page_position,$item_per_page){
+    function findlimit_search_air($page_position,$item_per_page,$jobfile){
     //$this->db->cache_on();
     $this->db->select('*');
-    $this->db->from('vw_JobFile');
-    $this->db->where('MonitoringTypeId',$montype);
+    $this->db->from('vw_JobFileAir');
     $this->db->like('JobFileNo',$jobfile);
-    $this->db->order_by('JobFileId', 'desc');
+    $this->db->order_by('JobFile_AirId', 'desc');
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
       return $query->result();
+
   }
 
     function findlimit_search_color($page_position,$item_per_page,$color_stages,$montype){
