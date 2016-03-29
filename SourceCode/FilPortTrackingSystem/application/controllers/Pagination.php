@@ -112,8 +112,8 @@ class Pagination extends CI_Controller {
               }else{
                 $data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
               }
-
-        $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
+        $this->search_paging();
+        //$this->load->view('jobfile-view/add-outport-container/search_outport',$data);
 }
 	function pagination_air(){
 	
