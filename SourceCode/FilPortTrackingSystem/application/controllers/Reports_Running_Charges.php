@@ -521,11 +521,6 @@ class Reports_Running_Charges extends CI_Controller {
 					                   $commoditiesOutput .= "<td><span class='pull-left'><b>Commodity </b></span></td></tr>";
 	         foreach($goods as $row){
 	        	
-	             if($row->ProductName==''){
-	                 $commoditiesOutput .=  "</table>";
-	                 $commoditiesOutput .=     '<center><span style="color:red">No Record of Goods  </span></center>';
-	                break;
-	              }
 	              $commoditiesOutput .=  "<tr>";
 	              if($monitoringType == 1 || $monitoringType == 2){
 	              $commoditiesOutput .=   "<td><span class='pull-left'>".stripslashes($row->ContainerNo) ."</span></td>";

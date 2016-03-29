@@ -258,9 +258,25 @@ Class RunningCharges_Reports extends CI_Model
 
 	function getCommodities($monType, $jbNo){
 		if($monType == 1 || $monType == 2){
-			$query = $this->db->query("SELECT * FROM vw_Products WHERE JobFileNo = '$jbNo'");
+			$query = $this->db->query("SELECT a.JobFileNo, c.ContainerNo, e.ProductName
+									FROM 
+									JobFile a
+									LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
+									LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
+									LEFT JOIN ProductsByContainer AS d ON c.ContainerByCarrierId = d.ContainerByCarrierId
+									LEFT JOIN Products 			   AS e ON d.ProductId = e.ProductId
+									WHERE
+									a.JobFileNo = '$jbNo'
+									AND
+									a.MonitoringTypeId = '$monType'");
 		}else{
-			$query = $this->db->query("SELECT a.*, b.* FROM vw_JobFileAir as a , vw_ProductsAir as b where a.JobFileNo = '$jbNo' AND a.JobFile_AirId = b.JobFile_AirId");
+			$query = $this->db->query("SELECT a.JobFileNo, e.ProductName, e.ProductId
+									FROM 
+									JobFile_Air a
+									LEFT JOIN Products_Air AS d ON a.JobFile_AirId = d.JobFile_AirId
+									LEFT JOIN Products 	  AS e ON d.ProductId = e.ProductId
+								    WHERE
+									a.JobFileNo = '$jbNo'");
 		}
 		return $query->result();
 	}
