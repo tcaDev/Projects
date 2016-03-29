@@ -13,6 +13,12 @@ class Login_user extends CI_Controller {
             $this->load->model('Jobdata');	
             $this->load->library('form_validation');
 
+
+
+			$this->output->set_header('Pragma: no-cache');
+			$this->output->set_header('Cache-Control: no-cache, must-revalidate');
+			$this->output->set_header('Expires: Mon, 26 Jul 2015 05:00:00 GMT');
+
        }
 
 
@@ -23,6 +29,7 @@ class Login_user extends CI_Controller {
 		{
 
 			$this->menu();
+
 		}
 		else{
 			  //This method will have the credentials validation
@@ -116,8 +123,7 @@ class Login_user extends CI_Controller {
 		 	$data['questions'] =$this->User->question();
             $data['consignee'] =$this->User->dropdown_consignee();
             $role = $this->User->get_role($session_data['uid']);
-            $data['role'] = $this->User->get_role($session_data['uid']);
-
+            $data['role'] = $this->User->get_role($session_data['uid']);	
           	 //global Search
 	            $roleglobal= $this->UserAccess->RolesGlobal($session_data['roleID']);
 	            if($roleglobal == NULL){
@@ -346,6 +352,8 @@ class Login_user extends CI_Controller {
 
 	function login()
 	{	
+		    $this->output->clear_all_cache();
+	        $this->db->cache_delete_all();
 			$data['tab'] = "Log In";
 			$this->load->view('login/login_page' , $data);
 	}
@@ -360,7 +368,11 @@ class Login_user extends CI_Controller {
 
  	 function logout()
 	 {
-	  $this->output->clear_path_cache('Login_user');
+
+	   //$this->output->clear_path_cache('Login_user');
+	   //$this->output->clear_path_cache('reports');
+	   //$this->output->clear_path_cache('settings');
+	   $this->output->clear_all_cache();
 	   $this->db->cache_delete_all();
 	   $this->session->unset_userdata('logged_in');
 	   session_destroy();
@@ -370,12 +382,12 @@ class Login_user extends CI_Controller {
 
 	function reports()
 	{	
-	
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 		    $this->output->cache(5);
 			$data['tab'] = "REPORTS";
 			$session_data = $this->session->userdata('logged_in');
+			echo "Session ID : " . $session_data['uid'] ;
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
 		    $data['roleName'] = $logInDetails;
 		    $data['username'] = $session_data['username'];
@@ -390,8 +402,8 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
 
             $data['role'] = $this->User->get_role($session_data['uid']);
-
 		 	$role = $this->User->get_role($session_data['uid']);
+		 	
             if($role->RoleId == 2){
             	$data["jobfiles"] =  $session_data['uid'];
 				$this->load->view('header/header',$data);
