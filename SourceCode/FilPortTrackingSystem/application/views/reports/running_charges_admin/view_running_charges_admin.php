@@ -187,12 +187,7 @@
 						<?php } ?>
 						<td><b>Commodity</b></td>
 					</tr>
-					<?php foreach ($goods as $row) {
-							if($row->ProductName == ''){ ?>
-							</tbody>
-							</table>
-							<span style="color:red;">No Record of Goods</span>
-						<?php break; }?>
+					<?php foreach ($goods as $row) {?>
 						<tr>
 						<?php if($montype == 1 || $montype == 2){ ?>
 							<td><?php echo stripslashes($row->ContainerNo); ?></td>
