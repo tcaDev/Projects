@@ -67,7 +67,6 @@
               <td hidden></td>
               <td hidden></td>
               <td hidden></td>
-              <td hidden></td>
               <td hidden><?php echo $uid ?></td>
               <td hidden><?php echo $mystat ?></td>
             </tr>
