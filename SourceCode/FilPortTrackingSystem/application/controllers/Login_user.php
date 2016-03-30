@@ -124,6 +124,7 @@ class Login_user extends CI_Controller {
             $data['consignee'] =$this->User->dropdown_consignee();
             $role = $this->User->get_role($session_data['uid']);
             $data['role'] = $this->User->get_role($session_data['uid']);	
+
           	 //global Search
 	            $roleglobal= $this->UserAccess->RolesGlobal($session_data['roleID']);
 	            if($roleglobal == NULL){
@@ -221,7 +222,7 @@ class Login_user extends CI_Controller {
 	 	 //check if the user is already login
 		if($this->session->userdata('logged_in')){	
 	    	//$this->db->cache_delete_all();	
-			$this->output->cache(5);
+			//$this->output->cache(5);
 
 			$data['tab'] = "JobFile Monitoring";
 			$session_data = $this->session->userdata('logged_in');
@@ -384,7 +385,7 @@ class Login_user extends CI_Controller {
 	{	
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
-		    $this->output->cache(5);
+		    //$this->output->cache(5);
 			$data['tab'] = "REPORTS";
 			$session_data = $this->session->userdata('logged_in');
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -515,7 +516,7 @@ class Login_user extends CI_Controller {
 	{
 	//check if the user is already login
 	 if($this->session->userdata('logged_in')){		
-	 	$this->output->cache(2);
+	 	//$this->output->cache(2);
 
 	 	 $item_per_page = 10;
 
@@ -624,7 +625,7 @@ class Login_user extends CI_Controller {
 	}
 	 function search()
 	{	
-		$this->output->cache(2);
+		//$this->output->cache(2);
 			//check if the user is already login
 		 if($this->session->userdata('logged_in')){		
 			$data['tab'] = "GLOBAL SEARCH";
@@ -670,7 +671,7 @@ class Login_user extends CI_Controller {
 	{
 		//check if the user is already login
 		 if($this->session->userdata('logged_in')){	
-		    $this->output->cache(5);
+		   // $this->output->cache(5);
 			$data['tab'] = "USER MANUAL";
 			$session_data = $this->session->userdata('logged_in');
 			$logInDetails = $this->User->getAccessType($session_data['uid'],$session_data['roleID']);
@@ -730,7 +731,7 @@ class Login_user extends CI_Controller {
 	}
 	function dashboard()
 	{
-		$this->output->cache(2);
+		//$this->output->cache(2);
 		//check if the user is already login
 		if($this->session->userdata('logged_in')){	
 			$data['tab'] = "Charts";
