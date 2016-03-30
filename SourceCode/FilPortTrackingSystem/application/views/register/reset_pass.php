@@ -1,6 +1,6 @@
 <div class="modal-content" style="top: 115px;">
       <div class="modal-header" >
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" >&times;</button>
         <h4 class="modal-title">Reset Password</h4>
       </div>
 
@@ -69,8 +69,8 @@
 
 var uid
 	$(document).on('click','.btn-reset-pass',function(){
-		 uid = $(this).closest('tr').children('td:eq(1)').text();
-		var uname = $(this).closest('tr').children('td:eq(6)').text();
+		 uid = $(this).closest('tr').children('td:eq(13)').text();
+		var uname = $(this).closest('tr').children('td:eq(4)').text();
 
 		$('.uname').text(uname);
 
@@ -110,7 +110,7 @@ $(document).on('click','.btn-ResetPass',function(){
                   });
               },
               data: {
-              		uid : uid,
+              		  uid : uid,
                     cpass :cpass,
                     pass :pass,
               }
