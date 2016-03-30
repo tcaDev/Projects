@@ -319,7 +319,7 @@ class Login_user extends CI_Controller {
 	            	$data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
 	            }
 
-
+ 
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);
 		}else{
@@ -352,8 +352,8 @@ class Login_user extends CI_Controller {
 
 	function login()
 	{	
-		    $this->output->clear_all_cache();
-	        $this->db->cache_delete_all();
+		    //$this->output->clear_all_cache();
+	        //$this->db->cache_delete_all();
 			$data['tab'] = "Log In";
 			$this->load->view('login/login_page' , $data);
 	}

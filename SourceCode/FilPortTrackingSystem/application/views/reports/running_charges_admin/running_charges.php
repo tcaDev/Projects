@@ -130,7 +130,6 @@
 </div>	
 <script>
 
-
 var runn_char = 1;
 $('#admin_running-manila').click(function(){
 	$('.active-tabRun').html('<b> Sea Freight Manila</b>');
