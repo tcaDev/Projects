@@ -25,6 +25,8 @@ class Print_Report extends CI_Controller {
            ini_set("memory_limit", "256M"); 
           (set_time_limit(600000));
           $this->m_pdf->pdf->mirrorMargins  = 1;
+          $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+          $this->m_pdf->pdf->WriteHTML($stylesheet,1);
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
@@ -57,16 +59,15 @@ class Print_Report extends CI_Controller {
              for($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
                $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                  <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                 </table>
                           </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
                           <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
@@ -77,15 +78,14 @@ class Print_Report extends CI_Controller {
                        ';
                   } else {
                 $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                 <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                </table>
                              </htmlpageheader>
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
                           <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
@@ -156,49 +156,50 @@ class Print_Report extends CI_Controller {
 
                     }
                     </style>
-                <div class="change_print'.$i.'"  >  
+                <div class="change_print'.$i.'">  
 
                 ' . $footer . '
 
-                <div style="font-family:Century Gothic;" class="mycontent">
+                <div class="mycontent">
                     <div style="font-size:22px;" class="">
               
                 </br>
-                <h5>'.$monHeader.'</h5>
+                <span style="font-size:18px;"><b>Reports on Running Charges</b></span><br>
+                <span style="font-size:16px;">'.$monHeader.'</span>
+                <br>
+                <br>
                 <div class="col-md-12">
-                      <div class="col-md-12" style="font-size:14px;">
+                      <div class="col-md-12" style="font-size:12px;">
                         <div class="col-md-6">
-                         <span class="pull-left" style="font-size:16px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                         <span class="pull-left" style="font-size:14px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
+                           '
                               . $pre_details->ConsigneeName .
-                          '</u>
-                        </div>
+                          '</div>
                         <div class="col-md-6">
-                           <span class="pull-left" style="font-size:16px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                           <span class="pull-left" style="font-size:14px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
+                          '
                               . $pre_details->JobFileNo .
-                          '</u>
+                          ' 
                         </div>
-                    </div>    
-                      <div class="col-md-12" style="font-size:14px;">
+                      </div>    
+                      <div class="col-md-12" style="font-size:12px;">
 
                         <div class="col-md-6">
-                          <span class="pull-left" style="font-size:16px;"><b>PI / PO Number : </b> &nbsp;&nbsp;</span>
-                          <u>'
+                          <span class="pull-left" style="font-size:14px;"><b>PI / PO Number : </b> &nbsp;&nbsp;</span>
+                          '
                               . $PO_Number .
-                          '</u>
+                          '
                         </div>
                         <div class="col-md-6">';
                           if($monitoringType == 1 || $monitoringType ==2 ){
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:16px;"><b>Volume : </b> </span>
-                                        <u>'
+                                        <span class="pull-left" style="font-size:14px;"><b>Volume : </b> </span>
+                                        '
                                         . $volume .
-                                        '</u>
-                                        ';
+                                        '';
                               }else{
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:16px;"><b>Gross Weight(kg) : </b> </span>
+                                        <span class="pull-left" style="font-size:14px;"><b>Gross Weight(kg) : </b> </span>
                                         <u>'
                                         . $volume .
                                         ' kg </u>

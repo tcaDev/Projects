@@ -64,15 +64,17 @@ class Print_Report_CommodityVolume extends CI_Controller {
                     $content .= "<td style='padding:5px;'>" . $volume . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ActualArrivalTime . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
-                    $content .= "<td style='padding:5px;'>" . $row->Total_Charges . "</td>";
+                    $content .= "<td style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>";
                     $tVolume  += $volume;
                     $rCharges += $row->Total_Charges;
                   }else{
-                    $content .= "<td></td>";
-                    $content .= "<td></td>";
-                    $content .= "<td></td>";
-                    $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
-                    $content .= "<td></td>";
+                    if($row->ProductName != ""){
+                      $content .= "<td></td>";
+                      $content .= "<td></td>";
+                      $content .= "<td></td>";
+                      $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
+                      $content .= "<td></td>";
+                    }
                   }
                   $content .= "</tr>"; 
                   $oldJBNo = $row->JobFileNo;
@@ -86,9 +88,9 @@ class Print_Report_CommodityVolume extends CI_Controller {
                     $content .= "<td style='padding:5px;'>" . $volume . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ATA . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
-                    $content .= "<td style='padding:5px;'>" . $row->Total_Charges . "</td>";
+                    $content .= "<td style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>";
                     $tVolume  += $volume;
-                    $rCharges += $row->Total_Charges;
+                    $rCharges += $row->Total_Charges; 
                   }else{
                     $content .= "<td></td>";
                     $content .= "<td></td>";
@@ -103,11 +105,11 @@ class Print_Report_CommodityVolume extends CI_Controller {
 
             $total .= '
                         <tr>
-                          <td style="padding:5px;"> <b> TOTAL </b> </td>
-                          <td style="padding:5px;">' . $tVolume . '</td>
-                          <td> </td>
-                          <td> </td>
-                          <td style="padding:5px;">' . number_format($rCharges,2,'.',',') . '</td>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> <b> TOTAL </b> </th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">' . $tVolume . '</th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">' . number_format($rCharges,2,'.',',') . '</th>
                         </tr>
                       ';
    
@@ -116,32 +118,33 @@ class Print_Report_CommodityVolume extends CI_Controller {
              for($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
                $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                  <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                 </table>
                           </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
-                          <table width="100%" style="font-family: serif; font-size: 8pt; 
+                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
                         </htmlpagefooter>
+
+
+
                        ';
                   } else {
                 $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                 <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                </table>
                              </htmlpageheader>
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
-                          <table width="100%" style="font-family: serif; font-size: 8pt; 
+                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
@@ -217,20 +220,18 @@ class Print_Report_CommodityVolume extends CI_Controller {
                 <div class="mycontent">
                 <div>
                 <div>
+                <span style="font-size:18px;"><b>Reports on Volume </b></span><br>
+                <span style="font-size:16px;">'.$monHeader.'</span>
+                <br>
+                <br>
                 <div class="col-md-12"><br>
                   <table>
-                      <tr>
-                        <th>
-                         <span class="pull-left">
-                           ' . $monHeader . '
-                          </span>
-                        </th>
-                      </tr>
                       <tr>
                         <th>
                           Consignee Name : 
                         </th>
                         <th>
+                        &nbsp;
                          <span class="pull-left">
                            ' . $cName->ConsigneeName . '
                           </span>

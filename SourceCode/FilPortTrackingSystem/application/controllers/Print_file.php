@@ -17,13 +17,14 @@ class Print_file extends CI_Controller {
 
 function index(){
        $jbNo    = $this->input->get('jbNo');
-       $montype = $this->input->get('montype');
+       $montype = $this->input->get('mon_Type');
        $to_print = $this->createDoc($jbNo,$montype);
 
        /* $this->m_pdf->pdf->SetWatermarkText('Confidential/Proprietory');
         $this->m_pdf->pdf->showWatermarkText = true;*/
         $this->m_pdf->pdf->mirrorMargins  = 1;
-
+        $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+        $this->m_pdf->pdf->WriteHTML($stylesheet,1);
         $this->m_pdf->pdf->WriteHTML($to_print);
         $this->m_pdf->pdf->Output();
   }
@@ -172,9 +173,9 @@ $container_content = '';
              $container_content .=  "
              <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%'>
                   <tr>
-                        <th style='border: 1px solid gray'>No.</th>
-                        <th style='border: 1px solid gray'>AirCraft</th>
-                        <th style='border: 1px solid gray'>Flight Number</th>
+                        <th style='padding:5px; border: 1px solid gray'>No.</th>
+                        <th style='padding:5px; border: 1px solid gray'>AirCraft</th>
+                        <th style='padding:5px; border: 1px solid gray'>Flight Number</th>
                   </tr>";
 
               $i=0;
@@ -189,9 +190,9 @@ $container_content = '';
                  }
                 }
                  $container_content .=     "<tr>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".$i."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->Aircraft)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->FlightNo)."</td>";
+                 $container_content .=     "<td class='row' style='padding:5px; border: 1px solid gray'>".$i."</td>";
+                 $container_content .=     "<td class='row' style='padding:5px; border: 1px solid gray'>".stripslashes($row->Aircraft)."</td>";
+                 $container_content .=     "<td class='row' style='padding:5px; border: 1px solid gray'>".stripslashes($row->FlightNo)."</td>";
                  $container_content .=     "</tr>";
              }
              $container_content .=     "</table>";
@@ -203,16 +204,16 @@ $container_content = '';
               $container_content = '<center><span style="color:red">No Containers Yet </span></center>';
         }else{
              $container_content .=     "
-             <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%;'>
+             <table id='tbl-first-report-data' class='tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%;'>
                   <tr>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>No.</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Container Number</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;; background-color:#ddd;'>Date File Entry to BOC</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Sent Pre Assessment</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Sent Final Assessment</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Date Paid</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Target Delivery Date</th>
-                        <th style='border: 1px solid gray; background-color:#ddd;'>Actual Delivery At Warehouse</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>No.</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Container Number</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd; background-color:#ddd;'>Date File Entry to BOC</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Date Sent Pre Assessment</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Date Sent Final Assessment</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Date Paid</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Target Delivery Date</th>
+                        <th style='padding:5px; border: 1px solid gray; background-color:#ddd;'>Actual Delivery At Warehouse</th>
                   </tr>";
 
               $i=0;
@@ -227,14 +228,14 @@ $container_content = '';
                  }
                 }
                  $container_content .=     "<tr>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".$i."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DateSentFinalAssessment)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->DatePaid)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->TargetDeliveryDate)."</td>";
-                 $container_content .=     "<td class='row' style='border: 1px solid gray'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".$i."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->ContainerNo)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->DateFileEntryToBOC)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->DateSentPreAssessment)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->DateSentFinalAssessment)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->DatePaid)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->TargetDeliveryDate)."</td>";
+                 $container_content .=     "<td class='row' style='padding-left:10px; border: 1px solid gray'>".stripslashes($row->ActualDeliveryAtWarehouse)."</td>";
                  $container_content .=     "</tr>";
              }
              $container_content .=     "</table>";
@@ -284,14 +285,14 @@ if($montype == 3){
           }
           if($montype == 3){
              $product_content .= "<tr>";
-             $product_content .= "<td style='border: 1px solid gray'>". $i ."</td>";
-             $product_content .= "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
+             $product_content .= "<td style='border: 1px solid gray; padding-left:10px;'>". $i ."</td>";
+             $product_content .= "<td style='border: 1px solid gray'; padding-left:10px;>".stripslashes($row->ProductName)."</td>";
              $product_content .= "</tr>";
           }else{
              $product_content .= "<tr>";
-             $product_content .= "<td style='border: 1px solid gray'>". $i ."</td>";
-             $product_content .= "<td style='border: 1px solid gray'>".stripslashes($row->ContainerNo) ."</td>";
-             $product_content .= "<td style='border: 1px solid gray'>".stripslashes($row->ProductName)."</td>";
+             $product_content .= "<td style='border: 1px solid gray; padding-left:10px;'>". $i ."</td>";
+             $product_content .= "<td style='border: 1px solid gray; padding-left:10px;'>".stripslashes($row->ContainerNo) ."</td>";
+             $product_content .= "<td style='border: 1px solid gray; padding-left:10px;'>".stripslashes($row->ProductName)."</td>";
              $product_content .= "</tr>";
           }
          }
@@ -319,13 +320,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                      $charges_content = '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;border:1px solid gray;">
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->LodgementFee, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Break Bulk Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BreakBulkFee, 2, '.', ',').'
@@ -333,13 +334,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b> Storage Fee : </b>
                                 <span class="pull-right">
                                    '.number_format($row->StorageFee, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Bad Cargo Order Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BadCargoOrderFee, 2, '.', ',').'
@@ -347,13 +348,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  VCRC : </b>
                                 <span class="pull-right">
                                    '.number_format($row->VCRC, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> CNI : </b>
                                 <span class="pull-right">
                                     '.number_format($row->CNI, 2, '.', ',').'
@@ -361,13 +362,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> CNIU : </b>
                                 <span class="pull-right">
                                    '.number_format($row->CNIU, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                 <b> Other Fees : </b>
                                 <span class="pull-right">
                                    '.number_format($row->OtherFees, 2, '.', ',').'
@@ -375,10 +376,10 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                            
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                 <span class="pull-right">
                                   <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
                                 </span>
@@ -409,13 +410,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                   $charges_content = '
                       <table id="tbl-third-report-data" class="table table-striped table-bordered table-layout:fixed" style="cursor:pointer;width:100%text-align:left;border:1px solid gray;">
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Lodgement Fee : </b>
                                 <span class="pull-right">
                                     '.number_format($row->LodgementFee, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Demurrage : </b>
                                 <span class="pull-right">
                                     '.number_format($row->Demorage, 2, '.', ',').'
@@ -423,13 +424,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Container Deposit : </b>
                                 <span class="pull-right">
                                    '.number_format($row->ContainerDeposit, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Detention : </b>
                                 <span class="pull-right">
                                     '.number_format($row->Detention, 2, '.', ',').'
@@ -437,13 +438,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  THC Charges : </b>
                                 <span class="pull-right">
                                    '.number_format($row->THCCharges, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> EIC : </b>
                                 <span class="pull-right">
                                     '.number_format($row->EIC, 2, '.', ',').'
@@ -451,13 +452,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Arrastre : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Arrastre, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  BAI Application : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BAIApplication, 2, '.', ',').'
@@ -465,13 +466,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Wharfage : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Wharfage, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  BAI Inspection :</b> 
                                 <span class="pull-right">
                                     '.number_format($row->BAIInspection, 2, '.', ',').'
@@ -479,13 +480,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Weighing : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Weighing, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  SRA Application : </b>
                                 <span class="pull-right">
                                     '.number_format($row->SRAApplication, 2, '.', ',').'
@@ -493,13 +494,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  DEL : </b>
                                 <span class="pull-right">
                                    '.number_format($row->DEL, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  SRAInspection : </b>
                                 <span class="pull-right">
                                     '.number_format($row->SRAInspection, 2, '.', ',').'
@@ -507,13 +508,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Dispatch Fee : </b>
                                 <span class="pull-right">
                                    '.number_format($row->DispatchFee, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                <b> Bad Cargo : </b>
                                 <span class="pull-right">
                                     '.number_format($row->BadCargo, 2, '.', ',').'
@@ -521,13 +522,13 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               <b>  Storage : </b>
                                 <span class="pull-right">
                                    '.number_format($row->Storage, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                 <b>  Other Fees : </b>
                                 <span class="pull-right">
                                    '.number_format($row->OtherFees, 2, '.', ',').'
@@ -535,21 +536,21 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                           </tr>
                            <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                 <b>  BPI Inspection : </b>
                                 <span class="pull-right">
                                    '.number_format($row->BPIInspection, 2, '.', ',').'
                                 </span>
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                               
                             </td>
                           </tr>
                           <tr>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                            
                             </td>
-                            <td style="border:1px solid gray;text-align: left;">
+                            <td style="padding-left:10px;">
                                 <span class="pull-right">
                                   <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
                                 </span>
@@ -664,7 +665,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                          <span class="pull-left"><b> HBL#  : </b></span>
                       </td>
                       <td style="text-align:left;">
-                      &nbsp;<a id="hbl">' . $HBL . ' </a> 
+                      &nbsp;<a id="hbl">&nbsp;&nbsp;' . $HBL . ' </a> 
                       </td>
                     </tr>
                   </table>';
@@ -684,7 +685,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
                                <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                  <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b>  FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                 </table>
                           </htmlpageheader>
 
@@ -704,7 +705,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                 $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
                                <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                 <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC.</b></span> </td></tr>
                                </table>
                              </htmlpageheader>
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
@@ -786,13 +787,16 @@ $output_print .=  '
 
           ' . $footer . '
 
-          <div style="font-family:Century Gothic;" class="mycontent">
+          <div class="mycontent">
               <div style="font-size:22px;" class="">
         
           </BR>
           </br>
-                  <h5>'.$monHeader.'</h5>
-                  </br><table class="table-bordered">
+                <span style="font-size:18px;"><b>Jobfile Transaction Report</b></span><br>
+                <span style="font-size:16px;">'.$monHeader.'</span>
+                <br>
+                <br>
+                             <table style="width:100%;">
                               <tr>
                                <td class"col-md-6"><b>  Jobfile Number: </b></td>
                                <td class="col-md-6 jbfl">'. $jbNo .' </td>

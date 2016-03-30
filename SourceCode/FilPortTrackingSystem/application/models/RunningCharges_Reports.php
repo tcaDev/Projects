@@ -182,7 +182,7 @@ Class RunningCharges_Reports extends CI_Model
 			}
 
 			$execQuery = $preQuery . $conditions . "
-						 							ORDER BY e.ProductId";
+						 							ORDER BY a.JobFileNo";
 
 		$query = $this->db->query($execQuery);						 						
 
@@ -210,7 +210,7 @@ Class RunningCharges_Reports extends CI_Model
 			}
 
 			$execQuery = $preQuery . $conditions . "
-						 							ORDER BY c.ProductId";
+						 							ORDER BY a.JobFileNo";
 
 			$query = $this->db->query($execQuery);		
 		}
