@@ -62,10 +62,10 @@
               <td><button type="button" class="btn btn-default btn-sm btn-update-user-client" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
               <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td> 
           <?php }else{} ?>
+              <td><?php echo $uname ?></td>
               <td><?php echo $row->CName ?></td>
               <td><?php echo $row->C2Name ?></td>
               <td><?php echo $row->C3Name ?></td>
-              <td><?php echo $uname ?></td>
               <td><?php echo $fname ?></td>
               <td><?php echo $mname ?></td>
               <td><?php echo $lname ?> </td>

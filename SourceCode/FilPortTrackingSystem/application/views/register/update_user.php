@@ -166,8 +166,8 @@
     var contact1 = $(this).closest('tr').children('td:eq(11)').text();
     var contact2 = $(this).closest('tr').children('td:eq(12)').text();
 
-		 uid = $(this).closest('tr').children('td:eq(13)').text();
-		var status = $(this).closest('tr').children('td:eq(14)').text();
+		 uid = $(this).closest('tr').children('td:eq(18)').text();
+		var status = $(this).closest('tr').children('td:eq(19)').text();
 
 		var statuses = parseInt(status);
 

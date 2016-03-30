@@ -8,8 +8,14 @@
         <div class="container-fluid">
 
           <ul class="nav nav-pills">
-           <?php if($roleuser[0] == '1') {?> <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li> 
-            <li><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li> <?php }else{?> <li class="active"><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li><?php } ?>
+          <?php if($roleuser[0] == '1') {?> 
+            <li class="active "><a class="add_User" data-toggle="pill" href="#addForm">Add User Account Form</a></li> 
+            <li><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li> 
+          <?php }else{?> 
+            <li class="active"><a class="get_list" data-toggle="pill" href="#listUser">List of User Account</a></li>
+          <?php } ?>
+
+
             <li><a class="get_userAccess" data-toggle="pill" href="#userRole">User Access Role</a></li>
           </ul>
 
@@ -152,10 +158,15 @@
                                       <div class=" col-md-12">     
                                           <hr>
                                       </div>
-
+                                      
                                         <div id="list-user" class="tab-pane fade in active">
                                           <div class="col-md-12">
+                                        <?php if($roleuser[2] == "4"){?>
                                             <div class="list_users"></div>
+                                        <?php }else{ ?>
+                                            <span><i style="color:red"><h5>Nothing to Display...</h5></i></span>
+                                            <span><i style="color:red"><h5>Please Contact Administration for this issue..</h5></i></span>
+                                        <?php  } ?>
                                            <!--  <?php //$this->load->view('register/access/admin'); ?> -->
                                           </div>
                                         </div>
@@ -179,7 +190,12 @@
 
                                         <div id="list-user" class="tab-pane fade in active">
                                           <div class="col-md-12">
+                                        <?php if($roleuser[2] == "4"){?>
                                             <div class="list_users"></div>
+                                        <?php }else{ ?>
+                                            <span><i style="color:red"><h5>Nothing to Display...</h5></i></span>
+                                            <span><i style="color:red"><h5>Please Contact Administration for this issue..</h5></i></span>
+                                        <?php  } ?>
                                            <!--  <?php //$this->load->view('register/access/admin'); ?> -->
                                           </div>
                                         </div>

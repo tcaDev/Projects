@@ -69,7 +69,7 @@
 
 var uid
 	$(document).on('click','.btn-reset-pass',function(){
-		 uid = $(this).closest('tr').children('td:eq(13)').text();
+		 uid = $(this).closest('tr').children('td:eq(18)').text();
 		var uname = $(this).closest('tr').children('td:eq(4)').text();
 
 		$('.uname').text(uname);
