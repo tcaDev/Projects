@@ -68,7 +68,7 @@ class Print_Report_Consolidated extends CI_Controller {
                 <br>
                 <br>
              <div class="col-md-12" style="font-size:16px;">
-                  <table style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                  <table class="table table-bordered" style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
                       
                       <tr>
                         <th style="text-align:left">
@@ -101,7 +101,7 @@ class Print_Report_Consolidated extends CI_Controller {
        $oldJBNo = '';
          if($monitoringType == 1 || $monitoringType == 2){
             if(count($consolidateReport) > 0){
-               $dispOutput .="<table class ='table table-bordered' style='border:1px solid gray'>
+               $dispOutput .="<table class ='table table-bordered'>
                           <thead>
                           <tr>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
@@ -195,7 +195,7 @@ class Print_Report_Consolidated extends CI_Controller {
               }
             }else{
               if(count($consolidateReport) > 0){
-               $dispOutput .="<table class ='table table-condensed table-bordered'  style='border:1px solid gray'>
+               $dispOutput .="<table class ='table table-bordered'>
                                 <thead>
                                 <tr>
                                   <th style='border:1px solid gray'>Jobfile No</th>
@@ -221,20 +221,20 @@ class Print_Report_Consolidated extends CI_Controller {
                     if($oldJBNo != $row->JobFileNo){
                           $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                           $dispOutput .= "<tr>
-                                      <th style='border:1px solid gray'>" . $row->JobFileNo . "</th>
-                                      <th style='border:1px solid gray'>" . $row->ATA . "</th>
-                                      <th style='border:1px solid gray'>" . $volume . "</th>
-                                      <th style='border:1px solid gray'>" . $row->HouseBillLadingNo . "</th>
-                                      <th style='border:1px solid gray'>" . stripslashes($row->ProductName) . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DatePickUpOtherDocs . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentPreAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateSentFinalAssessment . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DatePaid . "</th>
-                                      <th style='border:1px solid gray'>" . $row->TargetDeliveryDate . "</th>
-                                      <th style='border:1px solid gray'>" . $row->DateReceivedAtWhse . "</th>
-                                      <th style='border:1px solid gray'>" . $row->StorageFee . "</th>
-                                      <th style='border:1px solid gray'>" . $row->Total_Charges . "</th>
-                                      <th style='border:1px solid gray'>" . $row->Description . "</th>
+                                      <td>" . $row->JobFileNo . "</td>
+                                      <td>" . $row->ATA . "</td>
+                                      <td>" . $volume . "</td>
+                                      <td>" . $row->HouseBillLadingNo . "</td>
+                                      <td>" . stripslashes($row->ProductName) . "</td>
+                                      <td>" . $row->DatePickUpOtherDocs . "</td>
+                                      <td>" . $row->DateSentPreAssessment . "</td>
+                                      <td>" . $row->DateSentFinalAssessment . "</td>
+                                      <td>" . $row->DatePaid . "</td>
+                                      <td>" . $row->TargetDeliveryDate . "</td>
+                                      <td>" . $row->DateReceivedAtWhse . "</td>
+                                      <td>" . $row->StorageFee . "</td>
+                                      <td>" . $row->Total_Charges . "</td>
+                                      <td>" . $row->Description . "</td>
                                     </tr>";
                     }else{
                       $dispOutput .= "<tr>
@@ -242,7 +242,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <td > </td>
                                       <td > </td>
                                       <td > </td>
-                                      <t style='padding:10px;'>" . stripslashes($row->ProductName) . "</th>
+                                      <t style='padding:10px;'>" . stripslashes($row->ProductName) . "</td>
                                       <td > </td>
                                       <td > </td>
                                       <td > </td>
