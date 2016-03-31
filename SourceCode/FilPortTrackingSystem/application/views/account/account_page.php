@@ -21,7 +21,15 @@
 								<div class="col-lg-4 pull-right">
 									<div class="row">
 										<div class="col-lg-12">
-											<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo base_url('upload/user/'. $img); ?>" />								
+										<?php 
+										$image;
+										if(getimagesize(base_url('upload/user/'.$img))){
+											$image = base_url('upload/user/'.$img);
+										}
+										else{
+											$image =  base_url('upload/user/user.png');
+										}?>
+											<img class="img-responsive" id="user_img" style="border: 1px solid #ddd;height:130px;" src="<?php echo $image; ?>" />								
 										</div>
 									</div>
 								</div>

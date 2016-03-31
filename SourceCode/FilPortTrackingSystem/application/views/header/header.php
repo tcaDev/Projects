@@ -72,7 +72,16 @@
 					<div class="col-lg-4 col-md-4 col-sm-4 pull-right" style="padding-top: 30px;">
 						<div class="row">
 							<div class=" img-user pull-right">
-								<img class="img-responsive" src="<?php echo base_url('upload/user/'.$img)?>" />	
+							<?php 
+							//get Image to  folder PAth/ If not Exist default iamge will replace it
+								$image;
+								if(getimagesize(base_url('upload/user/'.$img))){
+									$image = base_url('upload/user/'.$img);
+								}
+								else{
+									$image =  base_url('upload/user/user.png');
+								}?>
+								<img class="img-responsive" src="<?php echo $image; ?>" />	
 							</div> 
 
 							<div class="pull-right" style="padding: 10px; color : #FFF;">
@@ -95,13 +104,9 @@
 									  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: rgba(0,0,0,0.0); border-color :rgba(0,0,0,0.0); ">
 									    <span class="fa fa-caret-down"></span></a>
 									  <ul class="dropdown-menu bullet pull-right">
-									  	<?php 
-									  	if($role->RoleId == "1"){
-									  		if($roleuser[2] == "4"){?>
-									    
+									 <?php if($role->RoleId == "1" || $role->RoleId == "6"){?>
 									    <li><a data-toggle="modal" href="#myModal_addUser"><i class="fa fa-user fa-fw"></i> Create User</a></li>
-									    <?php }else{}
-									    }else{}?>
+									  <?php }else{}?>
 									    <li><a href="<?= base_url('Login_user/account') ?>"><i class="fa fa-cogs fa-fw"></i> Account Setting</a></li>
 									    <li class="divider"></li>
 									    <li><a href="<?= base_url('Login_user/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
@@ -118,7 +123,7 @@
 
 
 <!-- Modal -->
-<div id="myModal_addUser" class="modal fade" role="dialog">
+<div id="myModal_addUser" class="modal fade" role="dialog" tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -129,7 +134,7 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal_updateUser" class="modal fade" role="dialog">
+<div id="myModal_updateUser" class="modal fade" role="dialog" tabindex="-1">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
@@ -141,7 +146,7 @@
 
 
 <!-- Modal -->
-<div id="myModal_resetPass" class="modal fade" role="dialog">
+<div id="myModal_resetPass" class="modal fade myModal_resetPass" role="dialog" tabindex="-1">
   <div class="modal-dialog ">
 
     <!-- Modal content-->

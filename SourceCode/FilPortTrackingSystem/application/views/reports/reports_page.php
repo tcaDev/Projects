@@ -117,7 +117,7 @@
 						    </div>
 						  </div>
 
-						  <?php if($role->RoleId == "1"){ 
+						  <?php if($role->RoleId == "1" || $role->RoleId == "6"){ 
 						  			if($roleaudit == '4'){?>
 
 		<!-- Audit Trail JobFile -->
