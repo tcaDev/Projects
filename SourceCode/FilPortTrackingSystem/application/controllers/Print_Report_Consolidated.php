@@ -63,7 +63,7 @@ class Print_Report_Consolidated extends CI_Controller {
                 <div class="mycontent">
                     <div style="font-size:16px;" class="">
              <div>
-              <span><b> Consolidated Reports </b></span><br>
+              <span style="font-size:16px;font-weight:bold;">Consolidated Reports</span><br>
               <span style="font-size:14px;">'.$monHeader.'</span>
                 <br>
                 <br>

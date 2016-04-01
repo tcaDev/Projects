@@ -199,7 +199,7 @@ $container_content = '';
         }
 
    }else{
-       $container_content = '<b>Containers</b><br><br>';
+       $container_content = '<span style="font-weight:bold;">Containers</span><br><br>';
         if(count($container) == 0){
               $container_content = '<center><span style="color:red">No Containers Yet </span></center>';
         }else{
@@ -573,8 +573,8 @@ $reports   = $this->Jobdata->report_get_status($jbNo,$montype);
       if(count($reports)){
          $reports_content .= "<table table id='tbl-status-reports' class='table table-striped tableOverFlow' style='width:100%;cursor:pointer;border:1px solid gray;'>
                 <tr>
-                      <th style='border: 1px solid gray; background-color:#ddd;'>Date Added.</th>
-                      <th style='border: 1px solid gray; background-color:#ddd;'>Status Description</th>
+                      <th style='border: 1px solid gray; background-color:#ddd; padding-left:5px;'>Date Added.</th>
+                      <th style='border: 1px solid gray; background-color:#ddd; padding-left:5px;'>Status Description</th>
                 </tr>";
         $i=0;
         foreach ($reports as $row) {
@@ -614,7 +614,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                     if($montype == 3){
                       $carriers .= '<tr>
                                       <td style="text-align:left;">
-                                         <span class="pull-left"><b>Aircraft  : </b></span>
+                                         <span class="pull-left" style="font-weight:bold;">Aircraft  : </span>
                                       </td>
                                       <td style="text-align:left;">
                                         &nbsp;<a id="Carriers"> </a> 
@@ -623,7 +623,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                     }else{
                      $carriers .= '<tr>
                                       <td style="text-align:left;">
-                                         <span class="pull-left"><b>Vessel  : </b></span>
+                                         <span class="pull-left" style="font-weight:bold;">Vessel  :</span>
                                       </td>
                                       <td style="text-align:left;">
                                         &nbsp;<a id="Carriers"> </a> 
@@ -640,15 +640,15 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                             $ata .='
                                     
                                       <tr>
-                                            <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Aircraft No '.stripslashes($row->VesselNumber).'</b></td>
+                                            <td style="text-align:left;font-style:12px;padding-left:50px;font-weight:bold;">ATA of Aircraft No '.stripslashes($row->VesselNumber).'</td>
                                             <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
                                       </tr>
                             ';
                           }else{
                             $ata .='
                                       <tr>
-                                            <td style="text-align:left;font-style:12px;padding-left:50px;"><b>ATA of Vessel '.stripslashes($row->VesselNumber).'</b></td>
-                                            <td style="text-align:left;font-style:12px;">'.stripslashes($row->ActualArrivalTime).'</td>
+                                            <td style="text-align:left;font-style:12px;padding-left:50px;font-weight:bold;">ATA of Vessel '.stripslashes($row->VesselNumber).'</td>
+                                            <td style="text-align:left;font-style:12px;">&nbsp;&nbsp;'.stripslashes($row->ActualArrivalTime).'</td>
                                       </tr>
                             ';
                           }
@@ -662,7 +662,7 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                     $hbl .='
                     <tr>
                       <td style="text-align:left;">
-                         <span class="pull-left"><b> HBL#  : </b></span>
+                         <span class="pull-left" style="font-weight:bold;">HBL#  :</span>
                       </td>
                       <td style="text-align:left;">
                       &nbsp;<a id="hbl">&nbsp;&nbsp;' . $HBL . ' </a> 
@@ -683,9 +683,8 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
          for($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
                $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                  <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b>  FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;"><b>FIL-PORT EXPRESS BROKERAGE, INC. </b></span> </td></tr>
                                 </table>
                           </htmlpageheader>
 
@@ -703,7 +702,6 @@ $output_print .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11
                        ';
                   } else {
                 $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                 <table style="width:100%;text-align:center;">
                                  <tr><td><span style="text-align:center;font-size:10px;"><b> FIL-PORT EXPRESS BROKERAGE, INC.</b></span> </td></tr>
                                </table>
@@ -792,28 +790,28 @@ $output_print .=  '
         
           </BR>
           </br>
-                <span style="font-size:18px;"><b>Jobfile Transaction Report</b></span><br>
+                <span style="font-size:18px;font-weight:bold;">Jobfile Transaction Report</span><br>
                 <span style="font-size:16px;">'.$monHeader.'</span>
                 <br>
                 <br>
                              <table style="width:100%;">
                               <tr>
-                               <td class"col-md-6"><b>  Jobfile Number: </b></td>
-                               <td class="col-md-6 jbfl">'. $jbNo .' </td>
+                               <td class"col-md-3" style="font-weight:bold;">Jobfile Number: </td>
+                               <td class="col-md-6">'. $jbNo .'</td> 
                               </tr>
 
                              <tr>
-                               <td class="col-md-3">Shipper:</td>
+                               <td class="col-md-3" style="font-weight:bold;">Shipper:</td>
                                <td class="col-md-6 shipper">'.$shipperName.'</td> 
                               </tr>
 
                               <tr>
-                               <td class="col-md-3 ">Consignee:</td>
+                               <td class="col-md-3" style="font-weight:bold;">Consignee:</td>
                                <td class="col-md-6 consignee">'.$consigneeName.'</td>  
                               </tr>
 
                               <tr>
-                               <td class="col-md-3">Date Received of other Documents:</td>
+                               <td class="col-md-3" style="font-weight:bold;">Date Received of other Documents:</td>
                                <td class="col-md-6 dt_recieved">'.$DateReceivedOfOtherDocs.'</td> 
                               </tr>'
                                   . $carriers  . $ata . $hbl . 
@@ -825,13 +823,13 @@ $output_print .=  '
                 ' <hr> ' . 
                   $container_content
                 . '<br>
-                <hr> <b> Commodities <b> <br><br>' . 
+                <hr> <span style="font-weight:bold;"> Commodities </span> <br><br>' . 
                   $product_content
                 . '<br>
-                <hr> <b> Status Reports <b> <br><br>' . 
+                <hr> <span style="font-weight:bold;"> Status Reports </span> <br><br>' . 
                   $reports_content
                 .'<br>
-                <hr> <b> Running Charges <b> <br><br>' . 
+                <hr> <span style="font-weight:bold;"> Running Charges </span> <br><br>' . 
                   $charges_content
                 .'
                </body>

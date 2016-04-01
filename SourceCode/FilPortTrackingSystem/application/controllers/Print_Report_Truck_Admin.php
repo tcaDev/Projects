@@ -28,7 +28,9 @@
           $this->m_pdf->pdf->WriteHTML($stylesheet,1);
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
-  }
+  
+          //echo $documnt;
+        }
 
   function createDocToPrint($monitoringType,$cID,$ataFrom,$ataTo){
             $dispOutput = '';
@@ -51,19 +53,14 @@
                 <div class="change_print'.$i.'"  >  
 
                 <div class="">
-                   <h5 style="text-align:center">Filport Document</h5>
+                   <h5 style="text-align:center">FIL-PORT EXPRESS BROKERAGE, INC.</h5>
                 </div>
+                <span style="font-size:18px;font-weight:bold;"><b>Reports on Truck Booking</b></span><br>
+                <span style="font-size:16px;">'.$monHeader.'</span>
+                <br>
+                <br>
                 <div class="col-md-12">
                   <table>
-                       <tr>
-                        <th>
-                         <span>
-                          <h4>' . $monHeader . '</h4>
-                          </span>
-                        </th>
-                        <td>
-                        </td>
-                      </tr>
                       <tr>
                         <th>
                          <span>

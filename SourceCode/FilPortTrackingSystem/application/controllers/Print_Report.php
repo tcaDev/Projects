@@ -164,7 +164,7 @@ class Print_Report extends CI_Controller {
                     <div style="font-size:22px;" class="">
               
                 </br>
-                <span style="font-size:18px;"><b>Reports on Running Charges</b></span><br>
+                <span style="font-size:18px;font-weight: bold;"><b>Report on Running Charges</b></span><br>
                 <span style="font-size:16px;">'.$monHeader.'</span>
                 <br>
                 <br>

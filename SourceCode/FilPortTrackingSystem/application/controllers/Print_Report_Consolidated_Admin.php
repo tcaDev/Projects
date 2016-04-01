@@ -57,21 +57,16 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                 ' . $footer . '
 
                 <div  class="mycontent">
-                   <h5 style="text-align:center">Filport Document</h5>
+                   <h5 style="text-align:center">FIL-PORT EXPRESS BROKERAGE, INC.</h5>
             
                 <div >
-              <h4 class="pull-left"><strong>Consolidated Reports</strong></h4>
              <div>
-
+              <span style="font-size:16px;font-weight:bold;">Consolidated Reports</span><br>
+              <span style="font-size:14px;">'.$monHeader.'</span>
+                <br>
+                <br>
              <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
                   <table>
-                      <tr>
-                        <th style="text-align:left">
-                         <span class="">
-                           ' . $monHeader . '
-                          </span>
-                        </th>
-                      </tr>
                       <tr>
                         <th style="text-align:left">
                           <span class=""> 

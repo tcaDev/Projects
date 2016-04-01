@@ -86,7 +86,7 @@ class Print_Report_Volume_Admin extends CI_Controller {
 
                 <div style="font-family:Century Gothic;" class="mycontent">
                     <div  class="">
-                          <h5 style="text-align:center"> Filport Document</h5>
+                          <h5 style="text-align:center">FIL-PORT EXPRESS BROKERAGE, INC.</h5>
                 <div>
                 <div class="col-md-12" style="font-family:Century Gothic; font-size:16px;">
                   <table>

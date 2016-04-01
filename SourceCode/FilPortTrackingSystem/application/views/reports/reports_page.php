@@ -571,7 +571,7 @@
 			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
-			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&montype=" + montype + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
+			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&mon_Type=" + montype + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
 					 $.ajax({
 				  		method: "POST",
 					url: "<?php echo base_url('Job/get_details_report');?>",

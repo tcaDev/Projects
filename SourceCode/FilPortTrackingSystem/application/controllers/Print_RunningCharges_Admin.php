@@ -21,9 +21,10 @@ class Print_RunningCharges_Admin extends CI_Controller {
           $consigneeID        =  $this->input->get('consigneeId');
 
           $documnt = $this->loadDoc($monitoringType,$PO_Number,$consigneeID);
-
           $mpdf->useSubstitutions=false;
           $mpdf->simpleTables = true;
+          $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+          $this->m_pdf->pdf->WriteHTML($stylesheet,1);
           $this->m_pdf->pdf->WriteHTML($documnt);
           $this->m_pdf->pdf->Output();
   }
@@ -53,16 +54,15 @@ class Print_RunningCharges_Admin extends CI_Controller {
              for($footer_header = 1; $footer_header <= 10; $footer_header++) {
                if ($footer_header % 2) {
                $footer .= '<htmlpageheader name="myHeader_odd'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                  <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;font-weight: bold;">FIL-PORT EXPRESS BROKERAGE, INC.</span></td></tr>
                                 </table>
                           </htmlpageheader>
 
                         <htmlpagefooter name="myFooter_odd'.$footer_header.'" style="display:none">
-                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                          <table width="100%" style="vertical-align: bottom; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
@@ -73,15 +73,14 @@ class Print_RunningCharges_Admin extends CI_Controller {
                        ';
                   } else {
                 $footer .= ' <htmlpageheader name="myHeader_even'.$footer_header.'" style="display:none">
-                               <span style="font-size:10px;">'.date('Y-m-d').'</span>
                                 <table style="width:100%;text-align:center;">
-                                 <tr><td><span style="text-align:center;font-size:10px;"><b> FILPORT DOCUMENT </b></span> </td></tr>
+                                 <tr><td><span style="text-align:center;font-size:10px;font-weight: bold;">FIL-PORT EXPRESS BROKERAGE, INC.</span> </td></tr>
                                </table>
                              </htmlpageheader>
                         <htmlpagefooter name="myFooter_even'.$footer_header.'" style="display:none">
-                          <table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt; 
+                          <table width="100%" style="vertical-align: bottom; font-size: 8pt; 
                               color: #000000;font-style: italic;"><tr>
-                              <td width="33%"><span style="font-style: italic;">{DATE j-m-Y}</span></td>
+                              <td width="33%"><span style="font-style: italic;">{DATE Y-m-j}</span></td>
                               <td width="33%" align="center" style="font-weight: bold; font-style: italic;">Confidential | Proprietory</span></td>
                               <td width="33%" style="text-align: right; ">{PAGENO}/{nbpg}</td>
                               </tr></table>
@@ -153,24 +152,26 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     }
                     </style>
                 <div class="change_print'.$i.'"  >  
-
                 ' . $footer . '
                 <br>
-                <div style="font-family:Century Gothic;" class="mycontent">
+                <div class="mycontent">
                     <div style="font-size:20px;" class="">
               
                 </br>
-                <h5>'.$monHeader.'</h5>
+                <span style="font-size:18px;font-weight: bold;">Report On Running Charges</span><br>
+                <span style="font-size:16px; width:100%;">'.$monHeader.'</span>
+                <br>
+                <br>
                 <div class="col-md-12">
                       <div class="col-md-12" style="font-size:14px;">
                         <div class="col-md-6">
-                         <span class="pull-left" style="font-size:14px;"><b>Consignee : </b> &nbsp;&nbsp;</span>
+                         <span class="pull-left" style="font-size:14px;font-weight: bold;">Consignee :&nbsp;&nbsp;</span>
                           <span>'
                               . $pre_details->ConsigneeName.
                           '</span>
                         </div>
                         <div class="col-md-6">
-                           <span class="pull-left" style="font-size:14px;"><b>Jobfile Number : </b> &nbsp;&nbsp;</span>
+                           <span class="pull-left" style="font-weight: bold;font-size:14px;">Jobfile Number :&nbsp;&nbsp;</span>
                           <span>'
                               . $pre_details->JobFileNo .
                           '</span>
@@ -179,7 +180,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                       <div class="col-md-12" style="font-size:14px;">
 
                         <div class="col-md-6">
-                          <span class="pull-left" style="font-size:14px;"><b>PI / PO Number : </b> &nbsp;&nbsp;</span>
+                          <span class="pull-left" style="font-size:14px;font-weight: bold;">PI / PO Number : &nbsp;&nbsp;</span>
                           <span>'
                               . $PO_Number .
                           '</span>
@@ -187,14 +188,14 @@ class Print_RunningCharges_Admin extends CI_Controller {
                         <div class="col-md-6">';
                           if($monitoringType == 1 || $monitoringType ==2 ){
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:14px;"><b>Volume : </b> </span>
+                                        <span class="pull-left" style="font-size:14px;font-weight: bold;">Volume :</span>
                                         <span>'
                                         . $volume .
                                         '</span>
                                         ';
                               }else{
                                 $dispOutput .= '
-                                        <span class="pull-left" style="font-size:14px;"><b>Gross Weight(kg) : </b> </span>
+                                        <span class="pull-left" style="font-size:14px;font-weight: bold;">Gross Weight(kg) :</span>
                                         <span>'
                                         . $volume .
                                         ' kg </span>
@@ -205,7 +206,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     <hr>
                       <div class="col-md-12">
                         <div class="col-md-6">
-                          <span class="pull-left"><b style="font-size:14px;">Receipted Charges Only</b>
+                          <span class="pull-left" style="font-weight: bold; font-size:14px;">Receipted Charges Only
                             <br>
                             <br>
                             ' . $charge . '
@@ -219,7 +220,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                       <div class="col-md-6">
                           <div class="col-md-6">'; 
                             if($monitoringType == 1 || $monitoringType == 2){
-                              $dispOutput .= '<span class="pull-left"><b style="font-size:14px;">Containers</b>';
+                              $dispOutput .= '<span class="pull-left"><span style="font-size:14px;font-weight: bold;">Containers</span>';
                             }
                             $dispOutput .=  '<br><br>
                                 ' . $commodity . '
@@ -270,7 +271,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Lodgement Fee <span class="pull-right"> : </span>
                   </td>
                   <td margin-left:10px;> 
-                    <span class="pull-right">' . $charges->LodgementFee 
+                    <span class="pull-right">' . number_format($charges->LodgementFee , 2, '.', ',')
 
                     . '</span>
                   </td>
@@ -280,7 +281,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     THC Charges <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->THCCharges . '</span>
+                    <span class="pull-right">' . number_format($charges->THCCharges, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -293,7 +294,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Arrastre <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->Arrastre . ' </span>
+                    <span class="pull-right">' . number_format($charges->Arrastre, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';         
         $chargesOutput .= '<tr>
@@ -301,7 +302,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Wharfage <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->Wharfage . ' </span>
+                    <span class="pull-right">' . number_format($charges->Wharfage, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
 
@@ -310,7 +311,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Weighing <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->Weighing . ' </span>
+                    <span class="pull-right">' . number_format($charges->Weighing, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -318,7 +319,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Dispatch Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->DispatchFee . '</span>
+                    <span class="pull-right">' . number_format($charges->DispatchFee, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -326,7 +327,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     DEL <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->DEL . ' </span>
+                    <span class="pull-right">' . number_format($charges->DEL, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';         
         $chargesOutput .= '<tr>
@@ -334,7 +335,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Storage Fee <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->Storage . ' </span>
+                    <span class="pull-right">' . number_format($charges->Storage, 2, '.', ',') . ' </span>
                   </td>
                   </tr>'; 
 
@@ -343,7 +344,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Demurrage Fee <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->Demorage . ' </span>
+                    <span class="pull-right">' . number_format($charges->Demorage, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -351,7 +352,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Detention Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->Detention . '</span>
+                    <span class="pull-right">' . number_format($charges->Detention, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -359,7 +360,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     SRA Application <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->SRAApplication . '</span>
+                    <span class="pull-right">' . number_format($charges->SRAApplication, 2, '.', ',') . '</span>
                   </td>
                   </tr>';         
         $chargesOutput .= '<tr>
@@ -367,7 +368,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     SRA Processing Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->SRAInspection . '</span>
+                    <span class="pull-right">' . number_format($charges->SRAInspection, 2, '.', ',') . '</span>
                   </td>
                   </tr>'; 
         $chargesOutput .= '<tr>
@@ -375,7 +376,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     BAI Application <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->BAIApplication . '</span>
+                    <span class="pull-right">' . number_format($charges->BAIApplication, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -383,7 +384,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     BAI Inspection Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->BAIInspection . '</span>
+                    <span class="pull-right">' . number_format($charges->BAIInspection, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -391,7 +392,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     BPI Inspection Fee <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">'. $charges->BPIInspection . ' </span>
+                    <span class="pull-right">'. number_format($charges->BPIInspection, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';     
         $chargesOutput .= '<tr>
@@ -399,7 +400,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                    Other Fees <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">'. $charges->BPIInspection . ' </span>
+                    <span class="pull-right">'. number_format($charges->BPIInspection, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';     
 
@@ -437,7 +438,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Lodgement Fee <span class="pull-right"> : </span>
                   </td>
                   <td margin-left:10px;> 
-                    <span class="pull-right">' . $charges->LodgementFee 
+                    <span class="pull-right">' . number_format($charges->LodgementFee , 2, '.', ',')
 
                     . '</span>
                   </td>
@@ -447,7 +448,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Break Bulk Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->BreakBulkFee . '</span>
+                    <span class="pull-right">' . number_format($charges->BreakBulkFee, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -455,7 +456,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Storage Fee <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->StorageFee . ' </span>
+                    <span class="pull-right">' . number_format($charges->StorageFee, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';         
         $chargesOutput .= '<tr>
@@ -463,7 +464,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Bad Cargo Fee <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->BadCargoOrderFee . ' </span>
+                    <span class="pull-right">' . number_format($charges->BadCargoOrderFee, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
 
@@ -472,7 +473,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     VRC <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->VCRC . ' </span>
+                    <span class="pull-right">' . number_format($charges->VCRC, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -480,7 +481,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     CNI <span class="pull-right"> : </span>
                   </td>
                   <td> 
-                    <span class="pull-right">' . $charges->CNI . '</span>
+                    <span class="pull-right">' . number_format($charges->CNI, 2, '.', ',') . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -488,7 +489,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     CNIU <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->CNIU . ' </span>
+                    <span class="pull-right">' . number_format($charges->CNIU, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';         
         $chargesOutput .= '<tr>
@@ -496,7 +497,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     Other Fees <span class="pull-right"> : </span>
                   </td>
                   <td>
-                    <span class="pull-right">' . $charges->OtherFees . ' </span>
+                    <span class="pull-right">' . number_format($charges->OtherFees, 2, '.', ',') . ' </span>
                   </td>
                   </tr>'; 
 
@@ -536,9 +537,9 @@ class Print_RunningCharges_Admin extends CI_Controller {
                   <table id='tbl-charges-commodities' style='width:100%;margin-left:35px;font-size:14px;'>
                         <tr>";
                             if($monitoringType == 1 || $monitoringType == 2){
-                               $commoditiesOutput .= "<td><span class='pull-left'><b>Container No. </b></span></td>";
+                               $commoditiesOutput .= "<td><span class='pull-left' style='font-weight: bold;'>Container No.</span></td>";
                             }
-                             $commoditiesOutput .= "<td><span class='pull-left'><b>Commodity </b></span></td></tr>";
+                             $commoditiesOutput .= "<td><span class='pull-left' style='font-weight: bold;'>Commodity</span></td></tr>";
            foreach($goods as $row){
                 $commoditiesOutput .=  "<tr>";
                 if($monitoringType == 1 || $monitoringType == 2){

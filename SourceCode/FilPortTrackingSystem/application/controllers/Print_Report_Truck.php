@@ -56,7 +56,7 @@ class Print_Report_Truck extends CI_Controller {
                 <div class="change_print'.$i.'"  >  
 
                 <div class="col-md-12" style="font-size:16px;">
-                <span style="font-size:18px;"><b>Reports on Truck Booking</b></span><br>
+                <span style="font-size:18px;font-weight:bold;"><b>Reports on Truck Booking</b></span><br>
                 <span style="font-size:16px;">'.$monHeader.'</span>
                 <br>
                 <br>

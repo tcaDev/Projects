@@ -220,7 +220,7 @@ class Print_Report_CommodityVolume extends CI_Controller {
                 <div class="mycontent">
                 <div>
                 <div>
-                <span style="font-size:18px;"><b>Reports on Volume </b></span><br>
+                <span style="font-size:18px;font-weight: bold;">Reports on Volume</span><br>
                 <span style="font-size:16px;">'.$monHeader.'</span>
                 <br>
                 <br>
@@ -228,7 +228,7 @@ class Print_Report_CommodityVolume extends CI_Controller {
                   <table>
                       <tr>
                         <th>
-                          Consignee Name : 
+                          <span style="font-weight:bold;">Consignee Name :</span> 
                         </th>
                         <th>
                         &nbsp;
