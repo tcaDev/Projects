@@ -907,12 +907,12 @@ function get_jobfile_outport(){
    return $query->result();
   }*/
 
-  function findlimit_manila($page_position,$item_per_page)
+  function findlimit_man_outport($page_position,$item_per_page,$montype)
   {
    // $this->db->cache_on();
     $this->db->select('*');
     $this->db->from('vw_JobFile');
-    $this->db->where('MonitoringTypeId',1);
+    $this->db->where('MonitoringTypeId',$montype);
     $this->db->order_by('JobFileId', 'desc');
     $this->db->limit($page_position,$item_per_page); 
     $query = $this->db->get();
@@ -957,7 +957,7 @@ function get_jobfile_outport(){
       return $query->result();
   }
 
-   function findlimit_search_color_air($item_per_page,$page_position,$color_stages){
+   function findlimit_search_color_air($page_position,$item_per_page,$color_stages){
     //$this->db->cache_on();
     $this->db->select('*');
     $this->db->from('vw_JobFileAir');
@@ -967,19 +967,7 @@ function get_jobfile_outport(){
       return $query->result();
   }
 
-  function findlimit_outport($page_position,$item_per_page)
-  {
-    //$this->db->cache_on();
-    $this->db->select('*');
-    $this->db->from('vw_JobFile');
-    $this->db->where('MonitoringTypeId',2);
-    $this->db->order_by('JobFileId', 'desc');
-    $this->db->limit($page_position,$item_per_page); 
-    $query = $this->db->get();
-      return $query->result();
-  /* return $this->db->get('vw_JobFile',$page_position, $item_per_page)->result();*/
-  /* $query = $this->db->query("select * from vw_JobFile order by JobFileId desc ",$page_position, $item_per_page);*/
-  }
+
 
   function findlimit_air($page_position,$item_per_page)
   {

@@ -45,7 +45,6 @@
 
 
        </script>
-
 <div class="row">
 		<div class="container-fluid">
 		  		 <div class="col-lg-12 col-md-12 col-sm-12" style="padding-top: 10px; margin-bottom: -15px;">

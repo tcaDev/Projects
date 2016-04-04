@@ -503,8 +503,8 @@ function chart_air(){
     $query = $this->db->query("select a.LodgementFee, a.BreakBulkFee, a.StorageFee, a.BadCargoOrderFee, a.VCRC, a.CNI, a.CNIU  FROM RunningCharges_Air as a, vw_JobFileAir as b WHERE a.JobFile_AirId = b.JobFile_AirId AND b.JobFileNo = '$charges'");
     return $query->result();
   }
-  function select_temp(){
-    $query = $this->db->query("select * FROM Tempo ");
+  function select_temp($userid){
+    $query = $this->db->query("select * FROM Tempo where userid=$userid ");
     return $query->result();
   }
 
