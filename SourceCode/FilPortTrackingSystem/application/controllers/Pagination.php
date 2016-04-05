@@ -6,9 +6,9 @@ class Pagination extends CI_Controller {
      public function __construct()
        {
             parent::__construct();
-              $this->load->model('User');	
+              $this->load->model('User'); 
               $this->load->model('UserAccess');  
-              $this->load->model('Jobdata');	
+              $this->load->model('Jobdata');  
               $this->load->helper('string');
                 if(!$this->session->userdata('logged_in')){
                     redirect('Login_user/login');
@@ -24,13 +24,12 @@ class Pagination extends CI_Controller {
        }else{
         $page_number = 1; //if there's no page number, set it to 1
       }
-      $data['page_number'] =$page_number;    
-      //get starting position to fetch the records
-      return  $page_position = (($page_number-1) * $item_per_page);
+      return $page_number;   
+
   }
 
    //for pagination  start
-	function pagination_manila(){
+  function pagination_manila(){
       $data['userid'] = $this->userids();
       $this->session->unset_userdata('jbfl');
       $this->session->unset_userdata('color_stages');
@@ -40,9 +39,15 @@ class Pagination extends CI_Controller {
 
         $page        =  $this->input->post('page');
         $item_per_page=20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
+        $page_number = $this->paginate_number_position($page,$item_per_page);
 
-   	$montype        =  $this->input->post('montype');
+          $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
+
+
+    $montype        =  $this->input->post('montype');
     $jobfile        =  $this->input->post('jobfile');
     $color_stages   =  $this->input->post('color_stages');
 
@@ -72,7 +77,7 @@ class Pagination extends CI_Controller {
 /*      $this->session->montype_manila = $montype ;
       $montype = $this->session->montype_manila;*/
 
-   	if(isset($jobfile_session)&&($color_stages=='blank_color')){
+    if(isset($jobfile_session)&&($color_stages=='blank_color')){
         $color_stages='blank';
             if($jobfile_session=='blank'){
                      $this->insert_tempodata(1,$jobfile_session,$item_per_page,$color_stages);
@@ -86,23 +91,27 @@ class Pagination extends CI_Controller {
         $this->insert_tempodata($montype,$jobfile_session,$item_per_page,$color_stages);
         $data['manila']  =  $this->User->findlimit_search_color($item_per_page,$page_position,$color_stages,1);
      }else{
-   	   $data['manila']  =  $this->User->findlimit_man_outport($item_per_page,$page_position,1);
-   	 }
+       $data['manila']  =  $this->User->findlimit_man_outport($item_per_page,$page_position,1);
+     }
 
      //load the view page
       $this->load->view('jobfile-view/add-manila-container/search_manila',$data);
 }
 
-	function pagination_outport(){
+  function pagination_outport(){
     $data['userid'] = $this->userids();
-	  $this->session->unset_userdata('jbfl');
+    $this->session->unset_userdata('jbfl');
     $this->session->unset_userdata('color_stages');
     $this->session->unset_userdata('montype_outport');
 
       //for getting the page number and page position
         $page        =  $this->input->post('page');
         $item_per_page=20;
-      $page_position = $this->paginate_number_position($page,$item_per_page);
+        $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
 
 
     $montype        =  $this->input->post('montype');
@@ -154,14 +163,14 @@ class Pagination extends CI_Controller {
       //echo '3';
        $data['outport']  =  $this->User->findlimit_man_outport($item_per_page,$page_position,$montype);
      }
-	
+  
    //}
 
         //outport Role()
      $data['roleoutport']= $this->roleoutport();
         $this->load->view('jobfile-view/add-outport-container/search_outport',$data);
 }
-	function pagination_air(){
+  function pagination_air(){
    $data['userid'] = $this->userids();
     $jobfile   =  $this->input->post('jobfile');
     $color_stages   =  $this->input->post('color_stages');
@@ -169,21 +178,25 @@ class Pagination extends CI_Controller {
       //for getting the page number and page position
         $page        =  $this->input->post('page');
         $item_per_page=20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
-	
+        $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
 
-   	if(isset($jobfile)){
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
+  
+
+    if(isset($jobfile)){
              $color_stages = 'blank';
               $this->insert_tempodata_air($jobfile,$color_stages,$item_per_page);
-       	      $data['air']  =  $this->User->findlimit_search_air($item_per_page,$page_position,$jobfile);
+              $data['air']  =  $this->User->findlimit_search_air($item_per_page,$page_position,$jobfile);
      }elseif(isset($color_stages)){
               $jobfile = 'blank';
               $this->insert_tempodata_air($jobfile,$color_stages,$item_per_page);
               $data['air']  =  $this->User->findlimit_search_color_air($item_per_page,$page_position,$color_stages);
      }else{
-   	          $data['air']  =  $this->User->findlimit_air($item_per_page,$page_position);
-   	 }
-	
+              $data['air']  =  $this->User->findlimit_air($item_per_page,$page_position);
+     }
+  
    //}
 
  
@@ -199,7 +212,11 @@ function select_temp(){
        //for getting the page number and page position
         $page          =  $this->input->post('page');
         $item_per_page =20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
+        $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
       
 
          $jb      =  $this->session->data;
@@ -226,7 +243,11 @@ function select_temp(){
        //for getting the page number and page position
         $page          =  $this->input->post('page');
         $item_per_page =20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
+        $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
 
         $jb      =  $this->session->data;
 
@@ -241,7 +262,11 @@ function select_temp(){
         //for getting the page number and page position
         $page          =  $this->input->post('page');
         $item_per_page =20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
+        $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
 
          $jb      =  $this->session->data;
          $montype = $this->session->montype;
@@ -263,7 +288,11 @@ function select_temp(){
         //for getting the page number and page position
         $page          =  $this->input->post('page');
         $item_per_page =20;
-        $page_position = $this->paginate_number_position($page,$item_per_page);
+         $page_number = $this->paginate_number_position($page,$item_per_page);
+        $data['page_number'] =$page_number; 
+
+              //get starting position to fetch the records
+        $page_position = (($page_number-1) * $item_per_page);
       
           $jb      =  $this->session->data;
           $data['air']  =  $this->User->findlimit_search_color_air($item_per_page,$page_position,$jb);

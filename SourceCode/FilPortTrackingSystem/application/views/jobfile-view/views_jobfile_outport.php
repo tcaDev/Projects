@@ -71,6 +71,7 @@
 				  <label>Color Stages:</label>
 					<select class="selectpicker form-control color_select_outport" name="color_select_outport" width="250" style="width: 250px">
 					       <option value="Select Color Stages"disabled selected>Select Color Stages</option>
+					       <option value="Select All">Select All</option>
 						<?php 
 							foreach($status as $row){
 								echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
@@ -647,9 +648,12 @@ $(function(){
 		           $('.out_pages').empty();
 				   $('.out_pages_search_color').empty();
  				   $('.out_pages_search').empty();
-				   
-       color_select(color);
-
+		if(color=='Select All'){
+			 var jbfl = '';
+ 			 search_outport(jbfl);
+		}else{	   
+         color_select(color);
+        }
 
    });	
 });

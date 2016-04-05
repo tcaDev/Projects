@@ -82,6 +82,7 @@
 				  <label>Color Stages:</label>
 					<select class="selectpicker form-control color_select " name="color_select" width="250" style="width: 250px" >
 					       <option disabled selected>Select Color Stages</option>
+					       <option value="Select All">Select All</option>
 						<?php 
 							foreach($status as $row){
 								echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
@@ -677,7 +678,12 @@ $('.sea_manila_tab').click(function(){
 $(function(){
    $('.color_select').change(function(){
        var color = $('select[name="color_select"]').val();
-       color_select_manila(color);
+       if(color=='Select All'){
+       		 jbfl='';
+ 			 search_manila(jbfl);
+       }else{
+   		    color_select_manila(color);
+       }
 
    });	
 });

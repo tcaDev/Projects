@@ -67,6 +67,7 @@
 					   <label>Color Stages:</label>
 						<select id="color_select_a"class="selectpicker form-control color_select_a " name="color_select_a" width="250" style="width: 250px" >
 						       <option disabled selected>Select Color Stages</option>
+						        <option value="Select All">Select All</option>
 							<?php 
 								foreach($status as $row){
 									echo '<option value="'.$row->StatusName.'">'.$row->StatusName.'</option>';
@@ -518,7 +519,12 @@ function search_airs(jbfl){
 $(function(){
    $('.color_select_a').change(function(){
        var color = $('select[name="color_select_a"]').val();
-       color_select_air(color);
+       if(color=='Select All'){
+       	  var jbfl='';
+          search_airs(jbfl);
+       }else{
+          color_select_air(color);
+   	   }
 
    });	
 });
