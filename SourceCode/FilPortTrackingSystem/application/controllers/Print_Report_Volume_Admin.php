@@ -183,21 +183,21 @@ class Print_Report_Volume_Admin extends CI_Controller {
                 }
                  if($charges == "*"){
                     $total = "<tr>
-                                <td colspan=3 style='border:1px solid #ddd;padding:10px;'><b>TOTAL </b></td>
-                                <td style='border:1px solid #ddd;padding:10px;'>" . $tVolume . "</td>";
-                     $total .= "<td style='border:1px solid #ddd;padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                                <td style='padding:10px; border:1px solid #ddd;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
-                                <td style='padding:10px; border:1px solid #ddd;'>" . number_format($arrastre, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($wharfage, 2, '.', ','). "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($weighing, 2, '.', ','). "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($del, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
-                                <td style='padding:10px;border:1px solid #ddd;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
+                                <td colspan=3 style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;font-weight:bold;'><b>TOTAL </b></td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . $tVolume . "</td>";
+                     $total .= "<td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($arrastre, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($wharfage, 2, '.', ','). "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($weighing, 2, '.', ','). "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($del, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
+                                <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
                               </tr>";
 
                     $tableHeader = "  <tr>
@@ -221,18 +221,18 @@ class Print_Report_Volume_Admin extends CI_Controller {
                                       </tr>";
                  }else{
                     $total = "<tr>
-                               <td style='padding:5px;text-align:center; border:1px solid #ddd;'><b>TOTAL </b></td>
-                               <td> </td>
-                               <td> </td>
-                               <td>" . $tVolume . "</td>";
-                    $total .= "<td>" . number_format($rCharges, 2, '.', ',') . "</td>
+                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'><b>TOTAL </b></td>
+                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'> </td>
+                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'> </td>
+                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . $tVolume . "</td>";
+                    $total .= "<td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
                     $tableHeader = "  <tr>
-                                        <th>Jobfile No</th>
-                                        <th>Actual Arrival Time</th>
-                                        <th>Actual Delivery At Warehouse</th>
-                                        <th>Volume </th>";
-                      $tableHeader .= " <th> "  . $charges . "</th>
+                                        <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                                        <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                                        <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Delivery At Warehouse</th>
+                                        <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Volume </th>";
+                      $tableHeader .= " <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'> "  . $charges . "</th>
                                       </tr>";                            
                  }
                

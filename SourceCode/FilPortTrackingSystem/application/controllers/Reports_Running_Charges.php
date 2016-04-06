@@ -177,14 +177,10 @@ class Reports_Running_Charges extends CI_Controller {
           $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
           $dispOutput .= '<div class="table-consolidate-reports">';
           if(count($reportsTruck) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum . '");
-						  </script>';  
+          	$dispOutput = base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput .= 0;
           }
 
        

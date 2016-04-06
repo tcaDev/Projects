@@ -128,9 +128,30 @@
 
     	
 </div>	
+
+<div class="modal fade" id="runningcharges-options" role="dialog" style="top:30%;">
+				    <div class="modal-dialog" >
+				   		 <div class="modal-content" style="height:150px;">
+				   			<div class="modal-body">
+				   				 <div class="col-md-12" style="padding-top:20px;">
+				   					<div class="col-md-4"> 
+				   				 		<h3>Save As</h3>
+				   				 	</div>
+				   				 	<div class="col-md-4" style="padding-top:20px;"> 
+				   				 		<a href='#' id="running_charges_csv"><input type="button" class="btn btn-success form-control btn-save-as" value="CSV File"/></a>
+				   				 	</div>
+				   				 	<div class="col-md-4" style="padding-top:20px;">
+				   				 		<a href='#' id="running_charges_pdf"><input type="button" class="btn btn-danger form-control btn-save-as" value="PDF File"/></a>
+				   				 	 </div>
+				   				 </div>
+				   			</div>
+				   		 </div>
+				    </div>
+</div>
 <script>
 
 var runn_char = 1;
+var pdf_link = '';	
 $('#admin_running-manila').click(function(){
 	$('.active-tabRun').html('<b> Sea Freight Manila</b>');
 	runn_char = 1;
@@ -315,10 +336,19 @@ $(document).on('click','#btn-runningcharges-manila-consignee',function(){
 							});
 							
 						}else{
-							window.open(data);
+							$('#runningcharges-options').modal('show');
+							$('#running_charges_pdf').html('<a href=' + data +' target="blank" id="running_charges_pdf"><input type="button" class="btn btn-danger form-control btn-save-as" value="PDF File"/></a>')
 						}
 		});
       }
-
 });
+
+$(document).on('click','.btn-save-as',function(){
+	$('#runningcharges-options').modal('hide');
+});
+/*
+$(document).on('show.bs.modal','#runningcharges-options',function(){
+	alert(pdf_link);
+	
+});*/
 </script>

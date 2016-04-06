@@ -58,7 +58,25 @@
           </div>
     	</div>
 </div>	
-
+<div class="modal fade" id="truck-options" role="dialog" style="top:30%;">
+				    <div class="modal-dialog" >
+				   		 <div class="modal-content" style="height:150px;">
+				   			<div class="modal-body">
+				   				 <div class="col-md-12" style="padding-top:20px;">
+				   					<div class="col-md-4"> 
+				   				 		<h3>Save As</h3>
+				   				 	</div>
+				   				 	<div class="col-md-4" style="padding-top:20px;"> 
+				   				 		<a href='#' id="truck_csv"><input type="button" class="btn btn-success btn-save-as-truck form-control" value="CSV File"/></a>
+				   				 	</div>
+				   				 	<div class="col-md-4" style="padding-top:20px;">
+				   				 		<a href='#' id="truck_pdf"><input type="button" class="btn btn-danger btn-save-as-truck form-control" value="PDF File"/></a>
+				   				 	 </div>
+				   				 </div>
+				   			</div>
+				   		 </div>
+				    </div>
+</div>
 <script>
 	
  var truck = 1;
@@ -157,10 +175,14 @@ $(document).on('click','#btn-truck-admin',function(){
 							});
 							
 						}else{
-							window.open(data);
+							$('#truck-options').modal('show');
+							$('#truck_pdf').html('<a href=' + data +' target="blank" id="truck_pdf"><input type="button" class="btn btn-save-as-truck btn-danger form-control" value="PDF File"/></a>')
 						}
         }); 
       	}
       }
   });
+$(document).on('click','.btn-save-as-truck',function(){
+	$('#truck-options').modal('hide');
+});
 </script>
