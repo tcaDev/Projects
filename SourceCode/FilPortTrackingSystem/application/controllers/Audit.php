@@ -42,7 +42,7 @@ class Audit extends CI_Controller {
         }else{
               $output = '<div class="col-lg-12 ">
                             <div class="row">
-                              <table class="table table-condensed table-bordered order-table-site-settings" style="cursor:pointer;width:1500px;">
+                              <table class="table table-condensed table-bordered order-table-site-settings" style="cursor:pointer;width:1800px;">
                                 <thead>
                                   <tr>
                                     <th>No.</th>

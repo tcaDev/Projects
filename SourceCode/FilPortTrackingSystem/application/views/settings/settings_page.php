@@ -4,6 +4,14 @@
 
 	 background-color: #66FF99 !important;
 }
+
+.body-default{
+	width:100%;
+	position:relative;
+	overflow-y:auto;
+	height:440px;
+	padding:10px;
+}
 </style>
  				  
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
@@ -347,14 +355,14 @@ function loading_popup(){
 
 				<div class="col-lg-10">
 					<ul class="nav nav-pills pull-left nav-settings">
-				    <li class="active"><a data-toggle="pill" href=".consignee"  id="form_consignee">Consignee</a></li>
-				    <li><a data-toggle="tab" href=".broker" 					id="form_broker">Broker</a></li>
-				    <li><a data-toggle="tab" href=".shipper"					id="form_shipper">Shipper</a></li>
-				    <li><a data-toggle="tab" href=".vessel"						id="form_vessel">Shipping Line/Carrier</a></li>
-				    <li><a data-toggle="tab" href=".haulers"					id="form_haulers">Hauler/Trucker</a></li>
-				    <li class="hidden"><a data-toggle="tab" href=".forward"		id="form_forward">Forwarder</a></li>
-				    <li><a data-toggle="tab" href=".prod"				    	id="form_product">Commodity</a></li>
-				    <li><a data-toggle="tab" href=".legendss"				    id="form_legend">Legend</a></li>
+				    <li class="active" id="form_consignee"><a data-toggle="tab" href=".consignee"  >Consignee</a></li>
+				    <li id="form_broker"><a data-toggle="tab" href=".broker" 					>Broker</a></li>
+				    <li id="form_shipper"><a data-toggle="tab" href=".shipper"					>Shipper</a></li>
+				    <li id="form_vessel"><a data-toggle="tab" href=".vessel"						>Shipping Line/Carrier</a></li>
+				    <li id="form_haulers"><a data-toggle="tab" href=".haulers"					>Hauler/Trucker</a></li>
+				    <li id="form_forward" class="hidden"><a data-toggle="tab" href=".forward"		>Forwarder</a></li>
+				    <li id="form_product"><a data-toggle="tab" href=".prod"				    	>Commodity</a></li>
+				    <li id="form_legend"><a data-toggle="tab" href=".legendss"				    >Legend</a></li>
 			
 		<!-- 		    <li><a data-toggle="tab" href=".shippercon"			    id="form_shipper_contacts">Shipper Contacts</a></li> -->
 				  </ul>
@@ -376,46 +384,96 @@ function loading_popup(){
 			      </div>  
                <!--FOr consignee data view  start--> 
                   <div class="consignee tab-pane fade in active"> 
-                  <div class="pagination_consignee pull-right"></div>
+                	
+                  <?php if($roleconsignee[2] == '4'){?>
+	                 <div class="pagination_consignee pull-right"></div>
+	                 <div class="report_header-consignee body-default">
+	                 		<div class="consigneepage" > </div>	
 
-                 <div class="report_header-consignee" style="width:100%;position:relative;overflow-y:auto;height:440px;">
-                 	<div class="consigneepage" > </div>	
-                 </div>
-                  
+	                	  </div>
+                  <?php }else{?>
+                  	<div class="report_header-consignee body-default" >
+                  		<div class="consigneepage hidden"> </div>	
+                  	<div class="panel panel-default " >
+                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+                      <div class="panel-body">
+                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span> 
+                      </div>
+                    </div>
+                   </div>
+                  <?php }?>
                   </div>
 			    <!--FOr consignee data view  end-->
 
 			    <!--FOr BROKER data view  start--> 
 			    <div class="tab-pane fade broker">
+			     <?php if($rolebroker[2] == '4'){?>
 			      <div class="pagination_broker pull-right"> </div>
-			       <div class="report_header" style="width:100%;position:relative;overflow-y:auto;height:440px;">
-			      <div class="brokerpage"> </div>
+			       <div class="report_header body-default" >
+			     	 <div class="brokerpage"> </div>
 			      </div>
+			     <?php }else{?>
+			     <div class="report_header body-default" >
+			     	 
+			     	 <div class="panel panel-default " >
+                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+                      <div class="panel-body">
+                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+                      </div>
+                    </div>
+			      </div>
+			     <?php }?>
 			    </div>
 			     <!--FOr BROKER data view  END-->
 
 			      <!--FOr vessel data view  start--> 
 			    <div  class="vessel tab-pane fade">
+			    <?php if($rolecarrier[2] == '4'){?>
 			      <div class="pagination_vessel pull-right"> </div>
-			       <div class="report_header-vessel" style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-vessel body-default" >
 			 	  <div class="vesselpage"> </div>
 			 	  </div>
+			 	<?php }else{?>
+			 		 <div class="report_header-vessel body-default" >
+				 		 <div class="panel panel-default " >
+	                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+	                      <div class="panel-body">
+	                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+	                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+	                      </div>
+	                    </div>
+                    </div>
+			 	<?php }?>
 			    </div>
 			       <!--FOr vessel data view  end--> 
 
 				 <!--FOr Hauler data view  start--> 
 			    <div  class="haulers tab-pane fade">
+			    <?php if($rolehauler[2] == '4'){?>
 			      <div class="pagination_hauler pull-right"> </div>
-			       <div class="report_header-hauler" style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-hauler body-default" >
 			 	  <div class="haulerpage"> </div>
 			 	  </div>
+			 	 <?php }else{?>
+			 	 <div class="report_header-hauler body-default" >
+			 	  	<div class="panel panel-default " >
+	                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+	                      <div class="panel-body">
+	                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+	                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+	                      </div>
+	                    </div>
+			 	  </div>
+			 	 <?php }?>
 			    </div>
 			       <!--FOr Hauler data view  end--> 
 
 			      <!--FOr forward data view  start--> 
 			    <div  class="forward tab-pane fade">
 			      <div class="pagination_forward pull-right"> </div>
-			       <div class="report_header"  style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header body-default"  >
 			 	  <div class="forwardpage"> </div>
 			 	  </div>
 			    </div>
@@ -424,28 +482,64 @@ function loading_popup(){
 
 			    <!--FOr legend data view  start--> 
 			    <div  class="legendss tab-pane fade">
+			    <?php if($rolelegend[2] == '4'){?>
 			      <div class="pagination_legend pull-right"> </div>
-			       <div class="report_header-legend" style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-legend body-default" >
 			 	  <div class="legendpage"> </div>
 			 	  </div>
+			 	 <?php }else{?>
+			 	 <div class="report_header-legend body-default" >
+			 	  	<div class="panel panel-default " >
+	                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+	                      <div class="panel-body">
+	                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+	                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+	                      </div>
+	                    </div>
+			 	  </div>
+			 	 <?php }?>
 			    </div>
 			       <!--FOr legend data view  end--> 
 
 			    <!--FOr Products data view  start--> 
 			    <div  class="prod tab-pane fade">
+			    <?php if($rolecommodity[2] == '4'){?>
 			      <div class="pagination_prod pull-right"> </div>
-			       <div class="report_header-prod" style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-prod body-default" >
 			 	  <div class="prodpage"> </div>
 			 	  </div>
+			 	 <?php }else{?>
+			 	 	<div class="report_header-prod body-default" >
+			 	 		<div class="panel panel-default " >
+	                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+	                      <div class="panel-body">
+	                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+	                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+	                      </div>
+	                    </div>
+			 	  </div>
+			 	 <?php }?>
 			    </div>
 			       <!--FOr Products data view  end--> 
 
 		        <!--FOr shipper data view  start--> 
 			    <div  class="tab-pane fade shipper">
+			    <?php if($roleshipper[2] == '4'){?>
 			      <div class="pagination_shipper pull-right"> </div>
-			       <div class="report_header-shipper" style="width:100%;position:relative;overflow-y:auto;height:440px;">
+			       <div class="report_header-shipper body-default" >
 				  <div class="shipperpage"> </div>
 				  </div>
+				 <?php }else{?>
+				 	<div class="report_header-shipper body-default" >
+				  		<div class="panel panel-default " >
+	                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+	                      <div class="panel-body">
+	                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+	                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span>
+	                      </div>
+	                    </div>
+				  </div>
+				 <?php }?>
 			    </div>
 			     <!--FOr shipper data view  end-->
 
@@ -454,7 +548,9 @@ function loading_popup(){
 
 			<div class="" id="mycontent">
 				<div class="consignees ">
+				<?php if($roleconsignee[0] == '1'){?>
 				<button type="button" class="con-info consig-pos btn_add_consignee" data-toggle="modal" data-target="#consignee">ADD CONSIGNEE</button>
+				<?php }else{}?>
 
 					<div class="consignees collapse modal fade consig-posbox add_consignee" id="consignee">
 					  <div class="modal-dialog">

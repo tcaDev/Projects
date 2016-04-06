@@ -616,6 +616,67 @@ class Login_user extends CI_Controller {
 	            }else{
 	            	$data['roleuser'] = explode(',', $roleuser->AccessTypesId);
 	            }
+
+	    //Consignee
+	            $consignee = 6;
+	            $roleconsignee = $this->UserAccess->RoleSetting($session_data['roleID'],$consignee);  
+	            if($roleconsignee == NULL){
+	            	$data['roleconsignee'] = 0;
+	            }else{
+	            	$data['roleconsignee'] = explode(',', $roleconsignee->AccessTypesId);
+	            }
+
+	    //Broker
+	            $broker = 7;
+	            $rolebroker = $this->UserAccess->RoleSetting($session_data['roleID'],$broker);  
+	            if($rolebroker == NULL){
+	            	$data['rolebroker'] = 0;
+	            }else{
+	            	$data['rolebroker'] = explode(',', $rolebroker->AccessTypesId);
+	            }
+
+	    //Shipper
+	            $shipper = 8;
+	            $roleshipper = $this->UserAccess->RoleSetting($session_data['roleID'],$shipper);  
+	            if($roleshipper == NULL){
+	            	$data['roleshipper'] = 0;
+	            }else{
+	            	$data['roleshipper'] = explode(',', $roleshipper->AccessTypesId);
+	            }
+
+	    //ShippingLine/Carrier
+	            $carrier = 9;
+	            $rolecarrier = $this->UserAccess->RoleSetting($session_data['roleID'],$carrier);  
+	            if($rolecarrier == NULL){
+	            	$data['rolecarrier'] = 0;
+	            }else{
+	            	$data['rolecarrier'] = explode(',', $rolecarrier->AccessTypesId);
+	            }
+
+	    //Hauler
+	            $hauler = 10;
+	            $rolehauler = $this->UserAccess->RoleSetting($session_data['roleID'],$hauler);  
+	            if($rolehauler == NULL){
+	            	$data['rolehauler'] = 0;
+	            }else{
+	            	$data['rolehauler'] = explode(',', $rolehauler->AccessTypesId);
+	            }
+	    //Commodity
+	            $commodity = 11;
+	            $rolecommodity = $this->UserAccess->RoleSetting($session_data['roleID'],$commodity);  
+	            if($rolecommodity == NULL){
+	            	$data['rolecommodity'] = 0;
+	            }else{
+	            	$data['rolecommodity'] = explode(',', $rolecommodity->AccessTypesId);
+	            }
+	    //Legend
+	            $legend = 12;
+	            $rolelegend = $this->UserAccess->RoleSetting($session_data['roleID'],$legend);  
+	            if($rolelegend == NULL){
+	            	$data['rolelegend'] = 0;
+	            }else{
+	            	$data['rolelegend'] = explode(',', $rolelegend->AccessTypesId);
+	            }
 	 
 		$this->load->view('header/header',$data);
 		$this->load->view('settings/settings_page' , $data);
@@ -1208,8 +1269,17 @@ function select_country(){
    	 $clients  =  $this->User->findlimit($item_per_page,$page_position);
 	
    }
-  
-			echo '<table class="table table-bordered table_consignee tablesorter" id="table_consignee"> 
+  $session_data = $this->session->userdata('logged_in');
+
+//Consignee
+  $consignee = 6;
+    $roleconsignee = $this->UserAccess->RoleSetting($session_data['roleID'],$consignee);  
+    if($roleconsignee == NULL){
+    	$roleconsignee1 = 0;
+    }else{
+    	$roleconsignee1 = explode(',', $roleconsignee->AccessTypesId);
+    }
+			echo '<table class="table table-bordered table_consignee tablesorter table-condensed" id="table_consignee"> 
 					    <thead>
 					      <tr>
 					        <th>Consignee Name <span class="glyphicon glyphicon-sort"></span></th>
@@ -1217,11 +1287,18 @@ function select_country(){
 					        <th>Barangay/Village</th>
 					         <th>Town/City/Province</th>
 					         <th>Country</th>
-					         <th>OfficeNumber</th>
-					         <th>Contact Persons</th>
-					        <th>Status</th>
-					        <th colspan="2">Update</th>
-					      </tr>
+					         <th>OfficeNumber</th>';
+					         
+					      if($roleconsignee1[0] == '1' || $roleconsignee1[1] == '2'){
+					         echo '<th data-sorter="false">Contact Persons</th>';
+					      }else{}
+					        echo '<th>Status</th>';
+					      
+					      if($roleconsignee1[1] =='2'){
+					      	echo '<th data-sorter="false">Update</th>';
+					      } else{}
+					        
+					      echo '</tr>
 					    </thead>
 					    <tbody>' ?>
 					      	<?php 
@@ -1260,17 +1337,34 @@ function select_country(){
 							        <td>'. stripslashes($row->BarangayOrVillage) .'</td>  
 							        <td>'. stripslashes($row->TownOrCityProvince) .'</td> 
 							        <td>'.stripslashes($row->Country) .'</td>          
-							        <td>'. stripslashes($number) .'</td> 
-							           <td>
-							           		   <button type="button" class="btn  view_consignee_contact" data-toggle="modal" data-target="#modal_view_consignee_contact">Edit</button>   
-					       					   <button type="button" class="btn  add_consignee_contact"  data-toggle="modal" data-target="#modal_add_consignee_contact">Add</button> 
-					       			   </td>   
-							        <td>'.$stat .'</td>
+							        <td>'. stripslashes($number) .'</td> ';
+						           
+						           if($roleconsignee1[1] == '2' || $roleconsignee1[0] == '1'){
+						           	echo '<td>';
+						           		if($roleconsignee1[1] == '2'){ 
+						           		  echo '<button type="button" class="btn view_consignee_contact btn-sm" data-toggle="modal" data-target="#modal_view_consignee_contact">Edit</button>';
+						           		}else{}
+
+						           		if($roleconsignee1[0] == '1'){
+				       					  echo' <button type="button" class="btn add_consignee_contact btn-sm"  data-toggle="modal" data-target="#modal_add_consignee_contact">Add</button> ';
+						           		}else{}
+						           		
+				       			   echo '</td>';
+				       			   }else{}
+				       			   
+							      echo'  <td>'.$stat .'</td>
 							        <td   class="hidden">'. $mystat .'</td>
 							        <td   class="hidden">'. $row->CountryId .'</td>
-							        <td><button type="button" class="btn get_consignee_datas" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+							        ';
+							        
+							        if($roleconsignee1[1] == '2'){
+							        	echo '<td><button type="button" class="btn get_consignee_datas btn-sm" data-toggle="modal" data-target="#modal_update_consignee"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td>';
+							        }else{}
+							        	
+							        echo '
 							  								        
 					     		 </tr>';
+							        
 					      		}
 
 //for message popup when update  adding data is success/failed start			      		

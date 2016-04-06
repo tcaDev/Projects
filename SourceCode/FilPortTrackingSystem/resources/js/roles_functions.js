@@ -194,7 +194,7 @@ function getValue_check(){
             }
         })
         .done(function(data) {
-        	 window.location.reload();
+        	 
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -288,6 +288,7 @@ function getValue_check_sitesettings(){
 	var legend_list = legend.join(',') + ",";
 	/* check if there is selected checkboxes, */
 	
+
 	$.ajax({
             method: "POST",
               url: link + "/Access_update/site_update_access/",
@@ -314,7 +315,7 @@ function getValue_check_sitesettings(){
             }
         })
         .done(function(data) {
-        	 window.location.reload();
+        	 
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -355,7 +356,7 @@ function getValue_check_global(global_access,SystemId,set_global){
             }
         })
         .done(function(data) {
-        	 window.location.reload();
+        	 
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',
@@ -434,7 +435,7 @@ function getValue_check_report(){
             }
         })
         .done(function(data) {
-        	 window.location.reload();
+        	
                  $.alert({
                             backgroundDismiss: false,   
                               title: 'Save Success.!',

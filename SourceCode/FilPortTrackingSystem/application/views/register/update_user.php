@@ -201,7 +201,7 @@ $(document).on('click','.btn-update-user-client',function(){
     var consignee2 = $(this).closest('tr').children('td:eq(21)').text();
     var consignee3 = $(this).closest('tr').children('td:eq(22)').text();
 
-    var uname = $(this).closest('tr').children('td:eq(7)').text();
+    var uname = $(this).closest('tr').children('td:eq(4)').text();
     var fname = $(this).closest('tr').children('td:eq(8)').text();
     var mname = $(this).closest('tr').children('td:eq(9)').text();
     var lname = $(this).closest('tr').children('td:eq(10)').text();
@@ -269,8 +269,7 @@ $(document).on('click','.btn-update-user-client',function(){
 
 	$(document).on('click','.btn-UpdateUser', function(){
 
-
-		var role = $('input[name=update_activate]:checked').val();
+		var status = $('input[name=update_activate]:checked').val();
     var uname = $('.uname').val();
     var fname = $('.fname').val();
     var mname = $('.mname').val();
@@ -291,7 +290,9 @@ $(document).on('click','.btn-update-user-client',function(){
     var consignee2 = $('.consignee2').val();
     var consignee3 = $('.consignee3').val();
 
-    var role = $('.update_user').val();
+    var role1 = $('.update_user').val();
+
+
 
 		 $.ajax({
             method: "POST",
@@ -306,7 +307,7 @@ $(document).on('click','.btn-update-user-client',function(){
                   });
               },
               data: {uid    :uid,
-                     status :role,
+                     status :status,
                      uname  :uname,
                      fname  :fname,
                      mname  :mname,
@@ -321,7 +322,7 @@ $(document).on('click','.btn-update-user-client',function(){
                      consignee:consignee,
                      consignee2:consignee2,
                      consignee3:consignee3,
-                     role:role,
+                     role:role1,
                 }
         })
            .done(function(data) {

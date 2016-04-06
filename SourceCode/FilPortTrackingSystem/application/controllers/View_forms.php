@@ -9,18 +9,32 @@ class view_forms extends CI_Controller {
             $this->load->helper('html');
             $this->load->model('User'); 
             $this->load->library('form_validation');
+            $this->load->model('UserAccess'); 
 
        }
 
 function index(){
 /*echo validation_errors();
 echo form_open('form');*/
+$session_data = $this->session->userdata('logged_in');
+
+//Consignee
+
+	$consignee = 6;
+    $roleconsignee = $this->UserAccess->RoleSetting($session_data['roleID'],$consignee);  
+    if($roleconsignee == NULL){
+    	$roleconsignee1 = 0;
+    }else{
+    	$roleconsignee1 = explode(',', $roleconsignee->AccessTypesId);
+    }
 
 $countries=$this->User->countries();
    echo '<div class="consignee_existing"> </div>';
-	echo 	'<div class="consignees ">
-				<button type="button" class="con-info consig-pos btn_add_consignee"  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>
-					<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog" data-keyboard="false" data-backdrop="static">
+	echo 	'<div class="consignees ">';
+		if($roleconsignee1[0] == '1'){
+				echo '<button type="button" class="con-info consig-pos btn_add_consignee"  data-toggle="modal" data-target="#consignee" style="cursor:pointer">ADD CONSIGNEE</button>';
+		}else{}
+			echo '<div class="consignees collapse consig-posbox modal fade add_consignee" id="consignee"  role="dialog" data-keyboard="false" data-backdrop="static">
 						  <div class="modal-dialog">
 						    <!-- Modal content-->
 						    <div class="modal-content">
@@ -118,11 +132,25 @@ function check_consignee(consignee){
 }
  
 function broker(){
- $countries=$this->User->countries();
-	echo	'<div class="brokers tab-pane">
-				<button type="button" class="con-info consig-pos btn_add_broker" data-toggle="modal" data-target="#broker">ADD BROKER</button>
 
-					<div class="brokers modal fade consig consig-posbox collapse posbox" id="broker">
+	$session_data = $this->session->userdata('logged_in');
+   //Broker
+	$broker = 7;
+	            $rolebroker = $this->UserAccess->RoleSetting($session_data['roleID'],$broker);  
+	            if($rolebroker == NULL){
+	            	$rolebroker = 0;
+	            }else{
+	            	$rolebroker = explode(',', $rolebroker->AccessTypesId);
+	            }
+
+ $countries=$this->User->countries();
+	echo	'<div class="brokers tab-pane">';
+			if($rolebroker[0] == '1'){
+				echo '<button type="button" class="con-info consig-pos btn_add_broker" data-toggle="modal" data-target="#broker">ADD BROKER</button>';
+			}else{}
+				
+
+					echo '<div class="brokers modal fade consig consig-posbox collapse posbox" id="broker">
 						<div class="modal-dialog">
 							<div class="modal-content">
 						      <div class="modal-header">
@@ -182,6 +210,7 @@ function broker(){
 					           		</div>
 					            </div>
 					        </div>
+			}
 		<?php	echo'  <div class="">
 				            <div class="form-group col-md-12">
 				                <input type="text" name="c1" minlength="7" class="form-control clear_values_broker" placeholder="Contact Number" required />
@@ -212,11 +241,25 @@ function vessel(){
   $this->load->model('User');
   $drop = $this->User->dropdown_shipper();
 
- echo '			<div class="vessels">
- 					<button type="button" class="con-info consig-pos btn_add_vessel" data-toggle="modal" data-target="#vessels" style="left: 83% !important;width: 15% !important;">ADD SHIPPING LINE/CARRIER</button>
+  $session_data = $this->session->userdata('logged_in');
+   //ShippingLine/Carrier
+  		$carrier = 9;
+       $rolecarrier = $this->UserAccess->RoleSetting($session_data['roleID'],$carrier);  
+        if($rolecarrier == NULL){
+        	$rolecarrier = 0;
+        }else{
+        	$rolecarrier = explode(',', $rolecarrier->AccessTypesId);
+        }
+
+ echo '			<div class="vessels">';
+ 				
+ 				if($rolecarrier[0] =='1'){
+ 					echo'	<button type="button" class="con-info consig-pos btn_add_vessel" data-toggle="modal" data-target="#vessels" style="left: 83% !important;width: 15% !important;">ADD SHIPPING LINE/CARRIER</button>';	
+ 				}else{}
+ 				
 
 
-				<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
+				echo '<div class="vessels consig-posbox modal fade" role="dialog" id="vessels">
 				  <div class="modal-dialog">
 
 				    <!-- Modal content-->
@@ -277,10 +320,23 @@ function check_carrier(carrier){
 }
 
 function hauler(){
-	echo	'<div class="brokers tab-pane">
-				<button type="button" class="con-info consig-pos btn_add_hauler" data-toggle="modal" data-target="#broker" style="left: 84% !important;width: 14% !important;">ADD HAULER/TRUCKER</button>
+$session_data = $this->session->userdata('logged_in');
+	//ShippingLine/Carrier
+  		$hauler = 10;
+       $rolehauler = $this->UserAccess->RoleSetting($session_data['roleID'],$hauler);  
+        if($rolehauler == NULL){
+        	$rolehauler = 0;
+        }else{
+        	$rolehauler = explode(',', $rolehauler->AccessTypesId);
+        }
+	echo	'<div class="brokers tab-pane">';
 
-					<div class="brokers consig-posbox modal fade" id="broker" role="dialog">
+			if($rolehauler[0] =='1'){
+				echo'	<button type="button" class="con-info consig-pos btn_add_hauler" data-toggle="modal" data-target="#broker" style="left: 84% !important;width: 14% !important;">ADD HAULER/TRUCKER</button>';
+			}else{}
+				
+
+					echo'<div class="brokers consig-posbox modal fade" id="broker" role="dialog">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -354,12 +410,23 @@ function check_hauler(hauler){
 }
 
 function shipper(){
+	$session_data = $this->session->userdata('logged_in');
+	 //Shipper
+		$shipper = 8;
+       $roleshipper = $this->UserAccess->RoleSetting($session_data['roleID'],$shipper);  
+        if($roleshipper == NULL){
+        	$roleshipper = 0;
+        }else{
+        	$roleshipper = explode(',', $roleshipper->AccessTypesId);
+        }
  $countries = $this->User->countries();
 echo '<div class="consignee_existing"> </div>';
-echo'			<div class="shippers tab-pane">
-				<button type="button" class="con-info consig-pos btn_add_shipper" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>
+echo'			<div class="shippers tab-pane">';
+	 if($roleshipper[0] == '1'){
+			echo'<button type="button" class="con-info consig-pos btn_add_shipper" data-toggle="modal" data-target="#shipper">ADD SHIPPER</button>';
+		}else{}
 
-					<div class="shippers collapse consig-posbox modal fade" id="shipper"  role="dialog">
+				echo'	<div class="shippers collapse consig-posbox modal fade" id="shipper"  role="dialog">
 						  <div class="modal-dialog">
 						    <!-- Modal content-->
 						    <div class="modal-content">
@@ -577,11 +644,24 @@ echo '
 
 function legend(){
 
-echo '			
-	<div class="forwards tab-pane">
-		<button type="button" class="con-info consig-pos btn_add_legend" data-toggle="modal" data-target="#forward">ADD LEGEND</button>
+	$session_data = $this->session->userdata('logged_in');
+	//Legend
+  		$legend = 11;
+       $rolelegend = $this->UserAccess->RoleSetting($session_data['roleID'],$legend);  
+        if($rolelegend == NULL){
+        	$rolelegend = 0;
+        }else{
+        	$rolelegend = explode(',', $rolelegend->AccessTypesId);
+        }
 
-		   <div class="forward consig-posbox modal fade" role="dialog" id="forward">
+echo '			
+	<div class="forwards tab-pane">';
+	if($rolelegend[0] == '1'){
+		echo'	<button type="button" class="con-info consig-pos btn_add_legend" data-toggle="modal" data-target="#forward">ADD LEGEND</button>';
+	}else{}
+	
+
+		   echo '<div class="forward consig-posbox modal fade" role="dialog" id="forward">
 			  <div class="modal-dialog">
 
 			    <!-- Modal content-->
@@ -636,10 +716,23 @@ echo '
 }
 
 function product(){
-	echo	'<div class="prod tab-pane">
-				<button type="button" class="con-info consig-pos btn_add_product" data-toggle="modal" data-target="#product">ADD COMMODITY</button>
 
-					<div class="products consig-posbox modal fade" id="product" role="dialog">
+	$session_data = $this->session->userdata('logged_in');
+	//Commodity
+  		$commodity = 11;
+       $rolecommodity = $this->UserAccess->RoleSetting($session_data['roleID'],$commodity);  
+        if($rolecommodity == NULL){
+        	$rolecommodity = 0;
+        }else{
+        	$rolecommodity = explode(',', $rolecommodity->AccessTypesId);
+        }
+	echo	'<div class="prod tab-pane">';
+	if($rolecommodity[0] =='1'){
+		echo	'		<button type="button" class="con-info consig-pos btn_add_product" data-toggle="modal" data-target="#product">ADD COMMODITY</button>';	
+	}else{}
+	
+
+					echo '<div class="products consig-posbox modal fade" id="product" role="dialog">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
 					      <div class="modal-header">

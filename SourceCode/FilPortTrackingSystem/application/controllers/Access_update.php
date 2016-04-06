@@ -114,14 +114,18 @@ class Access_update extends CI_Controller {
                		)
             );
 
+          
+
            $this->db->where_in('SystemSubModuleId', 5);
            $this->db->where('RoleId',$role); 
            $result = $this->db->get('RoleAccess');
+            
 
         	if($result->num_rows() > 0){
         		$this->db->where('RoleId',$role);
         		$this->db->update_batch('RoleAccess',$data,'SystemSubModuleId');
-            $$this->output->clear_all_cache();
+            $this->output->clear_all_cache();
+
         	}
         	else{
         		$this->db->insert_batch('RoleAccess',$data);

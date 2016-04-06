@@ -67,6 +67,7 @@ class Job extends CI_Controller {
         $('.veselid').val(id);
         $('.veseltext').val(text); 
     });  
+     
 
       </script>
 
@@ -585,30 +586,8 @@ function get_jobfile_global_search(){
               <table class='table-bordered table table-striped table-hover table-condensed' '>
               <tr>
                    <th>No.</th>
-                   ";
-
-                   $session_data = $this->session->userdata('logged_in');
-                   //Manila Role
-                   if($RolesManila == '1'){
-                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
-                   }else{
-                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
-                   }
-                    
-                    if($rolemnila == NULL){
-                      $rolemnila=  0;
-                    }else{
-                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
-                    }
-
-                   if($rolemnila[1] == '2'){ 
-                    echo "<th>Update</th>";
-                  }else{}
-
-                
-               
-                   
-             echo "<th>Vessel/Voyage No</th>
+                   <th>Update</th>
+                   <th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
                    <th class='hidden'>value Actual Arrival Time</th>
                    <th>Actual Arrival Time</th>
@@ -675,7 +654,9 @@ function get_jobfile_global_search(){
 
                    if($rolemnila[1] == '2'){ 
                     echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' data-target='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
-                  }else{}
+                  }else{
+                    echo "<td><button type='button' class='btn btn-default disabled' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+                  }
 
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->CarrierName)."</td>";

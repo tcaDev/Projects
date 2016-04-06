@@ -421,7 +421,7 @@ function validateEmail(email) {
 								$('#message').text('');
                                   
 
-                 $('#myModal_addUser').modal('hide');
+                 /*$('#myModal_addUser').modal('hide');*/
                               }
                            });
               })

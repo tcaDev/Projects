@@ -12,6 +12,7 @@ class Search extends CI_Controller {
        {
             parent::__construct();
             $this->load->model('User');
+             $this->load->model('UserAccess');
        }
 
 		function index(){
@@ -474,8 +475,20 @@ if(isset($_SESSION['success'])){
 
   
     function search_broker(){
-     $this->message();
-       $item_per_page=10;
+
+  	$session_data = $this->session->userdata('logged_in');
+   //Broker
+	$broker = 7;
+    $rolebroker = $this->UserAccess->RoleSetting($session_data['roleID'],$broker);  
+    if($rolebroker == NULL){
+    	$rolebroker = 0;
+    }else{
+    	$rolebroker = explode(',', $rolebroker->AccessTypesId);
+    }
+
+
+    $this->message();
+    $item_per_page=10;
 	//Get page number from Ajax POST
 	if(isset($_POST["page"])){
 		$page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH); //filter number
@@ -494,6 +507,9 @@ if(isset($_SESSION['success'])){
    	 $broker  =  $this->User->findlimit_broker($item_per_page,$page_position);	
    } 	
 
+
+   
+
 		echo '      <table class="table fixed_headers table-bordered" id="table_broker">
 					    <thead>
 					      <tr>
@@ -505,9 +521,13 @@ if(isset($_SESSION['success'])){
 					         <th>Country</th>
 					        <th>Contact Number</th>
 					        <th>Email Address</th>
-					        <th>Status</th>
-					        <th colspan="2">Update</th>
-					      </tr>
+					        <th>Status</th>';
+					        if($rolebroker[1] =='2'){
+					        	echo '<th colspan="2">Update</th>';	
+					        }else{}
+					      
+					        
+					      echo '</tr>
 					    </thead>
 					    <tbody>'; ?>
 
@@ -552,11 +572,12 @@ if(isset($_SESSION['success'])){
 						    <td  class="hidden">'. $row->CountryId .'</td>
 						    <td class="hidden">'.stripslashes($row->FirstName).' </td>
 						    <td class="hidden">'.stripslashes($row->MiddleName).' </td>
-						    <td class="hidden">'.stripslashes($row->LastName).' </td>		
-					        <td><button type="button" class="btn get_broker_datas" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					        
-					      
-					      </tr>';}
+						    <td class="hidden">'.stripslashes($row->LastName).' </td>';
+					        if($rolebroker[1] =='2'){
+					        echo '<td><button type="button" class="btn get_broker_datas btn-sm" data-toggle="modal" data-target="#modal_update_broker"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td>';
+					        }else{}
+					      echo '</tr>';
+					  		}
 					      ?>
 					    </tbody>
 					  </table>
@@ -625,6 +646,17 @@ if(isset($_SESSION['success'])){
 
 
 function search_shipper(){
+
+	$session_data = $this->session->userdata('logged_in');
+	 //Shipper
+		$shipper = 8;
+       $roleshipper = $this->UserAccess->RoleSetting($session_data['roleID'],$shipper);  
+        if($roleshipper == NULL){
+        	$roleshipper = 0;
+        }else{
+        	$roleshipper = explode(',', $roleshipper->AccessTypesId);
+        }
+
   $this->message();
    $item_per_page=10;
 	//Get page number from Ajax POST
@@ -651,11 +683,19 @@ function search_shipper(){
 					        <th>HouseBuildingNo/Street</th>
 					        <th>Barangay/Village</th>
 					        <th>Town/City/Province</th>
-					         <th>Country</th>
-					        <th>Shipper Contacts</th>
-					        <th>Status</th>
-					        <th colspan="2">Update</th>
-					      </tr>
+					         <th>Country</th>';
+					        if($roleshipper[0] =='1' || $roleshipper[1] == '2'){
+					      		echo'  <th>Shipper Contacts</th>';  	
+					        }else{}
+
+					  		echo '<th>Status</th>';
+
+					       if($roleshipper[1] == '2'){
+					     		echo' <th colspan="2">Update</th>';  	
+					       }else{}
+					     
+
+					     echo' </tr>
 					    </thead>
 					    <tbody>';?>
 					    <?php 
@@ -690,14 +730,27 @@ function search_shipper(){
 					  	    <td>'.stripslashes($row->BarangarOrVillage).'</td>
 					  	    <td>'.stripslashes($row->TownOrCityProvince).'</td>
 					  	    <td>'.stripslashes($row->Country).'</td>
-					  	    <td class="hidden">'.$row->CountryId.'</td>
-					        <td><button type="button" class="btn  contac" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   
-					       					  <button type="button" class="btn add_contact" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> 
-					       	<td>'.$stat .'</td>
-						    <td  class="hidden">'. $mystat .'</td>  				   
-					        <td><button type="button" class="btn get__shipper_datas" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-					      
-					      </tr>';}
+					  	    <td class="hidden">'.$row->CountryId.'</td>';
+
+					  	    if($roleshipper[0] =='1' || $roleshipper[1] == '2'){
+					        echo '<td>';
+					        	if($roleshipper[1] == '2'){
+					        	 echo '<button type="button" class="btn  contac btn-sm" data-toggle="modal" data-target="#modal_shippercontacts">Edit</button>   ';
+					        	}else{}
+
+					        	if($roleshipper[0] =='1'){
+					       		echo '<button type="button" class="btn add_contact btn-sm" data-toggle="modal" data-target="#modal_add_shippercontacts">Add</button> ';
+					       		}else{}
+
+					       	echo '</td>';
+
+					       	}else{}
+					       	echo '<td>'.$stat .'</td>
+						    <td  class="hidden">'. $mystat .'</td> ';
+						    if($roleshipper[1] == '2'){
+					        echo '<td><button type="button" class="btn get__shipper_datas btn-sm" data-toggle="modal" data-target="#modal_update_shipper"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>';
+					      }else{}
+					    echo ' </tr>';}
 
 					     ?>
 
@@ -810,8 +863,16 @@ function search_shipper(){
 
 function search_vessel(){
 
+$session_data = $this->session->userdata('logged_in');
+   //ShippingLine/Carrier
+  		$carrier = 9;
+       $rolecarrier = $this->UserAccess->RoleSetting($session_data['roleID'],$carrier);  
+        if($rolecarrier == NULL){
+        	$rolecarrier = 0;
+        }else{
+        	$rolecarrier = explode(',', $rolecarrier->AccessTypesId);
+        }
     $this->message();
-
    $item_per_page=10;
 	//Get page number from Ajax POST
 	if(isset($_POST["page"])){
@@ -839,9 +900,12 @@ function search_vessel(){
 					        <th>Shipping Line Name</th>
 					        <th>Address</th>
 					        <th>Office Number</th>
-					        <th>Status</th>
-					        <th colspan="2">Update</th>
-					      </tr>
+					        <th>Status</th>';
+					        if($rolecarrier[1]=='2'){
+					      		echo ' <th colspan="2">Update</th>';  	
+					        }else{}
+					      
+					      echo '</tr>
 					    </thead>
 					    <tbody>' ?>
 					    <?php 
@@ -873,10 +937,12 @@ function search_vessel(){
 							        <td>'.stripslashes($row->Address).'</td>
 							        <td>'.stripslashes($row->OfficeNo).'</td>  
 							        <td>'.$stat .'</td>
-						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_vessels" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							        
-					    	  </tr>';}
+						    		<td  class="hidden">'. $mystat .'</td>  ';
+							         if($rolecarrier[1]=='2'){
+							         	echo '<td><button type="button" class="btn update_vessels btn-sm" data-toggle="modal" data-target="#modal_update_vessel"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td>';
+							        }else{}
+
+					    	  echo'</tr>';}
 
 ?>
 					    </tbody>
@@ -932,6 +998,15 @@ function search_vessel(){
 /////////////////////////////////
 
 function search_hauler(){
+	$session_data = $this->session->userdata('logged_in');
+	//ShippingLine/Carrier
+  		$hauler = 10;
+       $rolehauler = $this->UserAccess->RoleSetting($session_data['roleID'],$hauler);  
+        if($rolehauler == NULL){
+        	$rolehauler = 0;
+        }else{
+        	$rolehauler = explode(',', $rolehauler->AccessTypesId);
+        }
 
 $this->message();
    $item_per_page=10;
@@ -959,9 +1034,12 @@ $this->message();
 		        <th>Hauler/Truck Name</th>
 		         <th>Address</th>
 		         <th>Tin</th>
-		        <th>Status</th>
-		        <th colspan="2">Update</th>
-		      </tr>
+		        <th>Status</th>';
+		        if($rolehauler[1] == '2'){
+		        	echo '<th colspan="2">Update</th>';	
+		        }else{}
+		        
+		      echo '</tr>
 		    </thead>
 		  <tbody>' ?>
 				    <?php 
@@ -993,10 +1071,11 @@ $this->message();
 							        <td>'.stripslashes($row->Address).'</td>
 							        <td>'.stripslashes($row->TIN).'</td>
 							      	<td>'.$stat .'</td>
-						    		<td  class="hidden">'. $mystat .'</td>  
-							         <td><button type="button" class="btn update_hauler" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-							       
-					    	  </tr>';}
+						    		<td  class="hidden">'. $mystat .'</td>  ';
+							        if($rolehauler[1] == '2'){
+							         echo '<td><button type="button" class="btn update_hauler btn-sm" data-toggle="modal" data-target="#modal_update_hauler"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button> </td>';
+							       }else{}
+					    	  echo'</tr>';}
 
 ?>
     </tbody>
@@ -1145,6 +1224,16 @@ $this->message();
 
 
   function search_legend(){
+
+  	$session_data = $this->session->userdata('logged_in');
+	//Legend
+  		$legend = 11;
+       $rolelegend = $this->UserAccess->RoleSetting($session_data['roleID'],$legend);  
+        if($rolelegend == NULL){
+        	$rolelegend = 0;
+        }else{
+        	$rolelegend = explode(',', $rolelegend->AccessTypesId);
+        }
    $this->message();
    $item_per_page=10;
 	//Get page number from Ajax POST
@@ -1171,9 +1260,12 @@ $this->message();
 		        <th>Description Name</th>
 		        <th>Font/Background</th>
 		        <th class="hidden">Color</th>
-		        <th>Status</th>
-		        <th colspan="2">Update</th>
-		      </tr>
+		        <th>Status</th>';
+		        if($rolelegend[1] =='2'){
+		        	echo '<th colspan="2">Update</th>';	
+		        }else{}
+		        
+		      echo '</tr>
 		    </thead>
 		  <tbody>' ?>
 		    <?php 
@@ -1217,10 +1309,12 @@ $this->message();
 				        '.$pick2.'
 				         <td>'.stripslashes($stat) .'</td>
 						 <td  class="hidden">'. stripslashes($mystat) .'</td> 
-						 <td  class="hidden">'.stripslashes($pick).' </td>
-				         <td><button type="button" class="btn update_legend" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
-				        
-			    	  </tr>';}?>
+						 <td  class="hidden">'.stripslashes($pick).' </td>';
+				         if($rolelegend[1] =='2'){
+				         echo '<td><button type="button" class="btn update_legend btn-sm" data-toggle="modal" data-target="#modal_update_legend"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td>';
+				        }else{}
+
+			    	  echo '</tr>';}?>
     </tbody>
 </table>
 <script src="<?php echo base_url('resources/table_sort/dist/js/jquery.tablesorter.min.js');?>"></script>
@@ -1337,7 +1431,15 @@ $this->message();
 	}
 
 function search_product(){
-
+$session_data = $this->session->userdata('logged_in');
+	//Commodity
+  		$commodity = 11;
+       $rolecommodity = $this->UserAccess->RoleSetting($session_data['roleID'],$commodity);  
+        if($rolecommodity == NULL){
+        	$rolecommodity = 0;
+        }else{
+        	$rolecommodity = explode(',', $rolecommodity->AccessTypesId);
+        }
     $this->message();
 
    $item_per_page=10;
@@ -1365,9 +1467,13 @@ function search_product(){
 					      <tr>
 					        <th hidden>Commodity ID</th>
 					        <th>Commodity</th>
-					        <th>Status</th>
-					        <th colspan="2">Update</th>
-					      </tr>
+					        <th>Status</th>';
+					        if($rolecommodity[1] =='2'){
+					        	echo '<th colspan="2">Update</th>';	
+					        }else{}
+					        
+					      
+					      echo '</tr>
 					    </thead>
 					    <tbody>' ?>
 					    <?php 
@@ -1397,10 +1503,13 @@ function search_product(){
 							        <td hidden>'.stripslashes($row->ProductId).'</td>
 							        <td>'.stripslashes($row->ProductName).'</td>      
 							        <td>'.stripslashes($stat) .'</td>
-						    		<td  class="hidden">'. stripslashes($mystat) .'</td>  
-							         <td><button type="button" class="btn update_product" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button>
+						    		<td  class="hidden">'. stripslashes($mystat) .'</td>  ';
+							        if($rolecommodity[1] =='2'){
+							       echo' <td><button type="button" class="btn update_product btn-sm" data-toggle="modal" data-target="#modal_update_products"><span class="glyphicon glyphicon-edit data-toggle="modal" data-target="#myModal""></span></button></td>';
+							   }else{}
 							        
-					    	  </tr>';}
+					    	 echo'</tr>';}
+							   
 
 ?>
 					    </tbody>
@@ -1476,8 +1585,6 @@ function get_jobfile_search_air(){
     	$this->load->view('jobfile-view/add-air-product/search_air',$data);
 
 }
-
-
 
 }
 ?>

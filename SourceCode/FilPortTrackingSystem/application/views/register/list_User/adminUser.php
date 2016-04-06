@@ -51,8 +51,8 @@
             <tr>
               <td><?php echo $i ?></td>
               <td><?php echo $stat ?></td>
-              <?php if($roleuser[1] == '2') {?>  <td><button type="button" class="btn btn-default btn-sm btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
-              <td><button type="button" class="btn btn-default btn-sm btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td><?php }else{} ?>
+              <?php if($roleuser[1] == '2') {?>  <td><button type="button" class="btn btn-default btn-xs btn-update-user" data-toggle="modal" href="#myModal_updateUser"><span class="fa fa-pencil fa-fw"></span></button></td>
+              <td><button type="button" class="btn btn-default btn-xs btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td><?php }else{} ?>
               <td><?php echo $uname ?></td>
               <td><?php echo $fname ?></td>
               <td><?php echo $mname ?></td>
