@@ -118,7 +118,7 @@ function userList(role){
 /*---------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------*/
 
-function uname_check(uname){
+function uname_check(uname,role){
    if(uname==''){
       $('#check_uname').empty();
    }else{
@@ -130,10 +130,33 @@ function uname_check(uname){
            beforeSend: function() {
               $('#check_uname').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
             },
-            data: {uname:uname}
+            data: {uname:uname,
+                  roleid:role}
       })
       .done(function(data) {
              $('#check_uname').html(data);
+        });
+    }
+ }
+
+
+ function uname_check_update(uname,role){
+   if(uname==''){
+      $('#check_uname_update').empty();
+   }else{
+       
+        $('#check_uname_update span').show();
+        $.ajax({
+            method: "POST",
+          url: link + "/Job/check_uname/",
+           beforeSend: function() {
+              $('#check_uname_update').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+            },
+            data: {uname:uname,
+                    roleid:role}
+      })
+      .done(function(data) {
+             $('#check_uname_update').html(data);
         });
     }
  }

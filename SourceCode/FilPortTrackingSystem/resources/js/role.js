@@ -45,9 +45,7 @@ var RoleDesc;
                               confirm: function(){
                                   dia.close();
                                   $('.role-name').val("");
- 								  $('.role-desc').val("");
- 								  location.reload();
- 								  $('#myModal_addUser').modal('hide');
+                 								  $('.role-desc').val("");
                               }
                            });
               })

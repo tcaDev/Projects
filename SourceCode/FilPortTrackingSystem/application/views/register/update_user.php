@@ -12,8 +12,8 @@
 
 
       						<div class="form-group">
-                    <label for="uname">UserName:</label>
-			      				<input type="text" class="form-control input-sm uname">
+                    <label for="uname">UserName:</label><span id="check_uname_update"></span>
+			      				<input type="text" class="form-control input-sm uname" onkeyup="uname_check_update(this.value,role)">
 			      			</div>
 			    			
 			    			  <div class="form-group">
@@ -76,7 +76,7 @@
 
                 <div class="hidden form-group consignee_update_user">
                    <label for="consignee_update_user">Consignee:</label>
-                  <select name="consignee" class="form-control consignee" data-placement="left">
+                  <select name="consignee" class="form-control consignee11" data-placement="left">
                     <?php 
                       echo "<option value='0' selected='selected'>Select your Consignee</option>";
                       foreach($consignee as $row)
@@ -88,7 +88,7 @@
 
                 <div class="hidden form-group consignee_update_user2">
                    <label for="consignee_update_user">Consignee 2:</label>
-                  <select name="consignee" class="form-control consignee2" data-placement="left">
+                  <select name="consignee" class="form-control consignee22" data-placement="left">
                     <?php 
                       echo "<option value='0' selected='selected'>Select your Consignee</option>";
                       foreach($consignee as $row)
@@ -100,7 +100,7 @@
 
                 <div class="hidden form-group consignee_update_user3">
                    <label for="consignee_update_user">Consignee 3:</label>
-                  <select name="consignee" class="form-control consignee3" data-placement="left">
+                  <select name="consignee" class="form-control consignee33" data-placement="left">
                     <?php 
                       echo "<option value='0' selected='selected'>Select your Consignee</option>";
                       foreach($consignee as $row)
@@ -151,45 +151,76 @@
 
 <script>
 	var uid;
+  var roleid;
 
 	$(document).on('click','.btn-update-user',function(){
+    var uname = $(this).closest('tr').children('td:eq(4)').text();
+    $('#check_uname_update').text('');
+    $.ajax({
+                method: "POST",
+                url : "<?php echo base_url('Access/user_admin');?>",
+                beforeSend:function(){
+                  
+                   dia =  $.dialog({
+                        icon: 'fa fa-spinner fa-spin',
+                        closeIcon: false,
+                        title: 'User Information',
+                        backgroundDismiss: false,
+                        content: 'Preparing Information',
+                    });
+                },
+                data: {
+                  uname : uname
+                } 
+              }).done(function(data){
+                 var fills = JSON.parse(data);
 
-		var uname = $(this).closest('tr').children('td:eq(4)').text();
-		var fname = $(this).closest('tr').children('td:eq(5)').text();
-    var mname = $(this).closest('tr').children('td:eq(6)').text();
-		var lname = $(this).closest('tr').children('td:eq(7)').text();
-    
-    var email = $(this).closest('tr').children('td:eq(8)').text();
-     var title = $(this).closest('tr').children('td:eq(9)').text();
-    var department = $(this).closest('tr').children('td:eq(10)').text(); 
+                  var uname = fills[0].UserName;
+                  var fname = fills[0].FirstName;;
+                  var mname = fills[0].MiddleName;
+                  var lname = fills[0].LastName;
+                  
+                  var email = fills[0].EmailAddress;
+                   var title = fills[0].Title;
+                  var department = fills[0].Department;
 
-    var contact1 = $(this).closest('tr').children('td:eq(11)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(12)').text();
+                  var contact1 = fills[0].ContactNo1;
+                  var contact2 = fills[0].ContactNo2;
 
-		 uid = $(this).closest('tr').children('td:eq(18)').text();
-		var status = $(this).closest('tr').children('td:eq(19)').text();
+                   uid = fills[0].UserId;
+                   roleid = fills[0].RoleId;
+                  var status = fills[0].IsActive;
 
-		var statuses = parseInt(status);
+                  var statuses = parseInt(status);
 
-		$('.uname').val(uname);
-		$('.fname').val(fname);
-		$('.lname').val(lname);
-    $('.mname').val(mname);
+                  
+                  $('.uname').val(uname);
+                  $('.fname').val(fname);
+                  $('.lname').val(lname);
+                  $('.mname').val(mname);
 
-    $('.title').val(title);
-    $('.department_update').val(department);
+                  $('.title').val(title);
+                  $('.department_update').val(department);
 
-    $('.email').val(email);
+                  $('.email').val(email);
 
-    $('.c1').val(contact1);
-    $('.c2').val(contact2);
-    $('.update_user').val(role);
-    
-	     if(statuses==1){
-	      $('.activate_user').prop('checked', true);
-	  	 }else{
-	  	  $('.deactivate_user').prop('checked', true);
-	  	 }
+                  $('.c1').val(contact1);
+                  $('.c2').val(contact2);
+                  $('.update_user').val(role);
+                  
+                     if(statuses==1){
+                      $('.activate_user').prop('checked', true);
+                     }else{
+                      $('.deactivate_user').prop('checked', true);
+                     }
+
+
+                  dia.close();
+
+
+      });
+
+		
 	});
 
 
@@ -197,77 +228,112 @@
 
 $(document).on('click','.btn-update-user-client',function(){
 
-    var consignee = $(this).closest('tr').children('td:eq(20)').text();
-    var consignee2 = $(this).closest('tr').children('td:eq(21)').text();
-    var consignee3 = $(this).closest('tr').children('td:eq(22)').text();
-
     var uname = $(this).closest('tr').children('td:eq(4)').text();
-    var fname = $(this).closest('tr').children('td:eq(8)').text();
-    var mname = $(this).closest('tr').children('td:eq(9)').text();
-    var lname = $(this).closest('tr').children('td:eq(10)').text();
-    var email = $(this).closest('tr').children('td:eq(11)').text();
-    var title = $(this).closest('tr').children('td:eq(12)').text();
-    var department = $(this).closest('tr').children('td:eq(13)').text(); 
+    $('#check_uname_update').text('');
+    $.ajax({
+                method: "POST",
+                url : "<?php echo base_url('Access/user_admin');?>",
+                beforeSend:function(){
+                  
+                   dia =  $.dialog({
+                        icon: 'fa fa-spinner fa-spin',
+                        closeIcon: false,
+                        title: 'User Information',
+                        backgroundDismiss: false,
+                        content: 'Preparing Information',
+                    });
+                },
+                data: {
+                  uname : uname
+                } 
+              }).done(function(data){
+                 var fills = JSON.parse(data);
 
-    var contact1 = $(this).closest('tr').children('td:eq(14)').text();
-    var contact2 = $(this).closest('tr').children('td:eq(15)').text();
+                  var uname = fills[0].UserName;
+                  var fname = fills[0].FirstName;;
+                  var mname = fills[0].MiddleName;
+                  var lname = fills[0].LastName;
+                  
+                  var email = fills[0].EmailAddress;
+                  var title = fills[0].Title;
+                  var department = fills[0].Department;
 
-    var addr = $(this).closest('tr').children('td:eq(16)').text();
-    var addr2 = $(this).closest('tr').children('td:eq(17)').text();
+                  var contact1 = fills[0].ContactNo1;
+                  var contact2 = fills[0].ContactNo2;
 
-     uid = $(this).closest('tr').children('td:eq(18)').text();
-    var status = $(this).closest('tr').children('td:eq(19)').text();
+                  var addr = fills[0].Address1;
+                  var addr2 = fills[0].Address2;
 
-    
+                  var consignee = fills[0].ConsigneeId;
+                  var consignee2 = fills[0].ConsigneeId2;
+                  var consignee3 = fills[0].ConsigneeId3;
 
-    var statuses = parseInt(status);
+                   uid = fills[0].UserId;
+                   roleid = fills[0].RoleId;
+                  var status = fills[0].IsActive;
 
-    $('.uname').val(uname);
-    $('.fname').val(fname);
-    $('.lname').val(lname);
-    $('.mname').val(mname);
-    
-    $('.email').val(email);
+                  var statuses = parseInt(status);
 
-    $('.title').val(title);
-    $('.department_update').val(department);
+                  
+                  $('.uname').val(uname);
+                  $('.fname').val(fname);
+                  $('.lname').val(lname);
+                  $('.mname').val(mname);
+                  
+                  $('.email').val(email);
 
-    $('.c1').val(contact1);
-    $('.c2').val(contact2);
+                  $('.title').val(title);
+                  $('.department_update').val(department);
 
-    $('.addr_1').val(addr);
-    $('.addr_2').val(addr2);
+                  $('.c1').val(contact1);
+                  $('.c2').val(contact2);
 
-     $('.update_user').val(role);
+                  $('.addr_1').val(addr);
+                  $('.addr_2').val(addr2);
 
-    if(consignee == ""){
-        $(".consignee option:eq(0)").attr("selected","selected");
-    }else{
-      $('.consignee').val(consignee);
-    }
-    
-    if(consignee2 == ""){
-        $(".consignee2 option:eq(0)").attr("selected","selected");
-    }else{
-      $('.consignee2').val(consignee2);
-    }
-    
+                   $('.update_user').val(role);
 
-    if(consignee3 == ""){
-        $(".consignee3 option:eq(0)").attr("selected","selected");
-    }else{
-      $('.consignee3').val(consignee3);
-    }
-    
-       if(statuses==1){
-        $('.activate_user').prop('checked', true);
-       }else{
-        $('.deactivate_user').prop('checked', true);
-       }
+                  if(consignee == ""){
+                      $(".consignee11 option:eq(0)").attr("selected","selected");
+                  }else{
+                    $('.consignee11').val(consignee);
+                  }
+                  
+                  if(consignee2 == ""){
+                      $(".consignee22 option:eq(0)").attr("selected","selected");
+                  }else{
+                    $('.consignee22').val(consignee2);
+                  }
+                  
+
+                  if(consignee3 == ""){
+                      $(".consignee33 option:eq(0)").attr("selected","selected");
+                  }else{
+                    $('.consignee33').val(consignee3);
+                  }
+                  
+                     if(statuses==1){
+                      $('.activate_user').prop('checked', true);
+                     }else{
+                      $('.deactivate_user').prop('checked', true);
+                     }
+
+
+                  dia.close();
+
+
+      });
 
   });
 
 	$(document).on('click','.btn-UpdateUser', function(){
+
+
+    var consignee = $('.consignee11').val();
+    var consignee2 = $('.consignee22').val();
+    var consignee3 = $('.consignee33').val();
+
+    var role1 = $('.update_user').val();
 
 		var status = $('input[name=update_activate]:checked').val();
     var uname = $('.uname').val();
@@ -285,18 +351,20 @@ $(document).on('click','.btn-update-user-client',function(){
     var addr = $('.addr_1').val();
     var addr2 = $('.addr_2').val();
 
-    
-    var consignee = $('.consignee').val();
-    var consignee2 = $('.consignee2').val();
-    var consignee3 = $('.consignee3').val();
 
-    var role1 = $('.update_user').val();
-
-
+    if($('#check_uname_update i').text() == "Username already exists"){
+      $.alert({
+          title: 'Already Exists!',
+          content: 'Please Choose Another Username!',
+          confirm: function(){
+            
+          }
+      });
+    }else{
 
 		 $.ajax({
             method: "POST",
-            url: "<?php echo base_url('Job/user_update');?>",
+            url: "<?php echo base_url('Access/user_update');?>",
             beforeSend: function() {
                 dia = $.dialog({
                       icon: 'fa fa-spinner fa-pulse',
@@ -306,23 +374,25 @@ $(document).on('click','.btn-update-user-client',function(){
                       content: 'Currently Updating User',
                   });
               },
-              data: {uid    :uid,
-                     status :status,
-                     uname  :uname,
-                     fname  :fname,
-                     mname  :mname,
-                     lname  :lname,
-                     email  :email,
-                     title : title,
-                     department : department,
-                     c1     :c1,
-                     c2     :c2,
-                     addr   :addr,
-                     addr2   :addr2,
-                     consignee:consignee,
-                     consignee2:consignee2,
-                     consignee3:consignee3,
-                     role:role1,
+              data: {
+                     consignee   :consignee,
+                     consignee2  :consignee2,
+                     consignee3  :consignee3,
+                     role        :role1,
+                     uid         :uid,
+                     status      :status,
+                     uname       :uname,
+                     fname       :fname,
+                     mname       :mname,
+                     lname       :lname,
+                     email       :email,
+                     title       :title, 
+                     department  :department,
+                     c1          :c1,
+                     c2          :c2,
+                     addr        :addr,
+                     addr2       :addr2,
+                     
                 }
         })
            .done(function(data) {
@@ -351,11 +421,9 @@ $(document).on('click','.btn-update-user-client',function(){
                     }
                    });
               });
+
+          }
 	});
-
-
-  /*button when Client User Update*/
-
 
 
 </script>

@@ -13,9 +13,6 @@
                    <?php if($roleuser[1] == '2') {?>  <th data-sorter="false">Update</th>
                       <th data-sorter="false">Reset Password</th> <?php }else{} ?>
                       <th>Username</th>
-                      <th>Consignee</th>
-                      <th>Consignee 2</th>
-                      <th>Consignee 3</th>
                       <th>FirstName</th>
                       <th>MiddleName</th>
                       <th>LastName</th>
@@ -26,6 +23,9 @@
                       <th>ContactNo2</th>
                       <th>Address 1</th>
                       <th>Address 2</th>
+                      <th>Consignee</th>
+                      <th>Consignee 2</th>
+                      <th>Consignee 3</th>
 
                   </tr>
                 </thead>      
@@ -44,6 +44,9 @@
           $contact2 = $row->ContactNo2;
           $addr = $row->Address1;
           $addr2 = $row->Address2;
+          $CId = $row->CId;
+          $C2Id = $row->C2Id;
+          $C3Id = $row->C3Id;
          
           $active= $row->IsActive;
             if($active==1){ 
@@ -63,9 +66,6 @@
               <td><button type="button" class="btn btn-default btn-xs btn-reset-pass" data-toggle="modal" href="#myModal_resetPass"><span class="fa fa-refresh fa-fw"></span></button></td> 
           <?php }else{} ?>
               <td><?php echo $uname ?></td>
-              <td><?php echo $row->CName ?></td>
-              <td><?php echo $row->C2Name ?></td>
-              <td><?php echo $row->C3Name ?></td>
               <td><?php echo $fname ?></td>
               <td><?php echo $mname ?></td>
               <td><?php echo $lname ?> </td>
@@ -76,11 +76,14 @@
               <td><?php echo $contact2 ?></td>
               <td><?php echo $addr ?></td>
               <td><?php echo $addr2 ?></td>  
-              <td class="hidden"><?php echo $uid ?></td>
-              <td class="hidden"><?php echo $mystat ?></td> 
-              <td class="hidden"><?php echo $row->CId ?></td>
-              <td class="hidden"><?php echo $row->C2Id ?></td>
-              <td class="hidden"><?php echo $row->C3Id ?></td>
+              <td><?php echo $row->CName ?></td>
+              <td><?php echo $row->C2Name ?></td>
+              <td><?php echo $row->C3Name ?></td>
+              <td class="hidden"><?php echo $uid; ?></td>
+              <td class="hidden"><?php echo $mystat; ?></td> 
+              <td class="hidden"><?php echo $CId; ?></td>
+              <td class="hidden"><?php echo $C2Id; ?></td>
+              <td class="hidden"><?php echo $C3Id; ?></td>
                               
             </tr>
 

@@ -11,9 +11,76 @@ class Access extends CI_Controller {
             $this->load->model('UserAccess');
             $this->load->model('Jobfile');
              $this->load->model('Jobdata');
+             $this->load->model('UserAccess');
        }
 
 
+      function user_admin(){
+      $uname = $this->input->post('uname');
+      $uid;
+     
+      $uid_content = $this->UserAccess->contentUid($uname);
+       foreach ($uid_content as $row) {
+            $uid = $row->UserId;
+       }
+    
+        $userContent_ = $this->UserAccess->contentUser($uid);
+        echo json_encode($userContent_);
+      }
+       
+       //Update USer
+        function user_update(){
+          $uid = $this->input->post('uid');
+          $status = $this->input->post('status');
+          $uname = $this->input->post('uname');
+          $fname = $this->input->post('fname');
+          $mname = $this->input->post('mname');
+          $lname = $this->input->post('lname');
+
+          $email = $this->input->post('email');
+
+          $title = $this->input->post('title');
+          $department = $this->input->post('department');
+
+          $c1 = $this->input->post('c1');
+          $c2 = $this->input->post('c2');
+          $addr = $this->input->post('addr');
+          $addr2 = $this->input->post('addr2');
+
+          $consignee = $this->input->post('consignee');
+          $consignee2 = $this->input->post('consignee2');
+          $consignee3 = $this->input->post('consignee3');
+
+          $role = $this->input->post('role');
+
+           $stats = (int)$status;
+
+           $data = array(
+              'IsActive'    => $stats,
+              'UserName'    => $uname,
+              'FirstName'   => $fname,
+              'MiddleName'  => $mname,
+              'LastName'    => $lname,
+             
+              'Title'    => $title,
+              'Department'    => $department,
+
+              'EmailAddress'=> $email,
+              'ContactNo1'  => $c1,
+              'ContactNo2'  => $c2,
+
+              'Address1' => $addr,
+              'Address2' => $addr2,
+              
+              'ConsigneeId' => $consignee,
+              'ConsigneeId2' => $consignee2,
+              'ConsigneeId3' => $consignee3,
+              'RoleId' => $role
+
+           );
+          $this->db->where('UserId', $uid);
+          $this->db->update('User', $data);
+      }
        function get_dataAccess(){
        		$role = $this->input->post('role');
 

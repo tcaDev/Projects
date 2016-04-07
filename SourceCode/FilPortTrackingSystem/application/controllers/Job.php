@@ -159,8 +159,17 @@ class Job extends CI_Controller {
 
 function check_uname(){
  $uname = $this->input->post('uname');
-
-$query = $this->db->query("Select UserName from User where UserName='$uname' limit 1");
+ $roleid = $this->input->post('roleid');
+/*
+$query = $this->db->query("Select UserName from User where UserName='$uname' limit 1");*/
+$query= $this->db->query("Select R.RoleName ,U.UserName
+                            from User U 
+                            Join Role R On U.RoleId = R.RoleId
+                            where U.UserName='$uname' limit 1");
+$rolename;
+foreach ($query as $row) {
+  $rolename = $row->RoleName;
+}
 
 if($query->num_rows() == 1){
       echo "<i style='color:red;'>Username already exists</i> <span class='fa fa-exclamation fa-fw text-danger' ></span>";
@@ -2727,59 +2736,7 @@ $this->db->insert('RunningChargesHistory', $update_charges_history);
 
       /*update user*/
 
-      function user_update(){
-          $uid = $this->input->post('uid');
-          $status = $this->input->post('status');
-          $uname = $this->input->post('uname');
-          $fname = $this->input->post('fname');
-          $mname = $this->input->post('mname');
-          $lname = $this->input->post('lname');
-
-          $email = $this->input->post('email');
-
-          $title = $this->input->post('title');
-          $department = $this->input->post('department');
-
-          $c1 = $this->input->post('c1');
-          $c2 = $this->input->post('c2');
-          $addr = $this->input->post('addr');
-          $addr2 = $this->input->post('addr2');
-
-          $consignee = $this->input->post('consignee');
-          $consignee2 = $this->input->post('consignee2');
-          $consignee3 = $this->input->post('consignee3');
-
-          $role = $this->input->post('role');
-
-         
-           $stats = (int)$status;
-
-           $data = array(
-              'IsActive'    => $stats,
-              'UserName'    => $uname,
-              'FirstName'   => $fname,
-              'MiddleName'  => $mname,
-              'LastName'    => $lname,
-             
-              'Title'    => $title,
-              'Department'    => $department,
-
-              'EmailAddress'=> $email,
-              'ContactNo1'  => $c1,
-              'ContactNo2'  => $c2,
-
-              'Address1' => $addr,
-              'Address2' => $addr2,
-              
-              'ConsigneeId' => $consignee,
-              'ConsigneeId2' => $consignee2,
-              'ConsigneeId3' => $consignee3,
-              'RoleId' => $role
-
-           );
-          $this->db->where('UserId', $uid);
-          $this->db->update('User', $data);
-      }
+     
       
 
 /*History THIS*/

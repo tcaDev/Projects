@@ -62,13 +62,6 @@
               <td><?php echo $department ?></td>
               <td><?php echo $contact1 ?></td>
               <td><?php echo $contact2 ?></td>
-              <td hidden></td>
-              <td hidden></td>
-              <td hidden></td>
-              <td hidden></td>
-              <td hidden></td>
-              <td hidden><?php echo $uid ?></td>
-              <td hidden><?php echo $mystat ?></td>
             </tr>
 
         <?php } ?>

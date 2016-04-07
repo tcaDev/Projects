@@ -131,7 +131,16 @@ Class UserAccess extends CI_Model
 		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '$setting' ");
    	 	return $query->row();
 	}
+// User Id
+	function contentUid($uname){
+		$query = $this->db->query(" select UserId from User where Username = '$uname'");
+   	 	return $query->result();
+	}
 
+	function contentUser($uid){
+		$query = $this->db->query(" select * from User where UserId = '$uid'");
+   	 	return $query->result();
+	}
 }
 
 ?>
