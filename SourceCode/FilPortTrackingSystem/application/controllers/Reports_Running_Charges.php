@@ -89,8 +89,11 @@ class Reports_Running_Charges extends CI_Controller {
 	          						<div class="col-md-6">
 	          							
 	          						</div>
-	          						<div class="col-md-6">
+	          							<div class="col-md-6">
 	          							<span class="pull-right" style="margin-bottom:5px;">
+	          								<a href="' .  base_url("Print_Report_excel/csv_running_charges/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '&jobfile='.$pre_details->JobFileNo.'" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Save as CSV</a>
+		          							</span>
+		          							<span class="pull-right" style="margin-bottom:5px;">
 	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Print</a>
 		          							</span>
 		          					</div>
