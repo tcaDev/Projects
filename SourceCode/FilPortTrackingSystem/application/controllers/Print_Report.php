@@ -272,6 +272,7 @@ class Print_Report extends CI_Controller {
            $total += $charges->BAIApplication;
            $total += $charges->BAIInspection;
            $total += $charges->BPIInspection;
+           $total += $charges->OtherFees;
 
         $chargesOutput = '<div style="width:100%;">
                   <table style="margin-left:35px; width:100%; font-size:14px;">';     
@@ -412,7 +413,15 @@ class Print_Report extends CI_Controller {
                     <span class="pull-right">'. $charges->BPIInspection . ' </span>
                   </td>
                   </tr>';     
-
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                   Other Fees <span class="pull-right"> : </span>
+                  </td>
+                  <td>
+                    <span class="pull-right">'. $charges->OtherFees . ' </span>
+                  </td>
+                  </tr>';    
+                  
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
                     <hidden>

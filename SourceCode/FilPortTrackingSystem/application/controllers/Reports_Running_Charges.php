@@ -239,6 +239,7 @@ class Reports_Running_Charges extends CI_Controller {
 		     	 $total += $charges->BAIApplication;
 		     	 $total += $charges->BAIInspection;
 		     	 $total += $charges->BPIInspection;
+		     	 $total += $charges->OtherFees;
 
 				$chargesOutput = '<div style="width:100%;" >
 									<table class = "table table-condensed table-bordered" style="width:100%; font-size:14px;">';     
@@ -372,6 +373,14 @@ class Reports_Running_Charges extends CI_Controller {
 									</td>
 									<td>
 										<span class="pull-right">'. $charges->BPIInspection . ' </span>
+									</td>
+								  </tr>';	
+			   $chargesOutput .= '<tr>
+									<td style="text-align:left;">
+										Other Fees <span class="pull-right"> : </span>
+									</td>
+									<td>
+										<span class="pull-right">'. $charges->OtherFees . ' </span>
 									</td>
 								  </tr>';			
 

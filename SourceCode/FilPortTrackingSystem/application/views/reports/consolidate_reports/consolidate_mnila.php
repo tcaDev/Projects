@@ -148,6 +148,7 @@
         })
           .done(function(data) {
               dia.close();
+              alert(data);
             if(data == 0){
               dia_2 = $.alert({
               icon: 'fa fa-exclamation-triangle-o',
@@ -159,7 +160,6 @@
                     dia_2.close();
                    }
               });
-              
             }else{
               $('#consolidated-options').modal('show');
               $('#consolidated_pdf').html('<a href=' + data +' target="blank" id="consolidated_pdf"><input type="button" class="btn btn-save-as-consolidated btn-danger form-control" value="PDF File"/></a>')
