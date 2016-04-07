@@ -81,6 +81,32 @@
 <div class="subOutput">
 
 </div>
+
+
+<div class="modal fade" id="volume-outport-options" role="dialog" style="top:30%;">
+            <div class="modal-dialog" >
+               <div class="modal-content" style="height:150px;">
+               <div class="modal-header">
+                  <button type="button" data-dismiss="modal" class="close" style="padding-bottom: 5px;"><span>x</span></button>  
+                  <br>
+               </div>
+               
+                <div class="modal-body">
+                   <div class="col-md-12">
+                    <div class="col-md-4"> 
+                      <h3>Save As</h3>
+                    </div>
+                    <div class="col-md-4" style="padding-top:15px;"> 
+                      <a href='#' id="volume-outport_csv"><input type="button" class="btn btn-success btn-save-as-volume-outport form-control" value="CSV File"/></a>
+                    </div>
+                    <div class="col-md-4" style="padding-top:15px;">
+                      <a href='#' id="volume-outport_pdf"><input type="button" class="btn btn-danger btn-save-as-volume-outport form-control" value="PDF File"/></a>
+                     </div>
+                   </div>
+                </div>
+               </div>
+            </div>
+</div>
 		
 <script>
 
@@ -159,7 +185,7 @@ function loadConisngeeNamesVolume_outport(){
 		url  : "<?php echo base_url('Reports_Running_Charges/getConsigneeNames');?>",
 		type : "POST",
 		beforeSend : function(){
-			$('.loadConsignee-outport').html('<span class="fa fa-spinner fa-pulse"></span>Loading Commodities...');
+			$('.loadConsignee-outport').html('<span class="fa fa-spinner fa-pulse"></span>Loading Consignee...');
 		},
 		data : {
 			userID : con_name
@@ -218,7 +244,8 @@ $(document).on('click','.btn-volume-outport',function(){
 								});
 								
 							}else{
-								window.open(data);
+								$('#volume-outport-options').modal('show');
+	                       		$('#volume-outport_pdf').html('<a href=' + data +' target="blank" id="volume-outport_pdf"><input type="button" class="btn btn-save-as-volume-outport btn-danger form-control" value="PDF File"/></a>');
 							}
 			}
 		});

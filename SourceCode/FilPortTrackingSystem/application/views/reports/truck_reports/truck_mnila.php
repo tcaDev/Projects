@@ -60,6 +60,30 @@
     
     		
 </div>
+<div class="modal fade" id="truck-options" role="dialog" style="top:30%;">
+            <div class="modal-dialog" >
+               <div class="modal-content" style="height:150px;">
+               <div class="modal-header">
+                  <button type="button" data-dismiss="modal" class="close" style="padding-bottom: 5px;"><span>x</span></button>  
+                  <br>
+               </div>
+               
+                <div class="modal-body">
+                   <div class="col-md-12">
+                    <div class="col-md-4"> 
+                      <h3>Save As</h3>
+                    </div>
+                    <div class="col-md-4" style="padding-top:15px;"> 
+                      <a href='#' id="truck_csv"><input type="button" class="btn btn-success btn-save-as-truck form-control" value="CSV File"/></a>
+                    </div>
+                    <div class="col-md-4" style="padding-top:15px;">
+                      <a href='#' id="truck_pdf"><input type="button" class="btn btn-danger btn-save-as-truck form-control" value="PDF File"/></a>
+                     </div>
+                   </div>
+                </div>
+               </div>
+            </div>
+</div>
 
 
 
@@ -138,19 +162,43 @@ function loadConsigneeNames(){
                 method: "POST",
                 url: "<?php echo base_url('Reports_Running_Charges/loadTruckDetails');?>",
                 beforeSend: function() {
-                          $('.table-truck-reports').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
-                        },  
+                    dia =  $.dialog({
+                                      icon: 'fa fa-spinner fa-spin',
+                                      closeIcon: false,
+                                      title: 'Please wait!',
+                                      backgroundDismiss: false,
+                                      content: 'Currently Searching Your Files',
+                                  });
+                 },  
                 data: { 
                   montype   : get_truck,
                   con_id    : con_id,
                   frm       : frm,
                   to        : to
                 }
-            })
-              .done(function(data) {
-                  $(".table-truck-reports").html(data);
+            }).done(function(data) {
+                   dia.close();
+                    if(data == 0){
+                      dia_2 = $.alert({
+                      icon: 'fa fa-exclamation-triangle-o',
+                      closeIcon: false,
+                          title: 'No Data Match',
+                          backgroundDismiss: false,
+                          content: 'Sorry ! Data not Found ',
+                          confirm : function(){
+                            dia_2.close();
+                           }
+                      });
+                      }else{
+                        $('#truck-options').modal('show');
+                        $('#truck_pdf').html('<a href=' + data +' target="blank" id="truck_pdf"><input type="button" class="btn btn-save-as-truck btn-danger form-control" value="PDF File"/></a>');
+                      }
             }); 
           }
       }
   });
+
+
 </script>
+
+

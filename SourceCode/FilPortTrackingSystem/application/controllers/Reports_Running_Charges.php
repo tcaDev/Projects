@@ -152,19 +152,13 @@ class Reports_Running_Charges extends CI_Controller {
           $reportsTruck = $this->Charges->getCharges_Truck($monitoringType,$cID,$ataFrom,$ataTo);
           $dispOutput .= '<div class="table-reports-truck">';
           if(count($reportsTruck) > 0){
-          	$dispOutput = '<script type="text/javascript" language="javascript"> 
-						  window.open("' . base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '");
-						  </script>';  
+          	$dispOutput = base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType;
           }
           else{
-          	$dispOutput .= '
-		    			<center> <h4 style="font-color:red"> No Data Matches Your Search </h4> </center> 
-		     	</div>';
+          	$dispOutput = 0;
           }
 
-       
-
-		echo $dispOutput;  
+       		echo $dispOutput;  
      }
 
      function loadConsolidated(){

@@ -45,20 +45,25 @@
             </div>
           </div> 		
     	</div>
-    		
 </div>
+
 <div class="modal fade" id="consolidated-options" role="dialog" style="top:30%;">
             <div class="modal-dialog" >
                <div class="modal-content" style="height:150px;">
+               <div class="modal-header">
+                  <button type="button" data-dismiss="modal" class="close" style="padding-bottom: 5px;"><span>x</span></button>  
+                  <br>
+               </div>
+               
                 <div class="modal-body">
-                   <div class="col-md-12" style="padding-top:20px;">
+                   <div class="col-md-12">
                     <div class="col-md-4"> 
                       <h3>Save As</h3>
                     </div>
-                    <div class="col-md-4" style="padding-top:20px;"> 
+                    <div class="col-md-4" style="padding-top:15px;"> 
                       <a href='#' id="consolidated_csv"><input type="button" class="btn btn-success btn-save-as-consolidated form-control" value="CSV File"/></a>
                     </div>
-                    <div class="col-md-4" style="padding-top:20px;">
+                    <div class="col-md-4" style="padding-top:15px;">
                       <a href='#' id="consolidated_pdf"><input type="button" class="btn btn-danger btn-save-as-consolidated form-control" value="PDF File"/></a>
                      </div>
                    </div>
@@ -66,6 +71,7 @@
                </div>
             </div>
 </div>
+
 <script>
    var get_consolidate = 1;
 
@@ -161,7 +167,4 @@
         }); 
       }
   });
-$(document).on('click','.btn-save-as-consolidated',function(){
-  $('#consolidated-options').modal('hide');
-});
 </script>
