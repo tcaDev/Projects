@@ -143,10 +143,10 @@
                       <h3>Save As</h3>
                     </div>
                     <div class="col-md-4" style="padding-top:15px;"> 
-                      <a href='#' id="running-charges-manila_csv"><input type="button" class="btn btn-success btn-save-as-running-charges-manila form-control" value="CSV File"/></a>
+                      <a href='#' id="running-charges-manila_csv"><input type="button" class="btn btn-success btn-save-as-running-charges-manila_csv form-control" value="CSV File"/></a>
                     </div>
                     <div class="col-md-4" style="padding-top:15px;">
-                      <a href='#' id="running-charges-manila_pdf"><input type="button" class="btn btn-danger btn-save-as-running-charges-manila form-control" value="PDF File"/></a>
+                      <a href='#' id="running-charges-manila_pdf"><input type="button" class="btn btn-danger btn-save-as-running-charges-manila_pdf form-control" value="PDF File"/></a>
                      </div>
                    </div>
                 </div>
@@ -223,6 +223,7 @@ $(document).on('click','.btn-search-byConName-manila',function(){
 							
 						}else{
 	                        $('#running-charges-manila-options').modal('show');
+	                         $('#running-charges-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_charges_cosignee/')?>" target="blank" id="running-charges-manila_csv"><input type="button" class="btn btn-save-as-running-charges-manila btn-success form-control" value="CSV File"/></a>');
 	                        $('#running-charges-manila_pdf').html('<a href=' + data +' target="blank" id="running-charges-manila_pdf"><input type="button" class="btn btn-save-as-running-charges-manila btn-danger form-control" value="PDF File"/></a>');
                       }
 		});

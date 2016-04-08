@@ -96,10 +96,14 @@
                       <h3>Save As</h3>
                     </div>
                     <div class="col-md-4" style="padding-top:15px;"> 
-                      <a href='#' id="volume-manila_csv"><input type="button" class="btn btn-success btn-save-as-volume-manila form-control" value="CSV File"/></a>
+                         <a href='#' id="volume-manila_csv">
+                           <input type="button" class="btn btn-success btn-save-as-volume-manila_csv form-control" value="CSV File"/>
+                         </a>
                     </div>
                     <div class="col-md-4" style="padding-top:15px;">
-                      <a href='#' id="volume-manila_pdf"><input type="button" class="btn btn-danger btn-save-as-volume-manila form-control" value="PDF File"/></a>
+                         <a href='#' id="volume-manila_pdf">
+                            <input type="button" class="btn btn-danger btn-save-as-volume-manila_pdf form-control" value="PDF File"/>
+                         </a>
                      </div>
                    </div>
                 </div>
@@ -244,6 +248,8 @@ $(document).on('click','.btn-volume-manila',function(){
 											
 										}else{
 											$('#volume-manila-options').modal('show');
+											
+										    $('#volume-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_volume');?>" target="blank" id="volume-manila_csv"><input type="button" class="btn btn-save-as-volume-manila btn-success form-control" value="CSV File"/></a>');
 	                       					$('#volume-manila_pdf').html('<a href=' + data +' target="blank" id="volume-manila_pdf"><input type="button" class="btn btn-save-as-volume-manila btn-danger form-control" value="PDF File"/></a>');
 										}
 						}

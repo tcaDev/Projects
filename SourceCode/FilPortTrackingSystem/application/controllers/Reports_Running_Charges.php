@@ -101,6 +101,8 @@ class Reports_Running_Charges extends CI_Controller {
           					</div>
           				</div>
           			</div>';
+
+
           }else{
           	$dispOutput = "<center style='font-color:red;'> No PO Number From your Accounts Matches Your Search </center>";
           }
@@ -133,11 +135,20 @@ class Reports_Running_Charges extends CI_Controller {
           $userID       		=  $this->input->post('userID');
           $consigneeId 			=  $this->input->post('con_id');
           $charges 				=  $this->input->post('charges');
+
+           	$this->session->volume_consignee_ataFrom =$ataFrom ;
+          	$this->session->volume_consignee_ataTo = $ataTo;
+           	$this->session->volume_consignee_monitoringType = $monitoringType;
+          	$this->session->volume_consignee_userID = $userID;
+           	$this->session->volume_consignee_consigneeId = $consigneeId;
+           	$this->session->volume_consignee_charges = $charges;
           $dispOutput = '';
           $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$consigneeId,$ataFrom,$ataTo,$charges);
           //var_dump($reportsVolume);
           if(count($reportsVolume) > 0){
           	$dispOutput =  base_url("Print_Report_Volume/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&userID='. $userID . '&montype=' . $monitoringType . '&consigneeId=' . $consigneeId . '&charges=' . $charges ;  
+
+
           }
           else{
           	$dispOutput .= 0;
@@ -156,6 +167,12 @@ class Reports_Running_Charges extends CI_Controller {
           $dispOutput .= '<div class="table-reports-truck">';
           if(count($reportsTruck) > 0){
           	$dispOutput = base_url("Print_Report_Truck/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType;
+
+          	$this->session->truck_ataFrom  =$ataFrom;
+          	$this->session->truck_ataTo    =$ataTo;
+          	$this->session->truck_monitoringType =$monitoringType;
+          	$this->session->truck_cID = $cID;
+
           }
           else{
           	$dispOutput = 0;
@@ -175,6 +192,11 @@ class Reports_Running_Charges extends CI_Controller {
           $dispOutput .= '<div class="table-consolidate-reports">';
           if(count($reportsTruck) > 0){
           	$dispOutput = base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
+
+          	$this->session->consolidate_ataFrom = $ataFrom;
+          	$this->session->consolidate_ataTo   = $ataTo;
+          	$this->session->consolidate_monitoringType = $monitoringType;
+          	$this->session->consolidate_poNum =$poNum;
           }
           else{
           	$dispOutput .= 0;
@@ -205,7 +227,13 @@ class Reports_Running_Charges extends CI_Controller {
      	$con_id  =  $this->input->post('con_id');  
      	$prod_id =  $this->input->post('prod_id');
      	$frm 	 =  $this->input->post('frm');  
-     	$to		 =  $this->input->post('to');  
+     	$to		 =  $this->input->post('to'); 
+
+     	$this->session->csv_montype= $montype;
+     	$this->session->csv_con_id= $con_id;
+       	$this->session->csv_prod_id= $prod_id;
+     	$this->session->csv_frm= $frm;
+		$this->session->csv_to= $to;
 
      	$dispOutput = '';
 
@@ -633,7 +661,12 @@ class Reports_Running_Charges extends CI_Controller {
           $dispOutput = '';
           $reportsTruck = $this->Charges->get_Consolidated($monitoringType,$ataFrom,$ataTo,$poNum);
           if(count($reportsTruck) > 0){
-          	$dispOutput = base_url("Print_Report_Consolidated_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
+          	$dispOutput = base_url("Print_Report_Consolidated_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo . '&montype=' . $monitoringType . '&poNum=' . $poNum ; 
+
+          	$this->session->consolidate_ataFrom = $ataFrom;
+          	$this->session->consolidate_ataTo   = $ataTo;
+          	$this->session->consolidate_monitoringType = $monitoringType;
+          	$this->session->consolidate_poNum =$poNum;
           }
           else{
           	$dispOutput .= 0;

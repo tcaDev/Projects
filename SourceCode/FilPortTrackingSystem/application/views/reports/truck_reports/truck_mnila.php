@@ -191,6 +191,7 @@ function loadConsigneeNames(){
                       });
                       }else{
                         $('#truck-options').modal('show');
+                        $('#truck_csv').html('<a href="<?php echo base_url('Print_Report_excel/truck_booking/')?>" target="blank" id="truck_csv"><input type="button" class="btn btn-save-as-truck btn-success form-control" value="CSV File"/></a>');
                         $('#truck_pdf').html('<a href=' + data +' target="blank" id="truck_pdf"><input type="button" class="btn btn-save-as-truck btn-danger form-control" value="PDF File"/></a>');
                       }
             }); 
