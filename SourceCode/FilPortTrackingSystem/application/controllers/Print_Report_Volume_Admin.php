@@ -2,7 +2,7 @@
 
  date_default_timezone_set('Asia/Manila');
  require_once APPPATH.'libraries/swift_mailer/swift_required.php';
-class Print_Report_Volume_Admin extends CI_Controller {
+ class Print_Report_Volume_Admin extends CI_Controller {
 
      public function __construct()
        {
@@ -23,18 +23,20 @@ class Print_Report_Volume_Admin extends CI_Controller {
            $consigneeId          =  $this->input->get('consigneeId');
            $charges              =  $this->input->get('charges');
            
-           $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges);
-           //var_dump($reportsVolume);
+              $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges);
+              //var_dump($reportsVolume);
               $documnt = $this->createDocToPrint($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges);
+
               $mpdf->useSubstitutions=false;
               $mpdf->simpleTables = true;
               $this->m_pdf->pdf->AddPage('L');
-              $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'); // external css
+              $stylesheet = file_get_contents('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
               $this->m_pdf->pdf->WriteHTML($stylesheet,1);
+
               $this->m_pdf->pdf->WriteHTML($documnt);
               $this->m_pdf->pdf->Output();
 
-              //echo $documnt;
+              echo $documnt;
   }
 
   function createDocToPrint($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges){
@@ -76,7 +78,6 @@ class Print_Report_Volume_Admin extends CI_Controller {
            }else{
             $monHeader = 'Air Freight';
            }
-
          //$dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
             $dispOutput .= '
             <html>
@@ -221,11 +222,10 @@ class Print_Report_Volume_Admin extends CI_Controller {
                                       </tr>";
                  }else{
                     $total = "<tr>
-                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'><b>TOTAL </b></td>
-                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'> </td>
-                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'> </td>
-                               <td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . $tVolume . "</td>";
-                    $total .= "<td style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>" . number_format($rCharges, 2, '.', ',') . "</td>
+                               <td colspan=3 style='padding:5px;text-align:center; border:1px solid #ddd;'><b>TOTAL </b></td>
+                               
+                               <td>" . $tVolume . "</td>";
+                    $total .= "<td>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
                     $tableHeader = "  <tr>
                                         <th style='padding:5px;text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
@@ -251,21 +251,21 @@ class Print_Report_Volume_Admin extends CI_Controller {
               foreach ($reportsVolume as $row) {
                   if($oldJBNo != $row->JobFileNo){
                      $content .= "<tr>";
-                     $content .= "<td >" . $row->JobFileNo . "</td>";
-                    $content .= "<td >" . $row->ATA . "</td>";
-                    $content .= "<td >" . $row->TargetDeliveryDate . "</td>";
+                     $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->ATA . "</td>";
+                    $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
                   
                     if($charges == "*"){
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                      $content .= "<td>" . $volume. "</td>";
-                      $content .= "<td >" . $row->LodgementFee . "</td>";
-                      $content .= "<td >" . $row->BreakBulkFee . "</td>";
-                      $content .= "<td >" . $row->StorageFee . "</td>";
-                      $content .= "<td >" . $row->BadCargoOrderFee . "</td>";
-                      $content .= "<td >" . $row->VCRC . "</td>";
-                      $content .= "<td >" . $row->CNI . "</td>";
-                      $content .= "<td >" . $row->CNIU . "</td>";
-                      $content .= "<td >" . $row->OtherFees . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $volume. "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->LodgementFee . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->BreakBulkFee . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->StorageFee . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->BadCargoOrderFee . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->VCRC . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->CNI . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->CNIU . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->OtherFees . "</td>";
                       $tVolume      += $volume;
                       $lodgementFee += $row->LodgementFee;
                       $breakbulkfee += $row->BreakBulkFee;
@@ -277,8 +277,8 @@ class Print_Report_Volume_Admin extends CI_Controller {
                       $otherfees    += $row->OtherFees;
                     }else{
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                      $content .= "<td><center>" . $volume. "</center></td>";
-                      $content .= "<td >" . $row->RCharges . "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'> " . $volume. "</td>";
+                      $content .= "<td style='border:1px solid #ddd;padding:10px;'>" . $row->RCharges . "</td>";
                       $tVolume      += $volume;
                       $rCharges    += $row->RCharges;
                     }
@@ -288,26 +288,24 @@ class Print_Report_Volume_Admin extends CI_Controller {
              }
              if($charges == "*"){
                 $total = "<tr>
-                            <td><b>TOTAL </b></td>
-                            <td > </td>
-                            <td > </td>
-                            <td >" . $tVolume . "</td>
-                            <td >" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
-                            <td >" . number_format($storagefee, 2, '.', ',') . "</td>
-                            <td >" . number_format($badcargofee, 2, '.', ','). "</td>
-                            <td >" . number_format($vcrc, 2, '.', ','). "</td>
-                            <td >" . number_format($cni, 2, '.', ',') . "</td>
-                            <td >" . number_format($cniu, 2, '.', ',') . "</td>
-                            <td >" . number_format($otherfees, 2, '.', ',') . "</td>
+                            <td colspan=3 style='border:1px solid #ddd;padding:10px;'> <b>TOTAL </b></td>
+                       
+                            <td style='border:1px solid #ddd;padding:10px;'>" . $tVolume . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($breakbulkfee, 2, '.', ',') . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($storagefee, 2, '.', ',') . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($badcargofee, 2, '.', ','). "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($vcrc, 2, '.', ','). "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($cni, 2, '.', ',') . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($cniu, 2, '.', ',') . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($otherfees, 2, '.', ',') . "</td>
                             </tr>";
              }else{
                  $total = "<tr>
-                            <td ><b>TOTAL </b></td>
-                            <td > </td>
-                            <td > </td>
-                            <td>" . $tVolume . "</td>
-                            <td >" . number_format($rCharges, 2, '.', ',') . "</td>
+                            <td colspan=3 style='border:1px solid #ddd;padding:10px;'><b>TOTAL </b></td>
+                
+                            <td style='border:1px solid #ddd;padding:10px;'>" . $tVolume . "</td>
+                            <td style='border:1px solid #ddd;padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
              }
            
@@ -315,18 +313,18 @@ class Print_Report_Volume_Admin extends CI_Controller {
                 $dispOutput .="<table class ='table table-bordered'>
                     <thead>
                     <tr>
-                      <th >Jobfile No</th>
-                      <th >Actual Arrival Time</th>
-                      <th >Delivery Date</th>
-                      <th >Weight(kgs)</th>
-                      <th >Lodgement Fee</th>
-                      <th >Break Bulk Fee</th>
-                      <th >Storage Fee</th>
-                      <th >Bad Cargo Order Fee</th>
-                      <th >VCRC</th>
-                      <th >CNI</th>
-                      <th >CNIU</th>
-                      <th >Other Fees</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Weight(kgs)</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Lodgement Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Break Bulk Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Storage Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Bad Cargo Order Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>VCRC</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>CNI</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>CNIU</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Other Fees</th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
@@ -334,11 +332,11 @@ class Print_Report_Volume_Admin extends CI_Controller {
               $dispOutput .="<table class ='table table-bordered'>
                     <thead>
                     <tr>
-                      <th >Jobfile No</th>
-                      <th >Actual Arrival Time</th>
-                      <th >Delivery Date</th>
-                      <th >Weight(kgs)</th>
-                      <th > " . $charges . " </th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Weight(kgs)</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'> " . $charges . " </th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
@@ -354,8 +352,5 @@ class Print_Report_Volume_Admin extends CI_Controller {
 
       return $dispOutput;
   }
-
-
 }
-
 ?>
