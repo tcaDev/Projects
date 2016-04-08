@@ -60,7 +60,8 @@
                     echo $row->Ratings;
                  }?>,
             }]
-        }]
+        }],
+        
     });
 });
 </script>

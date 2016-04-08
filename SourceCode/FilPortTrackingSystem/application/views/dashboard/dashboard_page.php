@@ -22,7 +22,6 @@
 
 		<div class="dash-side" style="padding: 15px 3px;">
 			<div class="tab-content col-lg-12">
-			
 					 <div class="tab-pane active" id="tab_a">
 					 	<div class="row">
 					 		<div class="col-lg-12">
@@ -51,20 +50,23 @@
 					 	   
 			        </div>
 			        <div class="tab-pane" id="tab_b">
-			        	<div class="col-lg-12"  style="overflow-y:auto;height: 490px;">
-			        		<div class="jobfile-stat"></div> 
+			        	<div class="col-lg-12">
+		        			<ul class="nav nav-tabs">
+							    <li class="active"><a data-toggle="tab" href="#jtrans" class="">Jobfile Transactions</a></li>
+							    <li><a data-toggle="tab" href="#jmonth" class="">Transactions by Month</a></li>
+
+							 </ul>
+			             	 	<div class="tab-content" style="overflow-y:auto;height: 490px;">
+			             	 		<div class="tab-pane fade in active" id="jtrans">
+			             	 			<div class="jobfile-stat"></div>
+			             	 		</div>
+			             	 		<div class="tab-pane fade" id="jmonth">
+			             	 			<div class=""></div>
+			             	 		</div>
+			             	 	</div>
+
 			        	</div>
 			        	
-			        </div>
-			        <div class="tab-pane" id="tab_c">
-			        	<div class="col-lg-12"  style="overflow-y:auto;height: 490px;">
-						  <img src="<?php echo base_url('resources/img/chart/sample2.png'); ?>">
-						</div>
-			        </div>
-			        <div class="tab-pane" id="tab_d">
-			        	<div class="col-lg-12"  style="overflow-y:auto;height: 490px;">
-			            	 <img src="<?php echo base_url('resources/img/chart/sample3.png'); ?>">
-			            </div>
 			        </div>
 			
 			       
@@ -141,5 +143,7 @@ $(document).on('click','.jbfl_chart_btn',function(){
        		 }
         });
 });
+
+
 	  
 </script>
