@@ -244,6 +244,7 @@ $(document).on('click','.btn-volume-air',function(){
 								
 							}else{
 								$('#volume-air-options').modal('show');
+								$('#volume-air_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_volume');?>" target="blank" id="volume-air_csv"><input type="button" class="btn btn-save-as-volume-air btn-success form-control" value="CSV File"/></a>');
 	                       		$('#volume-air_pdf').html('<a href=' + data +' target="blank" id="volume-air_pdf"><input type="button" class="btn btn-save-as-volume-air btn-danger form-control" value="PDF File"/></a>');
 							}
 			}

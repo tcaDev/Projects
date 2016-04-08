@@ -194,16 +194,17 @@ class Reports_Running_Charges extends CI_Controller {
           $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
          // $dispOutput .= '<div class="table-consolidate-reports">';
           if(count($reportsTruck) > 0){
+          	$this->session->consolidate_ataFrom = $ataFrom;
+          	$this->session->consolidate_ataTo   = $ataTo;
+          	$this->session->consolidate_monitoringType = $monitoringType;
+          	$this->session->consolidate_poNum =$poNum;
 
          // 	echo 'eqweqw';
           	$dispOutput = base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
 
 
 
-          	$this->session->consolidate_ataFrom = $ataFrom;
-          	$this->session->consolidate_ataTo   = $ataTo;
-          	$this->session->consolidate_monitoringType = $monitoringType;
-          	$this->session->consolidate_poNum =$poNum;
+
           }
           else{
           	$dispOutput .= 0;
@@ -248,6 +249,12 @@ class Reports_Running_Charges extends CI_Controller {
      	
      	if(count($commodityVolume) > 0){
      		$dispOutput =  base_url("Print_Report_CommodityVolume/") . '?frm=' . $frm . '&to=' . $to .'&cID='. $con_id . '&montype=' . $montype . '&pID=' . $prod_id; 
+
+			 $this->session->csv_montype = $montype;
+         	 $this->session->csv_con_id  = $con_id;
+       	     $this->session->csv_prod_id = $prod_id;
+     	     $this->session->csv_frm     = $frm;
+		     $this->session->csv_to     = $to;
 		}else{
 			$dispOutput = 0;
 		}
@@ -624,6 +631,14 @@ class Reports_Running_Charges extends CI_Controller {
           //$dispOutput .= '<div class="table-volume-admin">';
            if(count($reportsVolume) > 0){
           	$dispOutput =  base_url("Print_Report_Volume_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&montype=' . $monitoringType . '&consigneeId=' . $consigneeID . '&charges=' . $charges ;  
+
+          	$this->session->volume_ataFrom = $ataFrom;
+          	$this->session->volume_charges = $charges;
+          	$this->session->volume_ataTo   = $ataTo;
+          	$this->session->volume_monitoringType  = $monitoringType;
+          	$this->session->volume_consigneeID = $consigneeID;
+
+
           }
           else{
           	$dispOutput .= 0;

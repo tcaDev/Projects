@@ -245,6 +245,7 @@ $(document).on('click','.btn-volume-outport',function(){
 								
 							}else{
 								$('#volume-outport-options').modal('show');
+							    $('#volume-outport_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_volume/')?>" target="blank" id="volume-outport_csv"><input type="button" class="btn btn-save-as-volume-outport btn-success form-control" value="CSV File"/></a>');
 	                       		$('#volume-outport_pdf').html('<a href=' + data +' target="blank" id="volume-outport_pdf"><input type="button" class="btn btn-save-as-volume-outport btn-danger form-control" value="PDF File"/></a>');
 							}
 			}
