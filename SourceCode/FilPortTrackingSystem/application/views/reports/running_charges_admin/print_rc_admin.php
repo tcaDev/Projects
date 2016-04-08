@@ -90,7 +90,7 @@
     				<tr>
     					<td>BAI Inspection Fee :</td>
     					<td><?php echo $charges->BAIInspection ?></td> 
-    				</tr>   
+    				</tr>
                     <tr>
                         <td>Other Fees :</td>
                         <td><?php echo $charges->OtherFees ?></td> 

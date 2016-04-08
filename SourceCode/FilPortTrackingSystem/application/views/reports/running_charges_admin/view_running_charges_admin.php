@@ -50,10 +50,6 @@
     					<td><?php echo number_format($charges->THCCharges ,2,'.',',');?></td>
     				</tr>
     				<tr>
-    					<td>Local Charges :</td>
-    					<td></td>
-    				</tr>
-    				<tr>
     					<td>Arrestre :</td>
     					<td><?php echo number_format( $charges->Arrastre ,2,'.',',');?></td>
     				</tr>

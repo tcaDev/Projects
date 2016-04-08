@@ -287,11 +287,6 @@ class Print_RunningCharges_Admin extends CI_Controller {
                   </tr>';
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
-                    Local Charges <span class="pull-right"> : </span>
-                  </td>
-                  </tr>';
-        $chargesOutput .= '<tr>
-                  <td style="text-align:left;">
                     Arrastre <span class="pull-right"> : </span>
                   </td>
                   <td>
