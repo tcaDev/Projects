@@ -187,11 +187,18 @@ class Reports_Running_Charges extends CI_Controller {
           $monitoringType       =  $this->input->post('montype');
           $cID       			=  $this->input->post('con_id');
           $poNum       			=  $this->input->post('poNum');
+
+
+
           $dispOutput = '';
           $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
-          $dispOutput .= '<div class="table-consolidate-reports">';
+         // $dispOutput .= '<div class="table-consolidate-reports">';
           if(count($reportsTruck) > 0){
+
+         // 	echo 'eqweqw';
           	$dispOutput = base_url("Print_Report_Consolidated/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType . '&poNum=' . $poNum ;  
+
+
 
           	$this->session->consolidate_ataFrom = $ataFrom;
           	$this->session->consolidate_ataTo   = $ataTo;

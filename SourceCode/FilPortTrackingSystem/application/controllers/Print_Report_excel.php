@@ -80,14 +80,33 @@ class Print_Report_excel extends CI_Controller {
 								FROM vw_RunningCharges as R INNER JOIN vw_Products  as P
 								  ON `R`.`JobFileNo`=`R`.`JobFileNo`
 								WHERE `R`.JobFileNo = '$jbNo'");*/
-								$query= $this->db->query("select  `R`.`LodgementFee`,`R`.`ContainerDeposit`,
-								`R`.`THCCharges`,`R`.`Arrastre`,`R`.`Wharfage`,`R`.`Weighing`,`R`.`DEL`,
-								`R`.`DispatchFee`,`R`.`Storage`,`R`.`Demorage`,`R`.`Detention`,`R`.`EIC`,
-								`R`.`BAIApplication`,`R`.`BAIInspection`,`R`.`SRAApplication`,`R`.`SRAInspection`,
-								`R`.`BadCargo`,`R`.`BPIInspection`,`R`.`PlugInForReefer`,`R`.`OtherFees`,
+								$query= $this->db->query("select 
+							    `R`.`LodgementFee` as 'Lodgement Fee' ,
+								`R`.`THCCharges` as 'THC Charges',
+								`R`.`ContainerDeposit` as 'Local Charges',
+								`R`.`Arrastre`,
+								`R`.`Wharfage`,
+								`R`.`Weighing`,
+								`R`.`DispatchFee`,
+								`R`.`DEL`,
+								`R`.`Storage` as 'Storage Fee' ,
+								`R`.`Demorage` as 'Demurrage Fee',
+								`R`.`Detention` as 'Detention Fee',
+								`R`.`SRAApplication`as 'SRA Application',
+								`R`.`SRAInspection` as 'SRA Processing Fee',
+								`R`.`BAIApplication`as 'BAI Application',
+								`R`.`BAIInspection` as 'BAI Inspection Fee',
+								`R`.`BPIInspection` as 'BPI Inspection Fee',
+								`R`.`OtherFees`     as 'Other Fees',
 								
-								(COALESCE(R.LodgementFee,0) + COALESCE(R.ContainerDeposit,0)  +  COALESCE(R.THCCharges,0)  +  COALESCE(R.Arrastre,0) + COALESCE(R.Wharfage,0) + COALESCE(R.Weighing,0) +  COALESCE(R.DEL,0) +  COALESCE(R.DispatchFee,0) + COALESCE(R.Storage,0) + COALESCE(R.Demorage,0) + COALESCE(R.Detention,0) + COALESCE(R.EIC,0) + COALESCE(R.BAIApplication,0) + COALESCE(R.BAIInspection,0) + COALESCE(R.SRAApplication,0) + COALESCE(R.SRAInspection,0) + COALESCE(R.BadCargo,0) + COALESCE(R.OtherFees,0)+
-								    COALESCE(R.BPIInspection,0) + COALESCE(R.PlugInForReefer,0)) AS Total_Charges,
+								(COALESCE(R.LodgementFee,0) + COALESCE(R.ContainerDeposit,0)  +  COALESCE(R.THCCharges,0)  +  COALESCE(R.Arrastre,0) + COALESCE(R.Wharfage,0) + COALESCE(R.Weighing,0) +  COALESCE(R.DEL,0) +  COALESCE(R.DispatchFee,0) + COALESCE(R.Storage,0) + COALESCE(R.Demorage,0) + COALESCE(R.Detention,0) + COALESCE(R.BAIApplication,0) + COALESCE(R.BAIInspection,0) + COALESCE(R.SRAApplication,0) + COALESCE(R.SRAInspection,0)  + COALESCE(R.OtherFees,0)+
+								    COALESCE(R.BPIInspection,0)) AS Total_Charges,
+
+
+
+
+
+
 
 
 								 `R`.`ParticularCharges` as ' ',`P`.`ContainerNo`,`P`.`ProductName` AS Commodity
@@ -187,7 +206,7 @@ function csv_volume(){
 		$query = $this->db->query($execQuery);						 						
 
 		}else{
-			echo 'no';
+			//echo 'no';
 				$preQuery = "SELECT a.JobFileNo, a.ATA, c.ProductName, c.ProductId,(COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges
 							 FROM JobFile_Air AS a
 							 LEFT JOIN Products_Air AS b ON a.JobFile_AirId = b.JobFile_AirId
@@ -289,9 +308,36 @@ function csv_volume(){
           	$poNum   = $this->session->consolidate_poNum;
 
           	//$monType,$ataFrom,$ataTo,$poNum
-
+//c.ContainerNo, b.EstArrivalTime,
           			if($monType == 1 || $monType == 2){
-			$query = $this->db->query("SELECT a.JobFileNo, b.CarrierByJobFileId, c.ContainerNo, c.TargetDeliveryDate, c.DateSentPreAssessment, c.DatePaid, b.EstArrivalTime, b.ActualArrivalTime , a.HouseBillLadingNo, a.DateReceivedOfOtherDocs, e.ProductName,c.DateSentFinalAssessment , c.GateInAtPort , c.GateOutAtPort, c.ActualDeliveryAtWarehouse, c.StartOfStorage, f.Storage, c.StartOfDemorage, f.Demorage, (COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  +  COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
+			$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
+				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,a.HouseBillLadingNo as 'HBL',
+				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
+				        c.DateSentPreAssessment as 'Pre-Assessment Date',
+				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
+				        c.DatePaid as 'Date Paid',	
+				        c.GateInAtPort as 'Gate In(Date/Time)',
+				        c.GateOutAtPort as 'Gate Out(Date/Time)',
+				        c.TargetDeliveryDate as 'Target Delivery Date',
+				        c.ActualDeliveryAtWarehouse  as 'Actual Date Delivered',
+				        c.StartOfStorage as 'Date Start of Storage',
+				        f.Storage  as 'Total Storage',
+				        c.StartOfDemorage as 'Date Start of Demurrage',
+				        f.Demorage as 'Total Demurrage',
+				        
+				       
+				        
+
+
+
+
+
+					    (COALESCE(f.LodgementFee,0) + COALESCE(f.ContainerDeposit,0)  + 
+					      COALESCE(f.THCCharges,0)  +  COALESCE(f.Arrastre,0) + COALESCE(f.Wharfage,0) + COALESCE(f.Weighing,0) +  
+					      COALESCE(f.DEL,0) +  COALESCE(f.DispatchFee,0) + COALESCE(f.Storage,0) + COALESCE(f.Demorage,0) + 
+					      COALESCE(f.Detention,0) + COALESCE(f.EIC,0) + COALESCE(f.BAIApplication,0) + COALESCE(f.BAIInspection,0) + 
+					      COALESCE(f.SRAApplication,0) + COALESCE(f.SRAInspection,0) + COALESCE(f.BadCargo,0) + 
+					      COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description as 'Status Report'
 										FROM JobFile AS a
 										LEFT JOIN CarrierByJobFile    AS b ON a.JobFileId = b.JobFileId
 										LEFT JOIN ContainerByCarrier  AS c ON b.CarrierByJobFileId = c.CarrierByJobFileId
@@ -307,10 +353,11 @@ function csv_volume(){
 										AND
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'");
+										a.PurchaseOrderNo = '$poNum' group by f.JobFileId ");
 		}else{
 			$query = $this->db->query("SELECT 
-									   a.JobFileNo, a.ATA, a.HouseBillLadingNo, c.ProductName, a.DatePickUpOtherDocs, b.DateSentPreAssessment, b.DateSentFinalAssessment, b.DatePaid, b.TargetDeliveryDate, b.DateReceivedAtWhse, f.StorageFee, (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
+									   a.JobFileNo, a.ATA, a.HouseBillLadingNo as 'HBL', c.ProductName as 'Commodity', a.DatePickUpOtherDocs 
+									   as 'Date Pick Up Other Docs', b.DateSentPreAssessment, b.DateSentFinalAssessment, b.DatePaid, b.TargetDeliveryDate, b.DateReceivedAtWhse, f.StorageFee, (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
 									   FROM JobFile_Air AS a
 									   LEFT JOIN Products_Air        AS b ON a.JobFile_AirId = b.JobFile_AirId
 									   LEFT JOIN Products 			 AS c ON b.ProductId = c.ProductId									
