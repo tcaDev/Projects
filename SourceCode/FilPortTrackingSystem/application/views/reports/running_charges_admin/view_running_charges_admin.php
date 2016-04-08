@@ -35,6 +35,8 @@
 			     	 $total += $charges->BAIApplication;
 			     	 $total += $charges->BAIInspection;
 			     	 $total += $charges->BPIInspection;
+                     $total += $charges->OtherFees;
+
     		?>
 
     		<table class="table table-condensed table-bordered">
@@ -100,9 +102,13 @@
     					<td><?php echo number_format($charges->BAIInspection ,2,'.',',');?></td> 
     				</tr>
     				<tr>
-    					<td>BAI Inspection Fee :</td>
-    					<td><?php echo number_format($charges->BAIInspection ,2,'.',',');?></td> 
+    					<td>BPI Inspection Fee :</td>
+    					<td><?php echo number_format($charges->BPIInspection ,2,'.',',');?></td> 
     				</tr>
+                    <tr>
+                        <td>Other Fees :</td>
+                        <td><?php echo number_format($charges->OtherFees ,2,'.',',');?></td> 
+                    </tr>
     				<tr>
     					<td><b>Total :</b></td>
     					<td><b><?php echo number_format($total ,2,'.',','); ?></b></td> 

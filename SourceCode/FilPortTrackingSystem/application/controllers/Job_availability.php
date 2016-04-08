@@ -183,6 +183,20 @@ function reset_password(){
         $this->load->view('dashboard/jobfile_bargraph',$data);
       }
 
+      function dashboard_jobfile_perMonth(){
+        $manila = 1;
+        $outport = 2;
+        $barchart_mnila_perMonth =  $this->Jobdata->jobfile_graph_manila_perMonth($manila);
+        $barchart_outport_perMonth =  $this->Jobdata->jobfile_graph_outport_perMonth($outport);
+        $barchart_air_perMonth =  $this->Jobdata->jobfile_graph_air_perMonth();
+
+        $data['barchart_mnila_perMonth'] = $barchart_mnila_perMonth;
+        $data['barchart_outport_perMonth'] = $barchart_outport_perMonth;
+        $data['barchart_air_perMonth'] = $barchart_air_perMonth;
+
+        $this->load->view('dashboard/jobfile_bargraph_permonth',$data);
+      }
+
 
      /* function accreditations(){
         $consignee_name    =  $this->input->post('consignee_name');  

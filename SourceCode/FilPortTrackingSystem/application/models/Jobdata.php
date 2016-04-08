@@ -513,6 +513,68 @@ function jobfile_graph_manila(){
     return $query->result();
 }
 
+function jobfile_graph_manila_perMonth($mon){
+   $query = $this->db->query("select
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 1 AND MonitoringTypeId = '$mon') AS January,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 2 AND MonitoringTypeId = '$mon') AS February,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 3 AND MonitoringTypeId = '$mon') AS March,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 4 AND MonitoringTypeId = '$mon') AS April,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 5 AND MonitoringTypeId = '$mon') AS May,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 6 AND MonitoringTypeId = '$mon') AS June,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 7 AND MonitoringTypeId = '$mon') AS July,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 8 AND MonitoringTypeId = '$mon') AS August,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 9 AND MonitoringTypeId = '$mon') AS September,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 10 AND MonitoringTypeId = '$mon') AS October,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 11 AND MonitoringTypeId = '$mon') AS November,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 12 AND MonitoringTypeId = '$mon') AS December
+                                
+                              FROM JobFileHistory
+                              Where MonitoringTypeId = '1' AND YEAR(DateUpdated) = YEAR(CURDATE()) limit 1");
+    return $query->result();
+}
+
+function jobfile_graph_outport_perMonth($mon){
+   $query = $this->db->query("select
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 1 AND MonitoringTypeId = '$mon') AS January,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 2 AND MonitoringTypeId = '$mon') AS February,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 3 AND MonitoringTypeId = '$mon') AS March,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 4 AND MonitoringTypeId = '$mon') AS April,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 5 AND MonitoringTypeId = '$mon') AS May,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 6 AND MonitoringTypeId = '$mon') AS June,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 7 AND MonitoringTypeId = '$mon') AS July,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 8 AND MonitoringTypeId = '$mon') AS August,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 9 AND MonitoringTypeId = '$mon') AS September,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 10 AND MonitoringTypeId = '$mon') AS October,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 11 AND MonitoringTypeId = '$mon') AS November,
+                                (select count(*) from JobFileHistory Where DATE_FORMAT(DateUpdated,'%m') = 12 AND MonitoringTypeId = '$mon') AS December
+                                
+                              FROM JobFileHistory
+                              Where MonitoringTypeId = '1' AND YEAR(DateUpdated) = YEAR(CURDATE()) limit 1");
+    return $query->result();
+}
+
+function jobfile_graph_air_perMonth(){
+   $query = $this->db->query("select
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 1 ) AS January,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 2 ) AS February,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 3 ) AS March,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 4 ) AS April,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 5 ) AS May,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 6 ) AS June,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 7 ) AS July,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 8 ) AS August,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 9 ) AS September,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 10 ) AS October,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 11 ) AS November,
+                                (select count(*) from JobFile_AirHistory Where DATE_FORMAT(DateUpdated,'%m') = 12 ) AS December
+                                
+                              FROM JobFile_AirHistory
+                              Where YEAR(DateUpdated) = YEAR(CURDATE()) limit 1");
+    return $query->result();
+}
+
+
+
 function jobfile_graph_outport(){
   $query = $this->db->query("select count(*) as Ratings FROM JobFile where MonitoringTypeId =2");
     return $query->result();

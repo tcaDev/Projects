@@ -30,6 +30,7 @@
 			     	 $total += $charges->BAIApplication;
 			     	 $total += $charges->BAIInspection;
 			     	 $total += $charges->BPIInspection;
+                     $total += $charges->OtherFees;
     		?>
 
     		<table class="table table-condensed table-bordered">
@@ -89,11 +90,11 @@
     				<tr>
     					<td>BAI Inspection Fee :</td>
     					<td><?php echo $charges->BAIInspection ?></td> 
-    				</tr>
-    				<tr>
-    					<td>BAI Inspection Fee :</td>
-    					<td><?php echo $charges->BAIInspection ?></td> 
-    				</tr>
+    				</tr>   
+                    <tr>
+                        <td>Other Fees :</td>
+                        <td><?php echo $charges->OtherFees ?></td> 
+                    </tr>
     				<tr>
     					<td><b>Total :</b></td>
     					<td><b><?php echo $total ?></b></td> 

@@ -405,14 +405,7 @@ class Print_Report extends CI_Controller {
                     <span class="pull-right">'. $charges->BPIInspection . ' </span>
                   </td>
                   </tr>';     
-        $chargesOutput .= '<tr>
-                  <td style="text-align:left;">
-                   Other Fees <span class="pull-right"> : </span>
-                  </td>
-                  <td>
-                    <span class="pull-right">'. $charges->BPIInspection . ' </span>
-                  </td>
-                  </tr>';     
+      
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
                    Other Fees <span class="pull-right"> : </span>

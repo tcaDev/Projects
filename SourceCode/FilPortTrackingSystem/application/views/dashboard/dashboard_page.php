@@ -52,8 +52,8 @@
 			        <div class="tab-pane" id="tab_b">
 			        	<div class="col-lg-12">
 		        			<ul class="nav nav-tabs">
-							    <li class="active"><a data-toggle="tab" href="#jtrans" class="">Jobfile Transactions</a></li>
-							    <li><a data-toggle="tab" href="#jmonth" class="">Transactions by Month</a></li>
+							    <li class="active"><a data-toggle="tab" href="#jtrans" class="JobFile_ALL">Jobfile Transaction</a></li>
+							    <li><a data-toggle="tab" href="#jmonth" class="perMonthJobFile">Transaction by Month</a></li>
 
 							 </ul>
 			             	 	<div class="tab-content" style="overflow-y:auto;height: 490px;">
@@ -61,7 +61,7 @@
 			             	 			<div class="jobfile-stat"></div>
 			             	 		</div>
 			             	 		<div class="tab-pane fade" id="jmonth">
-			             	 			<div class=""></div>
+			             	 			<div class="perMonth-stat"></div>
 			             	 		</div>
 			             	 	</div>
 
@@ -139,6 +139,37 @@ $(document).on('click','.jbfl_chart_btn',function(){
 		            },  
 	  		success: function(response){              
             $(".jobfile-stat").html(response);
+
+       		 }
+        });
+});
+
+$(document).on('click','.JobFile_ALL',function(){
+	/*jobFile Statistics*/
+	  $.ajax({
+	  		method: "GET",
+			  url: "<?php echo base_url('Job_availability/dashboard_jobfile');?>",
+			  beforeSend: function() {
+		              $('.jobfile-stat').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		success: function(response){              
+            $(".jobfile-stat").html(response);
+
+       		 }
+        });
+});
+
+
+$(document).on('click','.perMonthJobFile',function(){
+	/*jobFile Statistics*/
+	  $.ajax({
+	  		method: "GET",
+			  url: "<?php echo base_url('Job_availability/dashboard_jobfile_perMonth');?>",
+			  beforeSend: function() {
+		              $('.perMonth-stat').html('<span class="loading-uname"><i class="fa fa-spinner fa-pulse"></i>Please Wait...</span>');
+		            },  
+	  		success: function(response){              
+           	 $(".perMonth-stat").html(response);
 
        		 }
         });
