@@ -1,4 +1,4 @@
-<div id="top_x_div-permonth" style="width:700px;height: 480px;"></div>
+<div id="top_x_div-permonth" style="width:100%;height: 100%;"></div>
 
 
  <?php 

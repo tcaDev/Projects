@@ -117,7 +117,7 @@
                                         </div>
 
                                         <div class="form-group"><span id="check_uname"></span>
-                                            <input type="text" name='uname' placeholder="Username" class="form-control" data-toggle="tooltip" data-placement="left" title="Username" required onkeyup="uname_check(this.value,role)">
+                                            <input type="text" name='uname' placeholder="Username" class="form-control" data-toggle="tooltip" data-placement="left" title="Username" required onkeyup="uname_check(this.value)">
                                         </div>
 
                                          <div class="form-group "><span id="check_email"></span>

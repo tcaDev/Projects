@@ -1,7 +1,7 @@
 
 
 
-	<div id="piechart-air" style="width: 900px;height: 470px;"></div>
+	<div id="piechart-air" style="width: 100%;height: 100%;"></div>
 
 <script>
       $(function () {

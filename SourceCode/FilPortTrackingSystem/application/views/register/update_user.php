@@ -13,7 +13,7 @@
 
       						<div class="form-group">
                     <label for="uname">UserName:</label><span id="check_uname_update"></span>
-			      				<input type="text" class="form-control input-sm uname" onkeyup="uname_check_update(this.value,role)">
+			      				<input type="text" class="form-control input-sm uname" onkeyup="uname_check_update(this.value)">
 			      			</div>
 			    			
 			    			  <div class="form-group">
