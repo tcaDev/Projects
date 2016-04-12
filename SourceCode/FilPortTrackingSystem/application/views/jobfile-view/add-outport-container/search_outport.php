@@ -5,12 +5,8 @@
 					  		<tr>
 
 								          <th > No. </th>
-
-								        <?php if($roleoutport[1] == '2'){ ?>  
+								          
 								          <th data-sorter="false"> Update </th>
-								        <?php }else {?>
-								        	<th data-sorter="false"></th>
-								        <?php }?>
 										 
 								          <th >Jobfile Number</th>
 
@@ -130,7 +126,7 @@
 								       <?php if($roleoutport[1] == '2'){ ?> 
 								          <td><button type="button" class="btn btn-Update-outport btn-sm btn-default" data-toggle="modal" data-target="#myModal-2-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 								       <?php }else{?>
-								       	  <td></td>
+								       	  <td><button type="button" class="btn btn-Update-outport btn-sm btn-default disabled"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
 								       <?php } ?>  
 								          <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="#askjd" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
 								           <?php echo $pick1 ;?>
@@ -273,12 +269,17 @@
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
  		var button_update = "btn-update-product-outport";
  		var modal ="outport";
+ 		var role ="$roleoutport";
+ 		var roleAccess = "1";
+
 	 		  $.ajax({
                                     method: "POST",
                                       url: "<?php echo base_url('Job/get_goods');?>",
                                     data: { id:jobfileno,
                                     		button_update:button_update,
                                     		href:modal,
+                                    		role:role,
+                                 			roleAccess:roleAccess,
                                     }
                                 })
                                 .done(function(data) {
@@ -329,12 +330,16 @@
         	var href = "#updateReport-outport";
         	var btn = "btn-update-report-outport";
  		var jobfileno =  $(this).closest('tr').children('td:eq(2)').text();
+ 		var role ="$roleoutport";
+ 		var roleAccess = "2";
 	 		  $.ajax({
                                         method: "POST",
                                           url: "<?php echo base_url('Job/status_report');?>",
                                         data: { id:jobfileno,
                                         			href:href,
                                         			btn:btn,
+                                        			role:role,
+                                    				roleAccess:roleAccess,
                                         }		
                                     })
                                     .done(function(data) {

@@ -175,6 +175,10 @@ class Pagination extends CI_Controller {
     $jobfile   =  $this->input->post('jobfile');
     $color_stages   =  $this->input->post('color_stages');
 
+
+      
+      //Role Manila
+    
       //for getting the page number and page position
         $page        =  $this->input->post('page');
         $item_per_page=20;
@@ -199,7 +203,7 @@ class Pagination extends CI_Controller {
   
    //}
 
- 
+       $data['roleair']= $this->roleair();
       $this->load->view('jobfile-view/add-air-product/search_air',$data);
 }
 
@@ -250,7 +254,7 @@ function select_temp(){
         $page_position = (($page_number-1) * $item_per_page);
 
         $jb      =  $this->session->data;
-
+        $data['roleair']= $this->roleair();
         $data['air']  =  $this->User->findlimit_search_air($item_per_page,$page_position,$jb);
         $this->load->view('jobfile-view/add-air-product/search_air',$data);
 
@@ -373,6 +377,18 @@ function select_temp(){
                 $role =  0;
               }else{
                 $role = explode(',', $roleoutport->AccessTypesId);
+              }
+              return $role;
+    }
+
+    function roleair(){
+         $session_data = $this->session->userdata('logged_in');
+        //Outport Role
+              $roleair = $this->UserAccess->RolesAir($session_data['roleID']);
+              if($roleair == NULL){
+                $role =  0;
+              }else{
+                $role = explode(',', $roleair->AccessTypesId);
               }
               return $role;
     }

@@ -293,12 +293,16 @@ $(document).ready(function(){
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
  			var button_update = "btn-update-product";
  			var modal = "mnla";
+ 			var role ="$rolemnila";
+ 			var roleAccess = "1";
 	 		  $.ajax({
 				  		method: "POST",
 						  url: "<?php echo base_url('Job/get_goods');?>",
 				  		data: { id:ids,
 				  				button_update:button_update,
 				  				href:modal,
+				  				role:role,
+                                roleAccess:roleAccess,
 				  		}
 					})
 			  		.done(function(data) {
@@ -328,6 +332,8 @@ $(document).ready(function(){
  	var href = "#updateReport-mnla";
  	var btn = "btn-update-report";
  		var ids =  $(this).closest('tr').children('td:eq(2)').text();
+ 		var role ="$rolemnila";
+ 			var roleAccess = "1";
  	/* alert(ids);*/
 	 		  $.ajax({
 				  		method: "POST",
@@ -335,6 +341,8 @@ $(document).ready(function(){
 				  		data: { id:ids,
 				  				href:href,
 				  				btn:btn,
+				  				role:role,
+                                roleAccess:roleAccess,
 				  		}
 					})
 			  		.done(function(data) {

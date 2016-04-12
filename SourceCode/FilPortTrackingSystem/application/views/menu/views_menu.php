@@ -8,7 +8,7 @@
   	<!-- Access -->
   		<?php if($rolejobfile == '4'){ // 4 == View  ?>
   	  <!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/jobfile')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/jobfile')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-jobfile card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
@@ -41,7 +41,7 @@
 	<!-- Access -->
   		<?php if($rolesite == '4'){ // 4 == View  ?>
 		<!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/settings')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/settings')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-clnt-mngt card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
@@ -74,7 +74,7 @@
 	<!-- Access -->
   		<?php if($roleglobal == '4'){ // 4 == View  ?>
 		<!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/search')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/search')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-gbl card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
@@ -106,7 +106,7 @@
 <!-- Access -->
   		<?php if($rolereport == '4'){ // 4 == View  ?>
 		<!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/reports')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/reports')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-report card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
@@ -138,7 +138,7 @@
 <!-- Access -->
   		<?php if($roledash == '4'){ // 4 == View  ?>
 		<!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/dashboard')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/dashboard')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-dashboard card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">
@@ -169,7 +169,7 @@
 		<?php }else{} ?>
 
 		<!-- Job File -->
-  		<a href="<?php echo base_url('Login_user/help')?>" class="col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+  		<a href="<?php echo base_url('Login_user/help')?>" class="col-md-4 col-sm-4 col-xs-12" style="padding-bottom: 10px;">
 			 <div class=" col-sm-12 col-xs-12">
 				<div class="menu-tiles effect__hover">
 					<div class="col-sm-12 col-xs-12 btn btn-help card__front" style="box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .52);">

@@ -143,8 +143,13 @@
 				 </div>
 			<?php }else{?>
 			<div class="wrapper" style= "overflow-y:auto;height:485px;width:100%;position:relative;">
-			  		<span><i style="color:red"><h5>Nothing to Display...</h5></i></span>
-			  		<span><i style="color:red"><h5>Please Contact Administration for this issue..</h5></i></span>
+			  		<div class="panel panel-default " >
+                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+                      <div class="panel-body">
+                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span> 
+                      </div>
+                    </div>
 			  </div>
 			  <?php } ?>
 			 	<div class="out_pages"></div>

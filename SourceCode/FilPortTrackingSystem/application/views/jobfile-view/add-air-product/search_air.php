@@ -119,42 +119,52 @@
                 ?>
                   <tr>
                       <td><?php echo stripslashes($i);?></td>
-                      <td><button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-3-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button></td>
+                      <td>
+                      <?php if($roleair[1] == '2'){ ?>
+                        <button type="button" class="btn btn-Update-air btn-sm btn-default" data-toggle="modal" data-target="#myModal-3-1"><span class="fa fa-pencil fa-lg update_jobfile"></span></button>
+                      <?php }else{?>
+                        <button type="button" class="btn btn-Update-air btn-sm btn-default disabled"><span class="fa fa-pencil fa-lg update_jobfile"></span></button>
+                      <?php }?>
+                      </td>
                       <td><?php echo stripslashes($row->JobFileNo); ?><button  type="button" data-toggle="modal" data-target="" class="btn btn-xs btn-default  pull-right "><span class="fa fa-chevron-down fa-fw" aria-hidden="true"></span></button></td>
                        <?php echo $pick1 ;?>
                       <td><?php echo stripslashes($row->ShipperName); ?></td>
                       <td><?php echo stripslashes($row->ConsigneeName); ?></td>
                       <td><?php echo stripslashes($row->NoOfCartons); ?></td>
                       <td>
-                      <button type="button" class="btn btn-Goods-air btn-info view_goods-air btn-sm" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
-                      <button type="button" class="btn btn-Add-Product-air btn-success btn-sm" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
-                  </td>
-                  <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
-                  <td><?php echo stripslashes($row->LetterCreditNoFromBank); ?></td>
-                  <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
-                  <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
-                  <td><?php echo stripslashes($row->ORIGIN); ?></td>
-                  <td><?php echo stripslashes($row->FlightNo); ?></td>
-                  <td><?php echo stripslashes($row->Forwarder); ?></td>
-                  <td><?php echo stripslashes($row->Warehouse); ?></td>
-                  <td><?php echo stripslashes($row->Aircraft); ?></td>
-                   
-                  <td><?php echo stripslashes($row->ETD); ?></td>
-                   
-                  <td><?php echo stripslashes($row->ETA); ?></td>
-                   
-                  <td><?php echo stripslashes($row->ATA); ?></td>
-                  <td><?php echo stripslashes($row->DateReceivedArrivalFromALine); ?></td>
-                 <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
-                  <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
-                  <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
-                  <td><?php echo stripslashes($row->Broker); ?></td>
-                  <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
-                  <td><?php echo stripslashes($row->RFPDueDate); ?></td>
-                  <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
-                  <td>
+                          <button type="button" class="btn btn-Goods-air btn-info view_goods-air btn-sm" data-toggle="modal" data-target="#viewgoods-air"><span class="fa fa-modx fa-fw"></span> View Commodity(s)</button>
+                        <?php if($roleair[0] == '1'){ ?>
+                          <button type="button" class="btn btn-Add-Product-air btn-success btn-sm" data-toggle="modal" data-target="#addProduct-air"  title="Add New Commodity(s)"><span class="fa fa-plus fa-fw"></span> </button>
+                        <?php }else{}?>
+                      </td>
+                      <td><?php echo stripslashes($row->PurchaseOrderNo); ?></td>
+                      <td><?php echo stripslashes($row->LetterCreditNoFromBank); ?></td>
+                      <td><?php echo stripslashes($row->HouseBillLadingNo); ?></td>
+                      <td><?php echo stripslashes($row->MasterBillLadingNo); ?></td>
+                      <td><?php echo stripslashes($row->ORIGIN); ?></td>
+                      <td><?php echo stripslashes($row->FlightNo); ?></td>
+                      <td><?php echo stripslashes($row->Forwarder); ?></td>
+                      <td><?php echo stripslashes($row->Warehouse); ?></td>
+                      <td><?php echo stripslashes($row->Aircraft); ?></td>
+                       
+                      <td><?php echo stripslashes($row->ETD); ?></td>
+                       
+                      <td><?php echo stripslashes($row->ETA); ?></td>
+                       
+                      <td><?php echo stripslashes($row->ATA); ?></td>
+                      <td><?php echo stripslashes($row->DateReceivedArrivalFromALine); ?></td>
+                      <td><?php echo stripslashes($row->DateReceivedArrivalFromClient); ?></td>
+                      <td><?php echo stripslashes($row->DatePickUpHawb); ?></td>
+                      <td><?php echo stripslashes($row->DatePickUpOtherDocs); ?></td>
+                      <td><?php echo stripslashes($row->Broker); ?></td>
+                      <td><?php echo stripslashes($row->DateRequestBudgetToGL); ?></td>
+                      <td><?php echo stripslashes($row->RFPDueDate); ?></td>
+                      <td><?php echo stripslashes($row->ColorSelectivityName); ?></td>
+                      <td>
                           <button type="button" class="btn btn-StatusReport-air btn-info reports-air btn-sm" data-toggle="modal" data-target="#statrepo-air"><span class="fa fa-modx fa-fw"></span> View Status Report</button>
+                        <?php if($roleair[0] == '1'){ ?>
                           <button type="button" class="btn btn-Add-Report-air btn-success btn-sm" data-toggle="modal" data-target="#addReport-air"  title="Add New Report(s)"><span class="fa fa-plus fa-fw"></span> </button>
+                        <?php }else{} ?>
                       </td>
                       <td class="view_charges-air">
                           <button type="button" class="btn btn-StatusReport btn-info runchar-air btn-sm" data-toggle="modal" data-target="#runchar-air"><span class="fa fa-modx fa-fw"></span> View Running Charges</button>

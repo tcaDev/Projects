@@ -125,6 +125,11 @@ Class UserAccess extends CI_Model
    	 	return $query->row();
 	}
 
+	function RolesAir($roleId){
+		$query = $this->db->query(" select * from RoleAccess where RoleId = '$roleId' AND SystemSubModuleId = '4'");
+   	 	return $query->row();
+	}
+
 
 // Site Settings Access 
 	function RoleSetting($roleId,$setting){

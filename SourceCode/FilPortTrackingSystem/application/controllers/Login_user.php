@@ -320,6 +320,14 @@ class Login_user extends CI_Controller {
 	            	$data['roleoutport'] = explode(',', $roleoutport->AccessTypesId);
 	            }
 
+	         //Air Role
+	            $roleair = $this->UserAccess->RolesAir($session_data['roleID']);
+	            if($roleair == NULL){
+	            	$data['roleair'] = 	0;
+	            }else{
+	            	$data['roleair'] = explode(',', $roleair->AccessTypesId);
+	            }
+
  
 			$this->load->view('header/header',$data);
 			$this->load->view('jobfile-view/views_jobfile' , $data);

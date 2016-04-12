@@ -107,8 +107,9 @@
 					  <!-- Add -->
 
 					<!-- Trigger the modal with a button -->
-
+				<?php if($roleair[0] == '1'){ ?>
 					  <button type="button" class="col-lg-4 col-md-4 col-sm-4 pull-right btn btn-primary btn-md" data-toggle="modal" data-target="#myModal-3-2" style="margin-right: 10px;"><span class="fa fa-plus fa-fw"></span> Add Data</button>
+				<?php }else{} ?>
 
 
 
@@ -139,10 +140,21 @@
 				
 
 
-
+			 <?php if($roleair[2] == '4'){ ?>
 				 <div class="wrapper " style= "overflow-y:auto; height :485px; width:100%;position:relative;">
 					   <div class="job-air  air_pagination"></div>
 				 </div>
+			<?php }else{?>
+				<div class="wrapper " style= "overflow-y:auto; height :485px; width:100%;position:relative;">
+					 <div class="panel panel-default " >
+                      <div class="panel-heading"><span class="fa fa-exclamation-triangle fa-fw" style="color:#A8A8A8"></span></div>
+                      <div class="panel-body">
+                        <h2 style="font-weight: 900;color: #909090 ;">Sorry!  </h2>
+                         <span style="color:#A8A8A8"><h4>But it seems you don't have permission to view this area.</h4></span> 
+                      </div>
+                    </div>
+				 </div>
+			<?php }?>
 				 <div class="air_pages"></div>
  				 <div class="air_pages_search"></div>
 	 		     <div class="air_pages_search_color"></div>
@@ -231,10 +243,11 @@
 				        </div>
 				        <div class="footer-modal">
 				        <hr>
+				        <?php if($roleair[1] == '2'){ ?> 
 				        	<button type="button" class="btn btn-danger update_charges-air-qwerty">Update</button>
 
 				        	<button type="button" class="btn btn-danger update_charges-air" disabled>Save</button>
-
+				        <?php }else{}?>
 				          <button type="button" class="btn btn-danger btn-close-air" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>

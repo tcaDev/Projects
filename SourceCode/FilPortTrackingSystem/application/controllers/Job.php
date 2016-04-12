@@ -588,6 +588,19 @@ function get_jobfile_global_search(){
       $rolemnila = $this->input->post('role');
       $RolesManila = $this->input->post('roleAccess');
 
+ $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                   if($RolesManila == '1'){
+                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   }else{
+                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                   }
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
+
     if($vessels==NULL){
      echo    '<center><span style="color:red">No Vessels Yet </span></center>';
     }else{
@@ -596,7 +609,7 @@ function get_jobfile_global_search(){
               <tr>
                    <th>No.</th>
                    <th>Update</th>
-                   <th>Vessel/Voyage No</th>
+                  <th>Vessel/Voyage No</th>
                    <th>Carrier Name</th>
                    <th class='hidden'>value Actual Arrival Time</th>
                    <th>Actual Arrival Time</th>
@@ -648,18 +661,7 @@ function get_jobfile_global_search(){
 
              echo "<tr>";
              echo "<td> ".$i." </td>";
-             $session_data = $this->session->userdata('logged_in');
-                    //Manila Role
-                   if($RolesManila == '1'){
-                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
-                   }else{
-                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
-                   }
-                    if($rolemnila == NULL){
-                      $rolemnila=  0;
-                    }else{
-                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
-                    }
+            
 
                    if($rolemnila[1] == '2'){ 
                     echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' data-target='#updateVessel-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
@@ -1104,6 +1106,21 @@ function get_jobfile_global_search(){
       $product  = $this->Jobdata->get_goods($products);
       $button_update = $this->input->post('button_update');
       $href =  $this->input->post('href');
+      $rolemnila = $this->input->post('role');
+      $RolesManila = $this->input->post('roleAccess');
+
+      $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                   if($RolesManila == '1'){
+                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   }else{
+                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                   }
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
 
     if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
@@ -1135,7 +1152,11 @@ function get_jobfile_global_search(){
           }
              echo "<tr>";
              echo "<td> ".$i." </td>";
+          if($rolemnila[1] == '2'){ 
              echo "<td><button type='button' class='btn btn-default ".$button_update."' data-toggle='modal' href='#updateProduct-".$href."'><span class='fa fa-pencil fa-fw'></span></button></td>";
+          }else{
+             echo "<td><button type='button' class='btn btn-default ".$button_update." disabled'><span class='fa fa-pencil fa-fw'></span></button></td>";
+          }
              echo "<td class='row hidden'>".stripslashes($row->ProductId)."</td>";
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo) ."</td>";
@@ -1153,6 +1174,17 @@ function get_jobfile_global_search(){
     function get_goods_air(){
        $products =  $this->input->post('id'); 
        $product  = $this->Jobdata->get_goods_air($products);
+
+        $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                 
+                      $rolemnila = $this->UserAccess->RolesAir($session_data['roleID']);
+                 
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
 
        if($product==NULL){
           echo    '<center><span style="color:red">No Goods Yet </span></center>';
@@ -1204,7 +1236,13 @@ function get_jobfile_global_search(){
 
              echo "<tr>";
              echo "<td> ".$i." </td>";
+
+          if($rolemnila[1] == '2'){
              echo "<td><button type='button' class='btn btn-default btn-update-air' data-toggle='modal' href='#updateProduct-air'><span class='fa fa-pencil fa-fw'></span></button></td>";
+           }else{
+            echo "<td><button type='button' class='btn btn-default btn-update-air disabled' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+           }
+            
                  echo "<td class='row hidden'>".stripslashes($row->Products_AirId)."</td>"; 
              echo "<td class='row'>".stripslashes($row->ProductName)."</td>";
              echo "<td class='row'>".stripslashes($row->RefEntryNo) ."</td>";
@@ -1238,6 +1276,21 @@ function get_jobfile_global_search(){
     $charges   = $this->Jobdata->get_status($status);
       $href = $this->input->post('href');
       $btn = $this->input->post('btn');
+       $rolemnila = $this->input->post('role');
+      $RolesManila = $this->input->post('roleAccess');
+
+      $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                   if($RolesManila == '1'){
+                      $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                   }else{
+                      $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                   }
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
     if($charges == NULL){
           echo    '<center><span style="color:red">No Reports Yet </span></center>';
     }else{
@@ -1262,9 +1315,13 @@ function get_jobfile_global_search(){
        echo " <tr class='remove_tr'>
                  <td class='hidden'>".$row->JobFileNo." </td>
                  <td class='hidden'>".$row->HistoricalStatusId." </td>
-                 <td>".$i."</td>
-                 <td><button type='button' class='btn btn-default ".$btn."' data-toggle='modal' href='".$href."' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>
-                 <td>".$row->DateAdded."</td>
+                 <td>".$i."</td>";
+             if($rolemnila[1] == '2'){ 
+                 echo "<td><button type='button' class='btn btn-default ".$btn."' data-toggle='modal' href='".$href."' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
+            }else{
+               echo "<td><button type='button' class='btn btn-default ".$btn." disabled' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+            }
+                echo"<td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
             ";
@@ -1278,7 +1335,16 @@ function get_jobfile_global_search(){
                           
     $status    =  $this->input->post('id');   
     $charges   = $this->Jobdata->get_status_air($status);
-
+   $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                 
+                    $rolemnila = $this->UserAccess->RolesAir($session_data['roleID']);
+                 
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
 
       if($charges==NULL){
           echo    '<center><span style="color:red">No Reports Yet </span></center>';
@@ -1304,9 +1370,14 @@ function get_jobfile_global_search(){
        echo " <tr class='remove_tr'>
                  <td class='hidden'>".$row->JobFileNo." </td>
                  <td class='hidden'>".$row->HistoricalStatus_AirId." </td>
-                 <td>".$i."</td>
-                 <td><button type='button' class='btn btn-default btn-update-report-air' data-toggle='modal' href='#updateReport-air' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>
-                 <td>".$row->DateAdded."</td>
+                 <td>".$i."</td>";
+                if($rolemnila[1] == '2'){ 
+                 echo "<td><button type='button' class='btn btn-default btn-update-report-air' data-toggle='modal' href='#updateReport-air' id='updateReports-mnla'><span class='fa fa-pencil fa-fw'></span></button></td>";
+                 }else{
+                  echo "<td><button type='button' class='btn btn-default btn-update-report-air disabled' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+                 }
+
+                 echo "<td>".$row->DateAdded."</td>
                  <td> ".$row->StatusDescription."</td>
               </tr>
             ";
@@ -1689,6 +1760,17 @@ function get_jobfile_global_search(){
    $containers =  $this->input->post('id'); 
    $container  = $this->Jobdata->get_containers($containers,"");
 
+ $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                  
+                    $rolemnila = $this->UserAccess->RolesManila($session_data['roleID']);
+                  
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
+
     if($container==NULL){
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
     }else{
@@ -1828,7 +1910,11 @@ function get_jobfile_global_search(){
              
              echo "<tr>";
              echo "<td> ".stripslashes($i)." </td>";
+           if($rolemnila[1] == '2'){ 
              echo "<td><button type='button' class='btn btn-default btn-update-container' data-toggle='modal' href='#updateContainer-mnla' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+           }else{
+              echo "<td><button type='button' class='btn btn-default btn-update-container disabled'><span class='fa fa-pencil fa-fw'></span></button></td>";
+           }
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
@@ -1879,7 +1965,16 @@ function get_jobfile_global_search(){
 
    $containers =  $this->input->post('id'); 
    $container  = $this->Jobdata->get_containers($containers,2);
-
+ $session_data = $this->session->userdata('logged_in');
+                    //Manila Role
+                  
+                    $rolemnila = $this->UserAccess->RolesOutport($session_data['roleID']);
+                  
+                    if($rolemnila == NULL){
+                      $rolemnila=  0;
+                    }else{
+                      $rolemnila = explode(',', $rolemnila->AccessTypesId);
+                    }
     if($container==NULL){
           echo    '<center><span style="color:red">No Containers Yet </span></center>';
     }else{
@@ -2013,7 +2108,11 @@ function get_jobfile_global_search(){
              
              echo "<tr>";
              echo "<td> ".stripslashes($i)." </td>";
+          if($rolemnila[1] == '2'){ 
              echo "<td><button type='button' class='btn btn-default btn-update-container-outport' data-toggle='modal' href='#updateContainer-outport' ><span class='fa fa-pencil fa-fw'></span></button></td>";
+          }else{
+            echo "<td><button type='button' class='btn btn-default btn-update-container-outport disabled'><span class='fa fa-pencil fa-fw'></span></button></td>";
+          }
              echo "<td class='row'>".stripslashes($row->VesselVoyageNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerNo)."</td>";
              echo "<td class='row'>".stripslashes($row->ContainerSize)."</td>";
