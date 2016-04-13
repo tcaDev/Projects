@@ -35,7 +35,7 @@
 					       		
 						       		<span><h6 style="text-align: center;">-Or-</h6></span>
 						       
-					       </div> 
+					       </div>
 						       
 					       
 					       	<div class="col-md-5">
@@ -68,10 +68,10 @@
 								
 							</div>
 
-							<!-- <div class="col-md-12">
+							<div class="col-md-12">
 								<span><h6 style="text-align: center;">-Or-</h6></span>
 
-							</div> -->
+							</div>
 
 							<div class="col-md-12">
 								<h5>Actual Arrival Date : </h5>
@@ -184,17 +184,8 @@ $(document).on('click','.btn-search-byConName-manila',function(){
 	var con_id 	 = $('.reports_consignee_name_manila option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-manila').val();
 	var to 		 = $('.dtpTo_RunningCharges-manila').val();
-	if(frm == '' || to == '' || con_id =='' || con_id == null){
-		$.alert({
-				icon: 'fa fa-exclamation-triangle-o',
-			 	closeIcon: false,
-		        title: 'No Data Match',
-		        backgroundDismiss: false,
-		        content: 'Sorry ! Data not Found ',
-		        confirm : function(){
-		        	
-		       	 }
-				});
+	if(con_id == "" || con_id == null && frm == "" || frm == null && to == "" || to == null){
+
 	}else{
 		$.ajax({
 	  		method: "POST",
@@ -232,7 +223,7 @@ $(document).on('click','.btn-search-byConName-manila',function(){
 							
 						}else{
 	                        $('#running-charges-manila-options').modal('show');
-	                         $('#running-charges-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_run_charge_consignee/')?>" target="blank" id="running-charges-manila_csv"><input type="button" class="btn btn-save-as-running-charges-manila btn-success form-control" value="CSV File"/></a>');
+	                         $('#running-charges-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_charges_cosignee/')?>" target="blank" id="running-charges-manila_csv"><input type="button" class="btn btn-save-as-running-charges-manila btn-success form-control" value="CSV File"/></a>');
 	                        $('#running-charges-manila_pdf').html('<a href=' + data +' target="blank" id="running-charges-manila_pdf"><input type="button" class="btn btn-save-as-running-charges-manila btn-danger form-control" value="PDF File"/></a>');
                       }
 		});
