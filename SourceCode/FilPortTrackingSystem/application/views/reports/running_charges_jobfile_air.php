@@ -216,6 +216,7 @@ $(document).on('click','.btn-search-byConName-air',function(){
 							
 						}else{
 						    $('#running-charges-air-options').modal('show');
+						    $('#running-charges-air_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_run_charge_consignee')?>" target="blank" id="running-charges-air_csv"><input type="button" class="btn btn-save-as-running-charges-air btn-success form-control" value="CSV File"/></a>');
                        		$('#running-charges-air_pdf').html('<a href=' + data +' target="blank" id="running-charges-air_pdf"><input type="button" class="btn btn-save-as-running-charges-air btn-danger form-control" value="PDF File"/></a>');
 						}
 		});

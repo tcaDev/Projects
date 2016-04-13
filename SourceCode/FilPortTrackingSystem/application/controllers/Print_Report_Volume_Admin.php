@@ -1,6 +1,7 @@
 <?php
 
  date_default_timezone_set('Asia/Manila');
+ require_once APPPATH.'libraries/swift_mailer/swift_required.php';
 class Print_Report_Volume_Admin extends CI_Controller {
 
      public function __construct()

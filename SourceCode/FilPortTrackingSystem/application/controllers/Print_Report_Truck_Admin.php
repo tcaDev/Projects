@@ -169,7 +169,7 @@
                       <th>Target Delivery Date</th>
                       <th>Jobfile No</th>
                       <th>No. of Cartons</th>
-                      <th>Weight(kgs)</th>
+                      <th>Gross Weight</th>
                       <th>Commodity</th>
                       <th>Origin</th>
                       <th>Airline/Forwarder</th>

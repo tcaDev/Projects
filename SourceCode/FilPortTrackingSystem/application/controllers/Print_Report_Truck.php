@@ -174,7 +174,7 @@ class Print_Report_Truck extends CI_Controller {
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Number Of Cartons</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Weight(kgs)</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gross Weight</th>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Origin</th>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Total Storage</th>

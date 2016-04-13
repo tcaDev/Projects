@@ -212,7 +212,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                 <tr>
                                   <th>Jobfile No</th>
                                   <th>Actual Arrival Time</th>
-                                  <th>weight(kgs)</th>
+                                  <th>Gross Weight</th>
                                   <th>House Airway Bill No.</th>
                                   <th>Commodity</th>
                                   <th>Date Received Docs</th>

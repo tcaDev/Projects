@@ -203,7 +203,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                 <tr>
                                   <th style='border:1px solid gray'>Jobfile No</th>
                                   <th style='border:1px solid gray'>Actual Arrival Time</th>
-                                  <th style='border:1px solid gray'>Weight(kgs)</th>
+                                  <th style='border:1px solid gray'>Gross Weight</th>
                                   <th style='border:1px solid gray'>House Airway Bill No.</th>
                                   <th style='border:1px solid gray'>Commodity</th>
                                   <th style='border:1px solid gray'>Date Received Docs</th>

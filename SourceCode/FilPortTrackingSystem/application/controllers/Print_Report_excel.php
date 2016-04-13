@@ -144,7 +144,7 @@ function csv_run_charge_consignee(){
 
 			if($charges != "*"){
 				$preQuery = "SELECT 
-							 a.JobFileNo, a.ATA as 'Actual Arrival Time', d." . $charges ."
+							 Distinct(a.JobFileNo), a.ATA as 'Actual Arrival Time', d." . $charges ."
 							 FROM 
 							 JobFile_Air a
 							 LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId 
@@ -152,7 +152,7 @@ function csv_run_charge_consignee(){
 			}else{
 
 				$preQuery = "SELECT 
-							 a.JobFileNo, a.ATA as 'Actual Arrival Time',b.TargetDeliveryDate as 'Delivery Date',
+							 Distinct(a.JobFileNo), a.ATA as 'Actual Arrival Time',b.TargetDeliveryDate as 'Delivery Date',
 							 prod.GrossWeight as 'Gross Weight',d.LodgementFee as 'Lodgement Fee',
 							 d.BreakBulkFee as 'BreakBulk Fee',d.StorageFee as 'Storage Fee',
 							 d.BadCargoOrderFee as 'Bad Cargo',d.VCRC,d.CNI,d.CNIU,d.OtherFees as 'Other Fees'
@@ -513,9 +513,9 @@ function csv_running_charges_admin(){
 									   
 										from JobFile J
 										JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId 
-										LEFT JOIN  vw_products PROD ON 
+										inner JOIN  vw_products PROD ON 
 											 PROD.JobFileId = J.JobFileId
-								    	LEFT JOIN  vw_containers CON ON 
+								    	inner JOIN  vw_containers CON ON 
 											 CON.JobFileId = J.JobFileId
 										JOIN  Consignee C ON C.ConsigneeId = J.ConsigneeId
 										where J.PurchaseOrderNo = '$PO_Number' AND MonitoringTypeId = '$monitoringType'
@@ -807,7 +807,7 @@ function csv_volume(){
 										      f.StorageFee as 'Total Storage' ,
 										      (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) 
 										          AS 'Total Running Charges',
-										      a.Forwarder as 'Aur Line/Forwarder'
+										      a.Forwarder as 'Air Line/Forwarder'
 										FROM JobFile_Air AS a
 										LEFT JOIN Products_Air 		 AS b ON a.JobFile_AirId = b.JobFile_AirId
 										LEFT JOIN Products 			 AS c ON b.ProductId = c.ProductId									
@@ -937,7 +937,7 @@ function csv_volume(){
 //c.ContainerNo, b.EstArrivalTime,
 		if($monType ==1){
 			$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,a.HouseBillLadingNo as 'HBL',
+				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
@@ -980,7 +980,7 @@ function csv_volume(){
 										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId");
 	    }elseif ($monType == 2) {
 	    				$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,a.HouseBillLadingNo as 'HBL',
+				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
@@ -1073,7 +1073,7 @@ function csv_volume(){
 //c.ContainerNo, b.EstArrivalTime,
 		if($monType == 1){
 			$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,a.HouseBillLadingNo as 'HBL',
+				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
@@ -1113,10 +1113,10 @@ function csv_volume(){
 										AND
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId");
+										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId ");
 		}elseif ($monType == 2) {
 						$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,a.HouseBillLadingNo as 'HBL',
+				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
