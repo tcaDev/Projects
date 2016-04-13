@@ -190,7 +190,7 @@ class Print_Report_Truck extends CI_Controller {
                                 <td style='padding:10px;' >" . $row->TargetDeliveryDate . "</td>
                                 <td style='padding:10px;'>" . $row->JobFileNo . "</td>
                                 <td style='padding:10px;'>" . $row->NoOfCartons . "</td>
-                                <td style='padding:10px;'>" . $volume . "</td>
+                                <td style='padding:10px;'>" . $row->GrossWeight . "</td>
                                 <td style='padding:10px;'>" . stripslashes($row->ProductName) . "</td>
                                 <td style='padding:10px;'>" . stripslashes($row->Origin) . "</td>
                                 <td style='padding:10px;'>" . number_format($row->StorageFee,2, '.' , ',') . "</td>

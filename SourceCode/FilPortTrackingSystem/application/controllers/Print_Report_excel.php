@@ -1074,7 +1074,7 @@ function csv_volume(){
 //c.ContainerNo, b.EstArrivalTime,
 		if($monType == 1){
 			$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
+				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
@@ -1117,7 +1117,7 @@ function csv_volume(){
 										a.PurchaseOrderNo = '$poNum'  group by c.ContainerNo   ");
 		}elseif ($monType == 2) {
 						$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
-				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
+				        (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
 				        e.ProductName as Commodity , a.DateReceivedOfOtherDocs as 'Date Received Docs',
 				        c.DateSentPreAssessment as 'Pre-Assessment Date',
 				        c.DateSentFinalAssessment   as 'Final Assessment Date',	
