@@ -214,7 +214,7 @@ function get_countryID_manila($jobfile){
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
                                     UNION
                                     SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
-                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
+                                    AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'  
                                     UNION
                                     SELECT a.* FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");

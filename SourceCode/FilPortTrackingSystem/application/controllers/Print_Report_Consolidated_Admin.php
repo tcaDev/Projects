@@ -116,6 +116,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Volume</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Container No</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>BL No.</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Received Docs</th>
@@ -146,6 +147,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                       <td  style='padding:10px;'>" . $row->JobFileNo . "</td>
                                       <td  style='padding:10px;'>" . $row->ActualArrivalTime . "</td>
                                       <td  style='padding:10px;'>" . $volume . "</td>
+                                      <td  style='padding:10px;'>" . $row->ContainerNo . "</td>
                                       <td  style='padding:10px;'>" . $row->HouseBillLadingNo . "</td>
                                       <td  style='padding:10px;'>" . $row->ProductName . "</td>
                                       <td  style='padding:10px;'>" . $row->DateReceivedOfOtherDocs . "</td>
@@ -173,6 +175,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                       <td></td>
                                       <td></td>
                                       <td></td>
+                                      <td style='padding:10px;'>" . $row->ContainerNo  . "</td>
                                       <td></td>
                                       <td  style='padding:10px;'>" . $row->ProductName . "</td>
                                       <td></td>
@@ -180,13 +183,13 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                       <td></td>
                                       <td></td>";
                                       if($monitoringType == 1){
-                                        $dispOutput .= "<td></td>
-                                                       <td></td>";
+                                        $dispOutput .= "<td style='padding:10px;'>" . $row->GateInAtPort . "</td>
+                                                        <td style='padding:10px;'>" . $row->GateOutAtPort . "</td>";
                                       }
                                       
                            $dispOutput .= "
-                                      <td></td>
-                                      <td></td>
+                                      <td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>
+                                      <td style='padding:10px;'>" . $row->ActualDeliveryAtWarehouse . "</td>
                                       <td></td>
                                       <td></td>
                                       <td></td>

@@ -66,11 +66,11 @@
 								
 							</div>
 
-							<div class="col-md-12">
+							<!-- <div class="col-md-12">
 								<span><h6 style="text-align: center;">-Or-</h6></span>
 
 							</div>
-
+ -->
 							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
 								<div class="form-group">
@@ -184,8 +184,17 @@ $(document).on('click','.btn-search-byConName-outport',function(){
 	var con_id 	 = $('.reports_consignee_name_outport option:selected').attr('id');
 	var frm 	 = $('.dtpFrom_RunningCharges-outport').val();
 	var to 		 = $('.dtpTo_RunningCharges-outport').val();
-	if(con_id == "" || con_id == null && frm == "" || frm == null && to == "" || to == null){
-
+	if(frm == '' || to == '' || con_id =='' || con_id == null){
+		$.alert({
+				icon: 'fa fa-exclamation-triangle-o',
+			 	closeIcon: false,
+		        title: 'No Data Match',
+		        backgroundDismiss: false,
+		        content: 'Sorry ! Data not Found ',
+		        confirm : function(){
+		        	
+		       	 }
+				});
 	}else{
 		$.ajax({
 	  		method: "POST",

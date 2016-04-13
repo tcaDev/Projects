@@ -74,10 +74,10 @@
 								
 							</div>
 
-							<div class="col-md-12">
+							<!-- <div class="col-md-12">
 								<span><h6 style="text-align: center;">-Or-</h6></span>
 
-							</div>
+							</div> -->
 
 							<div class="col-md-12" style="border-bottom: 1px solid #ddd;">
 								<h5>Actual Arrival Date : </h5>
@@ -296,18 +296,20 @@ $(document).on('click','#btn-runningcharges-manila-consignee',function(){
 	var frm = $('.ata-rc-admin-frm').val();
 	var to = $('.ata-rc-admin-to').val();
 	var charges = $('.data_charges').val();
-	if(rc_consignee == ""|| rc_consignee == null && frm == ""  && to == ""){
-		$.alert({
-			icon: 'fa fa-exclamation-triangle-o',
-		 	closeIcon: false,
-	        title: 'No Data Match',
-	        backgroundDismiss: false,
-	        content: 'Sorry ! Data not Found ',
-	        confirm : function(){
-	        	
-	       	 }
-			});
-      }else{
+
+	if(rc_consignee != "0"){
+		if(frm == ""  || to == ""){
+			$.alert({
+				icon: 'fa fa-exclamation-triangle-o',
+			 	closeIcon: false,
+		        title: 'No Data Match',
+		        backgroundDismiss: false,
+		        content: 'Sorry ! Data not Found ',
+		        confirm : function(){
+		        	
+		       	 }
+				});
+     	 }else{
          $.ajax({
 	  		method: "POST",
 			url: "<?php echo base_url('Reports_Running_Charges/get_Volume');?>",
@@ -348,6 +350,20 @@ $(document).on('click','#btn-runningcharges-manila-consignee',function(){
 						}
 		});
       }
+	}else{
+		$.alert({
+				icon: 'fa fa-exclamation-triangle-o',
+			 	closeIcon: false,
+		        title: 'No Data Match',
+		        backgroundDismiss: false,
+		        content: 'Sorry ! Data not Found ',
+		        confirm : function(){
+		        	
+		       	 }
+				});
+	}
+
+		
 });
 
 </script>
