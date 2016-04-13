@@ -358,14 +358,14 @@ function csv_run_charge(){
 				$preQuery = "SELECT 
 							a.JobFileNo, b.ActualArrivalTime,
 						    c.TargetDeliveryDate as 'Delivery Date', 
-							c.ContainerNo,(select count(*) from vw_Containers  as cons
-							 WHERE  cons.JobFileId = b.JobFileId) as Volume,f.".$charges."";
+						    (select count(*) from vw_Containers  as cons WHERE  cons.JobFileId = b.JobFileId) as Volume,
+						    f.".$charges."";
 
 			}else{
 				$preQuery = "SELECT 
 							a.JobFileNo, b.ActualArrivalTime,
 							c.TargetDeliveryDate as 'Delivery Date ',
-							c.ContainerNo,
+							(select count(*) from vw_Containers  as cons WHERE  cons.JobFileId = b.JobFileId) as Volume,
 							f.LodgementFee as 'Lodgement Fee',
 							f.THCCharges as  'THC Charges',
 							f.Arrastre,
@@ -413,14 +413,15 @@ function csv_run_charge(){
 
 			if($charges != "*"){
 				$preQuery = "SELECT 
-							 a.JobFileNo, a.ATA, b.TargetDeliveryDate as 'Delivery Date',a.Aircraft, d." . $charges ."
+							 a.JobFileNo, a.ATA as 'Actual Arrival Time', b.TargetDeliveryDate as 'Delivery Date', d." . $charges ."
 							 FROM 
 							 JobFile_Air a
 							 LEFT JOIN Products_Air AS b ON b.JobFile_AirId = a.JobFile_AirId 
 							 ";
 			}else{
 				$preQuery = "SELECT 
-							 a.JobFileNo, a.ATA, b.TargetDeliveryDate as 'Delivery Date', a.Aircraft, d.LodgementFee,
+							 a.JobFileNo, a.ATA as 'Actual Arrival Time', b.TargetDeliveryDate as 'Delivery Date', 
+						     b.GrossWeight,d.LodgementFee,
 							 d.BreakBulkFee,d.StorageFee,d.BadCargoOrderFee,d.VCRC,d.CNI,d.CNIU,d.OtherFees
 							 FROM 
 							 JobFile_Air a
@@ -480,7 +481,7 @@ function csv_running_charges_admin(){
 								`C`.`ConsigneeName`,
 								`J`.`JobFileNo`,
 								`J`.`PurchaseOrderNo` as 'PI / PO Number ',
-								(SELECT count(*) FROM vw_Containers as cons WHERE cons.JobFileNo=J.JobFileNo) as 'Gross Weight(kg) ',
+								(SELECT count(*) FROM vw_Containers as cons WHERE cons.JobFileNo=J.JobFileNo) as 'Volume',
 		                        `RC`.`LodgementFee` as 'Lodgement Fee' ,
 							    `RC`.`ContainerDeposit` as 'Container Deposit',
 								`RC`.`THCCharges` as 'THC Charges',
@@ -507,16 +508,16 @@ function csv_running_charges_admin(){
 								    COALESCE(RC.BPIInspection,0)) AS 'Total Running Charges',
 
 
-									 CON.ContainerNo,
-								     PROD.ProductName
+									 CBC.ContainerNo,
+								     P.ProductName
 
 									   
 										from JobFile J
-										JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId 
-										inner JOIN  vw_products PROD ON 
-											 PROD.JobFileId = J.JobFileId
-								    	inner JOIN  vw_containers CON ON 
-											 CON.JobFileId = J.JobFileId
+										inner JOIN RunningCharges RC ON RC.JobFileId = J.JobFileId 
+										JOIN CarrierByJobFile CBJ ON CBJ.JobFileId = J.JobFileId
+										JOIN ContainerByCarrier CBC ON CBC.CarrierByJobFileId = CBJ.CarrierByJobFileId
+										JOIN ProductsByContainer PBC ON PBC.ContainerByCarrierId = CBC.ContainerByCarrierId
+										JOIN Products P ON P.ProductId = PBC.ProductId
 										JOIN  Consignee C ON C.ConsigneeId = J.ConsigneeId
 										where J.PurchaseOrderNo = '$PO_Number' AND MonitoringTypeId = '$monitoringType'
 										");
@@ -977,7 +978,7 @@ function csv_volume(){
 										AND 
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId");
+										a.PurchaseOrderNo = '$poNum' group by c.ContainerNo");
 	    }elseif ($monType == 2) {
 	    				$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
 				       (select count(*) from vw_Products as prod where prod.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
@@ -1018,7 +1019,7 @@ function csv_volume(){
 										AND 
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId");
+										a.PurchaseOrderNo = '$poNum'  group by c.ContainerNo");
 	    
 		}else{
 			$query = $this->db->query("SELECT 
@@ -1113,7 +1114,7 @@ function csv_volume(){
 										AND
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId ");
+										a.PurchaseOrderNo = '$poNum'  group by c.ContainerNo   ");
 		}elseif ($monType == 2) {
 						$query = $this->db->query("SELECT a.JobFileNo, b.ActualArrivalTime,
 				       (select count(*) from vw_Containers as con where con.JobFileId=f.JobFileId)as Volume,c.ContainerNo,a.HouseBillLadingNo as 'HBL',
@@ -1155,7 +1156,7 @@ function csv_volume(){
 										AND
 										a.MonitoringTypeId = '$monType'
 										AND
-										a.PurchaseOrderNo = '$poNum'  group by f.JobFileId");
+										a.PurchaseOrderNo = '$poNum'  group by c.ContainerNo  ");
 		}else{
 			$query = $this->db->query("SELECT  
 										   a.JobFileNo, a.ATA as 'Actual Arrival Time',

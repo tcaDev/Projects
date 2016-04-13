@@ -310,7 +310,7 @@
                       <th >Jobfile No</th>
                       <th >Actual Arrival Time</th>
                       <th >Delivery Date</th>
-                      <th >Volume</th>
+                      <th >Gross Weight</th>
                       <th >Lodgement Fee</th>
                       <th >Break Bulk Fee</th>
                       <th >Storage Fee</th>
@@ -329,7 +329,7 @@
                       <th >Jobfile No</th>
                       <th >Actual Arrival Time</th>
                       <th >Delivery Date</th>
-                      <th >Volume</th>
+                      <th >Gross Weight</th>
                       <th > " . $charges . " </th>
                     </tr>
                     </thead>
