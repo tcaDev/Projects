@@ -103,8 +103,7 @@ class Print_Report_CommodityVolume extends CI_Controller {
                }
             }
 
-            $total .= '
-                        <tr>
+            $total .= '<tr>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> <b> TOTAL </b> </th>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">' . $tVolume . '</th>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>

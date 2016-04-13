@@ -173,9 +173,9 @@ $container_content = '';
              $container_content .=  "
              <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%'>
                   <tr>
-                        <th style='padding:5px; border: 1px solid gray'>No.</th>
-                        <th style='padding:5px; border: 1px solid gray'>AirCraft</th>
-                        <th style='padding:5px; border: 1px solid gray'>Flight Number</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>No.</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>AirCraft</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Flight Number</th>
                   </tr>";
 
               $i=0;
