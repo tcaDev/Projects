@@ -84,8 +84,9 @@ class Print_Report_CommodityVolume extends CI_Controller {
                   $content .= "<tr>";
                   if($row->JobFileNo != $oldJBNo){
                     $content .= "<td style='padding:5px;'>" . $row->JobFileNo . "</td>";
-                    $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                    $content .= "<td style='padding:5px;'>" . $volume . "</td>";
+                   /* $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);*/
+                    $volume = $row->GrossWeight;
+                    $content .= "<td style='padding:5px;'>" . $row->GrossWeight . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ATA . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                     $content .= "<td style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>";
@@ -243,9 +244,14 @@ class Print_Report_CommodityVolume extends CI_Controller {
             $dispOutput .= '
             <table class="table-bordered table">
               <tr>
-                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Jobfile No</th>
-                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Volume</th>
-                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Jobfile No</th>';
+                  if($monitoringType == 1 || $monitoringType == 2){
+                    $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Volume</th>';
+                  }else{
+                    $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Gross Weight</th>';
+                  }
+    
+            $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th>
                 <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Commodity</th>
                 <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Running Charges</th>
               <tr>' . $content . $total .' 

@@ -223,7 +223,7 @@ $(document).on('click','.btn-search-byConName-manila',function(){
 							
 						}else{
 	                        $('#running-charges-manila-options').modal('show');
-	                         $('#running-charges-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_charges_cosignee/')?>" target="blank" id="running-charges-manila_csv"><input type="button" class="btn btn-save-as-running-charges-manila btn-success form-control" value="CSV File"/></a>');
+	                         $('#running-charges-manila_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_run_charge_consignee/')?>" target="blank" id="running-charges-manila_csv"><input type="button" class="btn btn-save-as-running-charges-manila btn-success form-control" value="CSV File"/></a>');
 	                        $('#running-charges-manila_pdf').html('<a href=' + data +' target="blank" id="running-charges-manila_pdf"><input type="button" class="btn btn-save-as-running-charges-manila btn-danger form-control" value="PDF File"/></a>');
                       }
 		});

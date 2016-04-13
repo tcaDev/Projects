@@ -223,6 +223,7 @@ $(document).on('click','.btn-search-byConName-outport',function(){
 							
 						}else{
 							$('#running-charges-outport-options').modal('show');
+							$('#running-charges-outport_csv').html('<a href="<?PHP ECHO base_url('Print_Report_excel/csv_run_charge_consignee/');?>" target="blank" id="running-charges-outport_csv"><input type="button" class="btn btn-save-as-running-charges-outport btn-success form-control" value="CSV File"/></a>');
                        		$('#running-charges-outport_pdf').html('<a href=' + data +' target="blank" id="running-charges-outport_pdf"><input type="button" class="btn btn-save-as-running-charges-outport btn-danger form-control" value="PDF File"/></a>');
 						}
 		});

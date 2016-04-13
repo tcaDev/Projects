@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -76,6 +76,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+/*	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'dev_FilportTrackingSystem',*/
 	'hostname' => 'tracking-filport.com',
 	'username' => 'FilportAdmin',
 	'password' => 'TO_MP8^1N8(=',

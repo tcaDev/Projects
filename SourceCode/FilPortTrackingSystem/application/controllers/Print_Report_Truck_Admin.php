@@ -172,7 +172,6 @@
                       <th>Weight(kgs)</th>
                       <th>Commodity</th>
                       <th>Origin</th>
-                      <th>Actual Delivery Date</th>
                       <th>Airline/Forwarder</th>
                     </tr>
                     </thead>
@@ -186,7 +185,6 @@
                                 <td>" . $row->GrossWeight . "</td>
                                 <td>" . stripslashes($row->ProductName) . "</td>
                                 <td>" . stripslashes($row->Origin) . "</td>
-                                <td>" . $row->TargetDeliveryDate . "</td>
                                 <td>" . $row->Forwarder . "</td>
                               </tr>";
           }

@@ -274,6 +274,14 @@ class Print_Report extends CI_Controller {
            $total += $charges->BPIInspection;
            $total += $charges->OtherFees;
 
+           $total += $charges->ContainerDeposit;
+           $total += $charges->BadCargo;
+           $total += $charges->PlugInForReefer;
+           $total += $charges->EIC;
+
+
+            ////eic,ContainerDeposit,BadCargo,PlugInForReefer
+
         $chargesOutput = '<div style="width:100%;">
                   <table style="margin-left:35px; width:100%; font-size:14px;">';     
         $chargesOutput .= '<tr>
@@ -284,6 +292,14 @@ class Print_Report extends CI_Controller {
                     <span class="pull-right">' . $charges->LodgementFee 
 
                     . '</span>
+                  </td>
+                  </tr>';
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    Container Deposit <span class="pull-right"> : </span>
+                  </td>
+                  <td> 
+                    <span class="pull-right">' . $charges->ContainerDeposit . '</span>
                   </td>
                   </tr>';
         $chargesOutput .= '<tr>
@@ -354,6 +370,22 @@ class Print_Report extends CI_Controller {
                   </tr>';
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
+                    EIC <span class="pull-right"> : </span>
+                  </td>
+                  <td> 
+                    <span class="pull-right">' . $charges->EIC . '</span>
+                  </td>
+                  </tr>';
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    Bad Cargo <span class="pull-right"> : </span>
+                  </td>
+                  <td> 
+                    <span class="pull-right">' . $charges->BadCargo . '</span>
+                  </td>
+                  </tr>';
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
                     Detention Fee <span class="pull-right"> : </span>
                   </td>
                   <td> 
@@ -374,6 +406,14 @@ class Print_Report extends CI_Controller {
                   </td>
                   <td> 
                     <span class="pull-right">' . $charges->SRAInspection . '</span>
+                  </td>
+                  </tr>'; 
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    Plug In For Reefer <span class="pull-right"> : </span>
+                  </td>
+                  <td> 
+                    <span class="pull-right">' . $charges->PlugInForReefer . '</span>
                   </td>
                   </tr>'; 
         $chargesOutput .= '<tr>
@@ -476,7 +516,7 @@ class Print_Report extends CI_Controller {
 
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
-                    VRC <span class="pull-right"> : </span>
+                    VCRC <span class="pull-right"> : </span>
                   </td>
                   <td>
                     <span class="pull-right">' . $charges->VCRC . ' </span>

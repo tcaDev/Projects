@@ -206,7 +206,8 @@ $(document).on('click','#btn-volume-admin',function(){
 							
 						}else{
 							$('#volume-options').modal('show');
-							$('#volume_pdf').html('<a href=' + data +' target="blank" id="volume_pdf"><input type="button" class="btn btn-save-as-volume btn-danger form-control" value="PDF File"/></a>')
+							$('#volume_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_volume/')?>" target="blank" id="volume_csv"><input type="button" class="btn btn-save-as-volume btn-success form-control" value="CSV File"/></a>');
+							$('#volume_pdf').html('<a href=' + data +' target="blank" id="volume_pdf"><input type="button" class="btn btn-save-as-volume btn-danger form-control" value="PDF File"/></a>');
 						}
 		}
 	});

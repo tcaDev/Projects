@@ -265,6 +265,11 @@ class Print_RunningCharges_Admin extends CI_Controller {
            $total += $charges->BPIInspection;
            $total += $charges->OtherFees;
 
+           $total += $charges->PlugInForReefer;
+           $total += $charges->BadCargo;
+           $total += $charges->ContainerDeposit;
+           $total += $charges->EIC;
+
         $chargesOutput = '<div style="width:100%;">
                   <table style="margin-left:35px; width:100%; font-size:14px;">';     
         $chargesOutput .= '<tr>
@@ -273,6 +278,16 @@ class Print_RunningCharges_Admin extends CI_Controller {
                   </td>
                   <td margin-left:10px;> 
                     <span class="pull-right">' . number_format($charges->LodgementFee , 2, '.', ',')
+
+                    . '</span>
+                  </td>
+                  </tr>';
+        $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    Container Deposit <span class="pull-right"> : </span>
+                  </td>
+                  <td margin-left:10px;> 
+                    <span class="pull-right">' . number_format($charges->ContainerDeposit , 2, '.', ',')
 
                     . '</span>
                   </td>
@@ -343,6 +358,22 @@ class Print_RunningCharges_Admin extends CI_Controller {
                     <span class="pull-right">' . number_format($charges->Demorage, 2, '.', ',') . ' </span>
                   </td>
                   </tr>';
+       $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    EIC <span class="pull-right"> : </span>
+                  </td>
+                  <td>
+                    <span class="pull-right">' . number_format($charges->EIC, 2, '.', ',') . ' </span>
+                  </td>
+                  </tr>';
+       $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                    Bad Cargo <span class="pull-right"> : </span>
+                  </td>
+                  <td>
+                    <span class="pull-right">' . number_format($charges->BadCargo, 2, '.', ',') . ' </span>
+                  </td>
+                  </tr>';
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
                     Detention Fee <span class="pull-right"> : </span>
@@ -365,6 +396,14 @@ class Print_RunningCharges_Admin extends CI_Controller {
                   </td>
                   <td> 
                     <span class="pull-right">' . number_format($charges->SRAInspection, 2, '.', ',') . '</span>
+                  </td>
+                  </tr>'; 
+       $chargesOutput .= '<tr>
+                  <td style="text-align:left;">
+                   Plug In For Reefer <span class="pull-right"> : </span>
+                  </td>
+                  <td> 
+                    <span class="pull-right">' . number_format($charges->PlugInForReefer, 2, '.', ',') . '</span>
                   </td>
                   </tr>'; 
         $chargesOutput .= '<tr>
@@ -467,7 +506,7 @@ class Print_RunningCharges_Admin extends CI_Controller {
 
         $chargesOutput .= '<tr>
                   <td style="text-align:left;">
-                    VRC <span class="pull-right"> : </span>
+                    VCRC <span class="pull-right"> : </span>
                   </td>
                   <td>
                     <span class="pull-right">' . number_format($charges->VCRC, 2, '.', ',') . ' </span>

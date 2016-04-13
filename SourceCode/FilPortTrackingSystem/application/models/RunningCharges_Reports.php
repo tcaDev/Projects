@@ -3,12 +3,6 @@
 Class RunningCharges_Reports extends CI_Model
 {
 
-	function p(){
-		$query = $this->db->query("select * from vw_JobFile");
-
-		return $query->result_array();
-	}
-
 	function getPre_Details_RunningCharges_PO($monType,$po_num,$userID){
 		
 		if($monType == 1 || $monType == 2){

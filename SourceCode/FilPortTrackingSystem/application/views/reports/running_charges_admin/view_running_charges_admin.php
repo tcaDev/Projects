@@ -37,6 +37,11 @@
 			     	 $total += $charges->BPIInspection;
                      $total += $charges->OtherFees;
 
+                     $total += $charges->PlugInForReefer;
+                     $total += $charges->BadCargo;
+                     $total += $charges->ContainerDeposit;
+                     $total += $charges->EIC;
+
     		?>
 
     		<table class="table table-condensed table-bordered">
@@ -45,7 +50,11 @@
     					<td>Lodgement Fee :</td>
     					<td><?php echo number_format($charges->LodgementFee ,2,'.',',');?></td>
     				</tr>
-    				<tr>
+                    <tr>
+                        <td>Container Deposit :</td>
+                        <td><?php echo number_format($charges->ContainerDeposit ,2,'.',',');?></td>
+                    </tr>
+                    <tr>
     					<td>THC Charges :</td>
     					<td><?php echo number_format($charges->THCCharges ,2,'.',',');?></td>
     				</tr>
@@ -77,6 +86,14 @@
     					<td>Demurrage Fee :</td>
     					<td><?php echo number_format($charges->Demorage ,2,'.',',');?></td>
     				</tr>
+                    <tr>
+                        <td>EIC :</td>
+                        <td><?php echo number_format($charges->EIC ,2,'.',',');?></td>
+                    </tr>
+                     <tr>
+                        <td>Bad Cargo :</td>
+                        <td><?php echo number_format($charges->BadCargo ,2,'.',',');?></td>
+                    </tr>
     				<tr>
     					<td>Detention Fee:</td>
     					<td><?php echo number_format($charges->Detention ,2,'.',',');?></td>    				
@@ -89,6 +106,10 @@
     					<td>SRA Processing Fee :</td>
     					<td><?php echo number_format($charges->SRAInspection ,2,'.',',');?></td> 
     				</tr>
+                    <tr>
+                        <td>Plug In For Reefer:</td>
+                        <td><?php echo number_format($charges->PlugInForReefer ,2,'.',',');?></td> 
+                    </tr>
     				<tr>
     					<td>BAI Application :</td>
     					<td><?php echo number_format($charges->BAIApplication ,2,'.',',');?></td> 
@@ -210,6 +231,9 @@
                 <div style="font-size:13px;margin-top:5px;">
                     <i><b>Note:</b> Brokerage Fees, Delivery Charges and other Customs related fees are not included</i>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_Report_excel/csv_running_charges_admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span>Save as CSV</a>
             </div>
             <div class="col-md-4">
                 <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>

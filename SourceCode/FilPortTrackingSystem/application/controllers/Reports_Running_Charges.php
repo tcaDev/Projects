@@ -136,16 +136,23 @@ class Reports_Running_Charges extends CI_Controller {
           $consigneeId 			=  $this->input->post('con_id');
           $charges 				=  $this->input->post('charges');
 
-           	$this->session->volume_consignee_ataFrom =$ataFrom ;
+/*           	$this->session->volume_consignee_ataFrom =$ataFrom ;
           	$this->session->volume_consignee_ataTo = $ataTo;
            	$this->session->volume_consignee_monitoringType = $monitoringType;
           	$this->session->volume_consignee_userID = $userID;
            	$this->session->volume_consignee_consigneeId = $consigneeId;
-           	$this->session->volume_consignee_charges = $charges;
+           	$this->session->volume_consignee_charges = $charges;*/
+
+
           $dispOutput = '';
           $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$consigneeId,$ataFrom,$ataTo,$charges);
           //var_dump($reportsVolume);
           if(count($reportsVolume) > 0){
+          	$this->session->volume_ataFrom =$ataFrom;
+          	$this->session->volume_charges =$charges;
+          	$this->session->volume_ataTo = $ataTo;
+          	$this->session->volume_monitoringType = $monitoringType;
+          	$this->session->volume_consigneeID = $consigneeId;
           	$dispOutput =  base_url("Print_Report_Volume/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&userID='. $userID . '&montype=' . $monitoringType . '&consigneeId=' . $consigneeId . '&charges=' . $charges ;  
 
 
@@ -193,7 +200,7 @@ class Reports_Running_Charges extends CI_Controller {
           $dispOutput = '';
           $reportsTruck = $this->Charges->getConsolidated($monitoringType,$cID,$ataFrom,$ataTo,$poNum);
          // $dispOutput .= '<div class="table-consolidate-reports">';
-          if(count($reportsTruck) > 0){
+          if($reportsTruck!=''){
           	$this->session->consolidate_ataFrom = $ataFrom;
           	$this->session->consolidate_ataTo   = $ataTo;
           	$this->session->consolidate_monitoringType = $monitoringType;
@@ -263,6 +270,9 @@ class Reports_Running_Charges extends CI_Controller {
 
     function getCharges($jbNo, $monitoringType){
         $charges = $this->Charges->getRunningCharges($monitoringType, $jbNo);
+
+
+             ////eic,ContainerDeposit,BadCargo,PlugInForReefer
       
       		 	if($monitoringType == 1 || $monitoringType == 2){
 		      	 $total = 0;
@@ -283,6 +293,11 @@ class Reports_Running_Charges extends CI_Controller {
 		     	 $total += $charges->BPIInspection;
 		     	 $total += $charges->OtherFees;
 
+		     	 $total += $charges->PlugInForReefer;
+		     	 $total += $charges->BadCargo;
+		     	 $total += $charges->ContainerDeposit;
+		     	 $total += $charges->EIC;
+
 				$chargesOutput = '<div style="width:100%;" >
 									<table class = "table table-condensed table-bordered" style="width:100%; font-size:14px;">';     
 				$chargesOutput .= '<tr>
@@ -291,6 +306,16 @@ class Reports_Running_Charges extends CI_Controller {
 									</td>
 									<td margin-left:10px;> 
 										<span class="pull-right">' . $charges->LodgementFee 
+
+										. '</span>
+									</td>
+								  </tr>';
+				$chargesOutput .= '<tr>
+									<td style="text-align:left;">
+										Container Deposit <span class="pull-right"> : </span>
+									</td>
+									<td margin-left:10px;> 
+										<span class="pull-right">' . $charges->ContainerDeposit 
 
 										. '</span>
 									</td>
@@ -363,6 +388,22 @@ class Reports_Running_Charges extends CI_Controller {
 								  </tr>';
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
+										EIC <span class="pull-right"> : </span>
+									</td>
+									<td>
+										<span class="pull-right">' . $charges->EIC . ' </span>
+									</td>
+								  </tr>';
+		    	$chargesOutput .= '<tr>
+									<td style="text-align:left;">
+										Bad Cargo <span class="pull-right"> : </span>
+									</td>
+									<td>
+										<span class="pull-right">' . $charges->BadCargo . ' </span>
+									</td>
+								  </tr>';
+				$chargesOutput .= '<tr>
+									<td style="text-align:left;">
 										Detention Fee <span class="pull-right"> : </span>
 									</td>
 									<td> 
@@ -384,7 +425,15 @@ class Reports_Running_Charges extends CI_Controller {
 									<td> 
 										<span class="pull-right">' . $charges->SRAInspection . '</span>
 									</td>
-								  </tr>';	
+								  </tr>';
+			    $chargesOutput .= '<tr>
+									<td style="text-align:left;">
+										Plug In For Reefer <span class="pull-right"> : </span>
+									</td>
+									<td> 
+										<span class="pull-right">' . $charges->PlugInForReefer . '</span>
+									</td>
+								  </tr>';
 				$chargesOutput .= '<tr>
 									<td style="text-align:left;">
 										BAI Application <span class="pull-right"> : </span>
@@ -629,7 +678,7 @@ class Reports_Running_Charges extends CI_Controller {
           $dispOutput = '';
           $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charges);
           //$dispOutput .= '<div class="table-volume-admin">';
-           if(count($reportsVolume) > 0){
+           if($reportsVolume!=''){
           	$dispOutput =  base_url("Print_Report_Volume_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&montype=' . $monitoringType . '&consigneeId=' . $consigneeID . '&charges=' . $charges ;  
 
           	$this->session->volume_ataFrom = $ataFrom;
@@ -656,6 +705,10 @@ class Reports_Running_Charges extends CI_Controller {
           $reportsTruck = $this->Charges->getCharges_Truck($monitoringType,$cID,$ataFrom,$ataTo);
           $dispOutput .= '<div class="table-reports-truck">';
           if(count($reportsTruck) > 0){
+             $this->session->truck_ataFrom = $ataFrom ;
+             $this->session->truck_ataTo   = $ataTo;
+             $this->session->truck_monitoringType = $monitoringType ;
+             $this->session->truck_cID =$cID ;
           	$dispOutput =  base_url("Print_Report_Truck_Admin/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&cID='. $cID . '&montype=' . $monitoringType ;
           }
           else{

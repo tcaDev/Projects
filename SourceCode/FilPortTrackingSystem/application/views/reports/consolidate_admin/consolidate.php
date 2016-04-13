@@ -153,7 +153,7 @@ var get_consolidate = 1;
               
             }else{
               $('#consolidated-options').modal('show');
-              $('#consolidated_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_consolidate/');?>" target="blank" id="consolidated_csv"><input type="button" class="btn btn-save-as-consolidated btn-success form-control" value="CSV File"/></a>');
+              $('#consolidated_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_consolidate_admin/');?>" target="blank" id="consolidated_csv"><input type="button" class="btn btn-save-as-consolidated btn-success form-control" value="CSV File"/></a>');
               $('#consolidated_pdf').html('<a href=' + data +' target="blank" id="consolidated_pdf"><input type="button" class="btn btn-save-as-consolidated btn-danger form-control" value="PDF File"/></a>');
             }
         }); 

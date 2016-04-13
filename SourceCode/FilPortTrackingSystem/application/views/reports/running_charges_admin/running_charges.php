@@ -343,7 +343,7 @@ $(document).on('click','#btn-runningcharges-manila-consignee',function(){
 							
 						}else{
 							$('#runningcharges-options').modal('show');
-							$('#running_charges_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_run_charge/');?>" target="blank" id="running_charges_csv"><input type="button" class="btn btn-success form-control btn-save-as" value="CSV File"/></a>');
+							$('#running_charges_csv').html('<a href="<?php echo base_url('Print_Report_excel/csv_run_charge_admin/');?>" target="blank" id="running_charges_csv"><input type="button" class="btn btn-success form-control btn-save-as" value="CSV File"/></a>');
 							$('#running_charges_pdf').html('<a href=' + data +' target="blank" id="running_charges_pdf"><input type="button" class="btn btn-danger form-control btn-save-as" value="PDF File"/></a>');
 						}
 		});
