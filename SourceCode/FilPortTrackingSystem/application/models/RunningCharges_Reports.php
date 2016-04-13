@@ -459,15 +459,13 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 
 			if($charges != "*"){
 				$preQuery = "SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f." . $charges ." AS RCharges ";
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f.".$charges." AS RCharges ";
 			}else{
 				$preQuery = "SELECT 
-							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f." . $charges . " ";
+							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f.".$charges." ";
 			}
 
-			if($consigneeID == ""){
-				$conditions .= "WHERE";
-			}else{
+			if($consigneeID != ""){
 				$conditions .= "
 				WHERE
 				a.ConsigneeId = '$consigneeID'";

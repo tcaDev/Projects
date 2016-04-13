@@ -304,7 +304,7 @@ class Print_Report_Volume extends CI_Controller {
                       <th >Jobfile No</th>
                       <th >Actual Arrival Time</th>
                       <th >Delivery Date</th>
-                      <th >Gross Weight</th>
+                      <th >Volume</th>
                       <th >Lodgement Fee</th>
                       <th >Break Bulk Fee</th>
                       <th >Storage Fee</th>
