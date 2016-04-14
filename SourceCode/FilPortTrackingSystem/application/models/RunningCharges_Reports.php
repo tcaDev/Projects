@@ -117,8 +117,8 @@ Class RunningCharges_Reports extends CI_Model
 										con1.UserId = '$userId' 
 										AND
 										a.MonitoringTypeId = '$monType'
-										AND
-										a.PurchaseOrderNo = '$poNum'");
+										/*AND
+										a.PurchaseOrderNo = '$poNum'*/");
 		}else{
 			$query = $this->db->query("SELECT 
 									   a.JobFileNo, a.ATA, a.HouseBillLadingNo, c.ProductName, a.DatePickUpOtherDocs, b.DateSentPreAssessment, b.DateSentFinalAssessment, b.DatePaid, b.TargetDeliveryDate, b.DateReceivedAtWhse, f.StorageFee, (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
@@ -136,8 +136,8 @@ Class RunningCharges_Reports extends CI_Model
 										b.TargetDeliveryDate <= '$ataTo' 
 										AND 
 										con1.UserId = '$userId'
-										AND 
-										a.PurchaseOrderNo = '$poNum'");
+										/*AND 
+										a.PurchaseOrderNo = '$poNum'*/");
 		}
 
 		return $query->result();
@@ -552,8 +552,8 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 										c.ActualDeliveryAtWarehouse <= '$ataTo'
 										AND
 										a.MonitoringTypeId = '$monType'
-										AND
-										a.PurchaseOrderNo = '$poNum'");
+										/*AND
+										a.PurchaseOrderNo = '$poNum'*/");
 		}else{
 			$query = $this->db->query("SELECT 
 									   a.JobFileNo, a.ATA, a.HouseBillLadingNo, c.ProductName, a.DatePickUpOtherDocs, b.DateSentPreAssessment, b.DateSentFinalAssessment, b.DatePaid, b.TargetDeliveryDate, b.DateReceivedAtWhse, f.StorageFee, (COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges, h.Description
@@ -566,8 +566,8 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 										b.TargetDeliveryDate >= '$ataFrom'
 									 	AND 
 										b.TargetDeliveryDate <= '$ataTo'
-										AND 
-										a.PurchaseOrderNo = '$poNum'");
+										/*AND 
+										a.PurchaseOrderNo = '$poNum'*/");
 		}
 
 		return $query->result();

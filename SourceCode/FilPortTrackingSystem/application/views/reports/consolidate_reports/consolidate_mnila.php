@@ -14,12 +14,12 @@
                   <div class="panel-heading"></div>
                   <div class="panel-body">
                      <div class="col-md-6 col-md-offset-3">
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                           <div class="form-group">
                             <h5>Purchase Order No.: </h5>
                               <input type="text" class="form-control input-sm" placeholder="PI/PO Number" id="txtPONumber" />
                           </div>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-12">
                           <h5>Actual Delivery Date : </h5>
