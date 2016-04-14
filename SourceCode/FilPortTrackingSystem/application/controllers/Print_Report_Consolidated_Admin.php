@@ -210,20 +210,20 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                $dispOutput .="<table class ='table table-condensed table-bordered'>
                                 <thead>
                                 <tr>
-                                  <th>Jobfile No</th>
-                                  <th>Actual Arrival Time</th>
-                                  <th>Gross Weight</th>
-                                  <th>House Airway Bill No.</th>
-                                  <th>Commodity</th>
-                                  <th>Date Received Docs</th>
-                                  <th>Pre-Assessment Date</th>
-                                  <th>Final Assessment Date</th>
-                                  <th>Date Paid</th>
-                                  <th>Target Delivery Date</th>
-                                  <th>Actual Date of Delivery</th>
-                                  <th>Total Storage</th>
-                                  <th>Running Charges</th>
-                                  <th>Status Reports</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gross Weight</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>House Airway Bill No.</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Received Docs</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Pre-Assessment Date</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Final Assessment Date</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Date Paid</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Date of Delivery</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Total Storage</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Running Charges</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Status Reports</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -233,20 +233,20 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                     if($oldJBNo != $row->JobFileNo){
                           $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                           $dispOutput .= "<tr>
-                                      <th >" . $row->JobFileNo . "</th>
-                                      <th>" . $row->ATA . "</th>
-                                      <th>" . $volume . "</th>
-                                      <th>" . $row->HouseBillLadingNo . "</th>
-                                      <th>" . $row->ProductName . "</th>
-                                      <th>" . $row->DatePickUpOtherDocs . "</th>
-                                      <th>" . $row->DateSentPreAssessment . "</th>
-                                      <th>" . $row->DateSentFinalAssessment . "</th>
-                                      <th>" . $row->DatePaid . "</th>
-                                      <th>" . $row->TargetDeliveryDate . "</th>
-                                      <th>" . $row->DateReceivedAtWhse . "</th>
-                                      <th>" . number_format($row->StorageFee,2,'.',','). "</th>
-                                      <th>" . number_format($row->Total_Charges,2,'.',',') . "</th>
-                                      <th>" . $row->Description . "</th>
+                                      <td style='padding:5px;'>" . $row->JobFileNo . "</td>
+                                      <td  style='padding:5px;'>" . $row->ATA . "</td>
+                                      <td  style='padding:5px;'>" . $volume . "</td>
+                                      <td  style='padding:5px;'>" . $row->HouseBillLadingNo . "</td>
+                                      <td  style='padding:5px;'>" . $row->ProductName . "</td>
+                                      <td  style='padding:5px;'>" . $row->DatePickUpOtderDocs . "</td>
+                                      <td  style='padding:5px;'>" . $row->DateSentPreAssessment . "</td>
+                                      <td  style='padding:5px;'>" . $row->DateSentFinalAssessment . "</td>
+                                      <td  style='padding:5px;'>" . $row->DatePaid . "</td>
+                                      <td  style='padding:5px;'>" . $row->TargetDeliveryDate . "</td>
+                                      <td  style='padding:5px;'>" . $row->DateReceivedAtWhse . "</td>
+                                      <td  style='padding:5px;'>" . number_format($row->StorageFee,2,'.',','). "</td>
+                                      <td  style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>
+                                      <td  style='padding:5px;'>" . $row->Description . "</td>
                                     </tr>";
                     }else{
                       $dispOutput .= "<tr>
@@ -254,7 +254,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                       <td></td>
                                       <td></td>
                                       <td></td>
-                                      <td>" . $row->ProductName . "</td>
+                                      <td  style='padding:5px;'>" . $row->ProductName . "</td>
                                       <td></td>
                                       <td></td>
                                       <td></td>
