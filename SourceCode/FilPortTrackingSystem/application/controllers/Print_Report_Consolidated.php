@@ -68,7 +68,7 @@ class Print_Report_Consolidated extends CI_Controller {
                 <br>
                 <br>
              <div class="col-md-12" style="font-size:16px;">
-                  <table class="table table-bordered" style="width:100%;font-family:Century Gothic;" style="white-space:wrap;">
+                  <table style="width:100%;" style="white-space:wrap;">
                       
                       <tr>
                         <th style="text-align:left">
@@ -78,7 +78,20 @@ class Print_Report_Consolidated extends CI_Controller {
                         </th>
                         <td>
                           <span class="">
-                             From :  ' . $ataFrom . ' To : ' . $ataTo . '
+                             From :  ' . $ataFrom . '
+                          </span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th style="text-align:left">
+                          <span class=""> 
+                     
+                          </span>
+                        </th>
+                        <td>
+                          <span class="">
+                             To : ' . $ataTo . '
                           </span>
                         </td>
                       </tr>
@@ -201,20 +214,20 @@ class Print_Report_Consolidated extends CI_Controller {
                $dispOutput .="<table class ='table table-bordered'>
                                 <thead>
                                 <tr>
-                                  <th style='border:1px solid gray'>Jobfile No</th>
-                                  <th style='border:1px solid gray'>Actual Arrival Time</th>
-                                  <th style='border:1px solid gray'>Gross Weight</th>
-                                  <th style='border:1px solid gray'>House Airway Bill No.</th>
-                                  <th style='border:1px solid gray'>Commodity</th>
-                                  <th style='border:1px solid gray'>Date Received Docs</th>
-                                  <th style='border:1px solid gray'>Pre-Assessment Date</th>
-                                  <th style='border:1px solid gray'>Final Assessment Date</th>
-                                  <th style='border:1px solid gray'>Date Paid</th>
-                                  <th style='border:1px solid gray'>Target Delivery Date</th>
-                                  <th style='border:1px solid gray'>Actual Date of Delivery</th>
-                                  <th style='border:1px solid gray'>Total Storage</th>
-                                  <th style='border:1px solid gray'>Running Charges</th>
-                                  <th style='border:1px solid gray'>Status Reports</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Jobfile No</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Actual Arrival Time</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Gross Weight</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>House Airway Bill No.</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Commodity</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Date Received Docs</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Pre-Assessment Date</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Final Assessment Date</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Date Paid</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Target Delivery Date</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Actual Date of Delivery</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Total Storage</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Running Charges</th>
+                                  <th style='text-align:center;background-color:#ccc;padding:5px;'>Status Reports</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -224,20 +237,20 @@ class Print_Report_Consolidated extends CI_Controller {
                     if($oldJBNo != $row->JobFileNo){
                           $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                           $dispOutput .= "<tr>
-                                      <td>" . $row->JobFileNo . "</td>
-                                      <td>" . $row->ATA . "</td>
-                                      <td>" . $volume . "</td>
-                                      <td>" . $row->HouseBillLadingNo . "</td>
-                                      <td>" . stripslashes($row->ProductName) . "</td>
-                                      <td>" . $row->DatePickUpOtherDocs . "</td>
-                                      <td>" . $row->DateSentPreAssessment . "</td>
-                                      <td>" . $row->DateSentFinalAssessment . "</td>
-                                      <td>" . $row->DatePaid . "</td>
-                                      <td>" . $row->TargetDeliveryDate . "</td>
-                                      <td>" . $row->DateReceivedAtWhse . "</td>
-                                      <td>" . $row->StorageFee . "</td>
-                                      <td>" . $row->Total_Charges . "</td>
-                                      <td>" . $row->Description . "</td>
+                                      <td style='padding:10px;'>" . $row->JobFileNo . "</td>
+                                      <td style='padding:10px;'>" . $row->ATA . "</td>
+                                      <td style='padding:10px;'>" . $volume . "</td>
+                                      <td style='padding:10px;'>" . $row->HouseBillLadingNo . "</td>
+                                      <td style='padding:10px;'>" . stripslashes($row->ProductName) . "</td>
+                                      <td style='padding:10px;'>" . $row->DatePickUpOtherDocs . "</td>
+                                      <td style='padding:10px;'>" . $row->DateSentPreAssessment . "</td>
+                                      <td style='padding:10px;'>" . $row->DateSentFinalAssessment . "</td>
+                                      <td style='padding:10px;'>" . $row->DatePaid . "</td>
+                                      <td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>
+                                      <td style='padding:10px;'>" . $row->DateReceivedAtWhse . "</td>
+                                      <td style='padding:10px;'>" . $row->StorageFee . "</td>
+                                      <td style='padding:10px;'>" . $row->Total_Charges . "</td>
+                                      <td style='padding:10px;'>" . $row->Description . "</td>
                                     </tr>";
                     }else{
                       $dispOutput .= "<tr>
@@ -245,7 +258,7 @@ class Print_Report_Consolidated extends CI_Controller {
                                       <td > </td>
                                       <td > </td>
                                       <td > </td>
-                                      <t style='padding:10px;'>" . stripslashes($row->ProductName) . "</td>
+                                      <td style='padding:10px;'>" . stripslashes($row->ProductName) . "</td>
                                       <td > </td>
                                       <td > </td>
                                       <td > </td>
