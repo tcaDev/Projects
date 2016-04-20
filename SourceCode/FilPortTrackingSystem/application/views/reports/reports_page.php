@@ -241,13 +241,13 @@
 			        	<div class="col-md-12 ">
 				        	<div class="row">
 				        			<div class="tools-bar">
-				        				<div class="col-md-6">
-				        			 	 <span style="padding-bottom: 10px;"> <h3 class="tab_title"> </h3></span>
+				        				<div class="col-md-5">
+				        			 	 <span style="padding-bottom: 10px;font-size: 15px;" class="tab_title"> </span>
 				        				</div>
-									    <div class="input-group col-md-6">
-									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
+									    <div class="input-group col-md-7 ">
+									      <input type="text" class="form-control light-table-filter input-sm" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
 									      <span class="input-group-btn">
-									        <button class="btn btn-danger" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
+									        <button class="btn btn-danger btn-sm" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
 									      </span>
 									    </div>
 								 	</div>
@@ -468,6 +468,7 @@
  var shipperName;
  var rcvdOfOtherDocs;
  var HBL;
+ var POno;
 
  var statusData;
  var txt;
@@ -501,7 +502,8 @@
 						},
 				  		data: { 
 				  			consignee_name:txt,
-				  			monType : montype
+				  			monType : montype,
+				  			
 				  		}
 					})
 			  		.done(function(consignee_data) {
@@ -569,6 +571,7 @@
 			consigneeName 	= $(this).closest('tr').children('td:eq(2)').text();
 			rcvdOfOtherDocs = $(this).closest('tr').children('td:eq(4)').text();
 			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
+			POno 			= $(this).closest('tr').children('td:eq(5)').text();
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&mon_Type=" + montype + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
@@ -585,7 +588,8 @@
 				  			consigneeName 		: consigneeName,
 				  			dateRcvdOther_Docs  : rcvdOfOtherDocs,
 				  			HBL_ 				: HBL,
-				  			jfNo 				: jbNo
+				  			jfNo 				: jbNo,
+				  			POno 				: POno
 				  		}
 					})
 			  		.done(function(report_container_data){
@@ -691,7 +695,7 @@
 			});
 
 		$(document).on('click','.nav-data-manila',function(){
-			$('.tab_title').html('<h4> Jobfile Transactions : <b>' + $('.nav-data-manila .active').text() + '<b></h4>');
+			$('.tab_title').html('<h5> Jobfile Transactions : <b>' + $('.nav-data-manila .active').text() + '<b></h5>');
 		});
 
 		$(document).ready(function(){
@@ -794,13 +798,13 @@
 		function changePlaceHolder(monType){
 			//$('#tab_title').html();
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number');
 			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number');
 			}else{
-				$('#txt-search-consignee').attr('placeholder','Please Enter Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search Consignee Name ');
 			}
 		}
 

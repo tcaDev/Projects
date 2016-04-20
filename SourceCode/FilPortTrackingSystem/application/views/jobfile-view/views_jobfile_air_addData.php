@@ -175,7 +175,7 @@
 									</div>
 
 								
-									<div class="form-group">
+									<div class="form-group"> 
 									  <label for="dtRcvd">Date Received Arrival Notice From Airline/Forwader:</label>
 									  <input type="date" name="dtRcvd" class="form-control input-sm dtRcvd-airline-air" >
 									</div>

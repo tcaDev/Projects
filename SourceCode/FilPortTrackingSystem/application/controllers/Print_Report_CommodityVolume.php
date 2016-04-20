@@ -61,8 +61,11 @@ class Print_Report_CommodityVolume extends CI_Controller {
                   if($row->JobFileNo != $oldJBNo){
                     $content .= "<td style='padding:5px;'>" . $row->JobFileNo . "</td>";
                     $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                    $content .= "<td style='padding:5px;'>" . $row->PurchaseOrderNo . "</td>";
                     $content .= "<td style='padding:5px;'>" . $volume . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ActualArrivalTime . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ActualDeliveryAtWarehouse . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->ContainerNo . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                     $content .= "<td style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>";
                     $tVolume  += $volume;
@@ -72,6 +75,9 @@ class Print_Report_CommodityVolume extends CI_Controller {
                       $content .= "<td></td>";
                       $content .= "<td></td>";
                       $content .= "<td></td>";
+                      $content .= "<td></td>";
+                      $content .= "<td style='padding:5px;'>" . $row->ActualDeliveryAtWarehouse . "</td>";
+                      $content .= "<td style='padding:5px;'>" . $row->ContainerNo . "</td>";
                       $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                       $content .= "<td></td>";
                     }
@@ -84,15 +90,19 @@ class Print_Report_CommodityVolume extends CI_Controller {
                   $content .= "<tr>";
                   if($row->JobFileNo != $oldJBNo){
                     $content .= "<td style='padding:5px;'>" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->PurchaseOrderNo . "</td>";
                    /* $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);*/
                     $volume = $row->GrossWeight;
                     $content .= "<td style='padding:5px;'>" . $row->GrossWeight . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ATA . "</td>";
+                    $content .= "<td style='padding:5px;'>" . $row->DateReceivedAtWhse . "</td>";
                     $content .= "<td style='padding:5px;'>" . $row->ProductName . "</td>";
                     $content .= "<td style='padding:5px;'>" . number_format($row->Total_Charges,2,'.',',') . "</td>";
                     $tVolume  += $volume;
                     $rCharges += $row->Total_Charges; 
                   }else{
+                    $content .= "<td></td>";
+                    $content .= "<td></td>";
                     $content .= "<td></td>";
                     $content .= "<td></td>";
                     $content .= "<td></td>";
@@ -106,9 +116,16 @@ class Print_Report_CommodityVolume extends CI_Controller {
 
             $total .= '<tr>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> <b> TOTAL </b> </th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">' . $tVolume . '</th>
-                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
-                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
+                          <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>';
+                             if($monitoringType == 1 || $monitoringType == 2){
+                                $total .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"></th>';
+                                $total .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"></th>';
+                              }else{
+                                 $total .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"></th>';
+                              }
+            $total .= '   <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;"> </th>
                           <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">' . number_format($rCharges,2,'.',',') . '</th>
                         </tr>
                       ';
@@ -244,15 +261,22 @@ class Print_Report_CommodityVolume extends CI_Controller {
             $dispOutput .= '
             <table class="table-bordered table">
               <tr>
-                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Jobfile No</th>';
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Jobfile No</th>
+                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Purchase Order No.</th>';
                   if($monitoringType == 1 || $monitoringType == 2){
                     $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Volume</th>';
                   }else{
                     $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Gross Weight</th>';
                   }
     
-            $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th>
-                <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Commodity</th>
+            $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th> ';
+                   if($monitoringType == 1 || $monitoringType == 2){
+                    $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Delivery At Warehouse</th>';
+                    $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Container No.</th>';
+                  }else{
+                    $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Date Received At Warehouse</th>';
+                  }
+             $dispOutput .= '   <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Commodity</th>
                 <th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Running Charges</th>
               <tr>' . $content . $total .' 
             </table>

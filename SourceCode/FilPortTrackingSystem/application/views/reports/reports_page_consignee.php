@@ -128,9 +128,9 @@
 				        			<div class="tools-bar">
 									    <div class="input-group col-lg-8">
 
-									      <input type="text" class="form-control light-table-filter" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
+									      <input type="text" class="form-control light-table-filter input-sm" data-table="order-table" id="txt-search-consignee" placeholder='Search for "Consignee"'>
 									      <span class="input-group-btn">
-									        <button class="btn btn-danger" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
+									        <button class="btn btn-danger btn-sm" id="btn-search-consignee" type="button"><span class="fa fa-search fa-fw"></span></button>
 									      </span>
 									    </div>
 								 	</div>
@@ -349,6 +349,7 @@
  var shipperName;
  var rcvdOfOtherDocs;
  var HBL;
+ var POno;
 
  var statusData;
  var txt;
@@ -436,6 +437,7 @@
 			consigneeName 	= $(this).closest('tr').children('td:eq(2)').text();
 			rcvdOfOtherDocs = $(this).closest('tr').children('td:eq(4)').text();
 			HBL 			= $(this).closest('tr').children('td:eq(3)').text();
+			POno 			= $(this).closest('tr').children('td:eq(5)').text();
 			$('#btn_print').html("<a href='<?php echo base_url('Print_file/');?>?jbNo=" + jbNo + "&mon_Type=" + mon_Type + "' target='blank' id='btn_print'> <button class='btn btn-default' >Print</button> </a>");
 			$('#jfNo').html($(this).closest('tr').children('td:eq(0)').text());
 			$('#print_jfNo').html($(this).closest('tr').children('td:eq(0)').text());
@@ -453,7 +455,8 @@
 				  			consigneeName 		: consigneeName,
 				  			dateRcvdOther_Docs  : rcvdOfOtherDocs,
 				  			HBL_ 				: HBL,
-				  			jfNo 				: jbNo
+				  			jfNo 				: jbNo,
+				  			POno 				: POno
 				  		}
 					})
 			  		.done(function(report_container_data){
@@ -714,11 +717,11 @@ $(document).on('click','#Consolidated',function(){
 					$('#HBL').html('<th id="HBL"><center> HBL# </center></th>');
 			}
 			if(monType == 3){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number ');
 			}else if(monType == 2){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number ');
 			}else if(monType == 1){
-				$('#txt-search-consignee').attr('placeholder','Please Enter JobFile Number / Shipper Name / Consignee Name ');
+				$('#txt-search-consignee').attr('placeholder','Search JobFile Number/Shipper Name/Consignee Name/PO Number ');
 			}
 		}
 </script>

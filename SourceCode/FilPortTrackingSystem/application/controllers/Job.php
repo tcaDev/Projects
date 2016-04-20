@@ -1469,6 +1469,7 @@ function get_jobfile_global_search(){
       $dateRcvd           =  $this->input->post('dateRcvdOther_Docs');
       $consigneename      =  $this->input->post('consigneeName');
       $HBL                =  $this->input->post('HBL_');
+      $POno                =  $this->input->post('POno');
 
       $dispOutput = "";
 
@@ -1556,6 +1557,14 @@ function get_jobfile_global_search(){
                       &nbsp;<a id="hbl">' . $HBL . ' </a> 
                       </td>
                     </tr>
+                     <tr>
+                      <td style="text-align:left;">
+                         <span class="pull-left"><b> Purchase Order No.  : </b></span>
+                      </td>
+                      <td style="text-align:left;">
+                      &nbsp;<a id="pono">' . $POno  . ' </a> 
+                      </td>
+                    </tr>
                   </table>';
           echo $dispOutput;
    }
@@ -1578,6 +1587,7 @@ function get_jobfile_global_search(){
                               <th><center> Consignee </center></th>
                               <th><center> House Airway Bill# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                              <th><center> Purchase Order No </center></th>
                             <tr>
                         </thead>
                       ';
@@ -1592,6 +1602,7 @@ function get_jobfile_global_search(){
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DatePickUpOtherDocs).'</td>
+                              <td>'.stripslashes($row->PurchaseOrderNo).'</td>
                         </tr>
                      
               ';
@@ -1614,6 +1625,7 @@ function get_jobfile_global_search(){
                               <th><center> Consignee </center></th>
                               <th><center> HBL# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                              <th><center> Purchase Order No </center></th>
                             </tr>
                         </thead>
                       ';
@@ -1629,6 +1641,7 @@ function get_jobfile_global_search(){
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                              <td>'.stripslashes($row->PurchaseOrderNo).'</td>
                         </tr>
                       
               ';
@@ -1643,6 +1656,7 @@ function get_jobfile_global_search(){
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                              <td>'.stripslashes($row->PurchaseOrderNo).'</td>
                         </tr>
                       
               ';
