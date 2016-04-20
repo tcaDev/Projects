@@ -269,7 +269,7 @@ class Print_Report_CommodityVolume extends CI_Controller {
                     $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Gross Weight</th>';
                   }
     
-            $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival Time</th> ';
+            $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Arrival</th> ';
                    if($monitoringType == 1 || $monitoringType == 2){
                     $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Actual Delivery At Warehouse</th>';
                     $dispOutput .= '<th style="text-align:center;background-color:#ccc; border:1px solid #ddd;">Container No.</th>';
