@@ -29,6 +29,7 @@ class Job_reports extends CI_Controller {
                               <th><center> Consignee </center></th>
                               <th><center> House Airway Bill# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                              <th><center>Purchase Order No. </center></th>
                             <tr>
                         </thead>
                       ';
@@ -42,6 +43,7 @@ class Job_reports extends CI_Controller {
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DatePickUpOtherDocs).'</td>
+                              <td>'.stripslashes($row->PurchaseOrderNo).'</td>
                         </tr>
                      
               ';
@@ -65,6 +67,7 @@ class Job_reports extends CI_Controller {
                               <th><center> Consignee </center></th>
                               <th><center> HBL# </center></th>
                               <th hidden><center> Date Received of Other Documents </center></th>
+                              <th><center>Purchase Order No. </center></th>
                             </tr>
                         </thead>
                       ';
@@ -80,6 +83,7 @@ class Job_reports extends CI_Controller {
                               <td>'.stripslashes($row->ConsigneeName).'</td>
                               <td>'.stripslashes($row->HouseBillLadingNo).'</td>
                               <td hidden>'.stripslashes($row->DateReceivedOfOtherDocs).'</td>
+                              <td>'.stripslashes($row->PurchaseOrderNo).'</td>
                         </tr>
                       
               ';

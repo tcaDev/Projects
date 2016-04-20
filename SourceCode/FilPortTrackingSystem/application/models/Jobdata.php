@@ -220,22 +220,22 @@ function get_countryID_manila($jobfile){
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");
      
     }else if($monitoringType == 4){
-         $query = $this->db->query("SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+         $query = $this->db->query("SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName, a.PurchaseOrderNo FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
                                     UNION
-                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName,a.PurchaseOrderNo FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
                                     UNION
-                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    SELECT a.JobFileId, a.JobFileNo, a.ConsigneeName, a.ShipperName, a.IsBackGround, a.ColorCode, a.StatusName,a.PurchaseOrderNo FROM vw_JobFile AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID' 
                                     UNION ALL
-                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName,a.PurchaseOrderNo FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'
                                     UNION
-                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName,a.PurchaseOrderNo FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId2 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'
                                     UNION
-                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
+                                    SELECT a.JobFile_AirId AS 'JobFileId', a.JobFileNo,  a.ConsigneeName,  a.ShipperName,  a.IsBackGround,  a.ColorCode,  a.StatusName,a.PurchaseOrderNo FROM vw_JobFileAir AS a, User AS b , Consignee AS c WHERE b.ConsigneeId3 = c.ConsigneeID
                                     AND a.ConsigneeName = c.ConsigneeName AND b.UserId = '$userID'");
          //$q = "select * FROM vw_JobFile where ConsigneeName LIKE '%$consigneeName%'";
     } else{
