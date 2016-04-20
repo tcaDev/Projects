@@ -187,7 +187,7 @@ Class RunningCharges_Reports extends CI_Model
 		$query = $this->db->query($execQuery);						 						
 
 		}else{
-				$preQuery = "SELECT a.JobFileNo,a.PurchaseOrderNo,b.GrossWeight, a.ATA, c.ProductName ,c.DateReceivedAtWhse, c.ProductId,(COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges
+				$preQuery = "SELECT a.JobFileNo,a.PurchaseOrderNo,b.GrossWeight, a.ATA, c.ProductName ,b.DateReceivedAtWhse, c.ProductId,(COALESCE(f.LodgementFee,0) + COALESCE(f.BreakBulkFee,0)  +  COALESCE(f.StorageFee,0)  +  COALESCE(f.BadCargoOrderFee,0) + COALESCE(f.VCRC,0) + COALESCE(f.CNI,0) +  COALESCE(f.CNIU,0) +  COALESCE(f.OtherFees,0)) AS Total_Charges
 							 FROM JobFile_Air AS a
 							 LEFT JOIN Products_Air AS b ON a.JobFile_AirId = b.JobFile_AirId
 							 LEFT JOIN Products AS c ON b.ProductId = c.ProductId
