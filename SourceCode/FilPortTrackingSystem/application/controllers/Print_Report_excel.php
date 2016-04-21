@@ -1150,7 +1150,9 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
   
     if($monitoringType == 1|| $monitoringType == 2){
       if(count($report_truck) > 0){
-         $dispOutput .="<table class ='table table-bordered'>
+         $dispOutput .="
+         		   <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+                   <table class ='table table-bordered'>
                     <thead>
                     <tr>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
@@ -1202,7 +1204,9 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
         }
       }else{
         if(count($report_truck) > 0){
-         $dispOutput .="<table class ='table table-bordered'>
+         $dispOutput .="
+                <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+                <table class ='table table-bordered'>
                     <tdead>
                     <tr>
                       <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Target Delivery Date</th>
