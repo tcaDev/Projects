@@ -1720,8 +1720,9 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                  if($charges == "*"){
                     $total = "<tr>
                             <td  colspan=3 style='padding:10px;'><b>TOTAL </b></td>
-                            <td></td>
-                            <td></td>
+                            <td hidden></td>
+                            <td hidden></td>
+
 	
                             <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
@@ -1761,13 +1762,13 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Other Fees</th>
                                       </tr>";
                  }else{
-/*                    $total = "<tr>
+                    $total = "<tr>
                                <td style='padding:10px;'><b>TOTAL </b></td>
                                <td style='padding:10px;'> </td>
                                <td style='padding:10px;'> </td>
                                <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
-                            </tr>";*/
+                            </tr>";
                     $tableHeader = "  <tr>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival </th>
@@ -1830,6 +1831,8 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                 $total = "<tr>
                             <td colspan=3 kailan ka punta dito ><b>TOTAL </b></td>
 
+                            <td hidden></td>
+                            <td hidden></td>
                             <td style='padding:10px;'>" . $tVolume . "</td>
                             <td style='padding:10px;' >" . number_format($lodgementFee, 2, '.', ',') . "</td>
                             <td style='padding:10px;' >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
