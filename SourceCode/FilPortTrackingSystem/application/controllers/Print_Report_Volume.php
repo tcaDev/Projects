@@ -163,6 +163,7 @@ class Print_Report_Volume extends CI_Controller {
                             $sraInspection  += $row->SRAInspection;
                             $baiApplication += $row->BAIApplication;
                             $baiInspection  += $row->BAIInspection;
+                            $bpiInspection  += $row->BPIInspection;
                             $otherfees      += $row->OtherFees;
                             $tVolume        += $volume;
                       }
@@ -272,9 +273,9 @@ class Print_Report_Volume extends CI_Controller {
                       $breakbulkfee += $row->BreakBulkFee;
                       $storagefee   += $row->StorageFee;
                       $badcargofee  += $row->BadCargoOrderFee;
-                      $vcrc         += $row->vcrc;
-                      $cni          += $row->cni;
-                      $cniu         += $row->cniu;
+                      $vcrc         += $row->VCRC;
+                      $cni          += $row->CNI;
+                      $cniu         += $row->CNIU;
                       $otherfees    += $row->OtherFees;
                     }else{
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
