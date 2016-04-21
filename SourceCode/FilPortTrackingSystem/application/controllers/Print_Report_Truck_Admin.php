@@ -166,26 +166,26 @@
          $dispOutput .="<table class ='table table-condensed table-bordered'>
                     <thead >
                     <tr >
-                      <th>Target Delivery Date</th>
-                      <th>Jobfile No</th>
-                      <th>No. of Cartons</th>
-                      <th>Gross Weight</th>
-                      <th>Commodity</th>
-                      <th>Origin</th>
-                      <th>Airline/Forwarder</th>
+                      <th style='text-align:center;background-color:#ccc;padding:5px;'>Target Delivery Date</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>Jobfile No</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>No. of Cartons</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>Gross Weight</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>Commodity</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>Origin</th>
+                      <th  style='text-align:center;background-color:#ccc;padding:5px;'>Airline/Forwarder</th>
                     </tr>
                     </thead>
                     <tbody>
                     "; 
           foreach ($report_truck as $row){
                $dispOutput .= "<tr>
-                                <td>" . $row->TargetDeliveryDate . "</td>
-                                <td>" . $row->JobFileNo . "</td>
-                                <td>" . $row->NoOfCartons . "</td>
-                                <td>" . $row->GrossWeight . "</td>
-                                <td>" . stripslashes($row->ProductName) . "</td>
-                                <td>" . stripslashes($row->Origin) . "</td>
-                                <td>" . $row->Forwarder . "</td>
+                                <td style='padding-left:10px;>" . $row->TargetDeliveryDate . "</td>
+                                <td style='padding-left:10px;>" . $row->JobFileNo . "</td>
+                                <td style='padding-left:10px;>" . $row->NoOfCartons . "</td>
+                                <td style='padding-left:10px;>" . $row->GrossWeight . "</td>
+                                <td style='padding-left:10px;>" . stripslashes($row->ProductName) . "</td>
+                                <td style='padding-left:10px;>" . stripslashes($row->Origin) . "</td>
+                                <td style='padding-left:10px;>" . $row->Forwarder . "</td>
                               </tr>";
           }
           $dispOutput .= "</tbody>";

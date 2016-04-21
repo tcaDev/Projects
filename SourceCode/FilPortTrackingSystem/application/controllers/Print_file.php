@@ -166,16 +166,16 @@ $now = $date_now[0];
 $container =  $this->Jobdata->get_containers($jbNo,$montype);
 $container_content = '';
    if($montype == 3){
-    $container_content = '<b>AirCraft</b><br>';
+    $container_content = '<span style="font-weight:bold;">Aircraft</span><br>';
      if(count($container) == 0){
               $container_content = '<center><span style="color:red">No Aircraft Data </span></center>';
         }else{
              $container_content .=  "
              <table id='tbl-first-report-data' class='table table-striped table-bordered tableOverFlow' style='cursor:pointer;border: 1px solid gray;width:100%'>
                   <tr>
-                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>No.</th>
-                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>AirCraft</th>
-                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Flight Number</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid gray;'>No.</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid gray;'>Aircraft</th>
+                        <th style='text-align:center;background-color:#ccc; border:1px solid gray;'>Flight Number</th>
                   </tr>";
 
               $i=0;
@@ -381,7 +381,7 @@ $charge  = $this->Jobdata->get_chargess($jbNo,$montype);
                             </td>
                             <td style="padding-left:10px;">
                                 <span class="pull-right">
-                                  <b style="font-size: 18px;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
+                                  <b style="font-weight:bold;"> Sub Total : </b> '.number_format($total, 2, '.', ',').'
                                 </span>
                             </td>
                           </tr>
@@ -581,8 +581,8 @@ $reports   = $this->Jobdata->report_get_status($jbNo,$montype);
           $i++;
          $description = $row->StatusDescription;
          $reports_content .= " <tr>
-                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>".$row->DateAdded."</td>
-                   <td class='loadReports tdOverFlow' id='loadReports' style='border: 1px solid gray'>". $description ."</td>
+                   <td class='loadReports tdOverFlow' id='loadReports' style='padding-left:5px;border: 1px solid gray'>".$row->DateAdded."</td>
+                   <td class='loadReports tdOverFlow' id='loadReports' style='padding-left:5px;border: 1px solid gray'>". $description ."</td>
                 </tr>
               ";
         }
