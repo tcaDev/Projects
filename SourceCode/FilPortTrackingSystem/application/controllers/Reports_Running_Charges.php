@@ -91,7 +91,7 @@ class Reports_Running_Charges extends CI_Controller {
 	          						</div>
 	          							<div class="col-md-6">
 	          							<span class="pull-right" style="margin-bottom:5px;">
-	          								<a href="' .  base_url("Print_Report_excel/csv_running_charges/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '&jobfile='.$pre_details->JobFileNo.'" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Save as CSV</a>
+	          								<a href="' .  base_url("Print_Report_excel/csv_running_charges/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '&jobfile='.$pre_details->JobFileNo.'" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> View as CSV</a>
 		          							</span>
 		          							<span class="pull-right" style="margin-bottom:5px;">
 	          								<a href="' .  base_url("Print_Report/") . '?po_num=' . $PO_Number . '&montype=' . $monitoringType .'&userId='. $userID .'&type=' . $searchBy . '" target="blank" " type="button" class="btn btn-primary"><span class="fa fa-print fa-fw"></span> Print</a>
@@ -153,6 +153,7 @@ class Reports_Running_Charges extends CI_Controller {
           	$this->session->volume_ataTo = $ataTo;
           	$this->session->volume_monitoringType = $monitoringType;
           	$this->session->volume_consigneeID = $consigneeId;
+            $this->session->volume_userid = $userID;
           	$dispOutput =  base_url("Print_Report_Volume/") . '?frm=' . $ataFrom . '&to=' . $ataTo .'&userID='. $userID . '&montype=' . $monitoringType . '&consigneeId=' . $consigneeId . '&charges=' . $charges ;  
 
 

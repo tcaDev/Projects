@@ -1,3 +1,9 @@
+	  <?php 
+          if(count($outport)==0){
+           echo "<center><h2><span style='color:red'>No Records Found</span></h2></center>";
+          }else{
+      ?>
+
 	    <table class="tablesorter table-striped table-bordered table-hover table-condensed" id="outport_job" >
 
 				      <thead>
@@ -184,7 +190,7 @@
 				        </tbody>
 				  </table>
 
-
+<?php }?>
 
     <script>
 

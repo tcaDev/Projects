@@ -1,4 +1,8 @@
-      
+    <?php 
+          if(count($air)==0){
+           echo "<center><h2><span style='color:red'>No Records Found</span></h2></center>";
+          }else{
+      ?>      
         <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob" id="table_air_sort_search">
             <thead>
                  <tr style="cursor:w-resize ;">
@@ -176,7 +180,7 @@
               </tbody>
             
           </table>
-
+<?php }?>
 
           <script>
             //table fixed

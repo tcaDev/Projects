@@ -233,7 +233,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_Report_excel/csv_running_charges_admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span>Save as CSV</a>
+                <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_Report_excel/csv_running_charges_admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span>View as CSV</a>
             </div>
             <div class="col-md-4">
                 <a type="button" class="btn btn-primary pull-right" href="<?php echo base_url('Print_RunningCharges_Admin/').'?po_num='.$PONum->PurchaseOrderNo.'&montype='.$montype.'&consigneeId='.$PONum->ConsigneeId; ?>" target='_blank'><span class="fa fa-print fa-fw"></span> Print</a>

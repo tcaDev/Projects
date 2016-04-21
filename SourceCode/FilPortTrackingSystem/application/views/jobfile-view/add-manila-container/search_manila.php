@@ -1,4 +1,8 @@
-
+	  <?php 
+          if(count($manila)==0){
+           echo "<center><h2><span style='color:red'>No Records Found</span></h2></center>";
+          }else{
+      ?>
 				    <table class="tablesorter table table_manila table-bordered table-condensed order-tablejob "  >
 				        <thead>
 				             <tr>
@@ -184,7 +188,7 @@
 				        </tbody>
 				    </table>
 
-				  
+<?php }?>				  
 
 <script>
   		$("th").css("vertical-align","middle");
