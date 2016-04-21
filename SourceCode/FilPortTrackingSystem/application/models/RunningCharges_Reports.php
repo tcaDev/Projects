@@ -465,9 +465,10 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 							a.JobFileNo , a.JobFileId, b.ActualArrivalTime, c.TargetDeliveryDate, c.ContainerNo, f.".$charges." ";
 			}
 
-			if($consigneeID != ""){
-				$conditions .= "
-				WHERE
+			if($consigneeID == ""){
+				$conditions .= "WHERE";
+			}else{
+				$conditions .= "WHERE
 				a.ConsigneeId = '$consigneeID'";
 			}
 
