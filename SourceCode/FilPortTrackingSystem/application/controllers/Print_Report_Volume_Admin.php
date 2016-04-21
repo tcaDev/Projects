@@ -61,7 +61,7 @@
          $breakbulkfee = 0;
          $badcargofee     = 0;
          $storagefee = 0;
-         $vcrc     = 0;
+         $vcrc  = 0;
          $cni  = 0;
          $cniu  = 0;
          $otherfees  = 0;
@@ -136,7 +136,7 @@
                    if($charges == "*"){
                        if($oldJBNo != $row->JobFileNo){
                         $content .= "<tr>";
-                        $content .= ">" . $row->JobFileNo . "</td>";
+                        $content .= "<td style='padding:5px;border:1px solid #ddd;'>" . $row->JobFileNo . "</td>";
                         $content .= "<td style='padding:5px;border:1px solid #ddd;'>" . $row->ActualArrivalTime . "</td>";
                         $content .= "<td style='padding:5px;border:1px solid #ddd;'>" . $row->TargetDeliveryDate . "</td>";
                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
@@ -165,6 +165,7 @@
                             $sraInspection  += $row->SRAInspection;
                             $baiApplication += $row->BAIApplication;
                             $baiInspection  += $row->BAIInspection;
+                            $bpiInspection  += $row->BPIInspection;
                             $otherfees      += $row->OtherFees;
                             $tVolume        += $volume;
                       }
@@ -275,10 +276,11 @@
                       $breakbulkfee += $row->BreakBulkFee;
                       $storagefee   += $row->StorageFee;
                       $badcargofee  += $row->BadCargoOrderFee;
-                      $vcrc         += $row->vcrc;
-                      $cni          += $row->cni;
-                      $cniu         += $row->cniu;
+                      $vcrc         += $row->VCRC;
+                      $cni          += $row->CNI;
+                      $cniu         += $row->CNIU;
                       $otherfees    += $row->OtherFees;
+
                     }else{
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                       $content .= "<td style='padding:5px;border:1px solid #ddd;'><center>" . $volume. "</center></td>";

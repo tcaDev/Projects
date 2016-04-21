@@ -509,7 +509,9 @@ function get_Volume_Reports($monitoringType,$consigneeID,$ataFrom,$ataTo,$charge
 							 ";
 			}	
 
-			if($consigneeID != ""){
+			if($consigneeID == ""){
+				$conditions .= "WHERE";
+			}else{
 				$conditions .= "
 				WHERE
 				a.ConsigneeId = '$consigneeID'";
