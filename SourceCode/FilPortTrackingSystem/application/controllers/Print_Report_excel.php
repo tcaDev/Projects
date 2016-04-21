@@ -1708,7 +1708,9 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                  if($charges == "*"){
                     $total = "<tr>
                             <td  colspan=3 style='padding:10px;'><b>TOTAL </b></td>
-
+                            <td></td>
+                            <td></td>
+	
                             <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
@@ -1815,6 +1817,7 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
              if($charges == "*"){
                 $total = "<tr>
                             <td colspan=3 kailan ka punta dito ><b>TOTAL </b></td>
+                            
                             <td style='padding:10px;'>" . $tVolume . "</td>
                             <td style='padding:10px;' >" . number_format($lodgementFee, 2, '.', ',') . "</td>
                             <td style='padding:10px;' >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
