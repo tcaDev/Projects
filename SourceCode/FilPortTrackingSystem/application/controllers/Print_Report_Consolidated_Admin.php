@@ -114,7 +114,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                           <thead>
                           <tr>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
-                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                            <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Volume</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Container No</th>
                             <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>BL No.</th>
@@ -211,7 +211,7 @@ class Print_Report_Consolidated_Admin extends CI_Controller {
                                 <thead>
                                 <tr>
                                   <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
-                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival Time</th>
+                                  <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival</th>
                                   <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gross Weight</th>
                                   <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>House Airway Bill No.</th>
                                   <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Commodity</th>
