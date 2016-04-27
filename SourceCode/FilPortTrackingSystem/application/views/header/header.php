@@ -206,7 +206,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
     // Blink engine detection
 var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-var output = 'Detecting browsers by ducktyping:<hr>';
+var output = 'Detecting browsers by ducktyping:<hr>'; 
 output += 'isFirefox: ' + isFirefox + '<br>';
 output += 'isChrome: ' + isChrome + '<br>';
 output += 'isSafari: ' + isSafari + '<br>';
