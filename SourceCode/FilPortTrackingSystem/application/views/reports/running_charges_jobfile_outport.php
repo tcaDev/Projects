@@ -11,7 +11,7 @@
         	<div class="col-md-12" style="margin-top:10px;">
 
 				<ul class="nav nav-tabs">
-				    <li class="active"><a data-toggle="tab" href="#pi-client-outport">Search By Purchase Order No.</a></li>
+				    <li class="active"><a data-toggle="tab" href="#pi-client-outport">Search By Proporma Invoice No.</a></li>
 				    <li><a data-toggle="tab" href="#consignee-client-outport">Search By Consignee</a></li>
 				 </ul>
 
@@ -22,7 +22,7 @@
 				       <div class="col-md-12">
 					       	<div class="col-md-5">
 							    <div class="input-group">
-							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport-po" placeholder='Enter Purchase Order Number..'>
+							      <input type="text" class="form-control light-table-filter input-sm" id="txt-table-runningcharges-outport-po" placeholder='Enter Proporma Invoice Number..'>
 							      <span class="input-group-btn">
 							        <button class="btn btn-primary btn-sm" id="btn-runningcharges-outport-po" type="button"><span class="fa fa-search fa-fw"></span></button>
 							      </span>
