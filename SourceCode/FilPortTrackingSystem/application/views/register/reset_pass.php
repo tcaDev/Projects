@@ -66,11 +66,23 @@
 * End Password Matching
 */
 
+var uid;
 
-var uid
 	$(document).on('click','.btn-reset-pass',function(){
-		 uid = $(this).closest('tr').children('td:eq(18)').text();
+
 		var uname = $(this).closest('tr').children('td:eq(4)').text();
+
+    $.ajax({
+                method: "POST",
+                url : "<?php echo base_url('Access/user_admin');?>",
+                data: {
+                  uname : uname
+                } 
+              }).done(function(data){
+                  var fills = JSON.parse(data);
+                   uid = fills[0].UserId;
+      });
+
 
 		$('.uname').text(uname);
 
@@ -93,6 +105,7 @@ $(document).on('click','.btn-ResetPass',function(){
       $('#message_user-reset').fadeIn('slow').text("Password does not Match. Please Check...");
       $('#message_user-reset').fadeOut(3000);
     }else{
+
 
     	var pass = $('.password-reset').val();
     	var cpass = $('.con-password-reset').val();

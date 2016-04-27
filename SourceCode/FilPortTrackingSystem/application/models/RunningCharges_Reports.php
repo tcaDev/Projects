@@ -232,7 +232,7 @@ Class RunningCharges_Reports extends CI_Model
 									a.ConsigneeId = '$con_id' 
 									AND
 									a.MonitoringTypeId = '$monitoringType'
-									ORDER BY e.ProductId");
+									ORDER BY e.ProductName ASC");
 		}else{
 			$query = $this->db->query("SELECT DISTINCT e.ProductName, e.ProductId
 									   FROM 
@@ -241,7 +241,7 @@ Class RunningCharges_Reports extends CI_Model
 									   LEFT JOIN Products 	   AS e ON d.ProductId = e.ProductId
 									   WHERE
 									   a.ConsigneeId = '$con_id' 
-									   ORDER BY e.ProductId");
+									   ORDER BY e.ProductName ASC");
 		}
 		
 		return $query->result();

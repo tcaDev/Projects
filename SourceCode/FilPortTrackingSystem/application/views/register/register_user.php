@@ -261,3 +261,4 @@
 <script type="text/javascript" src="<?php echo base_url('resources/js/register_User.js'); ?>"></script> <!-- For Register User And Other Call Functions -->
 <script type="text/javascript" src="<?php echo base_url('resources/js/roles_functions.js'); ?>"></script> <!-- For Functions Access Role -->
 <script type="text/javascript" src="<?php echo base_url('resources/js/role.js'); ?>"></script> <!-- For Creating New Role -->
+

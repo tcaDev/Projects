@@ -218,11 +218,13 @@ output += 'isBlink: ' + isBlink + '<br>';
 if(!isChrome){
 
 	  						$.alert({
+	  							columnClass: 'col-md-6 col-md-offset-3',
 	  							backgroundDismiss: false, 	
-				        		title: 'Warning!',
-				        		content: 'We highly Recommend Google Chrome due to compatibility issues! ',
-				        		confirm: function(){
-				        	    }
+				        		title: 'Sorry!...',
+				        		content: '<h4>We highly Recommend <b>Google Chrome</b> due to compatibility issues!... </h4>',
+				        		confirmButton:false, 
+				        		closeIcon: false,
+				        		animationSpeed: 2000 ,
 				   			 });
 }
   </script>

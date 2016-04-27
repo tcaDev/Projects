@@ -274,7 +274,7 @@ class Print_Report_Volume extends CI_Controller {
                       $storagefee   += $row->StorageFee;
                       $badcargofee  += $row->BadCargoOrderFee;
                       $vcrc         += $row->VCRC;
-                      $cni          += $row->CNI;
+                      $cni          += $row->CNI;  
                       $cniu         += $row->CNIU;
                       $otherfees    += $row->OtherFees;
                     }else{
@@ -308,7 +308,7 @@ class Print_Report_Volume extends CI_Controller {
                             <td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
              }
-           
+            
              if($charges == "*"){
                 $dispOutput .="<table class ='table table-bordered' >
                     <thead>

@@ -78,13 +78,7 @@
               <td><?php echo $addr2 ?></td>  
               <td><?php echo $row->CName ?></td>
               <td><?php echo $row->C2Name ?></td>
-              <td><?php echo $row->C3Name ?></td>
-              <td class="hidden"><?php echo $uid; ?></td>
-              <td class="hidden"><?php echo $mystat; ?></td> 
-              <td class="hidden"><?php echo $CId; ?></td>
-              <td class="hidden"><?php echo $C2Id; ?></td>
-              <td class="hidden"><?php echo $C3Id; ?></td>
-                              
+              <td><?php echo $row->C3Name ?></td>            
             </tr>
 
 
