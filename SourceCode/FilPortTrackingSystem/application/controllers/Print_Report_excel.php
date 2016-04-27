@@ -801,6 +801,7 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
                             <td  colspan=4 style='padding:10px;'><b>TOTAL </b></td>
                             <td hidden> </td>
                             <td hidden> </td>
+                            <td hidden> </td>
                             <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($containerdepo, 2, '.', ',') . "</td>
