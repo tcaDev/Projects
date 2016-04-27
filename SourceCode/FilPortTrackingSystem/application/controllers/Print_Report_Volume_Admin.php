@@ -307,6 +307,7 @@
                                <td style='padding:10px;'><b>TOTAL </b></td>
                                <td style='padding:10px;'> </td>
                                <td style='padding:10px;'> </td>
+                               <td style='padding:10px;'> </td>
                                <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
