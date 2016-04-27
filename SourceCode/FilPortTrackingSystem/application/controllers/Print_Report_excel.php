@@ -633,16 +633,22 @@ function csv_volume(){
 
 function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges){
          $reportsVolume = $this->Charges->get_Volume_Reports($monitoringType,$consigneeId,$ataFrom,$ataTo,$charges);
-        // $cName = $this->Charges->getcName($userID);
-         $volume = 0;
+          $volume = 0;
          $dispOutput = '';
          $content ='';
          $lodgementFee = 0;
          $thcCharges   = 0;
+         $containerdepo = 0;
+         $storage = 0;
+         $demorage = 0;
+         $eic = 0;
+         $badcargo = 0;
+         $detention = 0;
+         $pluginforreefer = 0 ;
          $arrastre     = 0;
          $wharfage     = 0;
          $weighing     = 0;
-         $DispatchFee  = 0;
+         $dispatchFee  = 0;
          $del = 0;
          $sraApplication   = 0;
          $sraInspection     = 0;
@@ -652,7 +658,7 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
          $breakbulkfee = 0;
          $badcargofee     = 0;
          $storagefee = 0;
-         $vcrc     = 0;
+         $vcrc  = 0;
          $cni  = 0;
          $cniu  = 0;
          $otherfees  = 0;
@@ -670,10 +676,12 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
            }else{
             $monHeader = 'Air Freight';
            }
-          $dispOutput .= '
-				 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
-
+          $dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
+            $dispOutput .= '
+            <html>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">     
+     
+                <table="table-volume-manila">';
 
                 if($monitoringType == 1 || $monitoringType == 2){
 
@@ -681,52 +689,108 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
 
                    
                    if($charges == "*"){
-                       if($oldJBNo != $row->JobFileNo){
+                          if($oldJBNo != $row->JobFileNo){
                         $content .= "<tr>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->JobFileNo . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->ActualArrivalTime . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->TargetDeliveryDate . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->JobFileNo . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ActualArrivalTime . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                        $content .= "<td style='border: 1px solid gray'><center>" . $volume. "</center></td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->LodgementFee . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->THCCharges . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->Arrastre . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->Wharfage . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->Weighing . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->DispatchFee . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->DEL . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->SRAApplication . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->SRAInspection . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->BAIApplication . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->BAIInspection . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->BPIInspection . "</td>";
-                        $content .= "<td style='border: 1px solid gray'>" . $row->OtherFees . "</td>";
+                        $content .= "<td style='padding:10px;'><center>" . $volume. "</center></td>";
+                        $content .= "<td style='padding:10px;'>" . $row->LodgementFee . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerDeposit . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->THCCharges . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Arrastre . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Wharfage . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Weighing . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->DispatchFee . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->DEL . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Storage . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Demorage . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->EIC . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->BadCargo . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Detention . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->SRAApplication . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->SRAInspection . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->PlugInForReefer . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->BAIApplication . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->BAIInspection . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->BPIInspection . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->OtherFees . "</td>";
+
                             $lodgementFee   += $row->LodgementFee;
+                            $containerdepo  += $row->ContainerDeposit;
                             $thcCharges     += $row->THCCharges;
                             $arrastre       += $row->Arrastre;
                             $wharfage       += $row->Wharfage;
                             $weighing       += $row->Weighing;
-                            $DispatchFee    += $row->DispatchFee;
+                            $dispatchFee    += $row->DispatchFee;
                             $del            += $row->DEL;
+                            $storage        += $row->Storage;
+                            $demorage       += $row->Demorage;
+                            $eic            += $row->EIC;
+                            $badcargo       += $row->BadCargo;
+                            $detention      += $row->Detention;
                             $sraApplication += $row->SRAApplication;
                             $sraInspection  += $row->SRAInspection;
+                            $pluginforreefer += $row->PlugInForReefer;
                             $baiApplication += $row->BAIApplication;
                             $baiInspection  += $row->BAIInspection;
                             $bpiInspection  += $row->BPIInspection;
                             $otherfees      += $row->OtherFees;
                             $tVolume        += $volume;
+                      }else{
+                        $content .= "<tr>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
+                        $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                        $content .= "<td style='padding:10px;'><center></center></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+
                       }
                   }else{
                        if($oldJBNo != $row->JobFileNo){
                          $content .= "<tr>";
-                         $content .= "<td style='border: 1px solid gray'>" . $row->JobFileNo . "</td>";
-                         $content .= "<td style='border: 1px solid gray'>" . $row->ActualArrivalTime . "</td>";
-                         $content .= "<td style='border: 1px solid gray'>" . $row->TargetDeliveryDate . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->JobFileNo . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->ActualArrivalTime . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
                          $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                         $content .= "<td style='border: 1px solid gray'><center>" . $volume. "</center></td>";
+                         $content .= "<td style='padding:10px;'><center>" . $volume. "</center></td>";
                          $tVolume += $volume;
-                        $content .= "<td style='border: 1px solid gray'>" .number_format($row->RCharges, 2, '.', ',')."</td>";
+                        $content .= "<td style='padding:10px;'>" .number_format($row->RCharges, 2, '.', ',')."</td>";
                             $rCharges   += $row->RCharges;
+                        }else{
+                         $content .= "<tr>";
+                         $content .= "<td style='padding:10px;'></td>";
+                         $content .= "<td style='padding:10px;'></td>";
+                         $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
+                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                         $content .= "<td style='padding:10px;'><center></center></td>";
+                         
+                        $content .= "<td style='padding:10px;'></td>";
                         }
                   }
                    $content .='</tr>';
@@ -734,63 +798,79 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
                 }
                  if($charges == "*"){
                     $total = "<tr>
-                            <td style='border: 1px solid gray'><b>TOTAL </b></td>
-                            <td style='border: 1px solid gray'></td>
-                            <td style='border: 1px solid gray'></td>
-                            <td style='border: 1px solid gray'>" . $tVolume . "</td>";
-                    $total .= "<td style='border: 1px solid gray'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($thcCharges, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($arrastre, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($wharfage, 2, '.', ','). "</td>
-                            <td style='border: 1px solid gray'>" . number_format($weighing, 2, '.', ','). "</td>
-                            <td style='border: 1px solid gray'>" . number_format($DispatchFee, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($del, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($sraApplication, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($sraInspection, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($baiApplication, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($baiInspection, 2, '.', ',') . "</td>
-                            <td style='border: 1px solid gray'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
-                            <td style='border: 1px solid gray'>" . number_format($otherfees, 2, '.', ',') . "</td> 
+                            <td  colspan=4 style='padding:10px;'><b>TOTAL </b></td>
+                            <td hidden> </td>
+                            <td hidden> </td>
+                            <td style='padding:10px;'>" . $tVolume . "</td>";
+                    $total .= "<td style='padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($containerdepo, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($arrastre, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($wharfage, 2, '.', ','). "</td>
+                            <td style='padding:10px;'>" . number_format($weighing, 2, '.', ','). "</td>
+                            <td style='padding:10px;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($del, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($storage, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($demorage, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($eic, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($badcargo, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($detention, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($pluginforreefer, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
+                            <td style='padding:10px;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
                             </tr>";
 
                     $tableHeader = "  <tr>
-                                        <th style='border: 1px solid gray'>Jobfile No</th>
-                                        <th style='border: 1px solid gray'>Actual Arrival </th>
-                                        <th style='border: 1px solid gray'>Delivery Date</th>
-                                        <th style='border: 1px solid gray'>Volume </th>
-                                        <th style='border: 1px solid gray'>Lodgement Fee</th>
-                                        <th style='border: 1px solid gray'>THC Charges</th>
-                                        <th style='border: 1px solid gray'>Arrastre</th>
-                                        <th style='border: 1px solid gray'>Wharfage</th>
-                                        <th style='border: 1px solid gray'>Weighing</th>
-                                        <th style='border: 1px solid gray'>Dispatch Fee</th>
-                                        <th style='border: 1px solid gray'>DEL</th>
-                                        <th style='border: 1px solid gray'>SRA Application</th>
-                                        <th style='border: 1px solid gray'>SRA Inspection</th>
-                                        <th style='border: 1px solid gray'>BAI Application</th>
-                                        <th style='border: 1px solid gray'>BAI Inspection Fee</th>
-                                        <th style='border: 1px solid gray'>BPI Inspection Fee</th>
-                                        <th style='border: 1px solid gray'>Other Fees</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container No</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Volume </th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Lodgement Fee</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container Deposit</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>THC Charges</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Arrastre</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Wharfage</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Weighing</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Dispatch Fee</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>DEL</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Storage</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Demmurage</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>EIC</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BadCargo</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Detention</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>SRA Application</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>SRA Inspection</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Plug in for Reefer</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BAI Application</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BAI Inspection Fee</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BPI Inspection Fee</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Other Fees</th>
                                       </tr>";
                  }else{
                     $total = "<tr>
-                               <td style='border: 1px solid gray'><b>TOTAL </b></td>
-                               <td style='border: 1px solid gray'> </td>
-                               <td style='border: 1px solid gray'> </td>
-                               <td style='border: 1px solid gray'>" . $tVolume . "</td>";
-                    $total .= "<td style='border: 1px solid gray'>" . number_format($rCharges, 2, '.', ',') . "</td>
+                               <td style='padding:10px;'><b>TOTAL </b></td>
+                               <td style='padding:10px;'> </td>
+                               <td style='padding:10px;'> </td>
+                               <td style='padding:10px;'>" . $tVolume . "</td>";
+                    $total .= "<td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
                     $tableHeader = "  <tr>
-                                        <th style='border: 1px solid gray'>Jobfile No</th>
-                                        <th style='border: 1px solid gray'>Actual Arrival </th>
-                                        <th style='border: 1px solid gray'>Actual Delivery At Warehouse</th>
-                                        <th style='border: 1px solid gray'>Volume </th>";
-                      $tableHeader .= " <th style='border: 1px solid gray'> "  . $charges . "</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container No</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Volume </th>";
+                      $tableHeader .= " <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'> "  . $charges . "</th>
                                       </tr>";                            
                  }
                
                   
-                $dispOutput .="<table style='border: 1px solid gray;width:100%'>
+                $dispOutput .="<table class='table table-condensed table-bordered'>
                     <thead>
                        " .   $tableHeader . "
                     </thead>
@@ -798,26 +878,27 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
                     " . $content . $total;
 
 
+
                  
             }else{
               foreach ($reportsVolume as $row) {
                   if($oldJBNo != $row->JobFileNo){
                      $content .= "<tr>";
-                     $content .= "<td >" . $row->JobFileNo . "</td>";
-                    $content .= "<td >" . $row->ATA . "</td>";
-                    $content .= "<td >" . $row->TargetDeliveryDate . "</td>";
+                     $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->ATA . "</td>";
+                    $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->TargetDeliveryDate . "</td>";
                   
                     if($charges == "*"){
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                       $content .= "<td><center>" . $volume. "</center></td>";
-                      $content .= "<td >" . $row->LodgementFee . "</td>";
-                      $content .= "<td >" . $row->BreakBulkFee . "</td>";
-                      $content .= "<td >" . $row->StorageFee . "</td>";
-                      $content .= "<td >" . $row->BadCargoOrderFee . "</td>";
-                      $content .= "<td >" . $row->VCRC . "</td>";
-                      $content .= "<td >" . $row->CNI . "</td>";
-                      $content .= "<td >" . $row->CNIU . "</td>";
-                      $content .= "<td >" . $row->OtherFees . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->LodgementFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->BreakBulkFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->StorageFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->BadCargoOrderFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->VCRC . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->CNI . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->CNIU . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->OtherFees . "</td>";
                       $tVolume      += $volume;
                       $lodgementFee += $row->LodgementFee;
                       $breakbulkfee += $row->BreakBulkFee;
@@ -827,10 +908,11 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
                       $cni          += $row->CNI;
                       $cniu         += $row->CNIU;
                       $otherfees    += $row->OtherFees;
+
                     }else{
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                      $content .= "<td><center>" . $volume. "</center></td>";
-                      $content .= "<td >" . $row->RCharges . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;'><center>" . $volume. "</center></td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->RCharges . "</td>";
                       $tVolume      += $volume;
                       $rCharges    += $row->RCharges;
                     }
@@ -840,57 +922,53 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
              }
              if($charges == "*"){
                 $total = "<tr>
-                            <td ><b>TOTAL </b></td>
-                            <td > </td>
-                            <td > </td>
-                            <td style='border: 1px solid gray'>" . $tVolume . "</td>
-                            <td >" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
-                            <td >" . number_format($storagefee, 2, '.', ',') . "</td>
-                            <td >" . number_format($badcargofee, 2, '.', ','). "</td>
-                            <td >" . number_format($vcrc, 2, '.', ','). "</td>
-                            <td >" . number_format($cni, 2, '.', ',') . "</td>
-                            <td >" . number_format($cniu, 2, '.', ',') . "</td>
-                            <td >" . number_format($otherfees, 2, '.', ',') . "</td>
+                            <td colspan=3 style='padding:5px; font-weight:bold;border:1px solid #ddd;'>TOTAL</td>
+                            <td style='padding:5px;border:1px solid #ddd;'>" . $tVolume . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($storagefee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($badcargofee, 2, '.', ','). "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($vcrc, 2, '.', ','). "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($cni, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($cniu, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($otherfees, 2, '.', ',') . "</td>
                             </tr>";
              }else{
                  $total = "<tr>
-                            <td ><b>TOTAL </b></td>
-                            <td > </td>
-                            <td > </td>
-                            <td style='border: 1px solid gray'>" . $tVolume . "</td>
-                            <td >" . number_format($rCharges, 2, '.', ',') . "</td>
+                            <td colspan=3 style='padding:5px;border:1px solid #ddd;font-weight:bold;'>TOTAL</td>
+                            <td style='padding:5px;border:1px solid #ddd;'>" . $tVolume . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
              }
            
              if($charges == "*"){
-                $dispOutput .="<table class ='table-condensed table-bordered; width:100%' border=1>
+                $dispOutput .="<table class ='table table-condensed table-bordered; width:100%'>
                     <thead>
                     <tr>
-                      <th >Jobfile No</th>
-                      <th >Actual Arrival </th>
-                      <th >Delivery Date</th>
-                      <th >Gross Weight</th>
-                      <th >Lodgement Fee</th>
-                      <th >Break Bulk Fee</th>
-                      <th >Storage Fee</th>
-                      <th >Bad Cargo Order Fee</th>
-                      <th >VCRC</th>
-                      <th >CNI</th>
-                      <th >CNIU</th>
-                      <th >Other Fees</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Gross Weight</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Lodgement Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Break Bulk Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Storage Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Bad Cargo Order Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>VCRC</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>CNI</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>CNIU</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Other Fees</th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
              }else{
-              $dispOutput .="<table class ='table-condensed table-bordered; width:100%'  border=1>
+              $dispOutput .="<table class ='table table-condensed table-bordered; width:100%'>
                     <thead>
                     <tr>
-                      <th >Jobfile No</th>
-                      <th >Actual Arrival </th>
-                      <th >Delivery Date</th>
-                      <th >Gross Weight</th>
-                      <th > " . $charges . " </th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Gross Weight</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'> " . $charges . " </th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
@@ -899,10 +977,11 @@ function createDocToPrint_volume_admin($monitoringType,$consigneeId,$ataFrom,$at
            $dispOutput .= '
               </tbody>
             </table>
-  
-
+          </div> 
+        </div>
       </body>
     </html>';
+
 
       echo $dispOutput;
   }
@@ -1614,15 +1693,22 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
  function createDocToPrint_volume_client($monitoringType,$userID,$consigneeId,$ataFrom,$ataTo,$charges){
          $reportsVolume = $this->Charges->getReportsVolume($monitoringType,$userID,$consigneeId,$ataFrom,$ataTo,$charges);
         // $cName = $this->Charges->getcName($userID);
-         $volume = 0;
+           $volume = 0;
          $dispOutput = '';
          $content ='';
          $lodgementFee = 0;
+         $containerdepo = 0;
+         $storage = 0;
+         $demorage = 0;
+         $eic = 0;
+         $badcargo = 0;
+         $detention = 0;
+         $pluginforreefer = 0 ;
          $thcCharges   = 0;
          $arrastre     = 0;
          $wharfage     = 0;
          $weighing     = 0;
-         $DispatchFee  = 0;
+         $dispatchFee  = 0;
          $del = 0;
          $sraApplication   = 0;
          $sraInspection     = 0;
@@ -1651,13 +1737,10 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
             $monHeader = 'Air Freight';
            }
 
-         $dispOutput .= '
-                                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-         						<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
+         $dispOutput .= '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>';
             $dispOutput .= '
             <html>
-              <body>
-
+                  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
                 <table class="table-volume-manila">';
 
                 if($monitoringType == 1 || $monitoringType == 2){
@@ -1665,41 +1748,86 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                 foreach ($reportsVolume as $row) {
 
                    
-                   if($charges == "*"){
-                       if($oldJBNo != $row->JobFileNo){
+                  if($charges == "*"){
+                          if($oldJBNo != $row->JobFileNo){
                         $content .= "<tr>";
                         $content .= "<td style='padding:10px;'>" . $row->JobFileNo . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->ActualArrivalTime . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                         $content .= "<td style='padding:10px;'><center>" . $volume. "</center></td>";
                         $content .= "<td style='padding:10px;'>" . $row->LodgementFee . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerDeposit . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->THCCharges . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->Arrastre . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->Wharfage . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->Weighing . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->DispatchFee . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->DEL . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Storage . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Demorage . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->EIC . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->BadCargo . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->Detention . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->SRAApplication . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->SRAInspection . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->PlugInForReefer . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->BAIApplication . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->BAIInspection . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->BPIInspection . "</td>";
                         $content .= "<td style='padding:10px;'>" . $row->OtherFees . "</td>";
+
                             $lodgementFee   += $row->LodgementFee;
+                            $containerdepo  += $row->ContainerDeposit;
                             $thcCharges     += $row->THCCharges;
                             $arrastre       += $row->Arrastre;
                             $wharfage       += $row->Wharfage;
                             $weighing       += $row->Weighing;
-                            $DispatchFee    += $row->DispatchFee;
+                            $dispatchFee    += $row->DispatchFee;
                             $del            += $row->DEL;
+                            $storage        += $row->Storage;
+                            $demorage       += $row->Demorage;
+                            $eic            += $row->EIC;
+                            $badcargo       += $row->BadCargo;
+                            $detention      += $row->Detention;
                             $sraApplication += $row->SRAApplication;
                             $sraInspection  += $row->SRAInspection;
+                            $pluginforreefer += $row->PlugInForReefer;
                             $baiApplication += $row->BAIApplication;
                             $baiInspection  += $row->BAIInspection;
                             $bpiInspection  += $row->BPIInspection;
                             $otherfees      += $row->OtherFees;
                             $tVolume        += $volume;
+                      }else{
+                        $content .= "<tr>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                        $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
+                        $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                        $content .= "<td style='padding:10px;'><center></center></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+                        $content .= "<td style='padding:10px;'></td>";
+
                       }
                   }else{
                        if($oldJBNo != $row->JobFileNo){
@@ -1707,11 +1835,22 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                          $content .= "<td style='padding:10px;'>" . $row->JobFileNo . "</td>";
                          $content .= "<td style='padding:10px;'>" . $row->ActualArrivalTime . "</td>";
                          $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
                          $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
                          $content .= "<td style='padding:10px;'><center>" . $volume. "</center></td>";
                          $tVolume += $volume;
                         $content .= "<td style='padding:10px;'>" .number_format($row->RCharges, 2, '.', ',')."</td>";
                             $rCharges   += $row->RCharges;
+                        }else{
+                         $content .= "<tr>";
+                         $content .= "<td style='padding:10px;'></td>";
+                         $content .= "<td style='padding:10px;'></td>";
+                         $content .= "<td style='padding:10px;'>" . $row->TargetDeliveryDate . "</td>";
+                         $content .= "<td style='padding:10px;'>" . $row->ContainerNo . "</td>";
+                         $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
+                         $content .= "<td style='padding:10px;'><center></center></td>";
+                         
+                        $content .= "<td style='padding:10px;'></td>";
                         }
                   }
                    $content .='</tr>';
@@ -1719,43 +1858,57 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                 }
                  if($charges == "*"){
                     $total = "<tr>
-                            <td  colspan=3 style='padding:10px;'><b>TOTAL </b></td>
+                            <td  colspan=4 style='padding:10px;'><b>TOTAL </b></td>
                             <td hidden></td>
                             <td hidden></td>
-
+                            <td hidden></td>
 	
+                            
                             <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($containerdepo, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($thcCharges, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($arrastre, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($wharfage, 2, '.', ','). "</td>
                             <td style='padding:10px;'>" . number_format($weighing, 2, '.', ','). "</td>
-                            <td style='padding:10px;'>" . number_format($DispatchFee, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($del, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($storage, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($demorage, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($eic, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($badcargo, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($detention, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($sraApplication, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($sraInspection, 2, '.', ',') . "</td>
+                            <td style='padding:10px;'>" . number_format($pluginforreefer, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($baiApplication, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($baiInspection, 2, '.', ',') . "</td>
                             <td style='padding:10px;'>" . number_format($bpiInspection, 2, '.', ',') . "</td> 
                             <td style='padding:10px;'>" . number_format($otherfees, 2, '.', ',') . "</td> 
                             </tr>";
 
-                            //  <td style='padding:10px;'>" . number_format($dispatchFee, 2, '.', ',') . "</td>
-
                     $tableHeader = "  <tr>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
-                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival </th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container No</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Volume </th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Lodgement Fee</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container Deposit</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>THC Charges</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Arrastre</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Wharfage</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Weighing</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Dispatch Fee</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>DEL</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Storage</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Demmurage</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>EIC</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BadCargo</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Detention</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>SRA Application</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>SRA Inspection</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Plug in for Reefer</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BAI Application</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BAI Inspection Fee</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>BPI Inspection Fee</th>
@@ -1766,13 +1919,15 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                                <td style='padding:10px;'><b>TOTAL </b></td>
                                <td style='padding:10px;'> </td>
                                <td style='padding:10px;'> </td>
+                               <td style='padding:10px;'> </td>
                                <td style='padding:10px;'>" . $tVolume . "</td>";
                     $total .= "<td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
                     $tableHeader = "  <tr>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
-                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival </th>
-                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Delivery At Warehouse</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                                        <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Container No</th>
                                         <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Volume </th>";
                       $tableHeader .= " <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'> "  . $charges . "</th>
                                       </tr>";                            
@@ -1787,26 +1942,27 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                     " . $content . $total;
 
 
+
                  
             }else{
               foreach ($reportsVolume as $row) {
                   if($oldJBNo != $row->JobFileNo){
                      $content .= "<tr>";
-                     $content .= "<td style='padding:10px;' >" . $row->JobFileNo . "</td>";
-                    $content .= "<td style='padding:10px;' >" . $row->ATA . "</td>";
-                    $content .= "<td style='padding:10px;' >" . $row->TargetDeliveryDate . "</td>";
+                     $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->JobFileNo . "</td>";
+                    $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->ATA . "</td>";
+                    $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->TargetDeliveryDate . "</td>";
                   
                     if($charges == "*"){
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                      $content .= "<td style='padding:10px;'><center>" . $volume. "</center></td>";
-                      $content .= "<td style='padding:10px;' >" . $row->LodgementFee . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->BreakBulkFee . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->StorageFee . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->BadCargoOrderFee . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->VCRC . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->CNI . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->CNIU . "</td>";
-                      $content .= "<td style='padding:10px;' >" . $row->OtherFees . "</td>";
+                      $content .= "<td><center>" . $volume. "</center></td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->LodgementFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->BreakBulkFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->StorageFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->BadCargoOrderFee . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->VCRC . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->CNI . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->CNIU . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->OtherFees . "</td>";
                       $tVolume      += $volume;
                       $lodgementFee += $row->LodgementFee;
                       $breakbulkfee += $row->BreakBulkFee;
@@ -1816,10 +1972,11 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
                       $cni          += $row->CNI;
                       $cniu         += $row->CNIU;
                       $otherfees    += $row->OtherFees;
+
                     }else{
                       $volume = $this->Charges->getVolume($monitoringType, $row->JobFileNo);
-                      $content .= "<td style='padding:10px;' ><center>" . $volume. "</center></td>";
-                      $content .= "<td style='padding:10px;' >" . $row->RCharges . "</td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;'><center>" . $volume. "</center></td>";
+                      $content .= "<td style='padding:5px;border:1px solid #ddd;' >" . $row->RCharges . "</td>";
                       $tVolume      += $volume;
                       $rCharges    += $row->RCharges;
                     }
@@ -1829,56 +1986,53 @@ function loadReportTruck_admin($monitoringType , $cID , $ataFrom , $ataTo){
              }
              if($charges == "*"){
                 $total = "<tr>
-                            <td colspan=3 kailan ka punta dito ><b>TOTAL </b></td>
-
-                            <td hidden></td>
-                            <td hidden></td>
-                            <td style='padding:10px;'>" . $tVolume . "</td>
-                            <td style='padding:10px;' >" . number_format($lodgementFee, 2, '.', ',') . "</td>
-                            <td style='padding:10px;' >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
-                            <td style='padding:10px;' >" . number_format($storagefee, 2, '.', ',') . "</td>
-                            <td style='padding:10px;' >" . number_format($badcargofee, 2, '.', ','). "</td>
-                            <td style='padding:10px;' >" . number_format($vcrc, 2, '.', ','). "</td>
-                            <td style='padding:10px;' >" . number_format($cni, 2, '.', ',') . "</td>
-                            <td style='padding:10px;' >" . number_format($cniu, 2, '.', ',') . "</td>
-                            <td style='padding:10px;' >" . number_format($otherfees, 2, '.', ',') . "</td>
+                            <td colspan=3 style='padding:5px; font-weight:bold;border:1px solid #ddd;'>TOTAL</td>
+                            <td style='padding:5px;border:1px solid #ddd;'>" . $tVolume . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($lodgementFee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($breakbulkfee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($storagefee, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($badcargofee, 2, '.', ','). "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($vcrc, 2, '.', ','). "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($cni, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($cniu, 2, '.', ',') . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($otherfees, 2, '.', ',') . "</td>
                             </tr>";
              }else{
                  $total = "<tr>
-                            <td colspan=3 style='padding:10px;text-align:center;font-weight:bold;'>bTOTAL</td>
-                            <td style='padding:10px;'>" . $tVolume . "</td>
-                            <td style='padding:10px;'>" . number_format($rCharges, 2, '.', ',') . "</td>
+                            <td colspan=3 style='padding:5px;border:1px solid #ddd;font-weight:bold;'>TOTAL</td>
+                            <td style='padding:5px;border:1px solid #ddd;'>" . $tVolume . "</td>
+                            <td style='padding:5px;border:1px solid #ddd;' >" . number_format($rCharges, 2, '.', ',') . "</td>
                             </tr>";
              }
            
              if($charges == "*"){
-                $dispOutput .="<table class ='table table-bordered' >
+                $dispOutput .="<table class ='table table-condensed table-bordered; width:100%'>
                     <thead>
                     <tr>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival </th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Delivery Date</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gross Weight</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Lodgement Fee</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Break Bulk Fee</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Storage Fee</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Bad Cargo Order Fee</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>VCRC</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>CNI</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>CNIU</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Other Fees</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Gross Weight</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Lodgement Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Break Bulk Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Storage Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Bad Cargo Order Fee</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>VCRC</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>CNI</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>CNIU</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Other Fees</th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
              }else{
-              $dispOutput .="<table class ='table table-bordered' >
+              $dispOutput .="<table class ='table table-condensed table-bordered; width:100%'>
                     <thead>
                     <tr>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Jobfile No</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Actual Arrival </th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Delivery Date</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'>Gross Weight</th>
-                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;'> " . $charges . " </th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Jobfile No</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Actual Arrival Time</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Delivery Date</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'>Gross Weight</th>
+                      <th style='text-align:center;background-color:#ccc; border:1px solid #ddd;padding:5px;'> " . $charges . " </th>
                     </tr>
                     </thead>
                     <tbody>" . $content . $total;
